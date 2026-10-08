@@ -12,14 +12,14 @@ import os
 /// 云端大模型 AI 引擎 —— 使用 Alamofire 请求后端 LLM 接口，具备严格超时保护
 final class SUCloudAIEngine: SUAIServiceProtocol {
 
-    private let endpoint: String
+    private var currentEndpoint: String {
+        return "\(SUAppConfig.apiBaseURL)/ai/reminder"
+    }
     private let timeoutInterval: TimeInterval
 
     init(
-        endpoint: String = "\(SUAppConfig.apiBaseURL)/ai/reminder",
         timeoutInterval: TimeInterval = SUAppConfig.aiGenerationTimeoutInterval
     ) {
-        self.endpoint = endpoint
         self.timeoutInterval = timeoutInterval
     }
 
@@ -55,12 +55,23 @@ final class SUCloudAIEngine: SUAIServiceProtocol {
         configuration.timeoutIntervalForResource = timeoutInterval
         let session = Session(configuration: configuration)
 
+        var headers: HTTPHeaders = [
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+        ]
+        if let token = SUUserDefaultsManager.shared.authToken, !token.isEmpty {
+            headers.add(.authorization(bearerToken: token))
+        }
+
+        let targetURL = currentEndpoint
+
         return try await withCheckedThrowingContinuation { continuation in
             session.request(
-                self.endpoint,
+                targetURL,
                 method: .post,
                 parameters: requestBody,
-                encoder: JSONParameterEncoder.default
+                encoder: JSONParameterEncoder.default,
+                headers: headers
             )
             .validate(statusCode: 200..<300)
             .responseDecodable(of: ReminderResponse.self) { response in

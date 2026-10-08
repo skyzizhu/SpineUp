@@ -101,8 +101,22 @@ final class SUPostureSessionManager: @unchecked Sendable {
             let data = try JSONEncoder().encode(snapshot)
             try data.write(to: fileURL, options: .atomic)
             SULogger.data.debug("Saved today posture session to disk")
+            syncToCloudIfPossible(session: snapshot)
         } catch {
             SULogger.data.warning("Failed to save session: \(error.localizedDescription, privacy: .public)")
+        }
+    }
+
+    /// 尝试后台静默同步当日会话至云端服务器 (离线优先)
+    func syncToCloudIfPossible(session: SUPostureSession? = nil) {
+        let target = session ?? getTodaySession()
+        Task.detached(priority: .background) {
+            do {
+                _ = try await SUAPIClient.shared.session.syncSession(target)
+                SULogger.network.info("Successfully synced today posture session to backend")
+            } catch {
+                SULogger.network.debug("Cloud session sync skipped or failed: \(error.localizedDescription, privacy: .public)")
+            }
         }
     }
 

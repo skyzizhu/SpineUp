@@ -29,6 +29,8 @@ final class SUUserDefaultsManager: @unchecked Sendable {
         static let spineEnergyCoins = "su_spineEnergyCoins"
         static let streakDays = "su_streakDays"
         static let lastActiveDateString = "su_lastActiveDateString"
+        static let customApiBaseURL = "su_customApiBaseURL"
+        static let authToken = "su_authToken"
     }
 
     init(defaults: UserDefaults = .standard) {
@@ -242,6 +244,41 @@ final class SUUserDefaultsManager: @unchecked Sendable {
         set {
             lock.lock()
             defaults.set(newValue, forKey: Keys.activePetPersonaId)
+            lock.unlock()
+        }
+    }
+
+    // MARK: - 网络配置与用户令牌
+    var customApiBaseURL: String? {
+        get {
+            lock.lock()
+            defer { lock.unlock() }
+            return defaults.string(forKey: Keys.customApiBaseURL)
+        }
+        set {
+            lock.lock()
+            if let val = newValue, !val.isEmpty {
+                defaults.set(val, forKey: Keys.customApiBaseURL)
+            } else {
+                defaults.removeObject(forKey: Keys.customApiBaseURL)
+            }
+            lock.unlock()
+        }
+    }
+
+    var authToken: String? {
+        get {
+            lock.lock()
+            defer { lock.unlock() }
+            return defaults.string(forKey: Keys.authToken)
+        }
+        set {
+            lock.lock()
+            if let val = newValue, !val.isEmpty {
+                defaults.set(val, forKey: Keys.authToken)
+            } else {
+                defaults.removeObject(forKey: Keys.authToken)
+            }
             lock.unlock()
         }
     }

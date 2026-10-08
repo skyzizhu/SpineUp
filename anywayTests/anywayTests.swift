@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import Alamofire
 @testable import anyway
 
 final class anywayTests: XCTestCase {
@@ -452,5 +453,105 @@ final class anywayTests: XCTestCase {
         glassView.frame = CGRect(x: 0, y: 0, width: 100, height: 44)
         glassView.layoutSubviews()
         XCTAssertEqual(glassView.layer.cornerRadius, 22.0)
+    }
+
+    // MARK: - 网络与 API 接口层测试
+    func testNetworkEndpointPathsAndMethods() {
+        let guestReq = SUGuestAuthRequest(deviceUuid: "uuid-123", deviceModel: "iPhone", locale: "zh-Hans")
+        let epGuest = SUNetworkEndpoint.guestLogin(request: guestReq)
+        XCTAssertEqual(epGuest.path, "/auth/guest")
+        XCTAssertEqual(epGuest.method, .post)
+        XCTAssertFalse(epGuest.requiresAuth)
+
+        let epProfile = SUNetworkEndpoint.fetchUserProfile
+        XCTAssertEqual(epProfile.path, "/users/me")
+        XCTAssertEqual(epProfile.method, .get)
+        XCTAssertTrue(epProfile.requiresAuth)
+
+        let updateReq = SUUpdateSettingsRequest(activePersonaId: "cat", calibrationBasePitch: 0.1, calibrationBaseRoll: -0.1, slightSlumpThreshold: 16.0, severeSlumpThreshold: 32.0)
+        let epUpdate = SUNetworkEndpoint.updateUserSettings(request: updateReq)
+        XCTAssertEqual(epUpdate.path, "/users/settings")
+        XCTAssertEqual(epUpdate.method, .put)
+        XCTAssertTrue(epUpdate.requiresAuth)
+
+        let aiReq = SUCloudAIEngine.ReminderRequest(systemPrompt: "sys", userPrompt: "usr", persona: "worker", angleDeg: 25.0, durationSec: 6.0, state: "severeSlump")
+        let epAI = SUNetworkEndpoint.aiReminder(request: aiReq)
+        XCTAssertEqual(epAI.path, "/ai/reminder")
+        XCTAssertEqual(epAI.method, .post)
+        XCTAssertFalse(epAI.requiresAuth)
+
+        let syncReq = SUSyncSessionRequest(date: "2026-10-08", uprightDurationSec: 100, slumpDurationSec: 20, longestStreakSec: 80, accumulatedExtraLoadKg: 2.5, violationsCount: 1, score: 95, grade: "S")
+        let epSync = SUNetworkEndpoint.syncSession(request: syncReq)
+        XCTAssertEqual(epSync.path, "/sessions/sync")
+        XCTAssertEqual(epSync.method, .post)
+        XCTAssertTrue(epSync.requiresAuth)
+
+        let epConfig = SUNetworkEndpoint.fetchAppConfig
+        XCTAssertEqual(epConfig.path, "/config/app")
+        XCTAssertEqual(epConfig.method, .get)
+        XCTAssertFalse(epConfig.requiresAuth)
+    }
+
+    func testNetworkResponseCodable() throws {
+        let jsonStr = """
+        {
+            "code": 200,
+            "message": "success",
+            "data": {
+                "token": "mock.jwt.token",
+                "userId": 42,
+                "userUuid": "device-uuid-999",
+                "isGuest": true
+            },
+            "timestamp": 1791448000
+        }
+        """
+        let data = jsonStr.data(using: .utf8)!
+        let response = try JSONDecoder().decode(SUNetworkResponse<SUAuthResponseData>.self, from: data)
+
+        XCTAssertTrue(response.isSuccess)
+        XCTAssertEqual(response.code, 200)
+        XCTAssertEqual(response.message, "success")
+        XCTAssertEqual(response.data?.token, "mock.jwt.token")
+        XCTAssertEqual(response.data?.userId, 42)
+        XCTAssertEqual(response.data?.userUuid, "device-uuid-999")
+        XCTAssertEqual(response.data?.isGuest, true)
+    }
+
+    func testAuthSessionManagerTokenHandling() {
+        let testDefaults = UserDefaults(suiteName: "SUAuthSessionTestSuite") ?? .standard
+        testDefaults.removePersistentDomain(forName: "SUAuthSessionTestSuite")
+        let userDefaultsManager = SUUserDefaultsManager(defaults: testDefaults)
+        let authManager = SUAuthSessionManager(userDefaults: userDefaultsManager)
+
+        XCTAssertFalse(authManager.isAuthenticated)
+        XCTAssertNil(authManager.currentToken)
+
+        authManager.saveToken("sample_token_abc")
+        XCTAssertTrue(authManager.isAuthenticated)
+        XCTAssertEqual(authManager.currentToken, "sample_token_abc")
+
+        authManager.clearToken()
+        XCTAssertFalse(authManager.isAuthenticated)
+        XCTAssertNil(authManager.currentToken)
+    }
+
+    func testAppConfigApiBaseURLSwitching() {
+        let testDefaults = UserDefaults(suiteName: "SUConfigUrlTestSuite") ?? .standard
+        testDefaults.removePersistentDomain(forName: "SUConfigUrlTestSuite")
+        let userDefaultsManager = SUUserDefaultsManager(defaults: testDefaults)
+
+        // 默认情况下指向配置的 localServerRootURL + /v1
+        XCTAssertEqual(SUAppConfig.localServerRootURL, "http://192.168.31.101/spineup")
+        XCTAssertEqual(SUAppConfig.apiBaseURL, "http://192.168.31.101/spineup/v1")
+
+        // 模拟用户设置自定义本地开发服务器地址覆盖
+        userDefaultsManager.customApiBaseURL = "http://192.168.1.100:8080/v1"
+        XCTAssertEqual(userDefaultsManager.customApiBaseURL, "http://192.168.1.100:8080/v1")
+        XCTAssertEqual(SUAppConfig.apiBaseURL, "http://192.168.1.100:8080/v1")
+
+        userDefaultsManager.customApiBaseURL = nil
+        XCTAssertNil(userDefaultsManager.customApiBaseURL)
+        XCTAssertEqual(SUAppConfig.apiBaseURL, "http://192.168.31.101/spineup/v1")
     }
 }

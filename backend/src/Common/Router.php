@@ -48,6 +48,13 @@ class Router
         $uri = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?: '/';
         $uri = rtrim($uri, '/') ?: '/';
 
+        // 自动兼容 Apache 二级子目录部署 (例如 /spineup/v1/... 或 /spineup/public/v1/...)
+        if (($v1Pos = strpos($uri, '/v1/')) !== false) {
+            $uri = substr($uri, $v1Pos);
+        } elseif (($v1Pos = strpos($uri, '/v1')) !== false && strlen($uri) === $v1Pos + 3) {
+            $uri = '/v1';
+        }
+
         // 统一处理 preflight OPTIONS 跨域预检
         if ($method === 'OPTIONS') {
             header('Access-Control-Allow-Origin: *');

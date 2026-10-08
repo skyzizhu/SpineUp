@@ -35,5 +35,12 @@
 	<string>SpineUp 希望读取您的健康数据以提供更精准的体态分析</string>
 	<key>NSHealthUpdateUsageDescription</key>
 	<string>SpineUp 希望将您的挺拔专注时长记录为正念时间</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+		<key>NSAllowsLocalNetworking</key>
+		<true/>
+	</dict>
 </dict>
 </plist>

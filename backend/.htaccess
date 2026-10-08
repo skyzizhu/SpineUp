@@ -1,20 +1,17 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
-    # 处理 OPTIONS preflight
+    # OPTIONS preflight
     RewriteCond %{REQUEST_METHOD} OPTIONS
-    RewriteRule ^(.*)$ index.php [QSA,L]
+    RewriteRule ^(.*)$ public/index.php [QSA,L]
 
-    # 非真实文件与目录全部重定向至 index.php
+    # 将所有非静态直接访问重定向至 public/index.php
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^(.*)$ index.php [QSA,L]
+    RewriteRule ^(.*)$ public/index.php [QSA,L]
 </IfModule>
 
-# 禁止浏览目录
 Options -Indexes
-
-# 保护隐藏文件
 <FilesMatch "^\.">
     Require all denied
 </FilesMatch>

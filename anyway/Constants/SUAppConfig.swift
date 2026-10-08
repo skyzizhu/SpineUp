@@ -18,8 +18,35 @@ enum SUAppConfig {
     static let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0.0"
     static let buildVersion = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "1"
 
-    // MARK: - 网络与 AI 服务配置
-    static let apiBaseURL = "https://api.spineup.app/v1"
+    // MARK: - 服务器环境配置 (Server Environment)
+    /// 服务器运行环境枚举 —— 上线发布时仅需将 currentEnvironment 切换为 .production
+    enum ServerEnvironment: String, CaseIterable, Sendable {
+        case local        // 本地 / 局域网联调服务器
+        case production   // 线上正式生产服务器
+    }
+
+    /// 当前激活的服务器环境：一键切换 .local 或 .production
+    static let currentEnvironment: ServerEnvironment = .local
+
+    /// 局域网开发联调服务器根地址 (当前配置)
+    static let localServerRootURL: String = "http://192.168.31.101/spineup"
+
+    /// 线上正式生产服务器根地址 (上线前替换此域名即可)
+    static let productionServerRootURL: String = "https://api.spineup.app"
+
+    /// API 版本路由前缀
+    static let apiVersionPrefix: String = "/v1"
+
+    /// 统一计算的 API 基础地址 (各网络接口直接使用此地址)
+    static var apiBaseURL: String {
+        if let custom = SUUserDefaultsManager.shared.customApiBaseURL, !custom.isEmpty {
+            return custom.hasSuffix("/") ? String(custom.dropLast()) : custom
+        }
+        let root = (currentEnvironment == .local) ? localServerRootURL : productionServerRootURL
+        let trimmedRoot = root.hasSuffix("/") ? String(root.dropLast()) : root
+        let prefix = apiVersionPrefix.hasPrefix("/") ? apiVersionPrefix : "/\(apiVersionPrefix)"
+        return "\(trimmedRoot)\(prefix)"
+    }
     static let networkTimeoutInterval: TimeInterval = 15.0
     static let aiGenerationTimeoutInterval: TimeInterval = 3.0 // 云端 AI 响应超时阈值，超时自动降级至离线语料
 
