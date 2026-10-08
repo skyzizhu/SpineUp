@@ -422,38 +422,106 @@ App 被系统挂起   → 传感器 Stopped（graceful 停止，保存当前会�
 
 ---
 
-## 14. 深色/浅色模式与无障碍适配
+## 14. 深色模式与无障碍深度规范
 
-### 14.1 深色/浅色模式
-1. **颜色资源统一管理**：
-   * 所有自定义颜色必须在 `Assets.xcassets` 中以 Color Set 形式定义，同时提供 Any Appearance 与 Dark Appearance 两套色值。
-   * 代码中通过 `UIColor(named: "SUPrimaryColor")` 引用，**禁止**硬编码 RGB 值。
-2. **语义化颜色优先**：
-   * 优先使用系统语义颜色（`UIColor.label`、`UIColor.systemBackground`、`UIColor.secondaryLabel` 等），减少自定义颜色数量。
-3. **图片资源适配**：
-   * 宠物形象等图片资源在 Assets 中同时提供浅色/深色变体，或确保在两种模式下均可辨识。
+### 14.1 深色模式 (Dark Mode) 全覆盖设计规范
+App 全面支持 **浅色模式 (Light Mode)** 与 **深色模式 (Dark Mode)** 的无缝平滑切换，提供极致沉浸的人体工学视觉体验。
+
+1. **动态语义化颜色体系 (Semantic Colors)**：
+   * **背景层级 (Background Elevation)**：
+     * 主画布背景：`UIColor.systemBackground`（浅色纯白，深色纯黑 `#000000`）；
+     * 卡片/容器背景：`UIColor.secondarySystemBackground`（浅色淡灰 `#F2F2F7`，深色层级深灰 `#1C1C1E`）；
+     * 浮层/弹窗背景：`UIColor.tertiarySystemBackground`（深色微亮深灰 `#2C2C2E`）。
+   * **文字与前景色 (Text & Foreground)**：
+     * 主要文字：`UIColor.label`；
+     * 次要说明：`UIColor.secondaryLabel`；
+     * 辅助占位：`UIColor.tertiaryLabel`；
+     * 分割线：`UIColor.separator`。
+   * **自定义品牌与强调色**：
+     * 必须在 `Assets.xcassets` 中以 Color Set 定义（同时提供 Any Appearance 与 Dark Appearance），或在代码中通过动态提供者声明：
+       ```swift
+       static let suPrimaryAccent = UIColor { traitCollection in
+           traitCollection.userInterfaceStyle == .dark
+               ? UIColor(red: 0.20, green: 0.60, blue: 1.00, alpha: 1.0)
+               : UIColor(red: 0.00, green: 0.48, blue: 1.00, alpha: 1.0)
+       }
+       ```
+     * **严禁** 在业务代码中硬编码无外观感知的绝对 RGB/十六进制色彩。
+2. **深色模式卡片层级与阴影质感**：
+   * 深色模式下放弃大面积浓黑投影，改为通过**明度层级提升 + 细腻描边**营造立体感：
+     ```swift
+     cardView.layer.borderColor = UIColor.separator.cgColor
+     cardView.layer.borderWidth = 0.5
+     ```
+3. **SwiftUI 视图双模式适配**：
+   * SwiftUI 动态组件（如宠物动画、小组件）使用 `@Environment(\.colorScheme) private var colorScheme` 自适应。
+   * 必须在 Preview 中同时提供浅色与深色预览：
+     ```swift
+     #Preview("Light Mode") {
+         SUPetAnimatedView(petState: .upright).preferredColorScheme(.light)
+     }
+     #Preview("Dark Mode") {
+         SUPetAnimatedView(petState: .upright).preferredColorScheme(.dark)
+     }
+     ```
+4. **生命周期与外观切换监听**：
+   * `SUBaseViewController` 在 `traitCollectionDidChange` 中自动检测 `hasDifferentColorAppearance`，触发 `updateAppearanceForCurrentTheme()`，确保 CGColor（如 `layer.borderColor`）即时刷新。
 
 ### 14.2 无障碍 (Accessibility)
-1. **VoiceOver 标签**：所有可交互控件必须设置 `accessibilityLabel` 与 `accessibilityHint`。
-2. **Dynamic Type**：文字控件使用 `UIFont.preferredFont(forTextStyle:)` 或对应 SwiftUI 字体，支持系统字体缩放。
-3. **最小触摸区域**：所有可点击区域不小于 44×44 pt。
+1. **VoiceOver 标签**：所有可交互控件必须设置 `accessibilityLabel`、`accessibilityValue` 与 `accessibilityHint`。
+2. **Dynamic Type**：文字控件统一使用 `UIFont.preferredFont(forTextStyle:)` 或对应 SwiftUI 字体修饰器，全面支持系统字体缩放。
+3. **最小触摸区域**：所有可点击区域不小于 44×44 pt（`SULayoutConstants.minimumTouchTargetSize`）。
 
 ---
 
-## 15. 国际化与本地化策略
+## 15. 全方位国际化与本地化策略 (7国语言 + Info.plist + RTL 适配)
 
-### 15.1 第一阶段策略
-* **MVP 阶段**仅支持 **中文（简体）** 与 **英文** 双语。
-* 所有用户可见字符串使用 `String(localized:)` 宏（iOS 16+），存放于 `Localizable.xcstrings`。
-* **禁止**在代码中直接硬编码用户可见的中文或英文字符串。
+本应用为全球化定位，基准开发语言（Base Language）为**英语**，全面适配 7 种主流语言。
 
-### 15.2 AI 台词本地化
-* AI 人格台词库按语言分组管理。离线语料库需同时提供中英文版本。
-* 云端 AI 生成时，在 Prompt 中明确指定输出语言。
+### 15.1 语言矩阵与代码映射
+| 序号 | 语言名称 | Locale 代码 | 布局方向 | 备注 |
+| :--- | :--- | :--- | :--- | :--- |
+| **1** | **英语 (English)** | `en` | LTR (左到右) | **基准开发语言 (Base / Development)** |
+| **2** | **简体中文** | `zh-Hans` | LTR (左到右) | 核心主力市场 |
+| **3** | **繁体中文** | `zh-Hant` | LTR (左到右) | 港澳台及海外华人市场 |
+| **4** | **日语 (Japanese)** | `ja` | LTR (左到右) | 亚洲重点市场 |
+| **5** | **韩语 (Korean)** | `ko` | LTR (左到右) | 亚洲重点市场 |
+| **6** | **阿拉伯语 (Arabic)** | `ar` | **RTL (从右往左)** | 中东市场，需专属镜像与对齐适配 |
+| **7** | **法语 (French)** | `fr` | LTR (左到右) | 欧洲主力市场 |
 
-### 15.3 布局适配
-* 使用 Auto Layout / SnapKit 相对约束天然支持 RTL（从右到左）布局方向。
-* 使用 `.leading` / `.trailing` 而非 `.left` / `.right`。
+### 15.2 Info.plist 系统级多语言本地化 (`InfoPlist.xcstrings` / `InfoPlist.strings`)
+应用名称与所有系统权限描述必须在 7 种语言下完整提供本地化，杜绝在非英语系统下弹出未经翻译的权限弹窗：
+
+| 字段 Key | 英语 (`en`) | 简体中文 (`zh-Hans`) | 繁体中文 (`zh-Hant`) | 日语 (`ja`) | 韩语 (`ko`) | 阿拉伯语 (`ar`) | 法语 (`fr`) |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| `CFBundleDisplayName` | SpineUp | 骨气 | 骨氣 | スパインアップ | 스파인업 | سباين آب | SpineUp |
+| `NSMotionUsageDescription` | SpineUp needs motion sensor access to monitor your posture via AirPods. | SpineUp 需要访问运动传感器以通过 AirPods 监测您的头部姿态。 | SpineUp 需要存取運動感測器以透過 AirPods 監測您的頭部姿態。 | SpineUpはAirPodsを通じて姿勢を監視するためにモーションセンサーにアクセスする必要があります。 | SpineUp은 AirPods를 통해 자세를 모니터링하기 위해 모션 센서 접근이 필요합니다. | يحتاج SpineUp للوصول إلى مستشعرات الحركة لمراقبة وضعيتك عبر AirPods. | SpineUp a besoin d'accéder aux capteurs de mouvement pour surveiller votre posture via les AirPods. |
+| `NSHealthShareUsageDescription` | SpineUp needs to read health data to provide accurate posture analytics. | SpineUp 希望读取您的健康数据以提供更精准的体态分析。 | SpineUp 希望讀取您的健康資料以提供更精準的體態分析。 | SpineUpはより正確な姿勢分析を提供するためにヘルスケアデータを読み取る必要があります。 | SpineUp은 정확한 자세 분석을 제공하기 위해 건강 데이터를 읽어야 합니다. | يحتاج SpineUp لقراءة البيانات الصحية لتقديم تحليلات دقيقة للوضعية. | SpineUp a besoin de lire les données de santé pour fournir des analyses posturales précises. |
+| `NSHealthUpdateUsageDescription` | SpineUp records your upright focus time as mindful minutes. | SpineUp 希望将您的挺拔专注时长记录为正念时间。 | SpineUp 希望將您的挺拔專注時長記錄為正念時間。 | SpineUpは背筋を伸ばした集中時間をマインドフル時間として記録します。 | SpineUp은 바른 자세 집중 시간을 마음 챙김 시간으로 기록합니다. | يسجل SpineUp وقت تركيزك في الوضعية المستقيمة كدقائق يقظة. | SpineUp enregistre votre temps de posture droite sous forme de minutes de pleine conscience. |
+
+### 15.3 页面与业务文本本地化 (`Localizable.xcstrings`)
+* 全面使用现代 **String Catalogs (`Localizable.xcstrings`)** 集中管理。
+* 业务代码中使用 `String(localized: "key", defaultValue: "Fallback Text")`：
+  ```swift
+  let calibrateTitle = String(localized: "monitor.button.calibrate", defaultValue: "Calibrate Posture")
+  ```
+* **纪律**：**严禁** 在代码中硬编码用户可见的自然语言字符串。
+
+### 15.4 阿拉伯语 RTL (Right-to-Left) 专门布局准则
+阿拉伯语使用从右向左的书写与阅读习惯，必须严格遵循以下规则：
+1. **SnapKit 约束方向规则**：
+   * 必须严格使用 `make.leading` / `make.trailing`；
+   * **绝对禁止** 使用 `make.left` / `make.right`（在 RTL 下 left/right 不会自适应翻转，导致布局错乱）。
+2. **文本对齐规则**：
+   * `UILabel.textAlignment` 默认使用 `.natural`（LTR 下靠左，RTL 下自动对齐到右侧）。
+3. **方向性图标自动镜像**：
+   * 带有方向隐喻的图标（如前进箭头、返回键、展开折叠指示），必须启用 `.imageFlippedForRightToLeftLayoutDirection()`。
+4. **进度条与仪表盘流向**：
+   * 水平进度条在 RTL 环境下由右向左增长。
+
+### 15.5 AI 动态台词多语言生成与离线库
+* **云端 AI 生成**：动态 Prompt 构建器在请求体中自动附带用户当前系统 Locale（`Locale.current.identifier`），并在 System Prompt 中严格指定输出语言。
+* **离线备用语料库**：针对 3 大宠物人格（毒舌打工人、傲娇猫猫、温柔私教），离线预制台词表完整提供 7 种语言的高频对照语料。
 
 ---
 

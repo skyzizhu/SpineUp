@@ -247,10 +247,11 @@
 - [ ] **Task 4.6: Apple HealthKit 数据打通**
   * 将端正坐姿的专注时长写入 HealthKit 的 `MindfulSession`。
   * 读取用户当日步数等数据作为 AI 诊断的辅助参考。
-- [ ] **Task 4.7: 深色/浅色模式与无障碍最终验证**
-  * 全部页面在深色/浅色模式下视觉完整性检查。
-  * VoiceOver 无障碍标签补全。
-  * Dynamic Type 字体缩放适配验证。
+- [ ] **Task 4.7: 7 种语言国际化与深色模式全覆盖验证**
+  * 全部页面在深色/浅色模式下视觉完整性检查，保证卡片层级、分割线与动态语义色渲染正常。
+  * 验证 7 种语言（en, zh-Hans, zh-Hant, ja, ko, ar, fr）在 `Localizable.xcstrings` 与 `InfoPlist.xcstrings` 下的完整覆盖（基数语言为英语）。
+  * 专项校验阿拉伯语（ar）RTL 从右向左排版、SnapKit leading/trailing 镜像、文本右对齐及方向性图标翻转。
+  * VoiceOver 无障碍标签补全与 Dynamic Type 字体缩放适配验证。
 - [ ] **Task 4.8: App Store 上架准备**
   * App Store 截图制作（含 iPhone Duo 截图）。
   * 隐私政策与用户协议文案。
@@ -262,7 +263,8 @@
 > * iPhone Duo 展开态/外屏态/桌面悬停态均正常展示。
 > * 无 AirPods 时可进入降级模式，不影响基础体验。
 > * HealthKit 正念时长数据同步至"健康"App。
-> * 全部页面深色/浅色模式视觉无异常。
+> * 全部页面在深色与浅色模式下色彩层次清晰，无硬编码颜色。
+> * 7 种语言（含 Info.plist 权限描述与应用名称）切换无截断、阿拉伯语 RTL 布局完美镜像。
 
 ---
 
