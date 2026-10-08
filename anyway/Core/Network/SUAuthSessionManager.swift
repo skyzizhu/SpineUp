@@ -55,22 +55,27 @@ final class SUAuthSessionManager: @unchecked Sendable {
         SULogger.network.info("Cleared auth token")
     }
 
-    /// 确保具备有效 Token，若无则自动以访客身份后台静默登录
-    func ensureAuthenticated() async throws -> String {
-        lock.lock()
-        if let token = userDefaults.authToken, !token.isEmpty {
-            lock.unlock()
+    private func fetchCachedToken() -> String? {
+        lock.withLock {
+            guard let token = userDefaults.authToken, !token.isEmpty else {
+                return nil
+            }
             return token
         }
-        lock.unlock()
+    }
 
+    /// 确保具备有效 Token，若无则自动以访客身份后台静默登录
+    func ensureAuthenticated() async throws -> String {
+        if let token = fetchCachedToken() {
+            return token
+        }
         return try await loginAsGuestSilently()
     }
 
     /// 静默访客免密登录
     @discardableResult
     func loginAsGuestSilently() async throws -> String {
-        let deviceModel = UIDevice.current.model
+        let deviceModel = await MainActor.run { UIDevice.current.model }
         let locale = Locale.current.identifier
 
         let request = SUGuestAuthRequest(

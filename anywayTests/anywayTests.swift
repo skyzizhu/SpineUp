@@ -9,6 +9,17 @@ import XCTest
 import Alamofire
 @testable import anyway
 
+/// 测试专属线程安全容器 —— 满足 Swift 6 严格并发检查规范
+final class SUTestBox<T>: @unchecked Sendable {
+    private let lock = NSLock()
+    private var _value: T
+    init(_ value: T) { self._value = value }
+    var value: T {
+        get { lock.withLock { _value } }
+        set { lock.withLock { _value = newValue } }
+    }
+}
+
 final class anywayTests: XCTestCase {
 
     func testAppConfigConstants() {
@@ -49,16 +60,16 @@ final class anywayTests: XCTestCase {
         let calibrationService = SUCalibrationService(userDefaultsManager: userDefaultsManager)
 
         // 即时校准
-        var completedPitch: Double?
-        var completedRoll: Double?
+        let completedPitch = SUTestBox<Double?>(nil)
+        let completedRoll = SUTestBox<Double?>(nil)
         calibrationService.onCalibrationCompleted = { p, r in
-            completedPitch = p
-            completedRoll = r
+            completedPitch.value = p
+            completedRoll.value = r
         }
 
         calibrationService.calibrateImmediately(pitchRad: 0.25, rollRad: 0.10)
-        XCTAssertEqual(completedPitch, 0.25)
-        XCTAssertEqual(completedRoll, 0.10)
+        XCTAssertEqual(completedPitch.value, 0.25)
+        XCTAssertEqual(completedRoll.value, 0.10)
         XCTAssertEqual(calibrationService.savedBaseline?.pitch, 0.25)
     }
 
@@ -94,10 +105,10 @@ final class anywayTests: XCTestCase {
         let mockManager = SUMockMotionManager()
         let vm = SUPostureMonitorViewModel(motionService: mockManager)
 
-        var lastReading: SUPostureReading?
+        let lastReading = SUTestBox<SUPostureReading?>(nil)
         let exp = expectation(description: "ViewModel received reading")
         vm.onReadingUpdated = { reading in
-            lastReading = reading
+            lastReading.value = reading
             exp.fulfill()
         }
 
@@ -105,7 +116,7 @@ final class anywayTests: XCTestCase {
         vm.injectSimulatedAngles(pitchDeg: 5.0, rollDeg: 0.0)
         waitForExpectations(timeout: 1.0)
 
-        XCTAssertNotNil(lastReading)
+        XCTAssertNotNil(lastReading.value)
         XCTAssertEqual(vm.currentPostureState, .upright)
     }
 
@@ -128,14 +139,14 @@ final class anywayTests: XCTestCase {
 
         XCTAssertEqual(personaManager.currentPersona, .worker)
 
-        var changedPersona: SUPetPersona?
+        let changedPersona = SUTestBox<SUPetPersona?>(nil)
         personaManager.onPersonaChanged = { p in
-            changedPersona = p
+            changedPersona.value = p
         }
 
         personaManager.selectPersona(.cat)
         XCTAssertEqual(personaManager.currentPersona, .cat)
-        XCTAssertEqual(changedPersona, .cat)
+        XCTAssertEqual(changedPersona.value, .cat)
         XCTAssertEqual(defaultsManager.activePetPersonaId, "cat")
     }
 
@@ -614,8 +625,7 @@ final class anywayTests: XCTestCase {
         rowView.setTitle("Language")
 
         // 模拟触发手势事件
-        if let tapGesture = rowView.gestureRecognizers?.compactMap({ $0 as? UITapGestureRecognizer }).first {
-            // 直接触发 onTap
+        if rowView.gestureRecognizers?.contains(where: { $0 is UITapGestureRecognizer }) == true {
             rowView.onTap?()
         }
 

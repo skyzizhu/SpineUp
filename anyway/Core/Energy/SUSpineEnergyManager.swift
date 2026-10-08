@@ -97,7 +97,7 @@ final class SUSpineEnergyManager: @unchecked Sendable {
             return
         }
 
-        guard let lastDate = formatter.date(from: lastActiveStr),
+        guard formatter.date(from: lastActiveStr) != nil,
               let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: Date()) else {
             userDefaultsManager.lastActiveDateString = todayStr
             userDefaultsManager.streakDays = 1

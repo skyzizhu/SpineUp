@@ -264,7 +264,7 @@ final class SULanguageItemRowView: UIView {
                 make.bottom.equalToSuperview()
                 make.leading.equalTo(titleLabel.snp.leading)
                 make.trailing.equalToSuperview()
-                make.height.equalTo(1.0 / UIScreen.main.scale)
+                make.height.equalTo(0.5)
             }
         }
 

@@ -334,7 +334,7 @@ final class SUPostureMonitorViewController: SUBaseViewController {
         for persona in SUPetPersona.allCases {
             let isCurrent = persona == viewModel.activePersona
             let title = isCurrent ? "✓ \(persona.displayName)" : persona.displayName
-            let action = UIAlertAction(title: title, style: .default) { [weak self] _ in
+            let action = UIAlertAction(title: title, style: .default) { _ in
                 SUPetPersonaManager.shared.selectPersona(persona)
                 SUAudioFeedbackManager.shared.triggerHapticSelection()
             }
