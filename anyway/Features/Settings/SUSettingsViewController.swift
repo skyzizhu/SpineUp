@@ -111,16 +111,16 @@ final class SUSettingsViewController: SUBaseViewController {
         value: "0"
     )
 
-    // MARK: - Section 4: 语言切换入口 (二级页面)
-    private let languageSectionTitleLabel: UILabel = {
+    // MARK: - Section 4: 通用偏好 (外观主题与多语言)
+    private let generalSectionTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = SULocalized("settings_language", default: "语言 / Language")
+        label.text = SULocalized("settings_general_section", default: "通用设置")
         label.font = .systemFont(ofSize: 15, weight: .semibold)
         label.textColor = .secondaryLabel
         return label
     }()
 
-    private let languageCardView: UIView = {
+    private let generalCardView: UIView = {
         let view = UIView()
         view.backgroundColor = .secondarySystemGroupedBackground
         view.layer.cornerRadius = SULayoutConstants.cornerRadius
@@ -129,9 +129,22 @@ final class SUSettingsViewController: SUBaseViewController {
         return view
     }()
 
+    private let themeRowView = SUSettingsNavigationRowView(
+        title: SULocalized("settings_theme", default: "外观主题"),
+        value: SUThemeManager.shared.currentTheme.displayName,
+        iconSystemName: "circle.lefthalf.filled",
+        iconBackground: .systemTeal
+    )
+
+    private let generalSeparatorView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .separator
+        return view
+    }()
+
     private let languageRowView = SUSettingsNavigationRowView(
         title: SULocalized("settings_language", default: "语言设置"),
-        value: SULocalizationManager.shared.currentLanguage.displayName,
+        value: SULocalizationManager.shared.isFollowSystem ? SULocalized("follow_system", default: "跟随系统") : SULocalizationManager.shared.currentLanguage.displayName,
         iconSystemName: "globe",
         iconBackground: .systemIndigo
     )
@@ -209,10 +222,12 @@ final class SUSettingsViewController: SUBaseViewController {
         energyCardView.addSubview(streakItemView)
         energyCardView.addSubview(totalCoinsItemView)
 
-        // 组装多语言切换入口 (二级子页面)
-        contentView.addSubview(languageSectionTitleLabel)
-        contentView.addSubview(languageCardView)
-        languageCardView.addSubview(languageRowView)
+        // 组装通用偏好入口 (外观主题与多语言二级子页面)
+        contentView.addSubview(generalSectionTitleLabel)
+        contentView.addSubview(generalCardView)
+        generalCardView.addSubview(themeRowView)
+        generalCardView.addSubview(generalSeparatorView)
+        generalCardView.addSubview(languageRowView)
 
         // 标语与版权
         contentView.addSubview(sloganLabel)
@@ -290,22 +305,36 @@ final class SUSettingsViewController: SUBaseViewController {
             make.leading.equalTo(energyCardView.snp.centerX)
         }
 
-        languageSectionTitleLabel.snp.makeConstraints { make in
+        generalSectionTitleLabel.snp.makeConstraints { make in
             make.top.equalTo(energyCardView.snp.bottom).offset(SULayoutConstants.sectionSpacing)
             make.leading.trailing.equalToSuperview().inset(SULayoutConstants.horizontalPadding)
         }
 
-        languageCardView.snp.makeConstraints { make in
-            make.top.equalTo(languageSectionTitleLabel.snp.bottom).offset(8)
+        generalCardView.snp.makeConstraints { make in
+            make.top.equalTo(generalSectionTitleLabel.snp.bottom).offset(8)
             make.leading.trailing.equalToSuperview().inset(SULayoutConstants.horizontalPadding)
         }
 
+        themeRowView.snp.makeConstraints { make in
+            make.top.leading.trailing.equalToSuperview()
+            make.height.equalTo(52)
+        }
+
+        generalSeparatorView.snp.makeConstraints { make in
+            make.top.equalTo(themeRowView.snp.bottom)
+            make.leading.equalToSuperview().offset(54)
+            make.trailing.equalToSuperview()
+            make.height.equalTo(0.5)
+        }
+
         languageRowView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.top.equalTo(generalSeparatorView.snp.bottom)
+            make.leading.trailing.bottom.equalToSuperview()
+            make.height.equalTo(52)
         }
 
         sloganLabel.snp.makeConstraints { make in
-            make.top.equalTo(languageCardView.snp.bottom).offset(SULayoutConstants.sectionSpacing * 1.5)
+            make.top.equalTo(generalCardView.snp.bottom).offset(SULayoutConstants.sectionSpacing * 1.5)
             make.centerX.equalToSuperview()
         }
 
@@ -331,10 +360,22 @@ final class SUSettingsViewController: SUBaseViewController {
             self?.viewModel.setSoundAlertEnabled(isOn)
         }
 
+        themeRowView.onTap = { [weak self] in
+            let themeVC = SUThemeSettingViewController()
+            self?.navigationController?.pushViewController(themeVC, animated: true)
+        }
+
         languageRowView.onTap = { [weak self] in
             let languageVC = SULanguageSettingViewController()
             self?.navigationController?.pushViewController(languageVC, animated: true)
         }
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleThemeDidChange),
+            name: SUThemeManager.themeDidChangeNotification,
+            object: nil
+        )
 
         NotificationCenter.default.addObserver(
             self,
@@ -361,10 +402,17 @@ final class SUSettingsViewController: SUBaseViewController {
         hapticRowView.setSwitchOn(viewModel.isHapticAlertEnabled)
         soundRowView.setSwitchOn(viewModel.isSoundAlertEnabled)
 
-        streakItemView.updateValue("\(viewModel.streakDays) 天")
+        let streakFormat = SULocalized("streak_days_val", default: "%d 天")
+        streakItemView.updateValue(String(format: streakFormat, viewModel.streakDays))
         totalCoinsItemView.updateValue("\(viewModel.totalCoins)")
 
-        languageRowView.setValue(viewModel.currentLanguage.displayName)
+        themeRowView.setValue(SUThemeManager.shared.currentTheme.displayName)
+        let langVal = SULocalizationManager.shared.isFollowSystem ? SULocalized("follow_system", default: "跟随系统") : SULocalizationManager.shared.currentLanguage.displayName
+        languageRowView.setValue(langVal)
+    }
+
+    @objc private func handleThemeDidChange() {
+        themeRowView.setValue(SUThemeManager.shared.currentTheme.displayName)
     }
 
     @objc private func handleLanguageDidChange() {
@@ -373,10 +421,43 @@ final class SUSettingsViewController: SUBaseViewController {
     }
 
     private func refreshLocalizedStrings() {
-        navigationItem.title = SULocalized("settings_title", default: "设置与个性化")
-        languageSectionTitleLabel.text = SULocalized("settings_language", default: "语言 / Language")
+        navigationItem.title = SULocalized("settings_title", default: "偏好设置")
+
+        // Section 1: 人格卡片
+        personaSectionTitleLabel.text = SULocalized("settings_persona_section", default: "宠物拟人人格")
+        for card in personaCardViews {
+            card.refreshLocalizedStrings()
+        }
+
+        // Section 2: 提醒开关
+        alertsSectionTitleLabel.text = SULocalized("settings_alerts_section", default: "提醒偏好")
+        voiceRowView.setTitle(SULocalized("settings_voice_alert", default: "AI 拟人语音播报"))
+        voiceRowView.setSubtitle(SULocalized("settings_voice_alert_desc", default: "3分钟防打扰，轻柔避让背景音乐"))
+
+        hapticRowView.setTitle(SULocalized("settings_haptic_alert", default: "触觉微震动提醒"))
+        hapticRowView.setSubtitle(SULocalized("settings_haptic_alert_desc", default: "低头超时后轻微震感"))
+
+        soundRowView.setTitle(SULocalized("settings_sound_alert", default: "轻快系统提示铃"))
+        soundRowView.setSubtitle(SULocalized("settings_sound_alert_desc", default: "低头时清脆水滴声"))
+
+        // Section 3: 能量统计
+        energySectionTitleLabel.text = SULocalized("settings_energy_section", default: "骨气能量")
+        streakItemView.setTitle(SULocalized("streak_days_title", default: "连续打卡"))
+        let streakFormat = SULocalized("streak_days_val", default: "%d 天")
+        streakItemView.updateValue(String(format: streakFormat, viewModel.streakDays))
+        totalCoinsItemView.setTitle(SULocalized("energy_coins_total_title", default: "累计能量币"))
+
+        // Section 4: 通用设置
+        generalSectionTitleLabel.text = SULocalized("settings_general_section", default: "通用设置")
+        themeRowView.setTitle(SULocalized("settings_theme", default: "外观主题"))
+        themeRowView.setValue(SUThemeManager.shared.currentTheme.displayName)
+
         languageRowView.setTitle(SULocalized("settings_language", default: "语言设置"))
-        languageRowView.setValue(viewModel.currentLanguage.displayName)
+        let langVal = SULocalizationManager.shared.isFollowSystem ? SULocalized("follow_system", default: "跟随系统") : SULocalizationManager.shared.currentLanguage.displayName
+        languageRowView.setValue(langVal)
+
+        // Slogan
+        sloganLabel.text = SULocalized("app_slogan", default: "SpineUp · 做人要有骨气")
     }
 }
 
@@ -454,6 +535,14 @@ final class SUSettingsSwitchRowView: UIView {
         toggleSwitch.isOn = isOn
     }
 
+    func setTitle(_ title: String) {
+        titleLabel.text = title
+    }
+
+    func setSubtitle(_ subtitle: String) {
+        subtitleLabel.text = subtitle
+    }
+
     @objc private func handleSwitch(_ sender: UISwitch) {
         onSwitchChanged?(sender.isOn)
     }
@@ -514,6 +603,10 @@ final class SUEnergyStatItemView: UIView {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    func setTitle(_ title: String) {
+        titleLabel.text = title
     }
 
     func updateValue(_ text: String) {

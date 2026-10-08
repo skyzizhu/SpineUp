@@ -48,7 +48,7 @@ final class SUDailyReportViewController: SUBaseViewController {
 
     private let metaphorTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "颈椎受力生活化换算"
+        label.text = SULocalized("metaphor_title", default: "颈椎受力生活化换算")
         label.font = .systemFont(ofSize: 13, weight: .bold)
         label.textColor = .systemOrange
         return label
@@ -184,6 +184,13 @@ final class SUDailyReportViewController: SUBaseViewController {
 
         shareButton.addTarget(self, action: #selector(didTapShare), for: .touchUpInside)
 
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleLanguageDidChange),
+            name: SULocalizationManager.languageDidChangeNotification,
+            object: nil
+        )
+
         viewModel.onReportUpdated = { [weak self] report in
             DispatchQueue.main.async {
                 self?.renderReport(report)
@@ -202,6 +209,16 @@ final class SUDailyReportViewController: SUBaseViewController {
         metaphorDescriptionLabel.text = report.equivalentItem.descriptionText
 
         diagnosisCardView.configure(with: report)
+    }
+
+    @objc private func handleLanguageDidChange() {
+        navigationItem.title = SULocalized("report_title", default: "今日骨气战报")
+        metaphorTitleLabel.text = SULocalized("metaphor_title", default: "颈椎受力生活化换算")
+        shareButton.setTitle(SULocalized("share_report", default: "生成并分享骨气战报"), for: .normal)
+        metricsGridView.refreshLocalizedStrings()
+        diagnosisCardView.refreshLocalizedStrings()
+        viewModel.refreshReport()
+        renderReport(viewModel.currentReport)
     }
 
     @objc private func didTapShare() {

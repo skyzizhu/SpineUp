@@ -1,30 +1,44 @@
 /* Localizable.strings (Traditional Chinese) */
 
 /* Tab bar */
-"tab_monitor" = "姿態守護";
+"tab_monitor" = "體態守護";
 "tab_report" = "今日戰報";
 "tab_settings" = "偏好設定";
 
 /* Monitor */
-"monitor_title" = "即時姿態守護";
+"monitor_title" = "即時體態守護";
 "calibrate_button" = "一鍵端坐校準";
 "calibrating_progress" = "校準中 %d%%";
 "energy_coins_badge" = "%d 骨氣幣";
+"energy_coins_badge_title" = "骨氣能量幣";
+"energy_coins_info_msg" = "目前累計：%d 骨氣幣\n維持端坐可獲得骨氣幣獎勵，連續挺拔打卡可解鎖專屬成就！";
 "state_upright" = "挺拔端正";
 "state_slight_slump" = "輕微前傾";
 "state_severe_slump" = "嚴重駝背";
 "state_unknown" = "監測中";
+"angle_title" = "相對前傾角度";
+"sensor_tracking" = "AirPods 空間運動追蹤中";
+"switch_persona_title" = "切換桌寵人格";
+"switch_persona_subtitle" = "不同人格擁有截然不同的督促台詞風格與互動動效";
+"cancel" = "取消";
+"confirm" = "好的";
 
 /* Connection Banner */
 "banner_airpods_disconnected" = "AirPods 未連接或已取下";
-"banner_airpods_subtitle" = "請佩戴支援空間音訊的 AirPods，系統將自動喚醒感知";
-"banner_unsupported" = "目前裝置不支援耳機動作感知";
+"banner_airpods_subtitle" = "請佩戴支援運動感知的 AirPods，系統將自動喚醒感知";
+"banner_unsupported" = "當前裝置不支援耳機動作感知";
 "banner_unsupported_subtitle" = "需要 AirPods Pro / Max / 3代+ / Beats Fit Pro 支援";
 
 /* Personas */
 "persona_worker" = "毒舌打工人";
 "persona_cat" = "傲嬌貓貓";
 "persona_coach" = "溫柔私教";
+"persona_worker_subtitle" = "反內卷 · 人間清醒";
+"persona_cat_subtitle" = "傲嬌 · 貓咪視角";
+"persona_coach_subtitle" = "鼓勵 · 正向引導";
+"persona_worker_desc" = "犀利自嘲，針針見血，督促你挺起脊椎繼續搬磚。";
+"persona_cat_desc" = "不要趴著壓扁本喵！你再駝背我就從你脖子上滑下去了喵！";
+"persona_coach_desc" = "溫柔耐心地引導深呼吸與體態復原，守護你的脊椎健康。";
 
 /* Report */
 "report_title" = "今日骨氣戰報";
@@ -34,9 +48,86 @@
 "metrics_violations" = "低頭預警次數";
 "metrics_extra_load" = "額外頸椎負荷";
 "doctor_prescription" = "AI 擬人處方";
+"metaphor_title" = "頸椎受力生活化換算";
+"diagnosis_card_title" = "《今日骨氣病歷單》";
+"clinical_diagnosis" = "臨床診斷：%@";
+"pet_quote_format" = "%@寄語：「%@」";
+"score_unit" = "%d 分";
+"times_unit" = "%d 次";
+"ratio_subtitle_format" = "端正挺拔率 %d%% · 挺拔專注 %@";
+"hours_unit" = "%d小時%d分鐘";
+"minutes_unit" = "%d分鐘";
+"seconds_unit" = "%d秒";
+
+/* Grades */
+"grade_s_title" = "鐵骨錚錚";
+"grade_a_title" = "傲然挺立";
+"grade_b_title" = "略顯疲態";
+"grade_c_title" = "危如累卵";
+"grade_d_title" = "折疊屏人類";
+
+/* Prescriptions */
+"prescription_s" = "處方：繼續保持！骨氣傲然，建議每週犒賞自己一杯奶茶以示表揚。";
+"prescription_a" = "處方：每日遠眺 2 次，工作間隙做 3 組抗阻力擴胸伸展動作。";
+"prescription_b" = "處方：立即執行深呼吸 3 次，將電腦螢幕墊高 5 公分，避免下巴前凸。";
+"prescription_c" = "處方：建議每工作 45 分鐘起立活動 2 分鐘，仰望天花板 20 秒釋放頸椎壓力。";
+"prescription_d" = "處方：緊急呼叫物理治療師！嚴格遵從寵物提醒，違規一次罰沒小魚乾/扣骨氣幣！";
+
+/* Diagnoses */
+"diagnosis_s" = "優秀脊椎自律模範標兵";
+"diagnosis_a" = "輕度勞損抵抗型體態";
+"diagnosis_b" = "階段性打工低頭綜合徵";
+"diagnosis_c" = "重度地心引力依戀症候群";
+"diagnosis_d" = "晚期折疊屏人類蛻變期";
+
+/* Persona Comments */
+"comment_worker_s_a" = "今天脊椎挺得比公司的年終報表還漂亮，下班直接昂首闊步走！";
+"comment_worker_b" = "今天脖子掛了這麼多額外負擔，老闆是不會報銷換頸椎的，明天坐直點！";
+"comment_worker_c_d" = "你這駝背弧度，比週五晚上的下班路還要曲折！趕緊把頭拔起來！";
+"comment_cat_s_a" = "今天表現不錯喵！本喵趴在你肩膀上睡得很安穩，賞你一聲呼嚕喵~";
+"comment_cat_b" = "今天你總是想把本喵壓扁成貓餅喵！明天再低頭就伸爪子撓你了喵！";
+"comment_cat_c_d" = "救命喵！！今天本喵被你壓得快喘不過氣了喵！快給本喵開十罐罐頭賠罪喵！";
+"comment_coach_s_a" = "太棒了！你的肌肉記憶正在逐步形成，端正挺拔是最美好的自我呵護。";
+"comment_coach_b" = "今天稍微有些疲勞呢，今晚睡前記得做一次頸部熱敷與輕柔伸展。";
+"comment_coach_c_d" = "身體在向你發出求救訊號了，別太勉強自己，放下手機，好好呼吸放鬆吧。";
+
+/* Equivalents */
+"equiv_tea" = "相當於脖子上掛了 %.1f 杯全糖大杯珍珠奶茶";
+"equiv_brick" = "相當於頸椎上頂了 %.1f 塊實心建築紅磚";
+"equiv_cat" = "相當於脖子上趴了 %.1f 隻沉甸甸的成年胖貓";
+"equiv_dog" = "相當於脖子上馱了 %.1f 隻健碩的柴犬";
+"equiv_dumbbell" = "相當於給頸椎綁了 %.1f 個 15kg 重型純鐵啞鈴";
 
 /* Settings */
 "settings_title" = "偏好設定";
+"settings_persona_section" = "寵物擬人人格";
+"settings_alerts_section" = "提醒偏好";
+"settings_energy_section" = "骨氣能量";
+"settings_general_section" = "一般設定";
 "settings_voice_alert" = "AI 擬人語音播報";
+"settings_voice_alert_desc" = "3分鐘防打擾，輕柔避讓背景音樂";
 "settings_haptic_alert" = "觸覺微震動提醒";
-"settings_language" = "語言切換";
+"settings_haptic_alert_desc" = "低頭超時後輕微震感";
+"settings_sound_alert" = "輕快系統提示鈴";
+"settings_sound_alert_desc" = "低頭時清脆水滴聲";
+"streak_days_title" = "連續打卡";
+"streak_days_val" = "%d 天";
+"energy_coins_total_title" = "累計能量幣";
+"settings_theme" = "外觀主題";
+"settings_language" = "語言設定";
+"app_slogan" = "SpineUp · 做人要有骨氣";
+
+/* Theme */
+"theme_title" = "外觀主題";
+"theme_system" = "跟隨系統";
+"theme_light" = "淺色模式";
+"theme_dark" = "深色模式";
+"theme_system_desc" = "與系統外觀設定保持同步";
+"theme_light_desc" = "始終以淺色明亮風格展示";
+"theme_dark_desc" = "始終以深色暗調風格展示";
+"theme_setting_hint" = "選擇應用界面展示的主題風格，切換後將即時生效";
+
+/* Language */
+"follow_system" = "跟隨系統";
+"follow_system_desc" = "與系統語言保持一致";
+"language_setting_hint" = "選擇應用界面展示的語言，切換後將即時生效";

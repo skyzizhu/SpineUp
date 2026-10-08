@@ -23,7 +23,7 @@ class SUSceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         let mainTabBarController = SUMainTabBarController()
         window.rootViewController = mainTabBarController
-        self.window = window
+        window.overrideUserInterfaceStyle = SUThemeManager.shared.currentTheme.userInterfaceStyle
         window.makeKeyAndVisible()
 
         // 如果在单元测试环境下运行，则跳过 UI 模态弹出，防止干扰 XCTest 注入与视图层级装载

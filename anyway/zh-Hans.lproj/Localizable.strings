@@ -10,10 +10,18 @@
 "calibrate_button" = "一键端坐校准";
 "calibrating_progress" = "校准中 %d%%";
 "energy_coins_badge" = "%d 骨气币";
+"energy_coins_badge_title" = "骨气能量币";
+"energy_coins_info_msg" = "当前累计：%d 骨气币\n保持端坐可获得骨气币奖励，连续挺拔打卡可激活专属成就！";
 "state_upright" = "挺拔端正";
 "state_slight_slump" = "轻微前倾";
 "state_severe_slump" = "严重驼背";
 "state_unknown" = "监测中";
+"angle_title" = "相对前倾角度";
+"sensor_tracking" = "AirPods 空间运动追踪中";
+"switch_persona_title" = "切换桌宠人格";
+"switch_persona_subtitle" = "不同人格拥有截然不同的督促台词风格与交互动效";
+"cancel" = "取消";
+"confirm" = "好的";
 
 /* Connection Banner */
 "banner_airpods_disconnected" = "AirPods 未连接或已摘下";
@@ -25,6 +33,12 @@
 "persona_worker" = "毒舌打工人";
 "persona_cat" = "傲娇猫猫";
 "persona_coach" = "温柔私教";
+"persona_worker_subtitle" = "反内卷 · 人间清醒";
+"persona_cat_subtitle" = "傲娇 · 猫咪视角";
+"persona_coach_subtitle" = "鼓励 · 正向引导";
+"persona_worker_desc" = "犀利自嘲，针针见血，催你挺起脊椎继续搬砖。";
+"persona_cat_desc" = "不要趴着压扁本喵！你再驼背我就从你脖子上滑下去了喵！";
+"persona_coach_desc" = "温柔耐心地指引深呼吸与体态复原，守护你的脊椎健康。";
 
 /* Report */
 "report_title" = "今日骨气战报";
@@ -34,9 +48,86 @@
 "metrics_violations" = "低头预警次数";
 "metrics_extra_load" = "额外颈椎负荷";
 "doctor_prescription" = "AI 拟人处方";
+"metaphor_title" = "颈椎受力生活化换算";
+"diagnosis_card_title" = "《今日骨气病历单》";
+"clinical_diagnosis" = "临床诊断：%@";
+"pet_quote_format" = "%@寄语：「%@」";
+"score_unit" = "%d 分";
+"times_unit" = "%d 次";
+"ratio_subtitle_format" = "端正挺拔率 %d%% · 挺拔专注 %@";
+"hours_unit" = "%d小时%d分钟";
+"minutes_unit" = "%d分钟";
+"seconds_unit" = "%d秒";
+
+/* Grades */
+"grade_s_title" = "铁骨铮铮";
+"grade_a_title" = "傲然挺立";
+"grade_b_title" = "略显疲态";
+"grade_c_title" = "危如累卵";
+"grade_d_title" = "折叠屏人类";
+
+/* Prescriptions */
+"prescription_s" = "处方：继续保持！骨气傲然，建议每周犒赏自己一杯奶茶以示表彰。";
+"prescription_a" = "处方：每日远眺 2 次，工作间隙做 3 组抗阻力扩胸拉伸动作。";
+"prescription_b" = "处方：立即执行深呼吸 3 次，将电脑屏幕垫高 5 厘米，避免下巴前凸。";
+"prescription_c" = "处方：建议每工作 45 分钟起立活动 2 分钟，仰望天花板 20 秒释放颈椎压力。";
+"prescription_d" = "处方：紧急呼叫理疗师！严格遵从宠物提醒，违规一次罚收小鱼干/扣骨气币！";
+
+/* Diagnoses */
+"diagnosis_s" = "优秀脊椎自律模范标兵";
+"diagnosis_a" = "轻度劳损抵抗型体态";
+"diagnosis_b" = "阶段性打工低头综合征";
+"diagnosis_c" = "重度地心引力依恋症候群";
+"diagnosis_d" = "晚期折叠屏人类蜕变期";
+
+/* Persona Comments */
+"comment_worker_s_a" = "今天脊椎挺得比公司的年终报表还漂亮，下班直接昂首阔步走！";
+"comment_worker_b" = "今天脖子挂了这么多额外负担，老板是不会给换颈椎报销的，明天坐直点！";
+"comment_worker_c_d" = "你这驼背弧度，比周五晚上的下班路还要曲折！赶紧把头拔起来！";
+"comment_cat_s_a" = "今天表现不错喵！本喵趴在你肩膀上睡得很安稳，赏你一声呼噜喵~";
+"comment_cat_b" = "今天你总是想把本喵压扁成猫饼喵！明天再低头就伸爪子挠你了喵！";
+"comment_cat_c_d" = "救命喵！！今天本喵被你压得快喘不过气了喵！快给本喵开十罐罐头赔罪喵！";
+"comment_coach_s_a" = "太棒了！你的肌肉记忆正在逐步形成，端正挺拔是最美好的自我呵护。";
+"comment_coach_b" = "今天稍微有些疲劳呢，今晚睡前记得做一次颈部热敷与轻柔拉伸。";
+"comment_coach_c_d" = "身体在向你发出呼救信号了，别太勉强自己，放下手机，好好呼吸放松吧。";
+
+/* Equivalents */
+"equiv_tea" = "相当于脖子上挂了 %.1f 杯全糖大杯珍珠奶茶";
+"equiv_brick" = "相当于颈椎上顶了 %.1f 块实心建筑红砖";
+"equiv_cat" = "相当于脖子上趴了 %.1f 只沉甸甸的成年胖猫";
+"equiv_dog" = "相当于脖子上驮了 %.1f 只健硕的柴犬";
+"equiv_dumbbell" = "相当于给颈椎绑了 %.1f 个 15kg 重型纯铁哑铃";
 
 /* Settings */
 "settings_title" = "偏好设置";
+"settings_persona_section" = "宠物拟人人格";
+"settings_alerts_section" = "提醒偏好";
+"settings_energy_section" = "骨气能量";
+"settings_general_section" = "通用设置";
 "settings_voice_alert" = "AI 拟人语音播报";
+"settings_voice_alert_desc" = "3分钟防打扰，轻柔避让背景音乐";
 "settings_haptic_alert" = "触觉微震动提醒";
-"settings_language" = "语言切换";
+"settings_haptic_alert_desc" = "低头超时后轻微震感";
+"settings_sound_alert" = "轻快系统提示铃";
+"settings_sound_alert_desc" = "低头时清脆水滴声";
+"streak_days_title" = "连续打卡";
+"streak_days_val" = "%d 天";
+"energy_coins_total_title" = "累计能量币";
+"settings_theme" = "外观主题";
+"settings_language" = "语言设置";
+"app_slogan" = "SpineUp · 做人要有骨气";
+
+/* Theme */
+"theme_title" = "外观主题";
+"theme_system" = "跟随系统";
+"theme_light" = "浅色模式";
+"theme_dark" = "深色模式";
+"theme_system_desc" = "与系统外观设置保持同步";
+"theme_light_desc" = "始终以浅色明亮风格展示";
+"theme_dark_desc" = "始终以深色暗调风格展示";
+"theme_setting_hint" = "选择应用界面展示的主题风格，切换后将即时生效";
+
+/* Language */
+"follow_system" = "跟随系统";
+"follow_system_desc" = "与系统语言保持一致";
+"language_setting_hint" = "选择应用界面展示的语言，切换后将即时生效";

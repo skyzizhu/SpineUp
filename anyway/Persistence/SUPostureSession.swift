@@ -74,11 +74,11 @@ struct SUPostureSession: Codable, Sendable, Identifiable, Equatable {
     /// 评级称号
     var gradeTitle: String {
         switch grade {
-        case "S": return "铁骨铮铮"
-        case "A": return "傲然挺立"
-        case "B": return "略显疲态"
-        case "C": return "危如累卵"
-        default:  return "折叠屏人类"
+        case "S": return SULocalized("grade_s_title", default: "铁骨铮铮")
+        case "A": return SULocalized("grade_a_title", default: "傲然挺立")
+        case "B": return SULocalized("grade_b_title", default: "略显疲态")
+        case "C": return SULocalized("grade_c_title", default: "危如累卵")
+        default:  return SULocalized("grade_d_title", default: "折叠屏人类")
         }
     }
 
@@ -103,11 +103,14 @@ struct SUPostureSession: Codable, Sendable, Identifiable, Equatable {
         let remainingMinutes = minutes % 60
 
         if hours > 0 {
-            return "\(hours)小时\(remainingMinutes)分钟"
+            let format = SULocalized("hours_unit", default: "%d小时%d分钟")
+            return String(format: format, hours, remainingMinutes)
         } else if minutes > 0 {
-            return "\(minutes)分钟"
+            let format = SULocalized("minutes_unit", default: "%d分钟")
+            return String(format: format, minutes)
         } else {
-            return "\(max(1, Int(interval)))秒"
+            let format = SULocalized("seconds_unit", default: "%d秒")
+            return String(format: format, max(1, Int(interval)))
         }
     }
 }

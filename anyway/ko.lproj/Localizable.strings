@@ -1,42 +1,133 @@
 /* Localizable.strings (Korean) */
 
 /* Tab bar */
-"tab_monitor" = "자세 모니터";
-"tab_report" = "데일리 리포트";
+"tab_monitor" = "자세 지킴이";
+"tab_report" = "오늘의 리포트";
 "tab_settings" = "설정";
 
 /* Monitor */
-"monitor_title" = "실시간 자세 가디언";
-"calibrate_button" = "원터치 자세 캘리브레이션";
-"calibrating_progress" = "캘리브레이션 중 %d%%";
+"monitor_title" = "실시간 자세 지킴이";
+"calibrate_button" = "바른 자세 원터치 영점 조절";
+"calibrating_progress" = "영점 조절 중 %d%%";
 "energy_coins_badge" = "%d 척추 코인";
-"state_upright" = "바른 자세";
-"state_slight_slump" = "약간 숙임";
-"state_severe_slump" = "심한 거북목";
+"energy_coins_badge_title" = "척추 에너지 코인";
+"energy_coins_info_msg" = "현재 누적: %d 코인\n바른 자세를 유지하여 코인을 획득하고 한정 업적을 잠금 해제하세요!";
+"state_upright" = "바르고 곧은 자세";
+"state_slight_slump" = "가벼운 거북목";
+"state_severe_slump" = "심한 구부정";
 "state_unknown" = "모니터링 중";
+"angle_title" = "상대적 앞기울임 각도";
+"sensor_tracking" = "AirPods 공간 모션 추적 중";
+"switch_persona_title" = "데스크톱 펫 성격 변경";
+"switch_persona_subtitle" = "성격마다 독특한 대사와 상호작용을 경험할 수 있습니다";
+"cancel" = "취소";
+"confirm" = "확인";
 
 /* Connection Banner */
-"banner_airpods_disconnected" = "AirPods 미연결 또는 착용 해제됨";
-"banner_airpods_subtitle" = "공간 음향을 지원하는 AirPods를 착용하면 자세 감지가 자동으로 재개됩니다";
-"banner_unsupported" = "현재 기기는 헤드폰 모션 감지를 지원하지 않습니다";
-"banner_unsupported_subtitle" = "AirPods Pro / Max / 3세대 이상 / Beats Fit Pro가 필요합니다";
+"banner_airpods_disconnected" = "AirPods 미연결 또는 미착용";
+"banner_airpods_subtitle" = "모션 지원 AirPods를 착용하면 자세 추적이 자동으로 재개됩니다";
+"banner_unsupported" = "현재 기기는 모션 추적을 지원하지 않습니다";
+"banner_unsupported_subtitle" = "AirPods Pro / Max / 3세대 이상 / Beats Fit Pro 필요";
 
 /* Personas */
 "persona_worker" = "독설 직장인";
 "persona_cat" = "츤데레 고양이";
 "persona_coach" = "다정한 코치";
+"persona_worker_subtitle" = "탈번아웃 · 현실 직시";
+"persona_cat_subtitle" = "도도한 · 고양이 시점";
+"persona_coach_subtitle" = "따뜻한 격려 · 힐링";
+"persona_worker_desc" = "뼈 때리는 직장인 유머로 당신의 구부정한 허리를 꼿꼿이 세워줍니다.";
+"persona_cat_desc" = "냐옹! 허리 굽히지 마라냥, 네 어깨에서 미끄러져 떨어질 뻔했다냥!";
+"persona_coach_desc" = "다정한 목소리와 깊은 호흡 안내로 건강하고 바른 체형을 가꿔줍니다.";
 
 /* Report */
 "report_title" = "오늘의 척추 전적 리포트";
-"share_report" = "척추 리포트 생성 및 공유";
+"share_report" = "리포트 생성 및 공유";
 "metrics_upright_ratio" = "바른 자세 달성률";
-"metrics_longest_streak" = "최장 연속 유지";
-"metrics_violations" = "고개 숙임 경고 횟수";
-"metrics_extra_load" = "목 경추 추가 하중";
-"doctor_prescription" = "AI 닥터 처방전";
+"metrics_longest_streak" = "최장 연속 바른 자세";
+"metrics_violations" = "거북목 경고 횟수";
+"metrics_extra_load" = "경추 추가 하중";
+"doctor_prescription" = "AI 의사 처방전";
+"metaphor_title" = "경추 하중 일상 비유 환산";
+"diagnosis_card_title" = "《오늘의 척추 진료 차트》";
+"clinical_diagnosis" = "임상 진단: %@";
+"pet_quote_format" = "%@의 메시지: \"%@\"";
+"score_unit" = "%d 점";
+"times_unit" = "%d 회";
+"ratio_subtitle_format" = "바른 자세 비율 %d%% · 집중 시간 %@";
+"hours_unit" = "%d시간 %d분";
+"minutes_unit" = "%d분";
+"seconds_unit" = "%d초";
+
+/* Grades */
+"grade_s_title" = "강철 척추";
+"grade_a_title" = "당당한 곧은 자태";
+"grade_b_title" = "약간의 피로감";
+"grade_c_title" = "위태로운 곡선";
+"grade_d_title" = "폴더블 인간";
+
+/* Prescriptions */
+"prescription_s" = "처방: 훌륭합니다! 꼿꼿한 척추를 위해 달콤한 음료 한 잔으로 보상하세요.";
+"prescription_a" = "처방: 하루 2회 먼 곳을 바라보고, 가슴 활짝 펴기 스트레칭을 3회 하세요.";
+"prescription_b" = "처방: 즉시 심호흡 3회 실시! 모니터 높이를 5cm 높여 턱을 당기세요.";
+"prescription_c" = "처방: 45분마다 2분간 일어서서 천장을 바라보며 목 압력을 푸세요.";
+"prescription_d" = "처방: 도수치료 긴급 권고! 펫의 경고를 무시하면 코인이 차감됩니다!";
+
+/* Diagnoses */
+"diagnosis_s" = "모범 척추 자율 규율 표창자";
+"diagnosis_a" = "피로 저항형 곧은 체형";
+"diagnosis_b" = "간헐적 직장인 거북목 증후군";
+"diagnosis_c" = "중증 중력 친화 콤플렉스";
+"diagnosis_d" = "말기 폴더블 인간화 단계";
+
+/* Persona Comments */
+"comment_worker_s_a" = "오늘 척추가 회사 연간 실적 그래프보다 예쁘네요. 고개 들고 칼퇴하세요!";
+"comment_worker_b" = "목에 그렇게 짐을 얹고 있으면 사장님이 새 척추 사주는 거 아닙니다. 허리 펴세요!";
+"comment_worker_c_d" = "등 굽은 곡선이 금요일 퇴근길보다 험난하네요! 당장 고개 드세요!";
+"comment_cat_s_a" = "오늘 잘했다냥! 네 어깨 위에서 꿀잠 잤다냥~ 골골송 불러줄게냥";
+"comment_cat_b" = "나를 납작한 냥이 빈대떡으로 만들 작정이냥? 또 숙이면 할퀼 거다냥!";
+"comment_cat_c_d" = "살려줘냥! 눌려서 숨 막힌다냥! 사죄의 의미로 츄르 10개 내놔라냥!";
+"comment_coach_s_a" = "멋져요! 근육 기억이 아름답게 자리 잡고 있어요. 자신을 아껴주세요.";
+"comment_coach_b" = "오늘 조금 피로해 보이네요. 오늘 밤 따뜻한 온찜질과 스트레칭 잊지 마세요.";
+"comment_coach_c_d" = "몸이 구조 신호를 보내고 있어요. 무리하지 말고 폰을 내려놓고 쉬세요.";
+
+/* Equivalents */
+"equiv_tea" = "목에 버블티 %.1f 잔을 매달고 있는 것과 같습니다";
+"equiv_brick" = "경추 위에 붉은 벽돌 %.1f 개를 얹고 있는 것과 같습니다";
+"equiv_cat" = "목 위에 통통한 성묘 고양이 %.1f 마리가 엎드려 있는 것과 같습니다";
+"equiv_dog" = "목 위에 튼튼한 시바견 %.1f 마리를 업고 있는 것과 같습니다";
+"equiv_dumbbell" = "목에 15kg 무거운 쇠아령 %.1f 개를 묶어둔 것과 같습니다";
 
 /* Settings */
-"settings_title" = "환경설정";
-"settings_voice_alert" = "AI 음성 안내";
+"settings_title" = "설정";
+"settings_persona_section" = "펫 성격 설정";
+"settings_alerts_section" = "알림 설정";
+"settings_energy_section" = "척추 에너지";
+"settings_general_section" = "일반 설정";
+"settings_voice_alert" = "AI 보이스 음성 알림";
+"settings_voice_alert_desc" = "3분 방해 금지 쿨다운, 배경 음악 방해 없음";
 "settings_haptic_alert" = "햅틱 진동 알림";
+"settings_haptic_alert_desc" = "거북목 유지 시 부드러운 진동 안내";
+"settings_sound_alert" = "시스템 알림 효과음";
+"settings_sound_alert_desc" = "거북목 감지 시 청량한 물방울 소리";
+"streak_days_title" = "연속 달성";
+"streak_days_val" = "%d 일";
+"energy_coins_total_title" = "누적 에너지 코인";
+"settings_theme" = "화면 테마";
 "settings_language" = "언어 설정";
+"app_slogan" = "SpineUp · 가슴 펴고 당당하게";
+
+/* Theme */
+"theme_title" = "화면 테마";
+"theme_system" = "시스템 설정 따름";
+"theme_light" = "라이트 모드";
+"theme_dark" = "다크 모드";
+"theme_system_desc" = "기기 시스템 화면 스타일과 동기화";
+"theme_light_desc" = "항상 밝은 라이트 모드로 표시";
+"theme_dark_desc" = "항상 차분한 다크 모드로 표시";
+"theme_setting_hint" = "앱 화면 테마 스타일을 선택하세요. 즉시 적용됩니다";
+
+/* Language */
+"follow_system" = "시스템 설정 따름";
+"follow_system_desc" = "기기 시스템 언어와 일치";
+"language_setting_hint" = "앱 표시 언어를 선택하세요. 변경 사항은 즉시 적용됩니다";

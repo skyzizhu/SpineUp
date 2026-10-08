@@ -175,4 +175,11 @@ final class SUPersonaCardView: UIView {
         }
         onSelected?(persona)
     }
+
+    /// 动态刷新多语言文案
+    func refreshLocalizedStrings() {
+        titleLabel.text = persona.displayName
+        subtitleLabel.text = persona.subtitle
+        descriptionLabel.text = persona.description
+    }
 }

@@ -44,36 +44,48 @@ final class SULocalizationManager: @unchecked Sendable {
     private let userDefaultsKey = "SUAppLanguagePreference"
     private var bundleMap: [String: Bundle] = [:]
 
+    private(set) var isFollowSystem: Bool
     private(set) var currentLanguage: SULanguage
 
     /// 语言切换广播回调
     var onLanguageChanged: (@Sendable (SULanguage) -> Void)?
 
     private init() {
-        if let saved = UserDefaults.standard.string(forKey: userDefaultsKey),
-           let lang = SULanguage(rawValue: saved) {
-            self.currentLanguage = lang
-        } else {
-            // 自动推断系统首选语言，若不在支持列表中则回退至 Base (en)
-            let preferred = Locale.preferredLanguages.first ?? "en"
-            if preferred.hasPrefix("zh-Hans") || preferred.hasPrefix("zh-CN") {
-                self.currentLanguage = .zhHans
-            } else if preferred.hasPrefix("zh-Hant") || preferred.hasPrefix("zh-HK") || preferred.hasPrefix("zh-TW") {
-                self.currentLanguage = .zhHant
-            } else if preferred.hasPrefix("ja") {
-                self.currentLanguage = .ja
-            } else if preferred.hasPrefix("ko") {
-                self.currentLanguage = .ko
-            } else if preferred.hasPrefix("ar") {
-                self.currentLanguage = .ar
-            } else if preferred.hasPrefix("fr") {
-                self.currentLanguage = .fr
+        if let saved = UserDefaults.standard.string(forKey: userDefaultsKey), saved != "system" {
+            if let lang = SULanguage(rawValue: saved) {
+                self.isFollowSystem = false
+                self.currentLanguage = lang
             } else {
-                self.currentLanguage = .en
+                self.isFollowSystem = true
+                self.currentLanguage = Self.resolveSystemLanguage()
             }
+        } else {
+            // 默认跟随系统
+            self.isFollowSystem = true
+            self.currentLanguage = Self.resolveSystemLanguage()
         }
 
         loadBundles()
+    }
+
+    /// 自动推断系统首选语言，若不在支持列表中则安全回退至 Base (en)
+    static func resolveSystemLanguage() -> SULanguage {
+        let preferred = Locale.preferredLanguages.first ?? "en"
+        if preferred.hasPrefix("zh-Hans") || preferred.hasPrefix("zh-CN") {
+            return .zhHans
+        } else if preferred.hasPrefix("zh-Hant") || preferred.hasPrefix("zh-HK") || preferred.hasPrefix("zh-TW") {
+            return .zhHant
+        } else if preferred.hasPrefix("ja") {
+            return .ja
+        } else if preferred.hasPrefix("ko") {
+            return .ko
+        } else if preferred.hasPrefix("ar") {
+            return .ar
+        } else if preferred.hasPrefix("fr") {
+            return .fr
+        } else {
+            return .en
+        }
     }
 
     private func loadBundles() {
@@ -87,9 +99,10 @@ final class SULocalizationManager: @unchecked Sendable {
 
     static let languageDidChangeNotification = Notification.Name("SULanguageDidChangeNotification")
 
-    /// 切换当前应用语言
+    /// 切换为手动指定的应用语言
     func setLanguage(_ language: SULanguage) {
         lock.lock()
+        isFollowSystem = false
         currentLanguage = language
         UserDefaults.standard.set(language.rawValue, forKey: userDefaultsKey)
         lock.unlock()
@@ -99,6 +112,24 @@ final class SULocalizationManager: @unchecked Sendable {
             NotificationCenter.default.post(
                 name: SULocalizationManager.languageDidChangeNotification,
                 object: language
+            )
+        }
+    }
+
+    /// 切换为跟随系统语言
+    func setFollowSystem() {
+        let resolved = Self.resolveSystemLanguage()
+        lock.lock()
+        isFollowSystem = true
+        currentLanguage = resolved
+        UserDefaults.standard.set("system", forKey: userDefaultsKey)
+        lock.unlock()
+
+        onLanguageChanged?(resolved)
+        DispatchQueue.main.async {
+            NotificationCenter.default.post(
+                name: SULocalizationManager.languageDidChangeNotification,
+                object: resolved
             )
         }
     }

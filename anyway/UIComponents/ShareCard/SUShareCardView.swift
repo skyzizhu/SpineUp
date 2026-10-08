@@ -325,7 +325,7 @@ final class SUShareCardView: UIView {
 
         gradeLetterLabel.text = session.grade
         gradeTitleLabel.text = session.gradeTitle
-        scorePillLabel.text = "\(session.score)分"
+        scorePillLabel.text = String(format: SULocalized("score_unit", default: "%d分"), session.score)
 
         // 着色适配
         let tintColor: UIColor
@@ -346,7 +346,8 @@ final class SUShareCardView: UIView {
         metaphorIconImageView.image = UIImage(systemName: report.equivalentItem.iconSystemName, withConfiguration: config)
         metaphorTextLabel.text = report.equivalentItem.descriptionText
 
-        diagnosisTitleLabel.text = "诊断：\(report.diagnosisTitle)"
+        let diagFormat = SULocalized("clinical_diagnosis", default: "诊断：%@")
+        diagnosisTitleLabel.text = String(format: diagFormat, report.diagnosisTitle)
         personaCommentLabel.text = "「\(report.personaComment)」"
     }
 

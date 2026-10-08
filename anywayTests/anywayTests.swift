@@ -258,7 +258,7 @@ final class anywayTests: XCTestCase {
         XCTAssertGreaterThan(session.uprightRatio, 0.9)
         XCTAssertGreaterThanOrEqual(session.score, 80)
         XCTAssertEqual(session.grade, "A")
-        XCTAssertEqual(session.gradeTitle, "傲然挺立")
+        XCTAssertEqual(session.gradeTitle, SULocalized("grade_a_title", default: "傲然挺立"))
         XCTAssertFalse(session.formattedUprightTime.isEmpty)
     }
 
@@ -596,8 +596,10 @@ final class anywayTests: XCTestCase {
             object: nil,
             queue: .main
         ) { _ in
-            receivedNotification = true
-            expectation.fulfill()
+            if !receivedNotification {
+                receivedNotification = true
+                expectation.fulfill()
+            }
         }
 
         let targetLang: SULanguage = (originalLang == .en) ? .zhHans : .en
@@ -630,5 +632,62 @@ final class anywayTests: XCTestCase {
         }
 
         XCTAssertTrue(didTap)
+    }
+
+    func testThemeManagerAndPersistence() {
+        let themeManager = SUThemeManager.shared
+        let originalTheme = themeManager.currentTheme
+
+        defer {
+            themeManager.setTheme(originalTheme)
+        }
+
+        let expectation = expectation(description: "Theme changed notification")
+        var receivedTheme: SUAppTheme?
+
+        let observer = NotificationCenter.default.addObserver(
+            forName: SUThemeManager.themeDidChangeNotification,
+            object: nil,
+            queue: .main
+        ) { notif in
+            if receivedTheme == nil {
+                receivedTheme = notif.object as? SUAppTheme
+                expectation.fulfill()
+            }
+        }
+
+        themeManager.setTheme(.dark)
+        wait(for: [expectation], timeout: 2.0)
+
+        XCTAssertEqual(themeManager.currentTheme, .dark)
+        XCTAssertEqual(receivedTheme, .dark)
+        XCTAssertEqual(SUAppTheme.dark.userInterfaceStyle, .dark)
+        XCTAssertEqual(SUAppTheme.light.userInterfaceStyle, .light)
+        XCTAssertEqual(SUAppTheme.system.userInterfaceStyle, .unspecified)
+        XCTAssertFalse(SUAppTheme.dark.displayName.isEmpty)
+
+        NotificationCenter.default.removeObserver(observer)
+    }
+
+    func testFollowSystemLanguage() {
+        let locManager = SULocalizationManager.shared
+        let originalFollowSystem = locManager.isFollowSystem
+        let originalLang = locManager.currentLanguage
+
+        defer {
+            if originalFollowSystem {
+                locManager.setFollowSystem()
+            } else {
+                locManager.setLanguage(originalLang)
+            }
+        }
+
+        locManager.setLanguage(.ja)
+        XCTAssertFalse(locManager.isFollowSystem)
+        XCTAssertEqual(locManager.currentLanguage, .ja)
+
+        locManager.setFollowSystem()
+        XCTAssertTrue(locManager.isFollowSystem)
+        XCTAssertEqual(locManager.currentLanguage, SULocalizationManager.resolveSystemLanguage())
     }
 }

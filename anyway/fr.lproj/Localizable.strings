@@ -6,37 +6,128 @@
 "tab_settings" = "Réglages";
 
 /* Monitor */
-"monitor_title" = "Posture en direct";
-"calibrate_button" = "Étalonner la posture";
-"calibrating_progress" = "Étalonnage en cours %d%%";
+"monitor_title" = "Surveillance de la Posture";
+"calibrate_button" = "Calibrer la Position Neutre";
+"calibrating_progress" = "Calibration %d%%";
 "energy_coins_badge" = "%d Pièces Colonne";
-"state_upright" = "Droit et énergique";
-"state_slight_slump" = "Léger affaissement";
-"state_severe_slump" = "Voûtement sévère";
-"state_unknown" = "Surveillance";
+"energy_coins_badge_title" = "Pièces d'Énergie Posturale";
+"energy_coins_info_msg" = "Total actuel : %d Pièces\nGardez le dos droit pour gagner des pièces et débloquer des trophées !";
+"state_upright" = "Droit et Aligné";
+"state_slight_slump" = "Légère Flexion";
+"state_severe_slump" = "Voûtement Sévère";
+"state_unknown" = "En surveillance";
+"angle_title" = "Angle d'Inclinaison";
+"sensor_tracking" = "Suivi de mouvement AirPods actif";
+"switch_persona_title" = "Changer la Personnalité";
+"switch_persona_subtitle" = "Chaque compagnon a son style d'encouragement et d'animation";
+"cancel" = "Annuler";
+"confirm" = "OK";
 
 /* Connection Banner */
 "banner_airpods_disconnected" = "AirPods déconnectés ou retirés";
-"banner_airpods_subtitle" = "Mettez des AirPods compatibles avec l'audio spatial pour reprendre la détection";
-"banner_unsupported" = "Cet appareil ne prend pas en charge le suivi de la tête";
-"banner_unsupported_subtitle" = "Nécessite AirPods Pro, Max, 3e génération+ ou Beats Fit Pro";
+"banner_airpods_subtitle" = "Mettez des AirPods compatibles pour reprendre le suivi automatiquement";
+"banner_unsupported" = "Appareil incompatible avec le suivi de mouvement";
+"banner_unsupported_subtitle" = "Nécessite des AirPods Pro, Max, 3e gén+ ou Beats Fit Pro";
 
 /* Personas */
-"persona_worker" = "Employé cynique";
-"persona_cat" = "Chat tsundere";
-"persona_coach" = "Coach bienveillant";
+"persona_worker" = "Employé Sarcastique";
+"persona_cat" = "Chat Tsundere";
+"persona_coach" = "Coach Bienveillant";
+"persona_worker_subtitle" = "Anti-Burnout · Pragmatique";
+"persona_cat_subtitle" = "Félin · Taquin";
+"persona_coach_subtitle" = "Encourageant · Sérénité";
+"persona_worker_desc" = "Un humour décapant pour vous forcer à redresser la colonne au travail.";
+"persona_cat_desc" = "Ne m'écrase pas ! Si tu te voûtes encore, je vais glisser de tes épaules miaou !";
+"persona_coach_desc" = "Guide doucement votre respiration et votre alignement corporel au quotidien.";
 
 /* Report */
-"report_title" = "Bilan quotidien de posture";
-"share_report" = "Générer et partager le bilan";
-"metrics_upright_ratio" = "Taux de droiture";
-"metrics_longest_streak" = "Plus longue série";
-"metrics_violations" = "Alertes de relâchement";
-"metrics_extra_load" = "Charge cervicale supplémentaire";
-"doctor_prescription" = "Prescription du Dr. IA";
+"report_title" = "Rapport Quotidien de Posture";
+"share_report" = "Générer et Partager le Bilan";
+"metrics_upright_ratio" = "Taux de Posture Droite";
+"metrics_longest_streak" = "Record de Posture Droite";
+"metrics_violations" = "Alertes de Voûtement";
+"metrics_extra_load" = "Charge Cervicale Supplémentaire";
+"doctor_prescription" = "Prescription IA";
+"metaphor_title" = "Équivalence Concrète de Pression";
+"diagnosis_card_title" = "《Carnet Médical Postural du Jour》";
+"clinical_diagnosis" = "Diagnostic : %@";
+"pet_quote_format" = "%@ vous dit : « %@ »";
+"score_unit" = "%d Pts";
+"times_unit" = "%d Fois";
+"ratio_subtitle_format" = "Taux de droiture %d%% · Focus droit %@";
+"hours_unit" = "%dh %dmin";
+"minutes_unit" = "%d min";
+"seconds_unit" = "%d s";
+
+/* Grades */
+"grade_s_title" = "Colonne d'Acier";
+"grade_a_title" = "Port Altier";
+"grade_b_title" = "Légère Fatigue";
+"grade_c_title" = "Courbure Précaire";
+"grade_d_title" = "Humain Pliable";
+
+/* Prescriptions */
+"prescription_s" = "Prescription : Posture exemplaire ! Offrez-vous une boisson bien méritée.";
+"prescription_a" = "Prescription : Regardez au loin 2 fois par jour, faites 3 étirements du buste.";
+"prescription_b" = "Prescription : 3 respirations profondes ! Surélevez l'écran de 5 cm pour rentrer le menton.";
+"prescription_c" = "Prescription : Levez-vous 2 minutes toutes les 45 minutes et étirez votre cou.";
+"prescription_d" = "Prescription : Kinésithérapeute vivement conseillé ! Écoutez votre animal virtuel !";
+
+/* Diagnoses */
+"diagnosis_s" = "Discipline Posturale d'Élite";
+"diagnosis_a" = "Posture Résistante à la Fatigue";
+"diagnosis_b" = "Syndrome du Télétravailleur Voûté";
+"diagnosis_c" = "Affinité Gravitationnelle Aiguë";
+"diagnosis_d" = "Phase Avancée de Transformation en Smartphone Pliable";
+
+/* Persona Comments */
+"comment_worker_s_a" = "Votre colonne est plus droite que le bilan financier annuel. Partez la tête haute !";
+"comment_worker_b" = "Porter tout ce poids sur vos cervicales ? Le patron ne paiera pas de nouvelles vertèbres !";
+"comment_worker_c_d" = "Cette courbure est plus tortueuse que les embouteillages du vendredi soir ! Redressez-vous !";
+"comment_cat_s_a" = "Bravo aujourd'hui miaou ! J'ai pu dormir paisiblement sur tes épaules miaou~";
+"comment_cat_b" = "Tu essaies de m'aplatir comme une crêpe ? Si tu te voûtes encore, je te griffe !";
+"comment_cat_c_d" = "À l'aide miaou ! Tu m'étouffes ! Offre-moi 10 boîtes de thon en excuse !";
+"comment_coach_s_a" = "Magnifique ! Votre mémoire musculaire se renforce admirablement. Continuez ainsi.";
+"comment_coach_b" = "Un peu de fatigue aujourd'hui. Pensez à appliquer du chaud et à vous étirer ce soir.";
+"comment_coach_c_d" = "Votre corps vous lance un SOS. Posez votre téléphone, respirez et reposez-vous.";
+
+/* Equivalents */
+"equiv_tea" = "Équivaut à suspendre %.1f bubble teas à votre cou";
+"equiv_brick" = "Équivaut à porter %.1f briques rouges pleines sur vos cervicales";
+"equiv_cat" = "Équivaut à supporter %.1f gros chats adultes potelés sur vos épaules";
+"equiv_dog" = "Équivaut à porter %.1f chiens Shiba Inu énergiques sur votre dos";
+"equiv_dumbbell" = "Équivaut à attacher %.1f haltères lourds de 15 kg en fonte à votre cou";
 
 /* Settings */
-"settings_title" = "Préférences";
-"settings_voice_alert" = "Guidage vocal par IA";
-"settings_haptic_alert" = "Vibrations haptiques";
-"settings_language" = "Langue de l'app";
+"settings_title" = "Réglages";
+"settings_persona_section" = "Personnalité du Compagnon";
+"settings_alerts_section" = "Préférences d'Alerte";
+"settings_energy_section" = "Énergie de la Colonne";
+"settings_general_section" = "Général";
+"settings_voice_alert" = "Invites Vocales IA";
+"settings_voice_alert_desc" = "Pause de 3 min, respecte la musique";
+"settings_haptic_alert" = "Vibrations Haptiques";
+"settings_haptic_alert_desc" = "Pulsation douce si vous restez voûté";
+"settings_sound_alert" = "Carillon Système";
+"settings_sound_alert_desc" = "Son cristallin de goutte d'eau";
+"streak_days_title" = "Série Quotidienne";
+"streak_days_val" = "%d Jours";
+"energy_coins_total_title" = "Total Pièces d'Énergie";
+"settings_theme" = "Thème d'Apparence";
+"settings_language" = "Langue de l'App";
+"app_slogan" = "SpineUp · Tenez-vous droit avec fierté";
+
+/* Theme */
+"theme_title" = "Thème d'Apparence";
+"theme_system" = "Adapter au Système";
+"theme_light" = "Mode Clair";
+"theme_dark" = "Mode Sombre";
+"theme_system_desc" = "Synchroniser avec l'apparence du système";
+"theme_light_desc" = "Toujours afficher en thème clair et lumineux";
+"theme_dark_desc" = "Toujours afficher en thème sombre élégant";
+"theme_setting_hint" = "Choisissez l'apparence de l'application, les modifications sont immédiates";
+
+/* Language */
+"follow_system" = "Adapter au Système";
+"follow_system_desc" = "Synchroniser avec la langue du système";
+"language_setting_hint" = "Choisissez la langue de l'application, les modifications sont immédiates";

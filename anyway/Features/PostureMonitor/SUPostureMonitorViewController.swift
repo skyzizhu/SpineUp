@@ -370,6 +370,11 @@ final class SUPostureMonitorViewController: SUBaseViewController {
         updateEnergyBadge(totalCoins: viewModel.currentTotalEnergyCoins)
         updatePersonaBadge(persona: viewModel.activePersona)
         calibrateButton.setTitle(SULocalized("calibrate_button", default: "一键端坐校准"), for: .normal)
+        gaugeView.refreshLocalizedStrings()
+        if let reading = viewModel.latestReading {
+            gaugeView.configure(with: reading, connectionState: viewModel.connectionState)
+        }
+        connectionBannerView.updateConnectionState(viewModel.connectionState)
     }
 
     @objc private func didTapCalibrate() {

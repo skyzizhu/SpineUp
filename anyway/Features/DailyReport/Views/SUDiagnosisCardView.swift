@@ -21,7 +21,7 @@ final class SUDiagnosisCardView: UIView {
 
     private let cardHeaderLabel: UILabel = {
         let label = UILabel()
-        label.text = SULocalized("doctor_prescription", default: "《今日骨气病历单》")
+        label.text = SULocalized("diagnosis_card_title", default: "《今日骨气病历单》")
         label.font = .systemFont(ofSize: 15, weight: .bold)
         label.textColor = .label
         return label
@@ -139,7 +139,8 @@ final class SUDiagnosisCardView: UIView {
     }
 
     func configure(with report: SUDailyReport) {
-        diagnosisTitleLabel.text = "临床诊断：\(report.diagnosisTitle)"
+        let diagFormat = SULocalized("clinical_diagnosis", default: "临床诊断：%@")
+        diagnosisTitleLabel.text = String(format: diagFormat, report.diagnosisTitle)
         prescriptionLabel.text = report.doctorPrescription
 
         let persona = report.persona
@@ -154,6 +155,12 @@ final class SUDiagnosisCardView: UIView {
         }
         petIconImageView.tintColor = tint
 
-        petQuoteLabel.text = "\(persona.displayName)寄语：「\(report.personaComment)」"
+        let quoteFormat = SULocalized("pet_quote_format", default: "%@寄语：「%@」")
+        petQuoteLabel.text = String(format: quoteFormat, persona.displayName, report.personaComment)
+    }
+
+    /// 动态刷新多语言文案
+    func refreshLocalizedStrings() {
+        cardHeaderLabel.text = SULocalized("diagnosis_card_title", default: "《今日骨气病历单》")
     }
 }

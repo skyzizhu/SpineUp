@@ -1,42 +1,133 @@
 /* Localizable.strings (Arabic - RTL) */
 
 /* Tab bar */
-"tab_monitor" = "حماية الوضعية";
+"tab_monitor" = "حماية القوام";
 "tab_report" = "تقرير اليوم";
 "tab_settings" = "الإعدادات";
 
 /* Monitor */
-"monitor_title" = "حماية الوضعية الحية";
-"calibrate_button" = "معايرة الاستقامة الفورية";
+"monitor_title" = "مراقبة القوام اللحظية";
+"calibrate_button" = "معايرة الجلوس المستقيم";
 "calibrating_progress" = "جارٍ المعايرة %d%%";
-"energy_coins_badge" = "%d عملات العمود الفقري";
-"state_upright" = "مستقيم ونشيط";
+"energy_coins_badge" = "%d عملات فقارية";
+"energy_coins_badge_title" = "عملات طاقة العمود الفقري";
+"energy_coins_info_msg" = "المجموع الحالي: %d عملة\nحافظ على استقامة ظهرك لكسب العملات وإلغاء قفل الإنجازات!";
+"state_upright" = "مستقيم ومتزن";
 "state_slight_slump" = "انحناء طفيف";
-"state_severe_slump" = "انحناء شديد";
-"state_unknown" = "قيد المراقبة";
+"state_severe_slump" = "تقوس شديد";
+"state_unknown" = "جارٍ المراقبة";
+"angle_title" = "زاوية الميل للأمام";
+"sensor_tracking" = "تتبع حركة AirPods نشط";
+"switch_persona_title" = "تبديل شخصية الحيوان الأليف";
+"switch_persona_subtitle" = "تتميز كل شخصية بأسلوب تنبيه وتفاعل فريد";
+"cancel" = "إلغاء";
+"confirm" = "موافق";
 
 /* Connection Banner */
-"banner_airpods_disconnected" = "سماعات AirPods غير متصلة أو تم نزعها";
-"banner_airpods_subtitle" = "ارتدِ سماعات AirPods التي تدعم الصوت المكاني لاستئناف التتبع تلقائياً";
-"banner_unsupported" = "الجهاز الحالي لا يدعم تتبع حركة الرأس";
-"banner_unsupported_subtitle" = "يتطلب AirPods Pro أو Max أو الجيل الثالث فما فوق أو Beats Fit Pro";
+"banner_airpods_disconnected" = "AirPods غير متصلة أو تم نزعها";
+"banner_airpods_subtitle" = "ارتدِ سماعات AirPods المتوافقة لاستئناف تتبع القوام تلقائياً";
+"banner_unsupported" = "الجهاز الحالي لا يدعم تتبع الحركة";
+"banner_unsupported_subtitle" = "يتطلب AirPods Pro أو Max أو الجيل الثالث أو Beats Fit Pro";
 
 /* Personas */
-"persona_worker" = "الموظف الصارم";
-"persona_cat" = "القط المتعالي";
+"persona_worker" = "الموظف الصريح";
+"persona_cat" = "القطة اللطيفة";
 "persona_coach" = "المدرب اللطيف";
+"persona_worker_subtitle" = "ضد الاحتراق · واقعي";
+"persona_cat_subtitle" = "دلال القطط · مرح";
+"persona_coach_subtitle" = "تشجيع هادئ · صحي";
+"persona_worker_desc" = "فكاهة لاذعة تحفزك على الجلوس باستقامة أثناء العمل.";
+"persona_cat_desc" = "لا تسحقني! إذا انحنيت أكثر سأنزلق من على كتفيك مياو!";
+"persona_coach_desc" = "يرشدك بلطف للتنفس العميق واستعادة التوازن الصحي للعمود الفقري.";
 
 /* Report */
-"report_title" = "تقرير معركة استقامة اليوم";
+"report_title" = "تقرير معركة القوام اليومي";
 "share_report" = "إنشاء ومشاركة التقرير";
-"metrics_upright_ratio" = "معدل الاستقامة";
-"metrics_longest_streak" = "أطول سلسلة متواصلة";
+"metrics_upright_ratio" = "نسبة الاستقامة";
+"metrics_longest_streak" = "أطول فترة استقامة";
 "metrics_violations" = "تنبيهات الانحناء";
-"metrics_extra_load" = "حمولة الرقبة الإضافية";
-"doctor_prescription" = "وصفة الطبيب الذكي";
+"metrics_extra_load" = "الحمل الزائد على الرقبة";
+"doctor_prescription" = "وصفة الذكاء الاصطناعي";
+"metaphor_title" = "مكافئ الحمل الحياتي";
+"diagnosis_card_title" = "《السجل الطبي اليومي للقوام》";
+"clinical_diagnosis" = "التشخيص السريري: %@";
+"pet_quote_format" = "رسالة من %@: «%@»";
+"score_unit" = "%d نقطة";
+"times_unit" = "%d مرات";
+"ratio_subtitle_format" = "معدل الاستقامة %d%% · استقامة مركزة %@";
+"hours_unit" = "%d س و %d د";
+"minutes_unit" = "%d دقيقة";
+"seconds_unit" = "%d ثانية";
+
+/* Grades */
+"grade_s_title" = "عمود فقري فولاذي";
+"grade_a_title" = "وقفة شموخ";
+"grade_b_title" = "إجهاد خفيف";
+"grade_c_title" = "انحناء مقلق";
+"grade_d_title" = "إنسان قابل للطي";
+
+/* Prescriptions */
+"prescription_s" = "الوصفة: قوام ممتاز! كافئ نفسك بمشروبك المفضل اليوم.";
+"prescription_a" = "الوصفة: انظر للأفق مرتين يومياً، ومارس تمارين فتح الصدر 3 مرات.";
+"prescription_b" = "الوصفة: خذ 3 أنفاس عميقة فوراً؛ وارفع شاشتك 5 سم لتعديل الذقن.";
+"prescription_c" = "الوصفة: قف لمدة دقيقتين كل 45 دقيقة وانظر للسقف لتخفيف الضغط.";
+"prescription_d" = "الوصفة: استشر أخصائي علاج طبيعي فوراً! اتبع تنبيهات الحيوان الأليف!";
+
+/* Diagnoses */
+"diagnosis_s" = "نموذج مثالي للانضباط الفقري";
+"diagnosis_a" = "قوام مقاوم للإجهاد";
+"diagnosis_b" = "متلازمة انحناء العمل المتقطع";
+"diagnosis_c" = "متلازمة الجاذبية الشديدة";
+"diagnosis_d" = "مرحلة متقدمة من التحول لإنسان مطوي";
+
+/* Persona Comments */
+"comment_worker_s_a" = "عمودك الفقري اليوم أكثر استقامة من تقارير الأرباح! ارفع رأسك واخرج فخوراً!";
+"comment_worker_b" = "تحمل كل هذا الوزن الزائد على رقبتك؟ المدير لن يدفع ثمن فقرات جديدة!";
+"comment_worker_c_d" = "تقوسك اليوم أكثر تعقيداً من زحمة الجمعة! ارفع رأسك الآن!";
+"comment_cat_s_a" = "أحسنت اليوم مياو! نمت براحة تامة على كتفيك مياو~";
+"comment_cat_b" = "هل تريد تحويلي إلى فطيرة؟ إذا انحنيت مجدداً سأخدشك مياو!";
+"comment_cat_c_d" = "النجدة مياو! تكاد تخنقني! أحضر لي 10 علب تونة كاعتذار مياو!";
+"comment_coach_s_a" = "رائع! ذاكرتك العضلية تتشكل بشكل جميل. استمر في الاهتمام بجسدك.";
+"comment_coach_b" = "تبدو متعباً بعض الشيء اليوم. تذكر وضع كمادات دافئة والتمدد قبل النوم.";
+"comment_coach_c_d" = "جسدك يرسل إشارة استغاثة. اترك الهاتف وتنفس بعمق واسترخِ.";
+
+/* Equivalents */
+"equiv_tea" = "يعادل تعليق %.1f كوب شاي حليب محلى على رقبتك";
+"equiv_brick" = "يعادل وضع %.1f طوبة بناء حمراء صلبة على رقبتك";
+"equiv_cat" = "يعادل جلوس %.1f قطط بالغة سمينة على كتفيك";
+"equiv_dog" = "يعادل حمل %.1f كلاب شيبا إينو قوية على ظهرك";
+"equiv_dumbbell" = "يعادل ربط %.1f أثقال حديدية ثقيلة بوزن 15 كجم برقبتك";
 
 /* Settings */
-"settings_title" = "التفضيلات والإعدادات";
+"settings_title" = "الإعدادات";
+"settings_persona_section" = "شخصية الرفيق الرقمي";
+"settings_alerts_section" = "تفضيلات التنبيه";
+"settings_energy_section" = "طاقة العمود الفقري";
+"settings_general_section" = "عام";
 "settings_voice_alert" = "تنبيهات صوتية ذكية";
-"settings_haptic_alert" = "اهتزازات لمسية للتنبيه";
+"settings_voice_alert_desc" = "فترة هدوء 3 دقائق، لا تقاطع الموسيقى";
+"settings_haptic_alert" = "اهتزازات تفاعلية";
+"settings_haptic_alert_desc" = "نبضات لطيفة عند استمرار الانحناء";
+"settings_sound_alert" = "نغمة النظام الهادئة";
+"settings_sound_alert_desc" = "صوت قطرة ماء نقية عند الانحناء";
+"streak_days_title" = "أيام الاستمرار";
+"streak_days_val" = "%d أيام";
+"energy_coins_total_title" = "مجموع عملات الطاقة";
+"settings_theme" = "مظهر التطبيق";
 "settings_language" = "لغة التطبيق";
+"app_slogan" = "SpineUp · استقم بفخر وثبات";
+
+/* Theme */
+"theme_title" = "مظهر التطبيق";
+"theme_system" = "تلقائي حسب النظام";
+"theme_light" = "المظهر الفاتح";
+"theme_dark" = "المظهر الداكن";
+"theme_system_desc" = "مطابقة إعدادات مظهر النظام بالجهاز";
+"theme_light_desc" = "استخدام النمط الفاتح المشرق دائماً";
+"theme_dark_desc" = "استخدام النمط الداكن الأنيق دائماً";
+"theme_setting_hint" = "اختر نمط المظهر المفضل للتطبيق، سيتم التطبيق فوراً";
+
+/* Language */
+"follow_system" = "تلقائي حسب النظام";
+"follow_system_desc" = "مطابقة لغة نظام الجهاز";
+"language_setting_hint" = "اختر لغة واجهة التطبيق، سيتم التحديث فوراً";

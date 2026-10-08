@@ -31,7 +31,7 @@ final class SUPostureGaugeView: UIView {
 
     private let angleTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "相对前倾角度"
+        label.text = SULocalized("angle_title", default: "相对前倾角度")
         label.font = UIFont.systemFont(ofSize: 13, weight: .regular)
         label.textColor = .secondaryLabel
         label.textAlignment = .center
@@ -174,7 +174,7 @@ final class SUPostureGaugeView: UIView {
         switch connectionState {
         case .connected:
             connectionIndicator.backgroundColor = .systemGreen
-            connectionLabel.text = SULocalized("state_unknown", default: "传感器追踪中")
+            connectionLabel.text = SULocalized("sensor_tracking", default: "AirPods 空间运动追踪中")
         case .disconnected:
             connectionIndicator.backgroundColor = .systemOrange
             connectionLabel.text = SULocalized("banner_airpods_disconnected", default: "AirPods 未连接")
@@ -182,5 +182,10 @@ final class SUPostureGaugeView: UIView {
             connectionIndicator.backgroundColor = .systemRed
             connectionLabel.text = SULocalized("banner_unsupported", default: "设备不支持运动传感器")
         }
+    }
+
+    /// 动态刷新多语言文案
+    func refreshLocalizedStrings() {
+        angleTitleLabel.text = SULocalized("angle_title", default: "相对前倾角度")
     }
 }

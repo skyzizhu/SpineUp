@@ -10,10 +10,18 @@
 "calibrate_button" = "Calibrate Neutral";
 "calibrating_progress" = "Calibrating %d%%";
 "energy_coins_badge" = "%d Spine Coins";
+"energy_coins_badge_title" = "Spine Energy Coins";
+"energy_coins_info_msg" = "Current total: %d Spine Coins\nMaintain good posture to earn coins and unlock achievements!";
 "state_upright" = "Upright";
 "state_slight_slump" = "Mild Slump";
 "state_severe_slump" = "Severe Slump";
 "state_unknown" = "Monitoring";
+"angle_title" = "Forward Pitch Angle";
+"sensor_tracking" = "AirPods Motion Tracking Active";
+"switch_persona_title" = "Switch Pet Persona";
+"switch_persona_subtitle" = "Each persona features distinctive quotes and interactions";
+"cancel" = "Cancel";
+"confirm" = "OK";
 
 /* Connection Banner */
 "banner_airpods_disconnected" = "AirPods Not Connected or Removed";
@@ -25,6 +33,12 @@
 "persona_worker" = "Office Worker";
 "persona_cat" = "Tsundere Cat";
 "persona_coach" = "Gentle Coach";
+"persona_worker_subtitle" = "Anti-Burnout · Pragmatic";
+"persona_cat_subtitle" = "Feisty · Feline Perspective";
+"persona_coach_subtitle" = "Encouraging · Mindful";
+"persona_worker_desc" = "Sharp wit with workplace humor to keep your spine straight during daily grinds.";
+"persona_cat_desc" = "Don't crush me! If you slouch any further, I'll slide right off your shoulders!";
+"persona_coach_desc" = "Gently guides your breathing and alignment to cultivate long-term spinal health.";
 
 /* Report */
 "report_title" = "Daily Spine Battle Report";
@@ -32,11 +46,88 @@
 "metrics_upright_ratio" = "Upright Ratio";
 "metrics_longest_streak" = "Longest Streak";
 "metrics_violations" = "Slump Alerts";
-"metrics_extra_load" = "Extra Load";
+"metrics_extra_load" = "Extra Cervical Load";
 "doctor_prescription" = "AI Prescription";
+"metaphor_title" = "Life Force Equivalent";
+"diagnosis_card_title" = "Daily Spine Medical Record";
+"clinical_diagnosis" = "Diagnosis: %@";
+"pet_quote_format" = "%@ says: \"%@\"";
+"score_unit" = "%d Pts";
+"times_unit" = "%d Times";
+"ratio_subtitle_format" = "Upright Rate %d%% · Upright Focus %@";
+"hours_unit" = "%dh %dmin";
+"minutes_unit" = "%d min";
+"seconds_unit" = "%d s";
+
+/* Grades */
+"grade_s_title" = "Iron Spine";
+"grade_a_title" = "Standing Proud";
+"grade_b_title" = "Slightly Weary";
+"grade_c_title" = "Precarious Curve";
+"grade_d_title" = "Foldable Human";
+
+/* Prescriptions */
+"prescription_s" = "Prescription: Outstanding posture! Reward yourself with a favorite beverage.";
+"prescription_a" = "Prescription: Look into the distance twice daily, perform 3 chest opener stretches.";
+"prescription_b" = "Prescription: Take 3 deep breaths immediately; elevate your monitor by 5 cm.";
+"prescription_c" = "Prescription: Stand up for 2 minutes every 45 minutes; stretch toward the ceiling.";
+"prescription_d" = "Prescription: Urgent physical therapy advised! Follow pet alerts strictly!";
+
+/* Diagnoses */
+"diagnosis_s" = "Exemplary Spine Discipline";
+"diagnosis_a" = "Strain-Resistant Posture";
+"diagnosis_b" = "Intermittent Slouch Syndrome";
+"diagnosis_c" = "Severe Gravity Affinity Complex";
+"diagnosis_d" = "Advanced Foldable Human Stage";
+
+/* Persona Comments */
+"comment_worker_s_a" = "Your spine looks cleaner than the annual earnings sheet today. Head high!";
+"comment_worker_b" = "Carrying that much extra weight on your neck? The boss won't pay for new vertebrae!";
+"comment_worker_c_d" = "That curvature is windier than Friday evening traffic! Pull your chin back!";
+"comment_cat_s_a" = "Great job today meow! I had a peaceful nap on your shoulders meow~";
+"comment_cat_b" = "Are you trying to squish me into a flat pancake? Slouch again and I'll claw you!";
+"comment_cat_c_d" = "Help meow! You're crushing the life out of me! Treat me to tuna cans to apologize!";
+"comment_coach_s_a" = "Wonderful! Your muscle memory is building beautifully. Keep nurturing yourself.";
+"comment_coach_b" = "A bit fatigued today. Remember to apply a warm compress and gentle stretches tonight.";
+"comment_coach_c_d" = "Your body is sending an SOS. Put the phone down, breathe deeply, and rest.";
+
+/* Equivalents */
+"equiv_tea" = "Equivalent to hanging %.1f boba milk teas on your neck";
+"equiv_brick" = "Equivalent to balancing %.1f solid red clay bricks on your cervical spine";
+"equiv_cat" = "Equivalent to carrying %.1f chubby tabby cats on your shoulders";
+"equiv_dog" = "Equivalent to carrying %.1f energetic Shiba Inus on your back";
+"equiv_dumbbell" = "Equivalent to strapping %.1f heavy 15kg cast iron dumbbells to your neck";
 
 /* Settings */
 "settings_title" = "Preferences";
+"settings_persona_section" = "Pet Persona";
+"settings_alerts_section" = "Alert Preferences";
+"settings_energy_section" = "Spine Energy";
+"settings_general_section" = "General Settings";
 "settings_voice_alert" = "AI Voice Prompts";
+"settings_voice_alert_desc" = "3-min cooldown, respects background music";
 "settings_haptic_alert" = "Haptic Vibrations";
+"settings_haptic_alert_desc" = "Gentle tactile pulse upon slouching";
+"settings_sound_alert" = "System Sound Alert";
+"settings_sound_alert_desc" = "Crisp water drop chime upon slouching";
+"streak_days_title" = "Daily Streak";
+"streak_days_val" = "%d Days";
+"energy_coins_total_title" = "Total Energy Coins";
+"settings_theme" = "Appearance Theme";
 "settings_language" = "App Language";
+"app_slogan" = "SpineUp · Stand Tall With Backbone";
+
+/* Theme */
+"theme_title" = "Appearance Theme";
+"theme_system" = "Follow System";
+"theme_light" = "Light Mode";
+"theme_dark" = "Dark Mode";
+"theme_system_desc" = "Match device system appearance";
+"theme_light_desc" = "Always use bright light theme";
+"theme_dark_desc" = "Always use elegant dark theme";
+"theme_setting_hint" = "Select the app appearance style, changes take effect immediately";
+
+/* Language */
+"follow_system" = "Follow System";
+"follow_system_desc" = "Match device system language";
+"language_setting_hint" = "Select app language, changes take effect immediately";

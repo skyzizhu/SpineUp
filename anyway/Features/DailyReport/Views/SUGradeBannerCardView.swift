@@ -102,10 +102,11 @@ final class SUGradeBannerCardView: UIView {
     func configure(with session: SUPostureSession) {
         gradeLabel.text = session.grade
         titleLabel.text = session.gradeTitle
-        scoreTagLabel.text = "\(session.score) 分"
+        scoreTagLabel.text = String(format: SULocalized("score_unit", default: "%d 分"), session.score)
 
         let ratioPercent = Int(session.uprightRatio * 100)
-        subtitleLabel.text = "端正挺拔率 \(ratioPercent)% · 挺拔专注 \(session.formattedUprightTime)"
+        let format = SULocalized("ratio_subtitle_format", default: "端正挺拔率 %d%% · 挺拔专注 %@")
+        subtitleLabel.text = String(format: format, ratioPercent, session.formattedUprightTime)
 
         let tintColor: UIColor
         switch session.grade {

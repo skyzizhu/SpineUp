@@ -64,52 +64,57 @@ enum SUErgonomicsCalculator {
         if kg < 2.0 {
             // 奶茶 (约 0.5 kg/杯)
             let cups = kg / 0.5
+            let descFormat = SULocalized("equiv_tea", default: "相当于脖子上挂了 %.1f 杯全糖大杯珍珠奶茶")
             return SUEquivalentItem(
                 name: "珍珠奶茶",
                 count: cups,
                 unit: "杯",
                 iconSystemName: "cup.and.saucer.fill",
-                descriptionText: "相当于脖子上挂了 \(String(format: "%.1f", cups)) 杯全糖大杯珍珠奶茶"
+                descriptionText: String(format: descFormat, cups)
             )
         } else if kg < 6.0 {
             // 红砖 (约 2.5 kg/块)
             let bricks = kg / 2.5
+            let descFormat = SULocalized("equiv_brick", default: "相当于颈椎上顶了 %.1f 块实心建筑红砖")
             return SUEquivalentItem(
                 name: "建筑红砖",
                 count: bricks,
                 unit: "块",
                 iconSystemName: "square.stack.3d.down.forward.fill",
-                descriptionText: "相当于颈椎上顶了 \(String(format: "%.1f", bricks)) 块实心建筑红砖"
+                descriptionText: String(format: descFormat, bricks)
             )
         } else if kg < 12.0 {
             // 猫咪 (约 4.0 kg/只)
             let cats = kg / 4.0
+            let descFormat = SULocalized("equiv_cat", default: "相当于脖子上趴了 %.1f 只沉甸甸的成年胖猫")
             return SUEquivalentItem(
                 name: "成年胖橘猫",
                 count: cats,
                 unit: "只",
                 iconSystemName: "cat.fill",
-                descriptionText: "相当于脖子上趴了 \(String(format: "%.1f", cats)) 只沉甸甸的成年胖猫"
+                descriptionText: String(format: descFormat, cats)
             )
         } else if kg < 25.0 {
             // 柴犬 (约 10.0 kg/只)
             let dogs = kg / 10.0
+            let descFormat = SULocalized("equiv_dog", default: "相当于脖子上驮了 %.1f 只健硕的柴犬")
             return SUEquivalentItem(
                 name: "活泼柴犬",
                 count: dogs,
                 unit: "只",
                 iconSystemName: "pawprint.fill",
-                descriptionText: "相当于脖子上驮了 \(String(format: "%.1f", dogs)) 只健硕的柴犬"
+                descriptionText: String(format: descFormat, dogs)
             )
         } else {
             // 健身哑铃 (约 15.0 kg/个)
             let dumbbells = kg / 15.0
+            let descFormat = SULocalized("equiv_dumbbell", default: "相当于给颈椎绑了 %.1f 个 15kg 重型纯铁哑铃")
             return SUEquivalentItem(
                 name: "重型哑铃",
                 count: dumbbells,
                 unit: "个",
                 iconSystemName: "dumbbell.fill",
-                descriptionText: "相当于给颈椎绑了 \(String(format: "%.1f", dumbbells)) 个 15kg 重型纯铁哑铃"
+                descriptionText: String(format: descFormat, dumbbells)
             )
         }
     }

@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-/// 语言选择二级页面 —— 清新苹果原生风格、即选即生效、带平滑微触觉动效与实时刷新
+/// 语言选择二级页面 —— 清新苹果原生风格、支持跟随系统与 7 种语言切换、即选即生效
 final class SULanguageSettingViewController: SUBaseViewController {
 
     // MARK: - 可滑动内容容器
@@ -50,6 +50,7 @@ final class SULanguageSettingViewController: SUBaseViewController {
         return stack
     }()
 
+    private var followSystemRowView: SULanguageFollowSystemRowView?
     private var languageRowViews: [SULanguageItemRowView] = []
 
     override func viewDidLoad() {
@@ -69,14 +70,27 @@ final class SULanguageSettingViewController: SUBaseViewController {
         contentView.addSubview(cardView)
         cardView.addSubview(rowsStackView)
 
+        let isFollow = SULocalizationManager.shared.isFollowSystem
         let currentLang = SULocalizationManager.shared.currentLanguage
         let languages = SULanguage.allCases
 
+        // Row 0: 跟随系统 (默认)
+        let systemRow = SULanguageFollowSystemRowView(
+            isSelected: isFollow,
+            showSeparator: true
+        )
+        systemRow.onTapped = { [weak self] in
+            self?.handleFollowSystemSelected()
+        }
+        followSystemRowView = systemRow
+        rowsStackView.addArrangedSubview(systemRow)
+
+        // Rows 1...N: 7 种语言列表
         for (index, lang) in languages.enumerated() {
             let isLast = (index == languages.count - 1)
             let row = SULanguageItemRowView(
                 language: lang,
-                isSelected: lang == currentLang,
+                isSelected: !isFollow && lang == currentLang,
                 showSeparator: !isLast
             )
             row.onTapped = { [weak self] selectedLang in
@@ -126,28 +140,191 @@ final class SULanguageSettingViewController: SUBaseViewController {
         )
     }
 
-    private func handleLanguageSelected(_ language: SULanguage) {
-        guard language != SULocalizationManager.shared.currentLanguage else { return }
+    private func handleFollowSystemSelected() {
+        guard !SULocalizationManager.shared.isFollowSystem else { return }
 
-        // 切换语言并触发触觉反馈
+        // 切换为跟随系统
+        SULocalizationManager.shared.setFollowSystem()
+        SUAudioFeedbackManager.shared.triggerHapticSelection()
+
+        refreshSelectionState()
+    }
+
+    private func handleLanguageSelected(_ language: SULanguage) {
+        if !SULocalizationManager.shared.isFollowSystem && language == SULocalizationManager.shared.currentLanguage {
+            return
+        }
+
+        // 切换为指定语言
         SULocalizationManager.shared.setLanguage(language)
         SUAudioFeedbackManager.shared.triggerHapticSelection()
 
-        // 刷新所有选项的勾选状态
         refreshSelectionState()
     }
 
     @objc private func handleLanguageDidChange() {
         navigationItem.title = SULocalized("settings_language", default: "语言选择 / Language")
         hintLabel.text = SULocalized("language_setting_hint", default: "选择应用界面展示的语言，切换后将即时生效")
+        followSystemRowView?.refreshLocalizedStrings()
         refreshSelectionState()
     }
 
     private func refreshSelectionState() {
+        let isFollow = SULocalizationManager.shared.isFollowSystem
         let currentLang = SULocalizationManager.shared.currentLanguage
+
+        followSystemRowView?.setSelected(isFollow)
         for row in languageRowViews {
-            row.setSelected(row.language == currentLang)
+            row.setSelected(!isFollow && row.language == currentLang)
         }
+    }
+}
+
+// MARK: - 跟随系统选项行组件
+final class SULanguageFollowSystemRowView: UIView {
+
+    var onTapped: (() -> Void)?
+
+    private let iconImageView: UIImageView = {
+        let iv = UIImageView()
+        iv.contentMode = .scaleAspectFit
+        iv.tintColor = .systemBlue
+        return iv
+    }()
+
+    private let titleLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 16, weight: .regular)
+        label.textColor = .label
+        return label
+    }()
+
+    private let subtitleLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 12, weight: .regular)
+        label.textColor = .secondaryLabel
+        return label
+    }()
+
+    private let checkmarkImageView: UIImageView = {
+        let iv = UIImageView()
+        let config = UIImage.SymbolConfiguration(pointSize: 15, weight: .bold)
+        iv.image = UIImage(systemName: "checkmark", withConfiguration: config)
+        iv.tintColor = .systemBlue
+        iv.contentMode = .scaleAspectFit
+        return iv
+    }()
+
+    private let separatorView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .separator
+        return view
+    }()
+
+    private let highlightOverlay: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.label.withAlphaComponent(0.06)
+        view.alpha = 0
+        return view
+    }()
+
+    init(isSelected: Bool, showSeparator: Bool) {
+        super.init(frame: .zero)
+        isUserInteractionEnabled = true
+
+        setupUI(isSelected: isSelected, showSeparator: showSeparator)
+        setupGestures()
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    private func setupUI(isSelected: Bool, showSeparator: Bool) {
+        addSubview(highlightOverlay)
+        addSubview(iconImageView)
+        addSubview(titleLabel)
+        addSubview(subtitleLabel)
+        addSubview(checkmarkImageView)
+
+        if showSeparator {
+            addSubview(separatorView)
+        }
+
+        let symbolConfig = UIImage.SymbolConfiguration(pointSize: 16, weight: .medium)
+        iconImageView.image = UIImage(systemName: "iphone.gen3", withConfiguration: symbolConfig) ?? UIImage(systemName: "iphone", withConfiguration: symbolConfig)
+
+        titleLabel.text = SULocalized("follow_system", default: "跟随系统")
+        subtitleLabel.text = SULocalized("follow_system_desc", default: "与系统语言保持一致")
+
+        checkmarkImageView.isHidden = !isSelected
+
+        highlightOverlay.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+
+        iconImageView.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.leading.equalToSuperview().offset(16)
+            make.size.equalTo(20)
+        }
+
+        titleLabel.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.leading.equalTo(iconImageView.snp.trailing).offset(12)
+        }
+
+        subtitleLabel.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.leading.equalTo(titleLabel.snp.trailing).offset(8)
+            make.trailing.lessThanOrEqualTo(checkmarkImageView.snp.leading).offset(-8)
+        }
+
+        checkmarkImageView.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.trailing.equalToSuperview().offset(-16)
+            make.size.equalTo(18)
+        }
+
+        if showSeparator {
+            separatorView.snp.makeConstraints { make in
+                make.bottom.equalToSuperview()
+                make.leading.equalTo(titleLabel.snp.leading)
+                make.trailing.equalToSuperview()
+                make.height.equalTo(0.5)
+            }
+        }
+
+        snp.makeConstraints { make in
+            make.height.equalTo(52)
+        }
+    }
+
+    private func setupGestures() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        addGestureRecognizer(tap)
+    }
+
+    @objc private func handleTap() {
+        UIView.animate(withDuration: 0.1, animations: {
+            self.highlightOverlay.alpha = 1.0
+        }) { _ in
+            UIView.animate(withDuration: 0.2) {
+                self.highlightOverlay.alpha = 0
+            }
+        }
+        onTapped?()
+    }
+
+    func setSelected(_ selected: Bool) {
+        UIView.transition(with: checkmarkImageView, duration: 0.2, options: .transitionCrossDissolve) {
+            self.checkmarkImageView.isHidden = !selected
+        }
+    }
+
+    func refreshLocalizedStrings() {
+        titleLabel.text = SULocalized("follow_system", default: "跟随系统")
+        subtitleLabel.text = SULocalized("follow_system_desc", default: "与系统语言保持一致")
     }
 }
 

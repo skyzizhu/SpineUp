@@ -2,41 +2,132 @@
 
 /* Tab bar */
 "tab_monitor" = "姿勢見守り";
-"tab_report" = "戦報レポート";
+"tab_report" = "本日のレポート";
 "tab_settings" = "設定";
 
 /* Monitor */
 "monitor_title" = "リアルタイム姿勢見守り";
 "calibrate_button" = "ワンタップ姿勢校正";
 "calibrating_progress" = "校正中 %d%%";
-"energy_coins_badge" = "%d 骨気コイン";
-"state_upright" = "背筋ピン！";
-"state_slight_slump" = "やや前傾気味";
-"state_severe_slump" = "猫背アラート";
-"state_unknown" = "見守り中";
+"energy_coins_badge" = "%d スパインコイン";
+"energy_coins_badge_title" = "スパインエネルギーコイン";
+"energy_coins_info_msg" = "現在の累計：%d コイン\n美しい姿勢を維持してコインを獲得し、限定アチーブメントを解除しましょう！";
+"state_upright" = "背筋まっすぐ";
+"state_slight_slump" = "やや前かがみ";
+"state_severe_slump" = "深刻な猫背";
+"state_unknown" = "モニタリング中";
+"angle_title" = "相対前傾角度";
+"sensor_tracking" = "AirPods 空間モーショントラッキング中";
+"switch_persona_title" = "デスクトップペット性格切替";
+"switch_persona_subtitle" = "性格ごとに個性的なセリフやインタラクションが楽しめます";
+"cancel" = "キャンセル";
+"confirm" = "了解";
 
 /* Connection Banner */
 "banner_airpods_disconnected" = "AirPods が未接続または外されています";
-"banner_airpods_subtitle" = "空間オーディオ対応の AirPods を装着すると、自動で追跡が再開されます";
-"banner_unsupported" = "お使いの機器はモーション追跡に未対応です";
-"banner_unsupported_subtitle" = "AirPods Pro / Max / 第3世代+ / Beats Fit Pro が必要です";
+"banner_airpods_subtitle" = "モーション対応の AirPods を装着すると、自動で追跡が再開されます";
+"banner_unsupported" = "お使いの機器はモーション追跡に対応していません";
+"banner_unsupported_subtitle" = "AirPods Pro / Max / 第3世代以降 / Beats Fit Pro が必要です";
 
 /* Personas */
 "persona_worker" = "毒舌サラリーマン";
 "persona_cat" = "ツンデレ猫ちゃん";
-"persona_coach" = "優しいパーソナルコーチ";
+"persona_coach" = "優しいトレーナー";
+"persona_worker_subtitle" = "脱社畜 · 現実主義";
+"persona_cat_subtitle" = "ツンデレ · 猫の視点";
+"persona_coach_subtitle" = "温かい励まし · マインドフル";
+"persona_worker_desc" = "切れ味鋭いジョークで、働くあなたの背筋をしゃきっと伸ばします。";
+"persona_cat_desc" = "乗っかってるニャ！猫背になると肩から滑り落ちちゃうニャ！";
+"persona_coach_desc" = "優しい声かけと深呼吸の誘導で、健やかな姿勢を育みます。";
 
 /* Report */
-"report_title" = "今日の骨気レポート";
-"share_report" = "骨気レポートを作成してシェア";
+"report_title" = "本日の姿勢レポート";
+"share_report" = "レポートを生成して共有";
 "metrics_upright_ratio" = "美姿勢達成率";
-"metrics_longest_streak" = "最長連続維持";
-"metrics_violations" = "うつむき警告回数";
-"metrics_extra_load" = "首への追加負荷";
+"metrics_longest_streak" = "最長連続美姿勢";
+"metrics_violations" = "前傾警告回数";
+"metrics_extra_load" = "頸椎への追加負荷";
 "doctor_prescription" = "AI ドクター処方箋";
+"metaphor_title" = "首への負荷・生活換算";
+"diagnosis_card_title" = "《本日の姿勢カルテ》";
+"clinical_diagnosis" = "臨床診断：%@";
+"pet_quote_format" = "%@からのメッセージ：「%@」";
+"score_unit" = "%d 点";
+"times_unit" = "%d 回";
+"ratio_subtitle_format" = "美姿勢率 %d%% · 集中美姿勢 %@";
+"hours_unit" = "%d時間%d分";
+"minutes_unit" = "%d分";
+"seconds_unit" = "%d秒";
+
+/* Grades */
+"grade_s_title" = "鋼の美背骨";
+"grade_a_title" = "凛々しき立ち姿";
+"grade_b_title" = "ややお疲れ気味";
+"grade_c_title" = "危うきカーブ";
+"grade_d_title" = "折りたたみスマホ人間";
+
+/* Prescriptions */
+"prescription_s" = "処方箋：素晴らしい姿勢です！ご褒美に美味しいドリンクを楽しみましょう。";
+"prescription_a" = "処方箋：1日2回遠くを眺め、胸を開くストレッチを3セット行いましょう。";
+"prescription_b" = "処方箋：今すぐ深呼吸を3回。画面の高さを5cm上げて顎を引きましょう。";
+"prescription_c" = "処方箋：45分ごとに2分立ち上がり、天井を見上げて首の圧力を解放しましょう。";
+"prescription_d" = "処方箋：整体師の受診を推奨！ペットの警告に従わないとコイン減点です！";
+
+/* Diagnoses */
+"diagnosis_s" = "模範的姿勢マスター";
+"diagnosis_a" = "疲労抵抗型グッドスタイル";
+"diagnosis_b" = "断続的前傾ワーカー症候群";
+"diagnosis_c" = "重度重力親和コンプレックス";
+"diagnosis_d" = "折りたたみ人間化の危機";
+
+/* Persona Comments */
+"comment_worker_s_a" = "今日の背骨は決算報告書より美しいぞ！胸を張って退勤しよう！";
+"comment_worker_b" = "首にこんなに余計な重荷を背負って…社長は頸椎の手術代を出してくれないぞ！";
+"comment_worker_c_d" = "その曲がり具合、金曜夕方の渋滞より曲がりくねってるぞ！顔を上げろ！";
+"comment_cat_s_a" = "今日はいい調子ニャ！お前の肩の上でぐっすり昼寝できたニャ〜";
+"comment_cat_b" = "我輩をぺちゃんこにする気かニャ？次丸くなったら引っ掻くニャ！";
+"comment_cat_c_d" = "助けてニャ！押しつぶされそうニャ！お詫びに缶詰10個要求するニャ！";
+"comment_coach_s_a" = "素晴らしい！筋肉の記憶が定着してきています。自分を褒めてあげてくださいね。";
+"comment_coach_b" = "少し疲れが溜まっていますね。今夜は温かいタオルで首をケアしましょう。";
+"comment_coach_c_d" = "体がSOSを出しています。無理せずスマホを置き、深く呼吸してください。";
+
+/* Equivalents */
+"equiv_tea" = "首にタピオカミルクティーを %.1f 杯ぶら下げているのと同じです";
+"equiv_brick" = "頸椎の上に赤レンガを %.1f 個乗せているのと同じです";
+"equiv_cat" = "首の上に太った大人の猫ちゃんを %.1f 匹乗せているのと同じです";
+"equiv_dog" = "首の上に元気いっぱいの柴犬を %.1f 匹背負っているのと同じです";
+"equiv_dumbbell" = "首に 15kg の重たい鉄アレイを %.1f 個くくりつけているのと同じです";
 
 /* Settings */
-"settings_title" = "環境設定";
-"settings_voice_alert" = "AI 音声ガイダンス";
-"settings_haptic_alert" = "ハプティクス触覚振動";
+"settings_title" = "設定";
+"settings_persona_section" = "ペットの性格";
+"settings_alerts_section" = "通知・警告設定";
+"settings_energy_section" = "スパインエネルギー";
+"settings_general_section" = "一般設定";
+"settings_voice_alert" = "AI ボイスアラート";
+"settings_voice_alert_desc" = "3分クールダウン、BGMを邪魔しません";
+"settings_haptic_alert" = "触覚バイブレーション";
+"settings_haptic_alert_desc" = "前傾姿勢が続くと優しい振動で通知";
+"settings_sound_alert" = "システム通知チャイム";
+"settings_sound_alert_desc" = "前傾時に清らかな水滴の音でお知らせ";
+"streak_days_title" = "連続達成";
+"streak_days_val" = "%d 日";
+"energy_coins_total_title" = "累計エネルギーコイン";
+"settings_theme" = "外観テーマ";
 "settings_language" = "言語設定";
+"app_slogan" = "SpineUp · 背筋を伸ばして生きよう";
+
+/* Theme */
+"theme_title" = "外観テーマ";
+"theme_system" = "システムに合わせる";
+"theme_light" = "ライトモード";
+"theme_dark" = "ダークモード";
+"theme_system_desc" = "端末のシステム外観設定と同期";
+"theme_light_desc" = "常に明るいライトテーマで表示";
+"theme_dark_desc" = "常に落ち着いたダークテーマで表示";
+"theme_setting_hint" = "アプリの外観スタイルを選択してください。即時反映されます";
+
+/* Language */
+"follow_system" = "システムに合わせる";
+"follow_system_desc" = "端末のシステム言語と同期";
+"language_setting_hint" = "アプリの表示言語を選択してください。即時反映されます";

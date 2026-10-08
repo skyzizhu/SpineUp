@@ -31,11 +31,11 @@ enum SUPetPersona: String, CaseIterable, Identifiable, Sendable {
     var subtitle: String {
         switch self {
         case .worker:
-            return "反内卷 · 人间清醒"
+            return SULocalized("persona_worker_subtitle", default: "反内卷 · 人间清醒")
         case .cat:
-            return "傲娇 · 猫咪视角"
+            return SULocalized("persona_cat_subtitle", default: "傲娇 · 猫咪视角")
         case .coach:
-            return "鼓励 · 正向引导"
+            return SULocalized("persona_coach_subtitle", default: "鼓励 · 正向引导")
         }
     }
 
@@ -43,11 +43,11 @@ enum SUPetPersona: String, CaseIterable, Identifiable, Sendable {
     var description: String {
         switch self {
         case .worker:
-            return "犀利自嘲，针针见血，催你挺起脊椎继续搬砖。"
+            return SULocalized("persona_worker_desc", default: "犀利自嘲，针针见血，催你挺起脊椎继续搬砖。")
         case .cat:
-            return "不要趴着压扁本喵！你再驼背我就从你脖子上滑下去了喵！"
+            return SULocalized("persona_cat_desc", default: "不要趴着压扁本喵！你再驼背我就从你脖子上滑下去了喵！")
         case .coach:
-            return "温柔耐心地指引深呼吸与体态复原，守护你的脊椎健康。"
+            return SULocalized("persona_coach_desc", default: "温柔耐心地指引深呼吸与体态复原，守护你的脊椎健康。")
         }
     }
 

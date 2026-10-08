@@ -66,8 +66,16 @@ final class SUMetricsGridView: UIView {
     func configure(with session: SUPostureSession) {
         uprightBox.setValue(session.formattedUprightTime)
         slumpBox.setValue(session.formattedSlumpTime)
-        violationsBox.setValue("\(session.violationsCount) 次")
+        violationsBox.setValue(String(format: SULocalized("times_unit", default: "%d 次"), session.violationsCount))
         loadBox.setValue(String(format: "%.1f kg", session.accumulatedExtraLoadKg))
+    }
+
+    /// 动态刷新多语言文案
+    func refreshLocalizedStrings() {
+        uprightBox.setTitle(SULocalized("metrics_upright_ratio", default: "挺拔专注"))
+        slumpBox.setTitle(SULocalized("metrics_longest_streak", default: "低头疲劳"))
+        violationsBox.setTitle(SULocalized("metrics_violations", default: "违规频次"))
+        loadBox.setTitle(SULocalized("metrics_extra_load", default: "颈椎额外负荷"))
     }
 }
 
@@ -140,6 +148,10 @@ final class SUMetricCardBoxView: UIView {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    func setTitle(_ title: String) {
+        titleLabel.text = title
     }
 
     func setValue(_ value: String) {
