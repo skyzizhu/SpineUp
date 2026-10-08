@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		SU0000000000000000000021 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = SU0000000000000000000011 /* Alamofire */; };
 		SU0000000000000000000022 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = SU0000000000000000000012 /* SnapKit */; };
+		SU0000000000000000000032 /* SpineUpWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = SU0000000000000000000041 /* SpineUpWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,12 +27,34 @@
 			remoteGlobalIDString = 6CB813243077507000AAD2C7;
 			remoteInfo = anyway;
 		};
+		SU0000000000000000000051 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6CB8131D3077507000AAD2C7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = SU0000000000000000000061;
+			remoteInfo = SpineUpWidgetExtension;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		SU0000000000000000000031 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				SU0000000000000000000032 /* SpineUpWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		6CB813253077507000AAD2C7 /* anyway.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = anyway.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CB8133B3077507200AAD2C7 /* anywayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = anywayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CB813453077507200AAD2C7 /* anywayUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = anywayUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		SU0000000000000000000041 /* SpineUpWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SpineUpWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -41,6 +64,13 @@
 				Info.plist,
 			);
 			target = 6CB813243077507000AAD2C7 /* anyway */;
+		};
+		SU0000000000000000000072 /* Exceptions for "SpineUpWidgetExtension" folder in "SpineUpWidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = SU0000000000000000000061 /* SpineUpWidgetExtension */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -61,6 +91,14 @@
 		6CB813483077507200AAD2C7 /* anywayUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = anywayUITests;
+			sourceTree = "<group>";
+		};
+		SU0000000000000000000071 /* SpineUpWidgetExtension */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				SU0000000000000000000072 /* Exceptions for "SpineUpWidgetExtension" folder in "SpineUpWidgetExtension" target */,
+			);
+			path = SpineUpWidgetExtension;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -89,6 +127,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		SU0000000000000000000082 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -98,6 +143,7 @@
 				6CB813273077507000AAD2C7 /* anyway */,
 				6CB8133E3077507200AAD2C7 /* anywayTests */,
 				6CB813483077507200AAD2C7 /* anywayUITests */,
+				SU0000000000000000000071 /* SpineUpWidgetExtension */,
 				6CB813263077507000AAD2C7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -108,6 +154,7 @@
 				6CB813253077507000AAD2C7 /* anyway.app */,
 				6CB8133B3077507200AAD2C7 /* anywayTests.xctest */,
 				6CB813453077507200AAD2C7 /* anywayUITests.xctest */,
+				SU0000000000000000000041 /* SpineUpWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -122,10 +169,12 @@
 				6CB813213077507000AAD2C7 /* Sources */,
 				6CB813223077507000AAD2C7 /* Frameworks */,
 				6CB813233077507000AAD2C7 /* Resources */,
+				SU0000000000000000000031 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				SU0000000000000000000052 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				6CB813273077507000AAD2C7 /* anyway */,
@@ -185,6 +234,28 @@
 			productReference = 6CB813453077507200AAD2C7 /* anywayUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		SU0000000000000000000061 /* SpineUpWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = SU0000000000000000000091 /* Build configuration list for PBXNativeTarget "SpineUpWidgetExtension" */;
+			buildPhases = (
+				SU0000000000000000000081 /* Sources */,
+				SU0000000000000000000082 /* Frameworks */,
+				SU0000000000000000000083 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				SU0000000000000000000071 /* SpineUpWidgetExtension */,
+			);
+			name = SpineUpWidgetExtension;
+			packageProductDependencies = (
+			);
+			productName = SpineUpWidgetExtension;
+			productReference = SU0000000000000000000041 /* SpineUpWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -205,6 +276,9 @@
 					6CB813443077507200AAD2C7 = {
 						CreatedOnToolsVersion = 26.3;
 						TestTargetID = 6CB813243077507000AAD2C7;
+					};
+					SU0000000000000000000061 = {
+						CreatedOnToolsVersion = 26.3;
 					};
 				};
 			};
@@ -235,6 +309,7 @@
 				6CB813243077507000AAD2C7 /* anyway */,
 				6CB8133A3077507200AAD2C7 /* anywayTests */,
 				6CB813443077507200AAD2C7 /* anywayUITests */,
+				SU0000000000000000000061 /* SpineUpWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -255,6 +330,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		6CB813433077507200AAD2C7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		SU0000000000000000000083 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -285,6 +367,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		SU0000000000000000000081 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -297,6 +386,11 @@
 			isa = PBXTargetDependency;
 			target = 6CB813243077507000AAD2C7 /* anyway */;
 			targetProxy = 6CB813463077507200AAD2C7 /* PBXContainerItemProxy */;
+		};
+		SU0000000000000000000052 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = SU0000000000000000000061 /* SpineUpWidgetExtension */;
+			targetProxy = SU0000000000000000000051 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -568,6 +662,66 @@
 			};
 			name = Release;
 		};
+		SU0000000000000000000092 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5X9FV29QBX;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SpineUpWidgetExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SpineUp;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.iashes.anyway.SpineUpWidgetExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = NO;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		SU0000000000000000000093 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5X9FV29QBX;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SpineUpWidgetExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SpineUp;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.iashes.anyway.SpineUpWidgetExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = NO;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -603,6 +757,15 @@
 			buildConfigurations = (
 				6CB813573077507200AAD2C7 /* Debug */,
 				6CB813583077507200AAD2C7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		SU0000000000000000000091 /* Build configuration list for PBXNativeTarget "SpineUpWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				SU0000000000000000000092 /* Debug */,
+				SU0000000000000000000093 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
