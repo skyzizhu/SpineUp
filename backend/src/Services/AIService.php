@@ -82,12 +82,12 @@ class AIService
                 ['role' => 'system', 'content' => $systemPrompt],
                 ['role' => 'user', 'content' => $userPrompt]
             ],
-            'max_tokens'  => 60,
+            'max_tokens'  => 512,
             'temperature' => 0.8,
         ], JSON_UNESCAPED_UNICODE);
 
         $endpoint = rtrim($this->config['base_url'], '/') . '/chat/completions';
-        $timeoutMs = (int)($this->config['timeout_ms'] ?? 1500);
+        $timeoutMs = (int)($this->config['timeout_ms'] ?? 5000);
 
         $ch = curl_init($endpoint);
         curl_setopt_array($ch, [
@@ -98,9 +98,10 @@ class AIService
                 'Content-Type: application/json',
                 "Authorization: Bearer {$this->config['api_key']}",
             ],
-            CURLOPT_TIMEOUT_MS        => $timeoutMs, // 严格超时保护
-            CURLOPT_CONNECTTIMEOUT_MS => 800,
-            CURLOPT_SSL_VERIFYPEER    => true,
+            CURLOPT_TIMEOUT        => 8,
+            CURLOPT_CONNECTTIMEOUT => 3,
+            CURLOPT_NOSIGNAL       => 1,
+            CURLOPT_SSL_VERIFYPEER => true,
         ]);
 
         $rawResponse = curl_exec($ch);
