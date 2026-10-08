@@ -85,6 +85,8 @@ final class SULocalizationManager: @unchecked Sendable {
         }
     }
 
+    static let languageDidChangeNotification = Notification.Name("SULanguageDidChangeNotification")
+
     /// 切换当前应用语言
     func setLanguage(_ language: SULanguage) {
         lock.lock()
@@ -93,6 +95,12 @@ final class SULocalizationManager: @unchecked Sendable {
         lock.unlock()
 
         onLanguageChanged?(language)
+        DispatchQueue.main.async {
+            NotificationCenter.default.post(
+                name: SULocalizationManager.languageDidChangeNotification,
+                object: language
+            )
+        }
     }
 
     /// 当前语言是否为从右向左 (RTL)

@@ -48,13 +48,15 @@ final class SUMainTabBarController: SUBaseTabBarController {
     }
 
     private func observeLanguageChanges() {
-        SULocalizationManager.shared.onLanguageChanged = { [weak self] _ in
-            DispatchQueue.main.async {
-                guard let self = self, let vcs = self.viewControllers, vcs.count >= 3 else { return }
-                vcs[0].tabBarItem.title = SULocalized("tab_monitor", default: "姿态守护")
-                vcs[1].tabBarItem.title = SULocalized("tab_report", default: "今日战报")
-                vcs[2].tabBarItem.title = SULocalized("tab_settings", default: "偏好设置")
-            }
+        NotificationCenter.default.addObserver(
+            forName: SULocalizationManager.languageDidChangeNotification,
+            object: nil,
+            queue: .main
+        ) { [weak self] _ in
+            guard let self = self, let vcs = self.viewControllers, vcs.count >= 3 else { return }
+            vcs[0].tabBarItem.title = SULocalized("tab_monitor", default: "姿态守护")
+            vcs[1].tabBarItem.title = SULocalized("tab_report", default: "今日战报")
+            vcs[2].tabBarItem.title = SULocalized("tab_settings", default: "偏好设置")
         }
     }
 }

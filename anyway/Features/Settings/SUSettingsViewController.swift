@@ -111,10 +111,10 @@ final class SUSettingsViewController: SUBaseViewController {
         value: "0"
     )
 
-    // MARK: - Section 4: 语言切换
+    // MARK: - Section 4: 语言切换入口 (二级页面)
     private let languageSectionTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "语言选择 / Language"
+        label.text = SULocalized("settings_language", default: "语言 / Language")
         label.font = .systemFont(ofSize: 15, weight: .semibold)
         label.textColor = .secondaryLabel
         return label
@@ -125,17 +125,16 @@ final class SUSettingsViewController: SUBaseViewController {
         view.backgroundColor = .secondarySystemGroupedBackground
         view.layer.cornerRadius = SULayoutConstants.cornerRadius
         view.layer.cornerCurve = .continuous
+        view.layer.masksToBounds = true
         return view
     }()
 
-    private var languageButtons: [(language: SULanguage, button: UIButton)] = []
-    private let languageStackView: UIStackView = {
-        let stack = UIStackView()
-        stack.axis = .vertical
-        stack.spacing = 0
-        stack.distribution = .fillEqually
-        return stack
-    }()
+    private let languageRowView = SUSettingsNavigationRowView(
+        title: SULocalized("settings_language", default: "语言设置"),
+        value: SULocalizationManager.shared.currentLanguage.displayName,
+        iconSystemName: "globe",
+        iconBackground: .systemIndigo
+    )
 
     // MARK: - Section 5: 版本与标语
     private let sloganLabel: UILabel = {
@@ -174,6 +173,7 @@ final class SUSettingsViewController: SUBaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel.refreshEnergyData()
+        refreshLocalizedStrings()
     }
 
     override func setupSubviews() {
@@ -209,30 +209,10 @@ final class SUSettingsViewController: SUBaseViewController {
         energyCardView.addSubview(streakItemView)
         energyCardView.addSubview(totalCoinsItemView)
 
-        // 组装多语言切换
+        // 组装多语言切换入口 (二级子页面)
         contentView.addSubview(languageSectionTitleLabel)
         contentView.addSubview(languageCardView)
-        languageCardView.addSubview(languageStackView)
-
-        for language in viewModel.availableLanguages {
-            var config = UIButton.Configuration.plain()
-            let symbolConfig = UIImage.SymbolConfiguration(pointSize: 13, weight: .semibold)
-            config.image = UIImage(systemName: "globe", withConfiguration: symbolConfig)
-            config.imagePadding = 10
-            config.title = language.displayName
-            config.baseForegroundColor = .label
-            config.contentInsets = NSDirectionalEdgeInsets(top: 12, leading: 14, bottom: 12, trailing: 14)
-
-            let button = UIButton(configuration: config)
-            button.contentHorizontalAlignment = .leading
-            button.tag = language.hashValue
-            button.addAction(UIAction { [weak self] _ in
-                self?.viewModel.selectLanguage(language)
-            }, for: .touchUpInside)
-
-            languageButtons.append((language: language, button: button))
-            languageStackView.addArrangedSubview(button)
-        }
+        languageCardView.addSubview(languageRowView)
 
         // 标语与版权
         contentView.addSubview(sloganLabel)
@@ -320,7 +300,7 @@ final class SUSettingsViewController: SUBaseViewController {
             make.leading.trailing.equalToSuperview().inset(SULayoutConstants.horizontalPadding)
         }
 
-        languageStackView.snp.makeConstraints { make in
+        languageRowView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
 
@@ -351,6 +331,18 @@ final class SUSettingsViewController: SUBaseViewController {
             self?.viewModel.setSoundAlertEnabled(isOn)
         }
 
+        languageRowView.onTap = { [weak self] in
+            let languageVC = SULanguageSettingViewController()
+            self?.navigationController?.pushViewController(languageVC, animated: true)
+        }
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleLanguageDidChange),
+            name: SULocalizationManager.languageDidChangeNotification,
+            object: nil
+        )
+
         viewModel.onStateChanged = { [weak self] in
             DispatchQueue.main.async {
                 self?.refreshUI()
@@ -372,15 +364,19 @@ final class SUSettingsViewController: SUBaseViewController {
         streakItemView.updateValue("\(viewModel.streakDays) 天")
         totalCoinsItemView.updateValue("\(viewModel.totalCoins)")
 
-        for item in languageButtons {
-            let isCurrent = item.language == viewModel.currentLanguage
-            var config = item.button.configuration ?? UIButton.Configuration.plain()
-            let iconName = isCurrent ? "checkmark.circle.fill" : "circle"
-            let symbolConfig = UIImage.SymbolConfiguration(pointSize: 13, weight: .semibold)
-            config.image = UIImage(systemName: iconName, withConfiguration: symbolConfig)
-            config.baseForegroundColor = isCurrent ? .systemBlue : .label
-            item.button.configuration = config
-        }
+        languageRowView.setValue(viewModel.currentLanguage.displayName)
+    }
+
+    @objc private func handleLanguageDidChange() {
+        refreshLocalizedStrings()
+        refreshUI()
+    }
+
+    private func refreshLocalizedStrings() {
+        navigationItem.title = SULocalized("settings_title", default: "设置与个性化")
+        languageSectionTitleLabel.text = SULocalized("settings_language", default: "语言 / Language")
+        languageRowView.setTitle(SULocalized("settings_language", default: "语言设置"))
+        languageRowView.setValue(viewModel.currentLanguage.displayName)
     }
 }
 
@@ -524,3 +520,140 @@ final class SUEnergyStatItemView: UIView {
         valueLabel.text = text
     }
 }
+
+// MARK: - 辅助子组件：二级导航入口行视图
+final class SUSettingsNavigationRowView: UIView {
+    var onTap: (() -> Void)?
+
+    private let iconContainerView: UIView = {
+        let view = UIView()
+        view.layer.cornerRadius = 7
+        view.layer.cornerCurve = .continuous
+        return view
+    }()
+
+    private let iconImageView: UIImageView = {
+        let iv = UIImageView()
+        iv.contentMode = .scaleAspectFit
+        iv.tintColor = .white
+        return iv
+    }()
+
+    private let titleLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 15, weight: .semibold)
+        label.textColor = .label
+        return label
+    }()
+
+    private let valueLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 14, weight: .regular)
+        label.textColor = .secondaryLabel
+        return label
+    }()
+
+    private let chevronImageView: UIImageView = {
+        let iv = UIImageView()
+        let config = UIImage.SymbolConfiguration(pointSize: 13, weight: .semibold)
+        iv.image = UIImage(systemName: "chevron.right", withConfiguration: config)
+        iv.tintColor = .tertiaryLabel
+        iv.contentMode = .scaleAspectFit
+        return iv
+    }()
+
+    private let highlightOverlay: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.label.withAlphaComponent(0.06)
+        view.alpha = 0
+        return view
+    }()
+
+    init(title: String, value: String, iconSystemName: String, iconBackground: UIColor) {
+        super.init(frame: .zero)
+        isUserInteractionEnabled = true
+        setupUI(title: title, value: value, iconSystemName: iconSystemName, iconBackground: iconBackground)
+        setupGestures()
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    private func setupUI(title: String, value: String, iconSystemName: String, iconBackground: UIColor) {
+        addSubview(highlightOverlay)
+        addSubview(iconContainerView)
+        iconContainerView.addSubview(iconImageView)
+        addSubview(titleLabel)
+        addSubview(valueLabel)
+        addSubview(chevronImageView)
+
+        iconContainerView.backgroundColor = iconBackground
+        let config = UIImage.SymbolConfiguration(pointSize: 14, weight: .semibold)
+        iconImageView.image = UIImage(systemName: iconSystemName, withConfiguration: config)
+
+        titleLabel.text = title
+        valueLabel.text = value
+
+        highlightOverlay.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+
+        iconContainerView.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.leading.equalToSuperview().offset(14)
+            make.size.equalTo(28)
+        }
+
+        iconImageView.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.size.equalTo(18)
+        }
+
+        titleLabel.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.leading.equalTo(iconContainerView.snp.trailing).offset(12)
+        }
+
+        chevronImageView.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.trailing.equalToSuperview().offset(-14)
+            make.size.equalTo(14)
+        }
+
+        valueLabel.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.trailing.equalTo(chevronImageView.snp.leading).offset(-6)
+            make.leading.greaterThanOrEqualTo(titleLabel.snp.trailing).offset(8)
+        }
+
+        snp.makeConstraints { make in
+            make.height.equalTo(52)
+        }
+    }
+
+    private func setupGestures() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        addGestureRecognizer(tap)
+    }
+
+    @objc private func handleTap() {
+        UIView.animate(withDuration: 0.1, animations: {
+            self.highlightOverlay.alpha = 1.0
+        }) { _ in
+            UIView.animate(withDuration: 0.2) {
+                self.highlightOverlay.alpha = 0
+            }
+        }
+        onTap?()
+    }
+
+    func setTitle(_ text: String) {
+        titleLabel.text = text
+    }
+
+    func setValue(_ text: String) {
+        valueLabel.text = text
+    }
+}
+

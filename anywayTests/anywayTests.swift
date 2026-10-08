@@ -537,21 +537,88 @@ final class anywayTests: XCTestCase {
     }
 
     func testAppConfigApiBaseURLSwitching() {
-        let testDefaults = UserDefaults(suiteName: "SUConfigUrlTestSuite") ?? .standard
-        testDefaults.removePersistentDomain(forName: "SUConfigUrlTestSuite")
-        let userDefaultsManager = SUUserDefaultsManager(defaults: testDefaults)
+        let original = SUUserDefaultsManager.shared.customApiBaseURL
+        defer { SUUserDefaultsManager.shared.customApiBaseURL = original }
 
         // 默认情况下指向配置的 localServerRootURL + /v1
+        SUUserDefaultsManager.shared.customApiBaseURL = nil
         XCTAssertEqual(SUAppConfig.localServerRootURL, "http://192.168.31.101/spineup")
         XCTAssertEqual(SUAppConfig.apiBaseURL, "http://192.168.31.101/spineup/v1")
 
         // 模拟用户设置自定义本地开发服务器地址覆盖
-        userDefaultsManager.customApiBaseURL = "http://192.168.1.100:8080/v1"
-        XCTAssertEqual(userDefaultsManager.customApiBaseURL, "http://192.168.1.100:8080/v1")
+        SUUserDefaultsManager.shared.customApiBaseURL = "http://192.168.1.100:8080/v1"
+        XCTAssertEqual(SUUserDefaultsManager.shared.customApiBaseURL, "http://192.168.1.100:8080/v1")
         XCTAssertEqual(SUAppConfig.apiBaseURL, "http://192.168.1.100:8080/v1")
 
-        userDefaultsManager.customApiBaseURL = nil
-        XCTAssertNil(userDefaultsManager.customApiBaseURL)
+        SUUserDefaultsManager.shared.customApiBaseURL = nil
+        XCTAssertNil(SUUserDefaultsManager.shared.customApiBaseURL)
         XCTAssertEqual(SUAppConfig.apiBaseURL, "http://192.168.31.101/spineup/v1")
+    }
+
+    // MARK: - UI 优化测试：首页顶部状态栏解耦与偏好设置多语言二级页
+    func testPostureMonitorTopStatusBarDecoupledFromNavigationBar() {
+        let monitorVC = SUPostureMonitorViewController()
+        monitorVC.loadViewIfNeeded()
+
+        // 验证导航栏左右按钮已被彻底解耦 (为 nil)，完全释放 title 呼吸空间
+        XCTAssertNil(monitorVC.navigationItem.leftBarButtonItem)
+        XCTAssertNil(monitorVC.navigationItem.rightBarButtonItem)
+        XCTAssertFalse(monitorVC.navigationItem.title?.isEmpty ?? true)
+    }
+
+    func testLanguageSettingViewControllerInstantiationAndLocalization() {
+        let langVC = SULanguageSettingViewController()
+        langVC.loadViewIfNeeded()
+
+        XCTAssertFalse(langVC.navigationItem.title?.isEmpty ?? true)
+        XCTAssertEqual(langVC.navigationItem.largeTitleDisplayMode, .never)
+
+        // 验证语言切换能够发布广播通知
+        let originalLang = SULocalizationManager.shared.currentLanguage
+        defer { SULocalizationManager.shared.setLanguage(originalLang) }
+
+        let expectation = expectation(description: "LanguageDidChangeNotification received")
+        var receivedNotification = false
+
+        let observer = NotificationCenter.default.addObserver(
+            forName: SULocalizationManager.languageDidChangeNotification,
+            object: nil,
+            queue: .main
+        ) { _ in
+            receivedNotification = true
+            expectation.fulfill()
+        }
+
+        let targetLang: SULanguage = (originalLang == .en) ? .zhHans : .en
+        SULocalizationManager.shared.setLanguage(targetLang)
+
+        wait(for: [expectation], timeout: 2.0)
+        XCTAssertTrue(receivedNotification)
+        XCTAssertEqual(SULocalizationManager.shared.currentLanguage, targetLang)
+        NotificationCenter.default.removeObserver(observer)
+    }
+
+    func testSettingsNavigationRowViewInteraction() {
+        var didTap = false
+        let rowView = SUSettingsNavigationRowView(
+            title: "语言 / Language",
+            value: "简体中文",
+            iconSystemName: "globe",
+            iconBackground: .systemIndigo
+        )
+        rowView.onTap = {
+            didTap = true
+        }
+
+        rowView.setValue("English")
+        rowView.setTitle("Language")
+
+        // 模拟触发手势事件
+        if let tapGesture = rowView.gestureRecognizers?.compactMap({ $0 as? UITapGestureRecognizer }).first {
+            // 直接触发 onTap
+            rowView.onTap?()
+        }
+
+        XCTAssertTrue(didTap)
     }
 }

@@ -20,30 +20,45 @@ final class SUPostureMonitorViewController: SUBaseViewController {
     private let speechBubbleView = SUPetSpeechBubbleView()
     private let gaugeView = SUPostureGaugeView()
 
-    // MARK: - 导航栏轻量状态指示器
+    // MARK: - 顶部状态指示栏（解耦自 NavigationBar，避免挤占标题与文字折行）
+    private let topStatusBarView: UIView = {
+        let view = UIView()
+        return view
+    }()
+
     private let energyBadgeButton: UIButton = {
         var config = UIButton.Configuration.tinted()
         let symbolConfig = UIImage.SymbolConfiguration(pointSize: 12, weight: .bold)
         config.image = UIImage(systemName: "bolt.heart.fill", withConfiguration: symbolConfig)
-        config.imagePadding = 4
+        config.imagePadding = 5
         config.title = "0 骨气币"
-        config.baseBackgroundColor = .systemOrange.withAlphaComponent(0.15)
+        config.baseBackgroundColor = .systemOrange.withAlphaComponent(0.12)
         config.baseForegroundColor = .systemOrange
         config.cornerStyle = .capsule
-        config.contentInsets = NSDirectionalEdgeInsets(top: 6, leading: 10, bottom: 6, trailing: 10)
+        config.contentInsets = NSDirectionalEdgeInsets(top: 6, leading: 12, bottom: 6, trailing: 12)
+        config.titleLineBreakMode = .byTruncatingTail
         let button = UIButton(configuration: config)
+        button.titleLabel?.numberOfLines = 1
+        button.titleLabel?.lineBreakMode = .byTruncatingTail
+        button.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
         return button
     }()
 
     private let personaBadgeButton: UIButton = {
-        var config = UIButton.Configuration.plain()
-        let symbolConfig = UIImage.SymbolConfiguration(pointSize: 13, weight: .semibold)
+        var config = UIButton.Configuration.tinted()
+        let symbolConfig = UIImage.SymbolConfiguration(pointSize: 12, weight: .semibold)
         config.image = UIImage(systemName: "briefcase.fill", withConfiguration: symbolConfig)
-        config.imagePadding = 5
+        config.imagePadding = 6
         config.title = "打工人"
-        config.baseForegroundColor = .secondaryLabel
-        config.contentInsets = NSDirectionalEdgeInsets(top: 6, leading: 6, bottom: 6, trailing: 6)
+        config.baseBackgroundColor = .secondarySystemFill
+        config.baseForegroundColor = .label
+        config.cornerStyle = .capsule
+        config.contentInsets = NSDirectionalEdgeInsets(top: 6, leading: 12, bottom: 6, trailing: 12)
+        config.titleLineBreakMode = .byTruncatingTail
         let button = UIButton(configuration: config)
+        button.titleLabel?.numberOfLines = 1
+        button.titleLabel?.lineBreakMode = .byTruncatingTail
+        button.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
         return button
     }()
 
@@ -101,9 +116,14 @@ final class SUPostureMonitorViewController: SUBaseViewController {
         super.setupSubviews()
         navigationItem.title = SULocalized("monitor_title", default: "实时姿态守护")
 
-        // 导航栏配置清新简约原生 SF 图标指示器
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: personaBadgeButton)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: energyBadgeButton)
+        // 导航栏清空左右按钮，完全释放横向呼吸空间，杜绝标题被挤压截断
+        navigationItem.leftBarButtonItem = nil
+        navigationItem.rightBarButtonItem = nil
+
+        // 挂载顶部状态栏及双胶囊指示器
+        view.addSubview(topStatusBarView)
+        topStatusBarView.addSubview(personaBadgeButton)
+        topStatusBarView.addSubview(energyBadgeButton)
 
         // 挂载 SwiftUI 宠物容器子视图
         view.addSubview(petContainerView)
@@ -135,8 +155,27 @@ final class SUPostureMonitorViewController: SUBaseViewController {
     override func setupConstraints() {
         super.setupConstraints()
 
-        connectionBannerView.snp.makeConstraints { make in
+        topStatusBarView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(4)
+            make.leading.trailing.equalToSuperview().inset(SULayoutConstants.horizontalPadding)
+            make.height.equalTo(34)
+        }
+
+        personaBadgeButton.snp.makeConstraints { make in
+            make.leading.equalToSuperview()
+            make.centerY.equalToSuperview()
+            make.height.equalTo(32)
+            make.trailing.lessThanOrEqualTo(energyBadgeButton.snp.leading).offset(-10)
+        }
+
+        energyBadgeButton.snp.makeConstraints { make in
+            make.trailing.equalToSuperview()
+            make.centerY.equalToSuperview()
+            make.height.equalTo(32)
+        }
+
+        connectionBannerView.snp.makeConstraints { make in
+            make.top.equalTo(topStatusBarView.snp.bottom).offset(4)
             make.leading.trailing.equalToSuperview().inset(SULayoutConstants.horizontalPadding)
         }
 
@@ -186,6 +225,15 @@ final class SUPostureMonitorViewController: SUBaseViewController {
         super.setupBindings()
 
         calibrateButton.addTarget(self, action: #selector(didTapCalibrate), for: .touchUpInside)
+        personaBadgeButton.addTarget(self, action: #selector(didTapPersonaBadge), for: .touchUpInside)
+        energyBadgeButton.addTarget(self, action: #selector(didTapEnergyBadge), for: .touchUpInside)
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleLanguageDidChange),
+            name: SULocalizationManager.languageDidChangeNotification,
+            object: nil
+        )
 
         speechBubbleView.onBubbleTapped = { [weak self] in
             self?.viewModel.replayCurrentQuote()
@@ -271,9 +319,57 @@ final class SUPostureMonitorViewController: SUBaseViewController {
     }
 
     private func updatePersonaBadge(persona: SUPetPersona) {
-        let config = UIImage.SymbolConfiguration(pointSize: 13, weight: .semibold)
+        let config = UIImage.SymbolConfiguration(pointSize: 12, weight: .semibold)
         personaBadgeButton.setImage(UIImage(systemName: persona.iconSystemName, withConfiguration: config), for: .normal)
         personaBadgeButton.setTitle(persona.displayName, for: .normal)
+    }
+
+    @objc private func didTapPersonaBadge() {
+        let alert = UIAlertController(
+            title: SULocalized("switch_persona_title", default: "切换桌宠人格"),
+            message: SULocalized("switch_persona_subtitle", default: "不同人格拥有截然不同的督促台词风格与交互动效"),
+            preferredStyle: .actionSheet
+        )
+
+        for persona in SUPetPersona.allCases {
+            let isCurrent = persona == viewModel.activePersona
+            let title = isCurrent ? "✓ \(persona.displayName)" : persona.displayName
+            let action = UIAlertAction(title: title, style: .default) { [weak self] _ in
+                SUPetPersonaManager.shared.selectPersona(persona)
+                SUAudioFeedbackManager.shared.triggerHapticSelection()
+            }
+            alert.addAction(action)
+        }
+
+        alert.addAction(UIAlertAction(title: SULocalized("cancel", default: "取消"), style: .cancel))
+
+        if let popover = alert.popoverPresentationController {
+            popover.sourceView = personaBadgeButton
+            popover.sourceRect = personaBadgeButton.bounds
+        }
+
+        present(alert, animated: true)
+    }
+
+    @objc private func didTapEnergyBadge() {
+        SUAudioFeedbackManager.shared.triggerHapticLightTap()
+        let alert = UIAlertController(
+            title: SULocalized("energy_coins_badge_title", default: "骨气能量币"),
+            message: String(
+                format: SULocalized("energy_coins_info_msg", default: "当前累计：%d 骨气币\n保持端坐可获得骨气币奖励，连续挺拔打卡可激活专属成就！"),
+                viewModel.currentTotalEnergyCoins
+            ),
+            preferredStyle: .alert
+        )
+        alert.addAction(UIAlertAction(title: SULocalized("confirm", default: "好的"), style: .default))
+        present(alert, animated: true)
+    }
+
+    @objc private func handleLanguageDidChange() {
+        navigationItem.title = SULocalized("monitor_title", default: "实时姿态守护")
+        updateEnergyBadge(totalCoins: viewModel.currentTotalEnergyCoins)
+        updatePersonaBadge(persona: viewModel.activePersona)
+        calibrateButton.setTitle(SULocalized("calibrate_button", default: "一键端坐校准"), for: .normal)
     }
 
     @objc private func didTapCalibrate() {
@@ -295,8 +391,13 @@ final class SUPostureMonitorViewController: SUBaseViewController {
         case .regularDual, .tent:
             // iPhone Duo 展开态/帐篷立态：中缝避让双栏，左栏放台词与桌宠，右栏放仪表盘与校准控制
             let layout = SUDuoLayoutHelper.splitColumnLayout(totalWidth: size.width)
-            connectionBannerView.snp.remakeConstraints { make in
+            topStatusBarView.snp.remakeConstraints { make in
                 make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(4)
+                make.leading.trailing.equalToSuperview().inset(SULayoutConstants.horizontalPadding)
+                make.height.equalTo(34)
+            }
+            connectionBannerView.snp.remakeConstraints { make in
+                make.top.equalTo(topStatusBarView.snp.bottom).offset(4)
                 make.leading.trailing.equalToSuperview().inset(SULayoutConstants.horizontalPadding)
             }
             speechBubbleView.snp.remakeConstraints { make in
@@ -325,8 +426,13 @@ final class SUPostureMonitorViewController: SUBaseViewController {
         case .tabletop:
             // iPhone Duo 半折悬停 Tabletop 态：上屏展示宠物，下屏操作控制
             let vertical = SUDuoLayoutHelper.tabletopVerticalLayout(totalHeight: size.height)
-            connectionBannerView.snp.remakeConstraints { make in
+            topStatusBarView.snp.remakeConstraints { make in
                 make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(4)
+                make.leading.trailing.equalToSuperview().inset(SULayoutConstants.horizontalPadding)
+                make.height.equalTo(34)
+            }
+            connectionBannerView.snp.remakeConstraints { make in
+                make.top.equalTo(topStatusBarView.snp.bottom).offset(4)
                 make.leading.trailing.equalToSuperview().inset(SULayoutConstants.horizontalPadding)
             }
             speechBubbleView.snp.remakeConstraints { make in
@@ -350,8 +456,13 @@ final class SUPostureMonitorViewController: SUBaseViewController {
 
         case .compact:
             // 单列经典自适应流
-            connectionBannerView.snp.remakeConstraints { make in
+            topStatusBarView.snp.remakeConstraints { make in
                 make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(4)
+                make.leading.trailing.equalToSuperview().inset(SULayoutConstants.horizontalPadding)
+                make.height.equalTo(34)
+            }
+            connectionBannerView.snp.remakeConstraints { make in
+                make.top.equalTo(topStatusBarView.snp.bottom).offset(4)
                 make.leading.trailing.equalToSuperview().inset(SULayoutConstants.horizontalPadding)
             }
             speechBubbleView.snp.remakeConstraints { make in
