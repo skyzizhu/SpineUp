@@ -1,0 +1,42 @@
+/* Localizable.strings (Japanese) - SpineUpWidgetExtension */
+
+/* Widget Metadata */
+"widget_display_name" = "SpineUp デスクトップ姿勢ペット";
+"widget_description" = "リアルタイムの姿勢傾斜角、頸椎負荷、ペットの仲間を表示し、ワンタップでリセット可能。";
+
+/* Intent */
+"intent_calibration_title" = "SpineUp ワンタップ姿勢校正";
+"intent_calibration_desc" = "現在の姿勢を直立基準点として設定します";
+
+/* Live Activity & Dynamic Island */
+"live_activity_title" = "SpineUp リアルタイム姿勢ガード";
+"live_activity_monitoring" = "測定中";
+
+/* Pet Personas */
+"persona_worker" = "オフィスワーカー";
+"persona_zen" = "禅の師範";
+"persona_rebel" = "反逆パンク";
+"persona_medic" = "厳格な整形外科医";
+"persona_cat" = "ツンデレ猫";
+"persona_coach" = "優しいコーチ";
+
+/* Posture States */
+"state_upright" = "背筋直立";
+"state_mild_slouch" = "やや前傾";
+"state_severe_slouch" = "猫背注意";
+"state_monitoring" = "測定中";
+
+/* UI Labels */
+"label_current_angle" = "傾斜角度";
+"label_focus_minutes" = "集中 %d分";
+"label_upright_minutes" = "直立 %d分";
+"label_extra_load" = "+%.1f kg 負荷";
+"label_pet_companion" = "SpineUp ペット";
+"btn_calibrate" = "校正";
+"btn_one_tap_calibrate" = "ワンタップ校正";
+
+/* Motivational Quotes */
+"quote_default" = "骨のある生き方を！背筋を伸ばそう！";
+"quote_upright" = "素晴らしい姿勢です。この調子で！";
+"quote_mild_slouch" = "少し首が傾いています。軽く整えましょう〜";
+"quote_severe_slouch" = "頸椎が悲鳴を上げています！顎を引いて！";

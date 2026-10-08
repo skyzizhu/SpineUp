@@ -1,0 +1,42 @@
+/* Localizable.strings (Korean) - SpineUpWidgetExtension */
+
+/* Widget Metadata */
+"widget_display_name" = "SpineUp 데스크톱 자세 펫";
+"widget_description" = "실시간 자세 각도, 경추 하중 및 펫 컴패니언을 표시하며 원탭 교정을 지원합니다.";
+
+/* Intent */
+"intent_calibration_title" = "SpineUp 원탭 단정 교정";
+"intent_calibration_desc" = "현재 앉은 자세를 바른 기준 영점으로 설정합니다";
+
+/* Live Activity & Dynamic Island */
+"live_activity_title" = "SpineUp 실시간 자세 가드";
+"live_activity_monitoring" = "측정 중";
+
+/* Pet Personas */
+"persona_worker" = "직장인";
+"persona_zen" = "선 마스터";
+"persona_rebel" = "반항 펑크";
+"persona_medic" = "엄격한 정형외과 의사";
+"persona_cat" = "츤데레 고양이";
+"persona_coach" = "다정한 코치";
+
+/* Posture States */
+"state_upright" = "바른 자세";
+"state_mild_slouch" = "약간 기울어짐";
+"state_severe_slouch" = "심한 거북목";
+"state_monitoring" = "측정 중";
+
+/* UI Labels */
+"label_current_angle" = "현재 각도";
+"label_focus_minutes" = "집중 %d분";
+"label_upright_minutes" = "바른 자세 %d분";
+"label_extra_load" = "+%.1f kg 하중";
+"label_pet_companion" = "SpineUp 펫";
+"btn_calibrate" = "교정";
+"btn_one_tap_calibrate" = "원탭 교정";
+
+/* Motivational Quotes */
+"quote_default" = "자세에 뼈대가 있어야죠! 바르게 유지 중!";
+"quote_upright" = "자세가 훌륭합니다. 계속 유지하세요!";
+"quote_mild_slouch" = "목이 살짝 기울어졌어요. 가볍게 펴보세요~";
+"quote_severe_slouch" = "척추가 울고 있어요! 턱을 당기세요!";

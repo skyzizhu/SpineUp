@@ -1,0 +1,42 @@
+/* Localizable.strings (Traditional Chinese) - SpineUpWidgetExtension */
+
+/* Widget Metadata */
+"widget_display_name" = "SpineUp 桌面體態寵物";
+"widget_description" = "即時顯示坐姿傾角、頸椎負荷與寵物陪伴，支援一鍵端正校準。";
+
+/* Intent */
+"intent_calibration_title" = "SpineUp 一鍵端坐校準";
+"intent_calibration_desc" = "立即將當前坐姿設定為端正基準零點";
+
+/* Live Activity & Dynamic Island */
+"live_activity_title" = "SpineUp 即時體態守護";
+"live_activity_monitoring" = "監測中";
+
+/* Pet Personas */
+"persona_worker" = "辦公打工人";
+"persona_zen" = "禪修老道";
+"persona_rebel" = "叛逆朋克";
+"persona_medic" = "嚴厲骨科醫";
+"persona_cat" = "傲嬌貓咪";
+"persona_coach" = "溫和教練";
+
+/* Posture States */
+"state_upright" = "挺拔端正";
+"state_mild_slouch" = "輕微前傾";
+"state_severe_slouch" = "嚴重駝背";
+"state_monitoring" = "監測中";
+
+/* UI Labels */
+"label_current_angle" = "當前傾角";
+"label_focus_minutes" = "專注 %d 分鐘";
+"label_upright_minutes" = "挺拔專注 %d 分鐘";
+"label_extra_load" = "+%.1f kg 負荷";
+"label_pet_companion" = "SpineUp 桌面寵物";
+"btn_calibrate" = "校準";
+"btn_one_tap_calibrate" = "一鍵校準";
+
+/* Motivational Quotes */
+"quote_default" = "做人要有骨氣，端正挺拔中！";
+"quote_upright" = "狀態極佳，身姿如松，繼續保持！";
+"quote_mild_slouch" = "脖子微傾斜，稍作調整更挺拔哦～";
+"quote_severe_slouch" = "你的脊椎在哭泣！快抬起下巴！";

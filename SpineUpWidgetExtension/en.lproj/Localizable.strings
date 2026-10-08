@@ -1,0 +1,42 @@
+/* Localizable.strings (English) - SpineUpWidgetExtension */
+
+/* Widget Metadata */
+"widget_display_name" = "SpineUp Posture Pet";
+"widget_description" = "Real-time posture angle, cervical load, pet companion, with one-tap calibration.";
+
+/* Intent */
+"intent_calibration_title" = "SpineUp One-Tap Calibration";
+"intent_calibration_desc" = "Set current posture as upright reference zero point";
+
+/* Live Activity & Dynamic Island */
+"live_activity_title" = "SpineUp Posture Guard";
+"live_activity_monitoring" = "Monitoring";
+
+/* Pet Personas */
+"persona_worker" = "Office Worker";
+"persona_zen" = "Zen Master";
+"persona_rebel" = "Rebel Punk";
+"persona_medic" = "Orthopedist";
+"persona_cat" = "Tsundere Cat";
+"persona_coach" = "Gentle Coach";
+
+/* Posture States */
+"state_upright" = "Upright";
+"state_mild_slouch" = "Mild Slouch";
+"state_severe_slouch" = "Severe Slouch";
+"state_monitoring" = "Monitoring";
+
+/* UI Labels */
+"label_current_angle" = "Pitch Angle";
+"label_focus_minutes" = "Focus %dm";
+"label_upright_minutes" = "Upright %d min";
+"label_extra_load" = "+%.1f kg load";
+"label_pet_companion" = "SpineUp Pet";
+"btn_calibrate" = "Calibrate";
+"btn_one_tap_calibrate" = "One-Tap Calibrate";
+
+/* Motivational Quotes */
+"quote_default" = "Keep your spine upright with pride!";
+"quote_upright" = "Excellent posture, upright like a pine!";
+"quote_mild_slouch" = "Head slightly tilted, ease up and adjust~";
+"quote_severe_slouch" = "Your spine is crying! Lift your chin up!";

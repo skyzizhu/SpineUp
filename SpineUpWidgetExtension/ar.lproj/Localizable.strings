@@ -1,0 +1,42 @@
+/* Localizable.strings (Arabic - RTL) - SpineUpWidgetExtension */
+
+/* Widget Metadata */
+"widget_display_name" = "حيوان وضعية SpineUp لسطح المكتب";
+"widget_description" = "عرض زاوية الوضعية في الوقت الفعلي وحمل الرقبة ومرافقة الحيوان الأليف مع معايرة بنقرة واحدة.";
+
+/* Intent */
+"intent_calibration_title" = "معايرة SpineUp بنقرة واحدة";
+"intent_calibration_desc" = "تعيين وضعية الجلوس الحالية كنقطة الصفر المرجعية";
+
+/* Live Activity & Dynamic Island */
+"live_activity_title" = "حارس وضعية SpineUp المباشر";
+"live_activity_monitoring" = "قيد المراقبة";
+
+/* Pet Personas */
+"persona_worker" = "موظف المكتب";
+"persona_zen" = "معلم الزن";
+"persona_rebel" = "بانك متمرد";
+"persona_medic" = "طبيب عظام صارم";
+"persona_cat" = "قط مغرور";
+"persona_coach" = "مدرب لطيف";
+
+/* Posture States */
+"state_upright" = "مستقيم";
+"state_mild_slouch" = "انحناء طفيف";
+"state_severe_slouch" = "انحناء شديد";
+"state_monitoring" = "قيد المراقبة";
+
+/* UI Labels */
+"label_current_angle" = "زاوية الميل";
+"label_focus_minutes" = "تركيز %d دقيقة";
+"label_upright_minutes" = "استقامة %d دقيقة";
+"label_extra_load" = "+%.1f كجم حمل";
+"label_pet_companion" = "حيوان SpineUp";
+"btn_calibrate" = "معايرة";
+"btn_one_tap_calibrate" = "معايرة بنقرة";
+
+/* Motivational Quotes */
+"quote_default" = "حافظ على استقامة عمودك الفقري بفخر!";
+"quote_upright" = "وضعية ممتازة، مستقيم كالشجرة، استمر!";
+"quote_mild_slouch" = "الرقبة مائلة قليلاً، ارفع رأسك قليلاً~";
+"quote_severe_slouch" = "عمودك الفقري يشتكي! ارفع ذقنك للأعلى!";

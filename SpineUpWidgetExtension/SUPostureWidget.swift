@@ -28,9 +28,9 @@ struct SUPostureEntry: TimelineEntry {
             pitchDeg: 4.2,
             extraLoadKg: 0.0,
             uprightMinutes: 42,
-            petName: "办公打工人",
+            petName: SUWidgetLocalization.petName(for: "worker"),
             petIcon: "figure.walk.motion",
-            quote: "做人要有骨气，端正挺拔中！"
+            quote: SUWidgetLocalization.quote(for: "upright")
         )
     }
 }
@@ -63,31 +63,23 @@ struct SUPostureTimelineProvider: TimelineProvider {
         }
 
         let petIcon: String
-        let petName: String
         switch persona {
         case "zen":
             petIcon = "sparkles"
-            petName = "禅修老道"
         case "rebel":
             petIcon = "bolt.fill"
-            petName = "叛逆朋克"
         case "medic":
             petIcon = "cross.case.fill"
-            petName = "严厉骨科医"
+        case "cat":
+            petIcon = "cat.fill"
+        case "coach":
+            petIcon = "figure.mind.and.body"
         default:
             petIcon = "briefcase.fill"
-            petName = "办公打工人"
         }
 
-        let quote: String
-        switch state {
-        case "severeSlouch":
-            quote = "你的脊椎在哭泣！快抬起下巴！"
-        case "mildSlouch":
-            quote = "脖子微倾斜，稍作调整更挺拔哦～"
-        default:
-            quote = "状态极佳，身姿如松，继续保持！"
-        }
+        let petName = SUWidgetLocalization.petName(for: persona)
+        let quote = SUWidgetLocalization.quote(for: state)
 
         let entry = SUPostureEntry(
             date: Date(),
@@ -104,6 +96,33 @@ struct SUPostureTimelineProvider: TimelineProvider {
         let nextUpdate = Calendar.current.date(byAdding: .minute, value: 15, to: Date()) ?? Date().addingTimeInterval(900)
         let timeline = Timeline(entries: [entry], policy: .after(nextUpdate))
         completion(timeline)
+    }
+}
+
+// MARK: - Dynamic Theme Colors (Light & Dark Mode)
+
+enum SUWidgetTheme {
+    static func tintColor(for state: String) -> Color {
+        switch state {
+        case "severeSlouch", "severeSlump":
+            return Color(uiColor: UIColor { traits in
+                traits.userInterfaceStyle == .dark
+                    ? UIColor(red: 1.0, green: 0.35, blue: 0.35, alpha: 1.0)
+                    : UIColor(red: 0.88, green: 0.22, blue: 0.22, alpha: 1.0)
+            })
+        case "mildSlouch", "slightSlump":
+            return Color(uiColor: UIColor { traits in
+                traits.userInterfaceStyle == .dark
+                    ? UIColor(red: 1.0, green: 0.65, blue: 0.20, alpha: 1.0)
+                    : UIColor(red: 0.92, green: 0.52, blue: 0.12, alpha: 1.0)
+            })
+        default:
+            return Color(uiColor: UIColor { traits in
+                traits.userInterfaceStyle == .dark
+                    ? UIColor(red: 0.25, green: 0.82, blue: 0.52, alpha: 1.0)
+                    : UIColor(red: 0.15, green: 0.65, blue: 0.42, alpha: 1.0)
+            })
+        }
     }
 }
 
@@ -136,14 +155,7 @@ private struct SmallWidgetView: View {
     let entry: SUPostureEntry
 
     private var themeColor: Color {
-        switch entry.postureState {
-        case "severeSlouch":
-            return Color.red
-        case "mildSlouch":
-            return Color.orange
-        default:
-            return Color(red: 0.18, green: 0.65, blue: 0.45)
-        }
+        SUWidgetTheme.tintColor(for: entry.postureState)
     }
 
     var body: some View {
@@ -169,9 +181,11 @@ private struct SmallWidgetView: View {
                 Text(entry.petName)
                     .font(.system(size: 12, weight: .semibold))
                     .foregroundColor(.primary)
-                Text("专注 \(entry.uprightMinutes)m")
+                    .lineLimit(1)
+                Text(SUWidgetLocalization.localizedFormat("label_focus_minutes", default: "专注 %d 分钟", entry.uprightMinutes))
                     .font(.system(size: 10, weight: .medium))
                     .foregroundColor(.secondary)
+                    .lineLimit(1)
             }
 
             Spacer()
@@ -180,7 +194,7 @@ private struct SmallWidgetView: View {
                 HStack(spacing: 4) {
                     Image(systemName: "scope")
                         .font(.system(size: 10, weight: .bold))
-                    Text("校准")
+                    Text(SUWidgetLocalization.localizedString("btn_calibrate", default: "校准"))
                         .font(.system(size: 10, weight: .semibold))
                 }
                 .foregroundColor(.white)
@@ -201,14 +215,7 @@ private struct MediumWidgetView: View {
     let entry: SUPostureEntry
 
     private var themeColor: Color {
-        switch entry.postureState {
-        case "severeSlouch":
-            return Color.red
-        case "mildSlouch":
-            return Color.orange
-        default:
-            return Color(red: 0.18, green: 0.65, blue: 0.45)
-        }
+        SUWidgetTheme.tintColor(for: entry.postureState)
     }
 
     var body: some View {
@@ -226,12 +233,13 @@ private struct MediumWidgetView: View {
                     }
 
                     VStack(alignment: .leading, spacing: 2) {
-                        Text("SpineUp 宠物")
+                        Text(SUWidgetLocalization.localizedString("label_pet_companion", default: "SpineUp 桌面宠物"))
                             .font(.system(size: 11, weight: .medium))
                             .foregroundColor(.secondary)
                         Text(entry.petName)
                             .font(.system(size: 14, weight: .bold))
                             .foregroundColor(.primary)
+                            .lineLimit(1)
                     }
                 }
 
@@ -243,14 +251,20 @@ private struct MediumWidgetView: View {
                 Spacer()
 
                 HStack(spacing: 8) {
-                    Label("\(entry.uprightMinutes) 分钟", systemImage: "clock.fill")
-                        .font(.system(size: 10, weight: .medium))
-                        .foregroundColor(.secondary)
+                    Label(
+                        SUWidgetLocalization.localizedFormat("label_focus_minutes", default: "%d 分钟", entry.uprightMinutes),
+                        systemImage: "clock.fill"
+                    )
+                    .font(.system(size: 10, weight: .medium))
+                    .foregroundColor(.secondary)
 
                     if entry.extraLoadKg > 0.5 {
-                        Label("+\(String(format: "%.1f", entry.extraLoadKg))kg", systemImage: "scalemass.fill")
-                            .font(.system(size: 10, weight: .semibold))
-                            .foregroundColor(.orange)
+                        Label(
+                            SUWidgetLocalization.localizedFormat("label_extra_load", default: "+%.1f kg 负荷", entry.extraLoadKg),
+                            systemImage: "scalemass.fill"
+                        )
+                        .font(.system(size: 10, weight: .semibold))
+                        .foregroundColor(.orange)
                     }
                 }
             }
@@ -263,7 +277,7 @@ private struct MediumWidgetView: View {
                     Text("\(String(format: "%.1f", entry.pitchDeg))°")
                         .font(.system(size: 26, weight: .heavy, design: .rounded))
                         .foregroundColor(themeColor)
-                    Text("当前倾角")
+                    Text(SUWidgetLocalization.localizedString("label_current_angle", default: "当前倾角"))
                         .font(.system(size: 10, weight: .medium))
                         .foregroundColor(.secondary)
                 }
@@ -274,18 +288,18 @@ private struct MediumWidgetView: View {
                     HStack(spacing: 4) {
                         Image(systemName: "scope")
                             .font(.system(size: 12, weight: .bold))
-                        Text("一键校准")
+                        Text(SUWidgetLocalization.localizedString("btn_one_tap_calibrate", default: "一键校准"))
                             .font(.system(size: 11, weight: .semibold))
                     }
                     .foregroundColor(.white)
-                    .padding(.horizontal, 12)
+                    .padding(.horizontal, 10)
                     .padding(.vertical, 7)
                     .background(themeColor)
                     .clipShape(Capsule())
                 }
                 .buttonStyle(.plain)
             }
-            .frame(width: 88)
+            .frame(width: 92)
         }
         .padding(4)
     }
@@ -300,8 +314,8 @@ struct SUPostureWidget: Widget {
         StaticConfiguration(kind: kind, provider: SUPostureTimelineProvider()) { entry in
             SUPostureWidgetEntryView(entry: entry)
         }
-        .configurationDisplayName("SpineUp 桌面体态宠物")
-        .description("实时显示坐姿倾角、颈椎负荷与宠物陪伴，支持一键端正校准。")
+        .configurationDisplayName(LocalizedStringResource("widget_display_name", defaultValue: "SpineUp 桌面体态宠物"))
+        .description(LocalizedStringResource("widget_description", defaultValue: "实时显示坐姿倾角、颈椎负荷与宠物陪伴，支持一键端正校准。"))
         .supportedFamilies([.systemSmall, .systemMedium])
     }
 }

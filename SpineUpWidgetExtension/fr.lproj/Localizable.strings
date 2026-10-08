@@ -1,0 +1,42 @@
+/* Localizable.strings (French) - SpineUpWidgetExtension */
+
+/* Widget Metadata */
+"widget_display_name" = "Animal de posture SpineUp";
+"widget_description" = "Affichage de l'angle de posture, charge cervicale et compagnon avec étalonnage en un geste.";
+
+/* Intent */
+"intent_calibration_title" = "Étalonnage en un geste SpineUp";
+"intent_calibration_desc" = "Définit la posture actuelle comme point de référence";
+
+/* Live Activity & Dynamic Island */
+"live_activity_title" = "Gardien de posture SpineUp en direct";
+"live_activity_monitoring" = "En cours";
+
+/* Pet Personas */
+"persona_worker" = "Employé de bureau";
+"persona_zen" = "Maître Zen";
+"persona_rebel" = "Punk rebelle";
+"persona_medic" = "Orthopédiste strict";
+"persona_cat" = "Chat espiègle";
+"persona_coach" = "Coach bienveillant";
+
+/* Posture States */
+"state_upright" = "Droit";
+"state_mild_slouch" = "Légère flexion";
+"state_severe_slouch" = "Courbure sévère";
+"state_monitoring" = "En cours";
+
+/* UI Labels */
+"label_current_angle" = "Angle d'inclinaison";
+"label_focus_minutes" = "Focus %d min";
+"label_upright_minutes" = "Droit %d min";
+"label_extra_load" = "+%.1f kg de charge";
+"label_pet_companion" = "Animal SpineUp";
+"btn_calibrate" = "Calibrer";
+"btn_one_tap_calibrate" = "Étalonnage 1 clic";
+
+/* Motivational Quotes */
+"quote_default" = "Gardez votre colonne vertébrale droite avec fierté !";
+"quote_upright" = "Excellente posture, droite comme un pin, continuez !";
+"quote_mild_slouch" = "Tête légèrement inclinée, ajustez doucement~";
+"quote_severe_slouch" = "Votre colonne vertébrale souffre ! Relevez le menton !";

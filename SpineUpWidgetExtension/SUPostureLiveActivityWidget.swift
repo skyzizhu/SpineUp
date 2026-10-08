@@ -9,12 +9,14 @@ import SwiftUI
 import WidgetKit
 import ActivityKit
 
-/// 灵动岛 (Dynamic Island) 与锁屏实时活动 Widget (iOS 26+)
+/// 灵动岛 (Dynamic Island) 与锁屏实时活动 Widget (支持 7 语言与深色模式自适应)
 struct SUPostureLiveActivityWidget: Widget {
     var body: some WidgetConfiguration {
         ActivityConfiguration(for: SUPostureActivityAttributes.self) { context in
             // 锁屏实时常驻面板
             SUPostureLiveActivityLockScreenView(context: context)
+                .activityBackgroundTint(Color.black.opacity(0.4))
+                .activitySystemActionForegroundColor(Color.primary)
         } dynamicIsland: { context in
             // 灵动岛多态配置
             DynamicIsland {
@@ -24,7 +26,7 @@ struct SUPostureLiveActivityWidget: Widget {
                         Image(systemName: personaIcon(for: context.state.personaId))
                             .font(.system(size: 16, weight: .bold))
                             .foregroundColor(tintColor(for: context.state.postureState))
-                        Text(stateTitle(for: context.state.postureState))
+                        Text(SUWidgetLocalization.stateTitle(for: context.state.postureState))
                             .font(.system(size: 13, weight: .bold))
                             .foregroundColor(tintColor(for: context.state.postureState))
                     }
@@ -41,12 +43,12 @@ struct SUPostureLiveActivityWidget: Widget {
                 DynamicIslandExpandedRegion(.bottom) {
                     VStack(alignment: .leading, spacing: 4) {
                         HStack {
-                            Text("挺拔专注 \(context.state.uprightMinutes) 分钟")
+                            Text(SUWidgetLocalization.localizedFormat("label_upright_minutes", default: "挺拔专注 %d 分钟", context.state.uprightMinutes))
                                 .font(.system(size: 11, weight: .medium))
                                 .foregroundColor(.secondary)
                             Spacer()
                             if context.state.extraLoadKg > 0.5 {
-                                Text("+ \(String(format: "%.1f", context.state.extraLoadKg)) kg 负荷")
+                                Text(SUWidgetLocalization.localizedFormat("label_extra_load", default: "+ %.1f kg 负荷", context.state.extraLoadKg))
                                     .font(.system(size: 11, weight: .semibold))
                                     .foregroundColor(.orange)
                             }
@@ -79,36 +81,25 @@ struct SUPostureLiveActivityWidget: Widget {
         switch id {
         case "cat": return "cat.fill"
         case "coach": return "figure.mind.and.body"
+        case "zen": return "sparkles"
+        case "rebel": return "bolt.fill"
+        case "medic": return "cross.case.fill"
         default: return "briefcase.fill"
         }
     }
 
     private func tintColor(for state: String) -> Color {
-        switch state {
-        case "upright": return .green
-        case "slightSlump": return .orange
-        case "severeSlump": return .red
-        default: return .blue
-        }
-    }
-
-    private func stateTitle(for state: String) -> String {
-        switch state {
-        case "upright": return "挺拔"
-        case "slightSlump": return "前倾"
-        case "severeSlump": return "驼背"
-        default: return "监测中"
-        }
+        SUWidgetTheme.tintColor(for: state)
     }
 }
 
-/// 锁屏实时常驻面板视图
+/// 锁屏实时常驻面板视图 (深色模式与 Liquid Glass 原生半透)
 struct SUPostureLiveActivityLockScreenView: View {
     let context: ActivityViewContext<SUPostureActivityAttributes>
 
     var body: some View {
         let state = context.state
-        let tint = tintColor(for: state.postureState)
+        let tint = SUWidgetTheme.tintColor(for: state.postureState)
 
         VStack(alignment: .leading, spacing: 8) {
             HStack(spacing: 8) {
@@ -116,7 +107,7 @@ struct SUPostureLiveActivityLockScreenView: View {
                     .font(.system(size: 16, weight: .bold))
                     .foregroundColor(tint)
 
-                Text("SpineUp 实时守护")
+                Text(SUWidgetLocalization.localizedString("live_activity_title", default: "SpineUp 实时守护"))
                     .font(.system(size: 14, weight: .bold))
                     .foregroundColor(.primary)
 
@@ -126,7 +117,7 @@ struct SUPostureLiveActivityLockScreenView: View {
                     Image(systemName: "clock.fill")
                         .font(.system(size: 11))
                         .foregroundColor(.secondary)
-                    Text("\(state.uprightMinutes) 分钟")
+                    Text(SUWidgetLocalization.localizedFormat("label_focus_minutes", default: "%d 分钟", state.uprightMinutes))
                         .font(.system(size: 12, weight: .semibold))
                         .foregroundColor(.secondary)
                 }
@@ -134,7 +125,7 @@ struct SUPostureLiveActivityLockScreenView: View {
 
             HStack {
                 HStack(spacing: 4) {
-                    Text(stateTitle(for: state.postureState))
+                    Text(SUWidgetLocalization.stateTitle(for: state.postureState))
                         .font(.system(size: 12, weight: .bold))
                         .padding(.horizontal, 8)
                         .padding(.vertical, 3)
@@ -150,7 +141,7 @@ struct SUPostureLiveActivityLockScreenView: View {
                 Spacer()
 
                 if state.extraLoadKg > 0.5 {
-                    Text("+ \(String(format: "%.1f", state.extraLoadKg)) kg 负荷")
+                    Text(SUWidgetLocalization.localizedFormat("label_extra_load", default: "+ %.1f kg 负荷", state.extraLoadKg))
                         .font(.system(size: 11, weight: .medium))
                         .foregroundColor(.orange)
                 }
@@ -162,23 +153,10 @@ struct SUPostureLiveActivityLockScreenView: View {
                 .lineLimit(2)
         }
         .padding(14)
-    }
-
-    private func tintColor(for state: String) -> Color {
-        switch state {
-        case "upright": return .green
-        case "slightSlump": return .orange
-        case "severeSlump": return .red
-        default: return .blue
-        }
-    }
-
-    private func stateTitle(for state: String) -> String {
-        switch state {
-        case "upright": return "挺拔端正"
-        case "slightSlump": return "轻微前倾"
-        case "severeSlump": return "严重驼背"
-        default: return "监测中"
+        .background {
+            RoundedRectangle(cornerRadius: 18, style: .continuous)
+                .fill(Color(.secondarySystemBackground))
+                .opacity(0.92)
         }
     }
 
@@ -186,6 +164,9 @@ struct SUPostureLiveActivityLockScreenView: View {
         switch id {
         case "cat": return "cat.fill"
         case "coach": return "figure.mind.and.body"
+        case "zen": return "sparkles"
+        case "rebel": return "bolt.fill"
+        case "medic": return "cross.case.fill"
         default: return "briefcase.fill"
         }
     }

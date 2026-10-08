@@ -11,8 +11,8 @@ import Foundation
 /// 桌面小组件快捷一键校准 AppIntent (iOS 26+)
 struct SUCalibrationIntent: AppIntent {
 
-    static var title: LocalizedStringResource = "SpineUp 一键端坐校准"
-    static var description = IntentDescription("立即将当前坐姿设置为端正基准零点")
+    static var title: LocalizedStringResource = LocalizedStringResource("intent_calibration_title", defaultValue: "SpineUp 一键端坐校准")
+    static var description = IntentDescription(LocalizedStringResource("intent_calibration_desc", defaultValue: "立即将当前坐姿设置为端正基准零点"))
 
     static var isDiscoverable: Bool = true
     static var openAppWhenRun: Bool = false
