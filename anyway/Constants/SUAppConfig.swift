@@ -12,6 +12,7 @@ enum SUAppConfig {
 
     // MARK: - 应用基本信息
     static let appName = "SpineUp"
+    static let bundleDisplayName = "SpineUp"
     static let appDisplayName = "SpineUp: AI Posture Pet"
     static let appBundleID = Bundle.main.bundleIdentifier ?? "com.iashes.anyway"
     static let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0.0"

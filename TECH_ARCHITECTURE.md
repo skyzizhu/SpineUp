@@ -490,11 +490,12 @@ App 全面支持 **浅色模式 (Light Mode)** 与 **深色模式 (Dark Mode)** 
 | **7** | **法语 (French)** | `fr` | LTR (左到右) | 欧洲主力市场 |
 
 ### 15.2 Info.plist 系统级多语言本地化 (`InfoPlist.xcstrings` / `InfoPlist.strings`)
-应用名称与所有系统权限描述必须在 7 种语言下完整提供本地化，杜绝在非英语系统下弹出未经翻译的权限弹窗：
+* **应用桌面名称 (`CFBundleDisplayName`)**：**不进行多语言本地化，全局统一显示为 `SpineUp`**。
+* **系统权限描述**：必须在 7 种语言下完整提供本地化，杜绝在非英语系统下弹出未经翻译的权限弹窗：
 
 | 字段 Key | 英语 (`en`) | 简体中文 (`zh-Hans`) | 繁体中文 (`zh-Hant`) | 日语 (`ja`) | 韩语 (`ko`) | 阿拉伯语 (`ar`) | 法语 (`fr`) |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| `CFBundleDisplayName` | SpineUp | 骨气 | 骨氣 | スパインアップ | 스파인업 | سباين آب | SpineUp |
+| `CFBundleDisplayName` | **SpineUp** | **SpineUp** | **SpineUp** | **SpineUp** | **SpineUp** | **SpineUp** | **SpineUp** |
 | `NSMotionUsageDescription` | SpineUp needs motion sensor access to monitor your posture via AirPods. | SpineUp 需要访问运动传感器以通过 AirPods 监测您的头部姿态。 | SpineUp 需要存取運動感測器以透過 AirPods 監測您的頭部姿態。 | SpineUpはAirPodsを通じて姿勢を監視するためにモーションセンサーにアクセスする必要があります。 | SpineUp은 AirPods를 통해 자세를 모니터링하기 위해 모션 센서 접근이 필요합니다. | يحتاج SpineUp للوصول إلى مستشعرات الحركة لمراقبة وضعيتك عبر AirPods. | SpineUp a besoin d'accéder aux capteurs de mouvement pour surveiller votre posture via les AirPods. |
 | `NSHealthShareUsageDescription` | SpineUp needs to read health data to provide accurate posture analytics. | SpineUp 希望读取您的健康数据以提供更精准的体态分析。 | SpineUp 希望讀取您的健康資料以提供更精準的體態分析。 | SpineUpはより正確な姿勢分析を提供するためにヘルスケアデータを読み取る必要があります。 | SpineUp은 정확한 자세 분석을 제공하기 위해 건강 데이터를 읽어야 합니다. | يحتاج SpineUp لقراءة البيانات الصحية لتقديم تحليلات دقيقة للوضعية. | SpineUp a besoin de lire les données de santé pour fournir des analyses posturales précises. |
 | `NSHealthUpdateUsageDescription` | SpineUp records your upright focus time as mindful minutes. | SpineUp 希望将您的挺拔专注时长记录为正念时间。 | SpineUp 希望將您的挺拔專注時長記錄為正念時間。 | SpineUpは背筋を伸ばした集中時間をマインドフル時間として記録します。 | SpineUp은 바른 자세 집중 시간을 마음 챙김 시간으로 기록합니다. | يسجل SpineUp وقت تركيزك في الوضعية المستقيمة كدقائق يقظة. | SpineUp enregistre votre temps de posture droite sous forme de minutes de pleine conscience. |
