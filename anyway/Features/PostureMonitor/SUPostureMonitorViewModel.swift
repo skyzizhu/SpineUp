@@ -79,6 +79,13 @@ final class SUPostureMonitorViewModel: @unchecked Sendable {
                 self.energyManager.trackUprightFrame(deltaSeconds: 1.0 / 15.0)
             }
 
+            // 实时记录到每日会话持久化引擎中
+            SUPostureSessionManager.shared.recordFrame(
+                state: reading.state,
+                pitchDeg: reading.relativePitchDeg,
+                deltaSeconds: 1.0 / 15.0
+            )
+
             self.onReadingUpdated?(reading)
         }
 
@@ -97,6 +104,7 @@ final class SUPostureMonitorViewModel: @unchecked Sendable {
             self.currentPostureState = newState
             if newState == .slightSlump || newState == .severeSlump {
                 self.todayViolationsCount += 1
+                SUPostureSessionManager.shared.recordViolation()
             }
             let violations = self.todayViolationsCount
             let persona = self.activePersona

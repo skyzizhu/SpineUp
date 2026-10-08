@@ -207,4 +207,108 @@ final class anywayTests: XCTestCase {
         XCTAssertEqual(vm.activePersona, .coach)
         XCTAssertEqual(defaultsManager.activePetPersonaId, "coach")
     }
+
+    // MARK: - Phase 3 专属单元测试
+    func testErgonomicsCalculator() {
+        XCTAssertEqual(SUErgonomicsCalculator.calculateInstantLoadKg(pitchDeg: 0.0), 5.0, accuracy: 0.1)
+        XCTAssertEqual(SUErgonomicsCalculator.calculateInstantLoadKg(pitchDeg: 15.0), 12.0, accuracy: 0.1)
+        XCTAssertEqual(SUErgonomicsCalculator.calculateInstantLoadKg(pitchDeg: 30.0), 18.0, accuracy: 0.1)
+        XCTAssertEqual(SUErgonomicsCalculator.calculateInstantLoadKg(pitchDeg: 45.0), 22.0, accuracy: 0.1)
+
+        XCTAssertEqual(SUErgonomicsCalculator.calculateExtraLoadKg(pitchDeg: 0.0), 0.0, accuracy: 0.1)
+        XCTAssertGreaterThan(SUErgonomicsCalculator.calculateExtraLoadKg(pitchDeg: 30.0), 10.0)
+
+        // 生活化实体换算
+        let milkTea = SUErgonomicsCalculator.calculateEquivalentItem(accumulatedKg: 1.0)
+        XCTAssertEqual(milkTea.name, "珍珠奶茶")
+        XCTAssertEqual(milkTea.iconSystemName, "cup.and.saucer.fill")
+
+        let brick = SUErgonomicsCalculator.calculateEquivalentItem(accumulatedKg: 5.0)
+        XCTAssertEqual(brick.name, "建筑红砖")
+        XCTAssertEqual(brick.iconSystemName, "square.stack.3d.down.forward.fill")
+
+        let cat = SUErgonomicsCalculator.calculateEquivalentItem(accumulatedKg: 8.0)
+        XCTAssertEqual(cat.name, "成年胖橘猫")
+        XCTAssertEqual(cat.iconSystemName, "cat.fill")
+    }
+
+    func testPostureSessionModel() {
+        let session = SUPostureSession(
+            dateString: "2026-10-08",
+            uprightDurationSec: 3600, // 1小时
+            slumpDurationSec: 300,    // 5分钟
+            longestUprightStreakSec: 1800,
+            violationsCount: 2,
+            accumulatedExtraLoadKg: 4.5
+        )
+
+        XCTAssertEqual(session.totalDurationSec, 3900)
+        XCTAssertGreaterThan(session.uprightRatio, 0.9)
+        XCTAssertGreaterThanOrEqual(session.score, 80)
+        XCTAssertEqual(session.grade, "A")
+        XCTAssertEqual(session.gradeTitle, "傲然挺立")
+        XCTAssertFalse(session.formattedUprightTime.isEmpty)
+    }
+
+    func testPostureSessionManager() {
+        let manager = SUPostureSessionManager.shared
+        let initial = manager.getTodaySession()
+
+        // 模拟 10 秒端正
+        manager.recordFrame(state: .upright, pitchDeg: 0.0, deltaSeconds: 10.0)
+        let afterUpright = manager.getTodaySession()
+        XCTAssertGreaterThanOrEqual(afterUpright.uprightDurationSec, initial.uprightDurationSec)
+
+        // 模拟违规
+        manager.recordViolation()
+        let afterViolation = manager.getTodaySession()
+        XCTAssertGreaterThanOrEqual(afterViolation.violationsCount, 1)
+    }
+
+    func testDailyReportGenerator() {
+        let session = SUPostureSession(
+            dateString: "2026-10-08",
+            uprightDurationSec: 1800,
+            slumpDurationSec: 600,
+            longestUprightStreakSec: 900,
+            violationsCount: 3,
+            accumulatedExtraLoadKg: 7.2
+        )
+
+        let report = SUDailyReportGenerator.generateReport(session: session, persona: .worker)
+        XCTAssertFalse(report.diagnosisTitle.isEmpty)
+        XCTAssertFalse(report.doctorPrescription.isEmpty)
+        XCTAssertFalse(report.personaComment.isEmpty)
+        XCTAssertEqual(report.persona, .worker)
+        XCTAssertEqual(report.equivalentItem.iconSystemName, "cat.fill")
+    }
+
+    func testDailyReportViewModel() {
+        let vm = SUDailyReportViewModel()
+        XCTAssertFalse(vm.currentReport.diagnosisTitle.isEmpty)
+        XCTAssertFalse(vm.currentReport.doctorPrescription.isEmpty)
+
+        vm.refreshReport()
+        XCTAssertNotNil(vm.currentReport)
+    }
+
+    func testShareCardImageRendering() {
+        let session = SUPostureSession(
+            dateString: "2026-10-08",
+            uprightDurationSec: 2400,
+            slumpDurationSec: 400,
+            longestUprightStreakSec: 1200,
+            violationsCount: 1,
+            accumulatedExtraLoadKg: 3.5
+        )
+        let report = SUDailyReportGenerator.generateReport(session: session, persona: .cat)
+
+        let shareCard = SUShareCardView()
+        shareCard.configure(with: report)
+        let image = shareCard.renderAsImage()
+
+        XCTAssertNotNil(image)
+        XCTAssertGreaterThan(image.size.width, 100)
+        XCTAssertGreaterThan(image.size.height, 100)
+    }
 }
