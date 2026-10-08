@@ -56,4 +56,10 @@ protocol SUMotionServiceProtocol: AnyObject, Sendable {
 
     /// 连接状态变化回调
     var onConnectionStateChanged: (@Sendable (SUHeadphoneConnectionState) -> Void)? { get set }
+
+    /// 体态状态跃迁回调 (oldState, newState)
+    var onPostureStateChanged: (@Sendable (SUPostureState, SUPostureState) -> Void)? { get set }
+
+    /// 校准进度回调 (0.0 ~ 1.0)
+    var onCalibrationProgress: (@Sendable (Double) -> Void)? { get set }
 }

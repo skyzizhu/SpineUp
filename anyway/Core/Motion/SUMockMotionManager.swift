@@ -8,25 +8,60 @@
 import Foundation
 import os
 
-/// 模拟器/测试用 Mock 传感器管理器 —— 支持无 AirPods 环境下通过代码或滑块模拟体态变化
+/// 模拟器/测试用 Mock 传感器管理器 —— 结合校准服务与状态机引擎，支持外部实时注入角度
 final class SUMockMotionManager: SUMotionServiceProtocol, @unchecked Sendable {
 
     private(set) var connectionState: SUHeadphoneConnectionState = .connected
-    private(set) var currentPostureState: SUPostureState = .upright
+    var currentPostureState: SUPostureState {
+        stateEngine.currentState
+    }
 
-    private var basePitch: Double = 0.0
-    private var baseRoll: Double = 0.0
+    private let calibrationService: SUCalibrationService
+    private let stateEngine: SUPostureStateEngine
 
-    private var currentSimulatedPitchDeg: Double = 0.0
-    private var currentSimulatedRollDeg: Double = 0.0
+    private var basePitchRad: Double = 0.0
+    private var baseRollRad: Double = 0.0
+
+    private var currentSimulatedPitchRad: Double = 0.0
+    private var currentSimulatedRollRad: Double = 0.0
 
     private var timer: Timer?
     private let lock = NSLock()
 
     var onReadingUpdated: (@Sendable (SUPostureReading) -> Void)?
     var onConnectionStateChanged: (@Sendable (SUHeadphoneConnectionState) -> Void)?
+    var onPostureStateChanged: (@Sendable (SUPostureState, SUPostureState) -> Void)?
+    var onCalibrationProgress: (@Sendable (Double) -> Void)?
 
-    init() {
+    init(
+        calibrationService: SUCalibrationService = SUCalibrationService(),
+        stateEngine: SUPostureStateEngine = SUPostureStateEngine()
+    ) {
+        self.calibrationService = calibrationService
+        self.stateEngine = stateEngine
+
+        calibrationService.onCalibrationCompleted = { [weak self] pitch, roll in
+            guard let self = self else { return }
+            self.lock.lock()
+            self.basePitchRad = pitch
+            self.baseRollRad = roll
+            self.lock.unlock()
+            self.stateEngine.reset()
+        }
+
+        calibrationService.onCalibrationProgress = { [weak self] progress in
+            self?.onCalibrationProgress?(progress)
+        }
+
+        stateEngine.onStateChanged = { [weak self] oldState, newState in
+            self?.onPostureStateChanged?(oldState, newState)
+        }
+
+        if let saved = calibrationService.savedBaseline {
+            basePitchRad = saved.pitch
+            baseRollRad = saved.roll
+        }
+
         SULogger.motion.info("SUMockMotionManager initialized (Simulator Mock Engine Active)")
     }
 
@@ -38,7 +73,6 @@ final class SUMockMotionManager: SUMotionServiceProtocol, @unchecked Sendable {
         connectionState = .connected
         onConnectionStateChanged?(.connected)
 
-        // 启动定时模拟心跳
         let timer = Timer(timeInterval: SUMotionConstants.defaultUpdateInterval, repeats: true) { [weak self] _ in
             self?.emitCurrentReading()
         }
@@ -59,57 +93,39 @@ final class SUMockMotionManager: SUMotionServiceProtocol, @unchecked Sendable {
 
     func calibrateBaseline() {
         lock.lock()
-        basePitch = currentSimulatedPitchDeg
-        baseRoll = currentSimulatedRollDeg
-        currentPostureState = .upright
+        let pitch = currentSimulatedPitchRad
+        let roll = currentSimulatedRollRad
         lock.unlock()
 
-        SULogger.motion.info("SUMockMotionManager calibrated to basePitch: \(self.basePitch)°")
+        calibrationService.calibrateImmediately(pitchRad: pitch, rollRad: roll)
         emitCurrentReading()
     }
 
-    /// 供调试面板/滑块主动注入模拟倾斜角度 (单位: 角度)
+    /// 供调试面板/滑块或单元测试主动注入模拟倾斜角度 (单位: 角度 Degrees)
     func injectSimulatedAngles(pitchDeg: Double, rollDeg: Double) {
         lock.lock()
-        self.currentSimulatedPitchDeg = pitchDeg
-        self.currentSimulatedRollDeg = rollDeg
-
-        let deltaPitch = pitchDeg - basePitch
-
-        if deltaPitch > SUMotionConstants.severeSlumpAngleThreshold {
-            currentPostureState = .severeSlump
-        } else if deltaPitch > SUMotionConstants.slightSlumpAngleThreshold {
-            currentPostureState = .slightSlump
-        } else {
-            currentPostureState = .upright
-        }
+        self.currentSimulatedPitchRad = pitchDeg * .pi / 180.0
+        self.currentSimulatedRollRad = rollDeg * .pi / 180.0
         lock.unlock()
 
         emitCurrentReading()
     }
 
     private func emitCurrentReading() {
-        let pitch = currentSimulatedPitchDeg
-        let roll = currentSimulatedRollDeg
-        let state = currentPostureState
+        lock.lock()
+        let pitch = currentSimulatedPitchRad
+        let roll = currentSimulatedRollRad
+        let bPitch = basePitchRad
+        let bRoll = baseRollRad
+        lock.unlock()
 
-        // 简单估算额外承重
-        let extraLoad: Double
-        switch state {
-        case .upright: extraLoad = 0.0
-        case .slightSlump: extraLoad = 7.0 // 12 - 5
-        case .severeSlump: extraLoad = 22.0 // 27 - 5
-        case .calibrating, .unknown: extraLoad = 0.0
-        }
+        calibrationService.feedSample(pitchRad: pitch, rollRad: roll)
 
-        let reading = SUPostureReading(
-            timestamp: Date(),
-            rawPitch: pitch * .pi / 180.0,
-            rawRoll: roll * .pi / 180.0,
-            relativePitchDeg: pitch - basePitch,
-            relativeRollDeg: roll - baseRoll,
-            state: state,
-            extraLoadKg: extraLoad
+        let reading = stateEngine.processFrame(
+            rawPitchRad: pitch,
+            rawRollRad: roll,
+            basePitchRad: bPitch,
+            baseRollRad: bRoll
         )
 
         DispatchQueue.main.async { [weak self] in

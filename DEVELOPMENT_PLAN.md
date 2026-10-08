@@ -108,35 +108,31 @@
 ### Phase 1: MVP v0.1 — 姿态感知与核心状态闭环
 > **目标**：在真机上跑通 AirPods 实时姿态监听，实现坐姿校准和宠物的基本视觉反馈。
 
-- [ ] **Task 1.1: AirPods 耳机连接管理 (`SUHeadphoneMotionManager` 完整实现)**
+- [x] **Task 1.1: AirPods 耳机连接管理 (`SUHeadphoneMotionManager` 完整实现)**
   * 监听 `CMHeadphoneMotionManager.isDeviceMotionAvailable` 与连接状态变化。
   * 当用户戴上/取下 AirPods 时，UI 能够即时响应状态切换（已连接 / 未连接 / 不支持）。
-  * 传感器采样率控制在 10Hz~20Hz，平衡精度与电量消耗。
-- [ ] **Task 1.2: 姿态基准校准系统 (SUCalibrationService)**
-  * 提供"一键校准"功能：用户端坐后点击，采集 2 秒内多帧 Pitch/Roll 取均值作为基准零点（Neutral Reference）。
-  * 校准数据持久化存储（`UserDefaults`），App 重启后无需重复校准。
+  * 传感器采样率控制在 10Hz~20Hz（默认 15Hz），平衡精度与电量消耗。
+- [x] **Task 1.2: 姿态基准校准系统 (SUCalibrationService)**
+  * 提供"一键校准"功能：用户端坐后点击，采集 2 秒内多帧 Pitch/Roll 取均值作为基准零点（Neutral Reference），亦支持即时校准。
+  * 校准数据持久化存储（`SUUserDefaultsManager`），App 重启后无需重复校准。
   * 计算相对偏移角 `ΔPitch = CurrentPitch - BasePitch`。
-- [ ] **Task 1.3: 防抖动与体态状态判定引擎 (SUPostureStateEngine)**
+- [x] **Task 1.3: 防抖动与体态状态判定引擎 (SUPostureStateEngine)**
   * **轻度低头阈值**（默认 > 15°）与 **重度低头阈值**（默认 > 25°），阈值可配置。
-  * 引入时间缓冲滤波器（Buffer Timer）：低头持续超过 10 秒才判定为异常体态，避免打字、喝水、点头产生误报。
-  * 滑动窗口均值平滑（Moving Average Filter）：对连续 5~10 帧的 Pitch 值取加权平均，消除传感器噪声。
-  * 输出三态枚举：`upright` → `slightSlump` → `severeSlump`，并通过回调/AsyncStream 通知上层。
-- [ ] **Task 1.4: 宠物核心形态三态可视化 (SUPetVisualContainerView)**
-  * 使用 SwiftUI 编写 `SUPetAnimatedView`，通过 `UIHostingController` 嵌入 UIKit 主页。
-  * 状态 1【精神挺拔 `upright`】：宠物元气满满，呼吸动效，周围散发活力光粒子。
-  * 状态 2【轻微前倾 `slightSlump`】：宠物额头出汗水滴，身体微弓，表情犯困。
-  * 状态 3【严重驼背 `severeSlump`】：宠物被大石压扁/瘫成液体状态，发出求救表情。
+  * 引入时间缓冲滤波器（Buffer Timer）：低头持续超过 10 秒才判定为异常体态，避免打字、喝水、点头产生误报；端正保持 5 秒判定为复原。
+  * 滑动窗口均值平滑（Moving Average Filter）：对连续 8 帧的 Pitch/Roll 取均值，消除传感器噪声。
+  * 输出三态枚举：`upright` → `slightSlump` → `severeSlump`，并通过回调通知上层。
+- [x] **Task 1.4: 宠物核心形态三态可视化 (SUPetVisualContainerView & SUPetAnimatedView)**
+  * 使用 SwiftUI 编写 `SUPetAnimatedView`，通过 `UIHostingController` 嵌入 UIKit 主页中的 `SUPetVisualContainerView`。
+  * 状态 1【精神挺拔 `upright`】：宠物元气满满，呼吸动效，周围散发活力光晕。
+  * 状态 2【轻微前倾 `slightSlump`】：宠物额头流汗水滴，身体微倾斜，表情犯困。
+  * 状态 3【严重驼背 `severeSlump`】：宠物瘫软压扁横向形变，痛苦求救表情。
   * 状态切换时使用 Spring 弹性动画平滑过渡。
-- [ ] **Task 1.5: 基础轻提示反馈 (SUAudioFeedbackManager 基础版)**
-  * 低头超时时触发轻微触觉反馈（`UIImpactFeedbackGenerator`）。
-  * 播放清脆的系统提示音（小水滴/提示铃），音量不高于 30%。
-- [ ] **Task 1.6: Onboarding 引导流 (SUOnboardingViewController)**
-  * 首次启动展示 3~4 页引导：
-    * 第 1 页：产品概念介绍（"你的 AirPods 也能守护你的脊椎"）。
-    * 第 2 页：运动传感器权限申请（附简洁的隐私说明）。
-    * 第 3 页：AirPods 佩戴与校准引导动画。
-    * 第 4 页：选择你的宠物初始人格（此阶段可简化为默认人格）。
-  * 完成后进入主 TabBar 框架，标记 `hasCompletedOnboarding` 至 `UserDefaults`。
+- [x] **Task 1.5: 基础轻提示反馈 (SUAudioFeedbackManager 基础版)**
+  * 低头超时时触发轻微触觉反馈（`UINotificationFeedbackGenerator`）。
+  * 播放清脆的系统提示音（小水滴/提示铃），具备 15 秒最小冷却间隔。
+- [x] **Task 1.6: Onboarding 引导流 (SUOnboardingViewController)**
+  * 首次启动展示 3 页引导：产品概念介绍、运动传感器权限申请与隐私说明、佩戴与校准教学。
+  * 完成后进入主 TabBar 框架，标记 `hasCompletedOnboarding` 至 `SUUserDefaultsManager`。
 
 > **✅ Phase 1 验收标准 (Definition of Done)**：
 > * 真机佩戴 AirPods 后，主页宠物实时响应头部倾斜角度变化。

@@ -26,6 +26,19 @@ class SUSceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = window
         window.makeKeyAndVisible()
 
+        // 如果在单元测试环境下运行，则跳过 UI 模态弹出，防止干扰 XCTest 注入与视图层级装载
+        let isRunningTests = NSClassFromString("XCTestCase") != nil
+        if !isRunningTests && !SUUserDefaultsManager.shared.hasCompletedOnboarding {
+            DispatchQueue.main.async {
+                let onboardingVC = SUOnboardingViewController()
+                onboardingVC.modalPresentationStyle = .fullScreen
+                onboardingVC.onOnboardingCompleted = {
+                    SULogger.lifecycle.info("User completed onboarding successfully")
+                }
+                mainTabBarController.present(onboardingVC, animated: true)
+            }
+        }
+
         SULogger.lifecycle.info("SUSceneDelegate attached UIWindow with SUMainTabBarController")
     }
 

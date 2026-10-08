@@ -9,48 +9,20 @@ import UIKit
 import SnapKit
 import os
 
-/// Tab 1: 核心姿态监测与桌宠主页
+/// Tab 1: 核心姿态监测与桌宠主页 —— 驱动宠物形态微动效、实时角度表盘与校准流转
 final class SUPostureMonitorViewController: SUBaseViewController {
 
-    private let titleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "SpineUp · 体态守护兽"
-        label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
-        label.textAlignment = .center
-        label.textColor = .label
-        return label
-    }()
+    private let viewModel: SUPostureMonitorViewModel
 
-    private let statusCardView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .secondarySystemBackground
-        view.layer.cornerRadius = SULayoutConstants.cornerRadiusMedium
-        view.layer.masksToBounds = true
-        return view
-    }()
-
-    private let statusLabel: UILabel = {
-        let label = UILabel()
-        label.text = "戴上 AirPods 或使用下方模拟器调试"
-        label.font = UIFont.systemFont(ofSize: 15, weight: .medium)
-        label.textColor = .secondaryLabel
-        label.textAlignment = .center
-        label.numberOfLines = 0
-        return label
-    }()
-
-    private let angleValueLabel: UILabel = {
-        let label = UILabel()
-        label.text = "0.0°"
-        label.font = UIFont.systemFont(ofSize: 48, weight: .heavy)
-        label.textColor = .systemGreen
-        label.textAlignment = .center
-        return label
-    }()
+    // MARK: - 独立封装视图组件
+    private let petContainerView = SUPetVisualContainerView()
+    private let gaugeView = SUPostureGaugeView()
 
     private let calibrateButton: UIButton = {
         var config = UIButton.Configuration.filled()
-        config.title = "一键校准基准坐姿"
+        config.title = "一键端坐校准"
+        config.image = UIImage(systemName: "scope")
+        config.imagePadding = 8
         config.cornerStyle = .capsule
         config.baseBackgroundColor = .systemBlue
         config.baseForegroundColor = .white
@@ -59,53 +31,102 @@ final class SUPostureMonitorViewController: SUBaseViewController {
         return button
     }()
 
-    // 传感器服务依赖注入 (模拟器使用 Mock，真机使用 HeadphoneMotion)
+    // MARK: - 模拟器专属调试工具条 (仅模拟器展示)
     #if targetEnvironment(simulator)
-    private let motionService: SUMotionServiceProtocol = SUMockMotionManager()
-    #else
-    private let motionService: SUMotionServiceProtocol = SUHeadphoneMotionManager()
+    private let debugPanelCard: UIView = {
+        let view = UIView()
+        view.backgroundColor = .tertiarySystemBackground
+        view.layer.cornerRadius = SULayoutConstants.cornerRadiusSmall
+        view.layer.masksToBounds = true
+        return view
+    }()
+
+    private let debugSliderLabel: UILabel = {
+        let label = UILabel()
+        label.text = "模拟器低头角度调试: 0°"
+        label.font = UIFont.systemFont(ofSize: 11, weight: .semibold)
+        label.textColor = .secondaryLabel
+        return label
+    }()
+
+    private let debugPitchSlider: UISlider = {
+        let slider = UISlider()
+        slider.minimumValue = 0.0
+        slider.maximumValue = 45.0
+        slider.value = 0.0
+        return slider
+    }()
     #endif
+
+    init(viewModel: SUPostureMonitorViewModel = SUPostureMonitorViewModel()) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        self.viewModel = SUPostureMonitorViewModel()
+        super.init(coder: coder)
+    }
 
     override func setupSubviews() {
         super.setupSubviews()
-        navigationItem.title = "实时监测"
+        navigationItem.title = "实时姿态守护"
 
-        view.addSubview(titleLabel)
-        view.addSubview(statusCardView)
-        statusCardView.addSubview(angleValueLabel)
-        statusCardView.addSubview(statusLabel)
+        // 挂载 SwiftUI 宠物容器子视图
+        view.addSubview(petContainerView)
+        petContainerView.attach(to: self)
+
+        // 挂载角度负荷表盘
+        view.addSubview(gaugeView)
+
+        // 挂载校准按钮
         view.addSubview(calibrateButton)
+
+        #if targetEnvironment(simulator)
+        view.addSubview(debugPanelCard)
+        debugPanelCard.addSubview(debugSliderLabel)
+        debugPanelCard.addSubview(debugPitchSlider)
+        #endif
     }
 
     override func setupConstraints() {
         super.setupConstraints()
 
-        titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(SULayoutConstants.verticalSpacing * 2)
+        petContainerView.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(SULayoutConstants.verticalSpacing)
             make.leading.trailing.equalToSuperview().inset(SULayoutConstants.horizontalPadding)
+            make.height.equalTo(SULayoutConstants.petContainerHeight)
         }
 
-        statusCardView.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(SULayoutConstants.sectionSpacing)
+        gaugeView.snp.makeConstraints { make in
+            make.top.equalTo(petContainerView.snp.bottom).offset(SULayoutConstants.verticalSpacing)
             make.leading.trailing.equalToSuperview().inset(SULayoutConstants.horizontalPadding)
-            make.height.equalTo(200)
-        }
-
-        angleValueLabel.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.centerY.equalToSuperview().offset(-18)
-        }
-
-        statusLabel.snp.makeConstraints { make in
-            make.top.equalTo(angleValueLabel.snp.bottom).offset(SULayoutConstants.smallSpacing)
-            make.leading.trailing.equalToSuperview().inset(SULayoutConstants.cardInternalPadding)
         }
 
         calibrateButton.snp.makeConstraints { make in
-            make.top.equalTo(statusCardView.snp.bottom).offset(SULayoutConstants.sectionSpacing)
+            make.top.equalTo(gaugeView.snp.bottom).offset(SULayoutConstants.sectionSpacing)
             make.leading.trailing.equalToSuperview().inset(SULayoutConstants.horizontalPadding * 2)
             make.height.equalTo(SULayoutConstants.primaryButtonHeight)
         }
+
+        #if targetEnvironment(simulator)
+        debugPanelCard.snp.makeConstraints { make in
+            make.top.equalTo(calibrateButton.snp.bottom).offset(SULayoutConstants.verticalSpacing)
+            make.leading.trailing.equalToSuperview().inset(SULayoutConstants.horizontalPadding)
+            make.bottom.lessThanOrEqualTo(view.safeAreaLayoutGuide.snp.bottom).offset(-SULayoutConstants.smallSpacing)
+        }
+
+        debugSliderLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(6)
+            make.leading.trailing.equalToSuperview().inset(10)
+        }
+
+        debugPitchSlider.snp.makeConstraints { make in
+            make.top.equalTo(debugSliderLabel.snp.bottom).offset(4)
+            make.leading.trailing.equalToSuperview().inset(10)
+            make.bottom.equalToSuperview().offset(-6)
+        }
+        #endif
     }
 
     override func setupBindings() {
@@ -113,40 +134,84 @@ final class SUPostureMonitorViewController: SUBaseViewController {
 
         calibrateButton.addTarget(self, action: #selector(didTapCalibrate), for: .touchUpInside)
 
-        motionService.onReadingUpdated = { [weak self] reading in
-            guard let self = self else { return }
-            self.angleValueLabel.text = String(format: "%.1f°", reading.relativePitchDeg)
+        #if targetEnvironment(simulator)
+        debugPitchSlider.addTarget(self, action: #selector(didChangeDebugSlider(_:)), for: .valueChanged)
+        #endif
 
-            switch reading.state {
-            case .upright:
-                self.angleValueLabel.textColor = .systemGreen
-                self.statusLabel.text = "坐姿端正 · 宠物元气充盈中"
-            case .slightSlump:
-                self.angleValueLabel.textColor = .systemOrange
-                self.statusLabel.text = "轻微前倾 · 宠物头上冒汗了"
-            case .severeSlump:
-                self.angleValueLabel.textColor = .systemRed
-                self.statusLabel.text = "严重驼背！宠物被压扁求救中"
-            case .calibrating:
-                self.statusLabel.text = "正在校准中..."
-            case .unknown:
-                self.statusLabel.text = "等待耳机佩戴..."
-            }
+        viewModel.onReadingUpdated = { [weak self] reading in
+            guard let self = self else { return }
+            self.gaugeView.configure(with: reading, connectionState: self.viewModel.connectionState)
         }
 
-        motionService.startMonitoring()
+        viewModel.onPostureStateChanged = { [weak self] state in
+            guard let self = self else { return }
+            self.petContainerView.configure(with: state)
+        }
+
+        viewModel.onCalibrationProgress = { [weak self] progress in
+            guard let self = self else { return }
+            let percent = Int(progress * 100)
+            self.calibrateButton.setTitle("校准中 \(percent)%", for: .normal)
+        }
+
+        viewModel.onCalibrationFinished = { [weak self] in
+            guard let self = self else { return }
+            self.calibrateButton.setTitle("一键端坐校准", for: .normal)
+        }
+
+        viewModel.startMonitoring()
     }
 
     @objc private func didTapCalibrate() {
-        motionService.calibrateBaseline()
-        let generator = UINotificationFeedbackGenerator()
-        generator.notificationOccurred(.success)
+        viewModel.startCalibration()
     }
+
+    #if targetEnvironment(simulator)
+    @objc private func didChangeDebugSlider(_ sender: UISlider) {
+        let angle = Double(sender.value)
+        debugSliderLabel.text = String(format: "模拟器低头角度调试: %.1f°", angle)
+        viewModel.injectSimulatedAngles(pitchDeg: angle, rollDeg: 0.0)
+    }
+    #endif
 
     override func adaptLayoutForSize(_ size: CGSize) {
         super.adaptLayoutForSize(size)
-        // 为 iPhone Duo 展开态留出响应钩子
         let isDualPane = size.width >= SULayoutConstants.duoSplitBreakpointWidth
-        SULogger.ui.info("SUPostureMonitorViewController adaptLayout: isDualPane=\(isDualPane)")
+        if isDualPane {
+            // iPhone Duo 展开态：宠物在左，仪表在右
+            petContainerView.snp.remakeConstraints { make in
+                make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(SULayoutConstants.verticalSpacing)
+                make.leading.equalToSuperview().offset(SULayoutConstants.horizontalPadding)
+                make.width.equalToSuperview().multipliedBy(0.48)
+                make.bottom.lessThanOrEqualTo(view.safeAreaLayoutGuide.snp.bottom).offset(-SULayoutConstants.verticalSpacing)
+            }
+            gaugeView.snp.remakeConstraints { make in
+                make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(SULayoutConstants.verticalSpacing)
+                make.trailing.equalToSuperview().offset(-SULayoutConstants.horizontalPadding)
+                make.width.equalToSuperview().multipliedBy(0.48)
+            }
+            calibrateButton.snp.remakeConstraints { make in
+                make.top.equalTo(gaugeView.snp.bottom).offset(SULayoutConstants.verticalSpacing * 2)
+                make.trailing.equalToSuperview().offset(-SULayoutConstants.horizontalPadding)
+                make.width.equalToSuperview().multipliedBy(0.48)
+                make.height.equalTo(SULayoutConstants.primaryButtonHeight)
+            }
+        } else {
+            // 单列经典流
+            petContainerView.snp.remakeConstraints { make in
+                make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(SULayoutConstants.verticalSpacing)
+                make.leading.trailing.equalToSuperview().inset(SULayoutConstants.horizontalPadding)
+                make.height.equalTo(SULayoutConstants.petContainerHeight)
+            }
+            gaugeView.snp.remakeConstraints { make in
+                make.top.equalTo(petContainerView.snp.bottom).offset(SULayoutConstants.verticalSpacing)
+                make.leading.trailing.equalToSuperview().inset(SULayoutConstants.horizontalPadding)
+            }
+            calibrateButton.snp.remakeConstraints { make in
+                make.top.equalTo(gaugeView.snp.bottom).offset(SULayoutConstants.sectionSpacing)
+                make.leading.trailing.equalToSuperview().inset(SULayoutConstants.horizontalPadding * 2)
+                make.height.equalTo(SULayoutConstants.primaryButtonHeight)
+            }
+        }
     }
 }
