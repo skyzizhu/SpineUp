@@ -273,6 +273,10 @@ class SUBaseViewController: UIViewController {
            static let petContainerHeight: CGFloat = 280
        }
        ```
+  6. **视觉设计调性与交互原则**：
+     * **清新、简约、大气**：页面留白适度，信息层次分明，卡片式采用微阴影与高斯模糊（`UIBlurEffect` / `.ultraThinMaterial`），杜绝繁复堆砌；
+     * **操作与交互简洁流畅**：所有交互均配合轻微触觉反馈（Haptics）与弹性过渡（Spring Animations），避免冗余弹窗与复杂层级；
+     * **图标规范**：**整个 UI 内部所有图标一律统一使用苹果原生 SF Symbols**（`UIImage(systemName: "...")` / `Image(systemName: "...")`），严禁使用未经统一的自定义位图。
 
 ---
 

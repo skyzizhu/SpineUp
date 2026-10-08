@@ -49,6 +49,14 @@ final class SUAudioFeedbackManager: @unchecked Sendable {
         }
     }
 
+    func triggerHapticSelection() {
+        guard userDefaultsManager.isHapticAlertEnabled else { return }
+        DispatchQueue.main.async {
+            let generator = UISelectionFeedbackGenerator()
+            generator.selectionChanged()
+        }
+    }
+
     // MARK: - 音频提示
     func playSlumpReminderSound() {
         guard userDefaultsManager.isSoundAlertEnabled else { return }

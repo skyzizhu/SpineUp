@@ -19,6 +19,7 @@ enum SULayoutConstants {
     static let tinySpacing: CGFloat = 4.0
 
     // MARK: - 圆角规范
+    static let cornerRadius: CGFloat = 14.0
     static let cornerRadiusSmall: CGFloat = 8.0
     static let cornerRadiusMedium: CGFloat = 14.0
     static let cornerRadiusLarge: CGFloat = 22.0

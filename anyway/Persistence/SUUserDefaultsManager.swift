@@ -25,6 +25,10 @@ final class SUUserDefaultsManager: @unchecked Sendable {
         static let severeSlumpThreshold = "su_severeSlumpThreshold"
         static let isSoundAlertEnabled = "su_isSoundAlertEnabled"
         static let isHapticAlertEnabled = "su_isHapticAlertEnabled"
+        static let isVoiceAlertEnabled = "su_isVoiceAlertEnabled"
+        static let spineEnergyCoins = "su_spineEnergyCoins"
+        static let streakDays = "su_streakDays"
+        static let lastActiveDateString = "su_lastActiveDateString"
     }
 
     init(defaults: UserDefaults = .standard) {
@@ -160,6 +164,70 @@ final class SUUserDefaultsManager: @unchecked Sendable {
         set {
             lock.lock()
             defaults.set(newValue, forKey: Keys.isHapticAlertEnabled)
+            lock.unlock()
+        }
+    }
+
+    var isVoiceAlertEnabled: Bool {
+        get {
+            lock.lock()
+            defer { lock.unlock() }
+            if defaults.object(forKey: Keys.isVoiceAlertEnabled) == nil {
+                return true
+            }
+            return defaults.bool(forKey: Keys.isVoiceAlertEnabled)
+        }
+        set {
+            lock.lock()
+            defaults.set(newValue, forKey: Keys.isVoiceAlertEnabled)
+            lock.unlock()
+        }
+    }
+
+    // MARK: - 骨气能量与打卡系统 (Spine Energy & Streak)
+    var spineEnergyCoins: Int {
+        get {
+            lock.lock()
+            defer { lock.unlock() }
+            return defaults.integer(forKey: Keys.spineEnergyCoins)
+        }
+        set {
+            lock.lock()
+            defaults.set(max(0, newValue), forKey: Keys.spineEnergyCoins)
+            lock.unlock()
+        }
+    }
+
+    func addSpineEnergyCoins(_ amount: Int) {
+        lock.lock()
+        let current = defaults.integer(forKey: Keys.spineEnergyCoins)
+        defaults.set(max(0, current + amount), forKey: Keys.spineEnergyCoins)
+        lock.unlock()
+    }
+
+    var streakDays: Int {
+        get {
+            lock.lock()
+            defer { lock.unlock() }
+            let val = defaults.integer(forKey: Keys.streakDays)
+            return max(1, val)
+        }
+        set {
+            lock.lock()
+            defaults.set(max(1, newValue), forKey: Keys.streakDays)
+            lock.unlock()
+        }
+    }
+
+    var lastActiveDateString: String? {
+        get {
+            lock.lock()
+            defer { lock.unlock() }
+            return defaults.string(forKey: Keys.lastActiveDateString)
+        }
+        set {
+            lock.lock()
+            defaults.set(newValue, forKey: Keys.lastActiveDateString)
             lock.unlock()
         }
     }

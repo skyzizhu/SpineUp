@@ -15,6 +15,8 @@ enum SULogger {
     static let motion  = Logger(subsystem: subsystem, category: "Motion")
     static let network = Logger(subsystem: subsystem, category: "Network")
     static let ai      = Logger(subsystem: subsystem, category: "AI")
+    static let audio   = Logger(subsystem: subsystem, category: "Audio")
+    static let business = Logger(subsystem: subsystem, category: "Business")
     static let ui      = Logger(subsystem: subsystem, category: "UI")
     static let data    = Logger(subsystem: subsystem, category: "Data")
     static let lifecycle = Logger(subsystem: subsystem, category: "Lifecycle")

@@ -144,33 +144,29 @@
 ---
 
 ### Phase 2: MVP v0.2 — AI 拟人情绪系统与语音预警
-> **目标**：赋予宠物独特的人格与"嘴替"属性，让提醒变得好玩且期待。
+> **目标**：赋予宠物独特的人格与"嘴替"属性，让提醒变得好玩且期待。全 UI 统一严格使用苹果原生 SF Symbols，视觉清新、简约、大气，交互简洁流畅。
 
-- [ ] **Task 2.1: 宠物人格配置系统 (SUPetPersonaManager)**
-  * 预设三种可切换性格：
-    1. **毒舌打工人**（风格：犀利、自嘲、反内卷、扎心）
-    2. **傲娇猫猫**（风格：傲娇、猫咪视角、被压扁的委屈）
-    3. **温柔私教**（风格：鼓励、正向反馈、深呼吸指导）
-  * 用户在"我的"设置页中可随时切换，选择结果持久化。
-- [ ] **Task 2.2: AI 服务抽象层 (SUAIServiceProtocol + 双引擎实现)**
+- [x] **Task 2.1: 宠物人格配置系统 (SUPetPersonaManager & SUPetPersona)**
+  * 预设三种可切换性格（毒舌打工人、傲娇猫猫、温柔私教），统一配备原生 SF Symbols。
+  * 用户在"设置"页中可随时通过卡片切换，即时触发试听语音并持久化至 `SUUserDefaultsManager`。
+- [x] **Task 2.2: AI 服务抽象层 (SUAIServiceProtocol + 云端/离线双引擎)**
   * 定义 `SUAIServiceProtocol`：`func generateReminder(context: SUPostureContext) async throws -> String`。
-  * **云端引擎**：`SUCloudAIEngine`——调用 Gemini API / OpenAI API，传入结构化 Prompt（含角色人设、当前角度、时长、当天第几次犯规、时间段）。
-  * **离线引擎**：`SUOfflineAIEngine`——内置按人格分类的预制高频语料库（每人格 50+ 条台词），无网络时随机抽取并做简单模板替换。
-  * 策略：优先尝试云端，超时 3 秒自动降级至离线。
-- [ ] **Task 2.3: 场景化动态 Prompt 构建器 (SUPromptBuilder)**
-  * 将动态上下文封装为 `SUPostureContext` 结构体：
-    * `currentAngle: Double` / `duration: TimeInterval` / `violationCountToday: Int`
-    * `currentTime: Date` / `persona: SUPetPersona` / `streakDays: Int`
-  * 构建不同人格的 System Prompt 与 User Prompt 模板。
-- [ ] **Task 2.4: 语音与播报集成 (TTS & Audio Ducking)**
-  * 支持系统 `AVSpeechSynthesizer` 高质量 TTS，按人格配置不同语速、音调。
-  * 智能音量控制：在用户听音乐/播客时不暴力打断，使用 `AVAudioSession` 的 `duckOthers` 选项轻声提醒。
-  * 冷却时间机制：同一会话内两次语音提醒间隔 ≥ 3 分钟，避免频繁打扰。
-- [ ] **Task 2.5: 骨气能量养成系统 (SUSpineEnergyManager)**
-  * 挺拔时间每分钟积累 1 枚"骨气能量币"。
-  * 连续多日坚持有额外奖励系数（Streak Bonus）。
-  * 能量币可用于解锁宠物装扮/台词包（后期商业化入口）。
-  * 数据持久化到本地 SwiftData。
+  * **云端引擎**：`SUCloudAIEngine`——基于 Alamofire 封装带 3 秒超时熔断机制。
+  * **离线引擎**：`SUOfflineAIEngine`——内置 50+ 条多场景（轻度、重度、首次、反复、深夜加班、挺拔鼓励）高质量结构化语料库。
+  * 策略：`SUAIService` 统一调度，云端超时/断网时毫秒级无缝降级至离线。
+- [x] **Task 2.3: 场景化动态 Prompt 构建器 (SUPromptBuilder & SUPostureContext)**
+  * 上下文包含低头角度、持续时长、今日违规频次、时间段、目标人格、连续打卡天数与物理额外负荷。
+  * 产出精简（25~45字）适合 TTS 发音的 System & User Prompt。
+- [x] **Task 2.4: 语音与播报集成 (SUSpeechManager & Audio Ducking)**
+  * 基于 `AVSpeechSynthesizer` 针对不同人格自适应音调 (Pitch) 与语速 (Rate)。
+  * `AVAudioSession` 配置 `.playback` 与 `.duckOthers`，播报时柔和压低背景音乐/播客，不粗暴打断。
+  * 严格实行 3 分钟防疲劳冷却间隔，支持点击气泡强制试听。
+- [x] **Task 2.5: 骨气能量养成系统 (SUSpineEnergyManager)**
+  * 端坐挺拔每分钟铸造 1 枚"骨气能量币"，支持多日连续坚持打卡加成系数 (Streak Bonus)。
+  * 统计数据与连续坚持天数持久化。
+- [x] **Task 2.6: 清新简约 UI 与气泡交互 (SUPetSpeechBubbleView & SUSettingsViewController)**
+  * 监测主页悬浮高斯模糊台词气泡，支持轻触回放与触觉微震动。
+  * 设置页采用纯原生 SF Symbols、自适应卡片与流畅交互。
 
 > **✅ Phase 2 验收标准 (Definition of Done)**：
 > * 可在设置页切换 3 种宠物人格，切换后提醒台词风格立即变化。
@@ -178,6 +174,7 @@
 > * 两次语音提醒间隔不少于 3 分钟。
 > * 无网络环境下，离线语料库仍可正常输出提醒文案。
 > * 能量币随挺拔时间实时累积，App 重启后数据保留。
+> * 整个 UI 严格使用 SF 图标，风格清新、简约、大气，交互流畅。
 
 ---
 

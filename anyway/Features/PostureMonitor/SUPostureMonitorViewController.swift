@@ -9,14 +9,42 @@ import UIKit
 import SnapKit
 import os
 
-/// Tab 1: 核心姿态监测与桌宠主页 —— 驱动宠物形态微动效、实时角度表盘与校准流转
+/// Tab 1: 核心姿态监测与桌宠主页 —— 驱动宠物形态微动效、实时台词气泡、骨气能量与校准流转
 final class SUPostureMonitorViewController: SUBaseViewController {
 
     private let viewModel: SUPostureMonitorViewModel
 
     // MARK: - 独立封装视图组件
     private let petContainerView = SUPetVisualContainerView()
+    private let speechBubbleView = SUPetSpeechBubbleView()
     private let gaugeView = SUPostureGaugeView()
+
+    // MARK: - 导航栏轻量状态指示器
+    private let energyBadgeButton: UIButton = {
+        var config = UIButton.Configuration.tinted()
+        let symbolConfig = UIImage.SymbolConfiguration(pointSize: 12, weight: .bold)
+        config.image = UIImage(systemName: "bolt.heart.fill", withConfiguration: symbolConfig)
+        config.imagePadding = 4
+        config.title = "0 骨气币"
+        config.baseBackgroundColor = .systemOrange.withAlphaComponent(0.15)
+        config.baseForegroundColor = .systemOrange
+        config.cornerStyle = .capsule
+        config.contentInsets = NSDirectionalEdgeInsets(top: 6, leading: 10, bottom: 6, trailing: 10)
+        let button = UIButton(configuration: config)
+        return button
+    }()
+
+    private let personaBadgeButton: UIButton = {
+        var config = UIButton.Configuration.plain()
+        let symbolConfig = UIImage.SymbolConfiguration(pointSize: 13, weight: .semibold)
+        config.image = UIImage(systemName: "briefcase.fill", withConfiguration: symbolConfig)
+        config.imagePadding = 5
+        config.title = "打工人"
+        config.baseForegroundColor = .secondaryLabel
+        config.contentInsets = NSDirectionalEdgeInsets(top: 6, leading: 6, bottom: 6, trailing: 6)
+        let button = UIButton(configuration: config)
+        return button
+    }()
 
     private let calibrateButton: UIButton = {
         var config = UIButton.Configuration.filled()
@@ -72,9 +100,17 @@ final class SUPostureMonitorViewController: SUBaseViewController {
         super.setupSubviews()
         navigationItem.title = "实时姿态守护"
 
+        // 导航栏配置清新简约原生 SF 图标指示器
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: personaBadgeButton)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: energyBadgeButton)
+
         // 挂载 SwiftUI 宠物容器子视图
         view.addSubview(petContainerView)
         petContainerView.attach(to: self)
+
+        // 挂载台词对话气泡
+        view.addSubview(speechBubbleView)
+        speechBubbleView.isHidden = true // 初始无台词时隐藏
 
         // 挂载角度负荷表盘
         view.addSubview(gaugeView)
@@ -87,13 +123,21 @@ final class SUPostureMonitorViewController: SUBaseViewController {
         debugPanelCard.addSubview(debugSliderLabel)
         debugPanelCard.addSubview(debugPitchSlider)
         #endif
+
+        updateEnergyBadge(totalCoins: viewModel.currentTotalEnergyCoins)
+        updatePersonaBadge(persona: viewModel.activePersona)
     }
 
     override func setupConstraints() {
         super.setupConstraints()
 
+        speechBubbleView.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(6)
+            make.leading.trailing.equalToSuperview().inset(SULayoutConstants.horizontalPadding + 8)
+        }
+
         petContainerView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(SULayoutConstants.verticalSpacing)
+            make.top.equalTo(speechBubbleView.snp.bottom).offset(8)
             make.leading.trailing.equalToSuperview().inset(SULayoutConstants.horizontalPadding)
             make.height.equalTo(SULayoutConstants.petContainerHeight)
         }
@@ -134,32 +178,74 @@ final class SUPostureMonitorViewController: SUBaseViewController {
 
         calibrateButton.addTarget(self, action: #selector(didTapCalibrate), for: .touchUpInside)
 
+        speechBubbleView.onBubbleTapped = { [weak self] in
+            self?.viewModel.replayCurrentQuote()
+        }
+
         #if targetEnvironment(simulator)
         debugPitchSlider.addTarget(self, action: #selector(didChangeDebugSlider(_:)), for: .valueChanged)
         #endif
 
         viewModel.onReadingUpdated = { [weak self] reading in
-            guard let self = self else { return }
-            self.gaugeView.configure(with: reading, connectionState: self.viewModel.connectionState)
+            DispatchQueue.main.async {
+                guard let self = self else { return }
+                self.gaugeView.configure(with: reading, connectionState: self.viewModel.connectionState)
+            }
         }
 
         viewModel.onPostureStateChanged = { [weak self] state in
-            guard let self = self else { return }
-            self.petContainerView.configure(with: state)
+            DispatchQueue.main.async {
+                guard let self = self else { return }
+                self.petContainerView.configure(with: state)
+            }
+        }
+
+        viewModel.onQuoteUpdated = { [weak self] quote, persona in
+            DispatchQueue.main.async {
+                guard let self = self else { return }
+                let iconColor = UIColor(named: persona.rawValue) ?? .systemOrange
+                self.speechBubbleView.configure(text: quote, iconColor: iconColor)
+            }
+        }
+
+        viewModel.onEnergyUpdated = { [weak self] total, today in
+            DispatchQueue.main.async {
+                self?.updateEnergyBadge(totalCoins: total)
+            }
+        }
+
+        viewModel.onPersonaChanged = { [weak self] persona in
+            DispatchQueue.main.async {
+                self?.updatePersonaBadge(persona: persona)
+            }
         }
 
         viewModel.onCalibrationProgress = { [weak self] progress in
-            guard let self = self else { return }
-            let percent = Int(progress * 100)
-            self.calibrateButton.setTitle("校准中 \(percent)%", for: .normal)
+            DispatchQueue.main.async {
+                guard let self = self else { return }
+                let percent = Int(progress * 100)
+                self.calibrateButton.setTitle("校准中 \(percent)%", for: .normal)
+            }
         }
 
         viewModel.onCalibrationFinished = { [weak self] in
-            guard let self = self else { return }
-            self.calibrateButton.setTitle("一键端坐校准", for: .normal)
+            DispatchQueue.main.async {
+                guard let self = self else { return }
+                self.calibrateButton.setTitle("一键端坐校准", for: .normal)
+            }
         }
 
         viewModel.startMonitoring()
+    }
+
+    private func updateEnergyBadge(totalCoins: Int) {
+        energyBadgeButton.setTitle("\(totalCoins) 骨气币", for: .normal)
+    }
+
+    private func updatePersonaBadge(persona: SUPetPersona) {
+        let config = UIImage.SymbolConfiguration(pointSize: 13, weight: .semibold)
+        personaBadgeButton.setImage(UIImage(systemName: persona.iconSystemName, withConfiguration: config), for: .normal)
+        personaBadgeButton.setTitle(persona.displayName, for: .normal)
     }
 
     @objc private func didTapCalibrate() {
@@ -178,9 +264,14 @@ final class SUPostureMonitorViewController: SUBaseViewController {
         super.adaptLayoutForSize(size)
         let isDualPane = size.width >= SULayoutConstants.duoSplitBreakpointWidth
         if isDualPane {
-            // iPhone Duo 展开态：宠物在左，仪表在右
-            petContainerView.snp.remakeConstraints { make in
+            // iPhone Duo 展开态：左栏放台词与宠物，右栏放表盘与校准
+            speechBubbleView.snp.remakeConstraints { make in
                 make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(SULayoutConstants.verticalSpacing)
+                make.leading.equalToSuperview().offset(SULayoutConstants.horizontalPadding)
+                make.width.equalToSuperview().multipliedBy(0.48)
+            }
+            petContainerView.snp.remakeConstraints { make in
+                make.top.equalTo(speechBubbleView.snp.bottom).offset(SULayoutConstants.verticalSpacing)
                 make.leading.equalToSuperview().offset(SULayoutConstants.horizontalPadding)
                 make.width.equalToSuperview().multipliedBy(0.48)
                 make.bottom.lessThanOrEqualTo(view.safeAreaLayoutGuide.snp.bottom).offset(-SULayoutConstants.verticalSpacing)
@@ -197,9 +288,13 @@ final class SUPostureMonitorViewController: SUBaseViewController {
                 make.height.equalTo(SULayoutConstants.primaryButtonHeight)
             }
         } else {
-            // 单列经典流
+            // 单列经典自适应流
+            speechBubbleView.snp.remakeConstraints { make in
+                make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(6)
+                make.leading.trailing.equalToSuperview().inset(SULayoutConstants.horizontalPadding + 8)
+            }
             petContainerView.snp.remakeConstraints { make in
-                make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(SULayoutConstants.verticalSpacing)
+                make.top.equalTo(speechBubbleView.snp.bottom).offset(8)
                 make.leading.trailing.equalToSuperview().inset(SULayoutConstants.horizontalPadding)
                 make.height.equalTo(SULayoutConstants.petContainerHeight)
             }
