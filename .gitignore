@@ -20,3 +20,8 @@ Pods/
 
 # Secrets
 *.xcconfig
+
+# Backend Storage & Cache
+backend/storage/*.sqlite*
+backend/storage/cache/*
+backend/storage/logs/*

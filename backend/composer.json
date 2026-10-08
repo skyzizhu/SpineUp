@@ -1,0 +1,14 @@
+{
+  "name": "spineup/backend-api",
+  "description": "SpineUp (骨气) 后端 RESTful API 服务 (Apache + MySQL + PHP)",
+  "type": "project",
+  "license": "MIT",
+  "require": {
+    "php": ">=8.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
+  }
+}
