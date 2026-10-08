@@ -49,7 +49,7 @@ final class SUPostureMonitorViewController: SUBaseViewController {
 
     private let calibrateButton: UIButton = {
         var config = UIButton.Configuration.filled()
-        config.title = "一键端坐校准"
+        config.title = SULocalized("calibrate_button", default: "一键端坐校准")
         config.image = UIImage(systemName: "scope")
         config.imagePadding = 8
         config.cornerStyle = .capsule
@@ -99,7 +99,7 @@ final class SUPostureMonitorViewController: SUBaseViewController {
 
     override func setupSubviews() {
         super.setupSubviews()
-        navigationItem.title = "实时姿态守护"
+        navigationItem.title = SULocalized("monitor_title", default: "实时姿态守护")
 
         // 导航栏配置清新简约原生 SF 图标指示器
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: personaBadgeButton)
@@ -233,7 +233,8 @@ final class SUPostureMonitorViewController: SUBaseViewController {
             DispatchQueue.main.async {
                 guard let self = self else { return }
                 let percent = Int(progress * 100)
-                self.calibrateButton.setTitle("校准中 \(percent)%", for: .normal)
+                let format = SULocalized("calibrating_progress", default: "校准中 %d%%")
+                self.calibrateButton.setTitle(String(format: format, percent), for: .normal)
             }
         }
 
@@ -257,7 +258,7 @@ final class SUPostureMonitorViewController: SUBaseViewController {
         viewModel.onCalibrationFinished = { [weak self] in
             DispatchQueue.main.async {
                 guard let self = self else { return }
-                self.calibrateButton.setTitle("一键端坐校准", for: .normal)
+                self.calibrateButton.setTitle(SULocalized("calibrate_button", default: "一键端坐校准"), for: .normal)
             }
         }
 
@@ -265,7 +266,8 @@ final class SUPostureMonitorViewController: SUBaseViewController {
     }
 
     private func updateEnergyBadge(totalCoins: Int) {
-        energyBadgeButton.setTitle("\(totalCoins) 骨气币", for: .normal)
+        let format = SULocalized("energy_coins_badge", default: "%d 骨气币")
+        energyBadgeButton.setTitle(String(format: format, totalCoins), for: .normal)
     }
 
     private func updatePersonaBadge(persona: SUPetPersona) {

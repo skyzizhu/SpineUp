@@ -150,7 +150,8 @@ final class SUPostureGaugeView: UIView {
     func configure(with reading: SUPostureReading, connectionState: SUHeadphoneConnectionState) {
         let pitchDeg = max(0.0, reading.relativePitchDeg)
         angleValueLabel.text = String(format: "%.1f°", pitchDeg)
-        loadValueLabel.text = String(format: "颈椎额外承重: +%.1f kg", reading.extraLoadKg)
+        let loadTitle = SULocalized("metrics_extra_load", default: "额外负荷")
+        loadValueLabel.text = String(format: "%@: +%.1f kg", loadTitle, reading.extraLoadKg)
 
         // 颜色与状态
         let tintColor: UIColor
@@ -181,13 +182,13 @@ final class SUPostureGaugeView: UIView {
         switch connectionState {
         case .connected:
             connectionIndicator.backgroundColor = .systemGreen
-            connectionLabel.text = "传感器追踪中"
+            connectionLabel.text = SULocalized("state_unknown", default: "传感器追踪中")
         case .disconnected:
             connectionIndicator.backgroundColor = .systemOrange
-            connectionLabel.text = "AirPods 未连接"
+            connectionLabel.text = SULocalized("banner_airpods_disconnected", default: "AirPods 未连接")
         case .unsupported:
             connectionIndicator.backgroundColor = .systemRed
-            connectionLabel.text = "设备不支持运动传感器"
+            connectionLabel.text = SULocalized("banner_unsupported", default: "设备不支持运动传感器")
         }
     }
 }

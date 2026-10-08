@@ -19,11 +19,11 @@ enum SUPetPersona: String, CaseIterable, Identifiable, Sendable {
     var displayName: String {
         switch self {
         case .worker:
-            return "毒舌打工人"
+            return SULocalized("persona_worker", default: "毒舌打工人")
         case .cat:
-            return "傲娇猫猫"
+            return SULocalized("persona_cat", default: "傲娇猫猫")
         case .coach:
-            return "温柔私教"
+            return SULocalized("persona_coach", default: "温柔私教")
         }
     }
 

@@ -27,10 +27,10 @@ final class SUMetricsGridView: UIView {
         return stack
     }()
 
-    private let uprightBox = SUMetricCardBoxView(icon: "clock.fill", title: "挺拔专注", tint: .systemGreen)
-    private let slumpBox = SUMetricCardBoxView(icon: "exclamationmark.triangle.fill", title: "低头疲劳", tint: .systemOrange)
-    private let violationsBox = SUMetricCardBoxView(icon: "hand.raised.fill", title: "违规频次", tint: .systemRed)
-    private let loadBox = SUMetricCardBoxView(icon: "scalemass.fill", title: "颈椎额外负荷", tint: .systemIndigo)
+    private let uprightBox = SUMetricCardBoxView(icon: "clock.fill", title: SULocalized("metrics_upright_ratio", default: "挺拔专注"), tint: .systemGreen)
+    private let slumpBox = SUMetricCardBoxView(icon: "exclamationmark.triangle.fill", title: SULocalized("metrics_longest_streak", default: "低头疲劳"), tint: .systemOrange)
+    private let violationsBox = SUMetricCardBoxView(icon: "hand.raised.fill", title: SULocalized("metrics_violations", default: "违规频次"), tint: .systemRed)
+    private let loadBox = SUMetricCardBoxView(icon: "scalemass.fill", title: SULocalized("metrics_extra_load", default: "颈椎额外负荷"), tint: .systemIndigo)
 
     override init(frame: CGRect) {
         super.init(frame: frame)

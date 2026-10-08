@@ -13,6 +13,7 @@ final class SUMainTabBarController: SUBaseTabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTabs()
+        observeLanguageChanges()
     }
 
     private func setupTabs() {
@@ -20,7 +21,7 @@ final class SUMainTabBarController: SUBaseTabBarController {
         let monitorVC = SUPostureMonitorViewController()
         let monitorNav = SUBaseNavigationController(rootViewController: monitorVC)
         monitorNav.tabBarItem = UITabBarItem(
-            title: "监测",
+            title: SULocalized("tab_monitor", default: "姿态守护"),
             image: UIImage(systemName: "figure.stand"),
             selectedImage: UIImage(systemName: "figure.stand.line.dotted.figure.stand")
         )
@@ -29,7 +30,7 @@ final class SUMainTabBarController: SUBaseTabBarController {
         let reportVC = SUDailyReportViewController()
         let reportNav = SUBaseNavigationController(rootViewController: reportVC)
         reportNav.tabBarItem = UITabBarItem(
-            title: "战报",
+            title: SULocalized("tab_report", default: "今日战报"),
             image: UIImage(systemName: "chart.bar.doc.horizontal"),
             selectedImage: UIImage(systemName: "chart.bar.doc.horizontal.fill")
         )
@@ -38,11 +39,22 @@ final class SUMainTabBarController: SUBaseTabBarController {
         let settingsVC = SUSettingsViewController()
         let settingsNav = SUBaseNavigationController(rootViewController: settingsVC)
         settingsNav.tabBarItem = UITabBarItem(
-            title: "设置",
+            title: SULocalized("tab_settings", default: "偏好设置"),
             image: UIImage(systemName: "gearshape"),
             selectedImage: UIImage(systemName: "gearshape.fill")
         )
 
         viewControllers = [monitorNav, reportNav, settingsNav]
+    }
+
+    private func observeLanguageChanges() {
+        SULocalizationManager.shared.onLanguageChanged = { [weak self] _ in
+            DispatchQueue.main.async {
+                guard let self = self, let vcs = self.viewControllers, vcs.count >= 3 else { return }
+                vcs[0].tabBarItem.title = SULocalized("tab_monitor", default: "姿态守护")
+                vcs[1].tabBarItem.title = SULocalized("tab_report", default: "今日战报")
+                vcs[2].tabBarItem.title = SULocalized("tab_settings", default: "偏好设置")
+            }
+        }
     }
 }

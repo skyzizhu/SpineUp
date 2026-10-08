@@ -178,7 +178,7 @@ final class SUSettingsViewController: SUBaseViewController {
 
     override func setupSubviews() {
         super.setupSubviews()
-        navigationItem.title = "设置与个性化"
+        navigationItem.title = SULocalized("settings_title", default: "设置与个性化")
 
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)

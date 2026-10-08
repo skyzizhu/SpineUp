@@ -68,7 +68,7 @@ final class SUDailyReportViewController: SUBaseViewController {
     // MARK: - 底部分享主操作按钮
     private let shareButton: UIButton = {
         var config = UIButton.Configuration.filled()
-        config.title = "生成并分享骨气战报"
+        config.title = SULocalized("share_report", default: "生成并分享骨气战报")
         let symbolConfig = UIImage.SymbolConfiguration(pointSize: 15, weight: .bold)
         config.image = UIImage(systemName: "square.and.arrow.up.fill", withConfiguration: symbolConfig)
         config.imagePadding = 8
@@ -102,7 +102,7 @@ final class SUDailyReportViewController: SUBaseViewController {
 
     override func setupSubviews() {
         super.setupSubviews()
-        navigationItem.title = "今日骨气战报"
+        navigationItem.title = SULocalized("report_title", default: "今日骨气战报")
 
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)

@@ -21,7 +21,7 @@ final class SUDiagnosisCardView: UIView {
 
     private let cardHeaderLabel: UILabel = {
         let label = UILabel()
-        label.text = "《今日骨气病历单》"
+        label.text = SULocalized("doctor_prescription", default: "《今日骨气病历单》")
         label.font = .systemFont(ofSize: 15, weight: .bold)
         label.textColor = .label
         return label

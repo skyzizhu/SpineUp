@@ -91,12 +91,12 @@ final class SUConnectionBannerView: UIView {
         case .connected:
             hideAnimated()
         case .disconnected:
-            titleLabel.text = "AirPods 未连接或已摘下"
-            subtitleLabel.text = "请佩戴支持运动感知的 AirPods，系统将自动唤醒感知"
+            titleLabel.text = SULocalized("banner_airpods_disconnected", default: "AirPods 未连接或已摘下")
+            subtitleLabel.text = SULocalized("banner_airpods_subtitle", default: "请佩戴支持运动感知的 AirPods，系统将自动唤醒感知")
             showAnimated()
         case .unsupported:
-            titleLabel.text = "当前设备不支持耳机动作感知"
-            subtitleLabel.text = "需要 AirPods Pro / Max / 3代+ / Beats Fit Pro 支持"
+            titleLabel.text = SULocalized("banner_unsupported", default: "当前设备不支持耳机动作感知")
+            subtitleLabel.text = SULocalized("banner_unsupported_subtitle", default: "需要 AirPods Pro / Max / 3代+ / Beats Fit Pro 支持")
             showAnimated()
         }
     }
