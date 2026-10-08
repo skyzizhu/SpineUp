@@ -1,0 +1,5 @@
+/* InfoPlist.strings (French) */
+"CFBundleDisplayName" = "SpineUp";
+"NSMotionUsageDescription" = "SpineUp a besoin d'accéder aux capteurs de mouvement pour surveiller votre posture via vos AirPods en temps réel.";
+"NSHealthShareUsageDescription" = "SpineUp consulte vos données de santé comme le nombre de pas pour vous offrir une analyse ergonomique personnalisée.";
+"NSHealthUpdateUsageDescription" = "SpineUp synchronise vos minutes de posture droite comme séances de pleine conscience dans Apple Health.";

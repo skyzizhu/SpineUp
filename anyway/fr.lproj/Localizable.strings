@@ -1,0 +1,42 @@
+/* Localizable.strings (French) */
+
+/* Tab bar */
+"tab_monitor" = "Posture";
+"tab_report" = "Rapport";
+"tab_settings" = "Réglages";
+
+/* Monitor */
+"monitor_title" = "Posture en direct";
+"calibrate_button" = "Étalonner la posture";
+"calibrating_progress" = "Étalonnage en cours %d%%";
+"energy_coins_badge" = "%d Pièces Colonne";
+"state_upright" = "Droit et énergique";
+"state_slight_slump" = "Léger affaissement";
+"state_severe_slump" = "Voûtement sévère";
+"state_unknown" = "Surveillance";
+
+/* Connection Banner */
+"banner_airpods_disconnected" = "AirPods déconnectés ou retirés";
+"banner_airpods_subtitle" = "Mettez des AirPods compatibles avec l'audio spatial pour reprendre la détection";
+"banner_unsupported" = "Cet appareil ne prend pas en charge le suivi de la tête";
+"banner_unsupported_subtitle" = "Nécessite AirPods Pro, Max, 3e génération+ ou Beats Fit Pro";
+
+/* Personas */
+"persona_worker" = "Employé cynique";
+"persona_cat" = "Chat tsundere";
+"persona_coach" = "Coach bienveillant";
+
+/* Report */
+"report_title" = "Bilan quotidien de posture";
+"share_report" = "Générer et partager le bilan";
+"metrics_upright_ratio" = "Taux de droiture";
+"metrics_longest_streak" = "Plus longue série";
+"metrics_violations" = "Alertes de relâchement";
+"metrics_extra_load" = "Charge cervicale supplémentaire";
+"doctor_prescription" = "Prescription du Dr. IA";
+
+/* Settings */
+"settings_title" = "Préférences";
+"settings_voice_alert" = "Guidage vocal par IA";
+"settings_haptic_alert" = "Vibrations haptiques";
+"settings_language" = "Langue de l'app";

@@ -27,6 +27,8 @@
 	<array>
 		<string>audio</string>
 	</array>
+	<key>NSSupportsLiveActivities</key>
+	<true/>
 	<key>NSMotionUsageDescription</key>
 	<string>SpineUp 需要访问运动传感器以通过 AirPods 监测您的头部姿态</string>
 	<key>NSHealthShareUsageDescription</key>

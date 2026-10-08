@@ -11,6 +11,8 @@ import os
 /// 坐姿基准校准服务 —— 负责采集端坐状态下的 Pitch/Roll 均值并持久化
 final class SUCalibrationService: @unchecked Sendable {
 
+    static let shared = SUCalibrationService()
+
     private let userDefaultsManager: SUUserDefaultsManager
     private let lock = NSLock()
 

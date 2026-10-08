@@ -1,0 +1,42 @@
+/* Localizable.strings (Traditional Chinese) */
+
+/* Tab bar */
+"tab_monitor" = "姿態守護";
+"tab_report" = "今日戰報";
+"tab_settings" = "偏好設定";
+
+/* Monitor */
+"monitor_title" = "即時姿態守護";
+"calibrate_button" = "一鍵端坐校準";
+"calibrating_progress" = "校準中 %d%%";
+"energy_coins_badge" = "%d 骨氣幣";
+"state_upright" = "挺拔端正";
+"state_slight_slump" = "輕微前傾";
+"state_severe_slump" = "嚴重駝背";
+"state_unknown" = "監測中";
+
+/* Connection Banner */
+"banner_airpods_disconnected" = "AirPods 未連接或已取下";
+"banner_airpods_subtitle" = "請佩戴支援空間音訊的 AirPods，系統將自動喚醒感知";
+"banner_unsupported" = "目前裝置不支援耳機動作感知";
+"banner_unsupported_subtitle" = "需要 AirPods Pro / Max / 3代+ / Beats Fit Pro 支援";
+
+/* Personas */
+"persona_worker" = "毒舌打工人";
+"persona_cat" = "傲嬌貓貓";
+"persona_coach" = "溫柔私教";
+
+/* Report */
+"report_title" = "今日骨氣戰報";
+"share_report" = "生成並分享骨氣戰報";
+"metrics_upright_ratio" = "挺拔達標率";
+"metrics_longest_streak" = "最長連續挺拔";
+"metrics_violations" = "低頭預警次數";
+"metrics_extra_load" = "額外頸椎負荷";
+"doctor_prescription" = "AI 擬人處方";
+
+/* Settings */
+"settings_title" = "偏好設定";
+"settings_voice_alert" = "AI 擬人語音播報";
+"settings_haptic_alert" = "觸覺微震動提醒";
+"settings_language" = "語言切換";

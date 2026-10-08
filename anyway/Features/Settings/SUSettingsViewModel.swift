@@ -111,4 +111,19 @@ final class SUSettingsViewModel: @unchecked Sendable {
         lock.unlock()
         onStateChanged?()
     }
+
+    // MARK: - 多语言支持
+    var currentLanguage: SULanguage {
+        return SULocalizationManager.shared.currentLanguage
+    }
+
+    var availableLanguages: [SULanguage] {
+        return SULanguage.allCases
+    }
+
+    func selectLanguage(_ language: SULanguage) {
+        SULocalizationManager.shared.setLanguage(language)
+        audioFeedbackManager.triggerHapticSelection()
+        onStateChanged?()
+    }
 }

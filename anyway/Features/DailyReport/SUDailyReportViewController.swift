@@ -225,32 +225,33 @@ final class SUDailyReportViewController: SUBaseViewController {
         super.adaptLayoutForSize(size)
         let isDualPane = size.width >= SULayoutConstants.duoSplitBreakpointWidth
         if isDualPane {
+            let layout = SUDuoLayoutHelper.splitColumnLayout(totalWidth: size.width)
             // iPhone Duo 展开态：左侧评级与指标，右侧换算、病历与分享按钮
             gradeBannerView.snp.remakeConstraints { make in
                 make.top.equalToSuperview().offset(SULayoutConstants.verticalSpacing)
                 make.leading.equalToSuperview().offset(SULayoutConstants.horizontalPadding)
-                make.width.equalToSuperview().multipliedBy(0.48)
+                make.width.equalTo(layout.leftWidth)
             }
             metricsGridView.snp.remakeConstraints { make in
                 make.top.equalTo(gradeBannerView.snp.bottom).offset(SULayoutConstants.verticalSpacing)
                 make.leading.equalToSuperview().offset(SULayoutConstants.horizontalPadding)
-                make.width.equalToSuperview().multipliedBy(0.48)
+                make.width.equalTo(layout.leftWidth)
                 make.bottom.lessThanOrEqualToSuperview().offset(-SULayoutConstants.sectionSpacing)
             }
             metaphorCardView.snp.remakeConstraints { make in
                 make.top.equalToSuperview().offset(SULayoutConstants.verticalSpacing)
                 make.trailing.equalToSuperview().offset(-SULayoutConstants.horizontalPadding)
-                make.width.equalToSuperview().multipliedBy(0.48)
+                make.width.equalTo(layout.rightWidth)
             }
             diagnosisCardView.snp.remakeConstraints { make in
                 make.top.equalTo(metaphorCardView.snp.bottom).offset(SULayoutConstants.verticalSpacing)
                 make.trailing.equalToSuperview().offset(-SULayoutConstants.horizontalPadding)
-                make.width.equalToSuperview().multipliedBy(0.48)
+                make.width.equalTo(layout.rightWidth)
             }
             shareButton.snp.remakeConstraints { make in
                 make.top.equalTo(diagnosisCardView.snp.bottom).offset(SULayoutConstants.verticalSpacing * 2)
                 make.trailing.equalToSuperview().offset(-SULayoutConstants.horizontalPadding)
-                make.width.equalToSuperview().multipliedBy(0.48)
+                make.width.equalTo(layout.rightWidth)
                 make.height.equalTo(SULayoutConstants.primaryButtonHeight)
                 make.bottom.equalToSuperview().offset(-SULayoutConstants.sectionSpacing * 2)
             }

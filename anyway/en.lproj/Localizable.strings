@@ -1,0 +1,42 @@
+/* Localizable.strings (English - Base) */
+
+/* Tab bar */
+"tab_monitor" = "Posture";
+"tab_report" = "Report";
+"tab_settings" = "Settings";
+
+/* Monitor */
+"monitor_title" = "Real-time Posture";
+"calibrate_button" = "Calibrate Neutral";
+"calibrating_progress" = "Calibrating %d%%";
+"energy_coins_badge" = "%d Spine Coins";
+"state_upright" = "Upright";
+"state_slight_slump" = "Mild Slump";
+"state_severe_slump" = "Severe Slump";
+"state_unknown" = "Monitoring";
+
+/* Connection Banner */
+"banner_airpods_disconnected" = "AirPods Not Connected or Removed";
+"banner_airpods_subtitle" = "Put on motion-compatible AirPods to automatically resume posture tracking";
+"banner_unsupported" = "Headphone Motion Tracking Unsupported";
+"banner_unsupported_subtitle" = "Requires AirPods Pro, Max, 3rd Gen+ or Beats Fit Pro";
+
+/* Personas */
+"persona_worker" = "Office Worker";
+"persona_cat" = "Tsundere Cat";
+"persona_coach" = "Gentle Coach";
+
+/* Report */
+"report_title" = "Daily Spine Battle Report";
+"share_report" = "Share Spine Battle Report";
+"metrics_upright_ratio" = "Upright Ratio";
+"metrics_longest_streak" = "Longest Streak";
+"metrics_violations" = "Slump Alerts";
+"metrics_extra_load" = "Extra Load";
+"doctor_prescription" = "AI Prescription";
+
+/* Settings */
+"settings_title" = "Preferences";
+"settings_voice_alert" = "AI Voice Prompts";
+"settings_haptic_alert" = "Haptic Vibrations";
+"settings_language" = "App Language";

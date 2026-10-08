@@ -1,0 +1,42 @@
+/* Localizable.strings (Japanese) */
+
+/* Tab bar */
+"tab_monitor" = "姿勢見守り";
+"tab_report" = "戦報レポート";
+"tab_settings" = "設定";
+
+/* Monitor */
+"monitor_title" = "リアルタイム姿勢見守り";
+"calibrate_button" = "ワンタップ姿勢校正";
+"calibrating_progress" = "校正中 %d%%";
+"energy_coins_badge" = "%d 骨気コイン";
+"state_upright" = "背筋ピン！";
+"state_slight_slump" = "やや前傾気味";
+"state_severe_slump" = "猫背アラート";
+"state_unknown" = "見守り中";
+
+/* Connection Banner */
+"banner_airpods_disconnected" = "AirPods が未接続または外されています";
+"banner_airpods_subtitle" = "空間オーディオ対応の AirPods を装着すると、自動で追跡が再開されます";
+"banner_unsupported" = "お使いの機器はモーション追跡に未対応です";
+"banner_unsupported_subtitle" = "AirPods Pro / Max / 第3世代+ / Beats Fit Pro が必要です";
+
+/* Personas */
+"persona_worker" = "毒舌サラリーマン";
+"persona_cat" = "ツンデレ猫ちゃん";
+"persona_coach" = "優しいパーソナルコーチ";
+
+/* Report */
+"report_title" = "今日の骨気レポート";
+"share_report" = "骨気レポートを作成してシェア";
+"metrics_upright_ratio" = "美姿勢達成率";
+"metrics_longest_streak" = "最長連続維持";
+"metrics_violations" = "うつむき警告回数";
+"metrics_extra_load" = "首への追加負荷";
+"doctor_prescription" = "AI ドクター処方箋";
+
+/* Settings */
+"settings_title" = "環境設定";
+"settings_voice_alert" = "AI 音声ガイダンス";
+"settings_haptic_alert" = "ハプティクス触覚振動";
+"settings_language" = "言語設定";

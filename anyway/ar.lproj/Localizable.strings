@@ -1,0 +1,42 @@
+/* Localizable.strings (Arabic - RTL) */
+
+/* Tab bar */
+"tab_monitor" = "حماية الوضعية";
+"tab_report" = "تقرير اليوم";
+"tab_settings" = "الإعدادات";
+
+/* Monitor */
+"monitor_title" = "حماية الوضعية الحية";
+"calibrate_button" = "معايرة الاستقامة الفورية";
+"calibrating_progress" = "جارٍ المعايرة %d%%";
+"energy_coins_badge" = "%d عملات العمود الفقري";
+"state_upright" = "مستقيم ونشيط";
+"state_slight_slump" = "انحناء طفيف";
+"state_severe_slump" = "انحناء شديد";
+"state_unknown" = "قيد المراقبة";
+
+/* Connection Banner */
+"banner_airpods_disconnected" = "سماعات AirPods غير متصلة أو تم نزعها";
+"banner_airpods_subtitle" = "ارتدِ سماعات AirPods التي تدعم الصوت المكاني لاستئناف التتبع تلقائياً";
+"banner_unsupported" = "الجهاز الحالي لا يدعم تتبع حركة الرأس";
+"banner_unsupported_subtitle" = "يتطلب AirPods Pro أو Max أو الجيل الثالث فما فوق أو Beats Fit Pro";
+
+/* Personas */
+"persona_worker" = "الموظف الصارم";
+"persona_cat" = "القط المتعالي";
+"persona_coach" = "المدرب اللطيف";
+
+/* Report */
+"report_title" = "تقرير معركة استقامة اليوم";
+"share_report" = "إنشاء ومشاركة التقرير";
+"metrics_upright_ratio" = "معدل الاستقامة";
+"metrics_longest_streak" = "أطول سلسلة متواصلة";
+"metrics_violations" = "تنبيهات الانحناء";
+"metrics_extra_load" = "حمولة الرقبة الإضافية";
+"doctor_prescription" = "وصفة الطبيب الذكي";
+
+/* Settings */
+"settings_title" = "التفضيلات والإعدادات";
+"settings_voice_alert" = "تنبيهات صوتية ذكية";
+"settings_haptic_alert" = "اهتزازات لمسية للتنبيه";
+"settings_language" = "لغة التطبيق";

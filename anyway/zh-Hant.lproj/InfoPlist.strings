@@ -1,0 +1,5 @@
+/* InfoPlist.strings (Traditional Chinese) */
+"CFBundleDisplayName" = "SpineUp";
+"NSMotionUsageDescription" = "SpineUp 需要存取動作感測器，以透過 AirPods 即時監測您的頭部姿態與頸椎健康。";
+"NSHealthShareUsageDescription" = "SpineUp 希望讀取您的步數等健康資料，以提供更貼合日常習慣的體態分析。";
+"NSHealthUpdateUsageDescription" = "SpineUp 希望將您的端正專注時長同步寫入 Apple Health 的正念時間。";

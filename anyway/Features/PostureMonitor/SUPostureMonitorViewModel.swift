@@ -86,6 +86,17 @@ final class SUPostureMonitorViewModel: @unchecked Sendable {
                 deltaSeconds: 1.0 / 15.0
             )
 
+            // 同步更新灵动岛与锁屏实时活动
+            let uprightMins = Int(SUPostureSessionManager.shared.getTodaySession().uprightDurationSec / 60.0)
+            SULiveActivityManager.shared.updateLiveActivity(
+                state: reading.state.rawValue,
+                pitchDeg: reading.relativePitchDeg,
+                extraLoadKg: reading.extraLoadKg,
+                uprightMinutes: uprightMins,
+                personaId: self.activePersona.rawValue,
+                quote: self.latestQuote ?? "做人要有骨气，端正挺拔中！"
+            )
+
             self.onReadingUpdated?(reading)
         }
 
@@ -202,10 +213,15 @@ final class SUPostureMonitorViewModel: @unchecked Sendable {
     // MARK: - 页面业务 Actions
     func startMonitoring() {
         motionService.startMonitoring()
+        SULiveActivityManager.shared.startLiveActivity(
+            initialQuote: latestQuote ?? "做人要有骨气，端正挺拔中！",
+            personaId: activePersona.rawValue
+        )
     }
 
     func stopMonitoring() {
         motionService.stopMonitoring()
+        SULiveActivityManager.shared.endLiveActivity()
     }
 
     func startCalibration() {

@@ -1,0 +1,5 @@
+/* InfoPlist.strings (Arabic - RTL) */
+"CFBundleDisplayName" = "SpineUp";
+"NSMotionUsageDescription" = "يحتاج SpineUp إلى الوصول إلى مستشعرات الحركة لمراقبة وضعية رأسك وصحة رقبتك في الوقت الفعلي عبر AirPods.";
+"NSHealthShareUsageDescription" = "يرغب SpineUp في قراءة بياناتك الصحية مثل الخطوات لتقديم تحليل مخصص لوضعية الجسم.";
+"NSHealthUpdateUsageDescription" = "يرغب SpineUp في تسجيل فترات الاستقامة والتركيز كجلسات تأمل ووعي في Apple Health.";

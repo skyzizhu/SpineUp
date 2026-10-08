@@ -15,6 +15,7 @@ final class SUPostureMonitorViewController: SUBaseViewController {
     private let viewModel: SUPostureMonitorViewModel
 
     // MARK: - 独立封装视图组件
+    private let connectionBannerView = SUConnectionBannerView()
     private let petContainerView = SUPetVisualContainerView()
     private let speechBubbleView = SUPetSpeechBubbleView()
     private let gaugeView = SUPostureGaugeView()
@@ -108,6 +109,9 @@ final class SUPostureMonitorViewController: SUBaseViewController {
         view.addSubview(petContainerView)
         petContainerView.attach(to: self)
 
+        // 挂载连接异常与降级引导横幅
+        view.addSubview(connectionBannerView)
+
         // 挂载台词对话气泡
         view.addSubview(speechBubbleView)
         speechBubbleView.isHidden = true // 初始无台词时隐藏
@@ -131,8 +135,13 @@ final class SUPostureMonitorViewController: SUBaseViewController {
     override func setupConstraints() {
         super.setupConstraints()
 
+        connectionBannerView.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(4)
+            make.leading.trailing.equalToSuperview().inset(SULayoutConstants.horizontalPadding)
+        }
+
         speechBubbleView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(6)
+            make.top.equalTo(connectionBannerView.snp.bottom).offset(6)
             make.leading.trailing.equalToSuperview().inset(SULayoutConstants.horizontalPadding + 8)
         }
 
@@ -228,6 +237,23 @@ final class SUPostureMonitorViewController: SUBaseViewController {
             }
         }
 
+        viewModel.onConnectionStateChanged = { [weak self] state in
+            DispatchQueue.main.async {
+                guard let self = self else { return }
+                self.connectionBannerView.updateConnectionState(state)
+                self.gaugeView.configure(with: self.viewModel.latestReading ?? SUPostureReading(
+                    timestamp: Date(),
+                    rawPitch: 0,
+                    rawRoll: 0,
+                    relativePitchDeg: 0,
+                    relativeRollDeg: 0,
+                    state: .unknown,
+                    extraLoadKg: 0
+                ), connectionState: state)
+            }
+        }
+        connectionBannerView.updateConnectionState(viewModel.connectionState)
+
         viewModel.onCalibrationFinished = { [weak self] in
             DispatchQueue.main.async {
                 guard let self = self else { return }
@@ -262,35 +288,72 @@ final class SUPostureMonitorViewController: SUBaseViewController {
 
     override func adaptLayoutForSize(_ size: CGSize) {
         super.adaptLayoutForSize(size)
-        let isDualPane = size.width >= SULayoutConstants.duoSplitBreakpointWidth
-        if isDualPane {
-            // iPhone Duo 展开态：左栏放台词与宠物，右栏放表盘与校准
+        let mode = SUDuoLayoutHelper.currentDisplayMode(size: size, traitCollection: traitCollection)
+        switch mode {
+        case .regularDual:
+            // iPhone Duo 展开态：中缝避让双栏，左栏放台词与桌宠，右栏放仪表盘与校准控制
+            let layout = SUDuoLayoutHelper.splitColumnLayout(totalWidth: size.width)
+            connectionBannerView.snp.remakeConstraints { make in
+                make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(4)
+                make.leading.trailing.equalToSuperview().inset(SULayoutConstants.horizontalPadding)
+            }
             speechBubbleView.snp.remakeConstraints { make in
-                make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(SULayoutConstants.verticalSpacing)
+                make.top.equalTo(connectionBannerView.snp.bottom).offset(SULayoutConstants.verticalSpacing)
                 make.leading.equalToSuperview().offset(SULayoutConstants.horizontalPadding)
-                make.width.equalToSuperview().multipliedBy(0.48)
+                make.width.equalTo(layout.leftWidth)
             }
             petContainerView.snp.remakeConstraints { make in
                 make.top.equalTo(speechBubbleView.snp.bottom).offset(SULayoutConstants.verticalSpacing)
                 make.leading.equalToSuperview().offset(SULayoutConstants.horizontalPadding)
-                make.width.equalToSuperview().multipliedBy(0.48)
+                make.width.equalTo(layout.leftWidth)
                 make.bottom.lessThanOrEqualTo(view.safeAreaLayoutGuide.snp.bottom).offset(-SULayoutConstants.verticalSpacing)
             }
             gaugeView.snp.remakeConstraints { make in
-                make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(SULayoutConstants.verticalSpacing)
+                make.top.equalTo(connectionBannerView.snp.bottom).offset(SULayoutConstants.verticalSpacing)
                 make.trailing.equalToSuperview().offset(-SULayoutConstants.horizontalPadding)
-                make.width.equalToSuperview().multipliedBy(0.48)
+                make.width.equalTo(layout.rightWidth)
             }
             calibrateButton.snp.remakeConstraints { make in
                 make.top.equalTo(gaugeView.snp.bottom).offset(SULayoutConstants.verticalSpacing * 2)
                 make.trailing.equalToSuperview().offset(-SULayoutConstants.horizontalPadding)
-                make.width.equalToSuperview().multipliedBy(0.48)
+                make.width.equalTo(layout.rightWidth)
                 make.height.equalTo(SULayoutConstants.primaryButtonHeight)
             }
-        } else {
-            // 单列经典自适应流
+
+        case .tabletop:
+            // iPhone Duo 半折悬停 Tabletop 态：上屏展示宠物，下屏操作控制
+            let vertical = SUDuoLayoutHelper.tabletopVerticalLayout(totalHeight: size.height)
+            connectionBannerView.snp.remakeConstraints { make in
+                make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(4)
+                make.leading.trailing.equalToSuperview().inset(SULayoutConstants.horizontalPadding)
+            }
             speechBubbleView.snp.remakeConstraints { make in
-                make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(6)
+                make.top.equalTo(connectionBannerView.snp.bottom).offset(4)
+                make.leading.trailing.equalToSuperview().inset(SULayoutConstants.horizontalPadding + 8)
+            }
+            petContainerView.snp.remakeConstraints { make in
+                make.top.equalTo(speechBubbleView.snp.bottom).offset(4)
+                make.leading.trailing.equalToSuperview().inset(SULayoutConstants.horizontalPadding)
+                make.height.equalTo(vertical.topHeight * 0.7)
+            }
+            gaugeView.snp.remakeConstraints { make in
+                make.top.equalTo(view.snp.top).offset(vertical.topHeight + vertical.foldSpacing)
+                make.leading.trailing.equalToSuperview().inset(SULayoutConstants.horizontalPadding)
+            }
+            calibrateButton.snp.remakeConstraints { make in
+                make.top.equalTo(gaugeView.snp.bottom).offset(SULayoutConstants.verticalSpacing)
+                make.leading.trailing.equalToSuperview().inset(SULayoutConstants.horizontalPadding * 2)
+                make.height.equalTo(SULayoutConstants.primaryButtonHeight)
+            }
+
+        case .compact:
+            // 单列经典自适应流
+            connectionBannerView.snp.remakeConstraints { make in
+                make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(4)
+                make.leading.trailing.equalToSuperview().inset(SULayoutConstants.horizontalPadding)
+            }
+            speechBubbleView.snp.remakeConstraints { make in
+                make.top.equalTo(connectionBannerView.snp.bottom).offset(6)
                 make.leading.trailing.equalToSuperview().inset(SULayoutConstants.horizontalPadding + 8)
             }
             petContainerView.snp.remakeConstraints { make in

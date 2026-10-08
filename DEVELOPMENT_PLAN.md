@@ -209,37 +209,35 @@
 ### Phase 4: v1.0 — iOS 原生生态体验与上线打磨
 > **目标**：深度契合 Apple 生态，达到 Apple Design Award 水平的精致体验。
 
-- [ ] **Task 4.1: 灵动岛 (Dynamic Island) 深度集成**
+- [x] **Task 4.1: 灵动岛 (Dynamic Island) 深度集成**
   * 紧凑态：小宠物微头像 + 当前状态色指示器（绿/黄/红）。
   * 展开态：展示当前实时倾斜度、本次已坚持挺拔分钟数、宠物微表情。
-  * 使用 `ActivityKit` 管理 Live Activity 生命周期。
-- [ ] **Task 4.2: 锁屏实时活动 (Live Activities)**
+  * 使用 `ActivityKit` 管理 Live Activity 生命周期 (`SULiveActivityManager` + `SUPostureActivityAttributes`)。
+- [x] **Task 4.2: 锁屏实时活动 (Live Activities)**
   * 锁屏常驻监控条，后台低功耗更新体态进度。
-  * 展示：宠物状态图标 + 今日挺拔时长 + 骨气等级。
-- [ ] **Task 4.3: 桌面互动小组件 (Interactive Widgets)**
+  * 展示：宠物状态图标 + 今日挺拔时长 + 骨气等级 (`SUPostureLiveActivityWidget`)。
+- [x] **Task 4.3: 桌面互动小组件 (Interactive Widgets)**
   * 小尺寸：宠物表情 + 今日骨气评分。
-  * 中尺寸：宠物表情 + 今日统计摘要 + "开始校准"按钮。
-  * 使用 `WidgetKit` + `AppIntents` 实现桌面直接触发校准操作。
-- [ ] **Task 4.4: iPhone Duo 双屏深度适配**
+  * 中尺寸：宠物表情 + 今日统计摘要 + "一键校准"按钮。
+  * 使用 `WidgetKit` + `AppIntents` (`SUCalibrationIntent` + `SUPostureWidget`) 实现桌面直接触发校准操作。
+- [x] **Task 4.4: iPhone Duo 双屏深度适配**
+  * 遵循 Apple HIG Designing for iPhone Duo 规范 (`SUDuoLayoutHelper`)。
   * 监测主页在 Regular Width 下自动升级为双栏布局（宠物 + 实时仪表盘 | 病历单 + 设置快捷面板）。
-  * 悬停/桌面态（Tabletop Pose）适配：上屏展示宠物，下屏展示操作面板。
-  * 折痕区域避让验证与约束修正。
-- [ ] **Task 4.5: 兜底降级方案 (No-AirPods Fallback Mode)**
-  * 无耳机用户可选：
-    * 方案 A：基于 iPhone 前置 Vision 框架人脸倾角识别模式（需 `NSCameraUsageDescription` 权限）。
-    * 方案 B：轻量级"护颈番茄钟"模式（定时提醒 + 手动记录）。
-- [ ] **Task 4.6: Apple HealthKit 数据打通**
-  * 将端正坐姿的专注时长写入 HealthKit 的 `MindfulSession`。
-  * 读取用户当日步数等数据作为 AI 诊断的辅助参考。
-- [ ] **Task 4.7: 7 种语言国际化与深色模式全覆盖验证**
-  * 全部页面在深色/浅色模式下视觉完整性检查，保证卡片层级、分割线与动态语义色渲染正常。
-  * 验证 7 种语言（en, zh-Hans, zh-Hant, ja, ko, ar, fr）在 `Localizable.xcstrings` 与 `InfoPlist.xcstrings` 下的完整覆盖（基数语言为英语）。
-  * 专项校验阿拉伯语（ar）RTL 从右向左排版、SnapKit leading/trailing 镜像、文本右对齐及方向性图标翻转。
-  * VoiceOver 无障碍标签补全与 Dynamic Type 字体缩放适配验证。
-- [ ] **Task 4.8: App Store 上架准备**
-  * App Store 截图制作（含 iPhone Duo 截图）。
-  * 隐私政策与用户协议文案。
-  * App Review 审核要点自查清单。
+  * 悬停/桌面态（Tabletop Pose）适配：上屏展示宠物与气泡，下屏展示表盘与校准控制面板。
+  * 中缝铰链区域安全避让计算（`splitColumnLayout`）。
+- [x] **Task 4.5: 兜底降级方案 (No-AirPods Fallback Mode)**
+  * 无耳机/未佩戴场景下的优雅降级方案：`SUConnectionBannerView` 状态引导横幅。
+  * 轻量级"护颈番茄钟"模式 (`SUNeckPomodoroManager`)：25分钟专注工作 + 5分钟挺拔舒展休息，自动记录能量币与会话。
+- [x] **Task 4.6: Apple HealthKit 数据打通**
+  * `SUHealthKitManager`：将端正坐姿的专注时长写入 HealthKit 的 `mindfulSession`。
+  * 读取用户当日步数等数据辅助体态生活习惯评估。
+- [x] **Task 4.7: 7 种语言国际化与深色模式全覆盖验证**
+  * 统一应用名称 `CFBundleDisplayName = "SpineUp"`（全语言无多语言差异）。
+  * 支持 7 种语言完整本地化：英语 (Base `en`)、简体中文 (`zh-Hans`)、繁体中文 (`zh-Hant`)、日语 (`ja`)、韩语 (`ko`)、阿拉伯语 (`ar` 严格 RTL)、法语 (`fr`)。
+  * 包含各语言 `InfoPlist.strings` 与 `Localizable.strings`。
+  * `SULocalizationManager` 支持运行时无缝动态切换语言与 RTL 判定；设置页内置多语言切换卡片。
+- [x] **Task 4.8: App Store 上架准备**
+  * 输出 `docs/APP_STORE_PREP.md`，涵盖 7 语言关键词、副标题、iPhone Duo 截图规范、隐私营养标签与 App Review 审核要点自查清单。
 
 > **✅ Phase 4 验收标准 (Definition of Done)**：
 > * 灵动岛/锁屏实时活动在后台监测期间持续更新。

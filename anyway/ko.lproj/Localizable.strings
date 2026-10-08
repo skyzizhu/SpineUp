@@ -1,0 +1,42 @@
+/* Localizable.strings (Korean) */
+
+/* Tab bar */
+"tab_monitor" = "자세 모니터";
+"tab_report" = "데일리 리포트";
+"tab_settings" = "설정";
+
+/* Monitor */
+"monitor_title" = "실시간 자세 가디언";
+"calibrate_button" = "원터치 자세 캘리브레이션";
+"calibrating_progress" = "캘리브레이션 중 %d%%";
+"energy_coins_badge" = "%d 척추 코인";
+"state_upright" = "바른 자세";
+"state_slight_slump" = "약간 숙임";
+"state_severe_slump" = "심한 거북목";
+"state_unknown" = "모니터링 중";
+
+/* Connection Banner */
+"banner_airpods_disconnected" = "AirPods 미연결 또는 착용 해제됨";
+"banner_airpods_subtitle" = "공간 음향을 지원하는 AirPods를 착용하면 자세 감지가 자동으로 재개됩니다";
+"banner_unsupported" = "현재 기기는 헤드폰 모션 감지를 지원하지 않습니다";
+"banner_unsupported_subtitle" = "AirPods Pro / Max / 3세대 이상 / Beats Fit Pro가 필요합니다";
+
+/* Personas */
+"persona_worker" = "독설 직장인";
+"persona_cat" = "츤데레 고양이";
+"persona_coach" = "다정한 코치";
+
+/* Report */
+"report_title" = "오늘의 척추 전적 리포트";
+"share_report" = "척추 리포트 생성 및 공유";
+"metrics_upright_ratio" = "바른 자세 달성률";
+"metrics_longest_streak" = "최장 연속 유지";
+"metrics_violations" = "고개 숙임 경고 횟수";
+"metrics_extra_load" = "목 경추 추가 하중";
+"doctor_prescription" = "AI 닥터 처방전";
+
+/* Settings */
+"settings_title" = "환경설정";
+"settings_voice_alert" = "AI 음성 안내";
+"settings_haptic_alert" = "햅틱 진동 알림";
+"settings_language" = "언어 설정";

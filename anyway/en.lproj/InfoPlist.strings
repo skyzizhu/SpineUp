@@ -1,0 +1,5 @@
+/* InfoPlist.strings (English - Base) */
+"CFBundleDisplayName" = "SpineUp";
+"NSMotionUsageDescription" = "SpineUp needs access to motion sensors to monitor your head posture via AirPods.";
+"NSHealthShareUsageDescription" = "SpineUp accesses health data to provide tailored ergonomics analysis.";
+"NSHealthUpdateUsageDescription" = "SpineUp records your upright focus minutes as Mindful Sessions.";

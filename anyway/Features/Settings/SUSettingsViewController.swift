@@ -111,7 +111,33 @@ final class SUSettingsViewController: SUBaseViewController {
         value: "0"
     )
 
-    // MARK: - Section 4: 版本与标语
+    // MARK: - Section 4: 语言切换
+    private let languageSectionTitleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "语言选择 / Language"
+        label.font = .systemFont(ofSize: 15, weight: .semibold)
+        label.textColor = .secondaryLabel
+        return label
+    }()
+
+    private let languageCardView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .secondarySystemGroupedBackground
+        view.layer.cornerRadius = SULayoutConstants.cornerRadius
+        view.layer.cornerCurve = .continuous
+        return view
+    }()
+
+    private var languageButtons: [(language: SULanguage, button: UIButton)] = []
+    private let languageStackView: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .vertical
+        stack.spacing = 0
+        stack.distribution = .fillEqually
+        return stack
+    }()
+
+    // MARK: - Section 5: 版本与标语
     private let sloganLabel: UILabel = {
         let label = UILabel()
         label.text = "SpineUp · 做人要有骨气"
@@ -182,6 +208,31 @@ final class SUSettingsViewController: SUBaseViewController {
         contentView.addSubview(energyCardView)
         energyCardView.addSubview(streakItemView)
         energyCardView.addSubview(totalCoinsItemView)
+
+        // 组装多语言切换
+        contentView.addSubview(languageSectionTitleLabel)
+        contentView.addSubview(languageCardView)
+        languageCardView.addSubview(languageStackView)
+
+        for language in viewModel.availableLanguages {
+            var config = UIButton.Configuration.plain()
+            let symbolConfig = UIImage.SymbolConfiguration(pointSize: 13, weight: .semibold)
+            config.image = UIImage(systemName: "globe", withConfiguration: symbolConfig)
+            config.imagePadding = 10
+            config.title = language.displayName
+            config.baseForegroundColor = .label
+            config.contentInsets = NSDirectionalEdgeInsets(top: 12, leading: 14, bottom: 12, trailing: 14)
+
+            let button = UIButton(configuration: config)
+            button.contentHorizontalAlignment = .leading
+            button.tag = language.hashValue
+            button.addAction(UIAction { [weak self] _ in
+                self?.viewModel.selectLanguage(language)
+            }, for: .touchUpInside)
+
+            languageButtons.append((language: language, button: button))
+            languageStackView.addArrangedSubview(button)
+        }
 
         // 标语与版权
         contentView.addSubview(sloganLabel)
@@ -259,8 +310,22 @@ final class SUSettingsViewController: SUBaseViewController {
             make.leading.equalTo(energyCardView.snp.centerX)
         }
 
+        languageSectionTitleLabel.snp.makeConstraints { make in
+            make.top.equalTo(energyCardView.snp.bottom).offset(SULayoutConstants.sectionSpacing)
+            make.leading.trailing.equalToSuperview().inset(SULayoutConstants.horizontalPadding)
+        }
+
+        languageCardView.snp.makeConstraints { make in
+            make.top.equalTo(languageSectionTitleLabel.snp.bottom).offset(8)
+            make.leading.trailing.equalToSuperview().inset(SULayoutConstants.horizontalPadding)
+        }
+
+        languageStackView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+
         sloganLabel.snp.makeConstraints { make in
-            make.top.equalTo(energyCardView.snp.bottom).offset(SULayoutConstants.sectionSpacing * 1.5)
+            make.top.equalTo(languageCardView.snp.bottom).offset(SULayoutConstants.sectionSpacing * 1.5)
             make.centerX.equalToSuperview()
         }
 
@@ -306,6 +371,16 @@ final class SUSettingsViewController: SUBaseViewController {
 
         streakItemView.updateValue("\(viewModel.streakDays) 天")
         totalCoinsItemView.updateValue("\(viewModel.totalCoins)")
+
+        for item in languageButtons {
+            let isCurrent = item.language == viewModel.currentLanguage
+            var config = item.button.configuration ?? UIButton.Configuration.plain()
+            let iconName = isCurrent ? "checkmark.circle.fill" : "circle"
+            let symbolConfig = UIImage.SymbolConfiguration(pointSize: 13, weight: .semibold)
+            config.image = UIImage(systemName: iconName, withConfiguration: symbolConfig)
+            config.baseForegroundColor = isCurrent ? .systemBlue : .label
+            item.button.configuration = config
+        }
     }
 }
 

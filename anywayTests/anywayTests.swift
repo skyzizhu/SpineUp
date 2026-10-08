@@ -311,4 +311,121 @@ final class anywayTests: XCTestCase {
         XCTAssertGreaterThan(image.size.width, 100)
         XCTAssertGreaterThan(image.size.height, 100)
     }
+
+    // MARK: - Phase 4 核心单元测试
+
+    func testLiveActivityAttributesAndContentState() throws {
+        let attributes = SUPostureActivityAttributes(sessionTitle: "测试守护")
+        XCTAssertEqual(attributes.sessionTitle, "测试守护")
+
+        let state = SUPostureActivityAttributes.ContentState(
+            postureState: "upright",
+            pitchDeg: 12.5,
+            extraLoadKg: 2.3,
+            uprightMinutes: 30,
+            personaId: "worker",
+            quote: "保持脊椎挺拔！"
+        )
+        XCTAssertEqual(state.postureState, "upright")
+        XCTAssertEqual(state.pitchDeg, 12.5)
+        XCTAssertEqual(state.extraLoadKg, 2.3)
+        XCTAssertEqual(state.uprightMinutes, 30)
+        XCTAssertEqual(state.personaId, "worker")
+        XCTAssertEqual(state.quote, "保持脊椎挺拔！")
+
+        // 验证 Codable 序列化与反序列化
+        let encoder = JSONEncoder()
+        let data = try encoder.encode(state)
+        let decoder = JSONDecoder()
+        let decodedState = try decoder.decode(SUPostureActivityAttributes.ContentState.self, from: data)
+        XCTAssertEqual(decodedState, state)
+    }
+
+    func testLocalizationManagerAndRTL() {
+        let manager = SULocalizationManager.shared
+
+        // 验证支持的 7 种语言完整性
+        XCTAssertEqual(SULanguage.allCases.count, 7)
+        let expectedCodes: Set<String> = ["en", "zh-Hans", "zh-Hant", "ja", "ko", "ar", "fr"]
+        let actualCodes = Set(SULanguage.allCases.map { $0.rawValue })
+        XCTAssertEqual(actualCodes, expectedCodes)
+
+        // 验证 RTL 排版语言判定（阿拉伯语必须为 true，其他为 false）
+        XCTAssertTrue(SULanguage.ar.isRTL)
+        XCTAssertFalse(SULanguage.en.isRTL)
+        XCTAssertFalse(SULanguage.zhHans.isRTL)
+        XCTAssertFalse(SULanguage.zhHant.isRTL)
+        XCTAssertFalse(SULanguage.ja.isRTL)
+        XCTAssertFalse(SULanguage.ko.isRTL)
+        XCTAssertFalse(SULanguage.fr.isRTL)
+
+        // 验证动态语言切换
+        manager.setLanguage(.ar)
+        XCTAssertEqual(manager.currentLanguage, .ar)
+        XCTAssertTrue(manager.isRightToLeft)
+
+        manager.setLanguage(.en)
+        XCTAssertEqual(manager.currentLanguage, .en)
+        XCTAssertFalse(manager.isRightToLeft)
+
+        // 验证默认兜底查找
+        let fallbackResult = manager.localizedString(for: "non_existent_key_123", defaultValue: "FallbackText")
+        XCTAssertEqual(fallbackResult, "FallbackText")
+    }
+
+    func testDuoLayoutHelper() {
+        // 1. Compact 尺寸类
+        let compactTraits = UITraitCollection(horizontalSizeClass: .compact)
+        let compactSize = CGSize(width: 393, height: 852)
+        let compactMode = SUDuoLayoutHelper.currentDisplayMode(size: compactSize, traitCollection: compactTraits)
+        XCTAssertEqual(compactMode, .compact)
+
+        // 2. Regular 尺寸类 (展开双屏态)
+        let regularTraits = UITraitCollection(horizontalSizeClass: .regular)
+        let regularSize = CGSize(width: 800, height: 600)
+        let regularMode = SUDuoLayoutHelper.currentDisplayMode(size: regularSize, traitCollection: regularTraits)
+        XCTAssertEqual(regularMode, .regularDual)
+
+        // 3. Tabletop 桌面半折叠悬停态
+        let tabletopSize = CGSize(width: 700, height: 950)
+        let tabletopMode = SUDuoLayoutHelper.currentDisplayMode(size: tabletopSize, traitCollection: regularTraits)
+        XCTAssertEqual(tabletopMode, .tabletop)
+
+        // 4. 双栏分割与中缝避让计算
+        let split = SUDuoLayoutHelper.splitColumnLayout(totalWidth: 800)
+        XCTAssertGreaterThan(split.leftWidth, 0)
+        XCTAssertEqual(split.leftWidth, split.rightWidth)
+        XCTAssertEqual(split.hingeSpacing, 16.0)
+
+        // 5. Tabletop 上下屏幕高度计算
+        let vertical = SUDuoLayoutHelper.tabletopVerticalLayout(totalHeight: 900)
+        XCTAssertGreaterThan(vertical.topHeight, 0)
+        XCTAssertGreaterThan(vertical.bottomHeight, 0)
+        XCTAssertEqual(vertical.foldSpacing, 20.0)
+    }
+
+    func testNeckPomodoroManager() {
+        let pomodoro = SUNeckPomodoroManager.shared
+        pomodoro.stopSession()
+        XCTAssertEqual(pomodoro.state, .idle)
+        XCTAssertEqual(pomodoro.remainingSeconds, 25 * 60)
+
+        // 启动专注工作阶段
+        pomodoro.startWorkSession()
+        XCTAssertEqual(pomodoro.state, .working)
+
+        // 停止重置
+        pomodoro.stopSession()
+        XCTAssertEqual(pomodoro.state, .idle)
+    }
+
+    func testConnectionBannerView() {
+        let banner = SUConnectionBannerView()
+        XCTAssertNotNil(banner)
+
+        // 切换不同状态不抛出异常
+        banner.updateConnectionState(.connected)
+        banner.updateConnectionState(.disconnected)
+        banner.updateConnectionState(.unsupported)
+    }
 }
