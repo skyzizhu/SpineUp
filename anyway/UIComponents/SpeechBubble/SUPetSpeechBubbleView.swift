@@ -11,17 +11,8 @@ import SnapKit
 /// 宠物拟人对话台词气泡 —— 极简高斯模糊气泡、打字机/淡入动画、支持点击重播语音
 final class SUPetSpeechBubbleView: UIView {
 
-    // MARK: - UI 控件
-    private let blurContainerView: UIVisualEffectView = {
-        let effect = UIBlurEffect(style: .systemUltraThinMaterial)
-        let blur = UIVisualEffectView(effect: effect)
-        blur.layer.cornerRadius = 18
-        blur.layer.cornerCurve = .continuous
-        blur.layer.masksToBounds = true
-        blur.layer.borderWidth = 0.5
-        blur.layer.borderColor = UIColor.separator.withAlphaComponent(0.3).cgColor
-        return blur
-    }()
+    // MARK: - UI 控件 (苹果液态玻璃材质容器)
+    private let blurContainerView = SULiquidGlassView(cornerRadius: 18, isInteractive: true)
 
     private let speakerIconImageView: UIImageView = {
         let iv = UIImageView()

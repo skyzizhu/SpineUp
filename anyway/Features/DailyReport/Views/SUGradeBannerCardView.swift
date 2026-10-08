@@ -11,13 +11,7 @@ import SnapKit
 /// 战报顶部骨气等级勋章卡片 —— 清新简约大气、原生 SF 图标、动态着色
 final class SUGradeBannerCardView: UIView {
 
-    private let containerCard: UIView = {
-        let view = UIView()
-        view.backgroundColor = .secondarySystemGroupedBackground
-        view.layer.cornerRadius = SULayoutConstants.cornerRadiusLarge
-        view.layer.cornerCurve = .continuous
-        return view
-    }()
+    private let containerCard = SULiquidGlassView(cornerRadius: SULayoutConstants.cornerRadiusLarge)
 
     private let badgePill: UIView = {
         let view = UIView()
@@ -66,11 +60,11 @@ final class SUGradeBannerCardView: UIView {
 
     private func setupUI() {
         addSubview(containerCard)
-        containerCard.addSubview(badgePill)
+        containerCard.contentView.addSubview(badgePill)
         badgePill.addSubview(gradeLabel)
-        containerCard.addSubview(titleLabel)
-        containerCard.addSubview(subtitleLabel)
-        containerCard.addSubview(scoreTagLabel)
+        containerCard.contentView.addSubview(titleLabel)
+        containerCard.contentView.addSubview(subtitleLabel)
+        containerCard.contentView.addSubview(scoreTagLabel)
 
         containerCard.snp.makeConstraints { make in
             make.edges.equalToSuperview()

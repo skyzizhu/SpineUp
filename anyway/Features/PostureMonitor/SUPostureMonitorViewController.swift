@@ -292,8 +292,8 @@ final class SUPostureMonitorViewController: SUBaseViewController {
         super.adaptLayoutForSize(size)
         let mode = SUDuoLayoutHelper.currentDisplayMode(size: size, traitCollection: traitCollection)
         switch mode {
-        case .regularDual:
-            // iPhone Duo 展开态：中缝避让双栏，左栏放台词与桌宠，右栏放仪表盘与校准控制
+        case .regularDual, .tent:
+            // iPhone Duo 展开态/帐篷立态：中缝避让双栏，左栏放台词与桌宠，右栏放仪表盘与校准控制
             let layout = SUDuoLayoutHelper.splitColumnLayout(totalWidth: size.width)
             connectionBannerView.snp.remakeConstraints { make in
                 make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(4)

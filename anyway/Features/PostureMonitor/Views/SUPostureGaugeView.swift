@@ -11,15 +11,7 @@ import SnapKit
 /// 独立封装视图：坐姿角度仪表与物理负荷指示卡片
 final class SUPostureGaugeView: UIView {
 
-    private let containerCard: UIView = {
-        let view = UIView()
-        view.backgroundColor = .secondarySystemBackground
-        view.layer.cornerRadius = SULayoutConstants.cornerRadiusMedium
-        view.layer.borderWidth = 0.5
-        view.layer.borderColor = UIColor.separator.cgColor
-        view.layer.masksToBounds = true
-        return view
-    }()
+    private let containerCard = SULiquidGlassView(cornerRadius: SULayoutConstants.cornerRadiusMedium)
 
     private let connectionIndicator: UIView = {
         let view = UIView()
@@ -92,12 +84,12 @@ final class SUPostureGaugeView: UIView {
 
     private func setupSubviews() {
         addSubview(containerCard)
-        containerCard.addSubview(connectionIndicator)
-        containerCard.addSubview(connectionLabel)
-        containerCard.addSubview(angleTitleLabel)
-        containerCard.addSubview(angleValueLabel)
-        containerCard.addSubview(loadValueLabel)
-        containerCard.addSubview(angleProgressTrack)
+        containerCard.contentView.addSubview(connectionIndicator)
+        containerCard.contentView.addSubview(connectionLabel)
+        containerCard.contentView.addSubview(angleTitleLabel)
+        containerCard.contentView.addSubview(angleValueLabel)
+        containerCard.contentView.addSubview(loadValueLabel)
+        containerCard.contentView.addSubview(angleProgressTrack)
         angleProgressTrack.addSubview(angleProgressBar)
     }
 

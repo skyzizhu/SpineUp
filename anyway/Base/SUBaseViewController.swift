@@ -19,6 +19,7 @@ class SUBaseViewController: UIViewController {
         setupSubviews()
         setupConstraints()
         setupBindings()
+        setupTraitTracking()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -41,11 +42,16 @@ class SUBaseViewController: UIViewController {
     /// 3. 数据与事件绑定 (Combine / AsyncStream / 闭包)
     func setupBindings() {}
 
-    // MARK: - 深色/浅色外观切换响应
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-        if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
-            updateAppearanceForCurrentTheme()
+    // MARK: - 现代特征追踪 (iOS 17+ / iOS 26+ Automatic Trait Tracking 规范)
+    private func setupTraitTracking() {
+        // 自动追踪深色模式与外观样式变化
+        registerForTraitChanges([UITraitUserInterfaceStyle.self]) { (self: Self, _) in
+            self.updateAppearanceForCurrentTheme()
+        }
+
+        // 自动追踪 iPhone Duo 尺寸类变化 (外屏 Compact 与内屏展开 Regular 动态切换)
+        registerForTraitChanges([UITraitHorizontalSizeClass.self, UITraitVerticalSizeClass.self]) { (self: Self, _) in
+            self.adaptLayoutForSize(self.view.bounds.size)
         }
     }
 

@@ -11,15 +11,10 @@ import SnapKit
 /// 耳机连接异常与优雅降级引导横幅 —— 清新简约大气、原生 SF 图标、弹性展开收起
 final class SUConnectionBannerView: UIView {
 
-    private let container: UIView = {
-        let view = UIView()
-        view.backgroundColor = .systemOrange.withAlphaComponent(0.12)
-        view.layer.cornerRadius = SULayoutConstants.cornerRadiusSmall
-        view.layer.cornerCurve = .continuous
-        view.layer.borderWidth = 1.0
-        view.layer.borderColor = UIColor.systemOrange.withAlphaComponent(0.3).cgColor
-        return view
-    }()
+    private let container = SULiquidGlassView(
+        cornerRadius: SULayoutConstants.cornerRadiusSmall,
+        tintColor: UIColor.systemOrange.withAlphaComponent(0.12)
+    )
 
     private let iconImageView: UIImageView = {
         let iv = UIImageView()
@@ -58,9 +53,9 @@ final class SUConnectionBannerView: UIView {
 
     private func setupUI() {
         addSubview(container)
-        container.addSubview(iconImageView)
-        container.addSubview(titleLabel)
-        container.addSubview(subtitleLabel)
+        container.contentView.addSubview(iconImageView)
+        container.contentView.addSubview(titleLabel)
+        container.contentView.addSubview(subtitleLabel)
 
         container.snp.makeConstraints { make in
             make.edges.equalToSuperview()

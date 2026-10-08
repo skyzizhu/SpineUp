@@ -395,13 +395,22 @@ final class anywayTests: XCTestCase {
         let split = SUDuoLayoutHelper.splitColumnLayout(totalWidth: 800)
         XCTAssertGreaterThan(split.leftWidth, 0)
         XCTAssertEqual(split.leftWidth, split.rightWidth)
-        XCTAssertEqual(split.hingeSpacing, 16.0)
+        XCTAssertEqual(split.hingeSpacing, 20.0)
 
-        // 5. Tabletop 上下屏幕高度计算
+        // 5. Tabletop 上下屏幕高度计算与避让折痕
         let vertical = SUDuoLayoutHelper.tabletopVerticalLayout(totalHeight: 900)
         XCTAssertGreaterThan(vertical.topHeight, 0)
         XCTAssertGreaterThan(vertical.bottomHeight, 0)
-        XCTAssertEqual(vertical.foldSpacing, 20.0)
+        XCTAssertEqual(vertical.foldSpacing, 24.0)
+
+        // 6. 遮挡矩形计算
+        let tabletopFoldRect = SUDuoLayoutHelper.foldOcclusionRect(for: tabletopSize, mode: .tabletop)
+        XCTAssertEqual(tabletopFoldRect.height, 20.0)
+        XCTAssertGreaterThan(tabletopFoldRect.width, 0)
+
+        let dualFoldRect = SUDuoLayoutHelper.foldOcclusionRect(for: regularSize, mode: .regularDual)
+        XCTAssertEqual(dualFoldRect.width, 20.0)
+        XCTAssertGreaterThan(dualFoldRect.height, 0)
     }
 
     func testNeckPomodoroManager() {
@@ -427,5 +436,21 @@ final class anywayTests: XCTestCase {
         banner.updateConnectionState(.connected)
         banner.updateConnectionState(.disconnected)
         banner.updateConnectionState(.unsupported)
+    }
+
+    @MainActor
+    func testLiquidGlassView() {
+        let glassView = SULiquidGlassView(cornerRadius: 20.0, isInteractive: true, tintColor: .systemBlue, isCapsule: false)
+        XCTAssertNotNil(glassView)
+        XCTAssertEqual(glassView.cornerRadius, 20.0)
+        XCTAssertTrue(glassView.isInteractive)
+        XCTAssertEqual(glassView.glassTintColor, .systemBlue)
+        XCTAssertNotNil(glassView.contentView)
+
+        // 胶囊态切换
+        glassView.isCapsule = true
+        glassView.frame = CGRect(x: 0, y: 0, width: 100, height: 44)
+        glassView.layoutSubviews()
+        XCTAssertEqual(glassView.layer.cornerRadius, 22.0)
     }
 }
