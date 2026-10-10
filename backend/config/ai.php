@@ -2,11 +2,11 @@
 declare(strict_types=1);
 
 return [
-    // 上游大模型配置 (可通过环境变量随时切换 DeepSeek / OpenAI / 兼容端点)
-    'provider'     => $_ENV['AI_PROVIDER'] ?? 'deepseek',
-    'api_key'      => $_ENV['AI_API_KEY'] ?? 'sk-572f70da9b784dc4ac4044a4394bfea8',
-    'base_url'     => $_ENV['AI_API_BASE_URL'] ?? 'https://api.deepseek.com/v1',
-    'model'        => $_ENV['AI_MODEL_NAME'] ?? 'deepseek-flash',
+    // 上游大模型配置 (直接从环境变量读取，不设任何硬编码兜底)
+    'provider'     => $_ENV['AI_PROVIDER'] ?? (getenv('AI_PROVIDER') ?: ''),
+    'api_key'      => $_ENV['AI_API_KEY'] ?? (getenv('AI_API_KEY') ?: ''),
+    'base_url'     => $_ENV['AI_API_BASE_URL'] ?? (getenv('AI_API_BASE_URL') ?: ''),
+    'model'        => $_ENV['AI_MODEL_NAME'] ?? (getenv('AI_MODEL_NAME') ?: ''),
     
     // 超时预算：5000ms 毫秒级熔断 (为 deepseek-flash 思考链路预留足够响应时间)
     'timeout_ms'   => 5000,

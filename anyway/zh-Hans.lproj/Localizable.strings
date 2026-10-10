@@ -12,10 +12,22 @@
 "energy_coins_badge" = "%d 骨气币";
 "energy_coins_badge_title" = "骨气能量币";
 "energy_coins_info_msg" = "当前累计：%d 骨气币\n保持端坐可获得骨气币奖励，连续挺拔打卡可激活专属成就！";
-"state_upright" = "挺拔端正";
+"state_upright" = "精神挺拔";
 "state_slight_slump" = "轻微前倾";
 "state_severe_slump" = "严重驼背";
 "state_unknown" = "监测中";
+
+/* Unified Posture States (精神挺拔 / 轻微前倾 / 严重驼背) */
+"posture_state_upright" = "精神挺拔";
+"posture_state_slight" = "轻微前倾";
+"posture_state_severe" = "严重驼背";
+"posture_state_calibrating" = "校准中";
+"posture_state_unknown" = "未连接";
+
+/* Posture Hazard Levels */
+"hazard_level_ideal" = "零负担 · 完美体态";
+"hazard_level_slight" = "轻度前倾 · 适度微调";
+"hazard_level_severe" = "高危超负荷 · 立即抬头";
 "angle_title" = "相对前倾角度";
 "sensor_tracking" = "AirPods 空间运动追踪中";
 "switch_persona_title" = "切换桌宠人格";
@@ -131,3 +143,309 @@
 "follow_system" = "跟随系统";
 "follow_system_desc" = "与系统语言保持一致";
 "language_setting_hint" = "选择应用界面展示的语言，切换后将即时生效";
+
+/* Speech & AI Fallback */
+"persona_preview_worker" = "打工人人格已就位，准备好迎接扎心提醒了吗？";
+"persona_preview_cat" = "喵呜！傲娇猫猫已上线，不许再把本喵压扁了喵！";
+"persona_preview_coach" = "温柔私教已连接，让我们一起保持挺拔与深呼吸。";
+"ai_fallback_quote" = "做人要有骨气，挺直脊椎，继续加油！";
+"default_posture_quote" = "做人要有骨气，端正挺拔中！";
+
+/* Posture Gauge & Pet Badges */
+"gauge_scale_start" = "0° 精神挺拔";
+"gauge_scale_mid" = "15° 轻微前倾";
+"gauge_scale_end" = "30°+ 严重驼背";
+"gauge_head_pitch_fmt" = "低头 %.1f°";
+"pet_status_upright_fmt" = "精神挺拔 · 低头 %@";
+"pet_status_slight_fmt" = "轻微前倾 · 低头 %@";
+"pet_status_severe_fmt" = "严重驼背 · 低头 %@";
+"pet_status_calibrating" = "校准基准端坐中...";
+"pet_status_unknown" = "等待耳机佩戴...";
+"gauge_status_ideal" = "脊椎零负担 · 完美体态";
+"gauge_status_slight" = "前倾受力增加 · 适度微调";
+"gauge_status_severe" = "高危超负荷 · 请立刻抬头";
+"gauge_status_ideal_short" = "零负担 · 完美体态";
+"gauge_status_slight_short" = "轻度前倾 · 适度微调";
+"gauge_status_severe_short" = "高危超负荷 · 立即抬头";
+"gauge_status_calibrating" = "基准校准中 · 端坐感知";
+"gauge_status_waiting" = "正在同步空间姿态...";
+
+/* Leaderboard & Gamification */
+"tab_leaderboard" = "骨气榜";
+"default_user_name" = "挺拔打工人";
+"leaderboard_title" = "骨气能量榜";
+"leaderboard_tab_energy" = "骨气能量榜";
+"leaderboard_tab_quality" = "挺拔大师榜";
+"leaderboard_tab_streak" = "连续毅力榜";
+"leaderboard_my_rank_fmt" = "第 %d 名";
+"leaderboard_my_energy_sub" = "当前累积 %d 骨气币 · 挺拔保持领先";
+"leaderboard_my_quality_sub" = "挺拔质量优秀率 %d%% · 告别低头前探";
+"leaderboard_my_streak_sub" = "连续端坐打卡 %d 天 · 坚守体态自律";
+"leaderboard_positive_hint" = "💡 本榜单严格遵循正向激励原则，仅展示挺拔与能量成就，不设立预警负面排行，守护每位打工人的体态自尊心。";
+"leaderboard_me_tag" = "(我)";
+"leaderboard_pull_refresh" = "下拉刷新骨气榜...";
+"leaderboard_tag_top1" = "榜首领跑";
+"leaderboard_tag_master" = "体态大师";
+"leaderboard_tag_champion" = "能量先锋";
+"edit_username_title" = "修改个性昵称";
+"edit_username_msg" = "给自己起一个响亮的挺拔代号吧！";
+"edit_username_placeholder" = "如：不低头的极客阿强";
+"settings_user_name" = "Air昵称";
+
+/* Hazard Perspective & Health Recommendations */
+"gauge_relief_btn_title" = "减负微操 💡";
+"diagnosis_btn_relief_guide" = "查看 30 秒急救减负微操 →";
+"relief_guide_title" = "身体保护与微操建议";
+"relief_guide_header_title" = "30秒办公室减负微操";
+"relief_guide_header_sub" = "坐着就能做 · 不尴尬 · 毫秒级卸下颈椎额外承重";
+"relief_action1_title" = "1. 麦肯基收下巴（Chin Tuck）";
+"relief_action1_tag" = "告别乌龟颈 & 激活颈深肌";
+"relief_action1_steps" = "• 坐正两眼平视正前方，背部放松微靠。\n• 食指轻触下巴，水平向后平行推送（挤出双下巴感）。\n• 感受后颈温和拉伸，保持 3 秒，重复 5~8 次。";
+"relief_action2_title" = "2. W 展肩夹背法（W-Stretches）";
+"relief_action2_tag" = "打开胸椎 & 击碎富贵包";
+"relief_action2_steps" = "• 双臂大臂贴紧肋侧，小臂向上屈起呈「W」形。\n• 双肩自然下沉，缓慢向后展开，将两块肩胛骨往中间夹紧。\n• 配合深吸气停留 5 秒后呼气放松，重复 4~6 次。";
+"relief_action3_title" = "3. 工位人体工学黄金原则";
+"relief_action3_steps" = "• 视线平齐：笔记本用支架垫高，屏幕上 1/3 与视线平行。\n• 手肘 90°：调节工位椅高度，手肘呈直角自然搭放桌面。\n• 腰部支撑：屁股坐满椅底，腰部悬空处加一个小靠垫。";
+"relief_btn_start" = "开始 30 秒微操 (+5 骨气能量)";
+"relief_btn_completed" = "🎉 完成！获得 +5 骨气能量";
+
+"hazard_sheet_title" = "颈椎承重与危害透视";
+"hazard_metric_title" = "实时颈椎力学冲击";
+"hazard_metric_val_fmt" = "低头 %.1f° · 额外受力 +%.1f kg";
+"hazard_compare_severe" = "💥 相当于把一个 7 岁儿童直接挂在你的颈椎上！每持续一秒，椎间盘都在承受极致压迫。";
+"hazard_compare_moderate" = "⚠️ 相当于颈后挂了一整箱 24 瓶装矿泉水，颈背肌肉正处于重度紧绷代偿中。";
+"hazard_compare_mild" = "🌿 目前处于轻微或健康负荷范围，请继续保持下颌内收与视线平视！";
+"hazard_appearance_title" = "⚠️ 颜值与体态杀手（无形毁容）";
+"hazard_appearance_content" = "• 富贵包形成：颈胸交界代偿性堆积厚重脂肪垫，脖子变粗显短，穿西装或裙装气质全失。\n• 双下巴与下颌线模糊：长期探颈使颈阔肌过度拉伸松弛，即使体重 90 斤也会出现下颌肉下垂。\n• 猥琐乌龟颈：圆肩含胸伴随下巴前伸，无论男女整个人透出疲惫畏缩感。";
+"hazard_timeline_title" = "⏱ 损伤时间轴演变（不可逆退行）";
+"hazard_timeline_content" = "• 持续 30~60 分钟：斜方肌痉挛酸痛、紧张性偏头痛、脑供血轻微受阻导致哈欠连天。\n• 累积 1~3 个月：颈椎正常前凸曲度消失（生理曲度变直）、胸椎代偿性后凸驼背。\n• 累积 1~2 年以上：C5-C7 椎间盘退行性变甚至膨出、骨刺增生、神经根压迫导致手臂手指放射性麻木。";
+"hazard_btn_to_relief" = "查看减负微操方案";
+
+/* AI Posture Perspective & Prescription */
+"sensor_tracking_short" = "AirPods 空间追踪中";
+"ai_perspective_tag" = "AI透视 ↗";
+"ai_tag_title" = "✨ AI 实时体态力学推演";
+"ai_analyzing_hint" = "✨ AI 正在计算当前姿态力学冲击与体态退行预测...";
+"ai_prescription_badge" = "✨ AI 专属急救处方";
+"ai_hazard_headline_fmt" = "【AI 诊断】当前低头 %.1f° · 额外负荷 +%.1f kg";
+"ai_metaphor_extreme" = "💥 当前颈椎犹如倒挂了一台 24 英寸金属显示器！每维持 10 秒，C5-C6 椎间盘纤维环承受压强即逼近极限阈值。";
+"ai_metaphor_heavy" = "⚠️ 相当于肩颈部位被强行压上了一整箱 24 瓶装矿泉水（约 15kg），斜方肌被迫持续做强抗阻代偿。";
+"ai_metaphor_moderate" = "🌿 相当于颈后挂了一只成年的大胖橘猫（约 9kg），虽暂无剧烈锐痛，但隐性肌纤维微损伤正在悄然累积。";
+"ai_metaphor_light" = "✨ 当前处于接近生理零负担的黄金区间，头颈部处于平衡力矩支点。";
+"ai_appearance_severe" = "• 富贵包高危警告：颈胸椎交界长期处于受剪切力状态，脂肪垫为保护神经已开始代偿性堆积，后颈视觉变短变厚。\n• 下颌线模糊坍塌：下巴长期前伸导致深层颈阔肌过度伸展松弛，即使体脂率极低也会诱发不可逆双下巴。\n• 乌龟颈体态定型：今日累计前倾 %d 分钟，胸锁乳突肌呈持续短缩状态，站立时本能猥琐探头。";
+"ai_appearance_moderate" = "• 轻度前探代偿：斜方肌上束呈持续缺血紧绷状态，穿正装或修身衣物时易出现明显溜肩。\n• 下颌肌群代偿疲劳：颈深屈肌力量被抑制，下颌线条正受到向下拉扯牵引。\n• 建议：今日已有 %d 次低头记录，需立即激活背部菱形肌。";
+"ai_appearance_good" = "• 黄金下颌线条：颈部前屈角度在理想生理范围内，下颌线条平整紧致，颈部无代偿性增生。\n• 气质天鹅颈保持中：锁骨与双肩自然下沉打开，整个人身姿挺拔干练。";
+"ai_timeline_severe" = "• 持续 30 分钟：斜方肌血流受阻 60%%，产生乳酸堆积与顽固性酸胀、偏头痛。\n• 累积 1~3 个月：颈椎前凸曲度变直甚至反弓，胸椎代偿后凸，形成固定性驼背。\n• 持续 1~2 年以上：C5-C7 椎间盘退行性变甚至突出，压迫神经根，引发手臂放射性麻木。";
+"ai_timeline_mild" = "• 持续保持：颈椎间盘获得良好水分回流与弹性休养，肩颈经络通畅，脑供血充足充沛。\n• 1~3 个月后：形成肌肉记忆，即使高强度伏案工作也能自发维持优雅直立。";
+"ai_relief_diag_heavy" = "⚡️ AI 判定当前颈椎处于高负荷抗阻紧绷（+%.1f kg）。检测到斜方肌上束充血痉挛，急需做后缩反向对冲！";
+"ai_relief_diag_light" = "🌿 当前姿态良好，此 30 秒微操主要用于唤醒深层核心肌肉记忆，预防伏案疲劳积累。";
+
+/* Weekly & Report Additions */
+"common_cancel" = "取消";
+"common_confirm" = "保存";
+"legend_best" = "🏆 最佳日";
+"legend_slump" = "低头前倾";
+"legend_upright" = "挺拔端正";
+"period_daily" = "今日战报";
+"period_weekly" = "本周战报";
+"share_weekly_report" = "生成并分享骨气周报";
+"unit_coins" = "能量币";
+"unit_hotspot" = "高发期";
+"unit_hours" = "小时";
+"unit_low_risk" = "低危区";
+"weekly_ai_title" = "AI 专属伴侣周度深度复盘";
+"weekly_grade_a" = "抗压先锋";
+"weekly_grade_b" = "平衡调节期";
+"weekly_grade_c" = "亟待急救期";
+"weekly_grade_s" = "挺拔战神";
+"weekly_metaphor_bikes" = "约 3 辆金属山地自行车 (约 45kg)";
+"weekly_metaphor_fmt" = "本周减负量: %@";
+"weekly_range_fmt" = "第 %d 周 · 本周体态表现";
+"weekly_score_title" = "周度体态健康综合评分";
+"weekly_trend_subtitle" = "柱状高低反映每日佩戴时长，高亮周度最佳日";
+"weekly_trend_title" = "7 天体态趋势分布";
+"weekly_upright_fmt" = "%.1f%% 挺拔率";
+
+/* Settings & Preferences */
+"settings_section_persona" = "宠物拟人人格";
+"settings_section_alert" = "提醒偏好";
+"settings_ai_voice_title" = "AI 拟人语音播报";
+"settings_ai_voice_subtitle" = "3分钟防打扰，轻柔避让背景音乐";
+"settings_haptic_title" = "触觉微震动提醒";
+"settings_haptic_subtitle" = "低头超时后轻微震感";
+"settings_sound_title" = "轻快系统提示铃";
+"settings_sound_subtitle" = "低头时清脆水滴声";
+"settings_section_energy" = "骨气能量";
+"settings_streak_title" = "连续打卡";
+"settings_streak_days_fmt" = "%d 天";
+"settings_coins_title" = "累计能量币";
+"settings_slogan" = "SpineUp · 做人要有骨气";
+"settings_simulator_debug" = "模拟器低头角度调试: %.1f°";
+
+/* Onboarding */
+"onboarding_title_1" = "让 AirPods 成为你的\n全天候脊椎守护兽";
+"onboarding_sub_1" = "【SpineUp 能为你做什么】\n• 告别久坐低头族：实时监测头部俯仰与前倾姿态，将前倾倾角精准换算为颈椎额外受力当量（低头 60° 相当于颈椎承受 27kg 压迫！），预防富贵包与体态僵硬。\n• 拟人化桌宠陪伴：元气宠物在后台默默守护，体态不良时即时化身软泥怪提醒，拒绝枯燥说教。\n\n【需要连接什么设备】\n• 支援空间音频的 Apple 耳机：AirPods Pro（全部代际）、AirPods 3/4、AirPods Max 及兼容 Beats 耳机。\n• 零额外硬件负担：无需额外购买专用穿戴硬件，佩戴日常听歌开会的耳机即可无感开启守护。";
+"onboarding_btn_1" = "了解运动权限与核心原理";
+"onboarding_title_2" = "开启耳机运动权限\n实现毫秒级空间感知";
+"onboarding_sub_2" = "【为什么需要运动传感器权限】\n• 空间姿态核心驱动：SpineUp 需要访问 iOS「运动与健身」权限，调用耳机内置陀螺仪与加速度计，以 60Hz 采样率感知头部细微前倾与偏转。\n\n【连接后能做什么】\n• 毫秒级防低头预警：当头部前倾超出设定阈值时，通过轻柔触感、提示音或宠物语音轻声唤醒，在专注工作中无感重置健康坐姿。\n• 100% 设备端本地运算：所有传感器运动轨迹均在 iPhone 本地即时计算，绝不上传私密运动数据，完全保障隐私安全。";
+"onboarding_btn_2" = "开启耳机运动权限并继续";
+"onboarding_title_3" = "戴上耳机一键校准\n开启趣味减负之旅";
+"onboarding_sub_3" = "【如何使用与零点校准】\n• 戴好耳机端坐舒展：双耳戴上 AirPods，调整到您感觉自然、舒适挺拔的坐姿或站姿。\n• 一键锁定专属零点：轻点「一键校准」即可锁定基准，随时自适应不同办公椅与工位环境。\n\n【连接后还可以做什么】\n• 30 秒微操减负回血：疲劳时跟随宠物做一次「收下巴」或「W展肩」微操，即刻卸下颈椎额外负荷并赚取能量币。\n• 每日体态病历诊断：下班生成当日挺拔优秀率、疲劳时段与生活化承重比喻，见证脊椎每一天的蜕变！";
+"onboarding_btn_3" = "开启我的脊椎守护";
+"onboarding_badge_features" = "核心功能";
+"onboarding_badge_devices" = "兼容设备";
+"onboarding_badge_permission" = "传感器权限";
+"onboarding_badge_alert" = "预警与隐私";
+"onboarding_badge_privacy" = "隐私安全";
+"onboarding_badge_calibrate" = "零点校准";
+"onboarding_badge_lifestyle" = "健康陪伴";
+
+/* Leaderboard & Relief & Share */
+"leaderboard_upright_ratio_fmt" = "%d%% 挺拔";
+"leaderboard_streak_fmt" = "%d 天连胜 🔥";
+"relief_in_progress_fmt" = "减负进行中... %ds";
+"share_stat_upright" = "挺拔专注";
+"share_stat_ratio" = "端正率";
+"share_stat_load" = "额外负荷";
+
+"gauge_card_title" = "实时颈椎力学";
+"conn_status_ok_title" = "AirPods 空间音频追踪中";
+"conn_status_ok_desc" = "设备传感器已就绪，正在以 60Hz 采样率实时感知头部姿态与颈椎额外承重。";
+"conn_status_dc_title" = "AirPods 未连接";
+
+/* Posture Hazard & Relief Guide & Practice */
+"ai_analyzing_hint" = "✨ AI 正在计算当前姿态力学冲击与体态退行预测...";
+"ai_prescription_badge" = "✨ AI 专属急救处方 · 毫秒级卸荷";
+"ai_tag_title" = "✨ AI 实时体态力学推演";
+"hazard_appearance_title" = "⚠️ 颜值与体态杀手（无形毁容）";
+"hazard_btn_to_relief" = "查看减负微操方案";
+"hazard_metric_title" = "实时颈椎力学冲击";
+"hazard_metric_val_fmt" = "低头 %.1f° · 额外受力 +%.1f kg";
+"hazard_sheet_title" = "颈椎承重与危害透视";
+"hazard_timeline_title" = "⏱ 损伤时间轴演变（不可逆退行）";
+"relief_action1_steps" = "• 坐正平视正前方，背部放松微靠。\n• 食指轻触下巴，水平向后平行推送（挤出双下巴感）。\n• 感受后颈温和拉伸，保持 3 秒，重复 5~8 次。";
+"relief_action1_tag" = "告别乌龟颈 & 激活颈深肌";
+"relief_action1_title" = "1. 麦肯基收下巴（Chin Tuck）";
+"relief_action2_steps" = "• 双臂大臂贴紧肋侧，小臂向上屈起呈「W」形。\n• 双肩自然下沉缓慢展开，将两块肩胛骨往中间夹紧。\n• 配合深吸气停留 5 秒后呼气放松，重复 4~6 次。";
+"relief_action2_tag" = "打开胸椎 & 击碎富贵包";
+"relief_action2_title" = "2. W 展肩夹背法（W-Stretches）";
+"relief_action3_steps" = "• 视线平齐：笔记本用支架垫高，屏幕上 1/3 与视线平行。\n• 手肘 90°：调节工位椅高度，手肘呈直角自然搭放桌面。\n• 腰部支撑：臀部坐满椅底，腰部悬空处加一个小靠垫。";
+"relief_action3_tag" = "物理根源消除低头诱因";
+"relief_action3_title" = "3. 工位人体工学黄金原则";
+"relief_btn_completed" = "🎉 完成！获得 +5 骨气能量";
+"relief_btn_start" = "开始 30 秒微操 (+5 骨气能量)";
+"relief_guide_header_sub" = "坐着就能做 · 不尴尬 · 毫秒级卸下颈椎额外承重";
+"relief_guide_header_title" = "30秒办公室减负微操";
+"relief_guide_title" = "身体保护与微操建议";
+"practice_step_1" = "动作 1/2 (15s)";
+"practice_step_2" = "动作 2/2 (15s)";
+"practice_action1_title" = "麦肯基收下巴";
+"practice_action1_tag" = "告别乌龟颈 · 激活颈深肌";
+"practice_action1_step1" = "坐正平视正前方，背部放松微靠";
+"practice_action1_step2" = "食指轻触下巴，水平向后平行推送（挤出双下巴感）";
+"practice_action1_step3" = "感受后颈温和拉伸，保持 3 秒后还原放松";
+"practice_action2_title" = "W 展肩夹背";
+"practice_action2_tag" = "打开胸椎 · 击碎富贵包";
+"practice_action2_step1" = "双臂大臂贴紧肋侧，小臂向上屈起呈「W」形";
+"practice_action2_step2" = "双肩自然下沉，缓慢将两块肩胛骨往中间夹紧";
+"practice_action2_step3" = "配合深吸气停留 5 秒后呼气放松还原";
+"practice_dialogue_chin_worker" = "坐正平视！把头向后缩，把今天低头看老板微信的窝囊气全收回去！";
+"practice_dialogue_chin_cat" = "喵呜~ 平视前方，用小肉垫把下巴水平往后推，挤出可爱的双下巴喵！";
+"practice_dialogue_chin_coach" = "坐直身体，食指轻推下巴水平后移，感受后颈深层肌肉被轻柔拉伸~";
+"practice_dialogue_w_worker" = "大臂贴肋骨，双肩向后死命夹！狠狠粉碎工位长出来的富贵包！";
+"practice_dialogue_w_cat" = "换姿势啦喵！双爪举成 W 字形，把两只小翅膀在后背用力夹紧！";
+"practice_dialogue_w_coach" = "做得很好！双臂弯曲呈 W 形，肩胛骨向中线收拢，深吸气保持住~";
+"practice_sprint_worker" = "最后 3 秒撑住！脊椎挺直了，下班才有力气跑路！";
+"practice_sprint_cat" = "最后 3 秒冲刺喵！挺拔起来，本喵马上要坐在你头顶啦！";
+"practice_sprint_coach" = "最后 3 秒保持深呼吸，马上卸下颈椎所有的额外承重啦~";
+"practice_completed_worker" = "大功告成！颈椎额外承重清空，+5 骨气能量到账，干得漂亮！";
+"practice_completed_cat" = "太棒啦喵！颈椎变轻盈啦，赏你 +5 骨气能量，记得每天都要跟本喵练哦！";
+"practice_completed_coach" = "非常完美！颈椎压力已被成功卸载，恭喜获得 +5 骨气能量奖励！";
+"practice_guide_push_back" = "水平后缩";
+"practice_rhythm_chin" = "节拍：平行后推 ➔ 保持 3 秒 ➔ 放松";
+"practice_rhythm_w" = "节拍：展臂深吸气 ➔ 夹紧 5 秒 ➔ 呼气还原";
+"practice_mode_headphone" = "🎧 耳机体态感知";
+"practice_mode_ai_vision" = "🎥 AI 视觉识别中";
+"practice_cam_standby" = "姿态分析中";
+"practice_seconds_left" = "秒剩余";
+"practice_btn_finish_early" = "提前完成并打卡";
+"practice_btn_claim_done" = "🎉 获得 +5 骨气能量 · 完成";
+"practice_paused_tip" = "微操已暂停，随时点击继续~";
+"practice_breath_inhale" = "深吸气 · 挺胸展肩";
+"practice_breath_hold" = "屏息 3 秒 · 持续发力";
+"practice_breath_exhale" = "缓慢呼气 · 放松还原";
+"practice_airpods_matched" = "🎧 AirPods 感知到后颈挺拔回缩！";
+"practice_airpods_active" = "🎧 AirPods 空间体态感知中";
+"vision_tip_face_missing" = "请正对前置摄像头";
+"vision_tip_chin_good" = "平视良好！保持下巴向后微缩";
+"vision_tip_keep_forward" = "两眼平视正前方，背部微靠";
+"vision_tip_body_missing" = "请将手机稍微立起，确保上半身入镜";
+"vision_tip_arms_raise" = "请抬起双肘，呈 W 字形展开";
+"vision_tip_w_perfect" = "W 形姿态标准！肩胛骨向中线夹紧";
+"vision_tip_w_adjust" = "双手屈起，向后夹紧肩胛骨";
+"vision_tip_inhale_detected" = "🫁 检测到深吸气胸腔舒展";
+"relief_pill_normal_title" = "急救减负 · 麦肯基微操回血";
+"relief_pill_normal_badge" = "即刻舒缓";
+"relief_pill_fatigue_title" = "颈椎承重 %.1f kg · 立即微操回血";
+"relief_pill_fatigue_badge" = "急救对冲";
+"relief_pill_recovered_title" = "🎉 颈椎已卸负 %.1f kg · 骨气币 +10";
+"relief_pill_recovered_badge" = "回血成功";
+"relief_cheer_quote" = "太棒了！已帮你的颈椎卸下 2.0kg 剪切负荷，奖励 10 骨气币，满血复活！";
+
+/* Additional Screen Elements */
+"settings_streak_days" = "连续打卡";
+"settings_total_coins" = "累计能量币";
+"clinical_diagnosis_tag" = "体态综合判定";
+"report_archive_stamp" = "评级 %@ · 认证";
+"diagnosis_header_subtitle" = "CLINICAL POSTURE ASSESSMENT";
+"relief_guide_badge" = "即刻舒缓";
+"hazard_angle_title" = "当前前倾角度";
+"hazard_load_title" = "颈椎额外承重";
+"hazard_pet_live_tag" = "实时督导";
+"hazard_appearance_tag" = "无形毁容";
+"hazard_timeline_tag" = "不可逆退行";
+"hazard_pet_coach_name" = "实时督导";
+"relief_pill_severe_badge" = "高危报警";
+
+/* AirPods 5-State Connection & Authorization Model */
+"conn_state_connected_title" = "AirPods 空间运动追踪中";
+"conn_state_worn_unauth_title" = "AirPods 已就绪 · 待授权";
+"conn_state_unworn_auth_title" = "AirPods 已摘下 / 挂起中";
+"conn_state_unworn_unauth_title" = "检测到 AirPods · 待佩戴并授权";
+"conn_state_disconnected_title" = "AirPods 未连接";
+"conn_state_unsupported_title" = "设备暂不支持耳机动作感知";
+
+"conn_state_connected_sub" = "正在以 60Hz 采样率实时感知头部姿态与颈椎负荷";
+"conn_state_worn_unauth_sub" = "检测到耳机已戴入耳中，轻触一键开启运动权限即可守护";
+"conn_state_unworn_auth_sub" = "已获得授权，戴入双耳系统将自动恢复体态感知";
+"conn_state_unworn_unauth_sub" = "耳机已连手机但未入耳，请戴上耳机并轻触允许权限";
+"conn_state_disconnected_sub" = "请在系统设置中连接支持的 AirPods (Pro/Max/3/4代)";
+"conn_state_unsupported_sub" = "需要 AirPods Pro / 3代 / 4代 / Max 或 Beats Fit Pro 支持";
+
+"action_calibrate_baseline" = "一键端坐校准";
+"action_request_auth" = "一键允许授权";
+"action_wear_and_auth" = "戴好后，点击授权";
+"action_connect_help" = "查看连接指南";
+"action_know_more" = "了解支持设备";
+"action_connect_bluetooth" = "前往系统设置";
+"auth_permission_title" = "需要「动作与健身」权限";
+"auth_permission_msg" = "SpineUp 需要访问头部运动数据以计算坐姿角度。请在「设置 - SpineUp」中开启运动权限。";
+"auth_restricted_title" = "权限受系统限制";
+"auth_restricted_msg" = "运动与健身权限受到家长控制或设备管理策略限制，请前往「系统设置 - 屏幕使用时间 - 内容与隐私访问限制」检查。";
+"unsupported_device_title" = "设备暂不支持耳机动作感知";
+"unsupported_device_desc" = "SpineUp 需要配备头部空间运动传感器的耳机：\n• AirPods Pro (1代 / 2代)\n• AirPods (3代 / 4代)\n• AirPods Max\n• Beats Fit Pro\n\n车载蓝牙、音箱或基础款 AirPods 1/2 代由于硬件无陀螺仪，无法追踪姿态。";
+"go_to_settings" = "前往系统设置";
+
+/* Legal & Compliance */
+"settings_legal_section" = "法律与免责声明";
+"settings_legal_documents_title" = "协议与声明";
+"legal_list_title" = "法律信息与免责声明";
+"legal_list_hint" = "SpineUp 重视您的身体健康与数据隐私安全，请点击查阅以下官方合规声明与服务协议。";
+"legal_item_medical_title" = "健康与医疗免责声明";
+"legal_item_medical_desc" = "本应用非医疗器械，不提供医疗诊断或替代专业医嘱";
+"legal_item_privacy_title" = "隐私政策";
+"legal_item_privacy_desc" = "100% 传感器端侧本地运算，零个人追踪与无感安全体验";
+"legal_item_terms_title" = "用户服务条款";
+"legal_item_terms_desc" = "软件使用许可协议、免责条款与知识产权规范";
+"legal_effective_date" = "生效日期：2026年10月";
+

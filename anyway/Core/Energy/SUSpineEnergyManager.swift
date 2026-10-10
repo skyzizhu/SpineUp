@@ -76,6 +76,33 @@ final class SUSpineEnergyManager: @unchecked Sendable {
         lock.unlock()
     }
 
+    /// 奖励额外骨气能量币（例如完成30秒减负微操打卡）
+    func rewardBonusCoins(_ amount: Int) {
+        lock.lock()
+        userDefaultsManager.addSpineEnergyCoins(amount)
+        earnedTodayCoins += amount
+        let newTotal = userDefaultsManager.spineEnergyCoins
+        let currentEarned = earnedTodayCoins
+        lock.unlock()
+
+        SULogger.business.info("Awarded \(amount) bonus spine energy coin(s). Total: \(newTotal)")
+        onEnergyUpdated?(newTotal, currentEarned)
+    }
+
+    /// 与云端返回的能量余额进行双向一致性对齐
+    func syncBalanceFromCloud(_ cloudTotalCoins: Int) {
+        lock.lock()
+        if cloudTotalCoins > userDefaultsManager.spineEnergyCoins {
+            userDefaultsManager.spineEnergyCoins = cloudTotalCoins
+        }
+        let total = userDefaultsManager.spineEnergyCoins
+        let currentEarned = earnedTodayCoins
+        lock.unlock()
+
+        SULogger.business.info("Synced balance from cloud: total=\(total)")
+        onEnergyUpdated?(total, currentEarned)
+    }
+
     /// 检查并刷新每日坚持连续天数 (Streak)
     private func checkAndUpdateDailyStreak() {
         lock.lock()

@@ -47,6 +47,7 @@ final class SUPetSpeechBubbleView: UIView {
     // MARK: - 初始化
     override init(frame: CGRect) {
         super.init(frame: frame)
+        isHidden = true
         setupUI()
     }
 
@@ -69,19 +70,20 @@ final class SUPetSpeechBubbleView: UIView {
 
         blurContainerView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
+            make.height.greaterThanOrEqualTo(36).priority(.high)
         }
 
         speakerIconImageView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(10)
+            make.top.equalToSuperview().offset(10).priority(.high)
             make.leading.equalToSuperview().offset(12)
-            make.size.equalTo(18)
+            make.size.equalTo(18).priority(.high)
         }
 
         textLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(8)
-            make.bottom.equalToSuperview().offset(-8)
+            make.top.equalToSuperview().offset(8).priority(.high)
+            make.bottom.equalToSuperview().offset(-8).priority(.high)
             make.leading.equalTo(speakerIconImageView.snp.trailing).offset(8)
-            make.trailing.equalToSuperview().offset(-12)
+            make.trailing.equalToSuperview().offset(-12).priority(.high)
         }
 
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
@@ -123,6 +125,7 @@ final class SUPetSpeechBubbleView: UIView {
         UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.78, initialSpringVelocity: 0.6, options: [.allowUserInteraction], animations: {
             self.alpha = 1.0
             self.transform = .identity
+            self.superview?.layoutIfNeeded()
         })
     }
 
@@ -131,8 +134,10 @@ final class SUPetSpeechBubbleView: UIView {
         UIView.animate(withDuration: 0.25, animations: {
             self.alpha = 0
             self.transform = CGAffineTransform(scaleX: 0.92, y: 0.92)
-        }) { _ in
             self.isHidden = true
+            self.superview?.layoutIfNeeded()
+        }) { _ in
+            self.transform = .identity
         }
     }
 }

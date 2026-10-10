@@ -105,8 +105,14 @@ final class SUMetricCardBoxView: UIView {
 
     private let valueLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 18, weight: .bold)
+        if let descriptor = UIFont.systemFont(ofSize: 26, weight: .bold).fontDescriptor.withDesign(.rounded) {
+            label.font = UIFont(descriptor: descriptor, size: 26)
+        } else {
+            label.font = UIFont.systemFont(ofSize: 26, weight: .bold)
+        }
         label.textColor = .label
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.75
         return label
     }()
 
@@ -122,7 +128,7 @@ final class SUMetricCardBoxView: UIView {
             make.edges.equalToSuperview()
         }
 
-        let config = UIImage.SymbolConfiguration(pointSize: 14, weight: .semibold)
+        let config = UIImage.SymbolConfiguration(pointSize: 13, weight: .semibold)
         iconImageView.image = UIImage(systemName: icon, withConfiguration: config)
         iconImageView.tintColor = tint
         titleLabel.text = title
@@ -130,7 +136,7 @@ final class SUMetricCardBoxView: UIView {
         iconImageView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(14)
             make.leading.equalToSuperview().offset(14)
-            make.size.equalTo(18)
+            make.size.equalTo(16)
         }
 
         titleLabel.snp.makeConstraints { make in
@@ -140,9 +146,10 @@ final class SUMetricCardBoxView: UIView {
         }
 
         valueLabel.snp.makeConstraints { make in
-            make.top.equalTo(iconImageView.snp.bottom).offset(8)
+            make.top.equalTo(iconImageView.snp.bottom).offset(10)
             make.leading.equalToSuperview().offset(14)
             make.trailing.equalToSuperview().offset(-14)
+            make.bottom.lessThanOrEqualToSuperview().offset(-8)
         }
     }
 

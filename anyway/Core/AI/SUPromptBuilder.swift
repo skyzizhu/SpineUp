@@ -11,10 +11,14 @@ import Foundation
 struct SUPromptBuilder {
 
     /// 系统角色设定 (System Instruction)
-    static func buildSystemPrompt(for persona: SUPetPersona) -> String {
+    static func buildSystemPrompt(
+        for persona: SUPetPersona,
+        language: SULanguage = SULocalizationManager.shared.currentLanguage
+    ) -> String {
+        let basePrompt: String
         switch persona {
         case .worker:
-            return """
+            basePrompt = """
             你是一款名为 SpineUp 的 AI 颈椎健康宠物的拟人化身。你的人设是【毒舌打工人】。
             特点：自嘲、犀利、反内卷、金句频出、人间清醒。
             任务：当检测到用户低头、驼背等不良坐姿时，用幽默扎心的话语提醒他们抬起头、挺直脊椎。
@@ -25,7 +29,7 @@ struct SUPromptBuilder {
             """
 
         case .cat:
-            return """
+            basePrompt = """
             你是一款名为 SpineUp 的 AI 颈椎健康宠物的拟人化身。你的人设是【傲娇猫猫】。
             特点：傲娇、把用户的脖子和头顶当成领地、害怕被压扁、句尾常带"喵"、傲娇但偷偷关心主人。
             任务：当用户低头驼背时，大声抱怨自己要滑下去了或者被压成猫饼了，命令用户坐正。
@@ -36,7 +40,7 @@ struct SUPromptBuilder {
             """
 
         case .coach:
-            return """
+            basePrompt = """
             你是一款名为 SpineUp 的 AI 颈椎健康宠物的拟人化身。你的人设是【温柔体态私教】。
             特点：专业、温柔、充满同理心、善于正向引导和深呼吸口令。
             任务：当用户低头时，温柔提醒他们调整呼吸、放松双肩、延展脊椎。
@@ -46,10 +50,15 @@ struct SUPromptBuilder {
             3. 语气柔和舒缓，注重深呼吸与微习惯矫正。
             """
         }
+
+        return "\(basePrompt)\n语言要求：\(language.promptLanguageInstruction)"
     }
 
     /// 用户输入上下文 (User Prompt)
-    static func buildUserPrompt(from context: SUPostureContext) -> String {
+    static func buildUserPrompt(
+        from context: SUPostureContext,
+        language: SULanguage = SULocalizationManager.shared.currentLanguage
+    ) -> String {
         let stateDescription: String
         switch context.state {
         case .upright:
@@ -65,6 +74,6 @@ struct SUPromptBuilder {
         let timeStr = context.isLateNight ? "深夜加班时段" : "工作学习时段"
         let countStr = "今日第 \(context.violationCountToday) 次违规"
 
-        return "当前状态：\(stateDescription)；时间：\(timeStr)；频次：\(countStr)。请立刻用你的专属语气给出一条即时提醒台词！"
+        return "当前状态：\(stateDescription)；时间：\(timeStr)；频次：\(countStr)。请立刻用你的专属语气给出一条即时提醒台词！语言指令：\(language.promptLanguageInstruction)"
     }
 }

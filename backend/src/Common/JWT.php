@@ -25,15 +25,16 @@ class JWT
 
     /**
      * 解密并验证 JWT 令牌
+     * @return array|null
      */
-    public static function decode(string $token, string $secret): ?array
+    public static function decode(string $token, string $secret)
     {
         $parts = explode('.', $token);
         if (count($parts) !== 3) {
             return null;
         }
 
-        [$base64Header, $base64Payload, $base64Signature] = $parts;
+        list($base64Header, $base64Payload, $base64Signature) = $parts;
 
         $expectedSig = self::base64UrlEncode(hash_hmac('sha256', "{$base64Header}.{$base64Payload}", $secret, true));
         if (!hash_equals($expectedSig, $base64Signature)) {

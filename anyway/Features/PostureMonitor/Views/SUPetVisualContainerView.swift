@@ -46,10 +46,14 @@ final class SUPetVisualContainerView: UIView {
         hc.didMove(toParent: parentViewController)
     }
 
-    /// 响应式更新当前宠物状态
-    func configure(with state: SUPostureState) {
-        guard state != currentState else { return }
+    private var currentPitchDeg: Double = 0.0
+
+    /// 响应式更新当前宠物状态与实时角度
+    func configure(with state: SUPostureState, pitchDeg: Double = 0.0) {
+        let pitchChanged = abs(pitchDeg - currentPitchDeg) >= 0.2
+        guard state != currentState || pitchChanged else { return }
         currentState = state
-        hostingController?.rootView = SUPetAnimatedView(petState: state)
+        currentPitchDeg = pitchDeg
+        hostingController?.rootView = SUPetAnimatedView(petState: state, pitchDeg: pitchDeg)
     }
 }

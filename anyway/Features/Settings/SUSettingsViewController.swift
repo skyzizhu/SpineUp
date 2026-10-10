@@ -27,9 +27,9 @@ final class SUSettingsViewController: SUBaseViewController {
     // MARK: - Section 1: 宠物人格切换
     private let personaSectionTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "宠物拟人人格"
-        label.font = .systemFont(ofSize: 15, weight: .semibold)
-        label.textColor = .secondaryLabel
+        label.text = SULocalized("settings_persona_section", default: "宠物拟人人格")
+        label.font = .systemFont(ofSize: 16, weight: .bold)
+        label.textColor = .label
         return label
     }()
 
@@ -37,7 +37,7 @@ final class SUSettingsViewController: SUBaseViewController {
     private let personaCardsStackView: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
-        stack.spacing = 10
+        stack.spacing = 14
         stack.distribution = .fill
         return stack
     }()
@@ -45,37 +45,41 @@ final class SUSettingsViewController: SUBaseViewController {
     // MARK: - Section 2: 提醒偏好设置
     private let alertsSectionTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "提醒偏好"
-        label.font = .systemFont(ofSize: 15, weight: .semibold)
-        label.textColor = .secondaryLabel
+        label.text = SULocalized("settings_alerts_section", default: "提醒偏好")
+        label.font = .systemFont(ofSize: 16, weight: .bold)
+        label.textColor = .label
         return label
     }()
 
     private let alertsCardView: UIView = {
         let view = UIView()
         view.backgroundColor = .secondarySystemGroupedBackground
-        view.layer.cornerRadius = SULayoutConstants.cornerRadius
+        view.layer.cornerRadius = SULayoutConstants.cornerRadiusLarge
         view.layer.cornerCurve = .continuous
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOpacity = 0.03
+        view.layer.shadowOffset = CGSize(width: 0, height: 6)
+        view.layer.shadowRadius = 16
         return view
     }()
 
     private let voiceRowView = SUSettingsSwitchRowView(
-        title: "AI 拟人语音播报",
-        subtitle: "3分钟防打扰，轻柔避让背景音乐",
+        title: SULocalized("settings_voice_alert", default: "AI 拟人语音播报"),
+        subtitle: SULocalized("settings_voice_alert_desc", default: "3分钟防打扰，轻柔避让背景音乐"),
         iconSystemName: "speaker.wave.3.fill",
         iconTint: .systemBlue
     )
 
     private let hapticRowView = SUSettingsSwitchRowView(
-        title: "触觉微震动提醒",
-        subtitle: "低头超时后轻微震感",
+        title: SULocalized("settings_haptic_alert", default: "触觉微震动提醒"),
+        subtitle: SULocalized("settings_haptic_alert_desc", default: "低头超时后轻微震感"),
         iconSystemName: "iphone.radiowaves.left.and.right",
         iconTint: .systemIndigo
     )
 
     private let soundRowView = SUSettingsSwitchRowView(
-        title: "轻快系统提示铃",
-        subtitle: "低头时清脆水滴声",
+        title: SULocalized("settings_sound_alert", default: "轻快系统提示铃"),
+        subtitle: SULocalized("settings_sound_alert_desc", default: "低头时清脆水滴声"),
         iconSystemName: "bell.badge.fill",
         iconTint: .systemOrange
     )
@@ -83,31 +87,35 @@ final class SUSettingsViewController: SUBaseViewController {
     // MARK: - Section 3: 骨气能量与坚持打卡
     private let energySectionTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "骨气能量"
-        label.font = .systemFont(ofSize: 15, weight: .semibold)
-        label.textColor = .secondaryLabel
+        label.text = SULocalized("settings_energy_section", default: "骨气能量")
+        label.font = .systemFont(ofSize: 16, weight: .bold)
+        label.textColor = .label
         return label
     }()
 
     private let energyCardView: UIView = {
         let view = UIView()
         view.backgroundColor = .secondarySystemGroupedBackground
-        view.layer.cornerRadius = SULayoutConstants.cornerRadius
+        view.layer.cornerRadius = SULayoutConstants.cornerRadiusLarge
         view.layer.cornerCurve = .continuous
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOpacity = 0.03
+        view.layer.shadowOffset = CGSize(width: 0, height: 6)
+        view.layer.shadowRadius = 16
         return view
     }()
 
     private let streakItemView = SUEnergyStatItemView(
         iconSystemName: "flame.fill",
         iconTint: .systemOrange,
-        title: "连续打卡",
-        value: "1 天"
+        title: SULocalized("settings_streak_days", default: "连续打卡"),
+        value: String(format: SULocalized("streak_days_val", default: "%d 天"), 1)
     )
 
     private let totalCoinsItemView = SUEnergyStatItemView(
         iconSystemName: "bolt.heart.fill",
         iconTint: .systemYellow,
-        title: "累计能量币",
+        title: SULocalized("settings_total_coins", default: "累计能量币"),
         value: "0"
     )
 
@@ -115,17 +123,34 @@ final class SUSettingsViewController: SUBaseViewController {
     private let generalSectionTitleLabel: UILabel = {
         let label = UILabel()
         label.text = SULocalized("settings_general_section", default: "通用设置")
-        label.font = .systemFont(ofSize: 15, weight: .semibold)
-        label.textColor = .secondaryLabel
+        label.font = .systemFont(ofSize: 16, weight: .bold)
+        label.textColor = .label
         return label
     }()
 
     private let generalCardView: UIView = {
         let view = UIView()
         view.backgroundColor = .secondarySystemGroupedBackground
-        view.layer.cornerRadius = SULayoutConstants.cornerRadius
+        view.layer.cornerRadius = SULayoutConstants.cornerRadiusLarge
         view.layer.cornerCurve = .continuous
-        view.layer.masksToBounds = true
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOpacity = 0.03
+        view.layer.shadowOffset = CGSize(width: 0, height: 6)
+        view.layer.shadowRadius = 16
+        // Note: For inner views to not clip shadow, don't use masksToBounds = true
+        return view
+    }()
+
+    private let userNameRowView = SUSettingsNavigationRowView(
+        title: SULocalized("settings_user_name", default: "Air昵称"),
+        value: SUUserDefaultsManager.shared.userName,
+        iconSystemName: "person.crop.circle.fill",
+        iconBackground: .systemBlue
+    )
+
+    private let nameSeparatorView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .separator
         return view
     }()
 
@@ -149,10 +174,38 @@ final class SUSettingsViewController: SUBaseViewController {
         iconBackground: .systemIndigo
     )
 
-    // MARK: - Section 5: 版本与标语
+    // MARK: - Section 5: 合规与法律条款
+    private let legalSectionTitleLabel: UILabel = {
+        let label = UILabel()
+        label.text = SULocalized("settings_legal_section", default: "法律与免责声明")
+        label.font = .systemFont(ofSize: 16, weight: .bold)
+        label.textColor = .label
+        return label
+    }()
+
+    private let legalCardView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .secondarySystemGroupedBackground
+        view.layer.cornerRadius = SULayoutConstants.cornerRadiusLarge
+        view.layer.cornerCurve = .continuous
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOpacity = 0.03
+        view.layer.shadowOffset = CGSize(width: 0, height: 6)
+        view.layer.shadowRadius = 16
+        return view
+    }()
+
+    private let legalRowView = SUSettingsNavigationRowView(
+        title: SULocalized("settings_legal_documents_title", default: "协议与声明"),
+        value: "",
+        iconSystemName: "shield.checkerboard",
+        iconBackground: .systemTeal
+    )
+
+    // MARK: - Section 6: 版本与标语
     private let sloganLabel: UILabel = {
         let label = UILabel()
-        label.text = "SpineUp · 做人要有骨气"
+        label.text = SULocalized("settings_slogan", default: "SpineUp · 做人要有骨气")
         label.font = .systemFont(ofSize: 14, weight: .semibold)
         label.textColor = .secondaryLabel
         label.textAlignment = .center
@@ -187,6 +240,16 @@ final class SUSettingsViewController: SUBaseViewController {
         super.viewWillAppear(animated)
         viewModel.refreshEnergyData()
         refreshLocalizedStrings()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if CommandLine.arguments.contains("-scrollSettingsToBottom") {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                let bottomOffset = CGPoint(x: 0, y: max(0, self.scrollView.contentSize.height - self.scrollView.bounds.height + self.scrollView.adjustedContentInset.bottom))
+                self.scrollView.setContentOffset(bottomOffset, animated: false)
+            }
+        }
     }
 
     override func setupSubviews() {
@@ -225,9 +288,16 @@ final class SUSettingsViewController: SUBaseViewController {
         // 组装通用偏好入口 (外观主题与多语言二级子页面)
         contentView.addSubview(generalSectionTitleLabel)
         contentView.addSubview(generalCardView)
+        generalCardView.addSubview(userNameRowView)
+        generalCardView.addSubview(nameSeparatorView)
         generalCardView.addSubview(themeRowView)
         generalCardView.addSubview(generalSeparatorView)
         generalCardView.addSubview(languageRowView)
+
+        // 组装法律与合规入口
+        contentView.addSubview(legalSectionTitleLabel)
+        contentView.addSubview(legalCardView)
+        legalCardView.addSubview(legalRowView)
 
         // 标语与版权
         contentView.addSubview(sloganLabel)
@@ -315,8 +385,21 @@ final class SUSettingsViewController: SUBaseViewController {
             make.leading.trailing.equalToSuperview().inset(SULayoutConstants.horizontalPadding)
         }
 
-        themeRowView.snp.makeConstraints { make in
+        userNameRowView.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview()
+            make.height.equalTo(52)
+        }
+
+        nameSeparatorView.snp.makeConstraints { make in
+            make.top.equalTo(userNameRowView.snp.bottom)
+            make.leading.equalToSuperview().offset(54)
+            make.trailing.equalToSuperview()
+            make.height.equalTo(0.5)
+        }
+
+        themeRowView.snp.makeConstraints { make in
+            make.top.equalTo(nameSeparatorView.snp.bottom)
+            make.leading.trailing.equalToSuperview()
             make.height.equalTo(52)
         }
 
@@ -333,8 +416,23 @@ final class SUSettingsViewController: SUBaseViewController {
             make.height.equalTo(52)
         }
 
+        legalSectionTitleLabel.snp.makeConstraints { make in
+            make.top.equalTo(generalCardView.snp.bottom).offset(SULayoutConstants.sectionSpacing)
+            make.leading.trailing.equalToSuperview().inset(SULayoutConstants.horizontalPadding)
+        }
+
+        legalCardView.snp.makeConstraints { make in
+            make.top.equalTo(legalSectionTitleLabel.snp.bottom).offset(8)
+            make.leading.trailing.equalToSuperview().inset(SULayoutConstants.horizontalPadding)
+        }
+
+        legalRowView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+            make.height.equalTo(52)
+        }
+
         sloganLabel.snp.makeConstraints { make in
-            make.top.equalTo(generalCardView.snp.bottom).offset(SULayoutConstants.sectionSpacing * 1.5)
+            make.top.equalTo(legalCardView.snp.bottom).offset(SULayoutConstants.sectionSpacing * 1.5)
             make.centerX.equalToSuperview()
         }
 
@@ -360,6 +458,26 @@ final class SUSettingsViewController: SUBaseViewController {
             self?.viewModel.setSoundAlertEnabled(isOn)
         }
 
+        userNameRowView.onTap = { [weak self] in
+            guard let self = self else { return }
+            let alert = UIAlertController(
+                title: SULocalized("edit_username_title", default: "修改个性昵称"),
+                message: SULocalized("edit_username_msg", default: "给自己起一个响亮的挺拔代号吧！"),
+                preferredStyle: .alert
+            )
+            alert.addTextField { tf in
+                tf.text = SUUserDefaultsManager.shared.userName
+                tf.placeholder = SULocalized("edit_username_placeholder", default: "如：不低头的极客阿强")
+            }
+            alert.addAction(UIAlertAction(title: SULocalized("common_cancel", default: "取消"), style: .cancel))
+            alert.addAction(UIAlertAction(title: SULocalized("common_confirm", default: "保存"), style: .default) { [weak self] _ in
+                guard let text = alert.textFields?.first?.text?.trimmingCharacters(in: .whitespacesAndNewlines), !text.isEmpty else { return }
+                SUUserDefaultsManager.shared.userName = text
+                self?.userNameRowView.setValue(text)
+            })
+            self.present(alert, animated: true)
+        }
+
         themeRowView.onTap = { [weak self] in
             let themeVC = SUThemeSettingViewController()
             self?.navigationController?.pushViewController(themeVC, animated: true)
@@ -368,6 +486,11 @@ final class SUSettingsViewController: SUBaseViewController {
         languageRowView.onTap = { [weak self] in
             let languageVC = SULanguageSettingViewController()
             self?.navigationController?.pushViewController(languageVC, animated: true)
+        }
+
+        legalRowView.onTap = { [weak self] in
+            let legalVC = SULegalListViewController()
+            self?.navigationController?.pushViewController(legalVC, animated: true)
         }
 
         NotificationCenter.default.addObserver(
@@ -449,12 +572,18 @@ final class SUSettingsViewController: SUBaseViewController {
 
         // Section 4: 通用设置
         generalSectionTitleLabel.text = SULocalized("settings_general_section", default: "通用设置")
+        userNameRowView.setTitle(SULocalized("settings_user_name", default: "Air昵称"))
+        userNameRowView.setValue(SUUserDefaultsManager.shared.userName)
         themeRowView.setTitle(SULocalized("settings_theme", default: "外观主题"))
         themeRowView.setValue(SUThemeManager.shared.currentTheme.displayName)
 
         languageRowView.setTitle(SULocalized("settings_language", default: "语言设置"))
         let langVal = SULocalizationManager.shared.isFollowSystem ? SULocalized("follow_system", default: "跟随系统") : SULocalizationManager.shared.currentLanguage.displayName
         languageRowView.setValue(langVal)
+
+        // Section 5: 合规与法律条款
+        legalSectionTitleLabel.text = SULocalized("settings_legal_section", default: "法律与免责声明")
+        legalRowView.setTitle(SULocalized("settings_legal_documents_title", default: "协议与声明"))
 
         // Slogan
         sloganLabel.text = SULocalized("app_slogan", default: "SpineUp · 做人要有骨气")

@@ -101,11 +101,30 @@ final class SUMockMotionManager: SUMotionServiceProtocol, @unchecked Sendable {
         emitCurrentReading()
     }
 
-    /// 供调试面板/滑块或单元测试主动注入模拟倾斜角度 (单位: 角度 Degrees)
+    func requestMotionAuthorization(completion: (@Sendable (Bool) -> Void)? = nil) {
+        lock.lock()
+        connectionState = .connected
+        lock.unlock()
+        onConnectionStateChanged?(.connected)
+        completion?(true)
+    }
+
+    /// 供模拟器或测试主动注入连接/佩戴/授权状态
+    func setSimulatedConnectionState(_ state: SUHeadphoneConnectionState) {
+        lock.lock()
+        connectionState = state
+        lock.unlock()
+        DispatchQueue.main.async { [weak self] in
+            self?.onConnectionStateChanged?(state)
+        }
+    }
+
+    /// 供调试面板/滑块或单元测试主动注入模拟倾斜角度 (单位: 角度 Degrees，正数代表前倾低头)
     func injectSimulatedAngles(pitchDeg: Double, rollDeg: Double) {
         lock.lock()
-        self.currentSimulatedPitchRad = pitchDeg * .pi / 180.0
-        self.currentSimulatedRollRad = rollDeg * .pi / 180.0
+        // 真实 AirPods 在低头时 pitch 为负，故模拟前倾时减去弧度
+        self.currentSimulatedPitchRad = basePitchRad - (pitchDeg * .pi / 180.0)
+        self.currentSimulatedRollRad = baseRollRad + (rollDeg * .pi / 180.0)
         lock.unlock()
 
         emitCurrentReading()

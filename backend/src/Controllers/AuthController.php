@@ -11,8 +11,11 @@ use PDO;
 
 class AuthController
 {
-    private PDO $db;
-    private array $appConfig;
+    /** @var PDO */
+    private $db;
+
+    /** @var array */
+    private $appConfig;
 
     public function __construct()
     {
@@ -24,7 +27,7 @@ class AuthController
      * 匿名访客注册/免密秒开
      * POST /v1/auth/guest
      */
-    public function guest(): void
+    public function guest()
     {
         $raw = file_get_contents('php://input');
         $body = json_decode($raw, true) ?? [];
@@ -36,6 +39,7 @@ class AuthController
 
         $deviceModel = (string)($body['deviceModel'] ?? 'iPhone');
         $locale = (string)($body['locale'] ?? 'zh-Hans');
+        $preferredPersona = \App\Common\Security::validateEnum((string)($body['preferredPersona'] ?? 'worker'), ['worker', 'cat', 'coach', 'anime'], 'worker');
 
         // 查询或创建访客用户
         $stmt = $this->db->prepare("SELECT id, user_uuid, is_guest, nickname FROM su_users WHERE user_uuid = ?");
@@ -52,10 +56,10 @@ class AuthController
 
             // 初始化设置
             $initSettings = $this->db->prepare("
-                INSERT INTO su_user_settings (user_id, last_device_model)
-                VALUES (?, ?)
+                INSERT INTO su_user_settings (user_id, active_persona_id, last_device_model)
+                VALUES (?, ?, ?)
             ");
-            $initSettings->execute([$userId, $deviceModel]);
+            $initSettings->execute([$userId, $preferredPersona, $deviceModel]);
         } else {
             $userId = (int)$user['id'];
         }
@@ -78,7 +82,7 @@ class AuthController
      * 获取当前用户信息与偏好
      * GET /v1/users/me
      */
-    public function me(): void
+    public function me()
     {
         $currentUser = AuthMiddleware::getCurrentUser();
         if (!$currentUser) {
@@ -109,7 +113,7 @@ class AuthController
      * 更新用户设置 (校准零点、阈值、人设)
      * PUT /v1/users/settings
      */
-    public function updateSettings(): void
+    public function updateSettings()
     {
         $currentUser = AuthMiddleware::getCurrentUser();
         if (!$currentUser) {
@@ -118,6 +122,12 @@ class AuthController
 
         $userId = $currentUser['uid'];
         $body = json_decode(file_get_contents('php://input'), true) ?? [];
+
+        $persona = isset($body['activePersonaId']) ? \App\Common\Security::validateEnum((string)$body['activePersonaId'], ['worker', 'cat', 'coach', 'anime'], 'worker') : null;
+        $pitch = isset($body['calibrationBasePitch']) ? \App\Common\Security::validateFloat($body['calibrationBasePitch'], -90.0, 90.0, 0.0) : null;
+        $roll = isset($body['calibrationBaseRoll']) ? \App\Common\Security::validateFloat($body['calibrationBaseRoll'], -90.0, 90.0, 0.0) : null;
+        $slightThresh = isset($body['slightSlumpThreshold']) ? \App\Common\Security::validateFloat($body['slightSlumpThreshold'], 5.0, 45.0, 15.0) : null;
+        $severeThresh = isset($body['severeSlumpThreshold']) ? \App\Common\Security::validateFloat($body['severeSlumpThreshold'], 15.0, 85.0, 30.0) : null;
 
         $stmt = $this->db->prepare("
             UPDATE su_user_settings
@@ -129,11 +139,11 @@ class AuthController
             WHERE user_id = ?
         ");
         $stmt->execute([
-            $body['activePersonaId'] ?? null,
-            $body['calibrationBasePitch'] ?? null,
-            $body['calibrationBaseRoll'] ?? null,
-            $body['slightSlumpThreshold'] ?? null,
-            $body['severeSlumpThreshold'] ?? null,
+            $persona,
+            $pitch,
+            $roll,
+            $slightThresh,
+            $severeThresh,
             $userId,
         ]);
 

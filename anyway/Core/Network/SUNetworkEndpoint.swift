@@ -81,6 +81,110 @@ struct SURemoteConfigResponseData: Decodable, Sendable {
     let aiGenerationTimeoutSec: Double
 }
 
+/// 排行榜单项响应载荷
+struct SULeaderboardItemData: Decodable, Sendable {
+    let rank: Int
+    let user_id: Int
+    let user_name: String
+    let value: Double
+    let metric_name: String
+    let avatar_id: String
+    let streak_days: Int
+    let energy_coins: Int
+    let quality_ratio: Double
+}
+
+/// 排行榜整体响应载荷
+struct SULeaderboardResponseData: Decodable, Sendable {
+    let board_type: String
+    let page: Int
+    let my_rank: SULeaderboardItemData?
+    let top_list: [SULeaderboardItemData]
+    let total_participants: Int
+    let positive_policy: String?
+}
+
+/// 个人资料更新响应载荷
+struct SUUpdateProfileResponseData: Decodable, Sendable {
+    let updated: Bool
+    let user_id: Int
+    let nickname: String
+}
+
+// MARK: - AI 深度危害透视与急救方案
+struct SUAIHazardRequest: Encodable, Sendable {
+    let pitchDeg: Double
+    let extraLoadKg: Double
+    let slumpDurationSec: Double
+    let violationsCount: Int
+    let persona: String
+    let userName: String
+    let locale: String
+}
+
+struct SUAIHazardResponseData: Decodable, Sendable {
+    let headline: String
+    let metaphor_comparison: String
+    let appearance_analysis: String
+    let timeline_projection: String
+    let pet_comment: String
+    let is_ai_generated: Bool?
+}
+
+struct SUAIReliefPrescriptionRequest: Encodable, Sendable {
+    let pitchDeg: Double
+    let extraLoadKg: Double
+    let persona: String
+    let locale: String
+}
+
+struct SUAIReliefPrescriptionResponseData: Decodable, Sendable {
+    let quick_diagnosis: String
+    let action1_tips: String
+    let action2_tips: String
+    let ergonomic_tips: String
+    let pet_encouragement: String
+    let is_ai_generated: Bool?
+}
+
+// MARK: - 30秒微操打卡领能量
+struct SUReliefClaimRequest: Encodable, Sendable {
+    let action_type: String
+    let pitch_deg: Double
+    let extra_load_kg: Double
+    let duration_sec: Int
+}
+
+struct SUReliefClaimResponseData: Decodable, Sendable {
+    let claimed: Bool
+    let reward_coins: Int
+    let new_balance: Int
+    let today_count: Int
+}
+
+// MARK: - 全周期体态报告
+struct SUPeriodicReportResponseData: Decodable, Sendable {
+    let period_type: String
+    let period_key: String
+    let start_date: String
+    let end_date: String
+    let total_wear_sec: Double
+    let upright_sec: Double
+    let slump_sec: Double
+    let avg_score: Int
+    let accumulated_load_kg: Double
+    let alleviated_load_kg: Double
+    let total_violations: Int
+    let best_day_date: String?
+    let fatigue_hotspot_hour: Int
+    let dowager_hump_risk: Int
+    let equivalent_item_name: String
+    let ai_persona_summary: String
+    let share_hash: String
+    let date_range_text: String
+    let daily_breakdown: [SUWeeklyDailyBarItem]?
+}
+
 // MARK: - 接口端点枚举
 
 enum SUNetworkEndpoint {
@@ -88,9 +192,21 @@ enum SUNetworkEndpoint {
     case guestLogin(request: SUGuestAuthRequest)
     case fetchUserProfile
     case updateUserSettings(request: SUUpdateSettingsRequest)
+    case updateProfile(nickname: String)
+
+    // 排行榜
+    case fetchLeaderboard(type: String, page: Int = 1, pageSize: Int = 20)
 
     // AI 网关
     case aiReminder(request: SUCloudAIEngine.ReminderRequest)
+    case aiHazard(request: SUAIHazardRequest)
+    case aiReliefPrescription(request: SUAIReliefPrescriptionRequest)
+
+    // 减负打卡领能量
+    case claimRelief(request: SUReliefClaimRequest)
+
+    // 全周期体态健康报告
+    case fetchPeriodicReport(periodType: String, periodKey: String?)
 
     // 会话同步与历史
     case syncSession(request: SUSyncSessionRequest)
@@ -108,8 +224,20 @@ enum SUNetworkEndpoint {
             return "/users/me"
         case .updateUserSettings:
             return "/users/settings"
+        case .updateProfile:
+            return "/users/profile"
+        case .fetchLeaderboard:
+            return "/leaderboard"
         case .aiReminder:
             return "/ai/reminder"
+        case .aiHazard:
+            return "/ai/posture-hazard"
+        case .aiReliefPrescription:
+            return "/ai/relief-prescription"
+        case .claimRelief:
+            return "/relief/claim"
+        case .fetchPeriodicReport:
+            return "/reports/periodic"
         case .syncSession:
             return "/sessions/sync"
         case .fetchSessionHistory:
@@ -122,11 +250,11 @@ enum SUNetworkEndpoint {
     /// HTTP 请求方法
     var method: HTTPMethod {
         switch self {
-        case .guestLogin, .aiReminder, .syncSession:
+        case .guestLogin, .aiReminder, .syncSession, .aiHazard, .aiReliefPrescription, .claimRelief:
             return .post
-        case .updateUserSettings:
+        case .updateUserSettings, .updateProfile:
             return .put
-        case .fetchUserProfile, .fetchSessionHistory, .fetchAppConfig:
+        case .fetchUserProfile, .fetchSessionHistory, .fetchAppConfig, .fetchLeaderboard, .fetchPeriodicReport:
             return .get
         }
     }
@@ -136,7 +264,7 @@ enum SUNetworkEndpoint {
         switch self {
         case .guestLogin, .aiReminder, .fetchAppConfig:
             return false
-        case .fetchUserProfile, .updateUserSettings, .syncSession, .fetchSessionHistory:
+        case .fetchUserProfile, .updateUserSettings, .syncSession, .fetchSessionHistory, .updateProfile, .fetchLeaderboard, .aiHazard, .aiReliefPrescription, .claimRelief, .fetchPeriodicReport:
             return true
         }
     }

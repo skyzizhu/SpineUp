@@ -131,3 +131,281 @@
 "follow_system" = "システムに合わせる";
 "follow_system_desc" = "端末のシステム言語と同期";
 "language_setting_hint" = "アプリの表示言語を選択してください。即時反映されます";
+
+/* Speech & AI Fallback */
+"persona_preview_worker" = "社畜ペルソナ起動。痛烈なリマインドの準備はいいですか？";
+"persona_preview_cat" = "ニャー！ツンデレ猫の登場ニャ。私を押し潰さないでニャ！";
+"persona_preview_coach" = "優しい専属コーチが接続されました。背筋を伸ばして深呼吸しましょう。";
+"ai_fallback_quote" = "胸を張って、背筋を伸ばして、今日も頑張りましょう！";
+"default_posture_quote" = "背筋を伸ばして、端正な姿勢をキープ中！";
+
+/* Posture Gauge & Pet Badges */
+"gauge_scale_start" = "0° 正しい姿勢";
+"gauge_scale_mid" = "15° 境界";
+"gauge_scale_end" = "30°+ 警告";
+"gauge_head_pitch_fmt" = "前傾 %.1f°";
+"pet_status_upright_fmt" = "背筋シャキッ · 前傾 %@";
+"pet_status_slight_fmt" = "少し前傾 · 前傾 %@";
+"pet_status_severe_fmt" = "猫背警報 · 前傾 %@";
+"pet_status_calibrating" = "基準姿勢を測定中...";
+"pet_status_unknown" = "イヤホンの装着を待機中...";
+"gauge_status_ideal" = "首の負担ゼロ · 理想の姿勢";
+"gauge_status_slight" = "首への負荷増加 · 姿勢を正して";
+"gauge_status_severe" = "危険過負荷 · すぐに頭を上げて";
+"gauge_status_waiting" = "空間姿勢を同期中...";
+
+/* Leaderboard & Gamification */
+"tab_leaderboard" = "骨気ランク";
+"default_user_name" = "姿勢正しきワーカー";
+"leaderboard_title" = "骨気エネルギー番付";
+"leaderboard_tab_energy" = "エネルギーコイン";
+"leaderboard_tab_quality" = "美姿勢マスター";
+"leaderboard_tab_streak" = "継続日数";
+"leaderboard_my_rank_fmt" = "第 %d 位";
+"leaderboard_my_energy_sub" = "現在累計 %d コイン · 綺麗な姿勢をキープ";
+"leaderboard_my_quality_sub" = "美姿勢キープ率 %d%% · スマホ首を撃退";
+"leaderboard_my_streak_sub" = "継続日数 %d 日 · 習慣化を達成中";
+"leaderboard_positive_hint" = "💡 本ランキングは自尊心を守るため、前向きな達成度とエネルギーのみを表示し、警告回数等のペナルティ順位は一切設けていません。";
+"leaderboard_me_tag" = "(自分)";
+"leaderboard_pull_refresh" = "引っ張ってランキングを更新...";
+"leaderboard_tag_top1" = "首位独走";
+"leaderboard_tag_master" = "姿勢マスター";
+"leaderboard_tag_champion" = "エネルギー先駆者";
+"edit_username_title" = "ニックネーム変更";
+"edit_username_msg" = "あなたの美姿勢コールサインを入力してください！";
+"edit_username_placeholder" = "例：下を向かないギーク太郎";
+"settings_user_name" = "ニックネーム / コールサイン";
+
+/* Hazard Perspective & Health Recommendations */
+"gauge_relief_btn_title" = "クイックケア 💡";
+"diagnosis_btn_relief_guide" = "30秒レスキューケアを確認 →";
+"relief_guide_title" = "首の保護と簡単ケア";
+"relief_guide_header_title" = "オフィスでできる30秒首ケア";
+"relief_guide_header_sub" = "座ったまま可能 · 周囲に気づかれない · 首の負担を即座にリセット";
+"relief_action1_title" = "1. マッケンジー顎引き（チンタック）";
+"relief_action1_tag" = "ストレートネック撃退＆深層筋活性化";
+"relief_action1_steps" = "• 正面を向いて背筋を伸ばし、リラックスします。\n• 人差し指で顎を水平後方へ優しく押し込みます（二重顎を作る感覚）。\n• 首の後ろの伸びを3秒間キープし、5〜8回繰り返します。";
+"relief_action2_title" = "2. W字肩甲骨ストレッチ";
+"relief_action2_tag" = "胸椎を開き＆巻き肩・猫背をリセット";
+"relief_action2_steps" = "• 脇を締め、肘を曲げて両腕で「W」の形を作ります。\n• 肩を下げ、両方の肩甲骨を引き寄せるように後方へ開きます。\n• 深呼吸しながら5秒キープし、4〜6回繰り返します。";
+"relief_action3_title" = "3. デスクワーク環境の黄金法則";
+"relief_action3_steps" = "• 目線の高さ：スタンド等で画面上部1/3を目線の高さに合わせる。\n• 肘の角度90度：椅子の高さを調整し、肩の力を抜いて作業する。\n• 腰のサポート：深く腰掛け、背もたれにクッションを添える。";
+"relief_btn_start" = "30秒ケアを開始 (+5 エネルギー)";
+"relief_btn_completed" = "🎉 完了！+5 エネルギーコイン獲得";
+
+"hazard_sheet_title" = "頸椎の負荷とリスク透視";
+"hazard_metric_title" = "頸椎にかかるリアルタイム負荷";
+"hazard_metric_val_fmt" = "前傾 %.1f° · 追加負荷 +%.1f kg";
+"hazard_compare_severe" = "💥 まるで7歳の子どもが首にぶら下がっているような衝撃！1秒ごとに椎間板が押し潰されています。";
+"hazard_compare_moderate" = "⚠️ 24本入りミネラルウォーター1ケース分が首にかかっている状態です。";
+"hazard_compare_mild" = "🌿 現在は負担の少ない健康的な範囲です。顎を引いて画面と目線を合わせましょう！";
+"hazard_appearance_title" = "⚠️ 美容と体型への影響（見た目の老化）";
+"hazard_appearance_content" = "• 水牛肩・首の後ろの贅肉：首の付け根に脂肪が代償的に蓄積し、首が太く短く見えます。\n• 二重顎とフェイスラインのたるみ：前傾により広頸筋が緩み、体重に関係なく顎下がたるみます。\n• 猫背・亀首：巻き肩と首の前突き出しにより、自信がなく疲れた印象を与えます。";
+"hazard_timeline_title" = "⏱ 進行タイムライン（不可逆な退行性変化）";
+"hazard_timeline_content" = "• 30〜60分：僧帽筋の痙攣と張り、緊張型頭痛、血流低下による集中力散漫。\n• 1〜3ヶ月：ストレートネック（頸椎の生理的前弯消失）、代償性猫背の固定化。\n• 1〜2年以上：頸椎椎間板ヘルニア、骨棘（骨のとげ）形成、手や指への神経圧迫によるしびれ。";
+"hazard_btn_to_relief" = "ケアガイドを見る";
+
+/* AI Posture Perspective & Prescription */
+"sensor_tracking_short" = "AirPods 空間追跡中";
+"ai_perspective_tag" = "AI分析 ↗";
+"ai_tag_title" = "✨ AI リアルタイム生体力学推論";
+"ai_analyzing_hint" = "✨ AIが頸椎への生体力学的負荷と姿勢退行を予測中...";
+"ai_prescription_badge" = "✨ AI 専用レスキュー処方";
+"ai_hazard_headline_fmt" = "【AI診断】前傾 %.1f° · 追加負荷 +%.1f kg";
+"ai_metaphor_extreme" = "💥 まるで24インチのモニターを首から吊り下げている状態です！10秒ごとにC5-C6椎間板に限界レベルの圧迫が加わります。";
+"ai_metaphor_heavy" = "⚠️ 24本入りミネラルウォーター1箱分（約15kg）が肩と首にのしかかり、僧帽筋が過度の代償運動を強いられています。";
+"ai_metaphor_moderate" = "🌿 大きな猫1匹（約9kg）を首の後ろに乗せているような負荷です。目立たない筋繊維の疲労が蓄積しています。";
+"ai_metaphor_light" = "✨ 生理的ゼロ負担に近い理想のゴールデンゾーンです。首が完璧な重心で支えられています。";
+"ai_appearance_severe" = "• 水牛肩・首の後ろの贅肉警告：首の付け根に脂肪が代償的に蓄積し、首が太く短く見えます。\n• フェイスラインの崩れ：下顎が前に突き出され広頸筋が緩み、体重に関係なく二重顎の原因になります。\n• 亀首・猫背の定着：本日累計 %d 分前傾。胸鎖乳突筋が縮み、無意識に首が前に突き出ます。";
+"ai_appearance_moderate" = "• 軽度の前方突出：僧帽筋上部が緊張し、服を着たときになで肩が目立ちやすくなります。\n• フェイスラインの疲労：首の深層筋が衰え、下顎が下へ引っ張られます。\n• アドバイス：本日 %d 回の前傾を検知。肩甲骨周りの筋肉を動かしましょう。";
+"ai_appearance_good" = "• 引き締まったフェイスライン：首の角度が理想的で、下顎のラインが美しくキープされています。\n• 美しい首筋を維持：鎖骨と肩が自然に開き、堂々とした凛々しい姿勢です。";
+"ai_timeline_severe" = "• 30分継続：僧帽筋の血流が60%%低下、乳酸蓄積と頭痛・重だるさ。\n• 1〜3ヶ月：ストレートネック進行、胸椎の代償性猫背の固定化。\n• 1〜2年以上：頸椎椎間板ヘルニア、神経圧迫による腕や指先のしびれ。";
+"ai_timeline_mild" = "• 継続維持：椎間板の水分と弾力が保たれ、脳への血流が十分に保たれます。\n• 1〜3ヶ月後：筋肉の記憶が定着し、デスクワーク中も自然に美しい姿勢が保てます。";
+"ai_relief_diag_heavy" = "⚡️ AIが頸椎の過大負荷（+%.1f kg）を検知。僧帽筋上部の緊張をほぐす逆方向リセットが必要です！";
+"ai_relief_diag_light" = "🌿 現在の姿勢は良好です。この30秒ケアで深層筋肉の記憶を活性化し、疲労の蓄積を未然に防ぎましょう。";
+
+/* Weekly & Report Additions */
+"common_cancel" = "キャンセル";
+"common_confirm" = "保存";
+"gauge_status_ideal_short" = "負担ゼロ · 完璧な姿勢";
+"gauge_status_severe_short" = "高負荷警戒 · 今すぐ顔を上げて";
+"gauge_status_slight_short" = "軽度前傾 · 姿勢を微調整";
+"legend_best" = "🏆 ベストデイ";
+"legend_slump" = "前傾・猫背";
+"legend_upright" = "直立・端正";
+"period_daily" = "本日のレポート";
+"period_weekly" = "今週のレポート";
+"share_weekly_report" = "週間レポートを生成して共有";
+"unit_coins" = "エナジーコイン";
+"unit_hotspot" = "ピーク時";
+"unit_hours" = "時間";
+"unit_low_risk" = "低リスク帯";
+"weekly_ai_title" = "AI専属パートナー週間深層レビュー";
+"weekly_grade_a" = "姿勢の先鋒";
+"weekly_grade_b" = "調整期";
+"weekly_grade_c" = "要改善期";
+"weekly_grade_s" = "直立の闘神";
+"weekly_metaphor_bikes" = "マウンテンバイク約3台分 (約45kg)";
+"weekly_metaphor_fmt" = "今週軽減した負荷: %@";
+"weekly_range_fmt" = "第 %d 週 · 今週の姿勢パフォーマンス";
+"weekly_score_title" = "週間姿勢ヘルス総合スコア";
+"weekly_trend_subtitle" = "バーの高さは毎日の着用時間を表し、最高記録日をハイライト";
+"weekly_trend_title" = "7日間の姿勢トレンド推移";
+"weekly_upright_fmt" = "%.1f%% 直立率";
+
+/* Settings & Preferences */
+"settings_section_persona" = "ペットの性格";
+"settings_section_alert" = "通知・アラート設定";
+"settings_ai_voice_title" = "AI音声読み上げ";
+"settings_ai_voice_subtitle" = "3分間隔の配慮機能、BGMを優しく回避";
+"settings_haptic_title" = "触覚フィードバック（振動）";
+"settings_haptic_subtitle" = "猫背が続いた時の優しい微振動";
+"settings_sound_title" = "軽快なチャイム音";
+"settings_sound_subtitle" = "前傾時の澄んだ水滴音";
+"settings_section_energy" = "骨気エナジー";
+"settings_streak_title" = "連続達成日数";
+"settings_streak_days_fmt" = "%d 日";
+"settings_coins_title" = "獲得エナジーコイン";
+"settings_slogan" = "SpineUp · 背筋を伸ばして堂々と生きよう";
+"settings_simulator_debug" = "シミュレーター前傾角度調整: %.1f°";
+
+/* Onboarding */
+"onboarding_title_1" = "AirPods を背骨の見守り役に";
+"onboarding_sub_1" = "AirPods 内蔵の空間モーションセンサーで頸椎の傾きをリアルタイム測定。ストレートネックや首の歪みと決別しましょう。";
+"onboarding_btn_1" = "動作原理を確認";
+"onboarding_title_2" = "モーションセンサーへのアクセス許可";
+"onboarding_sub_2" = "SpineUp は姿勢角度を計算するためにヘッドフォンモーションデータを使用します。すべての計算は端末内で完結し、クラウドには送信されません。";
+"onboarding_btn_2" = "許可して続ける";
+"onboarding_title_3" = "イヤホンを装着してワンタップ基準調整";
+"onboarding_sub_3" = "イヤホンを装着して正しい姿勢で座り、調整ボタンをタップするだけで自然なゼロ位置を記録します。猫背になるとペットがスライムになって警告します！";
+"onboarding_btn_3" = "デスクトップペットを開始";
+
+/* Leaderboard & Relief & Share */
+"leaderboard_upright_ratio_fmt" = "%d%% 直立";
+"leaderboard_streak_fmt" = "%d日連続勝利 🔥";
+"relief_in_progress_fmt" = "リフレッシュ中... %ds";
+"share_stat_upright" = "直立集中";
+"share_stat_ratio" = "直立率";
+"share_stat_load" = "頸椎余剰負荷";
+
+"gauge_card_title" = "リアルタイム頸椎力学";
+"conn_status_ok_title" = "AirPods 空間トラッキング中";
+"conn_status_ok_desc" = "センサー準備完了。60Hzで頭部姿勢と頸椎負荷をリアルタイム検知しています。";
+"conn_status_dc_title" = "AirPods 未接続";
+
+/* Posture Hazard & Relief Guide & Practice */
+"ai_analyzing_hint" = "✨ AIが姿勢の生体力学的負荷と変性予測を計算中...";
+"ai_prescription_badge" = "✨ AI専用救急処方 · 即効負荷軽減";
+"ai_tag_title" = "✨ AIリアルタイム姿勢生体力学推論";
+"hazard_appearance_title" = "⚠️ 美容と姿勢の大敵（無意識の変形）";
+"hazard_btn_to_relief" = "ケア動作を確認";
+"hazard_metric_title" = "リアルタイム頸椎負荷";
+"hazard_metric_val_fmt" = "前傾 %.1f° · 追加負荷 +%.1f kg";
+"hazard_sheet_title" = "頸椎負荷と健康リスク透視";
+"hazard_timeline_title" = "⏱ 経時的損傷変化（不可逆な変性）";
+"relief_action1_steps" = "• 正面を向いて背筋を伸ばし、軽く背もたれに添えます。\n• 人差し指で顎を軽く触れ、水平に後ろへ引きます（二重顎を作る感覚）。\n• 首の後ろの心地よい伸びを感じ、3秒キープ。5〜8回繰り返します。";
+"relief_action1_tag" = "ストレートネック解消 & 深層頸部筋の活性化";
+"relief_action1_title" = "1. マッケンジー・チンタック（顎引き）";
+"relief_action2_steps" = "• 上腕を脇腹につけ、肘を曲げて「W」の形を作ります。\n• 肩の力を抜き、両肩甲骨を中央に引き寄せます。\n• 深呼吸に合わせて5秒キープ後、息を吐いて緩めます。4〜6回繰り返します。";
+"relief_action2_tag" = "胸椎を開く & 猫背・首こり解消";
+"relief_action2_title" = "2. Wストレッチ（肩甲骨引き締め）";
+"relief_action3_steps" = "• 視線の高さ：スタンドで画面上部1/3を目線の高さに合わせます。\n• 肘の角度90°：椅子の高さを調整し、腕を自然に机に乗せます。\n• 腰のサポート：深く腰掛け、隙間に小さなクッションを当てます。";
+"relief_action3_tag" = "前傾姿勢の原因を物理的に遮断";
+"relief_action3_title" = "3. デスク人間工学黄金ルール";
+"relief_btn_completed" = "🎉 完了！+5 スパインエネルギー獲得";
+"relief_btn_start" = "30秒マイクロケア開始 (+5 スパインエネルギー)";
+"relief_guide_header_sub" = "座ったまま簡単 · 目立たない · 首の負担を瞬時に解放";
+"relief_guide_header_title" = "30秒オフィス疲労リセット";
+"relief_guide_title" = "身体保護 & マイクロケア提案";
+"practice_step_1" = "動作 1/2 (15s)";
+"practice_step_2" = "動作 2/2 (15s)";
+"practice_action1_title" = "マッケンジー・チンタック";
+"practice_action1_tag" = "ストレートネック改善 · 深層筋活性化";
+"practice_action1_step1" = "背筋を伸ばして正面を向き、背中は軽く支えます";
+"practice_action1_step2" = "指先で顎を触れ、水平に後ろへ引きます（二重顎の感覚）";
+"practice_action1_step3" = "首後ろの心地よい伸びを感じ、3秒キープして戻します";
+"practice_action2_title" = "Wストレッチ";
+"practice_action2_tag" = "胸椎ストレッチ · 肩こり解消";
+"practice_action2_step1" = "上腕を脇腹に添え、腕を「W」の字に曲げます";
+"practice_action2_step2" = "肩を落とし、肩甲骨を背中の中央に引き締めます";
+"practice_action2_step3" = "深く息を吸いながら5秒キープし、息を吐いてリラックス";
+"practice_dialogue_chin_worker" = "正面を見ろ！頭を後ろに引いて、仕事メッセージに縮こまった首を伸ばすんだ！";
+"practice_dialogue_chin_cat" = "ニャ〜！前を見て、肉球で顎を後ろに押して可愛い二重顎を作るニャ！";
+"practice_dialogue_chin_coach" = "背筋を伸ばして、人差し指で顎を後ろへスライド。首の奥を優しく伸ばしましょう~";
+"practice_dialogue_w_worker" = "腕を肋骨につけて、肩甲骨を限界まで引き締めろ！デスクワークのコリを粉砕だ！";
+"practice_dialogue_w_cat" = "ポーズチェンジニャ！両手をWの形にして、背中の小さな羽をギュッと寄せるニャ！";
+"practice_dialogue_w_coach" = "素晴らしい！腕でWを作り、肩甲骨を中央に寄せて大きく息を吸いましょう~";
+"practice_sprint_worker" = "ラスト3秒耐えろ！背筋が伸びれば定時退勤のパワーが湧く！";
+"practice_sprint_cat" = "ラスト3秒スプリントニャ！ピシッと伸びて、頭の上に乗るニャ！";
+"practice_sprint_coach" = "ラスト3秒、深呼吸を保って、首の負担をすべて下ろしましょう~";
+"practice_completed_worker" = "達成！首の余計な負荷ゼロ、+5エネルギー獲得、よくやった！";
+"practice_completed_cat" = "最高ニャ！首が軽くなったニャ、+5エネルギーをあげるニャ、毎日やるニャ！";
+"practice_completed_coach" = "完璧です！首のストレスが見事に解消されました、+5エネルギー獲得おめでとうございます！";
+"practice_guide_push_back" = "水平に後退";
+"practice_rhythm_chin" = "リズム：後ろに引く ➔ 3秒キープ ➔ リラックス";
+"practice_rhythm_w" = "リズム：開いて吸う ➔ 5秒キープ ➔ 吐いて緩める";
+"practice_mode_headphone" = "🎧 イヤホン姿勢センサー";
+"practice_mode_ai_vision" = "🎥 AI画像姿勢認識";
+"practice_cam_standby" = "姿勢解析中";
+"practice_seconds_left" = "秒残り";
+"practice_btn_finish_early" = "完了して記録";
+"practice_btn_claim_done" = "🎉 +5 スパインエネルギー獲得 · 完了";
+"practice_paused_tip" = "一時停止中、いつでも再開できます~";
+"practice_breath_inhale" = "深く吸う · 胸と肩を開く";
+"practice_breath_hold" = "3秒息止め · 引き締めキープ";
+"practice_breath_exhale" = "ゆっくり吐く · リラックス";
+"practice_airpods_matched" = "🎧 AirPodsが顎引き・背筋の伸びを感知！";
+"practice_airpods_active" = "🎧 AirPods空間姿勢トラッキング中";
+"vision_tip_face_missing" = "インカメラの正面を向いてください";
+"vision_tip_chin_good" = "目線良好！顎を引いた姿勢をキープ";
+"vision_tip_keep_forward" = "両目で正面を向き、背筋を伸ばします";
+"vision_tip_body_missing" = "スマホを立てて上半身を映してください";
+"vision_tip_arms_raise" = "肘を曲げてWの形に広げてください";
+"vision_tip_w_perfect" = "標準的なWポーズ！肩甲骨を引き締めます";
+"vision_tip_w_adjust" = "腕を後ろに引き、肩甲骨を寄せます";
+"vision_tip_inhale_detected" = "🫁 深呼吸による胸部の広がりを検出";
+"relief_pill_normal_title" = "救急リリース · マッケンジー回復";
+"relief_pill_normal_badge" = "即時緩和";
+"relief_pill_fatigue_title" = "首の負荷 %.1f kg · クイック回復";
+"relief_pill_fatigue_badge" = "緊急リリース";
+"relief_pill_recovered_title" = "🎉 首の負荷 %.1f kg 軽減 · 骨気コイン +10";
+"relief_pill_recovered_badge" = "回復完了";
+"relief_cheer_quote" = "素晴らしい！首の負担を 2.0kg 軽減し、10 骨気コインを獲得しました！";
+"posture_state_upright" = "背筋直立";
+"posture_state_slight" = "やや前傾";
+"posture_state_severe" = "猫背注意";
+"posture_state_calibrating" = "校正中";
+"posture_state_unknown" = "未接続";
+"hazard_level_ideal" = "負担ゼロ · 完璧な姿勢";
+"hazard_level_slight" = "軽度前傾 · 軽く調整";
+"hazard_level_severe" = "過負荷注意 · すぐに顔を上げて";
+"gauge_status_calibrating" = "基準校正中 · 直立姿勢を感知";
+
+/* Additional Screen Elements */
+"settings_streak_days" = "連続記録";
+"settings_total_coins" = "累計コイン";
+"clinical_diagnosis_tag" = "姿勢総合判定";
+"report_archive_stamp" = "評価 %@ · 認定";
+"diagnosis_header_subtitle" = "CLINICAL POSTURE ASSESSMENT";
+"relief_guide_badge" = "即時緩和";
+"hazard_angle_title" = "現在の前傾角度";
+"hazard_load_title" = "頸椎への追加負荷";
+"hazard_pet_live_tag" = "リアルタイム指導";
+"hazard_appearance_tag" = "見た目への悪影響";
+"hazard_timeline_tag" = "不可逆の変性";
+"hazard_pet_coach_name" = "リアルタイム指導";
+"relief_pill_severe_badge" = "危険警告";
+
+/* Legal & Compliance */
+"settings_legal_section" = "法的情報と免責事項";
+"settings_legal_documents_title" = "利用規約と健康免責事項";
+"legal_list_title" = "法的情報と免責事項";
+"legal_list_hint" = "SpineUpは健康とプライバシーを重視しています。以下の公式声明および規約をご確認ください。";
+"legal_item_medical_title" = "健康と医療に関する免責事項";
+"legal_item_medical_desc" = "本アプリは医療機器ではありません。診断や医師の指示に代わるものではありません";
+"legal_item_privacy_title" = "プライバシーポリシー";
+"legal_item_privacy_desc" = "100%デバイス内センサー処理。トラッキングゼロで安心の設計";
+"legal_item_terms_title" = "利用規約";
+"legal_item_terms_desc" = "ソフトウェア使用許諾、責任の制限、および利用規定";
+"legal_effective_date" = "発効日：2026年10月";
+

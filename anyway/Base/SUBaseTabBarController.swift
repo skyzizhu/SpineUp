@@ -16,9 +16,9 @@ class SUBaseTabBarController: UITabBarController {
     }
 
     private func setupAppearance() {
-        // iPhone Duo 多姿态自适应：当内屏展开或侧边垂直排列时，支持原生侧边栏 (TabSidebar) 态
+        // 确保使用标准原生 TabBar 模式，全机型全方向体验一致
         if #available(iOS 18.0, *) {
-            mode = .tabSidebar
+            mode = .tabBar
         }
 
         let appearance = UITabBarAppearance()
@@ -27,5 +27,9 @@ class SUBaseTabBarController: UITabBarController {
         tabBar.standardAppearance = appearance
         tabBar.scrollEdgeAppearance = appearance
         tabBar.tintColor = .systemBlue
+    }
+
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return selectedViewController?.supportedInterfaceOrientations ?? [.portrait, .landscapeLeft, .landscapeRight]
     }
 }

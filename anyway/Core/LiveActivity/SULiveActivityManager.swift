@@ -63,6 +63,12 @@ final class SULiveActivityManager: @unchecked Sendable {
         }
     }
 
+    private var lastState: String?
+    private var lastPersonaId: String?
+    private var lastPitchDeg: Double = 0.0
+    private var lastUprightMinutes: Int = -1
+    private var lastUpdateTime: TimeInterval = 0
+
     /// 更新当前实时活动状态
     func updateLiveActivity(
         state: String,
@@ -70,13 +76,39 @@ final class SULiveActivityManager: @unchecked Sendable {
         extraLoadKg: Double,
         uprightMinutes: Int,
         personaId: String,
-        quote: String
+        quote: String,
+        forceImmediate: Bool = false
     ) {
         lock.lock()
         guard let activity = currentActivity else {
             lock.unlock()
             return
         }
+
+        let isStateTransition = (lastState != state)
+        let isPersonaChanged = (lastPersonaId != personaId)
+        let isMinutesChanged = (lastUprightMinutes != uprightMinutes)
+        let pitchDelta = abs(pitchDeg - lastPitchDeg)
+        let now = ProcessInfo.processInfo.systemUptime
+        let timeElapsed = now - lastUpdateTime
+
+        // 智能节流防抖控制（关键实时性与系统预算防护）：
+        // 1. 状态跃迁（挺拔 -> 前倾 -> 严重驼背 -> 恢复挺拔）：立即无延迟推送（0ms 响应）
+        // 2. 人格改变或强制刷新：立即无延迟推送
+        // 3. 稳定状态内：至少间隔 1.5 秒，且角度变化 >= 1.0° 或分钟数递增才提交刷新
+        // 彻底杜绝每秒 15 次高频调用耗尽 iOS ActivityKit 预算导致灵动岛卡死不更新的严重问题
+        if !forceImmediate && !isStateTransition && !isPersonaChanged {
+            guard timeElapsed >= 1.5 && (pitchDelta >= 1.0 || isMinutesChanged) else {
+                lock.unlock()
+                return
+            }
+        }
+
+        lastState = state
+        lastPersonaId = personaId
+        lastPitchDeg = pitchDeg
+        lastUprightMinutes = uprightMinutes
+        lastUpdateTime = now
         lock.unlock()
 
         let updatedState = SUPostureActivityAttributes.ContentState(
@@ -88,9 +120,23 @@ final class SULiveActivityManager: @unchecked Sendable {
             quote: quote
         )
 
+        let isSevere = (state == "severeSlump")
+        let alertConfig: AlertConfiguration?
+        if isSevere {
+            let title = SULocalized("state_severe_slump", default: "严重驼背预警")
+            let body = SULocalized("gauge_status_severe", default: "高危超负荷 · 请立刻抬头")
+            alertConfig = AlertConfiguration(title: LocalizedStringResource(stringLiteral: title), body: LocalizedStringResource(stringLiteral: body), sound: .default)
+        } else {
+            alertConfig = nil
+        }
+
         Task {
-            let content = ActivityContent(state: updatedState, staleDate: nil)
-            await activity.update(content)
+            let content = ActivityContent(
+                state: updatedState,
+                staleDate: nil,
+                relevanceScore: isSevere ? 100.0 : 1.0
+            )
+            await activity.update(content, alertConfiguration: alertConfig)
             SULogger.lifecycle.debug("Updated Live Activity: state=\(state)")
         }
     }

@@ -8,7 +8,7 @@ class Response
     /**
      * 发送标准成功响应
      */
-    public static function json(mixed $data = [], string $message = 'success', int $code = 200, int $httpStatus = 200): void
+    public static function json($data = [], string $message = 'success', int $code = 200, int $httpStatus = 200)
     {
         http_response_code($httpStatus);
         header('Content-Type: application/json; charset=utf-8');
@@ -28,7 +28,7 @@ class Response
     /**
      * 发送错误响应
      */
-    public static function error(string $message = 'error', int $code = 400, int $httpStatus = 400, mixed $details = null): void
+    public static function error(string $message = 'error', int $code = 400, int $httpStatus = 400, $details = null)
     {
         http_response_code($httpStatus);
         header('Content-Type: application/json; charset=utf-8');

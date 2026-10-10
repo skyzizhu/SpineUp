@@ -131,3 +131,281 @@
 "follow_system" = "Adapter au Système";
 "follow_system_desc" = "Synchroniser avec la langue du système";
 "language_setting_hint" = "Choisissez la langue de l'application, les modifications sont immédiates";
+
+/* Speech & AI Fallback */
+"persona_preview_worker" = "Persona Salarié prêt. Prêt pour des rappels de posture sans filtre ?";
+"persona_preview_cat" = "Miaou ! Chat Tsundere en ligne. Pas question de m'aplatir comme une crêpe, miaou !";
+"persona_preview_coach" = "Coach Bienveillant connecté. Gardons une posture fière et respirons profondément ensemble.";
+"ai_fallback_quote" = "Tenez-vous droit avec fierté ! Redressez votre colonne et continuez !";
+"default_posture_quote" = "Tenez-vous droit avec fierté !";
+
+/* Posture Gauge & Pet Badges */
+"gauge_scale_start" = "0° Droit";
+"gauge_scale_mid" = "15° Limite";
+"gauge_scale_end" = "30°+ Alerte";
+"gauge_head_pitch_fmt" = "Penche %.1f°";
+"pet_status_upright_fmt" = "Posture droite · Penche %@";
+"pet_status_slight_fmt" = "Légère flexion · Penche %@";
+"pet_status_severe_fmt" = "Affaissement sévère · Penche %@";
+"pet_status_calibrating" = "Calibrage en cours...";
+"pet_status_unknown" = "En attente des AirPods...";
+"gauge_status_ideal" = "Zéro charge · Posture idéale";
+"gauge_status_slight" = "Charge en hausse · Ajustez la tête";
+"gauge_status_severe" = "Surcharge critique · Relevez la tête";
+"gauge_status_waiting" = "Synchronisation...";
+
+/* Leaderboard & Gamification */
+"tab_leaderboard" = "Classement";
+"default_user_name" = "Travailleur Droit";
+"leaderboard_title" = "Énergie Posturale";
+"leaderboard_tab_energy" = "Pièces d'énergie";
+"leaderboard_tab_quality" = "Maître Postural";
+"leaderboard_tab_streak" = "Série de jours";
+"leaderboard_my_rank_fmt" = "Rang #%d";
+"leaderboard_my_energy_sub" = "Total %d Pièces d'énergie · Posture exemplaire";
+"leaderboard_my_quality_sub" = "Qualité posturale %d%% · Tête droite";
+"leaderboard_my_streak_sub" = "Série de %d jours consécutifs · Discipline tenue";
+"leaderboard_positive_hint" = "💡 Ce classement valorise uniquement les accomplissements positifs et l'énergie gagnée, sans classement négatif punitif.";
+"leaderboard_me_tag" = "(Moi)";
+"leaderboard_pull_refresh" = "Tirer pour actualiser le classement...";
+"leaderboard_tag_top1" = "En tête";
+"leaderboard_tag_master" = "Maître de posture";
+"leaderboard_tag_champion" = "Pionnier de l'énergie";
+"edit_username_title" = "Modifier le pseudo";
+"edit_username_msg" = "Choisissez un pseudonyme inspirant pour votre posture !";
+"edit_username_placeholder" = "ex. Geek Toujours Droit";
+"settings_user_name" = "Pseudonyme / Indicatif";
+
+/* Hazard Perspective & Health Recommendations */
+"gauge_relief_btn_title" = "30s Pause 💡";
+"diagnosis_btn_relief_guide" = "Voir le guide de soulagement 30s →";
+"relief_guide_title" = "Protection cervicale et ergonomie";
+"relief_guide_header_title" = "Soulagement express 30s au bureau";
+"relief_guide_header_sub" = "Faisable assis · Discret · Décharge immédiatement la nuque";
+"relief_action1_title" = "1. Rentrée de menton (McKenzie)";
+"relief_action1_tag" = "Élimine la projection avant & renforce les fléchisseurs profonds";
+"relief_action1_steps" = "• Asseyez-vous droit, regard vers l'avant, épaules relâchées.\n• Poussez doucement le menton horizontalement vers l'arrière (effet double menton).\n• Maintenez l'étirement doux pendant 3 secondes, répétez 5 à 8 fois.";
+"relief_action2_title" = "2. Étirement en W des omoplates";
+"relief_action2_tag" = "Ouvre la cage thoracique & combat la bosse de bison";
+"relief_action2_steps" = "• Coudes pliés le long du buste formant un 'W' avec les bras.\n• Abaissez les épaules et resserrez fermement les omoplates vers l'arrière.\n• Maintenez 5 secondes avec une inspiration profonde, répétez 4 à 6 fois.";
+"relief_action3_title" = "3. Règles d'or ergonomiques du poste";
+"relief_action3_steps" = "• Regard à l'horizontale : Rehaussez l'écran avec un support.\n• Coudes à 90° : Ajustez la hauteur du siège pour reposer les bras sans hausser les épaules.\n• Maintien lombaire : Asseyez-vous au fond du fauteuil avec un coussin lombaire.";
+"relief_btn_start" = "Démarrer l'exercice 30s (+5 Énergie)";
+"relief_btn_completed" = "🎉 Terminé ! +5 Pièces d'énergie gagnées";
+
+"hazard_sheet_title" = "Charge cervicale & perspective des risques";
+"hazard_metric_title" = "Contrainte cervicale en temps réel";
+"hazard_metric_val_fmt" = "Inclinaison %.1f° · Charge ajoutée +%.1f kg";
+"hazard_compare_severe" = "💥 Équivaut à porter un enfant de 7 ans sur votre nuque ! Chaque seconde compresse vos disques.";
+"hazard_compare_moderate" = "⚠️ Équivaut à porter un pack complet de 24 bouteilles d'eau sur votre cou.";
+"hazard_compare_mild" = "🌿 Charge actuellement faible et saine. Gardez le menton rentré et le regard droit !";
+"hazard_appearance_title" = "⚠️ Conséquences esthétiques et posturales";
+"hazard_appearance_content" = "• Bosse de bison : Accumulation graisseuse compensatoire à la base du cou, épaississant la nuque.\n• Double menton et affaissement : Le muscle peaucier est distendu par la tête penchée en avant.\n• Posture de la tortue : Épaules enroulées et menton projeté donnent un air voûté et fatigué.";
+"hazard_timeline_title" = "⏱ Chronologie de dégénérescence";
+"hazard_timeline_content" = "• 30~60 min : Spasmes trapéziens, céphalées de tension, baisse de concentration.\n• 1~3 mois : Perte de la lordose cervicale (cou droit), cyphose dorsale compensatoire.\n• 1~2+ ans : Hernie discale C5-C7, ostéophytes (becs de perroquet), engourdissement irradiant des bras.";
+"hazard_btn_to_relief" = "Consulter le guide de soulagement 30s";
+
+/* AI Posture Perspective & Prescription */
+"sensor_tracking_short" = "Suivi spatial AirPods";
+"ai_perspective_tag" = "Aperçu IA ↗";
+"ai_tag_title" = "✨ Biomécanique IA en temps réel";
+"ai_analyzing_hint" = "✨ L'IA calcule la contrainte cervicale et les projections dégénératives...";
+"ai_prescription_badge" = "✨ Prescription de secours IA";
+"ai_hazard_headline_fmt" = "[Diagnostic IA] Inclinaison %.1f° · Charge +%.1f kg";
+"ai_metaphor_extreme" = "💥 Équivaut à suspendre un écran de 24 pouces à votre cou ! Chaque 10 secondes pousse les disques C5-C6 à leur limite critique.";
+"ai_metaphor_heavy" = "⚠️ Équivaut à porter un pack de 24 bouteilles d'eau (~15kg) compressant votre nuque et vos trapèzes.";
+"ai_metaphor_moderate" = "🌿 Équivaut à porter un gros chat adulte (~9kg) sur la nuque. Les micro-lésions s'accumulent silencieusement.";
+"ai_metaphor_light" = "✨ Position dans la zone d'or quasi sans charge, tête parfaitement équilibrée.";
+"ai_appearance_severe" = "• Alerte bosse de bison : Graisse compensatoire à la jonction cervico-dorsale, épaississant et raccourcissant le cou.\n• Affaissement du menton : Tête penchée distend le muscle peaucier, créant un double menton.\n• Posture de tortue fixée : %d min penché aujourd'hui. Muscles raccourcis, tête projetée vers l'avant.";
+"ai_appearance_moderate" = "• Projection légère : Trapèzes supérieurs tendus, épaules tombantes sous les vêtements.\n• Fatigue musculaire de la mâchoire : Fléchisseurs profonds inhibés tirant la mâchoire vers le bas.\n• Recommandation : %d alertes aujourd'hui. Réactivez les rhomboïdes dès maintenant.";
+"ai_appearance_good" = "• Ligne de mâchoire nette : Angle cervical optimal, ovale du visage ferme et tonique.\n• Port de tête altier : Clavicules et épaules basses, silhouette droite et énergique.";
+"ai_timeline_severe" = "• 30 minutes : Débit sanguin des trapèzes réduit de 60%%, accumulation d'acide lactique et céphalées.\n• 1~3 mois : Perte de la lordose cervicale, cyphose dorsale compensatoire.\n• 1~2+ ans : Dégénérescence et hernie discale C5-C7, engourdissements dans les bras.";
+"ai_timeline_mild" = "• Maintien droit : Disques hydratés, flux sanguin cérébral optimal.\n• 1~3 mois : Mémoire musculaire acquise, maintien élégant sans effort au bureau.";
+"ai_relief_diag_heavy" = "⚡️ L'IA détecte une surcharge cervicale importante (+%.1f kg). Spasme des trapèzes détecté, contre-mouvement urgent requis !";
+"ai_relief_diag_light" = "🌿 Excellente posture actuelle. Ce micro-exercice de 30 secondes réveille la mémoire musculaire profonde.";
+
+/* Weekly & Report Additions */
+"common_cancel" = "Annuler";
+"common_confirm" = "Enregistrer";
+"gauge_status_ideal_short" = "Zéro contrainte · Posture idéale";
+"gauge_status_severe_short" = "Surcharge critique · Redressez la tête";
+"gauge_status_slight_short" = "Légère inclinaison · Ajustement mineur";
+"legend_best" = "🏆 Meilleur jour";
+"legend_slump" = "Tête penchée";
+"legend_upright" = "Posture droite";
+"period_daily" = "Bilan du jour";
+"period_weekly" = "Bilan hebdomadaire";
+"share_weekly_report" = "Générer et partager le bilan";
+"unit_coins" = "Pièces";
+"unit_hotspot" = "Pic";
+"unit_hours" = "heures";
+"unit_low_risk" = "Zone sûre";
+"weekly_ai_title" = "Bilan approfondi hebdomadaire de l'IA";
+"weekly_grade_a" = "Pionnier de la posture";
+"weekly_grade_b" = "Période d'équilibrage";
+"weekly_grade_c" = "Rétablissement urgent";
+"weekly_grade_s" = "Maître de l'alignement";
+"weekly_metaphor_bikes" = "environ 3 VTT métalliques (~45kg)";
+"weekly_metaphor_fmt" = "Charge allégée cette semaine : %@";
+"weekly_range_fmt" = "Semaine %d · Performance de la semaine";
+"weekly_score_title" = "Score global de posture hebdomadaire";
+"weekly_trend_subtitle" = "La hauteur des barres reflète la durée d'utilisation quotidienne";
+"weekly_trend_title" = "Tendance posturale sur 7 jours";
+"weekly_upright_fmt" = "%.1f%% Posture droite";
+
+/* Settings & Preferences */
+"settings_section_persona" = "Personnalité du compagnon";
+"settings_section_alert" = "Préférences d'alerte";
+"settings_ai_voice_title" = "Annonces vocales IA";
+"settings_ai_voice_subtitle" = "Délai de grâce de 3 min, baisse douce de la musique";
+"settings_haptic_title" = "Retours haptiques";
+"settings_haptic_subtitle" = "Légère vibration en cas d'affaissement prolongé";
+"settings_sound_title" = "Carillon d'alerte";
+"settings_sound_subtitle" = "Goutte d'eau cristalline lors de l'inclinaison";
+"settings_section_energy" = "Énergie posturale";
+"settings_streak_title" = "Série consécutive";
+"settings_streak_days_fmt" = "%d jours";
+"settings_coins_title" = "Total des pièces d'énergie";
+"settings_slogan" = "SpineUp · Tenez-vous droit avec fierté";
+"settings_simulator_debug" = "Débogage inclinaison simulateur : %.1f°";
+
+/* Onboarding */
+"onboarding_title_1" = "Faites de vos AirPods votre gardien postural";
+"onboarding_sub_1" = "Grâce aux capteurs de mouvement spatial intégrés aux AirPods, détectez l'inclinaison des cervicales et prévenez le cou de texte.";
+"onboarding_btn_1" = "Comprendre le fonctionnement";
+"onboarding_title_2" = "Autorisation des capteurs requise";
+"onboarding_sub_2" = "SpineUp a besoin d'accéder aux données de mouvement pour calculer votre posture. Tous les calculs sont effectués localement sur l'appareil.";
+"onboarding_btn_2" = "Autoriser et continuer";
+"onboarding_title_3" = "Mettez vos écouteurs et étalonnez en 1 clic";
+"onboarding_sub_3" = "Asseyez-vous bien droit et appuyez sur étalonner pour définir votre zéro naturel. Si vous vous affaissez, votre animal se transforme pour vous alerter !";
+"onboarding_btn_3" = "Démarrer mon animal de bureau";
+
+/* Leaderboard & Relief & Share */
+"leaderboard_upright_ratio_fmt" = "%d%% Droit";
+"leaderboard_streak_fmt" = "%d jours de série 🔥";
+"relief_in_progress_fmt" = "Exercice en cours... %ds";
+"share_stat_upright" = "Focus droit";
+"share_stat_ratio" = "Taux d'alignement";
+"share_stat_load" = "Charge supplémentaire";
+
+"gauge_card_title" = "Biomécanique cervicale";
+"conn_status_ok_title" = "Suivi spatial AirPods actif";
+"conn_status_ok_desc" = "Capteur prêt. Diffusion en continu à 60 Hz pour mesurer la charge cervicale.";
+"conn_status_dc_title" = "AirPods déconnectés";
+
+/* Posture Hazard & Relief Guide & Practice */
+"ai_analyzing_hint" = "✨ L\'IA calcule les contraintes biomécaniques et la projection dégénérative...";
+"ai_prescription_badge" = "✨ Prescription IA Express · Décharge Immédiate";
+"ai_tag_title" = "✨ Simulation Biomécanique IA en Temps Réel";
+"hazard_appearance_title" = "⚠️ Ennemi de l\'Esthétique & de la Posture";
+"hazard_btn_to_relief" = "Voir la Routine de 30s";
+"hazard_metric_title" = "Stress Cervical en Temps Réel";
+"hazard_metric_val_fmt" = "Inclinaison %.1f° · Charge Extra +%.1f kg";
+"hazard_sheet_title" = "Aperçu de la Charge Cervicale & Risques";
+"hazard_timeline_title" = "⏱ Évolution Chronologique (Dégénérescence)";
+"relief_action1_steps" = "• Asseyez-vous droit en regardant devant, dos soutenu.\n• Poussez le menton horizontalement en arrière avec l\'index (double menton).\n• Sentez l\'étirement doux à l\'arrière du cou, tenez 3s, répétez 5~8 fois.";
+"relief_action1_tag" = "Adieu Cou de Texte & Activation Fléchisseurs";
+"relief_action1_title" = "1. Rentré de Menton McKenzie";
+"relief_action2_steps" = "• Bras collés aux côtes, coudes pliés en forme de « W ».\n• Abaissez les épaules, resserrez les omoplates vers le centre.\n• Inspirez profondément, maintenez 5s, expirez et relâchez. 4~6 fois.";
+"relief_action2_tag" = "Ouvrir la Cage Thoracique & Bosses de Bison";
+"relief_action2_title" = "2. Étirements en W";
+"relief_action3_steps" = "• Regard à niveau : Élevez l\'écran au niveau des yeux.\n• Coudes à 90° : Réglez la chaise pour reposer les bras à angle droit.\n• Soutien lombaire : Asseyez-vous au fond avec un petit coussin.";
+"relief_action3_tag" = "Éliminer la Mauvaise Posture à la Source";
+"relief_action3_title" = "3. Règles d\'Or Ergonomiques";
+"relief_btn_completed" = "🎉 Terminé ! +5 Énergie Dorsale";
+"relief_btn_start" = "Démarrer 30s de Soulagement (+5 Énergie)";
+"relief_guide_header_sub" = "Faisable assis · Discret · Soulage la nuque en quelques secondes";
+"relief_guide_header_title" = "Routine Express de 30s au Bureau";
+"relief_guide_title" = "Protection Corporelle & Exercices";
+"practice_step_1" = "Étape 1/2 (15s)";
+"practice_step_2" = "Étape 2/2 (15s)";
+"practice_action1_title" = "Rentré de Menton";
+"practice_action1_tag" = "Corriger Cou de Texte · Activation Profonde";
+"practice_action1_step1" = "Asseyez-vous droit face à l\'écran, dos légèrement calé";
+"practice_action1_step2" = "Touchez le menton, reculez-le à l\'horizontale (double menton)";
+"practice_action1_step3" = "Sentez l\'étirement de la nuque, tenez 3s puis relâchez";
+"practice_action2_title" = "Étirement en W";
+"practice_action2_tag" = "Ouvrir Thorax · Soulager Épaules";
+"practice_action2_step1" = "Coudes près du corps, avant-bras levés en forme de W";
+"practice_action2_step2" = "Baissez les épaules, serrez fort les omoplates";
+"practice_action2_step3" = "Inspirez profondément, tenez 5s, expirez lentement";
+"practice_dialogue_chin_worker" = "Regarde devant toi ! Recule cette tête et oublie les messages pros du boss !";
+"practice_dialogue_chin_cat" = "Miaou~ Regarde devant, pousse ton menton avec ta patte pour un joli double menton !";
+"practice_dialogue_chin_coach" = "Tenez-vous droit, glissez le menton vers l\'arrière pour réveiller les muscles du cou~";
+"practice_dialogue_w_worker" = "Bras collés aux côtes, serrez les omoplates à fond ! Brisez la bosse du bureau !";
+"practice_dialogue_w_cat" = "On change de posture miaou ! Bras en W, serrez vos petites ailes dans le dos !";
+"practice_dialogue_w_coach" = "Très bien ! Formez un W, rapprochez vos omoplates et respirez à fond~";
+"practice_sprint_worker" = "3 dernières secondes ! Dos droit, c\'est l\'énergie pour décoller à l\'heure !";
+"practice_sprint_cat" = "Sprint final de 3s miaou ! Tiens-toi droit, je vais monter sur ta tête !";
+"practice_sprint_coach" = "3 dernières secondes, respirez profondément et libérez la pression cervicale~";
+"practice_completed_worker" = "Bravo ! Poids cervical envolé, +5 Énergie dans la poche, super boulot !";
+"practice_completed_cat" = "Génial miaou ! La nuque est légère, voilà +5 Énergie, refaisons ça tous les jours !";
+"practice_completed_coach" = "Impeccable ! Le stress cervical a disparu, félicitations pour vos +5 Énergie !";
+"practice_guide_push_back" = "Recul Horizontal";
+"practice_rhythm_chin" = "Rythme : Reculer ➔ Tenir 3s ➔ Relâcher";
+"practice_rhythm_w" = "Rythme : Ouvrir & Inspirer ➔ Tenir 5s ➔ Expirer";
+"practice_mode_headphone" = "🎧 Détection Écouteurs";
+"practice_mode_ai_vision" = "🎥 Reconnaissance IA Caméra";
+"practice_cam_standby" = "Analyse en cours";
+"practice_seconds_left" = "s restantes";
+"practice_btn_finish_early" = "Terminer & Valider";
+"practice_btn_claim_done" = "🎉 +5 Énergie Dorsale Gagnée · Terminer";
+"practice_paused_tip" = "Routine en pause, touchez pour reprendre~";
+"practice_breath_inhale" = "Inspiration Profonde · Ouvrir le Thorax";
+"practice_breath_hold" = "Bloquer 3s · Maintenir Serré";
+"practice_breath_exhale" = "Expiration Douce · Relâcher";
+"practice_airpods_matched" = "🎧 AirPods ont détecté le redressement cervical !";
+"practice_airpods_active" = "🎧 AirPods suivi spatial de posture actif";
+"vision_tip_face_missing" = "Regardez la caméra frontale";
+"vision_tip_chin_good" = "Parfait ! Gardez le menton rentré";
+"vision_tip_keep_forward" = "Fixez droit devant avec le dos soutenu";
+"vision_tip_body_missing" = "Relevez le téléphone pour cadrer le haut du corps";
+"vision_tip_arms_raise" = "Levez les coudes et formez un W avec vos bras";
+"vision_tip_w_perfect" = "Posture en W impeccable ! Resserrez les omoplates";
+"vision_tip_w_adjust" = "Pliez les bras en arrière, serrez les omoplates";
+"vision_tip_inhale_detected" = "🫁 Expansion thoracique à l\'inspiration détectée";
+"relief_pill_normal_title" = "Soulagement rapide · Routine McKenzie";
+"relief_pill_normal_badge" = "Soulagement immédiat";
+"relief_pill_fatigue_title" = "Charge cervicale %.1f kg · Récupération express";
+"relief_pill_fatigue_badge" = "Secours express";
+"relief_pill_recovered_title" = "🎉 Charge réduite de %.1f kg · +10 Pièces Posture";
+"relief_pill_recovered_badge" = "Récupéré";
+"relief_cheer_quote" = "Bravo ! 2.0 kg de charge retirés de votre nuque, +10 Pièces Posture gagnées !";
+"posture_state_upright" = "Droit";
+"posture_state_slight" = "Légère flexion";
+"posture_state_severe" = "Courbure sévère";
+"posture_state_calibrating" = "Étalonnage";
+"posture_state_unknown" = "Non connecté";
+"hazard_level_ideal" = "Zéro charge · Posture idéale";
+"hazard_level_slight" = "Légère inclinaison · Micro-ajustement";
+"hazard_level_severe" = "Surcharge critique · Relevez la tête";
+"gauge_status_calibrating" = "Étalonnage en cours · Détection posture droite";
+
+/* Additional Screen Elements */
+"settings_streak_days" = "Jours consécutifs";
+"settings_total_coins" = "Total Pièces";
+"clinical_diagnosis_tag" = "Évaluation posturale clinique";
+"report_archive_stamp" = "Note %@ · Certifié";
+"diagnosis_header_subtitle" = "ÉVALUATION POSTURALE CLINIQUE";
+"relief_guide_badge" = "Soulagement immédiat";
+"hazard_angle_title" = "Angle d'inclinaison";
+"hazard_load_title" = "Charge cervicale supplémentaire";
+"hazard_pet_live_tag" = "Coach en direct";
+"hazard_appearance_tag" = "Impact esthétique";
+"hazard_timeline_tag" = "Dégénérescence irréversible";
+"hazard_pet_coach_name" = "Coach en direct";
+"relief_pill_severe_badge" = "Alerte critique";
+
+/* Legal & Compliance */
+"settings_legal_section" = "Mentions légales et avis";
+"settings_legal_documents_title" = "Conditions et avis de santé";
+"legal_list_title" = "Mentions légales et conformité";
+"legal_list_hint" = "SpineUp accorde une grande importance à votre bien-être et à la confidentialité de vos données.";
+"legal_item_medical_title" = "Avis médical et de santé";
+"legal_item_medical_desc" = "Non médical. Ne fournit pas de diagnostic médical et ne remplace pas un médecin";
+"legal_item_privacy_title" = "Politique de confidentialité";
+"legal_item_privacy_desc" = "Traitement des capteurs 100% local. Zéro traçage et respect de la vie privée";
+"legal_item_terms_title" = "Conditions d'utilisation";
+"legal_item_terms_desc" = "Contrat de licence logicielle, limitation de responsabilité et règles";
+"legal_effective_date" = "Date d'effet : Octobre 2026";
+

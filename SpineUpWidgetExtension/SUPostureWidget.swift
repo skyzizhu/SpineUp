@@ -25,9 +25,9 @@ struct SUPostureEntry: TimelineEntry {
         SUPostureEntry(
             date: Date(),
             postureState: "upright",
-            pitchDeg: 4.2,
+            pitchDeg: 0.0,
             extraLoadKg: 0.0,
-            uprightMinutes: 42,
+            uprightMinutes: 0,
             petName: SUWidgetLocalization.petName(for: "worker"),
             petIcon: "figure.walk.motion",
             quote: SUWidgetLocalization.quote(for: "upright")
@@ -50,16 +50,31 @@ struct SUPostureTimelineProvider: TimelineProvider {
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<SUPostureEntry>) -> Void) {
         let userDefaults = UserDefaults(suiteName: "group.com.iashes.anyway")
-        let pitch = userDefaults?.double(forKey: "currentPitchDeg") ?? 5.0
+        let pitch = userDefaults?.double(forKey: "currentPitchDeg") ?? 0.0
         let state = userDefaults?.string(forKey: "currentPostureState") ?? "upright"
-        let uprightMins = userDefaults?.integer(forKey: "todayUprightMinutes") ?? 38
+        let uprightMins = userDefaults?.integer(forKey: "todayUprightMinutes") ?? 0
         let persona = userDefaults?.string(forKey: "currentPersonaId") ?? "worker"
 
         let extraLoad: Double
-        if pitch > 20.0 {
-            extraLoad = (pitch - 20.0) * 0.4
+        if let storedLoad = userDefaults?.object(forKey: "extraLoadKg") as? Double {
+            extraLoad = storedLoad
         } else {
-            extraLoad = 0.0
+            // Hansraj (2014) 颈椎力学模型分段线性插值回退
+            let absPitch = abs(pitch)
+            switch absPitch {
+            case ..<5.0:
+                extraLoad = 0.0
+            case 5.0..<15.0:
+                extraLoad = (absPitch - 5.0) / 10.0 * 7.0
+            case 15.0..<30.0:
+                extraLoad = 7.0 + (absPitch - 15.0) / 15.0 * 6.0
+            case 30.0..<45.0:
+                extraLoad = 13.0 + (absPitch - 30.0) / 15.0 * 4.0
+            case 45.0..<60.0:
+                extraLoad = 17.0 + (absPitch - 45.0) / 15.0 * 5.0
+            default:
+                extraLoad = 22.0 + min((absPitch - 60.0) * 0.2, 5.0)
+            }
         }
 
         let petIcon: String

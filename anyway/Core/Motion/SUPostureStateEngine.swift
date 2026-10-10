@@ -64,8 +64,9 @@ final class SUPostureStateEngine: @unchecked Sendable {
         let smoothedRollRad = rollWindow.reduce(0.0, +) / Double(rollWindow.count)
 
         // 2. 计算相对基准角度 (单位: 度 Degrees)
-        // 在 AirPods 空间坐标系中，前倾体现为 pitch 增加
-        let deltaPitchDeg = (smoothedPitchRad - basePitchRad) * (180.0 / .pi)
+        // 在 AirPods CoreMotion 空间坐标系中：低头/前倾时 pitch 沿负方向减小 (nodding down is negative pitch)
+        // 转换为业务语义：正数代表前倾/低头角度，负数代表后仰伸展
+        let deltaPitchDeg = (basePitchRad - smoothedPitchRad) * (180.0 / .pi)
         let deltaRollDeg = (smoothedRollRad - baseRollRad) * (180.0 / .pi)
 
         // 3. 状态判定与防抖时间缓冲

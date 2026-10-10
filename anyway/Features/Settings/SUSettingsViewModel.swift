@@ -62,17 +62,21 @@ final class SUSettingsViewModel: @unchecked Sendable {
         personaManager.selectPersona(persona)
         audioFeedbackManager.triggerHapticSelection()
 
-        // 切换时播放该人格的专属欢迎试听语
+        // 切换时播放该人格的专属欢迎试听语（跟随当前语言本地化）
         let previewText: String
         switch persona {
         case .worker:
-            previewText = "打工人人格已就位，准备好迎接扎心提醒了吗？"
+            previewText = SULocalized("persona_preview_worker", default: "打工人人格已就位，准备好迎接扎心提醒了吗？")
         case .cat:
-            previewText = "喵呜！傲娇猫猫已上线，不许再把本喵压扁了喵！"
+            previewText = SULocalized("persona_preview_cat", default: "喵呜！傲娇猫猫已上线，不许再把本喵压扁了喵！")
         case .coach:
-            previewText = "温柔私教已连接，让我们一起保持挺拔与深呼吸。"
+            previewText = SULocalized("persona_preview_coach", default: "温柔私教已连接，让我们一起保持挺拔与深呼吸。")
         }
         speechManager.speak(text: previewText, persona: persona, force: true)
+
+        Task {
+            try? await SUAPIClient.shared.user.syncSettings(persona: persona.rawValue)
+        }
 
         onStateChanged?()
     }

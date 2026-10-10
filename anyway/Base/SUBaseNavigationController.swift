@@ -33,4 +33,8 @@ final class SUBaseNavigationController: UINavigationController {
         navigationBar.prefersLargeTitles = false
         navigationBar.tintColor = .systemBlue
     }
+
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return topViewController?.supportedInterfaceOrientations ?? [.portrait, .landscapeLeft, .landscapeRight]
+    }
 }

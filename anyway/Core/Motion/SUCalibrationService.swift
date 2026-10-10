@@ -73,6 +73,9 @@ final class SUCalibrationService: @unchecked Sendable {
 
         userDefaultsManager.saveCalibrationBaseline(pitch: pitchRad, roll: rollRad)
         SULogger.motion.info("Instant calibration saved: pitch=\(pitchRad), roll=\(rollRad)")
+        Task {
+            try? await SUAPIClient.shared.user.syncSettings(pitch: pitchRad, roll: rollRad)
+        }
         onCalibrationCompleted?(pitchRad, rollRad)
     }
 
@@ -84,15 +87,19 @@ final class SUCalibrationService: @unchecked Sendable {
             return
         }
 
+        let count = sampleBuffer.count
         let totalPitch = sampleBuffer.reduce(0.0) { $0 + $1.pitch }
         let totalRoll = sampleBuffer.reduce(0.0) { $0 + $1.roll }
-        let avgPitch = totalPitch / Double(sampleBuffer.count)
-        let avgRoll = totalRoll / Double(sampleBuffer.count)
+        let avgPitch = totalPitch / Double(count)
+        let avgRoll = totalRoll / Double(count)
         sampleBuffer.removeAll()
         lock.unlock()
 
         userDefaultsManager.saveCalibrationBaseline(pitch: avgPitch, roll: avgRoll)
-        SULogger.motion.info("Multi-sample calibration finished (\(self.sampleBuffer.count) frames): pitch=\(avgPitch), roll=\(avgRoll)")
+        SULogger.motion.info("Multi-sample calibration finished (\(count) frames): pitch=\(avgPitch), roll=\(avgRoll)")
+        Task {
+            try? await SUAPIClient.shared.user.syncSettings(pitch: avgPitch, roll: avgRoll)
+        }
         onCalibrationProgress?(1.0)
         onCalibrationCompleted?(avgPitch, avgRoll)
     }

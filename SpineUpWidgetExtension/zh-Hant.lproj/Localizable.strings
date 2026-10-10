@@ -21,7 +21,7 @@
 "persona_coach" = "溫和教練";
 
 /* Posture States */
-"state_upright" = "挺拔端正";
+"state_upright" = "精神挺拔";
 "state_mild_slouch" = "輕微前傾";
 "state_severe_slouch" = "嚴重駝背";
 "state_monitoring" = "監測中";

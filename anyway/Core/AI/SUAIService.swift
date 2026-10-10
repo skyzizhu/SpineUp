@@ -42,8 +42,8 @@ final class SUAIService: SUAIServiceProtocol {
             SULogger.business.info("Generated reminder via Offline Corpus: \(offlineText, privacy: .public)")
             return offlineText
         } catch {
-            // 极端异常防御性兜底
-            return "做人要有骨气，挺直脊椎，继续加油！"
+            // 极端异常防御性兜底（跟随当前语言本地化）
+            return SULocalized("ai_fallback_quote", default: "做人要有骨气，挺直脊椎，继续加油！")
         }
     }
 }

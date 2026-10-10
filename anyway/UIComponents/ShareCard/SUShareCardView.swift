@@ -100,9 +100,9 @@ final class SUShareCardView: UIView {
         return stack
     }()
 
-    private let uprightStatView = SUShareStatBoxView(icon: "clock.fill", title: "挺拔专注", tint: .systemGreen)
-    private let ratioStatView = SUShareStatBoxView(icon: "chart.pie.fill", title: "端正率", tint: .systemBlue)
-    private let extraLoadStatView = SUShareStatBoxView(icon: "scalemass.fill", title: "额外负荷", tint: .systemOrange)
+    private let uprightStatView = SUShareStatBoxView(icon: "clock.fill", title: SULocalized("share_stat_upright", default: "挺拔专注"), tint: .systemGreen)
+    private let ratioStatView = SUShareStatBoxView(icon: "chart.pie.fill", title: SULocalized("share_stat_ratio", default: "端正率"), tint: .systemBlue)
+    private let extraLoadStatView = SUShareStatBoxView(icon: "scalemass.fill", title: SULocalized("share_stat_load", default: "额外负荷"), tint: .systemOrange)
 
     // MARK: - 趣味换算栏
     private let metaphorCardView: UIView = {

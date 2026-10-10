@@ -17,10 +17,14 @@ final class SUPersonaCardView: UIView {
     private let containerCard: UIView = {
         let view = UIView()
         view.backgroundColor = .secondarySystemGroupedBackground
-        view.layer.cornerRadius = SULayoutConstants.cornerRadius
+        view.layer.cornerRadius = SULayoutConstants.cornerRadiusLarge
         view.layer.cornerCurve = .continuous
         view.layer.borderWidth = 1.5
         view.layer.borderColor = UIColor.clear.cgColor
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOpacity = 0.05
+        view.layer.shadowOffset = CGSize(width: 0, height: 4)
+        view.layer.shadowRadius = 8
         return view
     }()
 

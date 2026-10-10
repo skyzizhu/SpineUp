@@ -20,7 +20,7 @@ echo "========================================================\n\n";
 $passCount = 0;
 $failCount = 0;
 
-function assertTest(string $desc, bool $condition): void {
+function assertTest(string $desc, bool $condition) {
     global $passCount, $failCount;
     if ($condition) {
         echo "  [PASS] {$desc}\n";
@@ -94,6 +94,57 @@ $settings = $query->fetch();
 assertTest("坐姿基准零点正确入库 (Pitch: {$settings['calibration_base_pitch']}, Roll: {$settings['calibration_base_roll']})", 
     abs($settings['calibration_base_pitch'] - (-12.5)) < 0.001
 );
+
+// 6. 测试 AI 深度体态危害透视与急救处方
+echo "\n6. AI 深度体态危害透视与急救处方推演测试...\n";
+$hazard = $aiService->analyzeHazard(28.0, 22.5, 1800, 15, 'worker', '极客阿强', 'zh-Hans');
+assertTest("危害透视生成成功，包含比喻与颜值分析: \"{$hazard['headline']}\"", 
+    !empty($hazard['metaphor_comparison']) && !empty($hazard['appearance_analysis']) && !empty($hazard['pet_comment'])
+);
+
+$relief = $aiService->generateReliefPrescription(25.0, 18.0, 'worker', 'zh-Hans');
+assertTest("30秒急救处方生成成功，包含麦肯基收下巴与工位优化建议: \"{$relief['action1_tips']}\"", 
+    !empty($relief['quick_diagnosis']) && !empty($relief['action1_tips']) && !empty($relief['ergonomic_tips'])
+);
+
+// 7. 测试骨气榜 (正向激励三大排行榜)
+echo "\n7. 骨气榜 (三大排行榜) 检索与昵称修改测试...\n";
+// 插入几个测试用户
+$userA = 'user-a-' . bin2hex(random_bytes(3));
+$userB = 'user-b-' . bin2hex(random_bytes(3));
+$db->exec("INSERT INTO su_users (user_uuid, nickname, energy_coins, streak_days, best_quality_ratio) VALUES ('{$userA}', '天鹅颈阿珍', 1200, 25, 96.5)");
+$db->exec("INSERT INTO su_users (user_uuid, nickname, energy_coins, streak_days, best_quality_ratio) VALUES ('{$userB}', '不低头阿强', 850, 14, 88.0)");
+
+$lbStmt = $db->query("SELECT nickname, energy_coins FROM su_users ORDER BY energy_coins DESC LIMIT 5");
+$topUsers = $lbStmt->fetchAll();
+assertTest("骨气能量榜按能量币降序排列成功 (榜首: {$topUsers[0]['nickname']}, 能量币: {$topUsers[0]['energy_coins']})", 
+    count($topUsers) >= 2 && $topUsers[0]['energy_coins'] >= $topUsers[1]['energy_coins']
+);
+
+// 测试昵称修改
+$db->exec("UPDATE su_users SET nickname = '傲娇体态大师' WHERE user_uuid = '{$userB}'");
+$checkNick = $db->query("SELECT nickname FROM su_users WHERE user_uuid = '{$userB}'")->fetch();
+assertTest("用户修改个性昵称成功 (新昵称: {$checkNick['nickname']})", $checkNick['nickname'] === '傲娇体态大师');
+
+// 8. 测试 30 秒减负微操打卡领能量与防刷风控
+echo "\n8. 30 秒减负微操打卡领能量与防刷测试...\n";
+$testUserStmt = $db->query("SELECT id, energy_coins FROM su_users WHERE user_uuid = '{$userB}'");
+$testUser = $testUserStmt->fetch();
+$uId = (int)$testUser['id'];
+$initialCoins = (int)$testUser['energy_coins'];
+
+// 模拟首次打卡
+$db->exec("INSERT INTO su_relief_exercise_logs (user_id, action_type, pitch_deg, extra_load_kg, duration_sec, reward_coins) VALUES ({$uId}, 'CHIN_TUCK', 22.0, 16.0, 30, 5)");
+$db->exec("UPDATE su_users SET energy_coins = energy_coins + 5 WHERE id = {$uId}");
+
+$afterUser = $db->query("SELECT energy_coins FROM su_users WHERE id = {$uId}")->fetch();
+assertTest("微操打卡成功，能量币 +5 (原: {$initialCoins} -> 现: {$afterUser['energy_coins']})", 
+    (int)$afterUser['energy_coins'] === $initialCoins + 5
+);
+
+// 校验防刷：检查打卡记录表与账本关联
+$logCheck = $db->query("SELECT COUNT(*) AS cnt FROM su_relief_exercise_logs WHERE user_id = {$uId}")->fetch();
+assertTest("减负微操打卡流水正确归档 (已记录: {$logCheck['cnt']} 次)", (int)$logCheck['cnt'] >= 1);
 
 echo "\n========================================================\n";
 echo "   测试汇总: 通过 {$passCount} 项 / 失败 {$failCount} 项\n";

@@ -11,7 +11,7 @@ class ConfigController
      * 远程配置与工效学参数下发
      * GET /v1/config/app
      */
-    public function getAppConfig(): void
+    public function getAppConfig()
     {
         $appConfig = require __DIR__ . '/../../config/app.php';
 

@@ -28,6 +28,17 @@ final class SUSpeechManager: NSObject, @unchecked Sendable, AVSpeechSynthesizerD
         self.userDefaultsManager = userDefaultsManager
         super.init()
         self.synthesizer.delegate = self
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleLanguageDidChange),
+            name: SULocalizationManager.languageDidChangeNotification,
+            object: nil
+        )
+    }
+
+    @objc private func handleLanguageDidChange() {
+        stop()
     }
 
     /// 当前是否正在发音
@@ -47,6 +58,17 @@ final class SUSpeechManager: NSObject, @unchecked Sendable, AVSpeechSynthesizerD
 
         let elapsed = Date().timeIntervalSince(last)
         return elapsed >= SUAppConfig.voiceReminderCooldownSeconds
+    }
+
+    /// 获取指定语言对应的 TTS 发音人，优先匹配语言，未命中时回退至 en-US 或当前系统发音人
+    static func resolveVoice(for language: SULanguage) -> AVSpeechSynthesisVoice? {
+        if let voice = AVSpeechSynthesisVoice(language: language.ttsLanguageCode) {
+            return voice
+        } else if let fallbackVoice = AVSpeechSynthesisVoice(language: "en-US") {
+            return fallbackVoice
+        } else {
+            return AVSpeechSynthesisVoice(language: Locale.current.identifier)
+        }
     }
 
     /// 播报台词
@@ -74,13 +96,9 @@ final class SUSpeechManager: NSObject, @unchecked Sendable, AVSpeechSynthesizerD
         utterance.pitchMultiplier = persona.speechPitchMultiplier
         utterance.volume = 1.0
 
-        // 优先匹配当前系统多语言的发音人
-        let currentLocale = Locale.current.identifier
-        if let voice = AVSpeechSynthesisVoice(language: currentLocale) {
-            utterance.voice = voice
-        } else {
-            utterance.voice = AVSpeechSynthesisVoice(language: "zh-CN")
-        }
+        // 优先匹配当前应用选中的多语言发音人
+        let currentLang = SULocalizationManager.shared.currentLanguage
+        utterance.voice = Self.resolveVoice(for: currentLang)
 
         lock.lock()
         lastSpokenTimestamp = Date()

@@ -11,14 +11,32 @@ import SwiftUI
 /// 桌面小组件与实时活动轻量国际化助手 —— 覆盖 7 种语言 (en, zh-Hans, zh-Hant, ja, ko, ar, fr)
 enum SUWidgetLocalization {
 
+    private static var bundleForCurrentLanguage: Bundle {
+        let userDefaults = UserDefaults(suiteName: "group.com.iashes.anyway")
+        if let langCode = userDefaults?.string(forKey: "su_appLanguageCode"),
+           let path = Bundle.main.path(forResource: langCode, ofType: "lproj"),
+           let bundle = Bundle(path: path) {
+            return bundle
+        }
+        return Bundle.main
+    }
+
+    private static var currentLocale: Locale {
+        let userDefaults = UserDefaults(suiteName: "group.com.iashes.anyway")
+        if let langCode = userDefaults?.string(forKey: "su_appLanguageCode") {
+            return Locale(identifier: langCode)
+        }
+        return Locale.current
+    }
+
     static func localizedString(_ key: String, default defaultString: String) -> String {
-        let localized = Bundle.main.localizedString(forKey: key, value: defaultString, table: nil)
+        let localized = bundleForCurrentLanguage.localizedString(forKey: key, value: defaultString, table: nil)
         return localized
     }
 
     static func localizedFormat(_ key: String, default defaultString: String, _ arguments: CVarArg...) -> String {
         let format = localizedString(key, default: defaultString)
-        return String(format: format, locale: Locale.current, arguments: arguments)
+        return String(format: format, locale: currentLocale, arguments: arguments)
     }
 
     static func petName(for personaId: String) -> String {
@@ -41,7 +59,7 @@ enum SUWidgetLocalization {
     static func stateTitle(for state: String) -> String {
         switch state {
         case "upright":
-            return localizedString("state_upright", default: "挺拔端正")
+            return localizedString("state_upright", default: "精神挺拔")
         case "mildSlouch", "slightSlump":
             return localizedString("state_mild_slouch", default: "轻微前倾")
         case "severeSlouch", "severeSlump":

@@ -23,9 +23,16 @@ struct SUPostureLiveActivityWidget: Widget {
                 // 展开态 (长按或大岛展开)
                 DynamicIslandExpandedRegion(.leading) {
                     HStack(spacing: 6) {
-                        Image(systemName: personaIcon(for: context.state.personaId))
-                            .font(.system(size: 16, weight: .bold))
-                            .foregroundColor(tintColor(for: context.state.postureState))
+                        if isSevereSlouch(context.state.postureState) {
+                            Image(systemName: "exclamationmark.triangle.fill")
+                                .font(.system(size: 16, weight: .bold))
+                                .foregroundColor(.red)
+                                .symbolEffect(.bounce, options: .repeating)
+                        } else {
+                            Image(systemName: personaIcon(for: context.state.personaId))
+                                .font(.system(size: 16, weight: .bold))
+                                .foregroundColor(tintColor(for: context.state.postureState))
+                        }
                         Text(SUWidgetLocalization.stateTitle(for: context.state.postureState))
                             .font(.system(size: 13, weight: .bold))
                             .foregroundColor(tintColor(for: context.state.postureState))
@@ -61,20 +68,36 @@ struct SUPostureLiveActivityWidget: Widget {
                     .padding(.horizontal, 4)
                 }
             } compactLeading: {
-                // 紧凑左侧：小桌宠微图标
-                Image(systemName: personaIcon(for: context.state.personaId))
-                    .foregroundColor(tintColor(for: context.state.postureState))
+                // 紧凑左侧：小桌宠微图标 (严重驼背时变为闪烁警示图标)
+                if isSevereSlouch(context.state.postureState) {
+                    Image(systemName: "exclamationmark.triangle.fill")
+                        .foregroundColor(.red)
+                        .symbolEffect(.pulse.byLayer)
+                } else {
+                    Image(systemName: personaIcon(for: context.state.personaId))
+                        .foregroundColor(tintColor(for: context.state.postureState))
+                }
             } compactTrailing: {
                 // 紧凑右侧：倾斜度与状态色
                 Text("\(String(format: "%.0f", context.state.pitchDeg))°")
                     .font(.system(size: 12, weight: .bold, design: .rounded))
                     .foregroundColor(tintColor(for: context.state.postureState))
             } minimal: {
-                // 极简单点态：小桌宠图标
-                Image(systemName: personaIcon(for: context.state.personaId))
-                    .foregroundColor(tintColor(for: context.state.postureState))
+                // 极简单点态：严重驼背时展示脉冲感叹号
+                if isSevereSlouch(context.state.postureState) {
+                    Image(systemName: "exclamationmark.triangle.fill")
+                        .foregroundColor(.red)
+                        .symbolEffect(.pulse.byLayer)
+                } else {
+                    Image(systemName: personaIcon(for: context.state.personaId))
+                        .foregroundColor(tintColor(for: context.state.postureState))
+                }
             }
         }
+    }
+
+    private func isSevereSlouch(_ state: String) -> Bool {
+        return state == "severeSlump" || state == "severeSlouch"
     }
 
     private func personaIcon(for id: String) -> String {

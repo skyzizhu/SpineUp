@@ -22,9 +22,9 @@ final class SUAuthSessionManager: @unchecked Sendable {
         self.userDefaults = userDefaults
     }
 
-    /// 当前缓存的有效 Token
+    /// 当前缓存的有效 Token (优先读取 Keychain)
     var currentToken: String? {
-        return userDefaults.authToken
+        return SUKeychainManager.shared.authToken ?? userDefaults.authToken
     }
 
     /// 是否已经具备认证凭据
@@ -32,32 +32,28 @@ final class SUAuthSessionManager: @unchecked Sendable {
         return currentToken != nil && !(currentToken?.isEmpty ?? true)
     }
 
-    /// 获取或生成设备业务唯一标识 (UUID)
+    /// 获取或生成设备业务唯一标识 (UUID 持久保存在 Keychain 中，App 重装不丢失)
     var deviceUUID: String {
-        let key = "su_device_unique_uuid"
-        if let existing = UserDefaults.standard.string(forKey: key) {
-            return existing
-        }
-        let generated = UUID().uuidString
-        UserDefaults.standard.set(generated, forKey: key)
-        return generated
+        return SUKeychainManager.shared.deviceUUID
     }
 
     /// 保存认证 Token
     func saveToken(_ token: String) {
+        SUKeychainManager.shared.saveAuthToken(token)
         userDefaults.authToken = token
-        SULogger.network.info("Saved auth token to local storage")
+        SULogger.network.info("Saved auth token to Keychain and local storage")
     }
 
     /// 清理认证凭据
     func clearToken() {
+        SUKeychainManager.shared.clearAuthToken()
         userDefaults.authToken = nil
-        SULogger.network.info("Cleared auth token")
+        SULogger.network.info("Cleared auth token from Keychain and local storage")
     }
 
     private func fetchCachedToken() -> String? {
         lock.withLock {
-            guard let token = userDefaults.authToken, !token.isEmpty else {
+            guard let token = currentToken, !token.isEmpty else {
                 return nil
             }
             return token
@@ -96,5 +92,12 @@ final class SUAuthSessionManager: @unchecked Sendable {
 
         saveToken(data.token)
         return data.token
+    }
+
+    /// 强制刷新会话凭据（当远端提示 Token 失效或用户身份不匹配时由网络层自动调用）
+    @discardableResult
+    func refreshSession() async throws -> String {
+        clearToken()
+        return try await loginAsGuestSilently()
     }
 }

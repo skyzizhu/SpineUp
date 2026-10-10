@@ -16,6 +16,18 @@
 "state_slight_slump" = "Mild Slump";
 "state_severe_slump" = "Severe Slump";
 "state_unknown" = "Monitoring";
+
+/* Unified Posture States */
+"posture_state_upright" = "Upright";
+"posture_state_slight" = "Mild Slouch";
+"posture_state_severe" = "Severe Slouch";
+"posture_state_calibrating" = "Calibrating";
+"posture_state_unknown" = "Disconnected";
+
+/* Posture Hazard Levels */
+"hazard_level_ideal" = "Zero Load · Perfect Posture";
+"hazard_level_slight" = "Mild Forward Tilt · Micro Adjust";
+"hazard_level_severe" = "Critical Overload · Lift Chin";
 "angle_title" = "Forward Pitch Angle";
 "sensor_tracking" = "AirPods Motion Tracking Active";
 "switch_persona_title" = "Switch Pet Persona";
@@ -131,3 +143,309 @@
 "follow_system" = "Follow System";
 "follow_system_desc" = "Match device system language";
 "language_setting_hint" = "Select app language, changes take effect immediately";
+
+/* Speech & AI Fallback */
+"persona_preview_worker" = "Corporate Drone persona ready. Prepared for some brutally honest posture checks?";
+"persona_preview_cat" = "Meow! Tsundere Cat is online. Don't squish me into a pancake, meow!";
+"persona_preview_coach" = "Gentle Posture Coach connected. Let's stay upright and breathe deeply together.";
+"ai_fallback_quote" = "Stay proud and upright! Straighten your spine and keep going!";
+"default_posture_quote" = "Stay proud and upright!";
+
+/* Posture Gauge & Pet Badges */
+"gauge_scale_start" = "0° Upright";
+"gauge_scale_mid" = "15° Critical";
+"gauge_scale_end" = "30°+ Alert";
+"gauge_head_pitch_fmt" = "Slump %.1f°";
+"pet_status_upright_fmt" = "Upright & Sharp · Slump %@";
+"pet_status_slight_fmt" = "Slight Slump · Slump %@";
+"pet_status_severe_fmt" = "Severe Slump · Slump %@";
+"pet_status_calibrating" = "Calibrating baseline...";
+"pet_status_unknown" = "Waiting for AirPods...";
+"gauge_status_ideal" = "Zero Spine Load · Perfect";
+"gauge_status_slight" = "Extra Load Rising · Adjust Head";
+"gauge_status_severe" = "Severe Overload · Lift Head Now";
+"gauge_status_waiting" = "Syncing posture...";
+
+/* Leaderboard & Gamification */
+"tab_leaderboard" = "Leaderboard";
+"default_user_name" = "Upright Worker";
+"leaderboard_title" = "Spine Energy Board";
+"leaderboard_tab_energy" = "Energy Coins";
+"leaderboard_tab_quality" = "Posture Master";
+"leaderboard_tab_streak" = "Streak Days";
+"leaderboard_my_rank_fmt" = "Rank #%d";
+"leaderboard_my_energy_sub" = "Total %d Energy Coins · Leading posture";
+"leaderboard_my_quality_sub" = "Posture Quality %d%% · Forward head defeated";
+"leaderboard_my_streak_sub" = "Upright Streak %d Days · Keep it up";
+"leaderboard_positive_hint" = "💡 This leaderboard only highlights positive posture accomplishments and energy gains, with zero negative ranking to protect your self-esteem.";
+"leaderboard_me_tag" = "(Me)";
+"leaderboard_pull_refresh" = "Pull to refresh leaderboard...";
+"leaderboard_tag_top1" = "Leader";
+"leaderboard_tag_master" = "Posture Master";
+"leaderboard_tag_champion" = "Energy Pioneer";
+"edit_username_title" = "Edit Nickname";
+"edit_username_msg" = "Pick an awesome callsign for your upright journey!";
+"edit_username_placeholder" = "e.g. Unbending Geek Alex";
+"settings_user_name" = "Air Nickname";
+
+/* Hazard Perspective & Health Recommendations */
+"gauge_relief_btn_title" = "Relief 💡";
+"diagnosis_btn_relief_guide" = "View 30s Quick Relief Guide →";
+"relief_guide_title" = "Posture Relief & Ergonomics";
+"relief_guide_header_title" = "30-Second Office Relief Guide";
+"relief_guide_header_sub" = "Do it while seated · No embarrassment · Instantly unload your neck";
+"relief_action1_title" = "1. McKenzie Chin Tuck";
+"relief_action1_tag" = "Eliminate Forward Head & Activate Deep Neck Flexors";
+"relief_action1_steps" = "• Sit tall looking straight ahead with shoulders relaxed.\n• Gently press chin backwards horizontally (making a double chin).\n• Feel the mild stretch in back of neck for 3 seconds, repeat 5-8 times.";
+"relief_action2_title" = "2. W-Stretches (Chest Opening)";
+"relief_action2_tag" = "Open Thoracic Spine & Crush Dowager's Hump";
+"relief_action2_steps" = "• Keep upper arms close to ribs with elbows bent in a 'W' shape.\n• Drop shoulders down and pull shoulder blades firmly together.\n• Hold for 5 seconds with a deep breath, repeat 4-6 times.";
+"relief_action3_title" = "3. Office Ergonomics Golden Rules";
+"relief_action3_steps" = "• Eye-Level Display: Elevate laptop so top third is level with eyes.\n• 90° Elbows: Adjust chair height so arms rest comfortably at 90 degrees.\n• Lumbar Support: Sit deep in chair and use a small lumbar cushion.";
+"relief_btn_start" = "Start 30s Exercise (+5 Energy Coins)";
+"relief_btn_completed" = "🎉 Completed! +5 Energy Coins Earned";
+
+"hazard_sheet_title" = "Cervical Load & Hazard Perspective";
+"hazard_metric_title" = "Real-Time Cervical Stress";
+"hazard_metric_val_fmt" = "Slump %.1f° · Extra Load +%.1f kg";
+"hazard_compare_severe" = "💥 Equivalent to hanging a 7-year-old child directly on your neck! Every second compresses your discs.";
+"hazard_compare_moderate" = "⚠️ Equivalent to carrying a whole 24-bottle crate of water on your neck.";
+"hazard_compare_mild" = "🌿 Currently within mild and healthy load. Keep your chin tucked and eyes level!";
+"hazard_appearance_title" = "⚠️ Aesthetic & Posture Threats (Invisible Distortion)";
+"hazard_appearance_content" = "• Dowager's Hump: Compensatory fat pad accumulation at cervical-thoracic junction, thickening the neck.\n• Double Chin & Jowl Sagging: Platysma muscle overstretched by forward head posture, causing jawline sagging.\n• Turtle Neck: Rounded shoulders and forward head create a timid, exhausted appearance.";
+"hazard_timeline_title" = "⏱ Degeneration Timeline (Irreversible Changes)";
+"hazard_timeline_content" = "• 30~60 Minutes: Trapezius spasm, tension headache, reduced cerebral blood flow.\n• 1~3 Months: Loss of cervical lordosis (straightened spine), compensatory thoracic kyphosis.\n• 1~2+ Years: C5-C7 disc degeneration and herniation, osteophytes (bone spurs), radiating nerve numbness.";
+"hazard_btn_to_relief" = "View Relief Routine";
+
+/* AI Posture Perspective & Prescription */
+"sensor_tracking_short" = "AirPods Motion Tracking";
+"ai_perspective_tag" = "AI Insights ↗";
+"ai_tag_title" = "✨ AI Real-Time Biomechanics";
+"ai_analyzing_hint" = "✨ AI is calculating mechanical cervical impact & degeneration projections...";
+"ai_prescription_badge" = "✨ AI Custom Relief Prescription";
+"ai_hazard_headline_fmt" = "[AI Diagnosis] Slump %.1f° · Extra Load +%.1f kg";
+"ai_metaphor_extreme" = "💥 Equivalent to hanging a 24-inch metal monitor from your neck! Every 10 seconds pushes your C5-C6 discs to critical limit.";
+"ai_metaphor_heavy" = "⚠️ Equivalent to a heavy crate of 24 water bottles (~15kg) pressing on your neck and trapezius.";
+"ai_metaphor_moderate" = "🌿 Equivalent to carrying an adult fat ginger cat (~9kg) on your neck. Micro-damage is quietly accumulating.";
+"ai_metaphor_light" = "✨ Neck is in the golden zero-load zone, balanced right at the biomechanical pivot.";
+"ai_appearance_severe" = "• Dowager's Hump Warning: Compensatory fat accumulation at cervical-thoracic junction; neck looks shorter and thicker.\n• Collapsing Jawline: Forward head stretches and weakens the platysma muscle, causing double chin regardless of body fat.\n• Turtle Neck Locked: %d min of forward head today; sternocleidomastoid chronically shortened, forcing an awkward forward poke.";
+"ai_appearance_moderate" = "• Mild Forward Slump: Upper trapezius ischemic and tight; causes sloped shoulders in fitted clothes.\n• Jawline Muscle Fatigue: Deep neck flexors inhibited, pulling jawline downward.\n• Recommendation: %d slumps recorded today; activate rhomboids immediately.";
+"ai_appearance_good" = "• Sharp Jawline: Neck angle in ideal physiological zone; jawline tight and firm.\n• Swan Neck Maintained: Collarbones and shoulders relaxed, posture upright and poised.";
+"ai_timeline_severe" = "• 30 Minutes: Trapezius blood flow reduced by 60%%; lactic acid buildup and tension headaches.\n• 1~3 Months: Straightened cervical spine (loss of lordosis); compensatory thoracic kyphosis.\n• 1~2+ Years: C5-C7 disc degeneration and herniation; radiating numbness down arms.";
+"ai_timeline_mild" = "• Sustained Upright: Intervertebral discs rehydrate; healthy cerebral blood flow.\n• 1~3 Months: Muscle memory formed; effortless poise throughout long workdays.";
+"ai_relief_diag_heavy" = "⚡️ AI detected heavy resistance load on cervical spine (+%.1f kg). Upper trapezius spasm detected, needs retraction countermove!";
+"ai_relief_diag_light" = "🌿 Current posture is healthy. This 30-second drill awakens deep core muscle memory and prevents fatigue.";
+
+/* Weekly & Report Additions */
+"common_cancel" = "Cancel";
+"common_confirm" = "Save";
+"gauge_status_ideal_short" = "Zero Load · Perfect Posture";
+"gauge_status_severe_short" = "High Overload · Raise Head Now";
+"gauge_status_slight_short" = "Mild Tilt · Slight Adjustment";
+"legend_best" = "🏆 Best Day";
+"legend_slump" = "Forward Slump";
+"legend_upright" = "Upright Alignment";
+"period_daily" = "Daily Report";
+"period_weekly" = "Weekly Report";
+"share_weekly_report" = "Share Weekly Spine Report";
+"unit_coins" = "Coins";
+"unit_hotspot" = "Peak Hour";
+"unit_hours" = "Hours";
+"unit_low_risk" = "Low Risk";
+"weekly_ai_title" = "AI Companion Weekly In-Depth Review";
+"weekly_grade_a" = "Resilience Pioneer";
+"weekly_grade_b" = "Balance Adjustment";
+"weekly_grade_c" = "Urgent Recovery";
+"weekly_grade_s" = "Upright Champion";
+"weekly_metaphor_bikes" = "approx. 3 metal mountain bikes (~45kg)";
+"weekly_metaphor_fmt" = "Weekly Load Relieved: %@";
+"weekly_range_fmt" = "Week %d · Weekly Posture Overview";
+"weekly_score_title" = "Weekly Comprehensive Posture Score";
+"weekly_trend_subtitle" = "Bar heights show daily wear duration; best day highlighted";
+"weekly_trend_title" = "7-Day Posture Trend";
+"weekly_upright_fmt" = "%.1f%% Upright Rate";
+
+/* Settings & Preferences */
+"settings_section_persona" = "Pet Persona";
+"settings_section_alert" = "Alert Preferences";
+"settings_ai_voice_title" = "AI Voice Feedback";
+"settings_ai_voice_subtitle" = "3-min cooldown, softly avoids background music";
+"settings_haptic_title" = "Haptic Micro-Vibration";
+"settings_haptic_subtitle" = "Gentle tap after prolonged slumping";
+"settings_sound_title" = "Crisp Sound Chime";
+"settings_sound_subtitle" = "Clear waterdrop sound on slump";
+"settings_section_energy" = "Spine Energy";
+"settings_streak_title" = "Daily Streak";
+"settings_streak_days_fmt" = "%d Days";
+"settings_coins_title" = "Total Energy Coins";
+"settings_slogan" = "SpineUp · Stay Upright & Unbent";
+"settings_simulator_debug" = "Simulator Pitch Angle Debug: %.1f°";
+
+/* Onboarding */
+"onboarding_title_1" = "Turn AirPods into Your\nAll-Day Spine Guardian";
+"onboarding_sub_1" = "[What SpineUp Does for You]\n• Say Goodbye to Tech Neck: Real-time detection of head tilt & forward posture. Accurately calculates cervical load equivalent (a 60° slump adds up to 27kg on your neck!) to prevent dowager's hump.\n• Interactive Pet Companion: Your virtual pet silently guards in the background, morphing into a slumped slime to remind you gently without annoying nagging.\n\n[What You Need to Connect]\n• Apple Headphones with Spatial Audio: AirPods Pro (all gens), AirPods 3/4, AirPods Max, and compatible Beats headphones.\n• Zero Extra Hardware: No extra wearables required — simply wear the earphones you already use for work and music.";
+"onboarding_btn_1" = "Learn Motion Permissions";
+"onboarding_title_2" = "Enable Motion Access for\nMillisecond Tracking";
+"onboarding_sub_2" = "[Why Motion Sensor Permission Is Required]\n• Spatial Motion Engine: SpineUp requires Motion & Fitness permission to access the headphone gyroscope & accelerometer at 60Hz.\n\n[What You Can Do Once Connected]\n• Real-time Slump Alerts: Receive gentle haptics, audio chimes, or friendly pet voice nudges when your posture tilts beyond healthy thresholds.\n• 100% On-Device Privacy: All motion computations run entirely on your iPhone locally. No sensor data is ever uploaded to the cloud.";
+"onboarding_btn_2" = "Grant Permission & Continue";
+"onboarding_title_3" = "Put on AirPods & Calibrate\nNeutral to Start";
+"onboarding_sub_3" = "[How to Calibrate Your Neutral Posture]\n• Wear Earphones & Sit Naturally: Put on your AirPods in both ears and sit upright comfortably.\n• One-Tap Calibration: Tap \"Calibrate\" to lock in your personal natural baseline, adapting to any desk or ergonomic chair.\n\n[What More You Can Do]\n• 30s Relief Exercises: Feeling stiff? Follow your pet for a 30s chin-tuck or W-stretch to instantly offset cervical strain and earn energy coins.\n• Daily Ergonomic Reports: Get end-of-day posture diagnosis with life-sized weight comparisons and watch your spine improve daily!";
+"onboarding_btn_3" = "Start My Spine Journey";
+"onboarding_badge_features" = "Features";
+"onboarding_badge_devices" = "Devices";
+"onboarding_badge_permission" = "Sensors";
+"onboarding_badge_alert" = "Alerts & Privacy";
+"onboarding_badge_privacy" = "Privacy";
+"onboarding_badge_calibrate" = "Calibration";
+"onboarding_badge_lifestyle" = "Daily Care";
+
+/* Leaderboard & Relief & Share */
+"leaderboard_upright_ratio_fmt" = "%d%% Upright";
+"leaderboard_streak_fmt" = "%d-Day Streak 🔥";
+"relief_in_progress_fmt" = "Relief Exercise... %ds";
+"share_stat_upright" = "Upright Focus";
+"share_stat_ratio" = "Upright Rate";
+"share_stat_load" = "Extra Load";
+
+"gauge_card_title" = "Cervical Biomechanics";
+"conn_status_ok_title" = "AirPods Spatial Tracking Active";
+"conn_status_ok_desc" = "Sensor ready. Actively streaming 60Hz head pose to track extra cervical load.";
+"conn_status_dc_title" = "AirPods Disconnected";
+
+/* Posture Hazard & Relief Guide & Practice */
+"ai_analyzing_hint" = "✨ AI is calculating posture impact and degenerative projection...";
+"ai_prescription_badge" = "✨ AI Custom Prescription · Instant Relief";
+"ai_tag_title" = "✨ AI Real-Time Biomechanics Simulation";
+"hazard_appearance_title" = "⚠️ Aesthetics & Posture Killer (Silent Deformation)";
+"hazard_btn_to_relief" = "View Relief Routine";
+"hazard_metric_title" = "Real-Time Cervical Stress";
+"hazard_metric_val_fmt" = "Pitch %.1f° · Extra Load +%.1f kg";
+"hazard_sheet_title" = "Cervical Load & Risk Insights";
+"hazard_timeline_title" = "⏱ Progression Timeline (Irreversible Strain)";
+"relief_action1_steps" = "• Sit tall looking forward, back comfortably supported.\n• Touch chin with index finger, push horizontally backward (make a double chin).\n• Feel gentle stretch in back of neck, hold 3s, repeat 5~8 times.";
+"relief_action1_tag" = "Beat Text Neck & Activate Deep Cervical Flexors";
+"relief_action1_title" = "1. McKenzie Chin Tuck";
+"relief_action2_steps" = "• Keep upper arms against ribs, bend elbows up into 'W' shape.\n• Drop shoulders naturally, squeeze shoulder blades toward spine.\n• Inhale deeply, hold 5s, exhale and release. Repeat 4~6 times.";
+"relief_action2_tag" = "Open Thoracic Spine & Relieve Dowager's Hump";
+"relief_action2_title" = "2. W-Stretches";
+"relief_action3_steps" = "• Eye Level: Raise laptop with stand so top 1/3 of screen is at eye level.\n• Elbows 90°: Adjust chair height so arms rest comfortably at right angles.\n• Lumbar Support: Sit fully back in chair, add a small lumbar cushion.";
+"relief_action3_tag" = "Eliminate Slouching at the Physical Source";
+"relief_action3_title" = "3. Office Ergonomics Golden Rules";
+"relief_btn_completed" = "🎉 Completed! +5 Spine Energy";
+"relief_btn_start" = "Start 30s Relief (+5 Spine Energy)";
+"relief_guide_header_sub" = "Do it while seated · Discrete & easy · Unload cervical stress in seconds";
+"relief_guide_header_title" = "30-Second Desk Relief Routine";
+"relief_guide_title" = "Body Protection & Micro-Actions";
+"practice_step_1" = "Step 1/2 (15s)";
+"practice_step_2" = "Step 2/2 (15s)";
+"practice_action1_title" = "McKenzie Chin Tuck";
+"practice_action1_tag" = "Beat Text Neck · Deep Flexor Activation";
+"practice_action1_step1" = "Sit upright looking straight ahead, back gently supported";
+"practice_action1_step2" = "Touch chin with finger, glide head horizontally back (create a double chin)";
+"practice_action1_step3" = "Feel gentle stretch at back of neck, hold 3s, release smoothly";
+"practice_action2_title" = "W-Stretches";
+"practice_action2_tag" = "Open Thoracic Spine · Crush Dowager Hump";
+"practice_action2_step1" = "Keep elbows near ribs, forearms bent upward in a 'W' shape";
+"practice_action2_step2" = "Lower shoulders, squeeze shoulder blades firmly toward spine";
+"practice_action2_step3" = "Inhale deeply and hold for 5s, exhale and gently release";
+"practice_dialogue_chin_worker" = "Look straight ahead! Retract that neck and take back all the slack from checking work messages!";
+"practice_dialogue_chin_cat" = "Meow~ Look straight ahead, use your paw to push your chin back for a cute double chin!";
+"practice_dialogue_chin_coach" = "Sit up tall, gently glide your chin horizontally backward, feeling the deep neck muscles engage~";
+"practice_dialogue_w_worker" = "Arms against ribs, squeeze those shoulders back hard! Crush that desk hump!";
+"practice_dialogue_w_cat" = "Time to switch pose meow! Raise paws in a W shape, squeeze your little shoulder blades!";
+"practice_dialogue_w_coach" = "Great job! Form a W with your arms, pinch shoulder blades together, and breathe deeply~";
+"practice_sprint_worker" = "Last 3 seconds hold on! Straight spine means energy to head out on time!";
+"practice_sprint_cat" = "Final 3-second sprint meow! Sit upright, I'm perching on your head soon!";
+"practice_sprint_coach" = "Last 3 seconds, keep breathing deeply, unloading all neck pressure now~";
+"practice_completed_worker" = "Done! Extra cervical weight unloaded, +5 Spine Energy banked, awesome work!";
+"practice_completed_cat" = "Super meow! Neck feels so light, rewarding you +5 Spine Energy, practice with me daily!";
+"practice_completed_coach" = "Flawless! Cervical stress successfully relieved, congrats on +5 Spine Energy!";
+"practice_guide_push_back" = "Retract Back";
+"practice_rhythm_chin" = "Pacing: Glide Back ➔ Hold 3s ➔ Release";
+"practice_rhythm_w" = "Pacing: Spread & Inhale ➔ Hold 5s ➔ Exhale";
+"practice_mode_headphone" = "🎧 AirPods Motion Mode";
+"practice_mode_ai_vision" = "🎥 AI Vision Recognition";
+"practice_cam_standby" = "Analyzing Posture";
+"practice_seconds_left" = "s left";
+"practice_btn_finish_early" = "Finish Early & Check In";
+"practice_btn_claim_done" = "🎉 Claim +5 Spine Energy · Done";
+"practice_paused_tip" = "Routine paused, tap anytime to resume~";
+"practice_breath_inhale" = "Deep Inhale · Expand Chest";
+"practice_breath_hold" = "Hold 3s · Maintain Squeeze";
+"practice_breath_exhale" = "Slow Exhale · Gentle Release";
+"practice_airpods_matched" = "🎧 AirPods detected cervical retraction!";
+"practice_airpods_active" = "🎧 AirPods spatial posture tracking active";
+"vision_tip_face_missing" = "Please face the front camera";
+"vision_tip_chin_good" = "Great gaze! Keep chin gently tucked";
+"vision_tip_keep_forward" = "Look straight ahead with back supported";
+"vision_tip_body_missing" = "Prop phone upright to show upper body";
+"vision_tip_arms_raise" = "Raise elbows and bend arms into W shape";
+"vision_tip_w_perfect" = "Standard W-pose! Squeeze shoulder blades";
+"vision_tip_w_adjust" = "Bend arms back, pinch scapulae together";
+"vision_tip_inhale_detected" = "🫁 Deep inhalation chest expansion detected";
+"relief_pill_normal_title" = "Relief Routine · McKenzie Recovery";
+"relief_pill_normal_badge" = "Instant Relief";
+"relief_pill_fatigue_title" = "Neck Load %.1f kg · Quick Recovery";
+"relief_pill_fatigue_badge" = "Emergency Relief";
+"relief_pill_recovered_title" = "🎉 Neck Unloaded %.1f kg · +10 Spine Coins";
+"relief_pill_recovered_badge" = "Recovered";
+"relief_cheer_quote" = "Awesome! Unloaded 2.0kg of cervical strain and awarded 10 Spine Coins, fully recharged!";
+"gauge_status_calibrating" = "Calibrating · Upright Baseline Sensing";
+
+/* Additional Screen Elements */
+"settings_streak_days" = "Streak Days";
+"settings_total_coins" = "Total Spine Coins";
+"clinical_diagnosis_tag" = "Clinical Posture Assessment";
+"report_archive_stamp" = "Grade %@ · Certified";
+"diagnosis_header_subtitle" = "CLINICAL POSTURE ASSESSMENT";
+"relief_guide_badge" = "Instant Relief";
+"hazard_angle_title" = "Forward Tilt Angle";
+"hazard_load_title" = "Extra Cervical Load";
+"hazard_pet_live_tag" = "Live Coach";
+"hazard_appearance_tag" = "Aesthetic Impact";
+"hazard_timeline_tag" = "Irreversible Degeneration";
+"hazard_pet_coach_name" = "Live Coach";
+"relief_pill_severe_badge" = "Critical Alert";
+
+/* AirPods 5-State Connection & Authorization Model */
+"conn_state_connected_title" = "AirPods Spatial Motion Active";
+"conn_state_worn_unauth_title" = "AirPods Ready · Permission Needed";
+"conn_state_unworn_auth_title" = "AirPods Removed · Paused";
+"conn_state_unworn_unauth_title" = "AirPods Detected · Wear & Authorize";
+"conn_state_disconnected_title" = "AirPods Not Connected";
+"conn_state_unsupported_title" = "Device Unsupported for Motion";
+
+"conn_state_connected_sub" = "Tracking head posture and cervical load at 60Hz";
+"conn_state_worn_unauth_sub" = "AirPods detected in ear. Tap to grant motion permission";
+"conn_state_unworn_auth_sub" = "Authorized. Put AirPods back in to resume tracking";
+"conn_state_unworn_unauth_sub" = "Connected via Bluetooth. Put in ears and tap to authorize";
+"conn_state_disconnected_sub" = "Connect compatible AirPods (Pro/Max/3rd/4th gen) in Bluetooth settings";
+"conn_state_unsupported_sub" = "Requires AirPods Pro, 3rd/4th Gen, Max, or Beats Fit Pro";
+
+"action_calibrate_baseline" = "Calibrate Neutral";
+"action_request_auth" = "Grant Permission";
+"action_wear_and_auth" = "Put On & Authorize";
+"action_connect_help" = "Connection Guide";
+"action_know_more" = "Supported Devices";
+"action_connect_bluetooth" = "Go to Settings";
+"auth_permission_title" = "Motion & Fitness Permission Required";
+"auth_permission_msg" = "SpineUp requires headphone motion access to track posture. Please enable it in Settings > SpineUp.";
+"auth_restricted_title" = "Permission Restricted by System";
+"auth_restricted_msg" = "Motion & Fitness permission is restricted by parental controls or device management. Please check Settings > Screen Time > Content & Privacy Restrictions.";
+"unsupported_device_title" = "Device Unsupported for Motion";
+"unsupported_device_desc" = "SpineUp requires headphones with spatial head motion sensors:\n• AirPods Pro (1st / 2nd gen)\n• AirPods (3rd / 4th gen)\n• AirPods Max\n• Beats Fit Pro\n\nCar Bluetooth, speakers, or basic AirPods (1st/2nd gen) do not have motion sensors.";
+"go_to_settings" = "Open Settings";
+
+/* Legal & Compliance */
+"settings_legal_section" = "Legal & Disclaimers";
+"settings_legal_documents_title" = "Terms & Disclaimers";
+"legal_list_title" = "Legal & Compliance";
+"legal_list_hint" = "SpineUp values your wellness and data security. Please review our official terms and disclaimers.";
+"legal_item_medical_title" = "Health & Medical Disclaimer";
+"legal_item_medical_desc" = "Not a medical device. Not intended for diagnosis or replacing medical advice";
+"legal_item_privacy_title" = "Privacy Policy";
+"legal_item_privacy_desc" = "100% on-device sensor processing. Zero tracking and private by design";
+"legal_item_terms_title" = "Terms of Service";
+"legal_item_terms_desc" = "Software license agreement, limitation of liability & terms";
+"legal_effective_date" = "Effective: October 2026";
+

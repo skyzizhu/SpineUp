@@ -42,6 +42,12 @@ final class SULiquidGlassView: UIView {
         }
     }
 
+    public var showsBorder: Bool = true {
+        didSet {
+            updateBorderColor()
+        }
+    }
+
     // MARK: - 子视图
     private let visualEffectView = UIVisualEffectView()
     private let fallbackView = UIView()
@@ -99,14 +105,27 @@ final class SULiquidGlassView: UIView {
         // 挂载液态玻璃特效视图
         addSubview(visualEffectView)
 
+        // 采用 AutoLayout 绑定边界，彻底消除 translatesAutoresizingMaskIntoConstraints 引起的 width/height==0 约束冲突
+        fallbackView.translatesAutoresizingMaskIntoConstraints = false
+        visualEffectView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            fallbackView.topAnchor.constraint(equalTo: topAnchor),
+            fallbackView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            fallbackView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            fallbackView.trailingAnchor.constraint(equalTo: trailingAnchor),
+
+            visualEffectView.topAnchor.constraint(equalTo: topAnchor),
+            visualEffectView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            visualEffectView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            visualEffectView.trailingAnchor.constraint(equalTo: trailingAnchor),
+        ])
+
         updateEffect()
         updateCorners()
     }
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        fallbackView.frame = bounds
-        visualEffectView.frame = bounds
 
         if isCapsule {
             let capsuleRadius = bounds.height / 2.0
@@ -124,6 +143,12 @@ final class SULiquidGlassView: UIView {
     }
 
     private func updateBorderColor() {
+        guard showsBorder else {
+            layer.borderWidth = 0.0
+            layer.borderColor = nil
+            return
+        }
+        layer.borderWidth = 0.5
         let isDark = traitCollection.userInterfaceStyle == .dark
         let borderAlpha: CGFloat = isDark ? 0.22 : 0.12
         layer.borderColor = UIColor.label.withAlphaComponent(borderAlpha).cgColor

@@ -1,5 +1,6 @@
 /* InfoPlist.strings (Korean) */
 "CFBundleDisplayName" = "SpineUp";
+"UILaunchStoryboardName" = "LaunchScreen_ko";
 "NSMotionUsageDescription" = "SpineUp은 AirPods를 통해 머리 자세를 실시간으로 모니터링하기 위해 모션 센서 접근 권한이 필요합니다.";
 "NSHealthShareUsageDescription" = "SpineUp은 더 정밀한 자세 분석 및 인체공학적 조언을 제공하기 위해 걸음 수 등의 건강 데이터를 읽습니다.";
 "NSHealthUpdateUsageDescription" = "SpineUp은 바른 자세 유지 집중 시간을 Apple Health의 마음 챙김 시간으로 기록합니다.";

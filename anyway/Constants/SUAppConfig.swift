@@ -26,13 +26,13 @@ enum SUAppConfig {
     }
 
     /// 当前激活的服务器环境：一键切换 .local 或 .production
-    static let currentEnvironment: ServerEnvironment = .local
+    static let currentEnvironment: ServerEnvironment = .production
 
     /// 局域网开发联调服务器根地址 (当前配置)
     static let localServerRootURL: String = "http://192.168.31.101/spineup"
 
-    /// 线上正式生产服务器根地址 (上线前替换此域名即可)
-    static let productionServerRootURL: String = "https://api.spineup.app"
+    /// 线上正式生产服务器根地址 (已配置为线上正式环境)
+    static let productionServerRootURL: String = "https://www.yourtools.xyz/spineup"
 
     /// API 版本路由前缀
     static let apiVersionPrefix: String = "/v1"
@@ -67,4 +67,10 @@ enum SUAppConfig {
     // MARK: - 骨气能量养成
     static let energyPointsPerMinuteUpright: Int = 1
     static let streakBonusMultiplier: Double = 1.5
+
+    // MARK: - 法律与合规公网链接 (Legal & Compliance Public URLs)
+    static let legalBaseURL = "https://skyzizhu.github.io/SpineUp/legal.html"
+    static var medicalDisclaimerURL: String { "\(legalBaseURL)#medical" }
+    static var privacyPolicyURL: String { "\(legalBaseURL)#privacy" }
+    static var termsOfServiceURL: String { "\(legalBaseURL)#terms" }
 }

@@ -31,6 +31,7 @@ final class SUUserDefaultsManager: @unchecked Sendable {
         static let lastActiveDateString = "su_lastActiveDateString"
         static let customApiBaseURL = "su_customApiBaseURL"
         static let authToken = "su_authToken"
+        static let userName = "su_userName"
     }
 
     init(defaults: UserDefaults = .standard) {
@@ -248,6 +249,23 @@ final class SUUserDefaultsManager: @unchecked Sendable {
         }
     }
 
+    // MARK: - 用户个人资料与排行榜昵称
+    var userName: String {
+        get {
+            lock.lock()
+            defer { lock.unlock() }
+            if let saved = defaults.string(forKey: Keys.userName), !saved.isEmpty {
+                return saved
+            }
+            return SULocalized("default_user_name", default: "挺拔打工人")
+        }
+        set {
+            lock.lock()
+            defaults.set(newValue, forKey: Keys.userName)
+            lock.unlock()
+        }
+    }
+
     // MARK: - 网络配置与用户令牌
     var customApiBaseURL: String? {
         get {
@@ -268,11 +286,15 @@ final class SUUserDefaultsManager: @unchecked Sendable {
 
     var authToken: String? {
         get {
+            if let token = SUKeychainManager.shared.authToken, !token.isEmpty {
+                return token
+            }
             lock.lock()
             defer { lock.unlock() }
             return defaults.string(forKey: Keys.authToken)
         }
         set {
+            SUKeychainManager.shared.authToken = newValue
             lock.lock()
             if let val = newValue, !val.isEmpty {
                 defaults.set(val, forKey: Keys.authToken)

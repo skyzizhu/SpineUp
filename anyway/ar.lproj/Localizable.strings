@@ -131,3 +131,281 @@
 "follow_system" = "تلقائي حسب النظام";
 "follow_system_desc" = "مطابقة لغة نظام الجهاز";
 "language_setting_hint" = "اختر لغة واجهة التطبيق، سيتم التحديث فوراً";
+
+/* Speech & AI Fallback */
+"persona_preview_worker" = "شخصية الموظف الكادح جاهزة. هل أنت مستعد لبعض النصائح القاسية والمضحكة؟";
+"persona_preview_cat" = "مياو! القط اللطيف متصل الآن. لا تسحقني بانحنائك، مياو!";
+"persona_preview_coach" = "المدرب اللطيف متصل معك. دعنا نحافظ على استقامة الظهر ونتنفس بعمق معاً.";
+"ai_fallback_quote" = "ابقَ فخوراً ومستقيماً! افرد ظهرك وواصل العمل بجد!";
+"default_posture_quote" = "ابقَ فخوراً ومستقيماً!";
+
+/* Posture Gauge & Pet Badges */
+"gauge_scale_start" = "0° مستقيم";
+"gauge_scale_mid" = "15° حرج";
+"gauge_scale_end" = "30°+ إنذار";
+"gauge_head_pitch_fmt" = "انحناء %.1f°";
+"pet_status_upright_fmt" = "قامة مستقيمة · انحناء %@";
+"pet_status_slight_fmt" = "انحناء خفيف · انحناء %@";
+"pet_status_severe_fmt" = "انحناء شديد · انحناء %@";
+"pet_status_calibrating" = "جاري المعايرة...";
+"pet_status_unknown" = "في انتظار ارتداء السماعات...";
+"gauge_status_ideal" = "صفر ضغط · قامة مثالية";
+"gauge_status_slight" = "زيادة الحمل · ارفع رأسك قليلاً";
+"gauge_status_severe" = "حمل فائق الخطورة · ارفع رأسك فوراً";
+"gauge_status_waiting" = "جاري المزامنة...";
+
+/* Leaderboard & Gamification */
+"tab_leaderboard" = "المتصدرون";
+"default_user_name" = "بطل القامة المستقيمة";
+"leaderboard_title" = "لوحة طاقة القامة";
+"leaderboard_tab_energy" = "عملات الطاقة";
+"leaderboard_tab_quality" = "أستاذ القامة";
+"leaderboard_tab_streak" = "سلسلة الأيام";
+"leaderboard_my_rank_fmt" = "المركز #%d";
+"leaderboard_my_energy_sub" = "إجمالي %d عملة طاقة · متقدم في استقامة القامة";
+"leaderboard_my_quality_sub" = "جودة القامة %d%% · التغلب على انحناء الرقبة";
+"leaderboard_my_streak_sub" = "سلسلة استقامة %d أيام · التزام مستمر";
+"leaderboard_positive_hint" = "💡 تبرز لوحة المتصدرين هذه الإنجازات الإيجابية فقط، مع حظر أي تصنيف سلبي للحفاظ على المعنويات.";
+"leaderboard_me_tag" = "(أنا)";
+"leaderboard_pull_refresh" = "اسحب لتحديث قائمة المتصدرين...";
+"leaderboard_tag_top1" = "المتصدر";
+"leaderboard_tag_master" = "خبير القوام";
+"leaderboard_tag_champion" = "رائد الطاقة";
+"edit_username_title" = "تعديل الاسم المستعار";
+"edit_username_msg" = "اختر لقباً مميزاً لرحلتك مع استقامة القامة!";
+"edit_username_placeholder" = "مثال: المبرمج المستقيم";
+"settings_user_name" = "الاسم المستعار";
+
+/* Hazard Perspective & Health Recommendations */
+"gauge_relief_btn_title" = "راحة 30 ثانية 💡";
+"diagnosis_btn_relief_guide" = "عرض دليل الإغاثة السريع 30 ثانية →";
+"relief_guide_title" = "حماية الرقبة وبيئة العمل";
+"relief_guide_header_title" = "إغاثة مكتبية سريعة في 30 ثانية";
+"relief_guide_header_sub" = "أثناء الجلوس · بدون إحراج · تخفيف فوري لضغط فقرات الرقبة";
+"relief_action1_title" = "1. سحب الذقن للداخل (تمرين ماكنزي)";
+"relief_action1_tag" = "علاج انحناء الرقبة وتنشيط العضلات العميقة";
+"relief_action1_steps" = "• اجلس مستقيماً وانظر للأمام مع استرخاء الكتفين.\n• ادفع الذقن برفق إلى الخلف أفقياً بالسبابة (صنع ذقن مزدوج).\n• حافظ على الشد اللطيف لمدة 3 ثوانٍ، كرر 5-8 مرات.";
+"relief_action2_title" = "2. تمرين فتح الصدر على شكل حرف W";
+"relief_action2_tag" = "فتح الصدر ومحاربة تحدب أعلى الظهر";
+"relief_action2_steps" = "• اثنِ المرفقين بجانب القفص الصدري لتشكيل حرف 'W'.\n• اخفض الكتفين واجمع لوحي الكتف للخلف بقوة.\n• اثبت 5 ثوانٍ مع نفس عميق، كرر 4-6 مرات.";
+"relief_action3_title" = "3. القواعد الذهبية لبيئة العمل المكتبية";
+"relief_action3_steps" = "• مستوى النظر: ارفع الشاشة ليكون الثلث العلوي بمستوى العين.\n• زاوية المرفق 90 درجة: اضبط الكرسي لراحة الذراعين.\n• دعم أسفل الظهر: اجلس بعمق في الكرسي وضع وسادة قطنية.";
+"relief_btn_start" = "بدء التمرين 30 ثانية (+5 طاقة)";
+"relief_btn_completed" = "🎉 اكتمل! تم الحصول على +5 عملات طاقة";
+
+"hazard_sheet_title" = "حمل فقرات الرقبة وتداعياتها";
+"hazard_metric_title" = "الإجهاد الميكانيكي الفوري للرقبة";
+"hazard_metric_val_fmt" = "انحناء %.1f° · حمل إضافي +%.1f كجم";
+"hazard_compare_severe" = "💥 يعادل تعليق طفل في السابعة من عمره برقبك مباشرة! كل ثانية تضغط غضاريف الرقبة.";
+"hazard_compare_moderate" = "⚠️ يعادل حمل صندوق كامل من 24 عبوة ماء على رقبتك.";
+"hazard_compare_mild" = "🌿 الحمل ضمن النطاق الصحي الخفيف. حافظ على ذقنك مشدوداً للأمام!";
+"hazard_appearance_title" = "⚠️ الأضرار الجمالية والجسدية (تشوه صامت)";
+"hazard_appearance_content" = "• حدبة الرقبة: تراكم دهني تعويضي في قاعدة الرقبة يجعلها تبدو سميكة وقصيرة.\n• الذقن المزدوج وترهل الفك: ترهل عضلة الرقبة السطحية بسبب انحناء الرأس المستمر.\n• رقبة السلحفاة: انحناء الكتفين للأمام يمنح مظهراً مجهداً ومنحنياً.";
+"hazard_timeline_title" = "⏱ الجدول الزمني لتدهور الفقرات";
+"hazard_timeline_content" = "• 30~60 دقيقة: تشنج عضلة الترابيزيوس، صداع توتري، قلة التركيز.\n• 1~3 أشهر: استقامة انحناء الرقبة الطبيعي، تحدب تعويضي للظهر.\n• 1~2+ سنوات: انزلاق غضروفي C5-C7، نتوءات عظمية، وتنميل يمتد إلى الذراعين.";
+"hazard_btn_to_relief" = "عرض دليل الإغاثة 30 ثانية";
+
+/* AI Posture Perspective & Prescription */
+"sensor_tracking_short" = "تتبع AirPods المكاني";
+"ai_perspective_tag" = "تحليل الذكاء ↗";
+"ai_tag_title" = "✨ ميكانيكا حيوية بالذكاء الاصطناعي";
+"ai_analyzing_hint" = "✨ الذكاء الاصطناعي يحسب إجهاد الرقبة وتوقعات التدهور...";
+"ai_prescription_badge" = "✨ وصفة إغاثة مخصصة بالذكاء الاصطناعي";
+"ai_hazard_headline_fmt" = "[تشخيص الذكاء] انحناء %.1f° · حمل إضافي +%.1f كجم";
+"ai_metaphor_extreme" = "💥 يعادل تعليق شاشة حاسوب معدنية 24 بوصة على رقبتك! كل 10 ثوانٍ تدفع الغضاريف C5-C6 لحدودها القصوى.";
+"ai_metaphor_heavy" = "⚠️ يعادل وضع صندوق كامل من 24 عبوة ماء (~15 كجم) على رقبتك وكتفيك.";
+"ai_metaphor_moderate" = "🌿 يعادل حمل قطة بالغة (~9 كجم) على مؤخرة عنقك. التلف المجهري يتراكم بهدوء.";
+"ai_metaphor_light" = "✨ الرقبة في النطاق الذهبي الخالي من الحمل تقريباً، ومتوازنة بامتياز.";
+"ai_appearance_severe" = "• تحذير من حدبة الرقبة: دهون تعويضية عند قاعدة الرقبة تجعلها تبدو أقصر وأكثر سماكة.\n• ترهل الفك والذقن: انحناء الرأس يرخي عضلة الرقبة مما يسبب ذقناً مزدوجاً.\n• رقبة السلحفاة: انحناء لمدة %d دقيقة اليوم. قصر العضلات يفرض بروز الرأس بشكل دائم.";
+"ai_appearance_moderate" = "• انحناء خفيف: تشنج عضلة الترابيزيوس، مما يجعل الكتفين منحدرين.\n• إجهاد خط الفك: ضعف عضلات الرقبة العميقة يسحب الفك للأسفل.\n• توصية: تم تسجيل %d انحناء اليوم. نشط عضلات الظهر فوراً.";
+"ai_appearance_good" = "• خط فك مشدود: زاوية الرقبة مثالية وخط الفك متناسق ومشدود.\n• قوام ممشوق: عظام الترقوة والكتفان مسترخيان، وجسدك يبدو أنيقاً ومستقيماً.";
+"ai_timeline_severe" = "• 30 دقيقة: انخفاض تدفق دم عضلات الكتف 60%%، تراكم حمض اللاكتيك وصداع.\n• 1~3 أشهر: استقامة انحناء الرقبة وتحدب الظهر التعويضي.\n• 1~2+ سنوات: تنكس غضروفي C5-C7 وتنميل يمتد إلى الذراعين.";
+"ai_timeline_mild" = "• الحفاظ على الاستقامة: استعادة مرونة الأقراص الغضروفية وتدفق دم ممتاز للدماغ.\n• 1~3 أشهر: تشكل ذاكرة عضلية وثبات سهل طوال يوم العمل.";
+"ai_relief_diag_heavy" = "⚡️ اكتشف الذكاء الاصطناعي حملاً عالياً على فقرات الرقبة (+%.1f كجم). تشنج عضلي يتطلب تمريناً عاجلاً!";
+"ai_relief_diag_light" = "🌿 قامتك الحالية ممتازة. هذا التمرين ينشط الذاكرة العضلية ويمنع تراكم التعب.";
+
+/* Weekly & Report Additions */
+"common_cancel" = "إلغاء";
+"common_confirm" = "حفظ";
+"gauge_status_ideal_short" = "حمل صفري · قوام مثالي";
+"gauge_status_severe_short" = "إجهاد حرج · ارفع رأسك فوراً";
+"gauge_status_slight_short" = "انحناء طفيف · ضبط يسير";
+"legend_best" = "🏆 أفضل يوم";
+"legend_slump" = "انحناء الرأس";
+"legend_upright" = "استقامة تامة";
+"period_daily" = "تقرير اليوم";
+"period_weekly" = "تقرير الأسبوع";
+"share_weekly_report" = "إنشاء ومشاركة التقرير الأسبوعي";
+"unit_coins" = "عملات";
+"unit_hotspot" = "ذروة";
+"unit_hours" = "ساعة";
+"unit_low_risk" = "منطقة آمنة";
+"weekly_ai_title" = "المراجعة الأسبوعية المعمقة بالذكاء الاصطناعي";
+"weekly_grade_a" = "رائد الاستقامة";
+"weekly_grade_b" = "فترة التوازن";
+"weekly_grade_c" = "فترة التعافي العاجل";
+"weekly_grade_s" = "بطل الاستقامة";
+"weekly_metaphor_bikes" = "ما يعادل 3 دراجات جبلية معدنية (~45 كجم)";
+"weekly_metaphor_fmt" = "الوزن المخفف هذا الأسبوع: %@";
+"weekly_range_fmt" = "الأسبوع %d · أداء القوام الأسبوعي";
+"weekly_score_title" = "الدرجة الإجمالية لصحة القوام الأسبوعية";
+"weekly_trend_subtitle" = "يعكس ارتفاع الأعمدة مدة الارتداء اليومية مع تمييز أفضل يوم";
+"weekly_trend_title" = "توزيع اتجاه القوام خلال 7 أيام";
+"weekly_upright_fmt" = "%.1f%% نسبة الاستقامة";
+
+/* Settings & Preferences */
+"settings_section_persona" = "شخصية الرفيق";
+"settings_section_alert" = "تفضيلات التنبيه";
+"settings_ai_voice_title" = "تنبيهات صوتية بالذكاء الاصطناعي";
+"settings_ai_voice_subtitle" = "فترة هدوء 3 دقائق مع تفادٍ لطيف لموسيقى الخلفية";
+"settings_haptic_title" = "تنبيهات لمسية خفيفة";
+"settings_haptic_subtitle" = "اهتزاز لطيف عند الانحناء المطول";
+"settings_sound_title" = "نغمة تنبيه رقيقة";
+"settings_sound_subtitle" = "صوت قطرة ماء نقية عند انحناء الرأس";
+"settings_section_energy" = "طاقة القوام";
+"settings_streak_title" = "أيام متتالية";
+"settings_streak_days_fmt" = "%d يوم";
+"settings_coins_title" = "إجمالي عملات الطاقة";
+"settings_slogan" = "SpineUp · حافظ على استقامة قامتك";
+"settings_simulator_debug" = "تصحيح زاوية المحاكي: %.1f°";
+
+/* Onboarding */
+"onboarding_title_1" = "اجعل AirPods حارساً لعمودك الفقري";
+"onboarding_sub_1" = "باستخدام مستشعرات الحركة المكانية المدمجة في AirPods لتتبع انحناء الرقبة لحظياً وتجنب انحناء الظهر.";
+"onboarding_btn_1" = "تعرف على آلية العمل";
+"onboarding_title_2" = "مطلوب إذن مستشعرات الحركة";
+"onboarding_sub_2" = "يحتاج SpineUp إلى الوصول لبيانات حركة السماعات لحساب زاوية الجلوس. تتم معالجة جميع البيانات محلياً دون رفعها.";
+"onboarding_btn_2" = "منح الإذن والمتابعة";
+"onboarding_title_3" = "ارتدِ السماعات واضبط المعايرة بلمسة واحدة";
+"onboarding_sub_3" = "اجلس باستقامة واضغط زر المعايرة لتعيين وضعك الطبيعي. عند الانحناء سيتحول رفيقك لتنبيهك!";
+"onboarding_btn_3" = "بدء رفيق المكتب";
+
+/* Leaderboard & Relief & Share */
+"leaderboard_upright_ratio_fmt" = "%d%% استقامة";
+"leaderboard_streak_fmt" = "%d يوم متتالي 🔥";
+"relief_in_progress_fmt" = "جاري تمرين التخفيف... %d ث";
+"share_stat_upright" = "تركيز باستقامة";
+"share_stat_ratio" = "معدل الاستقامة";
+"share_stat_load" = "حمل إضافي";
+
+"gauge_card_title" = "الميكانيكا الحيوية للرقبة";
+"conn_status_ok_title" = "تتبع AirPods المكاني نشط";
+"conn_status_ok_desc" = "المستشعر جاهز. يتم تتبع وضعية الرأس وحمل الرقبة الإضافي بمعدل 60 هرتز.";
+"conn_status_dc_title" = "AirPods غير متصلة";
+
+/* Posture Hazard & Relief Guide & Practice */
+"ai_analyzing_hint" = "✨ الذكاء الاصطناعي يحسب الإجهاد الميكانيكي وتوقعات الانتكاس...";
+"ai_prescription_badge" = "✨ وصفة فورية ذكية · تخفيف سريع للعبء";
+"ai_tag_title" = "✨ محاكاة ميكانيكا وضعية الجسم بالذكاء الاصطناعي";
+"hazard_appearance_title" = "⚠️ مدمر الجاذبية والقوام (تشوه صامت)";
+"hazard_btn_to_relief" = "عرض تمارين تخفيف الإجهاد (30 ث)";
+"hazard_metric_title" = "ضغط الفقرات العنقية اللحظي";
+"hazard_metric_val_fmt" = "انحناء %.1f° · حمل إضافي +%.1f كجم";
+"hazard_sheet_title" = "نظرة دقيقة على إجهاد ومخاطر الرقبة";
+"hazard_timeline_title" = "⏱ جدول التطور الزمني للضرر (تراجع غير قابل للعكس)";
+"relief_action1_steps" = "• اجلس معتدلاً وانظر للأمام مع استناد خفيف للظهر.\n• المس الذقن بالسبابة وادفعه أفقياً للخلف (تكوين الذقن المزدوج).\n• اشعر بالإطالة المريحة خلف الرقبة، اثبت لـ 3 ث، كرر 5~8 مرات.";
+"relief_action1_tag" = "وداعاً لرقبة الهاتف & تفعيل عضلات العنق العميقة";
+"relief_action1_title" = "1. إرجاع الذقن بطريقة ماكنزي";
+"relief_action2_steps" = "• الصق العضدين بجانبي القفص الصدري، وارفع الساعدين على شكل «W».\n• اخفض الكتفين بهدوء، واضغط لوحي الكتف نحو المنتصف.\n• مع شهيق عميق اثبت لـ 5 ثوانٍ ثم ازفر واسترخ، كرر 4~6 مرات.";
+"relief_action2_tag" = "فتح الصدر والحدبة & التخلص من سنام الرقبة";
+"relief_action2_title" = "2. تمارين بسط الكتفين بشكل W";
+"relief_action3_steps" = "• مستوى النظر: ارفع الحاسوب لتوازي الشاشة مستوى العينين.\n• المرفقان 90°: اضبط ارتفاع المقعد لتستقر الذراعان بزاوية قائمة.\n• دعم أسفل الظهر: اجلس لنهاية المقعد وضع وسادة صغيرة.";
+"relief_action3_tag" = "القضاء على مسببات الانحناء من الجذور";
+"relief_action3_title" = "3. القواعد الذهبية لبيئة العمل المريحة";
+"relief_btn_completed" = "🎉 تم الإنجاز! +5 طاقة العمود الفقري";
+"relief_btn_start" = "بدء تمرين 30 ثانية (+5 طاقة العمود الفقري)";
+"relief_guide_header_sub" = "وأنت جالس · دون إحراج · تخفيف فوري لأحمال الرقبة";
+"relief_guide_header_title" = "تمرين مكتبي سريع لمدة 30 ثانية";
+"relief_guide_title" = "حماية الجسم وإرشادات سريعة";
+"practice_step_1" = "الحركة 1/2 (15 ث)";
+"practice_step_2" = "الحركة 2/2 (15 ث)";
+"practice_action1_title" = "إرجاع الذقن ماكنزي";
+"practice_action1_tag" = "تصحيح رقبة الهاتف · تفعيل العضلات العميقة";
+"practice_action1_step1" = "اجلس باستقامة وانظر للأمام مع استناد خفيف للظهر";
+"practice_action1_step2" = "المس الذقن بالسبابة، ادفعه أفقياً للخلف (تكوين ذقن مزدوج)";
+"practice_action1_step3" = "اشعر بتمدد مريح خلف الرقبة، اثبت لـ 3 ثوانٍ ثم استرخ";
+"practice_action2_title" = "بسط الكتفين بشكل W";
+"practice_action2_tag" = "فتح الصدر · التخلص من الحدبة";
+"practice_action2_step1" = "المرفقان ملتصقان بالقفص الصدري، الذراعان مرفوعتان كحرف W";
+"practice_action2_step2" = "اخفض الكتفين، واضغط لوحي الكتف معاً نحو العمود الفقري";
+"practice_action2_step3" = "استنشق بعمق واثبت 5 ثوانٍ ثم ازفر واسترخ بهدوء";
+"practice_dialogue_chin_worker" = "انظر للأمام باستقامة! ارجع رأسك وتخلص من ضغوط الشاشات والعمل!";
+"practice_dialogue_chin_cat" = "مياو~ انظر للأمام، ادفع ذقنك للخلف بمخالبك اللطيفة لتصنع ذقناً مزدوجاً!";
+"practice_dialogue_chin_coach" = "اجلس منتصباً، ادفع الذقن بلطف للخلف، واشعر بتنشيط عضلات الرقبة العميقة~";
+"practice_dialogue_w_worker" = "ألصق ذراعيك واضغط لوحي الكتف بقوة! حطم انحناء المكاتب المزعج!";
+"practice_dialogue_w_cat" = "حان وقت تغيير الحركة مياو! ارفع ذراعيك كحرف W واضغط كتفيك للخلف!";
+"practice_dialogue_w_coach" = "ممتاز جداً! اصنع شكل W بذراعيك، اضغط لوحي الكتف وخذ نفساً عميقاً~";
+"practice_sprint_worker" = "آخر 3 ثوانٍ اثبت! استقامة ظهرك تمنحك طاقة إنهاء يوم العمل بنشاط!";
+"practice_sprint_cat" = "آخر 3 ثوانٍ انطلق مياو! استقم، سأجلس فوق رأسك حالاً!";
+"practice_sprint_coach" = "آخر 3 ثوانٍ، حافظ على التنفس العميق، لنتخلص من كل ثقل الرقبة الآن~";
+"practice_completed_worker" = "تمت المهمة بنجاح! زال ثقل الرقبة الزائد، كسبت +5 طاقة، عمل رائع!";
+"practice_completed_cat" = "رائع مياو! أصبحت رقبتك خفيفة، خذ +5 طاقة وتمرن معي يومياً مياو!";
+"practice_completed_coach" = "مثالي تماماً! تخلصت من إجهاد الرقبة بنجاح، مبارك +5 طاقة العمود الفقري!";
+"practice_guide_push_back" = "سحب أفقي للخلف";
+"practice_rhythm_chin" = "الإيقاع: سحب للخلف ➔ ثبات 3 ث ➔ استرخاء";
+"practice_rhythm_w" = "الإيقاع: فتح وشهيق ➔ ثبات 5 ث ➔ زفير واسترخاء";
+"practice_mode_headphone" = "🎧 استشعار وضعية السماعة";
+"practice_mode_ai_vision" = "🎥 تعرف بالرؤية الذكية";
+"practice_cam_standby" = "تحليل الوضعية جارٍ";
+"practice_seconds_left" = "ثانية متبقية";
+"practice_btn_finish_early" = "إنهاء مبكر وتسجيل";
+"practice_btn_claim_done" = "🎉 استلام +5 طاقة العمود الفقري · إنهاء";
+"practice_paused_tip" = "تم إيقاف التمرين مؤقتاً، اضغط للمتابعة في أي وقت~";
+"practice_breath_inhale" = "شهيق عميق · فتح الصدر والكتفين";
+"practice_breath_hold" = "حبس النفس 3 ث · الحفاظ على الضغط";
+"practice_breath_exhale" = "زفير بطيء · استرخاء وعودة";
+"practice_airpods_matched" = "🎧 AirPods استشعرت استقامة ورجوع الرقبة بنجاح!";
+"practice_airpods_active" = "🎧 AirPods تتبع وضعية الرأس المكاني نشط";
+"vision_tip_face_missing" = "يرجى مواجهة الكاميرا الأمامية";
+"vision_tip_chin_good" = "النظر للأمام ممتاز! حافظ على سحب الذقن للخلف";
+"vision_tip_keep_forward" = "انظر للأمام مباشرة مع دعم الظهر";
+"vision_tip_body_missing" = "يرجى تثبيت الهاتف لإظهار الجزء العلوي من الجسم";
+"vision_tip_arms_raise" = "ارفع المرفقين وافتح الذراعين على شكل W";
+"vision_tip_w_perfect" = "وضعية W قياسية! اضغط لوحي الكتف للداخل";
+"vision_tip_w_adjust" = "اثنِ الذراعين للخلف، وقرّب لوحي الكتف معاً";
+"vision_tip_inhale_detected" = "🫁 تم رصد اتساع القفص الصدري مع الشهيق العميق";
+"relief_pill_normal_title" = "إغاثة سريعة · استعادة ماكنزي";
+"relief_pill_normal_badge" = "راحة فورية";
+"relief_pill_fatigue_title" = "حمل الرقبة %.1f كجم · تعافٍ سريع";
+"relief_pill_fatigue_badge" = "إسعاف طارئ";
+"relief_pill_recovered_title" = "🎉 تم تخفيف الحمل %.1f كجم · +10 عملات القامة";
+"relief_pill_recovered_badge" = "تم التعافي";
+"relief_cheer_quote" = "رائع! تم تفريغ 2.0 كجم من الحمل عن عنقك ومكافأة 10 عملات القامة!";
+"posture_state_upright" = "مستقيم";
+"posture_state_slight" = "انحناء طفيف";
+"posture_state_severe" = "انحناء شديد";
+"posture_state_calibrating" = "معايرة";
+"posture_state_unknown" = "غير متصل";
+"hazard_level_ideal" = "بدون حمل · وضعية مثالية";
+"hazard_level_slight" = "ميلان خفيف · تعديل بسيط";
+"hazard_level_severe" = "حمل حرج · ارفع رأسك فوراً";
+"gauge_status_calibrating" = "جارٍ المعايرة · استشعار الوضع المستقيم";
+
+/* Additional Screen Elements */
+"settings_streak_days" = "أيام متتالية";
+"settings_total_coins" = "إجمالي العملات";
+"clinical_diagnosis_tag" = "تقييم القامة السريري";
+"report_archive_stamp" = "الدرجة %@ · معتمد";
+"diagnosis_header_subtitle" = "التقييم السريري لوضعية الجسم";
+"relief_guide_badge" = "راحة فورية";
+"hazard_angle_title" = "زاوية الميل للأمام";
+"hazard_load_title" = "حمل العنق الإضافي";
+"hazard_pet_live_tag" = "إشراف مباشر";
+"hazard_appearance_tag" = "تأثير على المظهر";
+"hazard_timeline_tag" = "تدهور لا رجعة فيه";
+"hazard_pet_coach_name" = "إشراف مباشر";
+"relief_pill_severe_badge" = "تنبيه حرج";
+
+/* Legal & Compliance */
+"settings_legal_section" = "المعلومات القانونية وإخلاء المسؤولية";
+"settings_legal_documents_title" = "الشروط القانونية وإخلاء المسؤولية الصحية";
+"legal_list_title" = "المعلومات القانونية والامتثال";
+"legal_list_hint" = "يقدر SpineUp صحتك وأمان بياناتك. يُرجى مراجعة الإشعارات الرسمية والشروط أدناه.";
+"legal_item_medical_title" = "إخلاء المسؤولية الصحية والطبية";
+"legal_item_medical_desc" = "ليس جهازًا طبيًا ولا يقدم تشخيصًا طبيًا أو بديلاً عن المشورة الطبية";
+"legal_item_privacy_title" = "سياسة الخصوصية";
+"legal_item_privacy_desc" = "معالجة بيانات المستشعرات 100٪ على الجهاز. عدم التتبع وحماية تامة للخصوصية";
+"legal_item_terms_title" = "شروط الخدمة";
+"legal_item_terms_desc" = "اتفاقية ترخيص البرنامج وحدود المسؤولية والشروط";
+"legal_effective_date" = "تاريخ السريان: أكتوبر 2026";
+

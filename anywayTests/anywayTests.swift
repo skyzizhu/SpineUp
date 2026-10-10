@@ -87,15 +87,15 @@ final class anywayTests: XCTestCase {
         XCTAssertEqual(reading1.state, .upright)
         XCTAssertEqual(reading1.extraLoadKg, 0.0, accuracy: 0.1)
 
-        // 模拟单帧大幅低头 (例如 30度 = 0.5236 rad)，此时由于 10s 防抖缓冲尚未超时，状态依然为 upright
-        let slumpRad = 30.0 * .pi / 180.0
+        // 模拟单帧大幅低头 (在 CoreMotion 中为负俯仰角，例如 -30度 = -0.5236 rad)，此时由于 10s 防抖缓冲尚未超时，状态依然为 upright
+        let slumpRad = -30.0 * .pi / 180.0
         let reading2 = engine.processFrame(
             rawPitchRad: slumpRad,
             rawRollRad: 0.0,
             basePitchRad: 0.0,
             baseRollRad: 0.0
         )
-        // 单帧滑动平均使得角度在平滑上升
+        // 单帧滑动平均使得前倾角度为正且在平滑上升
         XCTAssertGreaterThan(reading2.relativePitchDeg, 0.0)
         // 瞬时低头不会立刻误判（防抖有效）
         XCTAssertEqual(reading2.state, .upright)
@@ -551,10 +551,13 @@ final class anywayTests: XCTestCase {
         let original = SUUserDefaultsManager.shared.customApiBaseURL
         defer { SUUserDefaultsManager.shared.customApiBaseURL = original }
 
-        // 默认情况下指向配置的 localServerRootURL + /v1
+        let expectedDefault = (SUAppConfig.currentEnvironment == .local)
+            ? "\(SUAppConfig.localServerRootURL)/v1"
+            : "\(SUAppConfig.productionServerRootURL)/v1"
+
+        // 默认情况下指向当前环境的 rootURL + /v1
         SUUserDefaultsManager.shared.customApiBaseURL = nil
-        XCTAssertEqual(SUAppConfig.localServerRootURL, "http://192.168.31.101/spineup")
-        XCTAssertEqual(SUAppConfig.apiBaseURL, "http://192.168.31.101/spineup/v1")
+        XCTAssertEqual(SUAppConfig.apiBaseURL, expectedDefault)
 
         // 模拟用户设置自定义本地开发服务器地址覆盖
         SUUserDefaultsManager.shared.customApiBaseURL = "http://192.168.1.100:8080/v1"
@@ -563,7 +566,7 @@ final class anywayTests: XCTestCase {
 
         SUUserDefaultsManager.shared.customApiBaseURL = nil
         XCTAssertNil(SUUserDefaultsManager.shared.customApiBaseURL)
-        XCTAssertEqual(SUAppConfig.apiBaseURL, "http://192.168.31.101/spineup/v1")
+        XCTAssertEqual(SUAppConfig.apiBaseURL, expectedDefault)
     }
 
     // MARK: - UI 优化测试：首页顶部状态栏解耦与偏好设置多语言二级页
@@ -689,5 +692,74 @@ final class anywayTests: XCTestCase {
         locManager.setFollowSystem()
         XCTAssertTrue(locManager.isFollowSystem)
         XCTAssertEqual(locManager.currentLanguage, SULocalizationManager.resolveSystemLanguage())
+    }
+
+    func testLanguageTTSCodesAndInstructions() {
+        XCTAssertEqual(SULanguage.en.ttsLanguageCode, "en-US")
+        XCTAssertEqual(SULanguage.zhHans.ttsLanguageCode, "zh-CN")
+        XCTAssertEqual(SULanguage.zhHant.ttsLanguageCode, "zh-TW")
+        XCTAssertEqual(SULanguage.ja.ttsLanguageCode, "ja-JP")
+        XCTAssertEqual(SULanguage.ko.ttsLanguageCode, "ko-KR")
+        XCTAssertEqual(SULanguage.ar.ttsLanguageCode, "ar-SA")
+        XCTAssertEqual(SULanguage.fr.ttsLanguageCode, "fr-FR")
+
+        for lang in SULanguage.allCases {
+            XCTAssertFalse(lang.promptLanguageInstruction.isEmpty)
+        }
+    }
+
+    func testSpeechManagerVoiceResolution() {
+        for lang in SULanguage.allCases {
+            let voice = SUSpeechManager.resolveVoice(for: lang)
+            XCTAssertNotNil(voice, "Voice should be resolvable for \(lang.rawValue)")
+        }
+    }
+
+    func testMultilingualPromptBuilder() {
+        for lang in SULanguage.allCases {
+            let sysPrompt = SUPromptBuilder.buildSystemPrompt(for: .worker, language: lang)
+            XCTAssertTrue(sysPrompt.contains(lang.promptLanguageInstruction))
+
+            let context = SUPostureContext(
+                angleDeg: 15.0,
+                durationSec: 10.0,
+                violationCountToday: 2,
+                currentTime: Date(),
+                persona: .worker,
+                streakDays: 1,
+                state: .slightSlump,
+                extraLoadKg: 5.0
+            )
+            let userPrompt = SUPromptBuilder.buildUserPrompt(from: context, language: lang)
+            XCTAssertTrue(userPrompt.contains(lang.promptLanguageInstruction))
+        }
+    }
+
+    func testMultilingualOfflineCorpus() {
+        for lang in SULanguage.allCases {
+            for persona in SUPetPersona.allCases {
+                let context = SUPostureContext(
+                    angleDeg: 25.0,
+                    durationSec: 30.0,
+                    violationCountToday: 3,
+                    currentTime: Date(),
+                    persona: persona,
+                    streakDays: 2,
+                    state: .severeSlump,
+                    extraLoadKg: 12.0
+                )
+                let line = SUOfflineCorpus.pickLine(for: context, language: lang)
+                XCTAssertFalse(line.isEmpty)
+                XCTAssertFalse(line.contains("{count}"))
+                XCTAssertFalse(line.contains("{angle}"))
+                XCTAssertFalse(line.contains("{kg}"))
+            }
+        }
+    }
+
+    func testSpeechManagerStopOnLanguageChange() {
+        let manager = SUSpeechManager.shared
+        manager.stop()
+        XCTAssertFalse(manager.isSpeaking)
     }
 }

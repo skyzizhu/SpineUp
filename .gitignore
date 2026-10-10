@@ -26,3 +26,6 @@ backend/.env
 backend/storage/*.sqlite*
 backend/storage/cache/*
 backend/storage/logs/*
+backend/storage/ratelimit/*
+backend/storage/.DS_Store
+!backend/storage/.gitkeep

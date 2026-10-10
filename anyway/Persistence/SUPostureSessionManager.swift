@@ -16,6 +16,7 @@ final class SUPostureSessionManager: @unchecked Sendable {
     private let lock = NSLock()
     private var todaySession: SUPostureSession
     private var currentUprightRunSec: TimeInterval = 0.0
+    private var lastPeriodicSaveUptime: TimeInterval = 0.0
 
     private let fileURL: URL
 
@@ -73,8 +74,18 @@ final class SUPostureSessionManager: @unchecked Sendable {
             todaySession.accumulatedExtraLoadKg += (extraKg * deltaSeconds / 60.0)
         }
 
+        let now = ProcessInfo.processInfo.systemUptime
+        let shouldAutoSave = (now - lastPeriodicSaveUptime >= 30.0)
+        if shouldAutoSave {
+            lastPeriodicSaveUptime = now
+        }
+
         let snapshot = todaySession
         lock.unlock()
+
+        if shouldAutoSave {
+            persistSessionAsync()
+        }
 
         onSessionUpdated?(snapshot)
     }
@@ -84,6 +95,19 @@ final class SUPostureSessionManager: @unchecked Sendable {
         lock.lock()
         ensureCorrectDate()
         todaySession.violationsCount += 1
+        let snapshot = todaySession
+        lock.unlock()
+
+        persistSessionAsync()
+        onSessionUpdated?(snapshot)
+    }
+
+    /// 30 秒微操急救成功后的体态回血对冲（卸下颈椎额外负荷，重置疲劳连续时长）
+    func applyReliefRecovery(alleviatedKg: Double = 2.0) {
+        lock.lock()
+        ensureCorrectDate()
+        todaySession.accumulatedExtraLoadKg = max(0.0, todaySession.accumulatedExtraLoadKg - alleviatedKg)
+        currentUprightRunSec = 0.0
         let snapshot = todaySession
         lock.unlock()
 

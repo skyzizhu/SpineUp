@@ -16,6 +16,10 @@ final class SUAPIClient: Sendable {
     let user = UserAPI()
     let session = SessionAPI()
     let config = ConfigAPI()
+    let leaderboard = LeaderboardAPI()
+    let ai = AIAPI()
+    let relief = ReliefAPI()
+    let report = ReportAPI()
 
     // MARK: - 认证子模块
     final class AuthAPI: Sendable {
@@ -91,6 +95,117 @@ final class SUAPIClient: Sendable {
         func fetchRemoteConfig() async throws -> SURemoteConfigResponseData {
             let res: SUNetworkResponse<SURemoteConfigResponseData> = try await SUNetworkManager.shared.request(
                 endpoint: .fetchAppConfig
+            )
+            guard let data = res.data else {
+                throw SUNetworkError.serverError(code: res.code, message: res.message)
+            }
+            return data
+        }
+    }
+
+    // MARK: - 排行榜与个人资料子模块
+    final class LeaderboardAPI: Sendable {
+        func fetchLeaderboard(type: String, page: Int = 1, pageSize: Int = 20) async throws -> SULeaderboardResponseData {
+            let res: SUNetworkResponse<SULeaderboardResponseData> = try await SUNetworkManager.shared.request(
+                endpoint: .fetchLeaderboard(type: type, page: page, pageSize: pageSize)
+            )
+            guard let data = res.data else {
+                throw SUNetworkError.serverError(code: res.code, message: res.message)
+            }
+            return data
+        }
+
+        func updateProfile(nickname: String) async throws -> SUUpdateProfileResponseData {
+            let res: SUNetworkResponse<SUUpdateProfileResponseData> = try await SUNetworkManager.shared.request(
+                endpoint: .updateProfile(nickname: nickname)
+            )
+            guard let data = res.data else {
+                throw SUNetworkError.serverError(code: res.code, message: res.message)
+            }
+            return data
+        }
+    }
+
+    // MARK: - AI 深度体态分析与处方子模块
+    final class AIAPI: Sendable {
+        func fetchHazardAnalysis(
+            pitchDeg: Double,
+            extraLoadKg: Double,
+            slumpDurationSec: Double,
+            violationsCount: Int,
+            persona: String,
+            userName: String,
+            locale: String
+        ) async throws -> SUAIHazardResponseData {
+            let req = SUAIHazardRequest(
+                pitchDeg: pitchDeg,
+                extraLoadKg: extraLoadKg,
+                slumpDurationSec: slumpDurationSec,
+                violationsCount: violationsCount,
+                persona: persona,
+                userName: userName,
+                locale: locale
+            )
+            let res: SUNetworkResponse<SUAIHazardResponseData> = try await SUNetworkManager.shared.request(
+                endpoint: .aiHazard(request: req)
+            )
+            guard let data = res.data else {
+                throw SUNetworkError.serverError(code: res.code, message: res.message)
+            }
+            return data
+        }
+
+        func fetchReliefPrescription(
+            pitchDeg: Double,
+            extraLoadKg: Double,
+            persona: String,
+            locale: String
+        ) async throws -> SUAIReliefPrescriptionResponseData {
+            let req = SUAIReliefPrescriptionRequest(
+                pitchDeg: pitchDeg,
+                extraLoadKg: extraLoadKg,
+                persona: persona,
+                locale: locale
+            )
+            let res: SUNetworkResponse<SUAIReliefPrescriptionResponseData> = try await SUNetworkManager.shared.request(
+                endpoint: .aiReliefPrescription(request: req)
+            )
+            guard let data = res.data else {
+                throw SUNetworkError.serverError(code: res.code, message: res.message)
+            }
+            return data
+        }
+    }
+
+    // MARK: - 30秒微操急救打卡子模块
+    final class ReliefAPI: Sendable {
+        func claim(
+            actionType: String,
+            pitchDeg: Double,
+            extraLoadKg: Double,
+            durationSec: Int = 30
+        ) async throws -> SUReliefClaimResponseData {
+            let req = SUReliefClaimRequest(
+                action_type: actionType,
+                pitch_deg: pitchDeg,
+                extra_load_kg: extraLoadKg,
+                duration_sec: durationSec
+            )
+            let res: SUNetworkResponse<SUReliefClaimResponseData> = try await SUNetworkManager.shared.request(
+                endpoint: .claimRelief(request: req)
+            )
+            guard let data = res.data else {
+                throw SUNetworkError.serverError(code: res.code, message: res.message)
+            }
+            return data
+        }
+    }
+
+    // MARK: - 全周期体态战报与历史归档子模块
+    final class ReportAPI: Sendable {
+        func fetchPeriodicReport(periodType: String = "weekly", periodKey: String? = nil) async throws -> SUPeriodicReportResponseData {
+            let res: SUNetworkResponse<SUPeriodicReportResponseData> = try await SUNetworkManager.shared.request(
+                endpoint: .fetchPeriodicReport(periodType: periodType, periodKey: periodKey)
             )
             guard let data = res.data else {
                 throw SUNetworkError.serverError(code: res.code, message: res.message)

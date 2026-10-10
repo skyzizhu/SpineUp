@@ -27,6 +27,18 @@ class SUBaseViewController: UIViewController {
         SULogger.lifecycle.debug("[\(String(describing: type(of: self)))] viewWillAppear")
     }
 
+    private var lastAdaptedSize: CGSize = .zero
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        let currentSize = view.bounds.size
+        guard currentSize.width > 0 && currentSize.height > 0 else { return }
+        if currentSize != lastAdaptedSize {
+            lastAdaptedSize = currentSize
+            adaptLayoutForSize(currentSize)
+        }
+    }
+
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         SULogger.lifecycle.debug("[\(String(describing: type(of: self)))] viewDidDisappear")
@@ -72,6 +84,11 @@ class SUBaseViewController: UIViewController {
     func adaptLayoutForSize(_ size: CGSize) {
         let isDualPane = size.width >= SULayoutConstants.duoSplitBreakpointWidth
         SULogger.ui.debug("[\(String(describing: type(of: self)))] adaptLayoutForSize: \(size.width)x\(size.height), isDualPane=\(isDualPane)")
+    }
+
+    // MARK: - 屏幕方向支持
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return [.portrait, .landscapeLeft, .landscapeRight]
     }
 
     deinit {

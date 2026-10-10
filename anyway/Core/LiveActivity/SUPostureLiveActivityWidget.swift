@@ -82,9 +82,9 @@ struct SUPostureLiveActivityView: View {
 
     private func stateTitle(for state: String) -> String {
         switch state {
-        case "upright": return "挺拔端正"
-        case "slightSlump": return "轻微前倾"
-        case "severeSlump": return "严重驼背"
+        case "upright": return "精神挺拔"
+        case "slightSlump", "mildSlouch": return "轻微前倾"
+        case "severeSlump", "severeSlouch": return "严重驼背"
         default: return "监测中"
         }
     }

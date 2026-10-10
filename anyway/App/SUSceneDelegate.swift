@@ -24,6 +24,7 @@ class SUSceneDelegate: UIResponder, UIWindowSceneDelegate {
         let mainTabBarController = SUMainTabBarController()
         window.rootViewController = mainTabBarController
         window.overrideUserInterfaceStyle = SUThemeManager.shared.currentTheme.userInterfaceStyle
+        self.window = window
         window.makeKeyAndVisible()
 
         // 如果在单元测试环境下运行，则跳过 UI 模态弹出，防止干扰 XCTest 注入与视图层级装载
@@ -48,10 +49,14 @@ class SUSceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func sceneDidBecomeActive(_ scene: UIScene) {
         SULogger.lifecycle.debug("SUSceneDelegate sceneDidBecomeActive")
+        if SUWidgetSyncManager.shared.checkAndConsumePendingCalibration() {
+            NotificationCenter.default.post(name: .suRequestCalibrationFromWidget, object: nil)
+        }
     }
 
     func sceneWillResignActive(_ scene: UIScene) {
         SULogger.lifecycle.debug("SUSceneDelegate sceneWillResignActive")
+        SUPostureSessionManager.shared.saveSession()
     }
 
     func sceneWillEnterForeground(_ scene: UIScene) {
@@ -60,5 +65,6 @@ class SUSceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func sceneDidEnterBackground(_ scene: UIScene) {
         SULogger.lifecycle.debug("SUSceneDelegate sceneDidEnterBackground")
+        SUPostureSessionManager.shared.saveSession()
     }
 }

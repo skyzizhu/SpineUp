@@ -131,3 +131,281 @@
 "follow_system" = "시스템 설정 따름";
 "follow_system_desc" = "기기 시스템 언어와 일치";
 "language_setting_hint" = "앱 표시 언어를 선택하세요. 변경 사항은 즉시 적용됩니다";
+
+/* Speech & AI Fallback */
+"persona_preview_worker" = "직장인 페르소나 준비 완료! 뼈때리는 자세 잔소리 들을 준비 되셨나요?";
+"persona_preview_cat" = "야옹! 츤데레 고양이 등장이다옹. 날 납작하게 누르지 마라옹!";
+"persona_preview_coach" = "다정한 자세 코치가 연결되었습니다. 함께 허리를 펴고 심호흡해 볼까요.";
+"ai_fallback_quote" = "기운 내세요! 척추를 곧게 펴고 계속 화이팅!";
+"default_posture_quote" = "기운차고 곧게 뻗은 바른 자세 유지 중!";
+
+/* Posture Gauge & Pet Badges */
+"gauge_scale_start" = "0° 바른 자세";
+"gauge_scale_mid" = "15° 주의";
+"gauge_scale_end" = "30°+ 경고";
+"gauge_head_pitch_fmt" = "숙임 %.1f°";
+"pet_status_upright_fmt" = "바른 자세 · 숙임 %@";
+"pet_status_slight_fmt" = "약간 숙임 · 숙임 %@";
+"pet_status_severe_fmt" = "심한 굽음 · 숙임 %@";
+"pet_status_calibrating" = "기준 자세 측정 중...";
+"pet_status_unknown" = "에어팟 착용 대기 중...";
+"gauge_status_ideal" = "척추 부담 제로 · 완벽한 자세";
+"gauge_status_slight" = "하중 증가 중 · 자세를 가다듬으세요";
+"gauge_status_severe" = "고위험 과부하 · 고개를 즉시 드세요";
+"gauge_status_waiting" = "공간 자세 동기화 중...";
+
+/* Leaderboard & Gamification */
+"tab_leaderboard" = "자세 랭킹";
+"default_user_name" = "바른 자세 직장인";
+"leaderboard_title" = "척추 에너지 랭킹";
+"leaderboard_tab_energy" = "에너지 코인";
+"leaderboard_tab_quality" = "바른 자세 장인";
+"leaderboard_tab_streak" = "연속 달성일";
+"leaderboard_my_rank_fmt" = "제 %d 위";
+"leaderboard_my_energy_sub" = "현재 누적 %d 코인 · 바른 자세 선도 중";
+"leaderboard_my_quality_sub" = "바른 자세 비율 %d%% · 거북목 완전 극복";
+"leaderboard_my_streak_sub" = "연속 출석 %d 일 · 척추 습관 실천 중";
+"leaderboard_positive_hint" = "💡 본 랭킹은 긍정적인 성취와 에너지 코인만을 표기하며, 자존감 보호를 위해 경고 횟수 등의 부정적인 순위는 일체 지원하지 않습니다.";
+"leaderboard_me_tag" = "(나)";
+"leaderboard_pull_refresh" = "당겨서 랭킹 새로고침...";
+"leaderboard_tag_top1" = "선두 주자";
+"leaderboard_tag_master" = "자세 마스터";
+"leaderboard_tag_champion" = "에너지 개척자";
+"edit_username_title" = "닉네임 변경";
+"edit_username_msg" = "멋진 자세 닉네임을 설정해보세요!";
+"edit_username_placeholder" = "예: 거북목 탈출한 긱";
+"settings_user_name" = "닉네임 / 콜사인";
+
+/* Hazard Perspective & Health Recommendations */
+"gauge_relief_btn_title" = "스트레칭 💡";
+"diagnosis_btn_relief_guide" = "30초 완화 가이드 확인 →";
+"relief_guide_title" = "목 보호 및 완화 팁";
+"relief_guide_header_title" = "사무실 30초 목 케어";
+"relief_guide_header_sub" = "앉아서 바로 가능 · 눈치 볼 필요 없음 · 목의 과부하 즉각 완화";
+"relief_action1_title" = "1. 맥켄지 턱 당기기 (Chin Tuck)";
+"relief_action1_tag" = "거북목 퇴치 & 목 심부 굴곡근 활성화";
+"relief_action1_steps" = "• 정면을 바라보고 등을 편 후 어깨에 힘을 뺍니다.\n• 검지로 턱을 수평 뒤쪽으로 살짝 밀어 넣습니다 (이중턱을 만드는 느낌).\n• 목 뒤쪽의 부드러운 당김을 3초간 유지하며 5~8회 반복합니다.";
+"relief_action2_title" = "2. W자 어깨 펴기 (W-Stretches)";
+"relief_action2_tag" = "흉추 가동성 회복 & 버섯목 타파";
+"relief_action2_steps" = "• 팔을 옆구리에 붙이고 팔꿈치를 구부려 'W' 자를 만듭니다.\n• 어깨를 내리고 날개뼈를 가운데로 모으듯이 뒤로 젖힙니다.\n• 심호흡과 함께 5초간 유지하며 4~6회 반복합니다.";
+"relief_action3_title" = "3. 사무 환경 인체공학 황금 원칙";
+"relief_action3_steps" = "• 모니터 높이: 거치대를 사용해 화면 상단 1/3을 눈높이에 맞춥니다.\n• 팔꿈치 각도 90도: 의자 높이를 조절해 어깨에 무리가 가지 않도록 합니다.\n• 허리 지지대: 엉덩이를 의자 깊숙이 넣고 요추 쿠션을 덧댑니다.";
+"relief_btn_start" = "30초 스트레칭 시작 (+5 에너지 코인)";
+"relief_btn_completed" = "🎉 완료! +5 에너지 코인 획득";
+
+"hazard_sheet_title" = "경추 부담 및 위험 투시";
+"hazard_metric_title" = "실시간 경추 압박 하중";
+"hazard_metric_val_fmt" = "숙임 %.1f° · 추가 하중 +%.1f kg";
+"hazard_compare_severe" = "💥 7세 어린이를 목에 매달고 있는 것과 같은 충격입니다! 1초마다 디스크가 강하게 압박받고 있습니다.";
+"hazard_compare_moderate" = "⚠️ 24병들이 생수 한 박스를 목 뒤에 얹고 있는 상태입니다.";
+"hazard_compare_mild" = "🌿 현재 부담 없는 건강한 상태입니다. 턱을 당기고 눈높이를 유지하세요!";
+"hazard_appearance_title" = "⚠️ 외모 및 체형에 미치는 악영향";
+"hazard_appearance_content" = "• 버섯목 (버팔로 험프): 목 뒤에 지방이 쌓여 목이 두껍고 짧아 보입니다.\n• 이중턱 및 턱선 처짐: 고개를 숙이면 넓은목근이 늘어나 체중과 상관없이 턱선이 무너집니다.\n• 거북목 자세: 굽은 등과 앞으로 튀어나온 턱으로 인해 피로하고 위축된 인상을 줍니다.";
+"hazard_timeline_title" = "⏱ 손상 진행 타임라인 (비가역적 퇴행)";
+"hazard_timeline_content" = "• 30~60분: 승모근 경련, 긴장성 두통, 혈류 저하로 인한 잦은 하품.\n• 1~3개월: 일자목 진행 (경추 C자 곡선 소실), 흉추 후만증.\n• 1~2년 이상: C5-C7 목 디스크 탈출증, 골극 형성, 신경 압박으로 인한 팔 저림.";
+"hazard_btn_to_relief" = "완화 가이드 보기";
+
+/* AI Posture Perspective & Prescription */
+"sensor_tracking_short" = "AirPods 공간 추적 중";
+"ai_perspective_tag" = "AI 투시 ↗";
+"ai_tag_title" = "✨ AI 실시간 생체역학 추론";
+"ai_analyzing_hint" = "✨ AI가 경추 압박 하중 및 체형 퇴행을 정밀 분석 중...";
+"ai_prescription_badge" = "✨ AI 맞춤 완화 처방";
+"ai_hazard_headline_fmt" = "【AI 진단】고개 숙임 %.1f° · 추가 하중 +%.1f kg";
+"ai_metaphor_extreme" = "💥 24인치 모니터를 목에 거꾸로 매달고 있는 것과 같습니다! 10초마다 C5-C6 디스크 섬유륜이 한계치에 도달합니다.";
+"ai_metaphor_heavy" = "⚠️ 24병들이 생수 한 박스(약 15kg)가 목 뒤에 얹혀 있어 승모근이 강하게 무리를 겪고 있습니다.";
+"ai_metaphor_moderate" = "🌿 통통한 고양이 한 마리(약 9kg)를 목 뒤에 얹은 무게입니다. 눈에 띄지 않는 미세 손상이 누적 중입니다.";
+"ai_metaphor_light" = "✨ 생리학적 무부하에 가까운 황금 구간입니다. 두경부 균형이 완벽합니다.";
+"ai_appearance_severe" = "• 버섯목(버팔로 험프) 경고: 목 뒤 접합부에 보상성 지방이 쌓여 목이 짧고 두꺼워 보입니다.\n• 턱선 무너짐: 턱이 앞으로 나가 넓은목근이 늘어나며 체중과 상관없이 이중턱이 유발됩니다.\n• 거북목 고착화: 오늘 누적 %d분 숙임. 흉쇄유돌근이 단축되어 가만히 있어도 턱이 앞으로 쏠립니다.";
+"ai_appearance_moderate" = "• 경미한 거북목 보상: 상부 승모근이 긴장되어 옷을 입었을 때 어깨가 처져 보입니다.\n• 턱선 근육 피로: 목 심부 굴곡근이 약화되어 턱선이 아래로 처지기 시작합니다.\n• 권장사항: 오늘 %d회 숙임 기록. 등 근육을 즉시 깨워주세요.";
+"ai_appearance_good" = "• 탄력 있는 턱선: 경추 각도가 이상적이어서 턱선이 매끄럽고 처짐이 없습니다.\n• 우아한 목 라인 유지: 쇄골과 어깨가 자연스럽게 열려 바르고 세련된 체형을 유지합니다.";
+"ai_timeline_severe" = "• 30분 지속: 승모근 혈류 60%% 저하, 젖산 축적 및 긴장성 두통 유발.\n• 1~3개월: 일자목 진행 및 C자 곡선 소실, 흉추 후만증 고착화.\n• 1~2년 이상: C5-C7 디스크 퇴행 및 탈출, 신경 압박으로 인한 팔 저림 발생.";
+"ai_timeline_mild" = "• 지속 유지: 디스크 수분과 탄력이 회복되며 뇌 혈류가 원활해집니다.\n• 1~3개월 후: 근육 기억이 형성되어 장시간 업무 중에도 편안하게 바른 자세를 유지합니다.";
+"ai_relief_diag_heavy" = "⚡️ AI가 경추의 높은 저항 하중(+%.1f kg)을 감지했습니다. 승모근 경련을 즉시 풀어줄 리셋이 필요합니다!";
+"ai_relief_diag_light" = "🌿 현재 자세가 훌륭합니다. 이 30초 스트레칭으로 코어 근육 기억을 깨우고 피로를 예방하세요.";
+
+/* Weekly & Report Additions */
+"common_cancel" = "취소";
+"common_confirm" = "저장";
+"gauge_status_ideal_short" = "부담 제로 · 완벽한 자세";
+"gauge_status_severe_short" = "위험 과부하 · 즉시 고개 들기";
+"gauge_status_slight_short" = "경미한 기울임 · 가벼운 조정";
+"legend_best" = "🏆 베스트 데이";
+"legend_slump" = "숙임 및 거북목";
+"legend_upright" = "바른 자세";
+"period_daily" = "오늘의 리포트";
+"period_weekly" = "이번 주 리포트";
+"share_weekly_report" = "주간 자세 리포트 생성 및 공유";
+"unit_coins" = "에너지 코인";
+"unit_hotspot" = "피크 시간";
+"unit_hours" = "시간";
+"unit_low_risk" = "안전 구간";
+"weekly_ai_title" = "AI 전담 메이트 주간 심층 분석";
+"weekly_grade_a" = "자세의 선봉장";
+"weekly_grade_b" = "밸런스 조율기";
+"weekly_grade_c" = "긴급 회복기";
+"weekly_grade_s" = "바른 자세의 신";
+"weekly_metaphor_bikes" = "산악 자전거 약 3대 무게 (약 45kg)";
+"weekly_metaphor_fmt" = "이번 주 줄인 목 부담: %@";
+"weekly_range_fmt" = "제 %d 주 · 이번 주 자세 성과";
+"weekly_score_title" = "주간 자세 건강 종합 점수";
+"weekly_trend_subtitle" = "막대 높이는 일일 착용 시간을 나타내며 베스트 데이를 강조합니다";
+"weekly_trend_title" = "7일간 자세 변화 추이";
+"weekly_upright_fmt" = "%.1f%% 바른 자세 비율";
+
+/* Settings & Preferences */
+"settings_section_persona" = "펫 페르소나";
+"settings_section_alert" = "알림 설정";
+"settings_ai_voice_title" = "AI 음성 코칭";
+"settings_ai_voice_subtitle" = "3분 방해 방지, 배경 음악 볼륨 자동 조절";
+"settings_haptic_title" = "햅틱 진동 피드백";
+"settings_haptic_subtitle" = "자세가 무너졌을 때 부드러운 진동 알림";
+"settings_sound_title" = "경쾌한 알림음";
+"settings_sound_subtitle" = "자세 숙임 감지 시 맑은 물방울 소리";
+"settings_section_energy" = "척추 에너지";
+"settings_streak_title" = "연속 달성";
+"settings_streak_days_fmt" = "%d 일";
+"settings_coins_title" = "누적 에너지 코인";
+"settings_slogan" = "SpineUp · 척추를 세우고 당당하게";
+"settings_simulator_debug" = "시뮬레이터 각도 디버그: %.1f°";
+
+/* Onboarding */
+"onboarding_title_1" = "AirPods를 나의 척추 수호자로";
+"onboarding_sub_1" = "AirPods의 공간 모션 센서를 통해 경추 각도를 실시간으로 감지하여 거북목과 버섯증후군을 예방합니다.";
+"onboarding_btn_1" = "핵심 원리 살펴보기";
+"onboarding_title_2" = "모션 센서 권한이 필요합니다";
+"onboarding_sub_2" = "SpineUp은 바른 자세를 측정하기 위해 헤드폰 모션 데이터가 필요합니다. 모든 데이터는 기기 내부에서 안전하게 연산되며 외부로 전송되지 않습니다.";
+"onboarding_btn_2" = "권한 허용 후 계속";
+"onboarding_title_3" = "이어폰 착용 후 원터치 영점 조절";
+"onboarding_sub_3" = "이어폰을 꽂고 바른 자세로 앉은 뒤 교정 버튼을 눌러 기준점을 설정하세요. 고개를 숙이면 펫이 슬라임으로 변해 경고합니다!";
+"onboarding_btn_3" = "데스크 펫 시작하기";
+
+/* Leaderboard & Relief & Share */
+"leaderboard_upright_ratio_fmt" = "%d%% 바른 자세";
+"leaderboard_streak_fmt" = "%d일 연속 달성 🔥";
+"relief_in_progress_fmt" = "스트레칭 진행 중... %ds";
+"share_stat_upright" = "바른 자세 집중";
+"share_stat_ratio" = "바른 자세 비율";
+"share_stat_load" = "목 추가 하중";
+
+"gauge_card_title" = "실시간 경추 역학";
+"conn_status_ok_title" = "AirPods 공간 추적 활성화";
+"conn_status_ok_desc" = "센서 준비 완료. 60Hz 샘플링으로 머리 자세와 추가 경추 하중을 실시간 추적 중입니다.";
+"conn_status_dc_title" = "AirPods 연결 안 됨";
+
+/* Posture Hazard & Relief Guide & Practice */
+"ai_analyzing_hint" = "✨ AI가 현재 자세의 생체역학적 부하와 변형 위험을 계산 중입니다...";
+"ai_prescription_badge" = "✨ AI 맞춤 응급 처방 · 즉각 하중 완화";
+"ai_tag_title" = "✨ AI 실시간 자세 역학 시뮬레이션";
+"hazard_appearance_title" = "⚠️ 외모와 체형 킬러 (무의식적 변형)";
+"hazard_btn_to_relief" = "스트레칭 루틴 보기";
+"hazard_metric_title" = "실시간 경추 하중 충격";
+"hazard_metric_val_fmt" = "기울기 %.1f° · 추가 부하 +%.1f kg";
+"hazard_sheet_title" = "경추 부담 및 위험 투시";
+"hazard_timeline_title" = "⏱ 손상 타임라인 변화 (비가역적 퇴행)";
+"relief_action1_steps" = "• 정면을 바라보고 등을 편안히 기댑니다.\n• 검지로 턱을 살짝 대고, 수평으로 뒤로 밉니다 (이중턱을 만드는 느낌).\n• 목 뒤쪽의 편안한 당김을 느끼며 3초 유지, 5~8회 반복합니다.";
+"relief_action1_tag" = "거북목 탈출 & 심부 경추 근육 활성화";
+"relief_action1_title" = "1. 맥켄지 친턱 (턱 당기기)";
+"relief_action2_steps" = "• 팔을 옆구리에 붙이고 팔꿈치를 올려 'W' 모양을 만듭니다.\n• 어깨를 내리고 양 견갑골을 가운데로 조여줍니다.\n• 깊게 숨을 들이쉬며 5초 유지 후 숨을 내쉬며 이완, 4~6회 반복합니다.";
+"relief_action2_tag" = "흉추 가동성 회복 & 버섯목 타파";
+"relief_action2_title" = "2. W 스트레칭 (견갑골 모으기)";
+"relief_action3_steps" = "• 시선 높이: 거치대로 화면 상단 1/3을 눈높이에 맞춥니다.\n• 팔꿈치 90°: 의자 높이를 맞춰 팔을 자연스럽게 얹습니다.\n• 허리 지지: 엉덩이를 끝까지 붙이고 작은 쿠션을 받칩니다.";
+"relief_action3_tag" = "숙임 원인을 물리적으로 차단";
+"relief_action3_title" = "3. 사무실 인체공학 황금 원칙";
+"relief_btn_completed" = "🎉 완료! +5 척추 에너지 획득";
+"relief_btn_start" = "30초 스트레칭 시작 (+5 척추 에너지)";
+"relief_guide_header_sub" = "앉아서 바로 실천 · 부담 없는 자세 · 단숨에 목 부담 해소";
+"relief_guide_header_title" = "30초 오피스 피로 리셋";
+"relief_guide_title" = "신체 보호 & 스트레칭 가이드";
+"practice_step_1" = "동작 1/2 (15s)";
+"practice_step_2" = "동작 2/2 (15s)";
+"practice_action1_title" = "맥켄지 친턱";
+"practice_action1_tag" = "거북목 교정 · 심부 근육 활성화";
+"practice_action1_step1" = "허리를 펴고 정면을 응시하며 등을 살짝 기댑니다";
+"practice_action1_step2" = "검지로 턱을 짚고 수평으로 뒤로 밉니다 (이중턱 만들기)";
+"practice_action1_step3" = "목 뒤의 당김을 느끼며 3초 유지 후 부드럽게 이완";
+"practice_action2_title" = "W 스트레칭";
+"practice_action2_tag" = "흉추 열기 · 어깨 뭉침 완화";
+"practice_action2_step1" = "팔꿈치를 옆구리에 붙이고 팔을 'W' 자로 굽힙니다";
+"practice_action2_step2" = "어깨를 내리고 양 견갑골을 척추 쪽으로 모읍니다";
+"practice_action2_step3" = "깊게 숨을 들이쉬며 5초 유지 후 천천히 내쉽니다";
+"practice_dialogue_chin_worker" = "정면 똑바로 봐! 턱 뒤로 당기고 업무 카톡 보느라 굽힌 목 쫙 펴자고!";
+"practice_dialogue_chin_cat" = "야옹~ 앞을 보고 젤리 솜방망이로 턱을 밀어 귀여운 이중턱을 만드는 거다냥!";
+"practice_dialogue_chin_coach" = "허리를 세우고 검지로 턱을 수평으로 뒤로 밀어 목 깊은 근육을 깨워보세요~";
+"practice_dialogue_w_worker" = "팔 갈비뼈에 붙이고 날개뼈 꽉 조여! 사무실 버섯목 부숴버리자!";
+"practice_dialogue_w_cat" = "자세 바꿀 시간이다냥! W 자로 팔 들고 날개뼈를 꽉 모으는 거다냥!";
+"practice_dialogue_w_coach" = "잘하고 있어요! 팔로 W를 만들고 견갑골을 조이며 숨을 깊게 들이쉬세요~";
+"practice_sprint_worker" = "마지막 3초 버텨! 척추가 꼿꼿해야 칼퇴할 힘이 난다!";
+"practice_sprint_cat" = "마지막 3초 스퍼트다냥! 허리 펴라냥, 머리 위에 올라탈 거다냥!";
+"practice_sprint_coach" = "마지막 3초, 깊은 호흡 유지하며 목의 부담을 모두 날려버려요~";
+"practice_completed_worker" = "성공! 목 추가 하중 클리어, +5 에너지 적립 완료, 훌륭해!";
+"practice_completed_cat" = "대단하다냥! 목이 가벼워졌다냥, +5 에너지 줄 테니 매일 나랑 하자냥!";
+"practice_completed_coach" = "완벽해요! 목의 스트레스가 시원하게 풀렸습니다, +5 에너지 축하합니다!";
+"practice_guide_push_back" = "수평 뒤로 당김";
+"practice_rhythm_chin" = "템포: 뒤로 당김 ➔ 3초 유지 ➔ 이완";
+"practice_rhythm_w" = "템포: 벌리며 흡기 ➔ 5초 유지 ➔ 호기 이완";
+"practice_mode_headphone" = "🎧 이어폰 자세 감지";
+"practice_mode_ai_vision" = "🎥 AI 비전 자세 인식";
+"practice_cam_standby" = "자세 분석 중";
+"practice_seconds_left" = "초 남음";
+"practice_btn_finish_early" = "조기 완료 및 기록";
+"practice_btn_claim_done" = "🎉 +5 척추 에너지 획득 · 완료";
+"practice_paused_tip" = "일시 정지됨, 언제든 탭하여 재개하세요~";
+"practice_breath_inhale" = "깊게 들이쉬기 · 가슴 열기";
+"practice_breath_hold" = "3초 멈춤 · 조임 유지";
+"practice_breath_exhale" = "천천히 내쉬기 · 편안히 이완";
+"practice_airpods_matched" = "🎧 AirPods가 목 바로세움을 감지했습니다!";
+"practice_airpods_active" = "🎧 AirPods 공간 자세 감지 중";
+"vision_tip_face_missing" = "전면 카메라를 정면으로 바라보세요";
+"vision_tip_chin_good" = "시선 훌륭해요! 턱을 당긴 채 유지하세요";
+"vision_tip_keep_forward" = "두 눈으로 정면을 보고 등을 살짝 지지하세요";
+"vision_tip_body_missing" = "휴대폰을 세워 상반신이 보이게 해주세요";
+"vision_tip_arms_raise" = "팔꿈치를 들고 팔을 W 모양으로 펼치세요";
+"vision_tip_w_perfect" = "표준 W 자세! 견갑골을 모아주세요";
+"vision_tip_w_adjust" = "팔을 뒤로 젖혀 날개뼈를 조이세요";
+"vision_tip_inhale_detected" = "🫁 깊은 호흡으로 인한 흉곽 확장이 감지됨";
+"relief_pill_normal_title" = "긴급 완화 · 맥켄지 루틴 회복";
+"relief_pill_normal_badge" = "즉시 완화";
+"relief_pill_fatigue_title" = "목 하중 %.1f kg · 긴급 회복";
+"relief_pill_fatigue_badge" = "긴급 완화";
+"relief_pill_recovered_title" = "🎉 목 하중 %.1f kg 경감 · 척추 코인 +10";
+"relief_pill_recovered_badge" = "회복 완료";
+"relief_cheer_quote" = "멋져요! 목 하중 2.0kg을 덜어내고 척추 코인 10개를 획득했습니다!";
+"posture_state_upright" = "바른 자세";
+"posture_state_slight" = "약간 기울어짐";
+"posture_state_severe" = "심한 거북목";
+"posture_state_calibrating" = "교정 중";
+"posture_state_unknown" = "연결 안 됨";
+"hazard_level_ideal" = "무부담 · 완벽한 자세";
+"hazard_level_slight" = "경미한 기울어짐 · 가벼운 조정";
+"hazard_level_severe" = "위험 과부하 · 즉시 턱 당기기";
+"gauge_status_calibrating" = "기준 교정 중 · 바른 자세 감지";
+
+/* Additional Screen Elements */
+"settings_streak_days" = "연속 출석";
+"settings_total_coins" = "누적 코인";
+"clinical_diagnosis_tag" = "자세 종합 평가";
+"report_archive_stamp" = "등급 %@ · 인증";
+"diagnosis_header_subtitle" = "CLINICAL POSTURE ASSESSMENT";
+"relief_guide_badge" = "즉시 완화";
+"hazard_angle_title" = "현재 기울기 각도";
+"hazard_load_title" = "경추 추가 하중";
+"hazard_pet_live_tag" = "실시간 코치";
+"hazard_appearance_tag" = "체형 변형 유발";
+"hazard_timeline_tag" = "비가역적 퇴행";
+"hazard_pet_coach_name" = "실시간 코치";
+"relief_pill_severe_badge" = "위험 경고";
+
+/* Legal & Compliance */
+"settings_legal_section" = "법적 고지 및 면책 조항";
+"settings_legal_documents_title" = "이용약관 및 건강 면책 고지";
+"legal_list_title" = "법적 고지 및 면책 조항";
+"legal_list_hint" = "SpineUp은 사용자의 건강과 개인정보 보호를 최우선으로 여깁니다. 아래 공식 고지를 확인해 주세요.";
+"legal_item_medical_title" = "건강 및 의료 면책 조항";
+"legal_item_medical_desc" = "본 앱은 의료 기기가 아니며, 의료 진단이나 의사의 처방을 대신하지 않습니다";
+"legal_item_privacy_title" = "개인정보 처리방침";
+"legal_item_privacy_desc" = "100% 온디바이스 센서 처리. 추적 없음 및 철저한 개인정보 보호";
+"legal_item_terms_title" = "이용약관";
+"legal_item_terms_desc" = "소프트웨어 사용권 계약, 책임 제한 및 이용 규정";
+"legal_effective_date" = "시행일: 2026년 10월";
+

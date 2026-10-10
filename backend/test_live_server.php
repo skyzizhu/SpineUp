@@ -5,9 +5,9 @@ declare(strict_types=1);
  * 针对运行中的本地 Apache 服务器真实接口全量测试
  */
 
-$baseURL = 'http://192.168.31.101/spineup/v1';
+$baseURL = 'http://127.0.0.1/spineup/v1';
 
-function sendRequest(string $method, string $url, ?array $body = null, ?string $token = null): array {
+function sendRequest(string $method, string $url, $body = null, $token = null): array {
     $ch = curl_init($url);
     $headers = ['Content-Type: application/json', 'Accept: application/json'];
     if ($token) {
@@ -126,6 +126,60 @@ $res7 = sendRequest('GET', "{$baseURL}/users/me", null, 'invalid_token');
 report("7. 异常拦截测试：非法 Token 应当返回 401 Unauthorized",
     $res7['code'] === 401,
     "HTTP 状态码: {$res7['code']}"
+);
+
+// 8. POST /v1/ai/posture-hazard 危害透视
+$res8 = sendRequest('POST', "{$baseURL}/ai/posture-hazard", [
+    'pitchDeg'         => 28.5,
+    'extraLoadKg'      => 22.1,
+    'slumpDurationSec' => 1500,
+    'violationsCount'  => 12,
+    'persona'          => 'worker',
+    'userName'         => '测试阿强',
+    'locale'           => 'zh-Hans',
+]);
+report("8. POST /v1/ai/posture-hazard 危害透视接口",
+    $res8['code'] === 200 && !empty($res8['json']['data']['metaphor_comparison']),
+    "比喻: " . mb_substr($res8['json']['data']['metaphor_comparison'] ?? '', 0, 28) . '...'
+);
+
+// 9. POST /v1/ai/relief-prescription 30s 急救处方
+$res9 = sendRequest('POST', "{$baseURL}/ai/relief-prescription", [
+    'pitchDeg'    => 22.0,
+    'extraLoadKg' => 16.5,
+    'persona'     => 'worker',
+    'locale'      => 'zh-Hans',
+]);
+report("9. POST /v1/ai/relief-prescription 30秒急救处方接口",
+    $res9['code'] === 200 && !empty($res9['json']['data']['action1_tips']),
+    "动作指导: " . mb_substr($res9['json']['data']['action1_tips'] ?? '', 0, 28) . '...'
+);
+
+// 10. GET /v1/leaderboard 骨气榜
+$res10 = sendRequest('GET', "{$baseURL}/leaderboard?type=energy&page=1&page_size=10", null, $jwtToken);
+report("10. GET /v1/leaderboard 骨气能量榜检索",
+    $res10['code'] === 200 && isset($res10['json']['data']['top_list']),
+    "上榜人数: " . count($res10['json']['data']['top_list'] ?? [])
+);
+
+// 11. PUT /v1/users/profile 修改昵称
+$res11 = sendRequest('PUT', "{$baseURL}/users/profile", [
+    'nickname' => '挺拔极客阿强',
+], $jwtToken);
+report("11. PUT /v1/users/profile 修改个性昵称",
+    $res11['code'] === 200 && ($res11['json']['data']['nickname'] ?? '') === '挺拔极客阿强'
+);
+
+// 12. POST /v1/relief/claim 30 秒微操打卡
+$res12 = sendRequest('POST', "{$baseURL}/relief/claim", [
+    'action_type'   => 'CHIN_TUCK',
+    'pitch_deg'     => 15.0,
+    'extra_load_kg' => 12.0,
+    'duration_sec'  => 30,
+], $jwtToken);
+report("12. POST /v1/relief/claim 30秒微操打卡领能量",
+    $res12['code'] === 200 && ($res12['json']['data']['claimed'] ?? false) === true,
+    "获得能量币: +" . ($res12['json']['data']['reward_coins'] ?? 0) . ", 最新余额: " . ($res12['json']['data']['current_balance'] ?? 0)
 );
 
 echo "\n========================================================\n";

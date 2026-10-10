@@ -33,6 +33,32 @@ enum SULanguage: String, CaseIterable, Sendable {
     var isRTL: Bool {
         return self == .ar
     }
+
+    /// 匹配 AVSpeechSynthesisVoice 的 BCP 47 语言代号
+    var ttsLanguageCode: String {
+        switch self {
+        case .en: return "en-US"
+        case .zhHans: return "zh-CN"
+        case .zhHant: return "zh-TW"
+        case .ja: return "ja-JP"
+        case .ko: return "ko-KR"
+        case .ar: return "ar-SA"
+        case .fr: return "fr-FR"
+        }
+    }
+
+    /// LLM 生成台词时指定的输出语言要求指令
+    var promptLanguageInstruction: String {
+        switch self {
+        case .en: return "Please output the quote strictly in English."
+        case .zhHans: return "请务必使用简体中文输出台词。"
+        case .zhHant: return "請務必使用繁體中文輸出台詞。"
+        case .ja: return "必ず日本語で台詞を出力してください。"
+        case .ko: return "반드시 한국어로 대사를 출력해 주세요."
+        case .ar: return "يرجى إخراج الرد باللغة العربية حصراً."
+        case .fr: return "Veuillez formuler la réplique obligatoirement en français."
+        }
+    }
 }
 
 /// 全局多语言本地化管理中心 —— 支持实时切换语言、英语底底回退机制与 RTL 判定

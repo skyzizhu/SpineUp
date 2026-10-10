@@ -63,6 +63,48 @@ final class SUPostureMonitorViewModel: @unchecked Sendable {
         self.activePersona = personaManager.currentPersona
 
         setupBindings()
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleLanguageDidChange),
+            name: SULocalizationManager.languageDidChangeNotification,
+            object: nil
+        )
+    }
+
+    @objc private func handleLanguageDidChange() {
+        lock.lock()
+        latestQuote = nil // 清除缓存的旧语言台词
+        let reading = latestReading
+        let state = currentPostureState
+        let persona = activePersona
+        lock.unlock()
+
+        let langCode = SULocalizationManager.shared.currentLanguage.rawValue
+        let uprightMins = Int(SUPostureSessionManager.shared.getTodaySession().uprightDurationSec / 60.0)
+
+        // 同步语言偏好至小组件共享容器
+        SUWidgetSyncManager.shared.syncLanguagePreference(langCode)
+        SUWidgetSyncManager.shared.syncPostureData(
+            state: state,
+            pitchDeg: reading?.relativePitchDeg ?? 0,
+            extraLoadKg: reading?.extraLoadKg ?? 0,
+            uprightMinutes: uprightMins,
+            personaId: persona.rawValue,
+            languageCode: langCode,
+            forceReload: true
+        )
+
+        // 刷新灵动岛/锁屏状态以显示新语言的默认台词
+        SULiveActivityManager.shared.updateLiveActivity(
+            state: state.rawValue,
+            pitchDeg: reading?.relativePitchDeg ?? 0,
+            extraLoadKg: reading?.extraLoadKg ?? 0,
+            uprightMinutes: uprightMins,
+            personaId: persona.rawValue,
+            quote: SULocalized("default_posture_quote", default: "做人要有骨气，端正挺拔中！"),
+            forceImmediate: true
+        )
     }
 
     private func setupBindings() {
@@ -72,6 +114,8 @@ final class SUPostureMonitorViewModel: @unchecked Sendable {
             self.lock.lock()
             self.latestReading = reading
             self.currentPostureState = reading.state
+            let persona = self.activePersona
+            let quote = self.latestQuote
             self.lock.unlock()
 
             // 端坐状态下每帧累加挺拔能量
@@ -86,15 +130,26 @@ final class SUPostureMonitorViewModel: @unchecked Sendable {
                 deltaSeconds: 1.0 / 15.0
             )
 
-            // 同步更新灵动岛与锁屏实时活动
             let uprightMins = Int(SUPostureSessionManager.shared.getTodaySession().uprightDurationSec / 60.0)
+
+            // 同步小组件 AppGroup 数据
+            SUWidgetSyncManager.shared.syncPostureData(
+                state: reading.state,
+                pitchDeg: reading.relativePitchDeg,
+                extraLoadKg: reading.extraLoadKg,
+                uprightMinutes: uprightMins,
+                personaId: persona.rawValue,
+                languageCode: SULocalizationManager.shared.currentLanguage.rawValue
+            )
+
+            // 同步更新灵动岛与锁屏实时活动
             SULiveActivityManager.shared.updateLiveActivity(
                 state: reading.state.rawValue,
                 pitchDeg: reading.relativePitchDeg,
                 extraLoadKg: reading.extraLoadKg,
                 uprightMinutes: uprightMins,
-                personaId: self.activePersona.rawValue,
-                quote: self.latestQuote ?? "做人要有骨气，端正挺拔中！"
+                personaId: persona.rawValue,
+                quote: quote ?? SULocalized("default_posture_quote", default: "做人要有骨气，端正挺拔中！")
             )
 
             self.onReadingUpdated?(reading)
@@ -104,7 +159,33 @@ final class SUPostureMonitorViewModel: @unchecked Sendable {
             guard let self = self else { return }
             self.lock.lock()
             self.connectionState = state
+            let persona = self.activePersona
             self.lock.unlock()
+
+            // 边界问题防护：当耳机处于非工作状态（挂起/未佩戴/未授权/未连接）时，
+            // 立即同步灵动岛与小组件为待命挂起状态，杜绝灵动岛滞留虚假挺拔读数
+            if !state.isWorking {
+                let uprightMins = Int(SUPostureSessionManager.shared.getTodaySession().uprightDurationSec / 60.0)
+                let langCode = SULocalizationManager.shared.currentLanguage.rawValue
+                SUWidgetSyncManager.shared.syncPostureData(
+                    state: .unknown,
+                    pitchDeg: 0.0,
+                    extraLoadKg: 0.0,
+                    uprightMinutes: uprightMins,
+                    personaId: persona.rawValue,
+                    languageCode: langCode,
+                    forceReload: true
+                )
+                SULiveActivityManager.shared.updateLiveActivity(
+                    state: SUPostureState.unknown.rawValue,
+                    pitchDeg: 0.0,
+                    extraLoadKg: 0.0,
+                    uprightMinutes: uprightMins,
+                    personaId: persona.rawValue,
+                    quote: state.displaySubtitle,
+                    forceImmediate: true
+                )
+            }
 
             self.onConnectionStateChanged?(state)
         }
@@ -181,11 +262,35 @@ final class SUPostureMonitorViewModel: @unchecked Sendable {
         motionService.onCalibrationProgress = { [weak self] progress in
             self?.onCalibrationProgress?(progress)
             if progress >= 1.0 {
-                self?.lock.lock()
-                self?.isCalibrating = false
-                self?.lock.unlock()
-                self?.audioFeedbackManager.triggerHapticSuccess()
-                self?.onCalibrationFinished?()
+                guard let self = self else { return }
+                self.lock.lock()
+                self.isCalibrating = false
+                let persona = self.activePersona
+                self.lock.unlock()
+                self.audioFeedbackManager.triggerHapticSuccess()
+                self.onCalibrationFinished?()
+
+                // 校准完成后立即强制同步挺拔0度至小组件与灵动岛
+                let uprightMins = Int(SUPostureSessionManager.shared.getTodaySession().uprightDurationSec / 60.0)
+                let langCode = SULocalizationManager.shared.currentLanguage.rawValue
+                SUWidgetSyncManager.shared.syncPostureData(
+                    state: .upright,
+                    pitchDeg: 0.0,
+                    extraLoadKg: 0.0,
+                    uprightMinutes: uprightMins,
+                    personaId: persona.rawValue,
+                    languageCode: langCode,
+                    forceReload: true
+                )
+                SULiveActivityManager.shared.updateLiveActivity(
+                    state: SUPostureState.upright.rawValue,
+                    pitchDeg: 0.0,
+                    extraLoadKg: 0.0,
+                    uprightMinutes: uprightMins,
+                    personaId: persona.rawValue,
+                    quote: SULocalized("default_posture_quote", default: "做人要有骨气，端正挺拔中！"),
+                    forceImmediate: true
+                )
             }
         }
 
@@ -194,8 +299,32 @@ final class SUPostureMonitorViewModel: @unchecked Sendable {
             guard let self = self else { return }
             self.lock.lock()
             self.activePersona = persona
+            let reading = self.latestReading
+            let state = self.currentPostureState
+            let quote = self.latestQuote
             self.lock.unlock()
             self.onPersonaChanged?(persona)
+
+            let uprightMins = Int(SUPostureSessionManager.shared.getTodaySession().uprightDurationSec / 60.0)
+            let langCode = SULocalizationManager.shared.currentLanguage.rawValue
+            SUWidgetSyncManager.shared.syncPostureData(
+                state: state,
+                pitchDeg: reading?.relativePitchDeg ?? 0,
+                extraLoadKg: reading?.extraLoadKg ?? 0,
+                uprightMinutes: uprightMins,
+                personaId: persona.rawValue,
+                languageCode: langCode,
+                forceReload: true
+            )
+            SULiveActivityManager.shared.updateLiveActivity(
+                state: state.rawValue,
+                pitchDeg: reading?.relativePitchDeg ?? 0,
+                extraLoadKg: reading?.extraLoadKg ?? 0,
+                uprightMinutes: uprightMins,
+                personaId: persona.rawValue,
+                quote: quote ?? SULocalized("default_posture_quote", default: "做人要有骨气，端正挺拔中！"),
+                forceImmediate: true
+            )
         }
 
         // 监听能量更新
@@ -214,7 +343,7 @@ final class SUPostureMonitorViewModel: @unchecked Sendable {
     func startMonitoring() {
         motionService.startMonitoring()
         SULiveActivityManager.shared.startLiveActivity(
-            initialQuote: latestQuote ?? "做人要有骨气，端正挺拔中！",
+            initialQuote: latestQuote ?? SULocalized("default_posture_quote", default: "做人要有骨气，端正挺拔中！"),
             personaId: activePersona.rawValue
         )
     }
@@ -222,6 +351,7 @@ final class SUPostureMonitorViewModel: @unchecked Sendable {
     func stopMonitoring() {
         motionService.stopMonitoring()
         SULiveActivityManager.shared.endLiveActivity()
+        SUPostureSessionManager.shared.saveSession()
     }
 
     func startCalibration() {
@@ -251,6 +381,18 @@ final class SUPostureMonitorViewModel: @unchecked Sendable {
     func injectSimulatedAngles(pitchDeg: Double, rollDeg: Double) {
         if let mock = motionService as? SUMockMotionManager {
             mock.injectSimulatedAngles(pitchDeg: pitchDeg, rollDeg: rollDeg)
+        }
+    }
+
+    /// 请求耳机运动权限或引导设置
+    func requestMotionAuthorization(completion: (@Sendable (Bool) -> Void)? = nil) {
+        motionService.requestMotionAuthorization(completion: completion)
+    }
+
+    /// 供模拟器调试注入耳机连接状态
+    func injectSimulatedConnectionState(_ state: SUHeadphoneConnectionState) {
+        if let mock = motionService as? SUMockMotionManager {
+            mock.setSimulatedConnectionState(state)
         }
     }
 

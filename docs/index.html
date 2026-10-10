@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>SpineUp · 协议与合规声明</title>
+  <style>
+    :root {
+      --bg-primary: #f5f5f7;
+      --bg-card: #ffffff;
+      --text-primary: #1d1d1f;
+      --text-secondary: #86868b;
+      --border-color: rgba(0, 0, 0, 0.08);
+      --accent-blue: #0071e3;
+      --accent-red: #ff3b30;
+      --accent-indigo: #5856d6;
+      --accent-green: #34c759;
+      --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+      --banner-red-bg: rgba(255, 59, 48, 0.08);
+      --banner-blue-bg: rgba(0, 113, 227, 0.08);
+      --banner-indigo-bg: rgba(88, 86, 214, 0.08);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg-primary: #000000;
+        --bg-card: #1c1c1e;
+        --text-primary: #f5f5f7;
+        --text-secondary: #98989d;
+        --border-color: rgba(255, 255, 255, 0.12);
+        --accent-blue: #2997ff;
+        --accent-red: #ff453a;
+        --accent-indigo: #5e5ce6;
+        --accent-green: #30d158;
+        --card-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+        --banner-red-bg: rgba(255, 69, 58, 0.15);
+        --banner-blue-bg: rgba(41, 151, 255, 0.15);
+        --banner-indigo-bg: rgba(94, 92, 230, 0.15);
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: 60px;
+    }
+
+    /* 顶部导航与选项卡 */
+    header {
+      position: sticky;
+      top: 0;
+      background: var(--bg-primary);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      z-index: 100;
+      border-bottom: 0.5px solid var(--border-color);
+      padding: 12px 16px;
+    }
+
+    .brand-title {
+      text-align: center;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      letter-spacing: -0.2px;
+      margin-bottom: 10px;
+    }
+
+    .tab-bar {
+      display: flex;
+      background: rgba(120, 120, 128, 0.12);
+      border-radius: 12px;
+      padding: 3px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .tab-btn {
+      flex: 1;
+      text-align: center;
+      padding: 8px 6px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      border-radius: 9px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      white-space: nowrap;
+    }
+
+    .tab-btn.active {
+      background: var(--bg-card);
+      color: var(--text-primary);
+      font-weight: 600;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* 内容容器 */
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 20px 16px;
+    }
+
+    .document-pane {
+      display: none;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    .document-pane.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* 头部卡片 */
+    .doc-header {
+      text-align: center;
+      margin-bottom: 24px;
+      padding: 10px 0;
+    }
+
+    .doc-icon {
+      font-size: 44px;
+      line-height: 1;
+      margin-bottom: 12px;
+      display: inline-block;
+    }
+
+    .doc-title {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 6px;
+    }
+
+    .doc-date {
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+
+    /* 醒目横幅 */
+    .alert-banner {
+      border-radius: 14px;
+      padding: 14px 16px;
+      margin-bottom: 20px;
+      font-size: 13.5px;
+      font-weight: 500;
+      line-height: 1.5;
+    }
+
+    .alert-banner.medical {
+      background: var(--banner-red-bg);
+      color: var(--accent-red);
+      border-left: 4px solid var(--accent-red);
+    }
+
+    .alert-banner.privacy {
+      background: var(--banner-blue-bg);
+      color: var(--accent-blue);
+      border-left: 4px solid var(--accent-blue);
+    }
+
+    .alert-banner.terms {
+      background: var(--banner-indigo-bg);
+      color: var(--accent-indigo);
+      border-left: 4px solid var(--accent-indigo);
+    }
+
+    /* 章节卡片 */
+    .section-card {
+      background: var(--bg-card);
+      border-radius: 16px;
+      padding: 18px 18px;
+      margin-bottom: 14px;
+      box-shadow: var(--card-shadow);
+      border: 0.5px solid var(--border-color);
+    }
+
+    .section-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+    }
+
+    .section-body {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+
+    .section-body ul {
+      margin-left: 18px;
+      margin-top: 6px;
+    }
+
+    .section-body li {
+      margin-bottom: 6px;
+    }
+
+    /* 底部版权 */
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 顶部导航与选项卡 -->
+  <header>
+    <div class="brand-title">SpineUp · 做人要有骨气</div>
+    <div class="tab-bar">
+      <a href="#medical" class="tab-btn active" id="btn-medical" onclick="switchTab('medical', event)">健康免责</a>
+      <a href="#privacy" class="tab-btn" id="btn-privacy" onclick="switchTab('privacy', event)">隐私政策</a>
+      <a href="#terms" class="tab-btn" id="btn-terms" onclick="switchTab('terms', event)">服务条款</a>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <!-- 1. 健康与医疗免责声明 -->
+    <section id="pane-medical" class="document-pane active">
+      <div class="doc-header">
+        <div class="doc-icon">🏥</div>
+        <h1 class="doc-title">健康与医疗免责声明</h1>
+        <div class="doc-date">最后生效日期：2026 年 10 月</div>
+      </div>
+
+      <div class="alert-banner medical">
+        ⚠️ <strong>重要须知：</strong>SpineUp 绝非医疗器械，不提供任何临床诊断或医疗建议。若您患有颈椎病或感到任何身体不适，请务必咨询专业执业医师。
+      </div>
+
+      <div class="section-card">
+        <h2 class="section-title">1. 非医疗器械与非医疗服务声明</h2>
+        <div class="section-body">
+          SpineUp（包括耳机空间体态追踪、微操识别训练、正念专注与骨气评分等全部功能）仅作为日常体态健康习惯养成与坐姿专注辅助工具。本应用不是国家药品监督管理局（NMPA）、美国食品药品监督管理局（FDA）或任何其他卫生健康监管机构认可的医疗器械，亦不提供任何形式的医学诊断、临床治疗方案、物理康复治疗或疾病预防服务。
+        </div>
+      </div>
+
+      <div class="section-card">
+        <h2 class="section-title">2. 姿态数据与负重模型性质</h2>
+        <div class="section-body">
+          应用中所展示的低头俯仰角度、颈椎负重估算值（如“60°低头颈椎等效承受27kg负重”等生物力学模型数据）以及挺拔评分，均基于人体工程学通用统计学学术模型计算，仅供日常参考与不良坐姿警示，切勿将此类数据作为判断个人颈椎生理曲度或病理状态的医学依据。
+        </div>
+      </div>
+
+      <div class="section-card">
+        <h2 class="section-title">3. 专业就医警示与身体不适处理</h2>
+        <div class="section-body">
+          如果您已确诊患有颈椎病、椎间盘突出、脊柱侧弯、骨质疏松，或日常伴有颈肩慢性疼痛、上肢麻木、头晕目眩或恶心等神经受压症状，请切勿盲目依据本应用进行自我矫正。在开始任何姿势训练前，您应当寻求专业骨科医生、康复理疗师的当面诊断与康复建议。
+        </div>
+      </div>
+
+      <div class="section-card">
+        <h2 class="section-title">4. 紧急情况与免责范围</h2>
+        <div class="section-body">
+          切勿因参考本应用内的任何功能或文本提示而忽视、替代或延误寻求专业医生的医学诊断。用户因自行采纳本应用数据或未能及时就医而产生的任何直接或间接健康风险，SpineUp 及开发团队均不承担法律责任。
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. 隐私政策 -->
+    <section id="pane-privacy" class="document-pane">
+      <div class="doc-header">
+        <div class="doc-icon">🛡️</div>
+        <h1 class="doc-title">SpineUp 隐私政策</h1>
+        <div class="doc-date">最后生效日期：2026 年 10 月</div>
+      </div>
+
+      <div class="alert-banner privacy">
+        🛡️ <strong>隐私承诺：</strong>SpineUp 绝不跨应用追踪您，所有运动传感器与摄像头骨骼算法均 100% 在您设备本地完成，绝不向云端上传原始数据。
+      </div>
+
+      <div class="section-card">
+        <h2 class="section-title">1. 传感器数据 100% 端侧本地处理</h2>
+        <div class="section-body">
+          <ul>
+            <li><strong>AirPods 空间运动传感器：</strong>通过 CoreMotion 采集的头部陀螺仪与加速度矢量在 iPhone 本地内存中以 60Hz 实时计算俯仰角，计算完成后即时销毁，绝不上传至任何外部服务器。</li>
+            <li><strong>前置摄像头微操识别：</strong>微操跟练仅使用 Apple Vision 框架在手机本地芯片实时检测人体关节点，不录制、不保存、不上传任何视频图像或人脸生物特征信息。</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section-card">
+        <h2 class="section-title">2. Apple HealthKit 健康数据合规</h2>
+        <div class="section-body">
+          在获得您的明确授权后，SpineUp 仅将您的挺拔专注时长同步写入 Apple Health 的“正念时间 (Mindful Session)”。我们严格遵守 Apple HealthKit 开发者隐私规范，绝不将任何健康数据用于商业广告、受众画像或与任何第三方共享。
+        </div>
+      </div>
+
+      <div class="section-card">
+        <h2 class="section-title">3. 访客匿名化与零个人信息收集</h2>
+        <div class="section-body">
+          应用采用基于 Keychain 的匿名设备随机标识符（UUID）建立安全会话，无需用户绑定手机号码、电子邮箱、真实姓名或身份证件。我们不收集任何可直接识别您个人身份的信息。
+        </div>
+      </div>
+
+      <div class="section-card">
+        <h2 class="section-title">4. 零追踪与第三方广告免责</h2>
+        <div class="section-body">
+          SpineUp 不包含任何第三方广告追踪 SDK，不接入数据中介商，不进行跨应用或跨网站的用户追踪（App Tracking Transparency: False）。
+        </div>
+      </div>
+
+      <div class="section-card">
+        <h2 class="section-title">5. 用户数据控制与彻底删除权</h2>
+        <div class="section-body">
+          您对本机的历史体态记录和偏好拥有完全控制权。您可以随时在 iOS 系统设置中关闭传感器或相机权限，或在应用内一键清除所有本地缓存与配置。
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. 用户服务条款 -->
+    <section id="pane-terms" class="document-pane">
+      <div class="doc-header">
+        <div class="doc-icon">📜</div>
+        <h1 class="doc-title">用户服务条款</h1>
+        <div class="doc-date">最后生效日期：2026 年 10 月</div>
+      </div>
+
+      <div class="alert-banner terms">
+        📜 <strong>条款摘要：</strong>下载与使用 SpineUp 即表示您认可本许可条款。请合理使用本软件，注意保护身体健康与设备安全。
+      </div>
+
+      <div class="section-card">
+        <h2 class="section-title">1. 软件许可范围</h2>
+        <div class="section-body">
+          开发者授予您一项个人的、非排他性的、不可转让的、可撤销的有限许可，允许您在拥有或控制的兼容 Apple 设备上运行 SpineUp，仅供个人非商业性质的体态习惯养成目的使用。
+        </div>
+      </div>
+
+      <div class="section-card">
+        <h2 class="section-title">2. 用户行为规范与禁止行为</h2>
+        <div class="section-body">
+          您同意不得对本软件进行反编译、反汇编、逆向工程或破解；不得利用任何自动化手段恶意请求云端服务接口；不得将本软件用于任何违反适格法律法规的场景。
+        </div>
+      </div>
+
+      <div class="section-card">
+        <h2 class="section-title">3. 硬件兼容性与使用建议</h2>
+        <div class="section-body">
+          本应用的部分核心体态追踪功能依赖具备空间音频与运动传感器的兼容耳机（如 AirPods Pro、AirPods 3/4、AirPods Max）。佩戴耳机时请确保适宜音量，并在安全环境（如办公室或室内工位）下使用，切勿在驾驶、骑行或高危操作中分心使用。
+        </div>
+      </div>
+
+      <div class="section-card">
+        <h2 class="section-title">4. 知识产权保护</h2>
+        <div class="section-body">
+          SpineUp 包含的所有程序代码、算法设计、宠物拟人形象、图形 UI、声音特效及品牌标识均属于开发者所有，受著作权与知识产权法律保护。
+        </div>
+      </div>
+
+      <div class="section-card">
+        <h2 class="section-title">5. 免责与责任限制</h2>
+        <div class="section-body">
+          在适用法律允许的最大范围内，本软件按“按现状 (AS IS)”提供，不附带任何形式的明示或暗示保证。开发者对于因使用或无法使用本软件而导致的任何间接性、附带性或后果性损失不承担任何赔偿责任。
+        </div>
+      </div>
+
+      <div class="section-card">
+        <h2 class="section-title">6. 条款变更与解释</h2>
+        <div class="section-body">
+          开发者保留适时更新本服务条款的权利。更新后的条款将通过应用内更新发布。继续使用本应用即视为您接受修订后的条款。
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2026 SpineUp. Protected by AirPods Spatial Motion & AI.</p>
+      <p>All Rights Reserved.</p>
+    </footer>
+
+  </div>
+
+  <script>
+    function switchTab(type, event) {
+      if (event) event.preventDefault();
+
+      // 更新按钮状态
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      const activeBtn = document.getElementById('btn-' + type);
+      if (activeBtn) activeBtn.classList.add('active');
+
+      // 更新面板状态
+      document.querySelectorAll('.document-pane').forEach(pane => pane.classList.remove('active'));
+      const activePane = document.getElementById('pane-' + type);
+      if (activePane) activePane.classList.add('active');
+
+      // 更新 URL Hash
+      if (history.replaceState) {
+        history.replaceState(null, null, '#' + type);
+      } else {
+        location.hash = '#' + type;
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // 页面初次加载时根据 URL Hash 自动定位
+    function initHashTab() {
+      const hash = window.location.hash.replace('#', '').toLowerCase();
+      if (hash === 'privacy' || hash === 'medical' || hash === 'terms') {
+        switchTab(hash);
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', initHashTab);
+    window.addEventListener('hashchange', initHashTab);
+  </script>
+</body>
+</html>
