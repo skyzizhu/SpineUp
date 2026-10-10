@@ -162,23 +162,26 @@ final class SUAutoLaunchGuideViewController: SUBaseViewController {
 
     // MARK: - 一键前往快捷指令按钮
     private let openShortcutsButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.backgroundColor = .systemPurple
-        button.tintColor = .white
-        button.layer.cornerRadius = 16
-        button.layer.cornerCurve = .continuous
-        button.titleLabel?.font = .systemFont(ofSize: 16, weight: .bold)
+        var config = UIButton.Configuration.filled()
+
+        var titleAttr = AttributedString(SULocalized("auto_launch_open_shortcuts_btn", default: "立即前往「快捷指令」配置"))
+        titleAttr.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        config.attributedTitle = titleAttr
 
         let iconConfig = UIImage.SymbolConfiguration(pointSize: 15, weight: .semibold)
-        let icon = UIImage(systemName: "arrow.up.forward.app.fill", withConfiguration: iconConfig)
-        button.setImage(icon, for: .normal)
-        button.setTitle("  " + SULocalized("auto_launch_open_shortcuts_btn", default: "立即前往「快捷指令」配置"), for: .normal)
-        button.semanticContentAttribute = .forceLeftToRight
+        config.image = UIImage(systemName: "arrow.up.forward.app.fill", withConfiguration: iconConfig)
+        config.imagePadding = 8
+        config.cornerStyle = .capsule
 
+        config.baseBackgroundColor = .systemPurple
+        config.baseForegroundColor = .white
+        config.contentInsets = NSDirectionalEdgeInsets(top: 16, leading: 24, bottom: 16, trailing: 24)
+
+        let button = UIButton(configuration: config)
         button.layer.shadowColor = UIColor.systemPurple.cgColor
         button.layer.shadowOpacity = 0.25
         button.layer.shadowOffset = CGSize(width: 0, height: 4)
-        button.layer.shadowRadius = 8
+        button.layer.shadowRadius = 10
         return button
     }()
 
@@ -350,7 +353,7 @@ final class SUAutoLaunchGuideViewController: SUBaseViewController {
         openShortcutsButton.snp.makeConstraints { make in
             make.top.equalTo(tipCardView.snp.bottom).offset(20)
             make.leading.trailing.equalToSuperview().inset(SULayoutConstants.horizontalPadding)
-            make.height.equalTo(52)
+            make.height.equalTo(54)
             make.bottom.equalToSuperview().offset(-SULayoutConstants.sectionSpacing * 2)
         }
     }
@@ -410,7 +413,12 @@ final class SUAutoLaunchGuideViewController: SUBaseViewController {
             "auto_launch_tip",
             default: "💡 极客小贴士：iOS 17 及以上系统的蓝牙自动化完全支持免确认「立即运行」。设置完成后，只要您戴上耳机触发蓝牙连接，手机将自动秒开 SpineUp！"
         )
-        openShortcutsButton.setTitle("  " + SULocalized("auto_launch_open_shortcuts_btn", default: "立即前往「快捷指令」配置"), for: .normal)
+
+        var btnConfig = openShortcutsButton.configuration ?? UIButton.Configuration.filled()
+        var titleAttr = AttributedString(SULocalized("auto_launch_open_shortcuts_btn", default: "立即前往「快捷指令」配置"))
+        titleAttr.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        btnConfig.attributedTitle = titleAttr
+        openShortcutsButton.configuration = btnConfig
     }
 }
 
