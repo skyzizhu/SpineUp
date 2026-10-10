@@ -187,7 +187,7 @@ final class SULegalListViewController: SUBaseViewController {
             let webVC = SUWebViewController(
                 url: URL(string: SUAppConfig.medicalDisclaimerURL),
                 pageTitle: SULocalized("legal_item_medical_title", default: "健康与医疗免责声明"),
-                fallbackFragment: "medical"
+                fallbackResourceName: "medical"
             )
             self?.navigationController?.pushViewController(webVC, animated: true)
         }
@@ -196,7 +196,7 @@ final class SULegalListViewController: SUBaseViewController {
             let webVC = SUWebViewController(
                 url: URL(string: SUAppConfig.privacyPolicyURL),
                 pageTitle: SULocalized("legal_item_privacy_title", default: "隐私政策"),
-                fallbackFragment: "privacy"
+                fallbackResourceName: "privacy"
             )
             self?.navigationController?.pushViewController(webVC, animated: true)
         }
@@ -205,7 +205,7 @@ final class SULegalListViewController: SUBaseViewController {
             let webVC = SUWebViewController(
                 url: URL(string: SUAppConfig.termsOfServiceURL),
                 pageTitle: SULocalized("legal_item_terms_title", default: "用户服务条款"),
-                fallbackFragment: "terms"
+                fallbackResourceName: "terms"
             )
             self?.navigationController?.pushViewController(webVC, animated: true)
         }

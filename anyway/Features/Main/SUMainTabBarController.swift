@@ -74,7 +74,7 @@ final class SUMainTabBarController: SUBaseTabBarController {
                 let webVC = SUWebViewController(
                     url: URL(string: SUAppConfig.medicalDisclaimerURL),
                     pageTitle: SULocalized("legal_item_medical_title", default: "健康与医疗免责声明"),
-                    fallbackFragment: "medical"
+                    fallbackResourceName: "medical"
                 )
                 settingsNav.setViewControllers([settingsVC, legalVC, webVC], animated: false)
             }
@@ -85,7 +85,7 @@ final class SUMainTabBarController: SUBaseTabBarController {
                 let webVC = SUWebViewController(
                     url: URL(string: SUAppConfig.privacyPolicyURL),
                     pageTitle: SULocalized("legal_item_privacy_title", default: "隐私政策"),
-                    fallbackFragment: "privacy"
+                    fallbackResourceName: "privacy"
                 )
                 settingsNav.setViewControllers([settingsVC, legalVC, webVC], animated: false)
             }

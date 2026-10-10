@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>SpineUp · 健康与医疗免责声明</title>
+  <style>
+    :root {
+      --bg-primary: #f5f5f7;
+      --bg-card: #ffffff;
+      --text-primary: #1d1d1f;
+      --text-secondary: #86868b;
+      --text-muted: #a1a1a6;
+      --border-color: rgba(0, 0, 0, 0.08);
+      --accent-red: #ff3b30;
+      --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+      --banner-bg: rgba(255, 59, 48, 0.08);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg-primary: #000000;
+        --bg-card: #1c1c1e;
+        --text-primary: #f5f5f7;
+        --text-secondary: #98989d;
+        --text-muted: #636366;
+        --border-color: rgba(255, 255, 255, 0.12);
+        --accent-red: #ff453a;
+        --card-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+        --banner-bg: rgba(255, 69, 58, 0.15);
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.68;
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: 60px;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      background: var(--bg-primary);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      z-index: 100;
+      border-bottom: 0.5px solid var(--border-color);
+      padding: 14px 20px;
+      text-align: center;
+    }
+
+    .brand-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      letter-spacing: -0.2px;
+    }
+
+    .container {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 24px 18px;
+    }
+
+    .doc-header {
+      text-align: center;
+      margin-bottom: 24px;
+      padding: 10px 0 6px 0;
+    }
+
+    .doc-icon {
+      font-size: 48px;
+      line-height: 1;
+      margin-bottom: 12px;
+      display: inline-block;
+    }
+
+    .doc-title {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+
+    .doc-date {
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    .alert-banner {
+      border-radius: 16px;
+      padding: 16px 18px;
+      margin-bottom: 24px;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.6;
+      background: var(--banner-bg);
+      color: var(--accent-red);
+      border-left: 4px solid var(--accent-red);
+    }
+
+    .section-card {
+      background: var(--bg-card);
+      border-radius: 18px;
+      padding: 22px 20px;
+      margin-bottom: 16px;
+      box-shadow: var(--card-shadow);
+      border: 0.5px solid var(--border-color);
+    }
+
+    .section-title {
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-body {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    .section-body p {
+      margin-bottom: 12px;
+    }
+
+    .section-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .section-body strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .section-body ul {
+      margin-left: 20px;
+      margin-top: 8px;
+      margin-bottom: 12px;
+    }
+
+    .section-body li {
+      margin-bottom: 8px;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="brand-title">SpineUp · 健康与医疗免责声明</div>
+  </header>
+
+  <div class="container">
+
+    <div class="doc-header">
+      <div class="doc-icon">🏥</div>
+      <h1 class="doc-title">健康与医疗免责声明</h1>
+      <div class="doc-date">最后生效日期：2026 年 10 月</div>
+    </div>
+
+    <div class="alert-banner">
+      ⚠️ <strong>重要须知：</strong>SpineUp 绝非医疗器械，亦不提供任何临床诊断或医疗建议。若您患有颈椎病、脊柱侧弯、骨关节退行性病变或感到任何身体不适，请务必咨询专业执业医师。
+    </div>
+
+    <div class="section-card">
+      <h2 class="section-title">1. 非医疗器械与非医疗服务声明</h2>
+      <div class="section-body">
+        <p>SpineUp（包括耳机空间体态追踪、微操识别训练、正念专注与骨气评分等全部功能）仅作为日常体态健康习惯养成与坐姿专注辅助工具。</p>
+        <p><strong>本应用不是国家药品监督管理局（NMPA）、美国食品药品监督管理局（FDA）或任何其他卫生健康监管机构认可的医疗器械</strong>，亦不提供任何形式的医学诊断、临床治疗方案、物理康复治疗或疾病预防服务。</p>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h2 class="section-title">2. 姿态数据与负重模型性质</h2>
+      <div class="section-body">
+        <p>应用中所展示的低头俯仰角度、颈椎负重估算值（如“60°低头颈椎等效承受 27kg 负重”等生物力学模型数据）以及挺拔评分，均基于人体工程学通用统计学学术模型计算，仅供日常参考与不良坐姿警示，<strong>切勿将此类数据作为判断个人颈椎生理曲度或病理状态的医学依据</strong>。</p>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h2 class="section-title">3. 身体不适与专业就医指引</h2>
+      <div class="section-body">
+        <p>若您在使用本应用期间或日常生活中出现以下任何症状，应立即停止使用，并前往正规医疗机构就诊：</p>
+        <ul>
+          <li>颈部、肩背部持续性或放射性疼痛、刺痛感；</li>
+          <li>上肢麻木、肌力下降、握力减退；</li>
+          <li>伴随头晕、恶心、视物模糊或步态不稳等交感神经症状。</li>
+        </ul>
+        <p>本应用的提醒不可替代骨科、康复医学科等专业执业医师的体格检查及影像学诊断（如 X 光、CT、MRI）。</p>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h2 class="section-title">4. 微操跟练运动安全须知</h2>
+      <div class="section-body">
+        <p>本应用内置的“微操”跟练动作仅为温和的日常办公室颈肩舒展活动。在进行任何舒展活动前，请确保身处安全开阔的环境。</p>
+        <p>如果您曾接受过脊柱手术、处于颈部急性扭伤期或患有严重骨质疏松，<strong>未经主管医生许可，严禁强行进行任何拉伸或体态矫正动作</strong>。</p>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h2 class="section-title">5. 完全免责声明</h2>
+      <div class="section-body">
+        <p>在法律允许的最大范围内，SpineUp 开发者不对因用户将本应用内容误作医疗依据、延误就医或因不当姿势练习所导致的任何直接、间接、附带或继发性身体损害承担法律责任。</p>
+      </div>
+    </div>
+
+    <footer>
+      <p>© 2026 SpineUp · Protected by AirPods Spatial Motion & AI.</p>
+      <p>All Rights Reserved.</p>
+    </footer>
+
+  </div>
+
+</body>
+</html>

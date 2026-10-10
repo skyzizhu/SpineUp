@@ -14,7 +14,7 @@ final class SUWebViewController: SUBaseViewController, WKNavigationDelegate {
 
     private let targetURL: URL?
     private let pageTitle: String
-    private let fallbackFragment: String?
+    private let fallbackResourceName: String
     private var hasLoadedFallback = false
 
     private lazy var webView: WKWebView = {
@@ -37,10 +37,10 @@ final class SUWebViewController: SUBaseViewController, WKNavigationDelegate {
 
     private var progressObservation: NSKeyValueObservation?
 
-    init(url: URL?, pageTitle: String, fallbackFragment: String? = nil) {
+    init(url: URL?, pageTitle: String, fallbackResourceName: String = "privacy") {
         self.targetURL = url
         self.pageTitle = pageTitle
-        self.fallbackFragment = fallbackFragment
+        self.fallbackResourceName = fallbackResourceName
         super.init(nibName: nil, bundle: nil)
         hidesBottomBarWhenPushed = true
     }
@@ -48,7 +48,7 @@ final class SUWebViewController: SUBaseViewController, WKNavigationDelegate {
     required init?(coder: NSCoder) {
         self.targetURL = nil
         self.pageTitle = ""
-        self.fallbackFragment = nil
+        self.fallbackResourceName = "privacy"
         super.init(coder: coder)
         hidesBottomBarWhenPushed = true
     }
@@ -131,8 +131,8 @@ final class SUWebViewController: SUBaseViewController, WKNavigationDelegate {
         guard !hasLoadedFallback else { return }
         hasLoadedFallback = true
 
-        let localURL = Bundle.main.url(forResource: "legal", withExtension: "html") 
-            ?? Bundle.main.bundleURL.appendingPathComponent("legal.html")
+        let localURL = Bundle.main.url(forResource: fallbackResourceName, withExtension: "html") 
+            ?? Bundle.main.bundleURL.appendingPathComponent("\(fallbackResourceName).html")
 
         if let htmlString = try? String(contentsOf: localURL, encoding: .utf8) {
             webView.loadHTMLString(htmlString, baseURL: Bundle.main.bundleURL)
@@ -169,19 +169,6 @@ final class SUWebViewController: SUBaseViewController, WKNavigationDelegate {
 
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         progressView.alpha = 0
-        if let fragment = fallbackFragment {
-            // 执行 js 自动激活锚点选项卡
-            let script = """
-            if (typeof switchTab === 'function') {
-                switchTab('\(fragment)');
-            } else {
-                window.addEventListener('DOMContentLoaded', function() {
-                    if (typeof switchTab === 'function') { switchTab('\(fragment)'); }
-                });
-            }
-            """
-            webView.evaluateJavaScript(script, completionHandler: nil)
-        }
     }
 
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {

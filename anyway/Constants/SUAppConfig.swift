@@ -69,8 +69,8 @@ enum SUAppConfig {
     static let streakBonusMultiplier: Double = 1.5
 
     // MARK: - 法律与合规公网链接 (Legal & Compliance Public URLs)
-    static let legalBaseURL = "https://skyzizhu.github.io/SpineUp/legal.html"
-    static var medicalDisclaimerURL: String { "\(legalBaseURL)#medical" }
-    static var privacyPolicyURL: String { "\(legalBaseURL)#privacy" }
-    static var termsOfServiceURL: String { "\(legalBaseURL)#terms" }
+    static let legalBaseURL = "https://skyzizhu.github.io/SpineUp"
+    static var medicalDisclaimerURL: String { "\(legalBaseURL)/medical.html" }
+    static var privacyPolicyURL: String { "\(legalBaseURL)/privacy.html" }
+    static var termsOfServiceURL: String { "\(legalBaseURL)/terms.html" }
 }

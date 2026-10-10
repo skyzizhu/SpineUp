@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>SpineUp · 隐私政策</title>
+  <style>
+    :root {
+      --bg-primary: #f5f5f7;
+      --bg-card: #ffffff;
+      --text-primary: #1d1d1f;
+      --text-secondary: #86868b;
+      --text-muted: #a1a1a6;
+      --border-color: rgba(0, 0, 0, 0.08);
+      --accent-blue: #0071e3;
+      --accent-red: #ff3b30;
+      --accent-indigo: #5856d6;
+      --accent-green: #34c759;
+      --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+      --banner-bg: rgba(0, 113, 227, 0.08);
+      --table-header-bg: rgba(0, 0, 0, 0.03);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg-primary: #000000;
+        --bg-card: #1c1c1e;
+        --text-primary: #f5f5f7;
+        --text-secondary: #98989d;
+        --text-muted: #636366;
+        --border-color: rgba(255, 255, 255, 0.12);
+        --accent-blue: #2997ff;
+        --accent-red: #ff453a;
+        --accent-indigo: #5e5ce6;
+        --accent-green: #30d158;
+        --card-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+        --banner-bg: rgba(41, 151, 255, 0.15);
+        --table-header-bg: rgba(255, 255, 255, 0.05);
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.68;
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: 60px;
+    }
+
+    /* 顶部导航条 */
+    header {
+      position: sticky;
+      top: 0;
+      background: var(--bg-primary);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      z-index: 100;
+      border-bottom: 0.5px solid var(--border-color);
+      padding: 14px 20px;
+      text-align: center;
+    }
+
+    .brand-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      letter-spacing: -0.2px;
+    }
+
+    /* 内容容器 */
+    .container {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 24px 18px;
+    }
+
+    /* 头部卡片 */
+    .doc-header {
+      text-align: center;
+      margin-bottom: 24px;
+      padding: 10px 0 6px 0;
+    }
+
+    .doc-icon {
+      font-size: 48px;
+      line-height: 1;
+      margin-bottom: 12px;
+      display: inline-block;
+    }
+
+    .doc-title {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+
+    .doc-date {
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    /* 醒目横幅 */
+    .alert-banner {
+      border-radius: 16px;
+      padding: 16px 18px;
+      margin-bottom: 24px;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.6;
+      background: var(--banner-bg);
+      color: var(--accent-blue);
+      border-left: 4px solid var(--accent-blue);
+    }
+
+    /* 章节卡片 */
+    .section-card {
+      background: var(--bg-card);
+      border-radius: 18px;
+      padding: 22px 20px;
+      margin-bottom: 16px;
+      box-shadow: var(--card-shadow);
+      border: 0.5px solid var(--border-color);
+    }
+
+    .section-title {
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-body {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    .section-body p {
+      margin-bottom: 12px;
+    }
+
+    .section-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .section-body strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .section-body ul, .section-body ol {
+      margin-left: 20px;
+      margin-top: 8px;
+      margin-bottom: 12px;
+    }
+
+    .section-body li {
+      margin-bottom: 8px;
+    }
+
+    .highlight-box {
+      background: rgba(0, 113, 227, 0.05);
+      border-radius: 12px;
+      padding: 12px 14px;
+      margin: 10px 0;
+      font-size: 13.5px;
+      border: 0.5px solid rgba(0, 113, 227, 0.15);
+    }
+
+    /* 权限表格 */
+    .permission-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+      font-size: 13px;
+    }
+
+    .permission-table th, .permission-table td {
+      padding: 10px 12px;
+      text-align: left;
+      border-bottom: 0.5px solid var(--border-color);
+    }
+
+    .permission-table th {
+      background: var(--table-header-bg);
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .permission-table td {
+      color: var(--text-secondary);
+    }
+
+    /* 底部版权 */
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 顶部导航 -->
+  <header>
+    <div class="brand-title">SpineUp · 隐私政策</div>
+  </header>
+
+  <div class="container">
+
+    <div class="doc-header">
+      <div class="doc-icon">🛡️</div>
+      <h1 class="doc-title">SpineUp 隐私政策</h1>
+      <div class="doc-date">最后更新与生效日期：2026 年 10 月</div>
+    </div>
+
+    <!-- 醒目承诺横幅 -->
+    <div class="alert-banner">
+      🛡️ <strong>隐私核心承诺：</strong>SpineUp 坚持“端侧优先、数据最小化”的设计原则。所有耳机空间运动传感器数据与摄像头骨骼分析算法均 <strong>100% 在您的设备本地芯片上实时完成</strong>，绝不向云端上传任何传感器原始流，绝不跨应用追踪您，绝不出售任何个人信息。
+    </div>
+
+    <!-- 1. 概述与核心原则 -->
+    <div class="section-card">
+      <h2 class="section-title">1. 概述与核心原则</h2>
+      <div class="section-body">
+        <p>SpineUp（以下简称“本应用”或“我们”）深知个人信息对您的重要性，并承诺严格遵守《中华人民共和国个人信息保护法》（PIPL）、欧盟通用数据保护条例（GDPR）、加州消费者隐私法案（CCPA）以及 Apple 开发者隐私合规准则。</p>
+        <p>本隐私政策旨在向您清晰、详尽地说明在您使用 SpineUp 期间，我们如何处理您的个人信息，以及您所享有的隐私控制权。在设计本应用时，我们贯彻了以下四大铁律：</p>
+        <ul>
+          <li><strong>100% 端侧本地计算：</strong>核心姿态算法完全依托 iPhone 本地 Neural Engine 与内存运行，杜绝云端回传。</li>
+          <li><strong>数据最小化原则：</strong>仅在实现坐姿监测与健康提醒所必需的前提下，向系统申请最小权限。</li>
+          <li><strong>零跨应用追踪：</strong>不接入任何第三方商业广告追踪 SDK，不采集设备广告标识符（IDFA）。</li>
+          <li><strong>用户绝对控制：</strong>所有个性化设置及历史打卡记录均保存在手机本地沙盒，您可随时在应用内一键清空或随应用卸载彻底销毁。</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 2. 我们如何收集与使用您的信息 -->
+    <div class="section-card">
+      <h2 class="section-title">2. 个人信息收集与处理明细</h2>
+      <div class="section-body">
+        <p>为向您提供实时低头角度估算、颈椎负重预警及坐姿专注记录功能，本应用对各类数据的处理机制如下：</p>
+
+        <p><strong>2.1 AirPods 头部空间运动传感器数据（CoreMotion）</strong></p>
+        <ul>
+          <li><strong>数据范畴：</strong>通过 Apple CoreMotion 框架的 <code>CMHeadphoneMotionManager</code> 读取耳机的姿态角（Pitch 俯仰、Roll 侧倾、Yaw 偏航）及三轴加速度矢量。</li>
+          <li><strong>使用目的：</strong>实时计算头部低头角度与颈椎受力负荷，并在低头超时时触发坐姿纠偏提醒。</li>
+          <li><strong>生命周期与存储机制：</strong>该数据仅在 iPhone 本地运行内存（RAM）中以 60Hz 频率实时运算。<strong>计算完成后立即销毁，不在本地磁盘落盘，绝不通过网络上传至任何外部服务器。</strong></li>
+        </ul>
+
+        <p><strong>2.2 前置摄像头微操骨骼识别数据（Apple Vision）</strong></p>
+        <ul>
+          <li><strong>数据范畴：</strong>仅在您主动开启“微操跟练 / 颈部放松”模式时，通过前置摄像头采集视频流。</li>
+          <li><strong>处理机制：</strong>利用 iOS 原生 <code>Vision Framework</code> 在芯片本地识别人体关节点骨骼坐标，比对跟练动作完成度。</li>
+          <li><strong>隐私保障：</strong><strong>本应用不录制视频、不拍摄照片、不保存任何图像帧，亦不进行任何面部识别或人脸生物特征识别。</strong>视频帧经骨骼算法提取关键点后即刻在内存中丢弃。</li>
+        </ul>
+
+        <p><strong>2.3 Apple HealthKit 健康数据同步（可选）</strong></p>
+        <ul>
+          <li><strong>数据范畴：</strong>在获得您的明确授权后，将您的有效端坐专注时长单向写入 Apple Health 的“正念分钟数 (Mindful Session)”。</li>
+          <li><strong>合规声明：</strong>我们<strong>不读取</strong>您在 Apple Health 中的任何其它健康记录（如步数、心率、睡眠等）。根据 Apple 开发者规范，我们绝不会将从 HealthKit 获得的任何信息用于营销推广或数据挖掘。</li>
+        </ul>
+
+        <p><strong>2.4 用户自定义个性化偏好</strong></p>
+        <ul>
+          <li><strong>数据范畴：</strong>包括您的 Air 昵称、坐姿提醒灵敏度、提醒音效偏好、端坐基准校准值、骨气值能量及本地打卡徽章记录。</li>
+          <li><strong>存储位置：</strong><strong>100% 存储于您的本地设备沙盒（UserDefaults / 本地存储）</strong>，由 iOS 沙盒机制保障安全，不建立任何云端账号体系。</li>
+        </ul>
+
+        <p><strong>2.5 匿名设备基本信息与诊断日志</strong></p>
+        <ul>
+          <li><strong>数据范畴：</strong>设备型号（如 iPhone 17,2）、操作系统版本（如 iOS 26.2）、应用版本号及偶发的崩溃堆栈（Crash Logs）。</li>
+          <li><strong>使用目的：</strong>仅用于诊断异常崩溃、提升应用在各机型上的稳定性与适配表现。该信息完全匿名，不包含任何设备唯一硬件序列号（如 IMEI、MAC 地址）或个人身份标识。</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 3. iOS 系统权限申请与使用场景 -->
+    <div class="section-card">
+      <h2 class="section-title">3. iOS 系统权限调用说明清单</h2>
+      <div class="section-body">
+        <p>本应用在运行期间可能向您申请以下系统权限，您可以随时在 iOS「设置 - SpineUp」中自主开启或撤回：</p>
+
+        <table class="permission-table">
+          <thead>
+            <tr>
+              <th>系统权限</th>
+              <th>申请时机</th>
+              <th>业务用途</th>
+              <th>是否必须</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>运动与健身 (Motion)</strong></td>
+              <td>初次连接耳机开启姿态守护时</td>
+              <td>获取 AirPods 空间姿态角，实现核心低头角度检测</td>
+              <td>核心必需</td>
+            </tr>
+            <tr>
+              <td><strong>前置摄像头 (Camera)</strong></td>
+              <td>首次进入“微操跟练”模式时</td>
+              <td>本地人体骨骼关键点比对，不保存任何画面</td>
+              <td>可选（不跟练可不给）</td>
+            </tr>
+            <tr>
+              <td><strong>通知权限 (Notification)</strong></td>
+              <td>初次设置久坐提醒与防沉迷时</td>
+              <td>在锁屏或后台发送本地坐姿矫正与休息提醒</td>
+              <td>建议开启</td>
+            </tr>
+            <tr>
+              <td><strong>健康数据 (HealthKit)</strong></td>
+              <td>首次在设置中开启“同步至苹果健康”时</td>
+              <td>单向写入端坐正念时长记录</td>
+              <td>可选</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 4. 数据存储、安全保护与生命周期 -->
+    <div class="section-card">
+      <h2 class="section-title">4. 数据存储、安全保护与生命周期</h2>
+      <div class="section-body">
+        <p><strong>4.1 存储安全机制：</strong></p>
+        <p>本应用所有保存在本地沙盒的数据均受到 iOS 系统级数据保护（Data Protection）机制与硬件 AES-256 加密的保护。在设备锁屏状态下，本地文件受到密码学级别的安全锁定。</p>
+
+        <p><strong>4.2 传输安全机制：</strong></p>
+        <p>本应用强制遵循 Apple App Transport Security (ATS) 协议，禁用任何不安全的明文 HTTP 通信，确保应用内所有合规文档均通过强加密 HTTPS 协议传输。</p>
+
+        <p><strong>4.3 数据保留期限：</strong></p>
+        <ul>
+          <li><strong>传感器流数据：</strong>保留时间为 <strong>0 秒</strong>，运算即焚。</li>
+          <li><strong>本地配置与打卡数据：</strong>在您卸载应用时，iOS 系统将自动清空所有沙盒数据；您亦可在应用内一键清空全部缓存。</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 5. 第三方 SDK 与共享政策 -->
+    <div class="section-card">
+      <h2 class="section-title">5. 第三方 SDK 与共享政策</h2>
+      <div class="section-body">
+        <div class="highlight-box">
+          <strong>🔒 严正声明：</strong>SpineUp 绝不接入任何第三方商业广告 SDK、用户画像 SDK 或跨应用追踪组件。
+        </div>
+        <p>我们绝不会将您的任何个人数据出售、出租、出借或披露给任何第三方机构或广告商。我们不会以任何理由将您的行为用于商业推销或数据套利。</p>
+      </div>
+    </div>
+
+    <!-- 6. 您的权利与自主控制 -->
+    <div class="section-card">
+      <h2 class="section-title">6. 您的隐私权利与自主控制</h2>
+      <div class="section-body">
+        <p>根据相关法律法规，您对您的个人信息享有充分的控制权：</p>
+        <ul>
+          <li><strong>查阅与修改权利：</strong>您可以在应用「设置」页面随时查阅或修改您的 Air 昵称、提醒灵敏度及偏好。</li>
+          <li><strong>撤回系统授权：</strong>您可以随时前往 iPhone「设置 - SpineUp」关闭摄像头、运动、通知或健康权限。撤回后不影响其他独立功能的使用。</li>
+          <li><strong>完全清除数据：</strong>您可以通过卸载本应用彻底清除本应用在您设备上保留的全部本地数据。</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 7. 未成年人保护 -->
+    <div class="section-card">
+      <h2 class="section-title">7. 未成年人保护特别声明</h2>
+      <div class="section-body">
+        <p>我们高度重视对未成年人个人信息的保护。本应用的产品定位为大众人体工学与健康习惯辅助工具，不会主动面向 14 周岁以下的未成年人收集任何可识别个人身份的信息。</p>
+        <p>若您是未成年人的监护人，请协助监督其合理安排日常电子屏幕使用时间与坐姿健康。</p>
+      </div>
+    </div>
+
+    <!-- 8. 隐私政策的更新 -->
+    <div class="section-card">
+      <h2 class="section-title">8. 隐私政策的更新</h2>
+      <div class="section-body">
+        <p>为了配合法律法规的最新要求或产品功能的升级优化，我们可能会适时修订本隐私政策。任何重大变更都将在本页面更新生效日期，并在应用发布新版本时在更新日志中予以提示。</p>
+        <p>您继续使用 SpineUp 即表示您已阅读并同意接受修订后的隐私政策。</p>
+      </div>
+    </div>
+
+    <!-- 9. 联系我们 -->
+    <div class="section-card">
+      <h2 class="section-title">9. 联系我们</h2>
+      <div class="section-body">
+        <p>如果您对本隐私政策有任何疑问、意见、建议或隐私投诉，请随时通过以下方式与我们联系：</p>
+        <ul>
+          <li><strong>官方电子邮箱：</strong>support@yourtools.xyz</li>
+          <li><strong>开源与项目地址：</strong>https://github.com/skyzizhu/SpineUp</li>
+        </ul>
+        <p>我们将在收到您的邮件后 15 个工作日内核实并给予回复。</p>
+      </div>
+    </div>
+
+    <footer>
+      <p>© 2026 SpineUp · Protected by AirPods Spatial Motion & AI.</p>
+      <p>All Rights Reserved.</p>
+    </footer>
+
+  </div>
+
+</body>
+</html>
