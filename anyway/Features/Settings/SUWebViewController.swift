@@ -117,8 +117,7 @@ final class SUWebViewController: SUBaseViewController, WKNavigationDelegate {
         }
 
         webView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-            make.leading.trailing.bottom.equalToSuperview()
+            make.edges.equalToSuperview()
         }
     }
 
