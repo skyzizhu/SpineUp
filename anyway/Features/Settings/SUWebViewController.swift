@@ -44,7 +44,6 @@ final class SUWebViewController: SUBaseViewController, WKNavigationDelegate {
         self.fallbackResourceName = fallbackResourceName
         self.languageCode = languageCode ?? SULocalizationManager.shared.currentLanguage.rawValue
         super.init(nibName: nil, bundle: nil)
-        hidesBottomBarWhenPushed = true
     }
 
     required init?(coder: NSCoder) {
@@ -53,7 +52,6 @@ final class SUWebViewController: SUBaseViewController, WKNavigationDelegate {
         self.fallbackResourceName = "privacy"
         self.languageCode = "zh-Hans"
         super.init(coder: coder)
-        hidesBottomBarWhenPushed = true
     }
 
     deinit {

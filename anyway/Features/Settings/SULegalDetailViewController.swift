@@ -88,13 +88,11 @@ final class SULegalDetailViewController: SUBaseViewController {
     init(documentType: SULegalDocumentType) {
         self.documentType = documentType
         super.init(nibName: nil, bundle: nil)
-        hidesBottomBarWhenPushed = true
     }
 
     required init?(coder: NSCoder) {
         self.documentType = .medicalDisclaimer
         super.init(coder: coder)
-        hidesBottomBarWhenPushed = true
     }
 
     override func viewDidLoad() {

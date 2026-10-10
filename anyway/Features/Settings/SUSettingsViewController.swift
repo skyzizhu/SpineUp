@@ -88,7 +88,7 @@ final class SUSettingsViewController: SUBaseViewController {
     private let alertsFooterCardView: UIView = {
         let view = UIView()
         view.backgroundColor = .secondarySystemGroupedBackground
-        view.layer.cornerRadius = 16
+        view.layer.cornerRadius = 26
         view.layer.cornerCurve = .continuous
         view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowOpacity = 0.03

@@ -187,12 +187,10 @@ final class SUAutoLaunchGuideViewController: SUBaseViewController {
 
     init() {
         super.init(nibName: nil, bundle: nil)
-        hidesBottomBarWhenPushed = true
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        hidesBottomBarWhenPushed = true
     }
 
     override func viewDidLoad() {
