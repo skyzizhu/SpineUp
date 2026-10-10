@@ -131,19 +131,14 @@ final class SUWebViewController: SUBaseViewController, WKNavigationDelegate {
         guard !hasLoadedFallback else { return }
         hasLoadedFallback = true
 
-        guard let localURL = Bundle.main.url(forResource: "legal", withExtension: "html") else {
-            return
-        }
+        let localURL = Bundle.main.url(forResource: "legal", withExtension: "html") 
+            ?? Bundle.main.bundleURL.appendingPathComponent("legal.html")
 
-        if let fragment = fallbackFragment, var components = URLComponents(url: localURL, resolvingAgainstBaseURL: false) {
-            components.fragment = fragment
-            if let fragmentURL = components.url {
-                webView.loadFileURL(fragmentURL, allowingReadAccessTo: fragmentURL.deletingLastPathComponent())
-                return
-            }
+        if let htmlString = try? String(contentsOf: localURL, encoding: .utf8) {
+            webView.loadHTMLString(htmlString, baseURL: Bundle.main.bundleURL)
+        } else if FileManager.default.fileExists(atPath: localURL.path) {
+            webView.loadFileURL(localURL, allowingReadAccessTo: Bundle.main.bundleURL)
         }
-
-        webView.loadFileURL(localURL, allowingReadAccessTo: localURL.deletingLastPathComponent())
     }
 
     @objc private func handleReload() {
@@ -160,7 +155,9 @@ final class SUWebViewController: SUBaseViewController, WKNavigationDelegate {
     func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
         if let httpResponse = navigationResponse.response as? HTTPURLResponse, httpResponse.statusCode >= 400 {
             decisionHandler(.cancel)
-            loadLocalFallback()
+            DispatchQueue.main.async { [weak self] in
+                self?.loadLocalFallback()
+            }
             return
         }
         decisionHandler(.allow)
@@ -174,17 +171,36 @@ final class SUWebViewController: SUBaseViewController, WKNavigationDelegate {
         progressView.alpha = 0
         if let fragment = fallbackFragment {
             // 执行 js 自动激活锚点选项卡
-            let script = "if (typeof switchTab === 'function') { switchTab('\(fragment)'); }"
+            let script = """
+            if (typeof switchTab === 'function') {
+                switchTab('\(fragment)');
+            } else {
+                window.addEventListener('DOMContentLoaded', function() {
+                    if (typeof switchTab === 'function') { switchTab('\(fragment)'); }
+                });
+            }
+            """
             webView.evaluateJavaScript(script, completionHandler: nil)
         }
     }
 
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
-        // 网络请求失败时无缝降级至应用内内置的本地 HTML 文档，杜绝白屏
-        loadLocalFallback()
+        let nsError = error as NSError
+        if nsError.domain == NSURLErrorDomain && nsError.code == NSURLErrorCancelled {
+            return
+        }
+        DispatchQueue.main.async { [weak self] in
+            self?.loadLocalFallback()
+        }
     }
 
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-        loadLocalFallback()
+        let nsError = error as NSError
+        if nsError.domain == NSURLErrorDomain && nsError.code == NSURLErrorCancelled {
+            return
+        }
+        DispatchQueue.main.async { [weak self] in
+            self?.loadLocalFallback()
+        }
     }
 }
