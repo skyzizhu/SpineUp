@@ -110,6 +110,7 @@
 "settings_haptic_alert_desc" = "前傾姿勢が続くと優しい振動で通知";
 "settings_sound_alert" = "システム通知チャイム";
 "settings_sound_alert_desc" = "前傾時に清らかな水滴の音でお知らせ";
+"settings_alerts_footer" = "• バックグラウンドオーディオについて：姿勢監視中はAirPodsの空間モーションストリームを維持するためバックグラウンドオーディオを使用し、画面ロック時にも姿勢アラートを即時再生します。環境音の録音は一切行いません。";
 "streak_days_title" = "連続達成";
 "streak_days_val" = "%d 日";
 "energy_coins_total_title" = "累計エネルギーコイン";

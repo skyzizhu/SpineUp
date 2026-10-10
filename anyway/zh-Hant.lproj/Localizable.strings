@@ -122,6 +122,7 @@
 "settings_haptic_alert_desc" = "低頭超時後輕微震感";
 "settings_sound_alert" = "輕快系統提示鈴";
 "settings_sound_alert_desc" = "低頭時清脆水滴聲";
+"settings_alerts_footer" = "• 後台音訊說明：開啟守護後，應用程式將使用後台音訊通道維持 AirPods 空間姿態流，確保鎖定螢幕與切換應用程式時仍可及時播報不良坐姿提醒；絕不採集任何環境聲音。";
 "streak_days_title" = "連續打卡";
 "streak_days_val" = "%d 天";
 "energy_coins_total_title" = "累計能量幣";

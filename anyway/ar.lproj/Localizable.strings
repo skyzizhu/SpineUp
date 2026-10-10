@@ -110,6 +110,7 @@
 "settings_haptic_alert_desc" = "نبضات لطيفة عند استمرار الانحناء";
 "settings_sound_alert" = "نغمة النظام الهادئة";
 "settings_sound_alert_desc" = "صوت قطرة ماء نقية عند الانحناء";
+"settings_alerts_footer" = "• تشغيل الصوت في الخلفية: يستخدم التطبيق قناة الصوت في الخلفية للحفاظ على بث حركة AirPods أثناء قفل الشاشة للتنبيه الفوري بالوضعية، دون تسجيل أي صوت محيطي.";
 "streak_days_title" = "أيام الاستمرار";
 "streak_days_val" = "%d أيام";
 "energy_coins_total_title" = "مجموع عملات الطاقة";

@@ -122,6 +122,7 @@
 "settings_haptic_alert_desc" = "Gentle tactile pulse upon slouching";
 "settings_sound_alert" = "System Sound Alert";
 "settings_sound_alert_desc" = "Crisp water drop chime upon slouching";
+"settings_alerts_footer" = "• Background Audio: Posture tracking utilizes a background audio channel to maintain AirPods spatial motion streaming while locked or in background, delivering timely posture nudges without recording ambient sound.";
 "streak_days_title" = "Daily Streak";
 "streak_days_val" = "%d Days";
 "energy_coins_total_title" = "Total Energy Coins";

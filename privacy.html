@@ -297,6 +297,12 @@
         <ul>
           <li>仅匿名收集设备型号、iOS 系统版本及偶发的崩溃堆栈，用于诊断异常与稳定性优化，不包含任何设备序列号或个人标识。</li>
         </ul>
+
+        <p><strong>2.6 后台运行与音频模式声明（UIBackgroundModes: audio）</strong></p>
+        <ul>
+          <li><strong>业务必要性：</strong>SpineUp 致力于全天候坐姿健康守护。为确保您在锁屏、手机放入口袋或切换至其他 App 专注工作时，仍能维持 AirPods 空间姿态监测（<code>CMHeadphoneMotionManager</code>）并在您长时间低头时以极低延迟发出语音或水滴声提醒，应用申请并使用了后台音频模式。</li>
+          <li><strong>严格隐私保障：</strong><strong>本应用绝不调用麦克风录制任何环境声音或语音</strong>，绝不进行任何后台监听。后台音频仅用于播放不良姿态纠正音效与维持传感器生命周期。在您暂停守护或取下耳机后，音频会话立即释放以保护电池寿命。</li>
+        </ul>
       </div>
     </div>
 
@@ -317,6 +323,12 @@
               <td><strong>运动与健身 (Motion)</strong></td>
               <td>初次连接耳机开启姿态守护时</td>
               <td>获取 AirPods 空间姿态角，实现核心低头角度检测</td>
+              <td>核心必需</td>
+            </tr>
+            <tr>
+              <td><strong>后台运行与音频 (Background Audio)</strong></td>
+              <td>开启坐姿守护且启用声音提醒时</td>
+              <td>用于锁屏或切后台时维持 AirPods 姿态连续监测，并在不良坐姿时发出即时提醒音；绝不录音、不回传</td>
               <td>核心必需</td>
             </tr>
             <tr>
@@ -431,6 +443,12 @@
         <ul>
           <li>Anonymous device model, iOS version, and crash stack traces used solely to diagnose app stability without collecting unique hardware IDs.</li>
         </ul>
+
+        <p><strong>2.6 Background Audio Mode Justification (UIBackgroundModes: audio)</strong></p>
+        <ul>
+          <li><strong>Operational Necessity:</strong> SpineUp is designed to provide continuous posture ergonomics. To ensure that AirPods spatial motion monitoring (<code>CMHeadphoneMotionManager</code>) remains active while the screen is locked, in your pocket, or when switching to other apps, and to deliver low-latency auditory chime and voice alerts when bad posture is sustained, the App utilizes background audio execution.</li>
+          <li><strong>Strict Privacy Guarantees:</strong> <strong>The App NEVER activates the microphone to record ambient audio or speech</strong>, and performs zero background listening. Background audio is strictly used to deliver corrective alert chimes and maintain sensor stream continuity. When monitoring is paused or headphones are removed, the audio session is deactivated immediately to preserve battery.</li>
+        </ul>
       </div>
     </div>
 
@@ -451,6 +469,12 @@
               <td><strong>Motion & Fitness</strong></td>
               <td>Connecting AirPods for posture guard</td>
               <td>Real-time headphone spatial head angle tracking</td>
+              <td>Essential</td>
+            </tr>
+            <tr>
+              <td><strong>Background Audio</strong></td>
+              <td>During active posture monitoring with sound alerts enabled</td>
+              <td>Maintains AirPods motion tracking stream while locked/backgrounded and plays instant posture correction chimes; 0 microphone access, 0 audio recording</td>
               <td>Essential</td>
             </tr>
             <tr>
@@ -535,6 +559,9 @@
 
         <p><strong>2.3 Apple 健康（HealthKit）同步</strong></p>
         <p>經授權後僅單向寫入端坐「正念分鐘數」，不讀取任何其他健康數據，絕不用於廣告用途。</p>
+
+        <p><strong>2.4 後台運行與音訊模式宣告（UIBackgroundModes: audio）</strong></p>
+        <p>為確保在鎖定螢幕或切換至其他 App 時仍能維持 AirPods 姿態連續監測，並於姿勢不良時即時發出語音/提示音提醒，應用程式使用了後台音訊模式。<strong>本應用程式絕不調用麥克風錄製任何環境音或語音</strong>，監測暫停時立即釋放以保護電池壽命。</p>
       </div>
     </div>
 
@@ -587,6 +614,9 @@
 
         <p><strong>2.3 Apple ヘルスケア（HealthKit）連携</strong></p>
         <p>許可を得た場合のみ「マインドフル時間」を一方向に記録します。他の健康データの読み取りは行いません。</p>
+
+        <p><strong>2.4 バックグラウンドオーディオ動作に関する方針（UIBackgroundModes: audio）</strong></p>
+        <p>画面ロック時や他のアプリ使用中も AirPods の姿勢追跡を継続し、不良姿勢時に低遅延で警告音を発するため、バックグラウンドオーディオを使用します。<strong>マイクを用いた環境音や音声の録音は一切行いません。</strong>モニタリング停止時は速やかにセッションを解放します。</p>
       </div>
     </div>
 

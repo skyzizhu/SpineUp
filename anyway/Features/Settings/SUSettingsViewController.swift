@@ -84,6 +84,18 @@ final class SUSettingsViewController: SUBaseViewController {
         iconTint: .systemOrange
     )
 
+    private let alertsSectionFooterLabel: UILabel = {
+        let label = UILabel()
+        label.text = SULocalized(
+            "settings_alerts_footer",
+            default: "• 后台音频说明：开启守护后，应用将使用后台音频通道维持 AirPods 空间姿态流，确保锁屏与切换应用时仍可及时播报不良坐姿提醒；绝不采集任何环境声音。"
+        )
+        label.font = .systemFont(ofSize: 12, weight: .regular)
+        label.textColor = .secondaryLabel
+        label.numberOfLines = 0
+        return label
+    }()
+
     // MARK: - Section 3: 骨气能量与坚持打卡
     private let energySectionTitleLabel: UILabel = {
         let label = UILabel()
@@ -278,6 +290,7 @@ final class SUSettingsViewController: SUBaseViewController {
         alertsCardView.addSubview(voiceRowView)
         alertsCardView.addSubview(hapticRowView)
         alertsCardView.addSubview(soundRowView)
+        contentView.addSubview(alertsSectionFooterLabel)
 
         // 组装能量统计
         contentView.addSubview(energySectionTitleLabel)
@@ -354,8 +367,13 @@ final class SUSettingsViewController: SUBaseViewController {
             make.height.equalTo(58)
         }
 
+        alertsSectionFooterLabel.snp.makeConstraints { make in
+            make.top.equalTo(alertsCardView.snp.bottom).offset(8)
+            make.leading.trailing.equalToSuperview().inset(SULayoutConstants.horizontalPadding + 4)
+        }
+
         energySectionTitleLabel.snp.makeConstraints { make in
-            make.top.equalTo(alertsCardView.snp.bottom).offset(SULayoutConstants.sectionSpacing)
+            make.top.equalTo(alertsSectionFooterLabel.snp.bottom).offset(SULayoutConstants.sectionSpacing)
             make.leading.trailing.equalToSuperview().inset(SULayoutConstants.horizontalPadding)
         }
 
@@ -562,6 +580,10 @@ final class SUSettingsViewController: SUBaseViewController {
 
         soundRowView.setTitle(SULocalized("settings_sound_alert", default: "轻快系统提示铃"))
         soundRowView.setSubtitle(SULocalized("settings_sound_alert_desc", default: "低头时清脆水滴声"))
+        alertsSectionFooterLabel.text = SULocalized(
+            "settings_alerts_footer",
+            default: "• 后台音频说明：开启守护后，应用将使用后台音频通道维持 AirPods 空间姿态流，确保锁屏与切换应用时仍可及时播报不良坐姿提醒；绝不采集任何环境声音。"
+        )
 
         // Section 3: 能量统计
         energySectionTitleLabel.text = SULocalized("settings_energy_section", default: "骨气能量")
