@@ -71,10 +71,12 @@ final class SUMainTabBarController: SUBaseTabBarController {
             selectedIndex = 3
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                 let legalVC = SULegalListViewController()
+                let lang = SULocalizationManager.shared.currentLanguage.rawValue
                 let webVC = SUWebViewController(
-                    url: URL(string: SUAppConfig.medicalDisclaimerURL),
+                    url: URL(string: SUAppConfig.medicalDisclaimerURL(lang: lang)),
                     pageTitle: SULocalized("legal_item_medical_title", default: "健康与医疗免责声明"),
-                    fallbackResourceName: "medical"
+                    fallbackResourceName: "medical",
+                    languageCode: lang
                 )
                 settingsNav.setViewControllers([settingsVC, legalVC, webVC], animated: false)
             }
@@ -82,10 +84,25 @@ final class SUMainTabBarController: SUBaseTabBarController {
             selectedIndex = 3
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                 let legalVC = SULegalListViewController()
+                let lang = SULocalizationManager.shared.currentLanguage.rawValue
                 let webVC = SUWebViewController(
-                    url: URL(string: SUAppConfig.privacyPolicyURL),
+                    url: URL(string: SUAppConfig.privacyPolicyURL(lang: lang)),
                     pageTitle: SULocalized("legal_item_privacy_title", default: "隐私政策"),
-                    fallbackResourceName: "privacy"
+                    fallbackResourceName: "privacy",
+                    languageCode: lang
+                )
+                settingsNav.setViewControllers([settingsVC, legalVC, webVC], animated: false)
+            }
+        } else if CommandLine.arguments.contains("-openTermsDetail") {
+            selectedIndex = 3
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                let legalVC = SULegalListViewController()
+                let lang = SULocalizationManager.shared.currentLanguage.rawValue
+                let webVC = SUWebViewController(
+                    url: URL(string: SUAppConfig.termsOfServiceURL(lang: lang)),
+                    pageTitle: SULocalized("legal_item_terms_title", default: "服务条款"),
+                    fallbackResourceName: "terms",
+                    languageCode: lang
                 )
                 settingsNav.setViewControllers([settingsVC, legalVC, webVC], animated: false)
             }

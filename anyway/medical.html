@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>SpineUp · 健康与医疗免责声明</title>
+  <title>SpineUp · 健康与医疗免责声明 / Health & Medical Disclaimer</title>
   <style>
     :root {
       --bg-primary: #f5f5f7;
@@ -55,8 +55,10 @@
       -webkit-backdrop-filter: blur(20px);
       z-index: 100;
       border-bottom: 0.5px solid var(--border-color);
-      padding: 14px 20px;
-      text-align: center;
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
 
     .brand-title {
@@ -64,6 +66,24 @@
       font-weight: 600;
       color: var(--text-secondary);
       letter-spacing: -0.2px;
+    }
+
+    .lang-picker select {
+      appearance: none;
+      -webkit-appearance: none;
+      background: var(--bg-card);
+      color: var(--text-primary);
+      border: 0.5px solid var(--border-color);
+      padding: 6px 28px 6px 12px;
+      border-radius: 18px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      outline: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 5 5-5z' fill='%2386868b'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
     }
 
     .container {
@@ -169,11 +189,19 @@
 <body>
 
   <header>
-    <div class="brand-title">SpineUp · 健康与医疗免责声明</div>
+    <div class="brand-title">SpineUp</div>
+    <div class="lang-picker">
+      <select id="lang-select" onchange="applyLanguage(this.value)">
+        <option value="zh-Hans">简体中文</option>
+        <option value="en">English</option>
+        <option value="zh-Hant">繁體中文</option>
+        <option value="ja">日本語</option>
+      </select>
+    </div>
   </header>
 
-  <div class="container">
-
+  <!-- ==================== 1. 简体中文 (zh-Hans) ==================== -->
+  <div class="container lang-section" id="lang-zh-Hans">
     <div class="doc-header">
       <div class="doc-icon">🏥</div>
       <h1 class="doc-title">健康与医疗免责声明</h1>
@@ -231,8 +259,184 @@
       <p>© 2026 SpineUp · Protected by AirPods Spatial Motion & AI.</p>
       <p>All Rights Reserved.</p>
     </footer>
-
   </div>
+
+  <!-- ==================== 2. English (en) ==================== -->
+  <div class="container lang-section" id="lang-en" style="display: none;">
+    <div class="doc-header">
+      <div class="doc-icon">🏥</div>
+      <h1 class="doc-title">Health & Medical Disclaimer</h1>
+      <div class="doc-date">Effective Date: October 2026</div>
+    </div>
+
+    <div class="alert-banner">
+      ⚠️ <strong>Important Notice:</strong> SpineUp is <strong>NOT a medical device</strong> and does not provide clinical diagnosis, medical advice, or treatment plans. If you suffer from cervical spondylosis, scoliosis, or experience pain, numbness, or dizziness, consult a licensed physician immediately.
+    </div>
+
+    <div class="section-card">
+      <h2 class="section-title">1. Non-Medical Device Declaration</h2>
+      <div class="section-body">
+        <p>SpineUp (including spatial headphone posture monitoring, micro-exercise coaching, focus tracking, and spine health scores) is designed strictly as a lifestyle ergonomic posture habit and wellness assistant.</p>
+        <p><strong>This application is not certified as a medical device by the NMPA, U.S. FDA, or any equivalent health regulatory authority.</strong> It does not diagnose, treat, cure, rehabilitate, or prevent any cervical or spinal disease.</p>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h2 class="section-title">2. Biomechanical Estimates & Academic Models</h2>
+      <div class="section-body">
+        <p>Metrics displayed in the application—such as forward head tilt angle, cervical load estimations (e.g., equivalent ~27kg load at 60° tilt), and uprightness score—are calculated based on established ergonomic literature and statistical models.</p>
+        <p>These values serve solely as qualitative educational feedback for daily desk posture and <strong>must never be used as clinical diagnostic criteria for cervical lordosis or pathological conditions</strong>.</p>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h2 class="section-title">3. Discomfort & Professional Medical Advice</h2>
+      <div class="section-body">
+        <p>Cease using this application and seek medical attention immediately if you experience:</p>
+        <ul>
+          <li>Persistent or radiating pain/tingling in the neck, shoulders, or back;</li>
+          <li>Numbness, loss of motor control, or weakness in your upper limbs;</li>
+          <li>Severe headaches, dizziness, nausea, blurred vision, or loss of balance.</li>
+        </ul>
+        <p>SpineUp alerts can never substitute for professional orthopedic physical examinations or medical imaging (X-ray, CT, MRI).</p>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h2 class="section-title">4. Micro-Exercise Safety Guidelines</h2>
+      <div class="section-body">
+        <p>Interactive posture stretching exercises in SpineUp are gentle office mobility movements. Always perform them in a clear, safe physical environment.</p>
+        <p>If you have a history of spinal surgery, acute cervical sprain, or severe osteoporosis, <strong>do not engage in stretching exercises without prior clearance from your physician</strong>.</p>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h2 class="section-title">5. Complete Limitation of Liability</h2>
+      <div class="section-body">
+        <p>To the fullest extent permitted by applicable law, SpineUp developers shall not be liable for any direct, indirect, incidental, or consequential damages resulting from misuse of app data as medical advice, delayed medical treatment, or inappropriate posture exercises.</p>
+      </div>
+    </div>
+
+    <footer>
+      <p>© 2026 SpineUp · Protected by AirPods Spatial Motion & AI.</p>
+      <p>All Rights Reserved.</p>
+    </footer>
+  </div>
+
+  <!-- ==================== 3. 繁體中文 (zh-Hant) ==================== -->
+  <div class="container lang-section" id="lang-zh-Hant" style="display: none;">
+    <div class="doc-header">
+      <div class="doc-icon">🏥</div>
+      <h1 class="doc-title">健康與醫療免責聲明</h1>
+      <div class="doc-date">最後生效日期：2026 年 10 月</div>
+    </div>
+
+    <div class="alert-banner">
+      ⚠️ <strong>重要須知：</strong>SpineUp 絕非醫療器材，亦不提供任何臨床診斷或醫療建議。若您患有頸椎病、脊椎側彎或感到任何身體不適，請務必諮詢專業執業醫師。
+    </div>
+
+    <div class="section-card">
+      <h2 class="section-title">1. 非醫療器材與非醫療服務聲明</h2>
+      <div class="section-body">
+        <p>SpineUp 僅作為日常體態健康習慣養成與專注輔助工具。<strong>本應用程式未經衛生主管機關認可為醫療器材</strong>，不提供任何形式之醫學診斷、臨床治療或復健服務。</p>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h2 class="section-title">2. 姿態數據與負重模型性質</h2>
+      <div class="section-body">
+        <p>應用程式展示之低頭角度與頸椎負重估算值係依據人體工學統計學術模型推估，僅供日常坐姿提醒，<strong>切勿作為判斷頸椎病理狀態之醫學依據</strong>。</p>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h2 class="section-title">3. 身體不適與就醫指引</h2>
+      <div class="section-body">
+        <p>若出現頸肩背部放射性疼痛、上肢麻木無力或伴隨頭暈目眩，請立即停止使用並儘速就醫。</p>
+      </div>
+    </div>
+
+    <footer>
+      <p>© 2026 SpineUp · Protected by AirPods Spatial Motion & AI.</p>
+      <p>All Rights Reserved.</p>
+    </footer>
+  </div>
+
+  <!-- ==================== 4. 日本語 (ja) ==================== -->
+  <div class="container lang-section" id="lang-ja" style="display: none;">
+    <div class="doc-header">
+      <div class="doc-icon">🏥</div>
+      <h1 class="doc-title">健康および医療に関する免責事項</h1>
+      <div class="doc-date">発効日：2026 年 10 月</div>
+    </div>
+
+    <div class="alert-banner">
+      ⚠️ <strong>重要なお知らせ：</strong>SpineUp は<strong>医療機器ではありません</strong>。また、臨床診断や治療計画を提供するものではありません。首の痛み、しびれ、めまい等がある場合は直ちに専門医にご相談ください。
+    </div>
+
+    <div class="section-card">
+      <h2 class="section-title">1. 非医療機器に関する声明</h2>
+      <div class="section-body">
+        <p>本アプリは日常的な姿勢改善と習慣づくりのための補助ツールです。医療機器としての承認を受けておらず、疾病の診断・治療・予防を目的としたものではありません。</p>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h2 class="section-title">2. 負荷推計モデルの性質</h2>
+      <div class="section-body">
+        <p>表示される前傾角度や首への負荷推計値は一般的な人間工学モデルに基づく目安であり、医学的な診断基準として利用することはできません。</p>
+      </div>
+    </div>
+
+    <footer>
+      <p>© 2026 SpineUp · Protected by AirPods Spatial Motion & AI.</p>
+      <p>All Rights Reserved.</p>
+    </footer>
+  </div>
+
+  <script>
+    var DEFAULT_LANG = 'zh-Hans';
+
+    function getInitialLang() {
+      var params = new URLSearchParams(window.location.search);
+      var qLang = params.get('lang');
+      if (qLang) return qLang;
+
+      var hash = window.location.hash.replace('#', '');
+      if (hash.indexOf('lang=') === 0) return hash.replace('lang=', '');
+
+      if (typeof DEFAULT_LANG !== 'undefined' && DEFAULT_LANG) return DEFAULT_LANG;
+      return navigator.language || 'zh-Hans';
+    }
+
+    function applyLanguage(lang) {
+      if (!lang) lang = 'zh-Hans';
+      var target = 'en';
+      var l = lang.toLowerCase();
+      if (l.indexOf('zh-hant') !== -1 || l.indexOf('zh-tw') !== -1 || l.indexOf('zh-hk') !== -1) {
+        target = 'zh-Hant';
+      } else if (l.indexOf('zh') !== -1) {
+        target = 'zh-Hans';
+      } else if (l.indexOf('ja') !== -1) {
+        target = 'ja';
+      } else {
+        target = 'en';
+      }
+
+      document.querySelectorAll('.lang-section').forEach(function(sec) {
+        sec.style.display = (sec.id === 'lang-' + target) ? 'block' : 'none';
+      });
+
+      var select = document.getElementById('lang-select');
+      if (select) select.value = target;
+      document.documentElement.lang = target;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    window.addEventListener('DOMContentLoaded', function() {
+      applyLanguage(getInitialLang());
+    });
+  </script>
 
 </body>
 </html>

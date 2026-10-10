@@ -70,7 +70,22 @@ enum SUAppConfig {
 
     // MARK: - 法律与合规公网链接 (Legal & Compliance Public URLs)
     static let legalBaseURL = "https://skyzizhu.github.io/SpineUp"
-    static var medicalDisclaimerURL: String { "\(legalBaseURL)/medical.html" }
-    static var privacyPolicyURL: String { "\(legalBaseURL)/privacy.html" }
-    static var termsOfServiceURL: String { "\(legalBaseURL)/terms.html" }
+
+    static func medicalDisclaimerURL(lang: String? = nil) -> String {
+        let code = lang ?? SULocalizationManager.shared.currentLanguage.rawValue
+        return "\(legalBaseURL)/medical.html?lang=\(code)"
+    }
+    static var medicalDisclaimerURL: String { medicalDisclaimerURL() }
+
+    static func privacyPolicyURL(lang: String? = nil) -> String {
+        let code = lang ?? SULocalizationManager.shared.currentLanguage.rawValue
+        return "\(legalBaseURL)/privacy.html?lang=\(code)"
+    }
+    static var privacyPolicyURL: String { privacyPolicyURL() }
+
+    static func termsOfServiceURL(lang: String? = nil) -> String {
+        let code = lang ?? SULocalizationManager.shared.currentLanguage.rawValue
+        return "\(legalBaseURL)/terms.html?lang=\(code)"
+    }
+    static var termsOfServiceURL: String { termsOfServiceURL() }
 }

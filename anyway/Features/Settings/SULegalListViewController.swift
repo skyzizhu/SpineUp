@@ -184,28 +184,34 @@ final class SULegalListViewController: SUBaseViewController {
         super.setupBindings()
 
         medicalRowView.onTap = { [weak self] in
+            let lang = SULocalizationManager.shared.currentLanguage.rawValue
             let webVC = SUWebViewController(
-                url: URL(string: SUAppConfig.medicalDisclaimerURL),
+                url: URL(string: SUAppConfig.medicalDisclaimerURL(lang: lang)),
                 pageTitle: SULocalized("legal_item_medical_title", default: "健康与医疗免责声明"),
-                fallbackResourceName: "medical"
+                fallbackResourceName: "medical",
+                languageCode: lang
             )
             self?.navigationController?.pushViewController(webVC, animated: true)
         }
 
         privacyRowView.onTap = { [weak self] in
+            let lang = SULocalizationManager.shared.currentLanguage.rawValue
             let webVC = SUWebViewController(
-                url: URL(string: SUAppConfig.privacyPolicyURL),
+                url: URL(string: SUAppConfig.privacyPolicyURL(lang: lang)),
                 pageTitle: SULocalized("legal_item_privacy_title", default: "隐私政策"),
-                fallbackResourceName: "privacy"
+                fallbackResourceName: "privacy",
+                languageCode: lang
             )
             self?.navigationController?.pushViewController(webVC, animated: true)
         }
 
         termsRowView.onTap = { [weak self] in
+            let lang = SULocalizationManager.shared.currentLanguage.rawValue
             let webVC = SUWebViewController(
-                url: URL(string: SUAppConfig.termsOfServiceURL),
+                url: URL(string: SUAppConfig.termsOfServiceURL(lang: lang)),
                 pageTitle: SULocalized("legal_item_terms_title", default: "用户服务条款"),
-                fallbackResourceName: "terms"
+                fallbackResourceName: "terms",
+                languageCode: lang
             )
             self?.navigationController?.pushViewController(webVC, animated: true)
         }

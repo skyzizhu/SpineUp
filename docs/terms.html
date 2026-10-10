@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>SpineUp · 用户服务条款</title>
+  <title>SpineUp · 用户服务条款 / Terms of Service</title>
   <style>
     :root {
       --bg-primary: #f5f5f7;
@@ -55,8 +55,10 @@
       -webkit-backdrop-filter: blur(20px);
       z-index: 100;
       border-bottom: 0.5px solid var(--border-color);
-      padding: 14px 20px;
-      text-align: center;
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
 
     .brand-title {
@@ -64,6 +66,24 @@
       font-weight: 600;
       color: var(--text-secondary);
       letter-spacing: -0.2px;
+    }
+
+    .lang-picker select {
+      appearance: none;
+      -webkit-appearance: none;
+      background: var(--bg-card);
+      color: var(--text-primary);
+      border: 0.5px solid var(--border-color);
+      padding: 6px 28px 6px 12px;
+      border-radius: 18px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      outline: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 5 5-5z' fill='%2386868b'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
     }
 
     .container {
@@ -169,11 +189,19 @@
 <body>
 
   <header>
-    <div class="brand-title">SpineUp · 用户服务条款</div>
+    <div class="brand-title">SpineUp</div>
+    <div class="lang-picker">
+      <select id="lang-select" onchange="applyLanguage(this.value)">
+        <option value="zh-Hans">简体中文</option>
+        <option value="en">English</option>
+        <option value="zh-Hant">繁體中文</option>
+        <option value="ja">日本語</option>
+      </select>
+    </div>
   </header>
 
-  <div class="container">
-
+  <!-- ==================== 1. 简体中文 (zh-Hans) ==================== -->
+  <div class="container lang-section" id="lang-zh-Hans">
     <div class="doc-header">
       <div class="doc-icon">📄</div>
       <h1 class="doc-title">用户服务条款</h1>
@@ -217,30 +245,13 @@
       <h2 class="section-title">4. 知识产权与合法权益声明</h2>
       <div class="section-body">
         <p>SpineUp 应用程序的所有界面设计、视觉图标、交互动画、代码逻辑、文本内容以及商标标识，均受中华人民共和国著作权法、商标法及国际知识产权条约的保护。</p>
-        <p>未经开发者书面许可，任何人不得擅自复制、传播、展示或镜像上述任何内容。</p>
       </div>
     </div>
 
     <div class="section-card">
-      <h2 class="section-title">5. 服务的变更、中断或终止</h2>
+      <h2 class="section-title">5. 免责声明与有限责任</h2>
       <div class="section-body">
-        <p>为了不断优化用户体验，开发者保留随时自行决定修改、更新、暂停或终止本软件部分或全部功能的权利。</p>
-        <p>因系统维护、设备硬件损坏或不可抗力等原因导致的服务异常，开发者将在合理范围内尽快修复，但不承担由此可能产生的额外损失责任。</p>
-      </div>
-    </div>
-
-    <div class="section-card">
-      <h2 class="section-title">6. 免责声明与有限责任</h2>
-      <div class="section-body">
-        <p>本软件按“现状”（AS IS）提供，开发者不就软件对特定用途的适用性、无偶发错误或完全不间断运行做出任何明示或默示的保证。</p>
-        <p>在法律允许的最大范围内，因使用或无法使用本软件所导致的任何间接、附带或惩罚性损害赔偿，开发者承担的责任总额不超过您为使用本软件所实际支付的费用（如有）。</p>
-      </div>
-    </div>
-
-    <div class="section-card">
-      <h2 class="section-title">7. 法律适用与争议管辖</h2>
-      <div class="section-body">
-        <p>本服务条款的订立、执行、解释及争议解决均适用中华人民共和国法律。如双方就本协议内容或其执行发生任何争议，双方应友好协商解决；协商不成的，任何一方均可向开发者所在地具有管辖权的人民法院提起诉讼。</p>
+        <p>本软件按“现状”（AS IS）提供，开发者不就软件对特定用途的适用性做出任何明示或默示的保证。因使用本软件所导致的任何间接或附带损害赔偿，开发者承担的责任总额不超过您为使用本软件所实际支付的费用（如有）。</p>
       </div>
     </div>
 
@@ -248,8 +259,170 @@
       <p>© 2026 SpineUp · Protected by AirPods Spatial Motion & AI.</p>
       <p>All Rights Reserved.</p>
     </footer>
-
   </div>
+
+  <!-- ==================== 2. English (en) ==================== -->
+  <div class="container lang-section" id="lang-en" style="display: none;">
+    <div class="doc-header">
+      <div class="doc-icon">📄</div>
+      <h1 class="doc-title">Terms of Service</h1>
+      <div class="doc-date">Effective Date: October 2026</div>
+    </div>
+
+    <div class="alert-banner">
+      💡 <strong>Notice:</strong> Welcome to SpineUp. This Terms of Service Agreement is a legally binding contract between you and SpineUp governing your access to and use of the SpineUp mobile application.
+    </div>
+
+    <div class="section-card">
+      <h2 class="section-title">1. Acceptance of Terms</h2>
+      <div class="section-body">
+        <p>By downloading, installing, or using SpineUp, you agree to be bound by these Terms of Service. If you do not agree with these terms, do not install or use the application.</p>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h2 class="section-title">2. Limited Software License</h2>
+      <div class="section-body">
+        <p>We grant you a personal, non-exclusive, non-transferable, revocable limited license to use SpineUp on compatible Apple devices (iPhone and AirPods) owned or controlled by you.</p>
+        <p>You agree not to reverse engineer, decompile, modify, or create derivative works based upon the software.</p>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h2 class="section-title">3. Virtual Energy, Pets & Badges</h2>
+      <div class="section-body">
+        <p>The "Spine Energy" points, virtual pet companions, and streak badges within SpineUp are designed purely for motivational and ergonomic engagement.</p>
+        <p><strong>They hold zero monetary or cash value and cannot be redeemed, traded, or transferred as real-world assets.</strong></p>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h2 class="section-title">4. Intellectual Property</h2>
+      <div class="section-body">
+        <p>All interfaces, graphic designs, icons, audio alerts, and software code within SpineUp are the proprietary property of the developer and are protected by applicable intellectual property laws.</p>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h2 class="section-title">5. Disclaimer of Warranties & Liability</h2>
+      <div class="section-body">
+        <p>The application is provided on an "AS IS" and "AS AVAILABLE" basis without warranties of any kind. Under no circumstances shall developers be liable for indirect, incidental, or consequential damages arising from app usage.</p>
+      </div>
+    </div>
+
+    <footer>
+      <p>© 2026 SpineUp · Protected by AirPods Spatial Motion & AI.</p>
+      <p>All Rights Reserved.</p>
+    </footer>
+  </div>
+
+  <!-- ==================== 3. 繁體中文 (zh-Hant) ==================== -->
+  <div class="container lang-section" id="lang-zh-Hant" style="display: none;">
+    <div class="doc-header">
+      <div class="doc-icon">📄</div>
+      <h1 class="doc-title">使用者服務條款</h1>
+      <div class="doc-date">最後生效日期：2026 年 10 月</div>
+    </div>
+
+    <div class="alert-banner">
+      💡 <strong>導讀須知：</strong>歡迎使用 SpineUp。本協議為您與 SpineUp 開發者之間訂立之具法律效力之合約，請仔細閱讀。
+    </div>
+
+    <div class="section-card">
+      <h2 class="section-title">1. 條款接受與範圍</h2>
+      <div class="section-body">
+        <p>下載或使用 SpineUp 即視為您同意遵守本條款。若您不同意，請立即停止使用本應用程式。</p>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h2 class="section-title">2. 骨氣值與虛擬機制性質</h2>
+      <div class="section-body">
+        <p>本應用程式內之「骨氣值」、虛擬寵物及成就徽章純為日常坐姿習慣養成之激勵設計，<strong>無任何現金或金融資產價值，亦不可轉讓兌換</strong>。</p>
+      </div>
+    </div>
+
+    <footer>
+      <p>© 2026 SpineUp · Protected by AirPods Spatial Motion & AI.</p>
+      <p>All Rights Reserved.</p>
+    </footer>
+  </div>
+
+  <!-- ==================== 4. 日本語 (ja) ==================== -->
+  <div class="container lang-section" id="lang-ja" style="display: none;">
+    <div class="doc-header">
+      <div class="doc-icon">📄</div>
+      <h1 class="doc-title">利用規約</h1>
+      <div class="doc-date">発効日：2026 年 10 月</div>
+    </div>
+
+    <div class="alert-banner">
+      💡 <strong>ご案内：</strong>SpineUp をご利用いただきありがとうございます。本規約は、お客様と開発者との間の法的な合意事項を定めるものです。
+    </div>
+
+    <div class="section-card">
+      <h2 class="section-title">1. 規約への同意</h2>
+      <div class="section-body">
+        <p>本アプリをダウンロードまたは利用することにより、お客様は本利用規約に同意したものとみなされます。</p>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h2 class="section-title">2. アプリ内ポイントおよびバッジの性質</h2>
+      <div class="section-body">
+        <p>アプリ内で獲得できるポイントやバッジは、正しい姿勢を維持するためのモチベーション機能であり、<strong>金銭的価値や換金性は一切ありません</strong>。</p>
+      </div>
+    </div>
+
+    <footer>
+      <p>© 2026 SpineUp · Protected by AirPods Spatial Motion & AI.</p>
+      <p>All Rights Reserved.</p>
+    </footer>
+  </div>
+
+  <script>
+    var DEFAULT_LANG = 'zh-Hans';
+
+    function getInitialLang() {
+      var params = new URLSearchParams(window.location.search);
+      var qLang = params.get('lang');
+      if (qLang) return qLang;
+
+      var hash = window.location.hash.replace('#', '');
+      if (hash.indexOf('lang=') === 0) return hash.replace('lang=', '');
+
+      if (typeof DEFAULT_LANG !== 'undefined' && DEFAULT_LANG) return DEFAULT_LANG;
+      return navigator.language || 'zh-Hans';
+    }
+
+    function applyLanguage(lang) {
+      if (!lang) lang = 'zh-Hans';
+      var target = 'en';
+      var l = lang.toLowerCase();
+      if (l.indexOf('zh-hant') !== -1 || l.indexOf('zh-tw') !== -1 || l.indexOf('zh-hk') !== -1) {
+        target = 'zh-Hant';
+      } else if (l.indexOf('zh') !== -1) {
+        target = 'zh-Hans';
+      } else if (l.indexOf('ja') !== -1) {
+        target = 'ja';
+      } else {
+        target = 'en';
+      }
+
+      document.querySelectorAll('.lang-section').forEach(function(sec) {
+        sec.style.display = (sec.id === 'lang-' + target) ? 'block' : 'none';
+      });
+
+      var select = document.getElementById('lang-select');
+      if (select) select.value = target;
+      document.documentElement.lang = target;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    window.addEventListener('DOMContentLoaded', function() {
+      applyLanguage(getInitialLang());
+    });
+  </script>
 
 </body>
 </html>

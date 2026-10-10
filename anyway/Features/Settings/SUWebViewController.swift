@@ -15,6 +15,7 @@ final class SUWebViewController: SUBaseViewController, WKNavigationDelegate {
     private let targetURL: URL?
     private let pageTitle: String
     private let fallbackResourceName: String
+    private let languageCode: String
     private var hasLoadedFallback = false
 
     private lazy var webView: WKWebView = {
@@ -37,10 +38,11 @@ final class SUWebViewController: SUBaseViewController, WKNavigationDelegate {
 
     private var progressObservation: NSKeyValueObservation?
 
-    init(url: URL?, pageTitle: String, fallbackResourceName: String = "privacy") {
+    init(url: URL?, pageTitle: String, fallbackResourceName: String = "privacy", languageCode: String? = nil) {
         self.targetURL = url
         self.pageTitle = pageTitle
         self.fallbackResourceName = fallbackResourceName
+        self.languageCode = languageCode ?? SULocalizationManager.shared.currentLanguage.rawValue
         super.init(nibName: nil, bundle: nil)
         hidesBottomBarWhenPushed = true
     }
@@ -49,6 +51,7 @@ final class SUWebViewController: SUBaseViewController, WKNavigationDelegate {
         self.targetURL = nil
         self.pageTitle = ""
         self.fallbackResourceName = "privacy"
+        self.languageCode = "zh-Hans"
         super.init(coder: coder)
         hidesBottomBarWhenPushed = true
     }
@@ -114,7 +117,8 @@ final class SUWebViewController: SUBaseViewController, WKNavigationDelegate {
         }
 
         webView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.leading.trailing.bottom.equalToSuperview()
         }
     }
 
@@ -134,7 +138,11 @@ final class SUWebViewController: SUBaseViewController, WKNavigationDelegate {
         let localURL = Bundle.main.url(forResource: fallbackResourceName, withExtension: "html") 
             ?? Bundle.main.bundleURL.appendingPathComponent("\(fallbackResourceName).html")
 
-        if let htmlString = try? String(contentsOf: localURL, encoding: .utf8) {
+        if var htmlString = try? String(contentsOf: localURL, encoding: .utf8) {
+            htmlString = htmlString.replacingOccurrences(
+                of: "var DEFAULT_LANG = 'zh-Hans';",
+                with: "var DEFAULT_LANG = '\(languageCode)';"
+            )
             webView.loadHTMLString(htmlString, baseURL: Bundle.main.bundleURL)
         } else if FileManager.default.fileExists(atPath: localURL.path) {
             webView.loadFileURL(localURL, allowingReadAccessTo: Bundle.main.bundleURL)
@@ -169,6 +177,8 @@ final class SUWebViewController: SUBaseViewController, WKNavigationDelegate {
 
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         progressView.alpha = 0
+        let script = "if (typeof applyLanguage === 'function') { applyLanguage('\(languageCode)'); }"
+        webView.evaluateJavaScript(script, completionHandler: nil)
     }
 
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
