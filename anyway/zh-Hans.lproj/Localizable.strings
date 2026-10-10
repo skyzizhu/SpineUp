@@ -450,3 +450,22 @@
 "legal_item_terms_desc" = "软件使用许可协议、免责条款与知识产权规范";
 "legal_effective_date" = "生效日期：2026年10月";
 
+/* Advanced & Auto-Launch */
+"settings_advanced_section" = "高级玩法";
+"settings_auto_launch_title" = "戴上耳机自动启动";
+"settings_auto_launch_value" = "快捷指令指引";
+"auto_launch_nav_title" = "戴上耳机自动启动";
+"auto_launch_hero_title" = "AirPods 入耳 · 自动开练";
+"auto_launch_hero_subtitle" = "利用 iOS 原生「快捷指令」自动化，每次佩戴 AirPods 连上 iPhone 时，系统将自动秒开 SpineUp 并开启坐姿守护，无需每次解锁翻找应用。";
+"auto_launch_steps_title" = "4 步极简配置流程 (仅需 1 分钟)";
+"auto_launch_step1_title" = "打开快捷指令 App";
+"auto_launch_step1_desc" = "在 iPhone 上打开自带的「快捷指令」App，轻点底部中间的「自动化」标签页。";
+"auto_launch_step2_title" = "新建个人自动化";
+"auto_launch_step2_desc" = "轻点右上角「+」，在触发条件列表中向下滑动并选择「蓝牙」。";
+"auto_launch_step3_title" = "绑定 AirPods 并设为立即运行";
+"auto_launch_step3_desc" = "在「设备」中勾选您的 AirPods；在下方运行选项中勾选「立即运行」，并关闭「运行时通知」。";
+"auto_launch_step4_title" = "添加打开 SpineUp 操作";
+"auto_launch_step4_desc" = "点击下一步，选择「新建空白自动化」-> 添加操作，搜索「打开 App」并选择「SpineUp」，点击完成即可！";
+"auto_launch_tip" = "💡 极客小贴士：iOS 17 及以上系统的蓝牙自动化完全支持免确认「立即运行」。设置完成后，只要您戴上耳机触发蓝牙连接，手机将自动秒开 SpineUp！";
+"auto_launch_open_shortcuts_btn" = "立即前往「快捷指令」配置";
+

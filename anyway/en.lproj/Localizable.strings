@@ -450,3 +450,22 @@
 "legal_item_terms_desc" = "Software license agreement, limitation of liability & terms";
 "legal_effective_date" = "Effective: October 2026";
 
+/* Advanced & Auto-Launch */
+"settings_advanced_section" = "Advanced";
+"settings_auto_launch_title" = "Auto-Launch on Connect";
+"settings_auto_launch_value" = "Shortcuts Guide";
+"auto_launch_nav_title" = "Auto-Launch on AirPods Connect";
+"auto_launch_hero_title" = "AirPods In-Ear · Auto Start";
+"auto_launch_hero_subtitle" = "Utilize iOS Shortcuts Personal Automation to automatically launch SpineUp and start posture guard whenever your AirPods connect to your iPhone.";
+"auto_launch_steps_title" = "4 Quick Steps (Takes 1 Minute)";
+"auto_launch_step1_title" = "Open Shortcuts App";
+"auto_launch_step1_desc" = "Open the built-in Shortcuts app on your iPhone and tap the 'Automation' tab at the bottom.";
+"auto_launch_step2_title" = "Create Personal Automation";
+"auto_launch_step2_desc" = "Tap '+' in the top right corner, scroll down the triggers list, and select 'Bluetooth'.";
+"auto_launch_step3_title" = "Select AirPods & Run Immediately";
+"auto_launch_step3_desc" = "Choose your AirPods in 'Device'; select 'Run Immediately' and turn off 'Notify When Run'.";
+"auto_launch_step4_title" = "Add 'Open App - SpineUp'";
+"auto_launch_step4_desc" = "Tap Next, select 'New Blank Automation' -> Add Action, search for 'Open App', pick 'SpineUp', and tap Done!";
+"auto_launch_tip" = "💡 Pro Tip: iOS 17+ Bluetooth automations support seamless 'Run Immediately' without confirmation. Once configured, putting on your AirPods will immediately launch SpineUp!";
+"auto_launch_open_shortcuts_btn" = "Open Shortcuts App to Set Up";
+

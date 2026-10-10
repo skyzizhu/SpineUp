@@ -410,3 +410,22 @@
 "legal_item_terms_desc" = "Contrat de licence logicielle, limitation de responsabilité et règles";
 "legal_effective_date" = "Date d'effet : Octobre 2026";
 
+/* Advanced & Auto-Launch */
+"settings_advanced_section" = "Fonctionnalités avancées";
+"settings_auto_launch_title" = "Lancement auto à la connexion";
+"settings_auto_launch_value" = "Guide Raccourcis";
+"auto_launch_nav_title" = "Lancement automatique";
+"auto_launch_hero_title" = "AirPods connectés · Démarrage auto";
+"auto_launch_hero_subtitle" = "Utilisez les automatisations de l'application Raccourcis iOS pour lancer automatiquement SpineUp dès que vos AirPods se connectent.";
+"auto_launch_steps_title" = "4 étapes simples (1 minute)";
+"auto_launch_step1_title" = "Ouvrir l'application Raccourcis";
+"auto_launch_step1_desc" = "Ouvrez l'application Raccourcis sur votre iPhone et appuyez sur l'onglet 'Automatisation' en bas.";
+"auto_launch_step2_title" = "Créer une automatisation perso";
+"auto_launch_step2_desc" = "Appuyez sur '+' en haut à droite et sélectionnez 'Bluetooth' dans la liste.";
+"auto_launch_step3_title" = "Choisir les AirPods & Exécuter imm.";
+"auto_launch_step3_desc" = "Choisissez vos AirPods dans 'Appareil', cochez 'Exécuter immédiatement' et désactivez la notification.";
+"auto_launch_step4_title" = "Ajouter l'action 'Ouvrir SpineUp'";
+"auto_launch_step4_desc" = "Appuyez sur Suivant -> Nouvelle automatisation vierge -> Ajouter une action -> Recherchez 'Ouvrir l'app' -> Choisissez SpineUp et validez !";
+"auto_launch_tip" = "💡 Astuce : Les automatisations Bluetooth iOS 17+ prennent en charge l'exécution immédiate sans confirmation. Une fois configuré, brancher vos AirPods ouvrira SpineUp instantanément !";
+"auto_launch_open_shortcuts_btn" = "Ouvrir Raccourcis pour configurer";
+

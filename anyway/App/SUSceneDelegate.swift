@@ -67,4 +67,14 @@ class SUSceneDelegate: UIResponder, UIWindowSceneDelegate {
         SULogger.lifecycle.debug("SUSceneDelegate sceneDidEnterBackground")
         SUPostureSessionManager.shared.saveSession()
     }
+
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        guard let url = URLContexts.first?.url else { return }
+        SULogger.lifecycle.info("Opened with URL: \(url.absoluteString)")
+        if url.scheme?.lowercased() == "spineup" {
+            if let tabController = window?.rootViewController as? UITabBarController {
+                tabController.selectedIndex = 0
+            }
+        }
+    }
 }

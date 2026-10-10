@@ -410,3 +410,22 @@
 "legal_item_terms_desc" = "اتفاقية ترخيص البرنامج وحدود المسؤولية والشروط";
 "legal_effective_date" = "تاريخ السريان: أكتوبر 2026";
 
+/* Advanced & Auto-Launch */
+"settings_advanced_section" = "ميزات متقدمة";
+"settings_auto_launch_title" = "تشغيل تلقائي عند التوصيل";
+"settings_auto_launch_value" = "دليل الاختصارات";
+"auto_launch_nav_title" = "التشغيل التلقائي عند التوصيل";
+"auto_launch_hero_title" = "ارتداء AirPods · بدء تلقائي";
+"auto_launch_hero_subtitle" = "استخدم أتمتة تطبيق الاختصارات في iOS لفتح SpineUp تلقائيًا وبدء حماية وضعية الجلوس فور اتصال AirPods.";
+"auto_launch_steps_title" = "٤ خطوات بسيطة (تستغرق دقيقة واحدة)";
+"auto_launch_step1_title" = "افتح تطبيق الاختصارات";
+"auto_launch_step1_desc" = "افتح تطبيق الاختصارات على جهازك واضغط على تبويب 'التحكم التلقائي' في الأسفل.";
+"auto_launch_step2_title" = "إنشاء تحكم تلقائي شخصي جديد";
+"auto_launch_step2_desc" = "اضغط على '+' في الزاوية العلوية، ثم اختر 'Bluetooth' من القائمة.";
+"auto_launch_step3_title" = "حدد AirPods واختر التشغيل الفوري";
+"auto_launch_step3_desc" = "اختر سماعاتك في خانة 'الجهاز'، وحدد 'تشغيل فورًا' وأوقف تفعيل 'إعلام عند التشغيل'.";
+"auto_launch_step4_title" = "إضافة إجراء فتح تطبيق SpineUp";
+"auto_launch_step4_desc" = "اضغط على التالي، ثم اختر 'تحكم تلقائي فارغ جديد' -> أضف إجراء 'فتح التطبيق' واختر SpineUp ثم اضغط تم!";
+"auto_launch_tip" = "💡 نصيحة: تدعم أتمتة البلوتوث في iOS 17+ ميزة 'التشغيل فورًا' دون طلب تأكيد. بمجرد إعدادها، سيفتح SpineUp فور ارتداء السماعات!";
+"auto_launch_open_shortcuts_btn" = "فتح تطبيق الاختصارات للضبط";
+

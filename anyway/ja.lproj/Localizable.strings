@@ -410,3 +410,22 @@
 "legal_item_terms_desc" = "ソフトウェア使用許諾、責任の制限、および利用規定";
 "legal_effective_date" = "発効日：2026年10月";
 
+/* Advanced & Auto-Launch */
+"settings_advanced_section" = "高度な設定";
+"settings_auto_launch_title" = "装着時に自動起動";
+"settings_auto_launch_value" = "ショートカット手順";
+"auto_launch_nav_title" = "装着時に自動起動";
+"auto_launch_hero_title" = "AirPods 装着で自動スタート";
+"auto_launch_hero_subtitle" = "iOS標準の「ショートカット」オートメーションを活用し、AirPodsを接続するだけでSpineUpを自動起動して姿勢見守りを即座に開始できます。";
+"auto_launch_steps_title" = "簡単4ステップ（所要時間約1分）";
+"auto_launch_step1_title" = "ショートカット App を開く";
+"auto_launch_step1_desc" = "iPhoneの「ショートカット」アプリを開き、画面下部中央の「オートメーション」タブをタップします。";
+"auto_launch_step2_title" = "新規オートメーションを作成";
+"auto_launch_step2_desc" = "右上の「+」をタップし、トリガー一覧から「Bluetooth」を選択します。";
+"auto_launch_step3_title" = "AirPods を選択し「すぐに実行」を設定";
+"auto_launch_step3_desc" = "「デバイス」でお手持ちのAirPodsを選択し、「すぐに実行」をオンにして「実行時に通知」をオフにします。";
+"auto_launch_step4_title" = "「SpineUp を開く」アクションを追加";
+"auto_launch_step4_desc" = "「次へ」をタップし、「新規の空のオートメーション」→「アクションを追加」で「アプリを開く」を検索して「SpineUp」を選択し、完了をタップします。";
+"auto_launch_tip" = "💡 ヒント：iOS 17以降のBluetoothオートメーションは確認なしの「すぐに実行」に対応しています。一度設定すれば、AirPodsを耳に装着するだけで自動でSpineUpが起動します！";
+"auto_launch_open_shortcuts_btn" = "「ショートカット」アプリを開いて設定";
+

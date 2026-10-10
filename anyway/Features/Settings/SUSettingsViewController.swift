@@ -186,7 +186,35 @@ final class SUSettingsViewController: SUBaseViewController {
         iconBackground: .systemIndigo
     )
 
-    // MARK: - Section 5: 合规与法律条款
+    // MARK: - Section 5: 高级玩法
+    private let advancedSectionTitleLabel: UILabel = {
+        let label = UILabel()
+        label.text = SULocalized("settings_advanced_section", default: "高级玩法")
+        label.font = .systemFont(ofSize: 16, weight: .bold)
+        label.textColor = .label
+        return label
+    }()
+
+    private let advancedCardView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .secondarySystemGroupedBackground
+        view.layer.cornerRadius = SULayoutConstants.cornerRadiusLarge
+        view.layer.cornerCurve = .continuous
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOpacity = 0.03
+        view.layer.shadowOffset = CGSize(width: 0, height: 6)
+        view.layer.shadowRadius = 16
+        return view
+    }()
+
+    private let autoLaunchRowView = SUSettingsNavigationRowView(
+        title: SULocalized("settings_auto_launch_title", default: "戴上耳机自动启动"),
+        value: SULocalized("settings_auto_launch_value", default: "快捷指令指引"),
+        iconSystemName: "bolt.badge.automatic",
+        iconBackground: .systemPurple
+    )
+
+    // MARK: - Section 6: 合规与法律条款
     private let legalSectionTitleLabel: UILabel = {
         let label = UILabel()
         label.text = SULocalized("settings_legal_section", default: "法律与免责声明")
@@ -262,6 +290,12 @@ final class SUSettingsViewController: SUBaseViewController {
                 self.scrollView.setContentOffset(bottomOffset, animated: false)
             }
         }
+        if CommandLine.arguments.contains("-openAutoLaunchGuide") {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                let guideVC = SUAutoLaunchGuideViewController()
+                self.navigationController?.pushViewController(guideVC, animated: false)
+            }
+        }
     }
 
     override func setupSubviews() {
@@ -306,6 +340,11 @@ final class SUSettingsViewController: SUBaseViewController {
         generalCardView.addSubview(themeRowView)
         generalCardView.addSubview(generalSeparatorView)
         generalCardView.addSubview(languageRowView)
+
+        // 组装高级玩法入口
+        contentView.addSubview(advancedSectionTitleLabel)
+        contentView.addSubview(advancedCardView)
+        advancedCardView.addSubview(autoLaunchRowView)
 
         // 组装法律与合规入口
         contentView.addSubview(legalSectionTitleLabel)
@@ -434,8 +473,23 @@ final class SUSettingsViewController: SUBaseViewController {
             make.height.equalTo(52)
         }
 
-        legalSectionTitleLabel.snp.makeConstraints { make in
+        advancedSectionTitleLabel.snp.makeConstraints { make in
             make.top.equalTo(generalCardView.snp.bottom).offset(SULayoutConstants.sectionSpacing)
+            make.leading.trailing.equalToSuperview().inset(SULayoutConstants.horizontalPadding)
+        }
+
+        advancedCardView.snp.makeConstraints { make in
+            make.top.equalTo(advancedSectionTitleLabel.snp.bottom).offset(8)
+            make.leading.trailing.equalToSuperview().inset(SULayoutConstants.horizontalPadding)
+        }
+
+        autoLaunchRowView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+            make.height.equalTo(52)
+        }
+
+        legalSectionTitleLabel.snp.makeConstraints { make in
+            make.top.equalTo(advancedCardView.snp.bottom).offset(SULayoutConstants.sectionSpacing)
             make.leading.trailing.equalToSuperview().inset(SULayoutConstants.horizontalPadding)
         }
 
@@ -504,6 +558,11 @@ final class SUSettingsViewController: SUBaseViewController {
         languageRowView.onTap = { [weak self] in
             let languageVC = SULanguageSettingViewController()
             self?.navigationController?.pushViewController(languageVC, animated: true)
+        }
+
+        autoLaunchRowView.onTap = { [weak self] in
+            let guideVC = SUAutoLaunchGuideViewController()
+            self?.navigationController?.pushViewController(guideVC, animated: true)
         }
 
         legalRowView.onTap = { [weak self] in
@@ -603,7 +662,12 @@ final class SUSettingsViewController: SUBaseViewController {
         let langVal = SULocalizationManager.shared.isFollowSystem ? SULocalized("follow_system", default: "跟随系统") : SULocalizationManager.shared.currentLanguage.displayName
         languageRowView.setValue(langVal)
 
-        // Section 5: 合规与法律条款
+        // Section 5: 高级玩法
+        advancedSectionTitleLabel.text = SULocalized("settings_advanced_section", default: "高级玩法")
+        autoLaunchRowView.setTitle(SULocalized("settings_auto_launch_title", default: "戴上耳机自动启动"))
+        autoLaunchRowView.setValue(SULocalized("settings_auto_launch_value", default: "快捷指令指引"))
+
+        // Section 6: 合规与法律条款
         legalSectionTitleLabel.text = SULocalized("settings_legal_section", default: "法律与免责声明")
         legalRowView.setTitle(SULocalized("settings_legal_documents_title", default: "协议与声明"))
 

@@ -410,3 +410,22 @@
 "legal_item_terms_desc" = "소프트웨어 사용권 계약, 책임 제한 및 이용 규정";
 "legal_effective_date" = "시행일: 2026년 10월";
 
+/* Advanced & Auto-Launch */
+"settings_advanced_section" = "고급 기능";
+"settings_auto_launch_title" = "착용 시 자동 실행";
+"settings_auto_launch_value" = "단축어 가이드";
+"auto_launch_nav_title" = "착용 시 자동 실행";
+"auto_launch_hero_title" = "AirPods 착용 즉시 자동 시작";
+"auto_launch_hero_subtitle" = "iOS 기본 '단축어' 자동화를 활용하여 AirPods가 연결될 때마다 SpineUp을 자동으로 실행하고 자세 모니터링을 즉시 시작합니다.";
+"auto_launch_steps_title" = "간단 4단계 설정 (1분 소요)";
+"auto_launch_step1_title" = "단축어 앱 열기";
+"auto_launch_step1_desc" = "iPhone에서 '단축어' 앱을 열고 하단 중앙의 '자동화' 탭을 탭합니다.";
+"auto_launch_step2_title" = "새로운 개인용 자동화 생성";
+"auto_launch_step2_desc" = "우측 상단의 '+'를 누르고 트리거 목록에서 'Bluetooth'를 선택합니다.";
+"auto_launch_step3_title" = "AirPods 선택 및 확인 없이 즉시 실행";
+"auto_launch_step3_desc" = "'기기'에서 AirPods를 선택하고, 하단에서 '즉시 실행'을 선택한 뒤 '실행 시 알림'을 끕니다.";
+"auto_launch_step4_title" = "SpineUp 앱 열기 동작 추가";
+"auto_launch_step4_desc" = "'다음'을 누르고 '새로운 빈 자동화' -> '동작 추가'에서 '앱 열기'를 검색하여 'SpineUp'을 선택한 뒤 완료합니다.";
+"auto_launch_tip" = "💡 팁: iOS 17 이상의 Bluetooth 자동화는 확인 절차 없는 '즉시 실행'을 완벽하게 지원합니다. 한 번 설정해 두면 AirPods를 착용하는 즉시 SpineUp이 실행됩니다!";
+"auto_launch_open_shortcuts_btn" = "'단축어' 앱으로 이동하여 설정";
+
