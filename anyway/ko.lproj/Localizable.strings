@@ -111,6 +111,8 @@
 "settings_sound_alert" = "시스템 알림 효과음";
 "settings_sound_alert_desc" = "거북목 감지 시 청량한 물방울 소리";
 "settings_alerts_footer" = "• 백그라운드 오디오 안내: 자세 모니터링 시 화면 잠금 중에도 AirPods 모션 데이터를 유지하고 알림을 재생하기 위해 백그라운드 오디오를 사용합니다. 주변 소리는 절대 녹음되지 않습니다.";
+"settings_alerts_footer_title" = "백그라운드 오디오 및 알림 안내";
+"settings_alerts_footer_desc" = "자세 모니터링 시 화면 잠금 중에도 AirPods 모션 데이터를 유지하고 알림을 재생하기 위해 백그라운드 오디오를 사용합니다. 주변 소리는 절대 녹음되지 않습니다.";
 "streak_days_title" = "연속 달성";
 "streak_days_val" = "%d 일";
 "energy_coins_total_title" = "누적 에너지 코인";

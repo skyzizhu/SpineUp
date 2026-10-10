@@ -123,6 +123,8 @@
 "settings_sound_alert" = "轻快系统提示铃";
 "settings_sound_alert_desc" = "低头时清脆水滴声";
 "settings_alerts_footer" = "• 后台音频说明：开启守护后，应用将使用后台音频通道维持 AirPods 空间姿态流，确保锁屏与切换应用时仍可及时播报不良坐姿提醒；绝不采集任何环境声音。";
+"settings_alerts_footer_title" = "后台音频与低延迟提醒";
+"settings_alerts_footer_desc" = "开启守护后，应用将使用后台音频通道维持 AirPods 空间姿态流，确保锁屏与切换应用时仍可及时播报不良坐姿提醒；绝不采集任何环境声音。";
 "streak_days_title" = "连续打卡";
 "streak_days_val" = "%d 天";
 "energy_coins_total_title" = "累计能量币";

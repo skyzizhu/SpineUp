@@ -84,11 +84,41 @@ final class SUSettingsViewController: SUBaseViewController {
         iconTint: .systemOrange
     )
 
+    // MARK: - 提醒偏好说明卡片
+    private let alertsFooterCardView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .secondarySystemGroupedBackground
+        view.layer.cornerRadius = 16
+        view.layer.cornerCurve = .continuous
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOpacity = 0.03
+        view.layer.shadowOffset = CGSize(width: 0, height: 4)
+        view.layer.shadowRadius = 12
+        return view
+    }()
+
+    private let alertsFooterIconView: UIImageView = {
+        let iv = UIImageView()
+        let config = UIImage.SymbolConfiguration(pointSize: 14, weight: .semibold)
+        iv.image = UIImage(systemName: "speaker.wave.2.bubble.fill", withConfiguration: config) ?? UIImage(systemName: "info.circle.fill", withConfiguration: config)
+        iv.tintColor = .systemBlue
+        iv.contentMode = .scaleAspectFit
+        return iv
+    }()
+
+    private let alertsFooterTitleLabel: UILabel = {
+        let label = UILabel()
+        label.text = SULocalized("settings_alerts_footer_title", default: "后台音频与低延迟提醒")
+        label.font = .systemFont(ofSize: 13, weight: .semibold)
+        label.textColor = .label
+        return label
+    }()
+
     private let alertsSectionFooterLabel: UILabel = {
         let label = UILabel()
         label.text = SULocalized(
-            "settings_alerts_footer",
-            default: "• 后台音频说明：开启守护后，应用将使用后台音频通道维持 AirPods 空间姿态流，确保锁屏与切换应用时仍可及时播报不良坐姿提醒；绝不采集任何环境声音。"
+            "settings_alerts_footer_desc",
+            default: "开启守护后，应用将使用后台音频通道维持 AirPods 空间姿态流，确保锁屏与切换应用时仍可及时播报不良坐姿提醒；绝不采集任何环境声音。"
         )
         label.font = .systemFont(ofSize: 12, weight: .regular)
         label.textColor = .secondaryLabel
@@ -324,7 +354,10 @@ final class SUSettingsViewController: SUBaseViewController {
         alertsCardView.addSubview(voiceRowView)
         alertsCardView.addSubview(hapticRowView)
         alertsCardView.addSubview(soundRowView)
-        contentView.addSubview(alertsSectionFooterLabel)
+        contentView.addSubview(alertsFooterCardView)
+        alertsFooterCardView.addSubview(alertsFooterIconView)
+        alertsFooterCardView.addSubview(alertsFooterTitleLabel)
+        alertsFooterCardView.addSubview(alertsSectionFooterLabel)
 
         // 组装能量统计
         contentView.addSubview(energySectionTitleLabel)
@@ -406,13 +439,32 @@ final class SUSettingsViewController: SUBaseViewController {
             make.height.equalTo(58)
         }
 
+        alertsFooterCardView.snp.makeConstraints { make in
+            make.top.equalTo(alertsCardView.snp.bottom).offset(10)
+            make.leading.trailing.equalToSuperview().inset(SULayoutConstants.horizontalPadding)
+        }
+
+        alertsFooterIconView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(12)
+            make.leading.equalToSuperview().offset(14)
+            make.size.equalTo(18)
+        }
+
+        alertsFooterTitleLabel.snp.makeConstraints { make in
+            make.centerY.equalTo(alertsFooterIconView)
+            make.leading.equalTo(alertsFooterIconView.snp.trailing).offset(8)
+            make.trailing.equalToSuperview().offset(-14)
+        }
+
         alertsSectionFooterLabel.snp.makeConstraints { make in
-            make.top.equalTo(alertsCardView.snp.bottom).offset(8)
-            make.leading.trailing.equalToSuperview().inset(SULayoutConstants.horizontalPadding + 4)
+            make.top.equalTo(alertsFooterTitleLabel.snp.bottom).offset(6)
+            make.leading.equalToSuperview().offset(14)
+            make.trailing.equalToSuperview().offset(-14)
+            make.bottom.equalToSuperview().offset(-12)
         }
 
         energySectionTitleLabel.snp.makeConstraints { make in
-            make.top.equalTo(alertsSectionFooterLabel.snp.bottom).offset(SULayoutConstants.sectionSpacing)
+            make.top.equalTo(alertsFooterCardView.snp.bottom).offset(SULayoutConstants.sectionSpacing)
             make.leading.trailing.equalToSuperview().inset(SULayoutConstants.horizontalPadding)
         }
 
@@ -639,9 +691,10 @@ final class SUSettingsViewController: SUBaseViewController {
 
         soundRowView.setTitle(SULocalized("settings_sound_alert", default: "轻快系统提示铃"))
         soundRowView.setSubtitle(SULocalized("settings_sound_alert_desc", default: "低头时清脆水滴声"))
+        alertsFooterTitleLabel.text = SULocalized("settings_alerts_footer_title", default: "后台音频与低延迟提醒")
         alertsSectionFooterLabel.text = SULocalized(
-            "settings_alerts_footer",
-            default: "• 后台音频说明：开启守护后，应用将使用后台音频通道维持 AirPods 空间姿态流，确保锁屏与切换应用时仍可及时播报不良坐姿提醒；绝不采集任何环境声音。"
+            "settings_alerts_footer_desc",
+            default: "开启守护后，应用将使用后台音频通道维持 AirPods 空间姿态流，确保锁屏与切换应用时仍可及时播报不良坐姿提醒；绝不采集任何环境声音。"
         )
 
         // Section 3: 能量统计

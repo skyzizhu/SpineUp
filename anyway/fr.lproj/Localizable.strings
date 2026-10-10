@@ -111,6 +111,8 @@
 "settings_sound_alert" = "Carillon Système";
 "settings_sound_alert_desc" = "Son cristallin de goutte d'eau";
 "settings_alerts_footer" = "• Audio en arrière-plan : Le suivi postural utilise un canal audio en arrière-plan pour maintenir le flux de mouvement des AirPods lorsque l'écran est verrouillé. Aucun son ambiant n'est enregistré.";
+"settings_alerts_footer_title" = "Audio en arrière-plan et alertes";
+"settings_alerts_footer_desc" = "Le suivi postural utilise un canal audio en arrière-plan pour maintenir le flux de mouvement des AirPods lorsque l'écran est verrouillé. Aucun son ambiant n'est enregistré.";
 "streak_days_title" = "Série Quotidienne";
 "streak_days_val" = "%d Jours";
 "energy_coins_total_title" = "Total Pièces d'Énergie";
