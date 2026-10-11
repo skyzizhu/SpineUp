@@ -37,4 +37,12 @@ final class SUBaseNavigationController: UINavigationController {
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return topViewController?.supportedInterfaceOrientations ?? [.portrait, .landscapeLeft, .landscapeRight]
     }
+    
+    override func pushViewController(_ viewController: UIViewController, animated: Bool) {
+        // 只有非根控制器才隐藏（根控制器通常不需要）
+        if viewControllers.count > 0 {
+            viewController.hidesBottomBarWhenPushed = true
+        }
+        super.pushViewController(viewController, animated: animated)
+    }
 }

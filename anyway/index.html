@@ -1,0 +1,1839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+  
+  <!-- Primary SEO Meta Tags -->
+  <title id="meta-title">SpineUp · Smart Posture Tracker for AirPods | Better Spine, Effortless Posture</title>
+  <meta name="title" content="SpineUp · Smart Posture Tracker for AirPods | Better Spine, Effortless Posture">
+  <meta name="description" id="meta-description" content="SpineUp turns your AirPods into an intelligent, on-device posture coach. Real-time cervical spine tracking, discreet cues, desk micro-stretches, and Apple Health integration with 100% privacy.">
+  <meta name="keywords" content="SpineUp, AirPods posture tracker, posture corrector, neck pain, cervical spine, CoreMotion, Apple Health, Mindful Minutes, desk ergonomics, smart posture">
+  <meta name="author" content="SpineUp Team">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#0071e3" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+
+  <!-- Canonical & Alternate Hreflang URLs -->
+  <link rel="canonical" href="https://skyzizhu.github.io/SpineUp/">
+  <link rel="alternate" hreflang="x-default" href="https://skyzizhu.github.io/SpineUp/">
+  <link rel="alternate" hreflang="en" href="https://skyzizhu.github.io/SpineUp/?lang=en">
+  <link rel="alternate" hreflang="zh-Hans" href="https://skyzizhu.github.io/SpineUp/?lang=zh-Hans">
+  <link rel="alternate" hreflang="zh-Hant" href="https://skyzizhu.github.io/SpineUp/?lang=zh-Hant">
+  <link rel="alternate" hreflang="ja" href="https://skyzizhu.github.io/SpineUp/?lang=ja">
+  <link rel="alternate" hreflang="ko" href="https://skyzizhu.github.io/SpineUp/?lang=ko">
+  <link rel="alternate" hreflang="fr" href="https://skyzizhu.github.io/SpineUp/?lang=fr">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://skyzizhu.github.io/SpineUp/">
+  <meta property="og:title" id="og-title" content="SpineUp · Smart Posture Tracker for AirPods">
+  <meta property="og:description" id="og-description" content="Effortlessly protect your spine and posture with AirPods motion intelligence. 100% on-device privacy.">
+  <meta property="og:image" content="https://skyzizhu.github.io/SpineUp/assets/app-icon.png">
+  <meta property="og:site_name" content="SpineUp">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://skyzizhu.github.io/SpineUp/">
+  <meta name="twitter:title" id="tw-title" content="SpineUp · Smart Posture Tracker for AirPods">
+  <meta name="twitter:description" id="tw-description" content="Effortlessly protect your spine and posture with AirPods motion intelligence. 100% on-device privacy.">
+  <meta name="twitter:image" content="https://skyzizhu.github.io/SpineUp/assets/app-icon.png">
+
+  <!-- App Favicons -->
+  <link rel="icon" type="image/png" href="assets/app-icon.png">
+  <link rel="apple-touch-icon" href="assets/app-icon.png">
+
+  <!-- Structured Data (JSON-LD) for Google SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "SpineUp",
+    "operatingSystem": "iOS 17.0 and later",
+    "applicationCategory": "HealthApplication",
+    "applicationSubCategory": "Ergonomics & Posture",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "description": "Smart posture tracking using AirPods motion sensors. Discreet reminders, desk micro-stretches, and Apple Health integration.",
+    "screenshot": "https://skyzizhu.github.io/SpineUp/assets/app-icon.png",
+    "softwareVersion": "1.0",
+    "author": {
+      "@type": "Organization",
+      "name": "SpineUp"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "ratingCount": "320"
+    }
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg-body: #fbfbfd;
+      --bg-card: #ffffff;
+      --bg-card-subtle: #f5f5f7;
+      --text-main: #1d1d1f;
+      --text-sub: #6e6e73;
+      --text-muted: #86868b;
+      --border-subtle: rgba(0, 0, 0, 0.08);
+      --border-highlight: rgba(0, 113, 227, 0.2);
+      --accent-blue: #0071e3;
+      --accent-blue-hover: #0077ed;
+      --accent-green: #34c759;
+      --accent-orange: #ff9500;
+      --accent-red: #ff3b30;
+      --accent-indigo: #5856d6;
+      --glass-nav: rgba(251, 251, 253, 0.82);
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+      --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 20px 48px rgba(0, 0, 0, 0.08);
+      --radius-sm: 12px;
+      --radius-md: 20px;
+      --radius-lg: 28px;
+      --font-stack: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg-body: #000000;
+        --bg-card: #1c1c1e;
+        --bg-card-subtle: #141416;
+        --text-main: #f5f5f7;
+        --text-sub: #a1a1a6;
+        --text-muted: #76767b;
+        --border-subtle: rgba(255, 255, 255, 0.1);
+        --border-highlight: rgba(41, 151, 255, 0.3);
+        --accent-blue: #2997ff;
+        --accent-blue-hover: #47a6ff;
+        --accent-green: #30d158;
+        --accent-orange: #ff9f0a;
+        --accent-red: #ff453a;
+        --accent-indigo: #5e5ce6;
+        --glass-nav: rgba(0, 0, 0, 0.82);
+        --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+        --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.6);
+        --shadow-lg: 0 20px 48px rgba(0, 0, 0, 0.8);
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-stack);
+      background-color: var(--bg-body);
+      color: var(--text-main);
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    /* Global Container */
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Navigation Bar */
+    header.site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: var(--glass-nav);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 0.5px solid var(--border-subtle);
+      transition: background-color 0.3s ease;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .brand-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text-main);
+      font-weight: 700;
+      font-size: 19px;
+      letter-spacing: -0.4px;
+    }
+
+    .brand-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+      object-fit: cover;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: var(--text-sub);
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--text-main);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    /* Language Dropdown Selector */
+    .lang-dropdown-wrapper {
+      position: relative;
+    }
+
+    .lang-select-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 12px;
+      font-size: 13px;
+      font-weight: 500;
+      border-radius: 980px;
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-card);
+      color: var(--text-main);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .lang-select-btn:hover {
+      border-color: var(--accent-blue);
+    }
+
+    .lang-select-dropdown {
+      position: absolute;
+      top: 120%;
+      right: 0;
+      min-width: 140px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-lg);
+      padding: 6px;
+      display: none;
+      z-index: 1010;
+    }
+
+    .lang-select-dropdown.active {
+      display: block;
+      animation: fadeInDown 0.2s ease-out;
+    }
+
+    .lang-option {
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 8px 12px;
+      font-size: 13px;
+      border: none;
+      background: none;
+      color: var(--text-main);
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+
+    .lang-option:hover, .lang-option.selected {
+      background: rgba(0, 113, 227, 0.08);
+      color: var(--accent-blue);
+      font-weight: 600;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 9px 18px;
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: 980px;
+      text-decoration: none;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--accent-blue);
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(0, 113, 227, 0.25);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-blue-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(0, 113, 227, 0.35);
+    }
+
+    .btn-secondary {
+      background: var(--bg-card-subtle);
+      color: var(--text-main);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .btn-secondary:hover {
+      background: var(--bg-card);
+      border-color: var(--text-muted);
+    }
+
+    .btn-lg {
+      padding: 14px 28px;
+      font-size: 16px;
+      border-radius: 980px;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      padding: 80px 0 60px;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      background: rgba(0, 113, 227, 0.08);
+      color: var(--accent-blue);
+      border-radius: 980px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: -0.1px;
+      margin-bottom: 24px;
+      border: 1px solid rgba(0, 113, 227, 0.15);
+    }
+
+    .hero-title {
+      font-size: clamp(38px, 6vw, 68px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.08;
+      max-width: 860px;
+      margin: 0 auto 20px;
+      background: linear-gradient(135deg, var(--text-main) 40%, var(--text-sub) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(17px, 2.2vw, 21px);
+      color: var(--text-sub);
+      max-width: 660px;
+      margin: 0 auto 36px;
+      line-height: 1.45;
+      font-weight: 400;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+
+    .app-store-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: #000000;
+      color: #ffffff;
+      padding: 11px 22px;
+      border-radius: 14px;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: var(--shadow-md);
+    }
+
+    .app-store-badge:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .app-store-badge svg {
+      width: 24px;
+      height: 24px;
+      fill: #ffffff;
+    }
+
+    .badge-text {
+      text-align: left;
+      line-height: 1.15;
+    }
+
+    .badge-sub {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      opacity: 0.8;
+    }
+
+    .badge-main {
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: -0.3px;
+    }
+
+    /* Device & Posture Live Mockup */
+    .hero-preview-container {
+      margin: 0 auto;
+      max-width: 820px;
+      position: relative;
+      padding-top: 20px;
+    }
+
+    .preview-phone-card {
+      background: var(--bg-card);
+      border-radius: 36px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-lg);
+      padding: 36px 32px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+      align-items: center;
+      text-align: left;
+    }
+
+    @media (max-width: 768px) {
+      .preview-phone-card {
+        grid-template-columns: 1fr;
+        padding: 24px;
+        gap: 28px;
+      }
+    }
+
+    .ring-wrapper {
+      position: relative;
+      width: 220px;
+      height: 220px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .ring-svg {
+      transform: rotate(-90deg);
+      width: 100%;
+      height: 100%;
+    }
+
+    .ring-bg {
+      fill: none;
+      stroke: var(--bg-card-subtle);
+      stroke-width: 14;
+    }
+
+    .ring-progress {
+      fill: none;
+      stroke: var(--accent-green);
+      stroke-width: 14;
+      stroke-linecap: round;
+      stroke-dasharray: 565;
+      stroke-dashoffset: 60;
+      transition: stroke-dashoffset 0.6s cubic-bezier(0.16, 1, 0.3, 1), stroke 0.4s ease;
+    }
+
+    .ring-center-content {
+      position: absolute;
+      text-align: center;
+    }
+
+    .ring-value {
+      font-size: 42px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      color: var(--text-main);
+      line-height: 1;
+    }
+
+    .ring-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent-green);
+      margin-top: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .preview-info-col {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .airpods-status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--bg-card-subtle);
+      padding: 8px 14px;
+      border-radius: 980px;
+      border: 1px solid var(--border-subtle);
+      font-size: 13px;
+      font-weight: 600;
+      width: fit-content;
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--accent-green);
+      border-radius: 50%;
+      box-shadow: 0 0 0 3px rgba(52, 199, 89, 0.25);
+      animation: pulseAnim 2s infinite;
+    }
+
+    @keyframes pulseAnim {
+      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(52, 199, 89, 0.4); }
+      70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(52, 199, 89, 0); }
+      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(52, 199, 89, 0); }
+    }
+
+    .metric-card-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .metric-box {
+      background: var(--bg-card-subtle);
+      padding: 14px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .metric-title {
+      font-size: 12px;
+      color: var(--text-sub);
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    .metric-data {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    /* Section Styling */
+    section {
+      padding: 80px 0;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 56px;
+    }
+
+    .section-eyebrow {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent-blue);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .section-title {
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.18;
+      margin-bottom: 16px;
+    }
+
+    .section-desc {
+      font-size: 17px;
+      color: var(--text-sub);
+      line-height: 1.5;
+    }
+
+    /* Interactive Posture Simulator */
+    .simulator-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-md);
+      padding: 40px;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .sim-slider-group {
+      margin: 32px 0 24px;
+    }
+
+    .sim-slider-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-sub);
+      margin-bottom: 10px;
+    }
+
+    .sim-range {
+      width: 100%;
+      height: 8px;
+      border-radius: 980px;
+      background: var(--bg-card-subtle);
+      outline: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+    }
+
+    .sim-range::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--accent-blue);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      transition: transform 0.15s ease;
+    }
+
+    .sim-range::-webkit-slider-thumb:hover {
+      transform: scale(1.15);
+    }
+
+    .sim-feedback-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      padding: 16px 24px;
+      border-radius: var(--radius-md);
+      background: rgba(52, 199, 89, 0.1);
+      color: var(--accent-green);
+      font-weight: 600;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(52, 199, 89, 0.2);
+    }
+
+    /* Bento Grid Features */
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    @media (max-width: 992px) {
+      .bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .bento-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .bento-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+      padding: 32px 28px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .bento-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--border-highlight);
+    }
+
+    .bento-card.col-span-2 {
+      grid-column: span 2;
+    }
+
+    @media (max-width: 640px) {
+      .bento-card.col-span-2 {
+        grid-column: span 1;
+      }
+    }
+
+    .bento-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .icon-blue { background: rgba(0, 113, 227, 0.1); color: var(--accent-blue); }
+    .icon-green { background: rgba(52, 199, 89, 0.1); color: var(--accent-green); }
+    .icon-purple { background: rgba(88, 86, 214, 0.1); color: var(--accent-indigo); }
+    .icon-orange { background: rgba(255, 149, 0, 0.1); color: var(--accent-orange); }
+
+    .bento-title {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      margin-bottom: 10px;
+      color: var(--text-main);
+    }
+
+    .bento-desc {
+      font-size: 14.5px;
+      color: var(--text-sub);
+      line-height: 1.55;
+    }
+
+    /* Device Compatibility Section */
+    .devices-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      padding: 48px 36px;
+      text-align: center;
+    }
+
+    .device-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 28px;
+    }
+
+    .device-pill {
+      background: var(--bg-card-subtle);
+      border: 1px solid var(--border-subtle);
+      padding: 10px 20px;
+      border-radius: 980px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-main);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Privacy Banner */
+    .privacy-banner {
+      background: linear-gradient(135deg, rgba(0, 113, 227, 0.05), rgba(52, 199, 89, 0.05));
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      padding: 48px 40px;
+      display: flex;
+      align-items: center;
+      gap: 36px;
+    }
+
+    @media (max-width: 768px) {
+      .privacy-banner {
+        flex-direction: column;
+        text-align: center;
+        padding: 32px 24px;
+      }
+    }
+
+    .privacy-icon-box {
+      font-size: 56px;
+      flex-shrink: 0;
+    }
+
+    /* FAQ Section */
+    .faq-list {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .faq-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      transition: border-color 0.2s ease;
+    }
+
+    .faq-item:hover {
+      border-color: var(--border-highlight);
+    }
+
+    .faq-question {
+      width: 100%;
+      text-align: left;
+      padding: 22px 28px;
+      font-size: 17px;
+      font-weight: 600;
+      border: none;
+      background: none;
+      color: var(--text-main);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-chevron {
+      font-size: 20px;
+      color: var(--text-muted);
+      transition: transform 0.25s ease;
+    }
+
+    .faq-item.active .faq-chevron {
+      transform: rotate(180deg);
+      color: var(--accent-blue);
+    }
+
+    .faq-answer {
+      display: none;
+      padding: 0 28px 24px;
+      font-size: 15px;
+      color: var(--text-sub);
+      line-height: 1.6;
+    }
+
+    .faq-item.active .faq-answer {
+      display: block;
+    }
+
+    /* Footer */
+    footer.site-footer {
+      background: var(--bg-card-subtle);
+      border-top: 1px solid var(--border-subtle);
+      padding: 60px 0 40px;
+      margin-top: 80px;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 36px;
+      margin-bottom: 40px;
+    }
+
+    .footer-brand-info {
+      max-width: 320px;
+    }
+
+    .footer-desc {
+      font-size: 13px;
+      color: var(--text-sub);
+      margin-top: 12px;
+      line-height: 1.5;
+    }
+
+    .footer-links-group {
+      display: flex;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+
+    .footer-col-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-main);
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      margin-bottom: 16px;
+    }
+
+    .footer-link-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-link-list a {
+      text-decoration: none;
+      font-size: 13.5px;
+      color: var(--text-sub);
+      transition: color 0.2s ease;
+    }
+
+    .footer-link-list a:hover {
+      color: var(--accent-blue);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a href="#" class="brand-link">
+        <img src="assets/app-icon.png" alt="SpineUp App Icon" class="brand-icon">
+        <span>SpineUp</span>
+      </a>
+
+      <nav class="nav-menu">
+        <a href="#features" class="nav-link" data-i18n="nav_features">Features</a>
+        <a href="#demo" class="nav-link" data-i18n="nav_demo">Interactive Demo</a>
+        <a href="#privacy" class="nav-link" data-i18n="nav_privacy">Privacy & Health</a>
+        <a href="#faq" class="nav-link" data-i18n="nav_faq">FAQ</a>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- Language Dropdown -->
+        <div class="lang-dropdown-wrapper">
+          <button class="lang-select-btn" id="lang-btn" aria-label="Select Language">
+            <span>🌐</span>
+            <span id="current-lang-text">English</span>
+            <span style="font-size: 10px;">▼</span>
+          </button>
+          <div class="lang-select-dropdown" id="lang-dropdown">
+            <button class="lang-option" data-lang="en">English</button>
+            <button class="lang-option" data-lang="zh-Hans">简体中文</button>
+            <button class="lang-option" data-lang="zh-Hant">繁體中文</button>
+            <button class="lang-option" data-lang="ja">日本語</button>
+            <button class="lang-option" data-lang="ko">한국어</button>
+            <button class="lang-option" data-lang="fr">Français</button>
+          </div>
+        </div>
+
+        <a href="https://apps.apple.com" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="btn_get_app">Get App</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <main>
+    <section class="hero-section">
+      <div class="container">
+        <div class="hero-eyebrow">
+          <span>🎧</span>
+          <span data-i18n="hero_badge">Designed for AirPods & Apple Ecosystem</span>
+        </div>
+
+        <h1 class="hero-title" data-i18n="hero_title">
+          Smart Posture Tracking, Powered by Your AirPods.
+        </h1>
+
+        <p class="hero-subtitle" data-i18n="hero_desc">
+          Transform your AirPods into a real-time cervical spine coach. Discreet haptic and sound cues, 100% on-device biometric privacy, and guided desk stretches to keep you upright effortlessly.
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="https://apps.apple.com" target="_blank" rel="noopener" class="app-store-badge">
+            <svg viewBox="0 0 170 170">
+              <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.69-3.08-7.7-7.93-12.04-14.54-6.08-9.13-10.8-19.46-14.15-30.98-3.35-11.53-5.03-22.37-5.03-32.53 0-14.92 3.84-27.18 11.53-36.78 7.68-9.6 17.2-14.49 28.56-14.68 5.03 0 10.42 1.3 16.16 3.91 5.74 2.61 9.4 3.97 10.99 4.08 1.94-.22 5.73-1.63 11.37-4.23 5.63-2.6 10.8-3.79 15.51-3.58 12.38.64 22.28 5.48 29.7 14.53-10.74 6.5-16 15.43-15.79 26.78.21 8.9 3.65 16.42 10.32 22.56 6.66 6.14 14.62 9.77 23.88 10.88-2.39 7.05-5.32 14.43-8.79 22.14zM119.22 33.64c0-7.27 2.66-14.19 7.97-20.76 5.31-6.57 11.87-10.84 19.68-12.82.22 1.09.33 2.18.33 3.27 0 7.27-2.82 14.32-8.47 21.16-5.65 6.84-12.44 11.02-20.37 12.54-.33-1.09-.5-2.2-.5-3.39z"/>
+            </svg>
+            <div class="badge-text">
+              <div class="badge-sub" data-i18n="badge_download">Download on the</div>
+              <div class="badge-main">App Store</div>
+            </div>
+          </a>
+
+          <a href="#demo" class="btn btn-secondary btn-lg" data-i18n="btn_try_simulator">Try Interactive Demo</a>
+        </div>
+
+        <!-- Phone Preview Mockup Card -->
+        <div class="hero-preview-container">
+          <div class="preview-phone-card">
+            <div>
+              <div class="ring-wrapper">
+                <svg class="ring-svg" viewBox="0 0 200 200">
+                  <circle class="ring-bg" cx="100" cy="100" r="90"></circle>
+                  <circle class="ring-progress" id="hero-ring" cx="100" cy="100" r="90"></circle>
+                </svg>
+                <div class="ring-center-content">
+                  <div class="ring-value" id="hero-posture-val">94%</div>
+                  <div class="ring-label" id="hero-posture-label" data-i18n="posture_upright">Upright Score</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="preview-info-col">
+              <div class="airpods-status-pill">
+                <div class="pulse-dot"></div>
+                <span data-i18n="airpods_connected">AirPods Connected · Motion Active</span>
+              </div>
+
+              <div class="metric-card-grid">
+                <div class="metric-box">
+                  <div class="metric-title" data-i18n="metric_upright_time">Upright Focus</div>
+                  <div class="metric-data">42 <span style="font-size: 13px; font-weight: normal;">min</span></div>
+                </div>
+                <div class="metric-box">
+                  <div class="metric-title" data-i18n="metric_tilt_angle">Head Pitch</div>
+                  <div class="metric-data">4.2° <span style="font-size: 12px; color: var(--accent-green);">Optimal</span></div>
+                </div>
+                <div class="metric-box">
+                  <div class="metric-title" data-i18n="metric_slouch_alerts">Gentle Cues</div>
+                  <div class="metric-data">2 <span style="font-size: 13px; font-weight: normal;">times</span></div>
+                </div>
+                <div class="metric-box">
+                  <div class="metric-title" data-i18n="metric_apple_health">Apple Health</div>
+                  <div class="metric-data" style="font-size: 16px; color: var(--accent-green);">✓ Mindful Sync</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Interactive Posture Simulator Section -->
+    <section id="demo">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow" data-i18n="sim_eyebrow">Instant Preview</span>
+          <h2 class="section-title" data-i18n="sim_title">Experience How SpineUp Works</h2>
+          <p class="section-desc" data-i18n="sim_desc">Drag the slider to test how AirPods motion tracking identifies head tilt angles and triggers gentle corrective alerts.</p>
+        </div>
+
+        <div class="simulator-card">
+          <div style="font-size: 64px; margin-bottom: 12px;" id="sim-icon">🧘‍♂️</div>
+          <div style="font-size: 32px; font-weight: 800;" id="sim-angle-display">0° Head Pitch</div>
+
+          <div class="sim-slider-group">
+            <div class="sim-slider-label">
+              <span data-i18n="sim_ideal">0° Upright (Ideal)</span>
+              <span data-i18n="sim_slouched">35° Forward Slouch</span>
+            </div>
+            <input type="range" min="0" max="35" value="0" class="sim-range" id="sim-slider">
+          </div>
+
+          <div class="sim-feedback-box" id="sim-feedback">
+            <span id="sim-status-text" data-i18n="sim_status_perfect">Perfect spinal alignment! No strain on cervical vertebrae.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bento Grid Features Section -->
+    <section id="features">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow" data-i18n="features_eyebrow">Intelligent Design</span>
+          <h2 class="section-title" data-i18n="features_title">Engineered for Everyday Workflows</h2>
+          <p class="section-desc" data-i18n="features_desc">Built from the ground up for Apple hardware, delivering effortless ergonomic coaching without wearable clutter.</p>
+        </div>
+
+        <div class="bento-grid">
+          <!-- Card 1 (Large) -->
+          <div class="bento-card col-span-2">
+            <div>
+              <div class="bento-icon icon-blue">📡</div>
+              <h3 class="bento-title" data-i18n="feat_1_title">AirPods CoreMotion Fusion</h3>
+              <p class="bento-desc" data-i18n="feat_1_desc">
+                Leverages the high-precision 6-axis gyroscope and accelerometer built right into your AirPods. Adaptive calibration continuously recalibrates against your natural workspace sitting angle.
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="bento-card">
+            <div>
+              <div class="bento-icon icon-green">🔔</div>
+              <h3 class="bento-title" data-i18n="feat_2_title">Whisper-Soft Reminders</h3>
+              <p class="bento-desc" data-i18n="feat_2_desc">
+                No jarring beeps. Enjoy subtle spatial breathing cues and low-volume chime reminders that gently remind you to straighten up without breaking deep focus.
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="bento-card">
+            <div>
+              <div class="bento-icon icon-purple">🍎</div>
+              <h3 class="bento-title" data-i18n="feat_3_title">Apple Health Sync</h3>
+              <p class="bento-desc" data-i18n="feat_3_desc">
+                Seamlessly writes verified upright posture focus duration as Mindful Sessions into Apple Health, helping you track mindfulness and body posture in one unified dashboard.
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="bento-card">
+            <div>
+              <div class="bento-icon icon-orange">⚡</div>
+              <h3 class="bento-title" data-i18n="feat_4_title">Siri Shortcuts Automation</h3>
+              <p class="bento-desc" data-i18n="feat_4_desc">
+                Set up an iOS Shortcut to automatically start posture tracking the moment you put on your AirPods. Zero taps required.
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="bento-card">
+            <div>
+              <div class="bento-icon icon-blue">🤸</div>
+              <h3 class="bento-title" data-i18n="feat_5_title">2-Min Desk Micro-Stretches</h3>
+              <p class="bento-desc" data-i18n="feat_5_desc">
+                Quick, science-backed desk mobility exercises utilizing front-facing camera AI to release neck tension between busy meetings.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Compatibility Section -->
+    <section>
+      <div class="container">
+        <div class="devices-card">
+          <span class="section-eyebrow" data-i18n="compat_eyebrow">Seamless Ecosystem</span>
+          <h2 class="section-title" data-i18n="compat_title" style="margin-bottom: 12px;">Compatible With Your Favorite Audio Gear</h2>
+          <p class="section-desc" data-i18n="compat_desc">SpineUp works seamlessly with Apple headphones featuring motion sensors running iOS 17 or later.</p>
+
+          <div class="device-tags">
+            <span class="device-pill">🎧 AirPods Pro (1st & 2nd Gen)</span>
+            <span class="device-pill">🎧 AirPods 3</span>
+            <span class="device-pill">🎧 AirPods 4 (with ANC)</span>
+            <span class="device-pill">🎧 AirPods Max</span>
+            <span class="device-pill">🎵 Beats Fit Pro</span>
+            <span class="device-pill">🎵 Beats Studio Pro</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Privacy & Health Commitment Section -->
+    <section id="privacy">
+      <div class="container">
+        <div class="privacy-banner">
+          <div class="privacy-icon-box">🛡️</div>
+          <div>
+            <h2 style="font-size: 26px; font-weight: 800; margin-bottom: 10px;" data-i18n="priv_title">100% On-Device Privacy. Guaranteed.</h2>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6;" data-i18n="priv_desc">
+              Your biometric motion data never leaves your iPhone. SpineUp does not require an account, has zero ads, and transmits zero personal analytics to remote servers. What happens on your device stays on your device.
+            </p>
+            <div style="margin-top: 16px; display: flex; gap: 16px; flex-wrap: wrap;">
+              <a href="privacy.html" style="font-size: 14px; font-weight: 600; color: var(--accent-blue); text-decoration: none;" data-i18n="link_read_privacy">Read Privacy Policy →</a>
+              <a href="medical.html" style="font-size: 14px; font-weight: 600; color: var(--accent-blue); text-decoration: none;" data-i18n="link_read_medical">Health Disclaimer →</a>
+              <a href="terms.html" style="font-size: 14px; font-weight: 600; color: var(--accent-blue); text-decoration: none;" data-i18n="link_read_terms">Terms of Service →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow" data-i18n="faq_eyebrow">Got Questions?</span>
+          <h2 class="section-title" data-i18n="faq_title">Frequently Asked Questions</h2>
+        </div>
+
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-question">
+              <span data-i18n="faq_q1">Do I need an external posture sensor or strap?</span>
+              <span class="faq-chevron">▼</span>
+            </button>
+            <div class="faq-answer" data-i18n="faq_a1">
+              No! SpineUp exclusively uses the high-precision motion gyroscope and accelerometers already built into your existing AirPods. You don't need any awkward wearable gadgets, chest straps, or sticky sensors.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span data-i18n="faq_q2">Will SpineUp interrupt my music or podcasts?</span>
+              <span class="faq-chevron">▼</span>
+            </button>
+            <div class="faq-answer" data-i18n="faq_a2">
+              Not at all. SpineUp's sound cues are gently mixed over your existing audio playback (ducking gently if desired) without stopping your music, audiobooks, or work meetings.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span data-i18n="faq_q3">Does it drain my AirPods battery?</span>
+              <span class="faq-chevron">▼</span>
+            </button>
+            <div class="faq-answer" data-i18n="faq_a3">
+              Apple's CoreMotion API is extraordinarily battery-efficient. Posture streaming consumes minimal additional energy, allowing for normal listening battery life throughout your workday.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span data-i18n="faq_q4">Is SpineUp a medical device?</span>
+              <span class="faq-chevron">▼</span>
+            </button>
+            <div class="faq-answer" data-i18n="faq_a4">
+              SpineUp is an ergonomic lifestyle and habit-coaching tool designed to promote healthy posture habits. It is not an FDA-cleared medical device and should not replace professional medical advice, diagnosis, or physical therapy for spinal conditions.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand-info">
+          <a href="#" class="brand-link">
+            <img src="assets/app-icon.png" alt="SpineUp App Icon" class="brand-icon">
+            <span>SpineUp</span>
+          </a>
+          <p class="footer-desc" data-i18n="footer_brand_desc">
+            The intelligent posture companion for AirPods. Cultivate lasting healthy habits and protect your cervical spine.
+          </p>
+        </div>
+
+        <div class="footer-links-group">
+          <div>
+            <div class="footer-col-title" data-i18n="footer_legal_title">Legal & Trust</div>
+            <ul class="footer-link-list">
+              <li><a href="privacy.html" data-i18n="link_privacy">Privacy Policy</a></li>
+              <li><a href="terms.html" data-i18n="link_terms">Terms of Service</a></li>
+              <li><a href="medical.html" data-i18n="link_medical">Medical Disclaimer</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <div class="footer-col-title" data-i18n="footer_support_title">Support</div>
+            <ul class="footer-link-list">
+              <li><a href="mailto:skyzizhu@gmail.com">skyzizhu@gmail.com</a></li>
+              <li><a href="https://github.com/skyzizhu/SpineUp" target="_blank" rel="noopener">GitHub</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 SpineUp. All rights reserved.</div>
+        <div>
+          <span>Crafted with care for cervical spine wellness.</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Multi-Language & Interactive Scripts -->
+  <script>
+    // Multilingual Dictionary
+    const i18nData = {
+      en: {
+        page_title: "SpineUp · Smart Posture Tracker for AirPods | Better Spine, Effortless Posture",
+        meta_desc: "SpineUp turns your AirPods into an intelligent, on-device posture coach. Real-time cervical spine tracking, discreet cues, desk micro-stretches, and Apple Health integration with 100% privacy.",
+        nav_features: "Features",
+        nav_demo: "Interactive Demo",
+        nav_privacy: "Privacy & Health",
+        nav_faq: "FAQ",
+        btn_get_app: "Get App",
+        hero_badge: "Designed for AirPods & Apple Ecosystem",
+        hero_title: "Smart Posture Tracking, Powered by Your AirPods.",
+        hero_desc: "Transform your AirPods into a real-time cervical spine coach. Discreet haptic and sound cues, 100% on-device biometric privacy, and guided desk stretches to keep you upright effortlessly.",
+        badge_download: "Download on the",
+        btn_try_simulator: "Try Interactive Demo",
+        posture_upright: "Upright Score",
+        airpods_connected: "AirPods Connected · Motion Active",
+        metric_upright_time: "Upright Focus",
+        metric_tilt_angle: "Head Pitch",
+        metric_slouch_alerts: "Gentle Cues",
+        metric_apple_health: "Apple Health",
+        sim_eyebrow: "Instant Preview",
+        sim_title: "Experience How SpineUp Works",
+        sim_desc: "Drag the slider to test how AirPods motion tracking identifies head tilt angles and triggers gentle corrective alerts.",
+        sim_ideal: "0° Upright (Ideal)",
+        sim_slouched: "35° Forward Slouch",
+        sim_status_perfect: "Perfect spinal alignment! No strain on cervical vertebrae.",
+        sim_status_slight: "Slight forward head tilt. Moderate neck strain (~18 lbs).",
+        sim_status_heavy: "Slouching detected! SpineUp triggers a soft posture cue.",
+        features_eyebrow: "Intelligent Design",
+        features_title: "Engineered for Everyday Workflows",
+        features_desc: "Built from the ground up for Apple hardware, delivering effortless ergonomic coaching without wearable clutter.",
+        feat_1_title: "AirPods CoreMotion Fusion",
+        feat_1_desc: "Leverages the high-precision 6-axis gyroscope and accelerometer built right into your AirPods. Adaptive calibration continuously recalibrates against your natural workspace sitting angle.",
+        feat_2_title: "Whisper-Soft Reminders",
+        feat_2_desc: "No jarring beeps. Enjoy subtle spatial breathing cues and low-volume chime reminders that gently remind you to straighten up without breaking deep focus.",
+        feat_3_title: "Apple Health Sync",
+        feat_3_desc: "Seamlessly writes verified upright posture focus duration as Mindful Sessions into Apple Health, helping you track mindfulness and body posture in one unified dashboard.",
+        feat_4_title: "Siri Shortcuts Automation",
+        feat_4_desc: "Set up an iOS Shortcut to automatically start posture tracking the moment you put on your AirPods. Zero taps required.",
+        feat_5_title: "2-Min Desk Micro-Stretches",
+        feat_5_desc: "Quick, science-backed desk mobility exercises utilizing front-facing camera AI to release neck tension between busy meetings.",
+        compat_eyebrow: "Seamless Ecosystem",
+        compat_title: "Compatible With Your Favorite Audio Gear",
+        compat_desc: "SpineUp works seamlessly with Apple headphones featuring motion sensors running iOS 17 or later.",
+        priv_title: "100% On-Device Privacy. Guaranteed.",
+        priv_desc: "Your biometric motion data never leaves your iPhone. SpineUp does not require an account, has zero ads, and transmits zero personal analytics to remote servers. What happens on your device stays on your device.",
+        link_read_privacy: "Read Privacy Policy →",
+        link_read_medical: "Health Disclaimer →",
+        link_read_terms: "Terms of Service →",
+        faq_eyebrow: "Got Questions?",
+        faq_title: "Frequently Asked Questions",
+        faq_q1: "Do I need an external posture sensor or strap?",
+        faq_a1: "No! SpineUp exclusively uses the high-precision motion gyroscope and accelerometers already built into your existing AirPods. You don't need any awkward wearable gadgets, chest straps, or sticky sensors.",
+        faq_q2: "Will SpineUp interrupt my music or podcasts?",
+        faq_a2: "Not at all. SpineUp's sound cues are gently mixed over your existing audio playback (ducking gently if desired) without stopping your music, audiobooks, or work meetings.",
+        faq_q3: "Does it drain my AirPods battery?",
+        faq_a3: "Apple's CoreMotion API is extraordinarily battery-efficient. Posture streaming consumes minimal additional energy, allowing for normal listening battery life throughout your workday.",
+        faq_q4: "Is SpineUp a medical device?",
+        faq_a4: "SpineUp is an ergonomic lifestyle and habit-coaching tool designed to promote healthy posture habits. It is not an FDA-cleared medical device and should not replace professional medical advice, diagnosis, or physical therapy for spinal conditions.",
+        footer_brand_desc: "The intelligent posture companion for AirPods. Cultivate lasting healthy habits and protect your cervical spine.",
+        footer_legal_title: "Legal & Trust",
+        footer_support_title: "Support",
+        link_privacy: "Privacy Policy",
+        link_terms: "Terms of Service",
+        link_medical: "Medical Disclaimer"
+      },
+      "zh-Hans": {
+        page_title: "SpineUp · 智能 AirPods 坐姿体态管理 | 挺拔身姿，轻松养成",
+        meta_desc: "SpineUp 巧妙利用 AirPods 运动传感器，化身端侧智能体态教练。实时监测颈椎低头角度、温和无感提醒、工位微操跟练，并与 Apple 健康无缝联动，100% 隐私安全。",
+        nav_features: "核心功能",
+        nav_demo: "交互体验",
+        nav_privacy: "隐私与健康",
+        nav_faq: "常见问题",
+        btn_get_app: "下载体验",
+        hero_badge: "专为 AirPods 与 Apple 生态打造",
+        hero_title: "智能感知，重塑挺拔体态。",
+        hero_desc: "无需繁重外接硬件，戴上 AirPods 即可开启实时颈椎坐姿守护。轻柔音频提醒、100% 本地运算端侧隐私，以及工位舒展微操，助您在专注中告别含胸驼背与颈椎疲劳。",
+        badge_download: "前往 App Store 下载",
+        btn_try_simulator: "体验体态模拟器",
+        posture_upright: "挺拔达标率",
+        airpods_connected: "AirPods 已连接 · 实时感知中",
+        metric_upright_time: "挺拔专注",
+        metric_tilt_angle: "头部倾角",
+        metric_slouch_alerts: "温和提醒",
+        metric_apple_health: "Apple 健康",
+        sim_eyebrow: "直观感知",
+        sim_title: "亲身体验 SpineUp 如何工作",
+        sim_desc: "拖动下方滑块调整头部俯仰角度，查看 AirPods 传感器如何实时识别倾斜并触发温和体态反馈。",
+        sim_ideal: "0° 笔直挺拔 (理想)",
+        sim_slouched: "35° 严重低头伏案",
+        sim_status_perfect: "完美体态！颈椎脊柱受力均衡，无多余生理负担。",
+        sim_status_slight: "头部轻微前倾，颈椎承受约 8~12kg 额外压力。",
+        sim_status_heavy: "低头驼背已达临界值！SpineUp 触发轻柔声音提醒直立。",
+        features_eyebrow: "精工打造",
+        features_title: "深度融入您的日常办公流",
+        features_desc: "为苹果生态原生定制，享受纯粹、智能、无穿戴负担的工位健康体态改善体验。",
+        feat_1_title: "AirPods 运动传感器融合",
+        feat_1_desc: "依托 AirPods 内置的高精度六轴陀螺仪与加速度计，结合自适应校准算法，随时适应您的工位初始坐姿。",
+        feat_2_title: "耳畔温和无感提醒",
+        feat_2_desc: "绝不使用突兀刺耳的警报。通过轻柔空间呼吸声与温和提示音，在不打断工作专注的前提下自然纠正身姿。",
+        feat_3_title: "Apple 健康无缝同步",
+        feat_3_desc: "经授权后将您的良好挺拔坐姿时长自动写入 Apple 健康的「正念时间」，体态与身心健康一目了然。",
+        feat_4_title: "快捷指令戴耳机自动启",
+        feat_4_desc: "支持通过 iOS 快捷指令自动化，戴上耳机蓝牙连接瞬间无感开启姿态监测，彻底省去手动点击。",
+        feat_5_title: "2 分钟工位舒展微操",
+        feat_5_desc: "会议间隙的前置镜头智能跟练，结合颈椎生理曲度科学设计的微操动作，秒级舒缓肩颈酸痛。",
+        compat_eyebrow: "生态兼容",
+        compat_title: "适配你手边的每一副 AirPods",
+        compat_desc: "只要是支持头部运动感知的 Apple 耳机，配合 iOS 17 或更新系统即可即开即用。",
+        priv_title: "100% 端侧隐私计算，零云端上传",
+        priv_desc: "您的运动数据与生物力学计算完全在 iPhone 本地芯片中完成。SpineUp 免注册、无账号系统、无第三方广告追踪，真正做到数据仅属于您自己。",
+        link_read_privacy: "阅读隐私政策 →",
+        link_read_medical: "健康免责声明 →",
+        link_read_terms: "用户服务条款 →",
+        faq_eyebrow: "答疑解惑",
+        faq_title: "常见疑问解答",
+        faq_q1: "我需要佩戴额外的背背佳或外接传感器吗？",
+        faq_a1: "完全不需要！SpineUp 充分发挥了你已有 AirPods 耳机内的运动感应硬件，告别任何繁琐、突兀的外部穿戴设备。",
+        faq_q2: "提醒会中断我的音乐播放或会议通话吗？",
+        faq_a2: "不会。SpineUp 的提醒音是以轻度音频混音（Ducking）的方式叠加播放，绝不会掐断你的歌曲、播客或视频会议。",
+        faq_q3: "持续检测会严重消耗 AirPods 电量吗？",
+        faq_a3: "CoreMotion 传感器通信经过苹果底层高度能效优化，功耗开销极低，日常办公佩戴电池续航与正常听歌几乎无异。",
+        faq_q4: "SpineUp 是医疗器械吗？",
+        faq_a4: "SpineUp 是日常健康与体态习惯培养工具，不具备医疗器械资质，所提供数据仅供个人参考，不能代替专业骨科医师或康复治疗师的医疗诊断。",
+        footer_brand_desc: "AirPods 智能坐姿体态管家。守护脊柱曲度，远离低头伏案亚健康。",
+        footer_legal_title: "合规与协议",
+        footer_support_title: "支持与反馈",
+        link_privacy: "隐私政策",
+        link_terms: "服务条款",
+        link_medical: "医疗免责声明"
+      },
+      "zh-Hant": {
+        page_title: "SpineUp · 智能 AirPods 坐姿體態管理 | 挺拔身姿，輕鬆養成",
+        meta_desc: "SpineUp 巧妙利用 AirPods 運動感測器，化身端側智慧體態教練。即時監測頸椎低頭角度、溫和無感提醒、工位微操跟練，並與 Apple 健康無縫連動，100% 隱私安全。",
+        nav_features: "核心功能",
+        nav_demo: "互動體驗",
+        nav_privacy: "隱私與健康",
+        nav_faq: "常見問題",
+        btn_get_app: "下載體驗",
+        hero_badge: "專為 AirPods 與 Apple 生態打造",
+        hero_title: "智慧感知，重塑挺拔體態。",
+        hero_desc: "無需繁重外接硬體，戴上 AirPods 即可開啟即時頸椎坐姿守護。輕柔音訊提醒、100% 本地端運算隱私，助您在專注中告別含胸駝背。",
+        badge_download: "前往 App Store 下載",
+        btn_try_simulator: "體驗體態模擬器",
+        posture_upright: "挺拔達標率",
+        airpods_connected: "AirPods 已連線 · 即時感知中",
+        metric_upright_time: "挺拔專注",
+        metric_tilt_angle: "頭部傾角",
+        metric_slouch_alerts: "溫和提醒",
+        metric_apple_health: "Apple 健康",
+        sim_eyebrow: "直觀感知",
+        sim_title: "親身體驗 SpineUp 如何運作",
+        sim_desc: "拖曳下方滑桿調整頭部俯仰角度，查看 AirPods 感測器如何即時辨識傾斜並觸發溫和體態反饋。",
+        sim_ideal: "0° 筆直挺拔 (理想)",
+        sim_slouched: "35° 嚴重低頭伏案",
+        sim_status_perfect: "完美體態！頸椎脊柱受力均衡，無多餘生理負擔。",
+        sim_status_slight: "頭部輕微前傾，頸椎承受約 8~12kg 額外壓力。",
+        sim_status_heavy: "低頭駝背已達臨界值！SpineUp 觸發輕柔聲音提醒直立。",
+        features_eyebrow: "精工打造",
+        features_title: "深度融入您的日常辦公流",
+        features_desc: "為蘋果生態原生客製，享受純粹、智慧、無穿戴負擔的工位健康體態改善體驗。",
+        feat_1_title: "AirPods 運動感測器融合",
+        feat_1_desc: "依托 AirPods 內建的高精度六軸陀螺儀與加速度計，結合自適應校準演算法，隨時適應您的工位初始坐姿。",
+        feat_2_title: "耳畔溫和無感提醒",
+        feat_2_desc: "絕不使用突兀刺耳的警報。透過輕柔空間呼吸聲與溫和提示音，在不打斷工作專注的前提下自然糾正身姿。",
+        feat_3_title: "Apple 健康無縫同步",
+        feat_3_desc: "經授權後將您的良好挺拔坐姿時長自動寫入 Apple 健康的「正念時間」，體態與身心健康一目了然。",
+        feat_4_title: "捷徑戴耳機自動啟動",
+        feat_4_desc: "支援透過 iOS 捷徑自動化，戴上耳機藍牙連線瞬間無感開啟姿態監測，徹底省去手動點擊。",
+        feat_5_title: "2 分鐘工位舒展微操",
+        feat_5_desc: "會議間隙的前置鏡頭智慧跟練，結合頸椎生理曲度科學設計的微操動作，秒級舒緩肩頸痠痛。",
+        compat_eyebrow: "生態相容",
+        compat_title: "適配你手邊的每一副 AirPods",
+        compat_desc: "只要是支援頭部運動感知的 Apple 耳機，配合 iOS 17 或更新系統即可即開即用。",
+        priv_title: "100% 端側隱私計算，零雲端上傳",
+        priv_desc: "您的運動數據完全在 iPhone 本地晶片中完成。SpineUp 免註冊、無帳號系統、無第三方廣告追蹤，數據僅屬於您自己。",
+        link_read_privacy: "閱讀隱私權政策 →",
+        link_read_medical: "健康免責聲明 →",
+        link_read_terms: "使用者服務條款 →",
+        faq_eyebrow: "答疑解惑",
+        faq_title: "常見問題解答",
+        faq_q1: "我需要佩戴額外的感測器嗎？",
+        faq_a1: "完全不需要！SpineUp 充分發揮了你已有 AirPods 耳機內的運動感應硬體，告別任何繁瑣的外部穿戴裝置。",
+        faq_q2: "提醒會中斷我的音樂播放嗎？",
+        faq_a2: "不會。SpineUp 的提醒音是以輕度音訊混音的方式疊加播放，絕不會掐斷你的音樂或會議。",
+        faq_q3: "持續檢測會嚴重消耗電量嗎？",
+        faq_a3: "CoreMotion 感測器通信經過高能效最佳化，功耗開銷極低，日常辦公佩戴續航與正常聽歌幾乎無異。",
+        faq_q4: "SpineUp 是醫療器材嗎？",
+        faq_a4: "SpineUp 是日常健康與體態習慣培養工具，不具備醫療器材資質，不能代替專業醫師的醫療診斷。",
+        footer_brand_desc: "AirPods 智慧坐姿體態管家。守護脊椎曲度，遠離低頭伏案亞健康。",
+        footer_legal_title: "法規與條款",
+        footer_support_title: "支援與回饋",
+        link_privacy: "隱私政策",
+        link_terms: "服務條款",
+        link_medical: "醫療免責聲明"
+      },
+      ja: {
+        page_title: "SpineUp · AirPods 姿勢改善＆頚椎ケア | 自然と背筋が伸びる",
+        meta_desc: "SpineUpはAirPodsのモーションセンサーを活用し、首の傾きと姿勢をリアルタイムで追跡。邪魔にならない優しいリマインダーとヘルスケア連携で、100%プライバシー保護。",
+        nav_features: "機能紹介",
+        nav_demo: "操作デモ",
+        nav_privacy: "プライバシーと健康",
+        nav_faq: "よくある質問",
+        btn_get_app: "ダウンロード",
+        hero_badge: "AirPods & Appleエコシステム専用設計",
+        hero_title: "耳元から始まる、スマート姿勢管理。",
+        hero_desc: "専用デバイスは不要。AirPodsをつけるだけで、頭部の傾きと猫背をリアルタイム感知。優しい通知と端末内完結のプライバシー設計で、自然と正しい姿勢が身につきます。",
+        badge_download: "App Store からダウンロード",
+        btn_try_simulator: "インタラクティブデモを試す",
+        posture_upright: "直立スコア",
+        airpods_connected: "AirPods 接続中 · モーション監視中",
+        metric_upright_time: "正しい姿勢時間",
+        metric_tilt_angle: "頭部傾斜角",
+        metric_slouch_alerts: "通知回数",
+        metric_apple_health: "Apple ヘルスケア",
+        sim_eyebrow: "リアルタイム体感",
+        sim_title: "SpineUp の仕組みを体験する",
+        sim_desc: "スライダーを動かして頭の傾き角度を変えてみてください。AirPodsがどのように猫背を検知するか確認できます。",
+        sim_ideal: "0° 正しい直立姿勢",
+        sim_slouched: "35° 深い前かがみ",
+        sim_status_perfect: "理想的な首と背骨の角度です。首への負担はありません。",
+        sim_status_slight: "少し首が前に倒れています。首への負担が増加しています。",
+        sim_status_heavy: "猫背を検知しました！SpineUpが優しい音で姿勢改善を促します。",
+        features_eyebrow: "先進の設計",
+        features_title: "日々のデスクワークに自然に溶け込む",
+        features_desc: "Appleのハードウェアを最大限に活用し、余計なウェアラブルを身につけることなく姿勢を正します。",
+        feat_1_title: "AirPods CoreMotion 連携",
+        feat_1_desc: "AirPods内蔵の高精度ジャイロスコープと加速度計を使用。適応型キャリブレーションで個々の作業環境に合わせて調整されます。",
+        feat_2_title: "集中を妨げない優しいサウンド通知",
+        feat_2_desc: "不快な警告音はありません。穏やかな呼吸音や柔らかなチャイムで、作業の邪魔をせず自然に背筋を伸ばします。",
+        feat_3_title: "Apple ヘルスケア「マインドフル時間」連携",
+        feat_3_desc: "正しい姿勢を保った時間をヘルスケアアプリのマインドフル時間として安全に自動記録します。",
+        feat_4_title: "ショートカットによる自動開始",
+        feat_4_desc: "AirPodsを装着して接続された瞬間に自動で姿勢トラッキングを開始。タップする必要さえありません。",
+        feat_5_title: "2分間のデスクストレッチ",
+        feat_5_desc: "フロントカメラを活用した首や肩のストレッチガイドで、長時間のデスクワークによるコリを瞬時にほぐします。",
+        compat_eyebrow: "対応機種",
+        compat_title: "お持ちのAirPodsで今すぐ使える",
+        compat_desc: "頭部モーションセンサーを搭載したAirPodsシリーズ（iOS 17以降）に完全対応。",
+        priv_title: "100% 端末内処理。完全なプライバシー保護。",
+        priv_desc: "モーションデータは一切外部サーバーに送信されません。アカウント作成不要、広告追跡ゼロ。お客様のデータはお客様のiPhone内でのみ安全に処理されます。",
+        link_read_privacy: "プライバシーポリシーを読む →",
+        link_read_medical: "医療免責事項 →",
+        link_read_terms: "利用規約 →",
+        faq_eyebrow: "Q&A",
+        faq_title: "よくあるご質問",
+        faq_q1: "別の姿勢矯正バンドなどを買う必要がありますか？",
+        faq_a1: "いいえ、不要です。お手持ちのAirPodsに内蔵されているモーションセンサーのみを使用するため、追加のウェアラブルは一切必要ありません。",
+        faq_q2: "音楽やポッドキャストの再生が止まりますか？",
+        faq_a2: "止まりません。通知音は音楽を邪魔しないよう、音量をわずかに自動調整して重ねて再生されます。",
+        faq_q3: "AirPodsのバッテリー消費が激しくなりますか？",
+        faq_a3: "CoreMotion APIは非常に省電力設計されており、通常の音楽リスニングと変わらないバッテリー持続時間を実現しています。",
+        faq_q4: "SpineUpは医療機器ですか？",
+        faq_a4: "SpineUpは健康習慣をサポートするアプリケーションであり、医療機器ではありません。医師の診断や治療に代わるものではありません。",
+        footer_brand_desc: "AirPodsのためのスマート姿勢管理パートナー。首と背骨の健康を守りましょう。",
+        footer_legal_title: "法的情報",
+        footer_support_title: "サポート",
+        link_privacy: "プライバシーポリシー",
+        link_terms: "利用規約",
+        link_medical: "医療免責事項"
+      },
+      ko: {
+        page_title: "SpineUp · AirPods 스마트 자세 관리 | 바른 자세를 위한 습관",
+        meta_desc: "SpineUp은 AirPods 모션 센서를 통해 거북목과 구부정한 자세를 실시간으로 감지합니다. 부드러운 알림과 Apple 건강 연동, 100% 온디바이스 개인정보 보호.",
+        nav_features: "주요 기능",
+        nav_demo: "체험하기",
+        nav_privacy: "개인정보 및 건강",
+        nav_faq: "자주 묻는 질문",
+        btn_get_app: "앱 다운로드",
+        hero_badge: "AirPods 및 Apple 생태계를 위한 맞춤 설계",
+        hero_title: "AirPods로 시작하는 똑똑한 자세 교정.",
+        hero_desc: "별도의 번거로운 기기 없이 AirPods만 착용하면 목과 척추 자세를 실시간 코칭합니다. 방해 없는 부드러운 사운드 알림과 100% 온디바이스 프라이버시를 경험하세요.",
+        badge_download: "App Store에서 다운로드",
+        btn_try_simulator: "시뮬레이터 체험하기",
+        posture_upright: "바른 자세 점수",
+        airpods_connected: "AirPods 연결됨 · 동작 감지 중",
+        metric_upright_time: "바른 자세 유지",
+        metric_tilt_angle: "머리 기울기",
+        metric_slouch_alerts: "알림 횟수",
+        metric_apple_health: "Apple 건강",
+        sim_eyebrow: "실시간 체험",
+        sim_title: "SpineUp 작동 원리 살펴보기",
+        sim_desc: "슬라이더를 조절하여 머리 기울기 각도를 변경하고, AirPods 센서가 자세를 어떻게 감지하는지 확인해보세요.",
+        sim_ideal: "0° 완벽한 바른 자세",
+        sim_slouched: "35° 거북목 / 구부정",
+        sim_status_perfect: "완벽한 척추 정렬 상태입니다! 목에 가해지는 부담이 없습니다.",
+        sim_status_slight: "머리가 약간 앞으로 기울어졌습니다. 경추 부담 증가 중.",
+        sim_status_heavy: "구부정한 자세 감지! SpineUp이 부드러운 소리로 바른 자세를 유도합니다.",
+        features_eyebrow: "스마트한 디자인",
+        features_title: "일상 업무에 완벽하게 녹아드는 편안함",
+        features_desc: "Apple 하드웨어의 성능을 극대화하여 거추장스러운 웨어러블 장치 없이도 건강한 자세를 유지할 수 있도록 돕습니다.",
+        feat_1_title: "AirPods CoreMotion 센서 퓨전",
+        feat_1_desc: "AirPods에 내장된 고정밀 6축 자이로스코프와 가속도계를 사용합니다. 사용자의 작업 환경에 맞춰 자동으로 초기 기준 각도를 보정합니다.",
+        feat_2_title: "집중을 방해하지 않는 부드러운 알림",
+        feat_2_desc: "귀를 찌르는 경고음 대신, 부드러운 공간 호흡음과 잔잔한 차임벨로 업무 집중을 깨지 않고 자연스럽게 허리를 펴게 합니다.",
+        feat_3_title: "Apple 건강 ‘마음 챙김’ 시간 동기화",
+        feat_3_desc: "바른 자세를 유지한 시간을 Apple 건강 앱의 마음 챙김 세션으로 기록하여 전반적인 웰빙을 한눈에 파악할 수 있습니다.",
+        feat_4_title: "단축어로 이어폰 착용 시 자동 시작",
+        feat_4_desc: "iOS 단축어 자동화를 통해 AirPods를 귀에 꽂는 즉시 앱이 자동으로 자세 트래킹을 시작합니다.",
+        feat_5_title: "2분 데스크 스트레칭",
+        feat_5_desc: "전면 카메라 기반의 가벼운 동작 가이드로 바쁜 회의 사이사이 목과 어깨의 긴장을 풀어줍니다.",
+        compat_eyebrow: "호환성",
+        compat_title: "보유 중인 AirPods으로 즉시 사용 가능",
+        compat_desc: "머리 동작 감지 센서를 탑재한 Apple 헤드폰(iOS 17 이상)과 완벽하게 호환됩니다.",
+        priv_title: "100% 온디바이스 연산, 완전한 프라이버시",
+        priv_desc: "모션 데이터는 iPhone 외부로 절대 전송되지 않습니다. 계정 가입 불필요, 광고 추적 제로. 사용자의 데이터는 안전하게 기기 내에만 머뭅니다.",
+        link_read_privacy: "개인정보 처리방침 읽기 →",
+        link_read_medical: "의료 면책 조항 →",
+        link_read_terms: "서비스 이용약관 →",
+        faq_eyebrow: "궁금한 점이 있으신가요?",
+        faq_title: "자주 묻는 질문",
+        faq_q1: "별도의 자세 교정 밴드나 센서를 사야 하나요?",
+        faq_a1: "전혀 필요 없습니다! SpineUp은 이미 사용 중인 AirPods 내의 정밀 모션 센서만을 사용하므로 추가 장비가 필요 없습니다.",
+        faq_q2: "음악이나 팟캐스트 재생이 끊기나요?",
+        faq_a2: "아닙니다. 알림음은 재생 중인 오디오를 중단하지 않고 부드럽게 믹싱되어 들려줍니다.",
+        faq_q3: "AirPods 배터리가 빨리 닳나요?",
+        faq_a3: "Apple의 CoreMotion은 매우 높은 에너지 효율을 자랑합니다. 배터리 소모는 일반적인 음악 감상과 거의 동일합니다.",
+        faq_q4: "SpineUp은 의료기기인가요?",
+        faq_a4: "SpineUp은 일상적인 건강 관리 및 습관 형성 도구이며 의료기기가 아닙니다. 전문 의료진의 진료를 대체할 수 없습니다.",
+        footer_brand_desc: "AirPods를 위한 스마트 자세 코치. 건강한 척추와 올바른 자세를 지켜드립니다.",
+        footer_legal_title: "약관 및 정책",
+        footer_support_title: "지원",
+        link_privacy: "개인정보 처리방침",
+        link_terms: "서비스 이용약관",
+        link_medical: "의료 면책 조항"
+      },
+      fr: {
+        page_title: "SpineUp · Suivi Postural Intelligent pour AirPods | Posture Idéale au Quotidien",
+        meta_desc: "SpineUp transforme vos AirPods en coach postural intelligent sur l'appareil. Suivi cervical en temps réel, rappels subtils, étirements au bureau et intégration Santé Apple.",
+        nav_features: "Fonctionnalités",
+        nav_demo: "Démo Interactive",
+        nav_privacy: "Confidentialité & Santé",
+        nav_faq: "FAQ",
+        btn_get_app: "Télécharger",
+        hero_badge: "Conçu pour les AirPods & l'écosystème Apple",
+        hero_title: "Le suivi postural intelligent, propulsé par vos AirPods.",
+        hero_desc: "Transformez vos AirPods en coach cervical en temps réel. Alertes sonores discrètes, 100% de confidentialité biométrique sur l'appareil et étirements guidés pour rester droit sans effort.",
+        badge_download: "Télécharger dans l'",
+        btn_try_simulator: "Essayer la démo interactive",
+        posture_upright: "Score Postural",
+        airpods_connected: "AirPods connectés · Suivi actif",
+        metric_upright_time: "Postures Droites",
+        metric_tilt_angle: "Inclinaison",
+        metric_slouch_alerts: "Rappels doux",
+        metric_apple_health: "Apple Santé",
+        sim_eyebrow: "Aperçu Immédiat",
+        sim_title: "Découvrez le fonctionnement de SpineUp",
+        sim_desc: "Déplacez le curseur pour tester comment les AirPods mesurent l'angle de tête et déclenchent des rappels correcteurs.",
+        sim_ideal: "0° Droit (Idéal)",
+        sim_slouched: "35° Tête penchée",
+        sim_status_perfect: "Alignement vertébral parfait ! Aucune tension sur les cervicales.",
+        sim_status_slight: "Légère inclinaison vers l'avant. Tension modérée sur le cou.",
+        sim_status_heavy: "Mauvaise posture détectée ! SpineUp émet un rappel sonore subtil.",
+        features_eyebrow: "Conception Intelligente",
+        features_title: "Conçu pour votre journée de travail",
+        features_desc: "Développé nativement pour le matériel Apple afin d'offrir une ergonomie sans faille sans capteurs externes.",
+        feat_1_title: "Fusion de capteurs AirPods CoreMotion",
+        feat_1_desc: "Exploite le gyroscope 6 axes et l'accéléromètre intégrés à vos AirPods, avec calibration adaptative personnalisée.",
+        feat_2_title: "Rappels sonores tout en douceur",
+        feat_2_desc: "Pas de bips agressifs. Profitez de signaux respiratoires spatiaux subtils pour vous redresser sans briser votre concentration.",
+        feat_3_title: "Synchronisation Apple Santé",
+        feat_3_desc: "Enregistre automatiquement votre temps de posture droite comme séances de Pleine Conscience dans l'app Santé.",
+        feat_4_title: "Démarrage automatique via Raccourcis",
+        feat_4_desc: "Automatisez le suivi dès la connexion de vos écouteurs avec l'application Raccourcis iOS.",
+        feat_5_title: "Micro-étirements de bureau en 2 min",
+        feat_5_desc: "Exercices de mobilité guidés par caméra avant pour soulager les tensions cervicales entre vos réunions.",
+        compat_eyebrow: "Compatibilité",
+        compat_title: "Compatible avec vos écouteurs préférés",
+        compat_desc: "Fonctionne avec tous les écouteurs Apple équipés de capteurs de mouvement sous iOS 17 ou supérieur.",
+        priv_title: "100% sur l'appareil. Confidentialité absolue.",
+        priv_desc: "Vos données de mouvement ne quittent jamais votre iPhone. Aucun compte requis, aucune publicité, zéro pistage distant.",
+        link_read_privacy: "Lire la politique de confidentialité →",
+        link_read_medical: "Avis médical →",
+        link_read_terms: "Conditions d'utilisation →",
+        faq_eyebrow: "Questions fréquentes",
+        faq_title: "Foire Aux Questions",
+        faq_q1: "Ai-je besoin d'un capteur externe ou d'un harnais ?",
+        faq_a1: "Non ! SpineUp utilise exclusivement les capteurs déjà présents dans vos AirPods.",
+        faq_q2: "Les alertes interrompent-elles ma musique ?",
+        faq_a2: "Pas du tout. Les alertes sonores sont mixées subtilement par-dessus votre flux audio sans jamais interrompre votre musique.",
+        faq_q3: "Cela décharge-t-il la batterie de mes AirPods ?",
+        faq_a3: "L'API CoreMotion d'Apple est extrêmement optimisée. La consommation d'énergie est minime.",
+        faq_q4: "SpineUp est-il un dispositif médical ?",
+        faq_a4: "SpineUp est un outil ergonomique de bien-être et ne constitue pas un dispositif médical de diagnostic.",
+        footer_brand_desc: "Le compagnon postural intelligent pour AirPods. Protégez votre colonne vertébrale au quotidien.",
+        footer_legal_title: "Mentions Légales",
+        footer_support_title: "Support",
+        link_privacy: "Politique de confidentialité",
+        link_terms: "Conditions d'utilisation",
+        link_medical: "Avis médical"
+      }
+    };
+
+    // Language names for UI
+    const langNames = {
+      en: "English",
+      "zh-Hans": "简体中文",
+      "zh-Hant": "繁體中文",
+      ja: "日本語",
+      ko: "한국어",
+      fr: "Français"
+    };
+
+    // Determine initial language:
+    // 1. URL parameter (?lang=...)
+    // 2. localStorage ('spineup_lang')
+    // 3. Default to 'en' (as explicitly requested!)
+    function getInitialLanguage() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const urlLang = urlParams.get('lang');
+      if (urlLang && i18nData[urlLang]) {
+        return urlLang;
+      }
+      const savedLang = localStorage.getItem('spineup_lang');
+      if (savedLang && i18nData[savedLang]) {
+        return savedLang;
+      }
+      return 'en'; // DEFAULT IS ENGLISH
+    }
+
+    let currentLang = getInitialLanguage();
+
+    function applyLanguage(lang) {
+      if (!i18nData[lang]) lang = 'en';
+      currentLang = lang;
+      document.documentElement.lang = lang;
+      localStorage.setItem('spineup_lang', lang);
+
+      // Update URL query parameter without page reload
+      const url = new URL(window.location);
+      if (lang === 'en') {
+        url.searchParams.delete('lang');
+      } else {
+        url.searchParams.set('lang', lang);
+      }
+      window.history.replaceState({}, '', url);
+
+      const dict = i18nData[lang];
+
+      // Update SEO Title & Meta Descriptions
+      if (dict.page_title) {
+        document.title = dict.page_title;
+        const ogTitle = document.getElementById('og-title');
+        const twTitle = document.getElementById('tw-title');
+        if (ogTitle) ogTitle.content = dict.page_title;
+        if (twTitle) twTitle.content = dict.page_title;
+      }
+      if (dict.meta_desc) {
+        const metaDesc = document.getElementById('meta-description');
+        const ogDesc = document.getElementById('og-description');
+        const twDesc = document.getElementById('tw-description');
+        if (metaDesc) metaDesc.content = dict.meta_desc;
+        if (ogDesc) ogDesc.content = dict.meta_desc;
+        if (twDesc) twDesc.content = dict.meta_desc;
+      }
+
+      // Update text nodes with data-i18n
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key]) {
+          el.textContent = dict[key];
+        }
+      });
+
+      // Update Language Button Label
+      document.getElementById('current-lang-text').textContent = langNames[lang] || 'English';
+
+      // Update Dropdown Selection Style
+      document.querySelectorAll('.lang-option').forEach(btn => {
+        if (btn.getAttribute('data-lang') === lang) {
+          btn.classList.add('selected');
+        } else {
+          btn.classList.remove('selected');
+        }
+      });
+
+      // Update current simulator feedback text in the new language
+      updateSimulatorFeedback();
+    }
+
+    // Language Dropdown Toggle
+    const langBtn = document.getElementById('lang-btn');
+    const langDropdown = document.getElementById('lang-dropdown');
+
+    langBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      langDropdown.classList.toggle('active');
+    });
+
+    document.addEventListener('click', () => {
+      langDropdown.classList.remove('active');
+    });
+
+    document.querySelectorAll('.lang-option').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const selectedLang = btn.getAttribute('data-lang');
+        applyLanguage(selectedLang);
+        langDropdown.classList.remove('active');
+      });
+    });
+
+    // FAQ Accordion
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const isActive = item.classList.contains('active');
+        document.querySelectorAll('.faq-item').forEach(other => other.classList.remove('active'));
+        if (!isActive) {
+          item.classList.add('active');
+        }
+      });
+    });
+
+    // Interactive Posture Simulator
+    const simSlider = document.getElementById('sim-slider');
+    const simIcon = document.getElementById('sim-icon');
+    const simAngleDisplay = document.getElementById('sim-angle-display');
+    const simFeedback = document.getElementById('sim-feedback');
+    const simStatusText = document.getElementById('sim-status-text');
+
+    function updateSimulatorFeedback() {
+      const angle = parseInt(simSlider.value, 10);
+      simAngleDisplay.textContent = angle + '° Head Pitch';
+      const dict = i18nData[currentLang] || i18nData['en'];
+
+      if (angle <= 8) {
+        simIcon.textContent = '🧘‍♂️';
+        simFeedback.style.background = 'rgba(52, 199, 89, 0.12)';
+        simFeedback.style.borderColor = 'rgba(52, 199, 89, 0.3)';
+        simFeedback.style.color = 'var(--accent-green)';
+        simStatusText.textContent = dict.sim_status_perfect;
+      } else if (angle <= 18) {
+        simIcon.textContent = '🤔';
+        simFeedback.style.background = 'rgba(255, 149, 0, 0.12)';
+        simFeedback.style.borderColor = 'rgba(255, 149, 0, 0.3)';
+        simFeedback.style.color = 'var(--accent-orange)';
+        simStatusText.textContent = dict.sim_status_slight;
+      } else {
+        simIcon.textContent = '🙇‍♂️';
+        simFeedback.style.background = 'rgba(255, 59, 48, 0.12)';
+        simFeedback.style.borderColor = 'rgba(255, 59, 48, 0.3)';
+        simFeedback.style.color = 'var(--accent-red)';
+        simStatusText.textContent = dict.sim_status_heavy;
+      }
+    }
+
+    simSlider.addEventListener('input', updateSimulatorFeedback);
+
+    // Initial render
+    applyLanguage(currentLang);
+  </script>
+</body>
+</html>
