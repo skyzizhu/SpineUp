@@ -75,6 +75,10 @@ final class SUDailyReportViewController: SUBaseViewController {
         label.text = SULocalized("metaphor_title", default: "颈椎受力生活化换算")
         label.font = .systemFont(ofSize: 15, weight: .heavy)
         label.textColor = .label
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.85
         return label
     }()
 
@@ -141,9 +145,26 @@ final class SUDailyReportViewController: SUBaseViewController {
         switchPeriodView(to: .daily, animated: false)
     }
 
+    func selectPeriod(_ period: SUReportPeriodType) {
+        loadViewIfNeeded()
+        periodSegmentedControl.selectedSegmentIndex = period.rawValue
+        switchPeriodView(to: period, animated: false)
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel.refreshReport()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if CommandLine.arguments.contains("-scrollReportToBottom") {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
+                guard let self = self else { return }
+                let y = max(0, self.scrollView.contentSize.height - self.scrollView.bounds.size.height + self.scrollView.adjustedContentInset.bottom)
+                self.scrollView.setContentOffset(CGPoint(x: 0, y: y), animated: false)
+            }
+        }
     }
 
     override func viewDidLayoutSubviews() {
@@ -164,7 +185,7 @@ final class SUDailyReportViewController: SUBaseViewController {
 
     override func setupSubviews() {
         super.setupSubviews()
-        navigationItem.title = SULocalized("report_title", default: "骨气健康档案")
+        updateNavigationTitle(for: viewModel.selectedPeriod)
 
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
@@ -364,8 +385,16 @@ final class SUDailyReportViewController: SUBaseViewController {
         viewModel.selectPeriod(selected)
     }
 
+    private func updateNavigationTitle(for period: SUReportPeriodType) {
+        let isDaily = (period == .daily)
+        navigationItem.title = isDaily
+            ? SULocalized("report_title_daily", default: "今日骨气战报")
+            : SULocalized("report_title_weekly", default: "周度骨气战报")
+    }
+
     private func switchPeriodView(to period: SUReportPeriodType, animated: Bool = true) {
         let isDaily = (period == .daily)
+        updateNavigationTitle(for: period)
 
         if !isDaily && !isWeeklyRendered {
             renderWeeklyReport(viewModel.currentWeeklyReport)
@@ -415,7 +444,7 @@ final class SUDailyReportViewController: SUBaseViewController {
     }
 
     @objc private func handleLanguageDidChange() {
-        navigationItem.title = SULocalized("report_title", default: "骨气健康档案")
+        updateNavigationTitle(for: viewModel.selectedPeriod)
         metaphorTitleLabel.text = SULocalized("metaphor_title", default: "颈椎受力生活化换算")
 
         periodSegmentedControl.setTitle(SULocalized("period_daily", default: "今日战报"), forSegmentAt: 0)

@@ -41,7 +41,9 @@
 "persona_coach_desc" = "다정한 목소리와 깊은 호흡 안내로 건강하고 바른 체형을 가꿔줍니다.";
 
 /* Report */
-"report_title" = "오늘의 척추 전적 리포트";
+"report_title" = "척추 전적 리포트";
+"report_title_daily" = "오늘의 척추 전적 리포트";
+"report_title_weekly" = "주간 척추 전적 리포트";
 "share_report" = "리포트 생성 및 공유";
 "metrics_upright_ratio" = "바른 자세 달성률";
 "metrics_longest_streak" = "최장 연속 바른 자세";

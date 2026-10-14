@@ -34,6 +34,8 @@ final class SUGradeBannerCardView: UIView {
         label.textColor = .label
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.85
         return label
     }()
 
@@ -43,6 +45,8 @@ final class SUGradeBannerCardView: UIView {
         label.textColor = .secondaryLabel
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.85
         return label
     }()
 
@@ -50,6 +54,8 @@ final class SUGradeBannerCardView: UIView {
         let label = UILabel()
         label.font = .systemFont(ofSize: 13, weight: .bold)
         label.textAlignment = .right
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.85
         return label
     }()
 

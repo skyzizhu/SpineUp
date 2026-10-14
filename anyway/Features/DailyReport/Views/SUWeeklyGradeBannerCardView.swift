@@ -70,6 +70,8 @@ final class SUWeeklyGradeBannerCardView: UIView {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14, weight: .heavy)
         label.textColor = .systemGreen
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.85
         return label
     }()
 
@@ -85,6 +87,8 @@ final class SUWeeklyGradeBannerCardView: UIView {
         let label = UILabel()
         label.font = .systemFont(ofSize: 13, weight: .bold)
         label.textColor = .systemBlue
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.85
         return label
     }()
 

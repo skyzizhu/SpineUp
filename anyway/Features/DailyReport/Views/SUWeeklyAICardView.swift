@@ -80,6 +80,10 @@ final class SUWeeklyAICardView: UIView {
         let label = UILabel()
         label.font = .systemFont(ofSize: 13, weight: .bold)
         label.textColor = .systemOrange
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.85
         return label
     }()
 
@@ -160,19 +164,20 @@ final class SUWeeklyAICardView: UIView {
             make.top.equalTo(bubbleContainerView.snp.bottom).offset(12)
             make.leading.trailing.equalToSuperview().inset(18)
             make.bottom.equalToSuperview().offset(-18)
-            make.height.equalTo(38)
+            make.height.greaterThanOrEqualTo(38)
         }
 
         metaphorIconImageView.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(12)
-            make.centerY.equalToSuperview()
+            make.top.equalToSuperview().offset(11)
             make.size.equalTo(16)
         }
 
         metaphorLabel.snp.makeConstraints { make in
             make.leading.equalTo(metaphorIconImageView.snp.trailing).offset(8)
             make.trailing.equalToSuperview().offset(-12)
-            make.centerY.equalToSuperview()
+            make.top.equalToSuperview().offset(9)
+            make.bottom.equalToSuperview().offset(-9)
         }
     }
 

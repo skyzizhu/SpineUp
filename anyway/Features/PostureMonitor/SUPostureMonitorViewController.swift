@@ -60,7 +60,6 @@ final class SUPostureMonitorViewController: SUBaseViewController {
         config.baseForegroundColor = .systemOrange
         config.cornerStyle = .capsule
         config.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 9, bottom: 5, trailing: 9)
-        config.titleLineBreakMode = .byTruncatingTail
         
         let transformer = UIConfigurationTextAttributesTransformer { incoming in
             var outgoing = incoming
@@ -70,6 +69,8 @@ final class SUPostureMonitorViewController: SUBaseViewController {
         config.titleTextAttributesTransformer = transformer
         
         let button = UIButton(configuration: config)
+        button.titleLabel?.adjustsFontSizeToFitWidth = true
+        button.titleLabel?.minimumScaleFactor = 0.85
         button.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
         return button
     }()
@@ -85,7 +86,6 @@ final class SUPostureMonitorViewController: SUBaseViewController {
         config.baseForegroundColor = .label
         config.cornerStyle = .capsule
         config.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 9, bottom: 5, trailing: 9)
-        config.titleLineBreakMode = .byTruncatingTail
         
         let transformer = UIConfigurationTextAttributesTransformer { incoming in
             var outgoing = incoming
@@ -95,6 +95,8 @@ final class SUPostureMonitorViewController: SUBaseViewController {
         config.titleTextAttributesTransformer = transformer
         
         let button = UIButton(configuration: config)
+        button.titleLabel?.adjustsFontSizeToFitWidth = true
+        button.titleLabel?.minimumScaleFactor = 0.85
         button.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
         return button
     }()
@@ -110,7 +112,6 @@ final class SUPostureMonitorViewController: SUBaseViewController {
         config.baseForegroundColor = .systemGreen
         config.cornerStyle = .capsule
         config.contentInsets = NSDirectionalEdgeInsets(top: 6, leading: 14, bottom: 6, trailing: 14)
-        config.titleLineBreakMode = .byTruncatingTail
         
         let transformer = UIConfigurationTextAttributesTransformer { incoming in
             var outgoing = incoming
@@ -120,6 +121,8 @@ final class SUPostureMonitorViewController: SUBaseViewController {
         config.titleTextAttributesTransformer = transformer
         
         let button = UIButton(configuration: config)
+        button.titleLabel?.adjustsFontSizeToFitWidth = true
+        button.titleLabel?.minimumScaleFactor = 0.85
         button.layer.borderWidth = 0.8
         button.layer.borderColor = UIColor.systemGreen.withAlphaComponent(0.25).cgColor
         button.layer.cornerRadius = 17
@@ -150,6 +153,8 @@ final class SUPostureMonitorViewController: SUBaseViewController {
         config.contentInsets = NSDirectionalEdgeInsets(top: 16, leading: 24, bottom: 16, trailing: 24)
         
         let button = UIButton(configuration: config)
+        button.titleLabel?.adjustsFontSizeToFitWidth = true
+        button.titleLabel?.minimumScaleFactor = 0.85
         button.layer.shadowColor = UIColor(red: 0.06, green: 0.46, blue: 0.96, alpha: 1.0).cgColor
         button.layer.shadowOpacity = 0.22
         button.layer.shadowOffset = CGSize(width: 0, height: 6)

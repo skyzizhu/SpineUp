@@ -30,6 +30,10 @@ final class SUSettingsViewController: SUBaseViewController {
         label.text = SULocalized("settings_persona_section", default: "宠物拟人人格")
         label.font = .systemFont(ofSize: 16, weight: .bold)
         label.textColor = .label
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.85
         return label
     }()
 
@@ -48,6 +52,10 @@ final class SUSettingsViewController: SUBaseViewController {
         label.text = SULocalized("settings_alerts_section", default: "提醒偏好")
         label.font = .systemFont(ofSize: 16, weight: .bold)
         label.textColor = .label
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.85
         return label
     }()
 
@@ -134,6 +142,10 @@ final class SUSettingsViewController: SUBaseViewController {
         label.text = SULocalized("settings_energy_section", default: "骨气能量")
         label.font = .systemFont(ofSize: 16, weight: .bold)
         label.textColor = .label
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.85
         return label
     }()
 
@@ -169,6 +181,10 @@ final class SUSettingsViewController: SUBaseViewController {
         label.text = SULocalized("settings_general_section", default: "通用设置")
         label.font = .systemFont(ofSize: 16, weight: .bold)
         label.textColor = .label
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.85
         return label
     }()
 
@@ -224,6 +240,10 @@ final class SUSettingsViewController: SUBaseViewController {
         label.text = SULocalized("settings_advanced_section", default: "高级玩法")
         label.font = .systemFont(ofSize: 16, weight: .bold)
         label.textColor = .label
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.85
         return label
     }()
 
@@ -252,6 +272,10 @@ final class SUSettingsViewController: SUBaseViewController {
         label.text = SULocalized("settings_legal_section", default: "法律与免责声明")
         label.font = .systemFont(ofSize: 16, weight: .bold)
         label.textColor = .label
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.85
         return label
     }()
 
@@ -499,7 +523,7 @@ final class SUSettingsViewController: SUBaseViewController {
 
         userNameRowView.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview()
-            make.height.equalTo(52)
+            make.height.greaterThanOrEqualTo(52)
         }
 
         nameSeparatorView.snp.makeConstraints { make in
@@ -512,7 +536,7 @@ final class SUSettingsViewController: SUBaseViewController {
         themeRowView.snp.makeConstraints { make in
             make.top.equalTo(nameSeparatorView.snp.bottom)
             make.leading.trailing.equalToSuperview()
-            make.height.equalTo(52)
+            make.height.greaterThanOrEqualTo(52)
         }
 
         generalSeparatorView.snp.makeConstraints { make in
@@ -525,7 +549,7 @@ final class SUSettingsViewController: SUBaseViewController {
         languageRowView.snp.makeConstraints { make in
             make.top.equalTo(generalSeparatorView.snp.bottom)
             make.leading.trailing.bottom.equalToSuperview()
-            make.height.equalTo(52)
+            make.height.greaterThanOrEqualTo(52)
         }
 
         advancedSectionTitleLabel.snp.makeConstraints { make in
@@ -540,7 +564,7 @@ final class SUSettingsViewController: SUBaseViewController {
 
         autoLaunchRowView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
-            make.height.equalTo(52)
+            make.height.greaterThanOrEqualTo(52)
         }
 
         legalSectionTitleLabel.snp.makeConstraints { make in
@@ -555,7 +579,7 @@ final class SUSettingsViewController: SUBaseViewController {
 
         legalRowView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
-            make.height.equalTo(52)
+            make.height.greaterThanOrEqualTo(52)
         }
 
         sloganLabel.snp.makeConstraints { make in
@@ -836,6 +860,8 @@ final class SUEnergyStatItemView: UIView {
         let label = UILabel()
         label.font = .systemFont(ofSize: 12, weight: .medium)
         label.textColor = .secondaryLabel
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.85
         return label
     }()
 
@@ -843,6 +869,8 @@ final class SUEnergyStatItemView: UIView {
         let label = UILabel()
         label.font = .systemFont(ofSize: 20, weight: .bold)
         label.textColor = .label
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.85
         return label
     }()
 
@@ -868,6 +896,7 @@ final class SUEnergyStatItemView: UIView {
         titleLabel.snp.makeConstraints { make in
             make.centerY.equalTo(iconImageView.snp.centerY)
             make.leading.equalTo(iconImageView.snp.trailing).offset(6)
+            make.trailing.lessThanOrEqualToSuperview().offset(-8)
         }
 
         valueLabel.snp.makeConstraints { make in
@@ -912,6 +941,10 @@ final class SUSettingsNavigationRowView: UIView {
         let label = UILabel()
         label.font = .systemFont(ofSize: 15, weight: .semibold)
         label.textColor = .label
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.85
         return label
     }()
 
@@ -919,6 +952,8 @@ final class SUSettingsNavigationRowView: UIView {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14, weight: .regular)
         label.textColor = .secondaryLabel
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.85
         return label
     }()
 
@@ -963,6 +998,7 @@ final class SUSettingsNavigationRowView: UIView {
 
         titleLabel.text = title
         valueLabel.text = value
+        valueLabel.isHidden = value.isEmpty
 
         highlightOverlay.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -979,11 +1015,6 @@ final class SUSettingsNavigationRowView: UIView {
             make.size.equalTo(18)
         }
 
-        titleLabel.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
-            make.leading.equalTo(iconContainerView.snp.trailing).offset(12)
-        }
-
         chevronImageView.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.trailing.equalToSuperview().offset(-14)
@@ -993,11 +1024,21 @@ final class SUSettingsNavigationRowView: UIView {
         valueLabel.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.trailing.equalTo(chevronImageView.snp.leading).offset(-6)
-            make.leading.greaterThanOrEqualTo(titleLabel.snp.trailing).offset(8)
         }
 
+        titleLabel.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.leading.equalTo(iconContainerView.snp.trailing).offset(12)
+            make.trailing.lessThanOrEqualTo(valueLabel.snp.leading).offset(-8)
+            make.top.greaterThanOrEqualToSuperview().offset(10)
+            make.bottom.lessThanOrEqualToSuperview().offset(-10)
+        }
+
+        titleLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+        valueLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
+
         snp.makeConstraints { make in
-            make.height.equalTo(52)
+            make.height.greaterThanOrEqualTo(52)
         }
     }
 
@@ -1023,6 +1064,7 @@ final class SUSettingsNavigationRowView: UIView {
 
     func setValue(_ text: String) {
         valueLabel.text = text
+        valueLabel.isHidden = text.isEmpty
     }
 }
 

@@ -41,7 +41,9 @@
 "persona_coach_desc" = "Guide doucement votre respiration et votre alignement corporel au quotidien.";
 
 /* Report */
-"report_title" = "Rapport Quotidien de Posture";
+"report_title" = "Bilan Postural";
+"report_title_daily" = "Rapport Quotidien de Posture";
+"report_title_weekly" = "Rapport Hebdomadaire de Posture";
 "share_report" = "Générer et Partager le Bilan";
 "metrics_upright_ratio" = "Taux de Posture Droite";
 "metrics_longest_streak" = "Record de Posture Droite";

@@ -40,6 +40,8 @@ final class SULeaderboardViewController: SUBaseViewController {
         let label = UILabel()
         label.font = .systemFont(ofSize: 17, weight: .bold)
         label.textColor = .label
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.85
         return label
     }()
 
@@ -63,6 +65,8 @@ final class SULeaderboardViewController: SUBaseViewController {
         let label = UILabel()
         label.font = .systemFont(ofSize: 12, weight: .heavy)
         label.textColor = .systemOrange
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.85
         return label
     }()
 
@@ -70,6 +74,8 @@ final class SULeaderboardViewController: SUBaseViewController {
         let label = UILabel()
         label.font = .systemFont(ofSize: 13, weight: .medium)
         label.textColor = .secondaryLabel
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.85
         return label
     }()
 
@@ -239,6 +245,7 @@ final class SULeaderboardViewController: SUBaseViewController {
             make.leading.equalTo(userNameLabel.snp.trailing).offset(6)
             make.centerY.equalTo(userNameLabel)
             make.width.height.equalTo(24)
+            make.trailing.lessThanOrEqualTo(rankBadgeView.snp.leading).offset(-8)
         }
 
         rankBadgeView.snp.makeConstraints { make in
@@ -246,6 +253,8 @@ final class SULeaderboardViewController: SUBaseViewController {
             make.centerY.equalTo(userNameLabel)
             make.height.equalTo(24)
         }
+        rankBadgeView.setContentCompressionResistancePriority(.required, for: .horizontal)
+        userNameLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
 
         rankBadgeLabel.snp.makeConstraints { make in
             make.edges.equalToSuperview().inset(UIEdgeInsets(top: 2, left: 8, bottom: 2, right: 8))
@@ -489,6 +498,8 @@ final class SULeaderboardCell: UITableViewCell {
             label.font = .systemFont(ofSize: 15, weight: .heavy)
         }
         label.textAlignment = .right
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.85
         return label
     }()
 

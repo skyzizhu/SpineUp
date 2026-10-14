@@ -53,7 +53,9 @@
 "persona_coach_desc" = "Gently guides your breathing and alignment to cultivate long-term spinal health.";
 
 /* Report */
-"report_title" = "Daily Spine Battle Report";
+"report_title" = "Spine Battle Report";
+"report_title_daily" = "Daily Spine Battle Report";
+"report_title_weekly" = "Weekly Spine Battle Report";
 "share_report" = "Share Spine Battle Report";
 "metrics_upright_ratio" = "Upright Ratio";
 "metrics_longest_streak" = "Longest Streak";

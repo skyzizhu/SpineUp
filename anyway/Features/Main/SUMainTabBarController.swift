@@ -57,6 +57,13 @@ final class SUMainTabBarController: SUBaseTabBarController {
 
         if CommandLine.arguments.contains("-selectSettingsTab") {
             selectedIndex = 3
+        } else if CommandLine.arguments.contains("-selectLeaderboardTab") {
+            selectedIndex = 2
+        } else if CommandLine.arguments.contains("-selectWeeklyReport") {
+            selectedIndex = 1
+            reportVC.selectPeriod(.weekly)
+        } else if CommandLine.arguments.contains("-selectReportTab") {
+            selectedIndex = 1
         } else {
             selectedIndex = 0
         }

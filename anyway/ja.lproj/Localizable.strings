@@ -41,7 +41,9 @@
 "persona_coach_desc" = "優しい声かけと深呼吸の誘導で、健やかな姿勢を育みます。";
 
 /* Report */
-"report_title" = "本日の姿勢レポート";
+"report_title" = "姿勢レポート";
+"report_title_daily" = "本日の姿勢レポート";
+"report_title_weekly" = "今週の姿勢レポート";
 "share_report" = "レポートを生成して共有";
 "metrics_upright_ratio" = "美姿勢達成率";
 "metrics_longest_streak" = "最長連続美姿勢";

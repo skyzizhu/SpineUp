@@ -41,7 +41,9 @@
 "persona_coach_desc" = "يرشدك بلطف للتنفس العميق واستعادة التوازن الصحي للعمود الفقري.";
 
 /* Report */
-"report_title" = "تقرير معركة القوام اليومي";
+"report_title" = "تقرير معركة القوام";
+"report_title_daily" = "تقرير معركة القوام اليومي";
+"report_title_weekly" = "تقرير معركة القوام الأسبوعي";
 "share_report" = "إنشاء ومشاركة التقرير";
 "metrics_upright_ratio" = "نسبة الاستقامة";
 "metrics_longest_streak" = "أطول فترة استقامة";

@@ -53,7 +53,9 @@
 "persona_coach_desc" = "温柔耐心地指引深呼吸与体态复原，守护你的脊椎健康。";
 
 /* Report */
-"report_title" = "今日骨气战报";
+"report_title" = "骨气战报";
+"report_title_daily" = "今日骨气战报";
+"report_title_weekly" = "周度骨气战报";
 "share_report" = "生成并分享骨气战报";
 "metrics_upright_ratio" = "挺拔达标率";
 "metrics_longest_streak" = "最长连续挺拔";
