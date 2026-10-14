@@ -59,8 +59,10 @@ final class SUReliefQuickPillView: UIView {
         } else {
             label.font = .systemFont(ofSize: 13.5, weight: .bold)
         }
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
         label.adjustsFontSizeToFitWidth = true
-        label.minimumScaleFactor = 0.85
+        label.minimumScaleFactor = 0.8
         return label
     }()
 
@@ -76,6 +78,8 @@ final class SUReliefQuickPillView: UIView {
         let label = UILabel()
         label.isUserInteractionEnabled = false
         label.font = .systemFont(ofSize: 11, weight: .bold)
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.8
         return label
     }()
 
@@ -154,6 +158,8 @@ final class SUReliefQuickPillView: UIView {
         titleLabel.snp.makeConstraints { make in
             make.leading.equalTo(iconContainer.snp.trailing).offset(10)
             make.centerY.equalToSuperview()
+            make.top.greaterThanOrEqualToSuperview().offset(4)
+            make.bottom.lessThanOrEqualToSuperview().offset(-4)
             make.trailing.lessThanOrEqualTo(badgeContainer.snp.leading).offset(-8)
         }
 

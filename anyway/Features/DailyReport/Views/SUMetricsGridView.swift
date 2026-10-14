@@ -100,6 +100,8 @@ final class SUMetricCardBoxView: UIView {
         let label = UILabel()
         label.font = .systemFont(ofSize: 12, weight: .medium)
         label.textColor = .secondaryLabel
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
         label.adjustsFontSizeToFitWidth = true
         label.minimumScaleFactor = 0.75
         return label
@@ -142,13 +144,14 @@ final class SUMetricCardBoxView: UIView {
         }
 
         titleLabel.snp.makeConstraints { make in
-            make.centerY.equalTo(iconImageView.snp.centerY)
+            make.top.equalToSuperview().offset(14)
             make.leading.equalTo(iconImageView.snp.trailing).offset(6)
             make.trailing.equalToSuperview().offset(-10)
         }
 
         valueLabel.snp.makeConstraints { make in
-            make.top.equalTo(iconImageView.snp.bottom).offset(10)
+            make.top.greaterThanOrEqualTo(iconImageView.snp.bottom).offset(8)
+            make.top.greaterThanOrEqualTo(titleLabel.snp.bottom).offset(6)
             make.leading.equalToSuperview().offset(14)
             make.trailing.equalToSuperview().offset(-14)
             make.bottom.lessThanOrEqualToSuperview().offset(-8)

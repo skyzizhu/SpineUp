@@ -316,30 +316,7 @@
 "conn_status_ok_desc" = "设备传感器已就绪，正在以 60Hz 采样率实时感知头部姿态与颈椎额外承重。";
 "conn_status_dc_title" = "AirPods 未连接";
 
-/* Posture Hazard & Relief Guide & Practice */
-"ai_analyzing_hint" = "✨ AI 正在计算当前姿态力学冲击与体态退行预测...";
-"ai_prescription_badge" = "✨ AI 专属急救处方 · 毫秒级卸荷";
-"ai_tag_title" = "✨ AI 实时体态力学推演";
-"hazard_appearance_title" = "⚠️ 颜值与体态杀手";
-"hazard_btn_to_relief" = "查看减负微操方案";
-"hazard_metric_title" = "实时颈椎力学冲击";
-"hazard_metric_val_fmt" = "低头 %.1f° · 额外受力 +%.1f kg";
-"hazard_sheet_title" = "颈椎承重与危害透视";
-"hazard_timeline_title" = "⏱ 损伤时间轴演变";
-"relief_action1_steps" = "• 坐正平视正前方，背部放松微靠。\n• 食指轻触下巴，水平向后平行推送（挤出双下巴感）。\n• 感受后颈温和拉伸，保持 3 秒，重复 5~8 次。";
-"relief_action1_tag" = "告别乌龟颈 & 激活颈深肌";
-"relief_action1_title" = "1. 麦肯基收下巴（Chin Tuck）";
-"relief_action2_steps" = "• 双臂大臂贴紧肋侧，小臂向上屈起呈「W」形。\n• 双肩自然下沉缓慢展开，将两块肩胛骨往中间夹紧。\n• 配合深吸气停留 5 秒后呼气放松，重复 4~6 次。";
-"relief_action2_tag" = "打开胸椎 & 击碎富贵包";
-"relief_action2_title" = "2. W 展肩夹背法（W-Stretches）";
-"relief_action3_steps" = "• 视线平齐：笔记本用支架垫高，屏幕上 1/3 与视线平行。\n• 手肘 90°：调节工位椅高度，手肘呈直角自然搭放桌面。\n• 腰部支撑：臀部坐满椅底，腰部悬空处加一个小靠垫。";
-"relief_action3_tag" = "物理根源消除低头诱因";
-"relief_action3_title" = "3. 工位人体工学黄金原则";
-"relief_btn_completed" = "🎉 完成！获得 +5 骨气能量";
-"relief_btn_start" = "开始 30 秒微操 (+5 骨气能量)";
-"relief_guide_header_sub" = "坐着就能做 · 不尴尬 · 毫秒级卸下颈椎额外承重";
-"relief_guide_header_title" = "30秒办公室减负微操";
-"relief_guide_title" = "身体保护与微操建议";
+/* 30-Second Relief & Vision Practice */
 "practice_step_1" = "动作 1/2 (15s)";
 "practice_step_2" = "动作 2/2 (15s)";
 "practice_action1_title" = "麦肯基收下巴";

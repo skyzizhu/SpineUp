@@ -35,6 +35,8 @@ private final class SUReliefActionCardView: UIView {
             label.font = .systemFont(ofSize: 16, weight: .bold)
         }
         label.textColor = .label
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
         return label
     }()
 
@@ -44,6 +46,8 @@ private final class SUReliefActionCardView: UIView {
         label.layer.cornerRadius = 6
         label.layer.masksToBounds = true
         label.textAlignment = .center
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
         return label
     }()
 
@@ -187,7 +191,7 @@ private final class SUReliefActionCardView: UIView {
         }
 
         titleLabel.snp.makeConstraints { make in
-            make.centerY.equalTo(iconBadgeView.snp.centerY)
+            make.top.equalTo(iconBadgeView.snp.top)
             make.leading.equalTo(iconBadgeView.snp.trailing).offset(10)
             make.trailing.lessThanOrEqualTo(timeCapsuleLabel.snp.leading).offset(-8)
         }
@@ -196,16 +200,17 @@ private final class SUReliefActionCardView: UIView {
         titleLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
 
         timeCapsuleLabel.snp.makeConstraints { make in
-            make.centerY.equalTo(iconBadgeView.snp.centerY)
+            make.top.equalTo(iconBadgeView.snp.top).offset(2)
             make.trailing.equalToSuperview().offset(-16)
         }
         timeCapsuleLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
 
         tagBadgeLabel.snp.makeConstraints { make in
-            make.top.equalTo(iconBadgeView.snp.bottom).offset(10)
+            make.top.greaterThanOrEqualTo(iconBadgeView.snp.bottom).offset(10)
+            make.top.greaterThanOrEqualTo(titleLabel.snp.bottom).offset(8)
             make.leading.equalToSuperview().offset(16)
             make.trailing.lessThanOrEqualToSuperview().offset(-16)
-            make.height.equalTo(20)
+            make.height.greaterThanOrEqualTo(20)
         }
         tagBadgeLabel.adjustsFontSizeToFitWidth = true
         tagBadgeLabel.minimumScaleFactor = 0.8
@@ -364,6 +369,8 @@ final class SUPostureReliefGuideViewController: SUBaseViewController {
         label.text = SULocalized("ai_prescription_badge", default: "✨ AI 专属急救处方 · 毫秒级卸荷")
         label.font = .systemFont(ofSize: 11, weight: .bold)
         label.textColor = .systemGreen
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
         return label
     }()
 
@@ -387,6 +394,8 @@ final class SUPostureReliefGuideViewController: SUBaseViewController {
             label.font = .systemFont(ofSize: 20, weight: .heavy)
         }
         label.textColor = .label
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
         return label
     }()
 
@@ -456,6 +465,8 @@ final class SUPostureReliefGuideViewController: SUBaseViewController {
     private let petNameLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 12, weight: .bold)
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
         return label
     }()
 
@@ -629,7 +640,7 @@ final class SUPostureReliefGuideViewController: SUBaseViewController {
         aiPrescriptionBadgeView.snp.makeConstraints { make in
             make.top.leading.equalToSuperview().offset(16)
             make.trailing.lessThanOrEqualTo(loadOffsetPillLabel.snp.leading).offset(-8)
-            make.height.equalTo(22)
+            make.height.greaterThanOrEqualTo(22)
         }
 
         aiPrescriptionBadgeLabel.snp.makeConstraints { make in
@@ -640,15 +651,16 @@ final class SUPostureReliefGuideViewController: SUBaseViewController {
         aiPrescriptionBadgeLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
 
         loadOffsetPillLabel.snp.makeConstraints { make in
-            make.centerY.equalTo(aiPrescriptionBadgeView.snp.centerY)
+            make.top.equalTo(aiPrescriptionBadgeView.snp.top)
             make.trailing.equalToSuperview().offset(-16)
-            make.height.equalTo(20)
+            make.height.greaterThanOrEqualTo(20)
         }
         loadOffsetPillLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
         loadOffsetPillLabel.setContentHuggingPriority(.required, for: .horizontal)
 
         headerTitleLabel.snp.makeConstraints { make in
-            make.top.equalTo(aiPrescriptionBadgeView.snp.bottom).offset(8)
+            make.top.greaterThanOrEqualTo(aiPrescriptionBadgeView.snp.bottom).offset(8)
+            make.top.greaterThanOrEqualTo(loadOffsetPillLabel.snp.bottom).offset(8)
             make.leading.trailing.equalToSuperview().inset(16)
         }
 

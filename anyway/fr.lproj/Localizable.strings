@@ -296,30 +296,7 @@
 "conn_status_ok_desc" = "Capteur prêt. Diffusion en continu à 60 Hz pour mesurer la charge cervicale.";
 "conn_status_dc_title" = "AirPods déconnectés";
 
-/* Posture Hazard & Relief Guide & Practice */
-"ai_analyzing_hint" = "✨ L\'IA calcule les contraintes biomécaniques et la projection dégénérative...";
-"ai_prescription_badge" = "✨ Prescription IA Express · Décharge Immédiate";
-"ai_tag_title" = "✨ Simulation Biomécanique IA en Temps Réel";
-"hazard_appearance_title" = "⚠️ Ennemi de l\'Esthétique & de la Posture";
-"hazard_btn_to_relief" = "Voir la Routine de 30s";
-"hazard_metric_title" = "Stress Cervical en Temps Réel";
-"hazard_metric_val_fmt" = "Inclinaison %.1f° · Charge Extra +%.1f kg";
-"hazard_sheet_title" = "Aperçu de la Charge Cervicale & Risques";
-"hazard_timeline_title" = "⏱ Évolution chronologique";
-"relief_action1_steps" = "• Asseyez-vous droit en regardant devant, dos soutenu.\n• Poussez le menton horizontalement en arrière avec l\'index (double menton).\n• Sentez l\'étirement doux à l\'arrière du cou, tenez 3s, répétez 5~8 fois.";
-"relief_action1_tag" = "Adieu Cou de Texte & Activation Fléchisseurs";
-"relief_action1_title" = "1. Rentré de Menton McKenzie";
-"relief_action2_steps" = "• Bras collés aux côtes, coudes pliés en forme de « W ».\n• Abaissez les épaules, resserrez les omoplates vers le centre.\n• Inspirez profondément, maintenez 5s, expirez et relâchez. 4~6 fois.";
-"relief_action2_tag" = "Ouvrir la Cage Thoracique & Bosses de Bison";
-"relief_action2_title" = "2. Étirements en W";
-"relief_action3_steps" = "• Regard à niveau : Élevez l\'écran au niveau des yeux.\n• Coudes à 90° : Réglez la chaise pour reposer les bras à angle droit.\n• Soutien lombaire : Asseyez-vous au fond avec un petit coussin.";
-"relief_action3_tag" = "Éliminer la Mauvaise Posture à la Source";
-"relief_action3_title" = "3. Règles d\'Or Ergonomiques";
-"relief_btn_completed" = "🎉 Terminé ! +5 Énergie Dorsale";
-"relief_btn_start" = "Démarrer 30s de Soulagement (+5 Énergie)";
-"relief_guide_header_sub" = "Faisable assis · Discret · Soulage la nuque en quelques secondes";
-"relief_guide_header_title" = "Routine Express de 30s au Bureau";
-"relief_guide_title" = "Protection Corporelle & Exercices";
+/* 30-Second Relief & Vision Practice */
 "practice_step_1" = "Étape 1/2 (15s)";
 "practice_step_2" = "Étape 2/2 (15s)";
 "practice_action1_title" = "Rentré de Menton";

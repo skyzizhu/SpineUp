@@ -296,30 +296,7 @@
 "conn_status_ok_desc" = "센서 준비 완료. 60Hz 샘플링으로 머리 자세와 추가 경추 하중을 실시간 추적 중입니다.";
 "conn_status_dc_title" = "AirPods 연결 안 됨";
 
-/* Posture Hazard & Relief Guide & Practice */
-"ai_analyzing_hint" = "✨ AI가 현재 자세의 생체역학적 부하와 변형 위험을 계산 중입니다...";
-"ai_prescription_badge" = "✨ AI 맞춤 응급 처방 · 즉각 하중 완화";
-"ai_tag_title" = "✨ AI 실시간 자세 역학 시뮬레이션";
-"hazard_appearance_title" = "⚠️ 외모 및 체형 영향";
-"hazard_btn_to_relief" = "스트레칭 루틴 보기";
-"hazard_metric_title" = "실시간 경추 하중 충격";
-"hazard_metric_val_fmt" = "기울기 %.1f° · 추가 부하 +%.1f kg";
-"hazard_sheet_title" = "경추 부담 및 위험 투시";
-"hazard_timeline_title" = "⏱ 손상 진행 타임라인";
-"relief_action1_steps" = "• 정면을 바라보고 등을 편안히 기댑니다.\n• 검지로 턱을 살짝 대고, 수평으로 뒤로 밉니다 (이중턱을 만드는 느낌).\n• 목 뒤쪽의 편안한 당김을 느끼며 3초 유지, 5~8회 반복합니다.";
-"relief_action1_tag" = "거북목 탈출 & 심부 경추 근육 활성화";
-"relief_action1_title" = "1. 맥켄지 친턱 (턱 당기기)";
-"relief_action2_steps" = "• 팔을 옆구리에 붙이고 팔꿈치를 올려 'W' 모양을 만듭니다.\n• 어깨를 내리고 양 견갑골을 가운데로 조여줍니다.\n• 깊게 숨을 들이쉬며 5초 유지 후 숨을 내쉬며 이완, 4~6회 반복합니다.";
-"relief_action2_tag" = "흉추 가동성 회복 & 버섯목 타파";
-"relief_action2_title" = "2. W 스트레칭 (견갑골 모으기)";
-"relief_action3_steps" = "• 시선 높이: 거치대로 화면 상단 1/3을 눈높이에 맞춥니다.\n• 팔꿈치 90°: 의자 높이를 맞춰 팔을 자연스럽게 얹습니다.\n• 허리 지지: 엉덩이를 끝까지 붙이고 작은 쿠션을 받칩니다.";
-"relief_action3_tag" = "숙임 원인을 물리적으로 차단";
-"relief_action3_title" = "3. 사무실 인체공학 황금 원칙";
-"relief_btn_completed" = "🎉 완료! +5 척추 에너지 획득";
-"relief_btn_start" = "30초 스트레칭 시작 (+5 척추 에너지)";
-"relief_guide_header_sub" = "앉아서 바로 실천 · 부담 없는 자세 · 단숨에 목 부담 해소";
-"relief_guide_header_title" = "30초 오피스 피로 리셋";
-"relief_guide_title" = "신체 보호 & 스트레칭 가이드";
+/* 30-Second Relief & Vision Practice */
 "practice_step_1" = "동작 1/2 (15s)";
 "practice_step_2" = "동작 2/2 (15s)";
 "practice_action1_title" = "맥켄지 친턱";

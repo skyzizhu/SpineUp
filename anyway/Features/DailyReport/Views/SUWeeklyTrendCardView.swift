@@ -16,6 +16,8 @@ final class SUWeeklyTrendCardView: UIView {
         label.text = SULocalized("weekly_trend_title", default: "7 天体态趋势分布")
         label.font = .systemFont(ofSize: 17, weight: .bold)
         label.textColor = .label
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
         label.adjustsFontSizeToFitWidth = true
         label.minimumScaleFactor = 0.8
         return label
@@ -26,6 +28,8 @@ final class SUWeeklyTrendCardView: UIView {
         label.text = SULocalized("weekly_trend_subtitle", default: "柱状高低反映每日佩戴时长，高亮周度最佳日")
         label.font = .systemFont(ofSize: 12, weight: .medium)
         label.textColor = .secondaryLabel
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
         label.adjustsFontSizeToFitWidth = true
         label.minimumScaleFactor = 0.8
         return label

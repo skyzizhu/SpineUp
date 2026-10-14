@@ -94,6 +94,8 @@ final class SUDiagnosisCardView: UIView {
         let label = UILabel()
         label.font = roundedFont(ofSize: 17, weight: .bold)
         label.textColor = .label
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
         label.adjustsFontSizeToFitWidth = true
         label.minimumScaleFactor = 0.85
         return label
@@ -138,6 +140,8 @@ final class SUDiagnosisCardView: UIView {
     private let archiveBadgeLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 11, weight: .bold)
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.8
         return label
     }()
 
@@ -287,6 +291,10 @@ final class SUDiagnosisCardView: UIView {
         label.font = roundedFont(ofSize: 13.5, weight: .bold)
         label.textColor = .systemGreen
         label.text = SULocalized("diagnosis_btn_relief_guide", default: "查看 30 秒急救减负微操")
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.85
         return label
     }()
 
@@ -552,7 +560,7 @@ final class SUDiagnosisCardView: UIView {
         reliefGuideButton.snp.makeConstraints { make in
             make.top.equalTo(prescriptionSectionView.snp.bottom).offset(12)
             make.leading.trailing.equalToSuperview().inset(18)
-            make.height.equalTo(46)
+            make.height.greaterThanOrEqualTo(46)
         }
 
         reliefIconContainer.snp.makeConstraints { make in
@@ -567,6 +575,8 @@ final class SUDiagnosisCardView: UIView {
         }
 
         reliefButtonTitleLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(8)
+            make.bottom.equalToSuperview().offset(-8)
             make.centerY.equalToSuperview()
             make.leading.equalTo(reliefIconContainer.snp.trailing).offset(10)
             make.trailing.lessThanOrEqualTo(reliefBadgeStackView.snp.leading).offset(-6)

@@ -296,30 +296,7 @@
 "conn_status_ok_desc" = "センサー準備完了。60Hzで頭部姿勢と頸椎負荷をリアルタイム検知しています。";
 "conn_status_dc_title" = "AirPods 未接続";
 
-/* Posture Hazard & Relief Guide & Practice */
-"ai_analyzing_hint" = "✨ AIが姿勢の生体力学的負荷と変性予測を計算中...";
-"ai_prescription_badge" = "✨ AI専用救急処方 · 即効負荷軽減";
-"ai_tag_title" = "✨ AIリアルタイム姿勢生体力学推論";
-"hazard_appearance_title" = "⚠️ 美容と姿勢への影響";
-"hazard_btn_to_relief" = "ケア動作を確認";
-"hazard_metric_title" = "リアルタイム頸椎負荷";
-"hazard_metric_val_fmt" = "前傾 %.1f° · 追加負荷 +%.1f kg";
-"hazard_sheet_title" = "頸椎負荷と健康リスク透視";
-"hazard_timeline_title" = "⏱ 経時的損傷変化";
-"relief_action1_steps" = "• 正面を向いて背筋を伸ばし、軽く背もたれに添えます。\n• 人差し指で顎を軽く触れ、水平に後ろへ引きます（二重顎を作る感覚）。\n• 首の後ろの心地よい伸びを感じ、3秒キープ。5〜8回繰り返します。";
-"relief_action1_tag" = "ストレートネック解消 & 深層頸部筋の活性化";
-"relief_action1_title" = "1. マッケンジー・チンタック（顎引き）";
-"relief_action2_steps" = "• 上腕を脇腹につけ、肘を曲げて「W」の形を作ります。\n• 肩の力を抜き、両肩甲骨を中央に引き寄せます。\n• 深呼吸に合わせて5秒キープ後、息を吐いて緩めます。4〜6回繰り返します。";
-"relief_action2_tag" = "胸椎を開く & 猫背・首こり解消";
-"relief_action2_title" = "2. Wストレッチ（肩甲骨引き締め）";
-"relief_action3_steps" = "• 視線の高さ：スタンドで画面上部1/3を目線の高さに合わせます。\n• 肘の角度90°：椅子の高さを調整し、腕を自然に机に乗せます。\n• 腰のサポート：深く腰掛け、隙間に小さなクッションを当てます。";
-"relief_action3_tag" = "前傾姿勢の原因を物理的に遮断";
-"relief_action3_title" = "3. デスク人間工学黄金ルール";
-"relief_btn_completed" = "🎉 完了！+5 スパインエネルギー獲得";
-"relief_btn_start" = "30秒マイクロケア開始 (+5 スパインエネルギー)";
-"relief_guide_header_sub" = "座ったまま簡単 · 目立たない · 首の負担を瞬時に解放";
-"relief_guide_header_title" = "30秒オフィス疲労リセット";
-"relief_guide_title" = "身体保護 & マイクロケア提案";
+/* 30-Second Relief & Vision Practice */
 "practice_step_1" = "動作 1/2 (15s)";
 "practice_step_2" = "動作 2/2 (15s)";
 "practice_action1_title" = "マッケンジー・チンタック";

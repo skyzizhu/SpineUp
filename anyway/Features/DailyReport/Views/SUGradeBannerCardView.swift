@@ -32,6 +32,8 @@ final class SUGradeBannerCardView: UIView {
         let label = UILabel()
         label.font = .systemFont(ofSize: 20, weight: .bold)
         label.textColor = .label
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
         return label
     }()
 
@@ -39,6 +41,8 @@ final class SUGradeBannerCardView: UIView {
         let label = UILabel()
         label.font = .systemFont(ofSize: 13, weight: .medium)
         label.textColor = .secondaryLabel
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
         return label
     }()
 

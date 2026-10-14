@@ -111,6 +111,8 @@ final class SUPostureGaugeView: UIView {
         label.font = UIFont.systemFont(ofSize: 12, weight: .bold)
         label.textColor = .systemGreen
         label.textAlignment = .center
+        label.numberOfLines = 2
+        label.lineBreakMode = .byWordWrapping
         label.adjustsFontSizeToFitWidth = true
         label.minimumScaleFactor = 0.75
         return label
@@ -251,7 +253,7 @@ final class SUPostureGaugeView: UIView {
             make.height.equalTo(24)
         }
 
-        // 中间行：左侧负荷卡片与右侧角度徽标
+        // 中间行：左侧负荷卡片与右侧评估胶囊
         loadCardContainer.snp.makeConstraints { make in
             make.top.equalTo(cardHeaderContainerView.snp.bottom).offset(10)
             make.leading.equalToSuperview().offset(16)
@@ -262,37 +264,35 @@ final class SUPostureGaugeView: UIView {
         loadTitleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(6)
             make.leading.equalToSuperview().offset(10)
+            make.trailing.lessThanOrEqualToSuperview().offset(-8)
+        }
+
+        loadValueLabel.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset(10)
+            make.bottom.equalToSuperview().offset(-6)
         }
 
         aiHazardBadgeLabel.snp.makeConstraints { make in
-            make.centerY.equalTo(loadTitleLabel)
-            make.leading.equalTo(loadTitleLabel.snp.trailing).offset(4)
+            make.centerY.equalTo(loadValueLabel)
             make.trailing.equalToSuperview().offset(-8)
+            make.leading.greaterThanOrEqualTo(loadValueLabel.snp.trailing).offset(6)
         }
 
         loadTitleLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         aiHazardBadgeLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
         aiHazardBadgeLabel.setContentHuggingPriority(.required, for: .horizontal)
 
-        loadValueLabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(10)
-            make.bottom.equalToSuperview().offset(-6)
-            make.trailing.lessThanOrEqualToSuperview().offset(-8)
-        }
-
         statusBadgeContainer.snp.makeConstraints { make in
-            make.centerY.equalTo(loadCardContainer)
+            make.top.bottom.equalTo(loadCardContainer)
             make.trailing.equalToSuperview().offset(-16)
             make.leading.greaterThanOrEqualTo(loadCardContainer.snp.trailing).offset(8)
-            make.height.equalTo(28)
         }
 
         statusBadgeContainer.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
         statusBadgeContainer.setContentHuggingPriority(.required, for: .horizontal)
 
         statusHintLabel.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(8)
-            make.centerY.equalToSuperview()
+            make.edges.equalToSuperview().inset(UIEdgeInsets(top: 4, left: 8, bottom: 4, right: 8))
         }
 
         // 底部进度条与标尺

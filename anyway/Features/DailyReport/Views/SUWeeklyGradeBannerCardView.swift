@@ -27,6 +27,8 @@ final class SUWeeklyGradeBannerCardView: UIView {
         label.text = SULocalized("weekly_score_title", default: "周度体态健康综合评分")
         label.font = .systemFont(ofSize: 15, weight: .semibold)
         label.textColor = .label
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
         label.adjustsFontSizeToFitWidth = true
         label.minimumScaleFactor = 0.85
         return label

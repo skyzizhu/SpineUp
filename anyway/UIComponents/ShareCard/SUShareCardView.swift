@@ -77,6 +77,8 @@ final class SUShareCardView: UIView {
         let label = UILabel()
         label.font = .systemFont(ofSize: 18, weight: .bold)
         label.textColor = .label
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
         label.adjustsFontSizeToFitWidth = true
         label.minimumScaleFactor = 0.85
         return label
@@ -147,6 +149,8 @@ final class SUShareCardView: UIView {
         let label = UILabel()
         label.font = .systemFont(ofSize: 13, weight: .bold)
         label.textColor = .label
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
         return label
     }()
 
@@ -230,7 +234,7 @@ final class SUShareCardView: UIView {
         gradeBadgeCard.snp.makeConstraints { make in
             make.top.equalTo(brandHeaderStack.snp.bottom).offset(14)
             make.leading.trailing.equalToSuperview().inset(18)
-            make.height.equalTo(72)
+            make.height.greaterThanOrEqualTo(72)
         }
 
         gradeLetterLabel.snp.makeConstraints { make in
@@ -241,7 +245,7 @@ final class SUShareCardView: UIView {
 
         gradeTitleLabel.snp.makeConstraints { make in
             make.leading.equalTo(gradeLetterLabel.snp.trailing).offset(10)
-            make.top.equalToSuperview().offset(16)
+            make.top.equalToSuperview().offset(14)
             make.trailing.lessThanOrEqualToSuperview().offset(-16)
         }
 
@@ -251,6 +255,7 @@ final class SUShareCardView: UIView {
             make.width.greaterThanOrEqualTo(58)
             make.trailing.lessThanOrEqualToSuperview().offset(-16)
             make.height.equalTo(20)
+            make.bottom.lessThanOrEqualToSuperview().offset(-12)
         }
 
         // Stats Box
@@ -273,19 +278,20 @@ final class SUShareCardView: UIView {
         metaphorCardView.snp.makeConstraints { make in
             make.top.equalTo(statsStackView.snp.bottom).offset(12)
             make.leading.trailing.equalToSuperview().inset(18)
-            make.height.equalTo(44)
+            make.height.greaterThanOrEqualTo(44)
         }
 
         metaphorIconImageView.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(12)
-            make.centerY.equalToSuperview()
+            make.top.equalToSuperview().offset(13)
             make.size.equalTo(18)
         }
 
         metaphorTextLabel.snp.makeConstraints { make in
             make.leading.equalTo(metaphorIconImageView.snp.trailing).offset(8)
             make.trailing.equalToSuperview().offset(-12)
-            make.centerY.equalToSuperview()
+            make.top.equalToSuperview().offset(10)
+            make.bottom.equalToSuperview().offset(-10)
         }
 
         // Diagnosis & Comment

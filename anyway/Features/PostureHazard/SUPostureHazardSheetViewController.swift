@@ -244,6 +244,8 @@ final class SUPostureHazardSheetViewController: SUBaseViewController {
         label.text = SULocalized("hazard_appearance_title", default: "颜值与体态退行透视")
         label.font = .systemFont(ofSize: 15.5, weight: .bold)
         label.textColor = .label
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
         label.adjustsFontSizeToFitWidth = true
         label.minimumScaleFactor = 0.85
         return label
@@ -259,6 +261,10 @@ final class SUPostureHazardSheetViewController: SUBaseViewController {
         label.layer.cornerRadius = 8
         label.layer.cornerCurve = .continuous
         label.clipsToBounds = true
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.8
         return label
     }()
 
@@ -301,6 +307,8 @@ final class SUPostureHazardSheetViewController: SUBaseViewController {
         label.text = SULocalized("hazard_timeline_title", default: "损伤时间轴演变")
         label.font = .systemFont(ofSize: 15.5, weight: .bold)
         label.textColor = .label
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
         label.adjustsFontSizeToFitWidth = true
         label.minimumScaleFactor = 0.85
         return label
@@ -316,6 +324,10 @@ final class SUPostureHazardSheetViewController: SUBaseViewController {
         label.layer.cornerRadius = 8
         label.layer.cornerCurve = .continuous
         label.clipsToBounds = true
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.8
         return label
     }()
 
@@ -832,23 +844,25 @@ final class SUPostureHazardSheetViewController: SUBaseViewController {
         }
 
         appearanceHeaderLabel.snp.makeConstraints { make in
-            make.centerY.equalTo(appearanceIconContainer)
+            make.top.equalTo(appearanceIconContainer.snp.top)
             make.leading.equalTo(appearanceIconContainer.snp.trailing).offset(10)
             make.trailing.lessThanOrEqualTo(appearanceBadgeLabel.snp.leading).offset(-8)
         }
         appearanceHeaderLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
 
         appearanceBadgeLabel.snp.makeConstraints { make in
-            make.centerY.equalTo(appearanceHeaderLabel)
+            make.top.equalTo(appearanceIconContainer.snp.top)
             make.trailing.equalToSuperview().offset(-14)
-            make.height.equalTo(20)
+            make.height.greaterThanOrEqualTo(20)
             make.width.greaterThanOrEqualTo(58)
         }
         appearanceBadgeLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
         appearanceBadgeLabel.setContentHuggingPriority(.required, for: .horizontal)
 
         appearanceStackView.snp.makeConstraints { make in
-            make.top.equalTo(appearanceIconContainer.snp.bottom).offset(12)
+            make.top.greaterThanOrEqualTo(appearanceHeaderLabel.snp.bottom).offset(12)
+            make.top.greaterThanOrEqualTo(appearanceIconContainer.snp.bottom).offset(12)
+            make.top.greaterThanOrEqualTo(appearanceBadgeLabel.snp.bottom).offset(12)
             make.leading.trailing.equalToSuperview().inset(14)
             make.bottom.equalToSuperview().offset(-14)
         }
@@ -870,23 +884,25 @@ final class SUPostureHazardSheetViewController: SUBaseViewController {
         }
 
         timelineHeaderLabel.snp.makeConstraints { make in
-            make.centerY.equalTo(timelineIconContainer)
+            make.top.equalTo(timelineIconContainer.snp.top)
             make.leading.equalTo(timelineIconContainer.snp.trailing).offset(10)
             make.trailing.lessThanOrEqualTo(timelineBadgeLabel.snp.leading).offset(-8)
         }
         timelineHeaderLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
 
         timelineBadgeLabel.snp.makeConstraints { make in
-            make.centerY.equalTo(timelineHeaderLabel)
+            make.top.equalTo(timelineIconContainer.snp.top)
             make.trailing.equalToSuperview().offset(-14)
-            make.height.equalTo(20)
+            make.height.greaterThanOrEqualTo(20)
             make.width.greaterThanOrEqualTo(68)
         }
         timelineBadgeLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
         timelineBadgeLabel.setContentHuggingPriority(.required, for: .horizontal)
 
         timelineStackView.snp.makeConstraints { make in
-            make.top.equalTo(timelineIconContainer.snp.bottom).offset(14)
+            make.top.greaterThanOrEqualTo(timelineHeaderLabel.snp.bottom).offset(14)
+            make.top.greaterThanOrEqualTo(timelineIconContainer.snp.bottom).offset(14)
+            make.top.greaterThanOrEqualTo(timelineBadgeLabel.snp.bottom).offset(14)
             make.leading.trailing.equalToSuperview().inset(14)
             make.bottom.equalToSuperview().offset(-14)
         }
