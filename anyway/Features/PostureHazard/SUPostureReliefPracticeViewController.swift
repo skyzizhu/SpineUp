@@ -46,6 +46,7 @@ final class SUPostureReliefPracticeViewController: SUBaseViewController {
     // MARK: - 自定义页面核心子组件
     private let topNavBarView = SUPracticeTopNavBarView()
     private let stageView = SUPracticeStageView()
+    private let speechBubbleView = SUPetSpeechBubbleView()
     private let breathingPacerView = SUBreathingPacerView()
     private let infoCardView = SUPracticeActionInfoCardView()
     private let bottomControlBarView = SUPracticeBottomControlBarView()
@@ -104,6 +105,7 @@ final class SUPostureReliefPracticeViewController: SUBaseViewController {
         // 2. 将各个独立的自定义组件组装进滚动视图
         contentView.addSubview(topNavBarView)
         contentView.addSubview(stageView)
+        contentView.addSubview(speechBubbleView)
         contentView.addSubview(breathingPacerView)
         contentView.addSubview(infoCardView)
 
@@ -125,35 +127,41 @@ final class SUPostureReliefPracticeViewController: SUBaseViewController {
             make.width.equalTo(scrollView.frameLayoutGuide)
         }
 
-        // 2. 顶部导航操作栏 (在抓手条下方留出精致舒适的 12pt 间距)
+        // 2. 顶部导航操作栏 (在顶部留出更宽裕舒适的 24pt 间距，避免紧贴抓手条或刘海)
         topNavBarView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(12)
+            make.top.equalToSuperview().offset(24)
             make.leading.trailing.equalToSuperview().inset(16)
             make.height.equalTo(34)
         }
 
-        // 3. 拟人桌宠核心示范舞台 (间距 16pt，高度提升至 320pt，内部无边框且桌宠 100% 绝对居中)
+        // 3. 拟人桌宠核心示范舞台 (高度 280pt，内部桌宠 100% 绝对居中，无任何遮挡)
         stageView.snp.makeConstraints { make in
-            make.top.equalTo(topNavBarView.snp.bottom).offset(16)
+            make.top.equalTo(topNavBarView.snp.bottom).offset(14)
             make.leading.trailing.equalToSuperview().inset(16)
-            make.height.equalTo(320)
+            make.height.equalTo(280)
         }
 
-        // 4. 呼吸引导律动与倒计时一体化控制条 (高度仅 62pt)
-        breathingPacerView.snp.makeConstraints { make in
+        // 4. 宠物台词与提醒气泡卡片 (放置在舞台正下方，再也不会遮挡桌宠)
+        speechBubbleView.snp.makeConstraints { make in
             make.top.equalTo(stageView.snp.bottom).offset(12)
+            make.leading.trailing.equalToSuperview().inset(16)
+        }
+
+        // 5. 呼吸引导律动与倒计时一体化控制条 (位于提醒卡片下方，高度 62pt)
+        breathingPacerView.snp.makeConstraints { make in
+            make.top.equalTo(speechBubbleView.snp.bottom).offset(12)
             make.leading.trailing.equalToSuperview().inset(16)
             make.height.equalTo(62)
         }
 
-        // 5. 动作说明卡片 (底部留出 84pt 避让悬浮底部控制栏)
+        // 6. 动作说明卡片 (底部留出 84pt 避让悬浮底部控制栏)
         infoCardView.snp.makeConstraints { make in
             make.top.equalTo(breathingPacerView.snp.bottom).offset(12)
             make.leading.trailing.equalToSuperview().inset(16)
             make.bottom.equalToSuperview().offset(-84)
         }
 
-        // 6. 底部悬浮控制栏 (常驻底部安全区域上方)
+        // 7. 底部悬浮控制栏 (常驻底部安全区域上方)
         bottomControlBarView.snp.makeConstraints { make in
             make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
             make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-12)
@@ -175,6 +183,12 @@ final class SUPostureReliefPracticeViewController: SUBaseViewController {
 
         topNavBarView.onModeToggleTapped = { [weak self] in
             self?.didTapModeToggle()
+        }
+
+        speechBubbleView.onBubbleTapped = { [weak self] in
+            guard let self = self else { return }
+            let line = self.currentAction.dialogue(for: self.persona)
+            SUSpeechManager.shared.speak(text: line, persona: self.persona, force: true)
         }
 
         bottomControlBarView.onPauseResumeTapped = { [weak self] in
@@ -232,11 +246,11 @@ final class SUPostureReliefPracticeViewController: SUBaseViewController {
 
         if isPaused {
             countdownTimer?.invalidate()
-            stageView.configureSpeechBubble(text: SULocalized("practice_paused_tip", default: "微操已暂停，随时点击继续~"))
+            speechBubbleView.configure(text: SULocalized("practice_paused_tip", default: "微操已暂停，随时点击继续~"))
         } else {
             startPracticeTimer()
             let dialogue = currentAction.dialogue(for: persona)
-            stageView.configureSpeechBubble(text: dialogue, iconColor: currentAction.themeColor)
+            speechBubbleView.configure(text: dialogue, iconColor: currentAction.themeColor)
         }
     }
 
@@ -305,7 +319,7 @@ final class SUPostureReliefPracticeViewController: SUBaseViewController {
         // 最后 3 秒冲刺提示
         if remainingSeconds == 3 {
             let sprintLine = SUPracticeActionType.sprintDialogue(for: persona)
-            stageView.configureSpeechBubble(text: sprintLine)
+            speechBubbleView.configure(text: sprintLine)
             SUSpeechManager.shared.speak(text: sprintLine, persona: persona, force: true)
         }
 
@@ -340,7 +354,7 @@ final class SUPostureReliefPracticeViewController: SUBaseViewController {
 
         // 更新台词气泡并触发语音
         let line = action.dialogue(for: persona)
-        stageView.configureSpeechBubble(text: line, iconColor: action.themeColor)
+        speechBubbleView.configure(text: line, iconColor: action.themeColor)
 
         if forceSpeech {
             SUSpeechManager.shared.speak(text: line, persona: persona, force: true)
@@ -449,7 +463,7 @@ final class SUPostureReliefPracticeViewController: SUBaseViewController {
 
         // 更新台词气泡
         let congratsText = SUPracticeActionType.completionDialogue(for: persona)
-        stageView.configureSpeechBubble(text: congratsText, iconColor: .systemGreen)
+        speechBubbleView.configure(text: congratsText, iconColor: .systemGreen)
         SUSpeechManager.shared.speak(text: congratsText, persona: persona, force: true)
 
         // 更新桌宠形象为欢呼状态

@@ -23,7 +23,6 @@ final class SUPracticeStageView: UIView {
     }()
 
     private let petContainerView = SUPracticePetContainerView()
-    private let speechBubbleView = SUPetSpeechBubbleView()
 
     // MARK: - AI 摄像头悬浮画中画 (PiP)
     private let cameraPipContainerView: UIView = {
@@ -93,7 +92,7 @@ final class SUPracticeStageView: UIView {
     }
 
     override var intrinsicContentSize: CGSize {
-        return CGSize(width: UIView.noIntrinsicMetric, height: 320)
+        return CGSize(width: UIView.noIntrinsicMetric, height: 280)
     }
 
     private func setupUI() {
@@ -101,7 +100,6 @@ final class SUPracticeStageView: UIView {
 
         addSubview(stageCardView)
         stageCardView.addSubview(petContainerView)
-        stageCardView.addSubview(speechBubbleView)
 
         stageCardView.addSubview(cameraPipContainerView)
         cameraPipContainerView.addSubview(cameraLiveBadge)
@@ -117,11 +115,6 @@ final class SUPracticeStageView: UIView {
         petContainerView.snp.makeConstraints { make in
             make.center.equalToSuperview()
             make.size.equalTo(CGSize(width: 260, height: 250))
-        }
-
-        speechBubbleView.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(14)
-            make.bottom.equalToSuperview().offset(-12)
         }
 
         cameraPipContainerView.snp.makeConstraints { make in
@@ -180,14 +173,6 @@ final class SUPracticeStageView: UIView {
             breathPhase: breathPhase,
             isMatchingPose: isMatchingPose
         )
-    }
-
-    func configureSpeechBubble(text: String, iconColor: UIColor? = nil) {
-        if let color = iconColor {
-            speechBubbleView.configure(text: text, iconColor: color)
-        } else {
-            speechBubbleView.configure(text: text)
-        }
     }
 
     // MARK: - AI 摄像头 PiP 与动效
