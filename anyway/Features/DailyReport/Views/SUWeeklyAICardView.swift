@@ -170,10 +170,20 @@ final class SUWeeklyAICardView: UIView {
         }
     }
 
+    private var currentReport: SUWeeklyReport?
+
+    func refreshLocalizedStrings() {
+        titleLabel.text = SULocalized("weekly_ai_title", default: "AI 专属伴侣周度深度复盘")
+        if let report = currentReport {
+            personaBadgeLabel.text = " \(report.persona.displayName) "
+            quoteLabel.attributedText = buildFormattedAttributedString(from: report.aiPersonaSummary)
+            metaphorLabel.text = String(format: SULocalized("weekly_metaphor_fmt", default: "本周减负量: %@"), report.equivalentItemName)
+        }
+    }
+
     func configure(with report: SUWeeklyReport) {
-        personaBadgeLabel.text = " \(report.persona.displayName) "
-        quoteLabel.attributedText = buildFormattedAttributedString(from: report.aiPersonaSummary)
-        metaphorLabel.text = String(format: SULocalized("weekly_metaphor_fmt", default: "本周减负量: %@"), report.equivalentItemName)
+        self.currentReport = report
+        refreshLocalizedStrings()
     }
 
     private func buildFormattedAttributedString(from text: String) -> NSAttributedString {
@@ -198,6 +208,14 @@ final class SUWeeklyAICardView: UIView {
         let attrString = NSMutableAttributedString(string: cleanedText, attributes: baseAttributes)
 
         let highlightPatterns: [(String, UIColor)] = [
+            ("【" + SULocalized("weekly_ai_section_headline", default: "核心定性") + "】", .systemPurple),
+            ("【" + SULocalized("weekly_ai_section_data", default: "数据全景") + "】", .systemBlue),
+            ("【" + SULocalized("weekly_ai_section_hazards", default: "潜在健康危害与长期后果") + "】", .systemRed),
+            ("【" + SULocalized("weekly_ai_section_mitigation", default: "科学规避与精准改善微操") + "】", .systemGreen),
+            ("【" + SULocalized("weekly_ai_section_ergonomics", default: "工位人体工学改造建议") + "】", .systemTeal),
+            ("【" + SULocalized("weekly_persona_worker_title", default: "毒舌搭子结语") + "】", .systemOrange),
+            ("【" + SULocalized("weekly_persona_cat_title", default: "傲娇猫猫结语") + "】", .systemOrange),
+            ("【" + SULocalized("weekly_persona_coach_title", default: "体态私教结语") + "】", .systemIndigo),
             ("【核心定性】", .systemPurple),
             ("【数据全景】", .systemBlue),
             ("【潜在健康危害与长期后果】", .systemRed),
@@ -211,6 +229,8 @@ final class SUWeeklyAICardView: UIView {
         ]
 
         let nsString = cleanedText as NSString
+        var matchedRanges = [NSRange]()
+
         for (pattern, color) in highlightPatterns {
             var searchRange = NSRange(location: 0, length: nsString.length)
             while searchRange.location < nsString.length {
@@ -227,10 +247,31 @@ final class SUWeeklyAICardView: UIView {
                         .paragraphStyle: headerStyle
                     ], range: foundRange)
 
+                    matchedRanges.append(foundRange)
                     let nextLocation = foundRange.location + foundRange.length
                     searchRange = NSRange(location: nextLocation, length: nsString.length - nextLocation)
                 } else {
                     break
+                }
+            }
+        }
+
+        // 通用兜底：针对任何【...】标题应用粗体与边距样式
+        if let regex = try? NSRegularExpression(pattern: "【[^】]+】", options: []) {
+            let matches = regex.matches(in: cleanedText, options: [], range: NSRange(location: 0, length: nsString.length))
+            for match in matches {
+                let range = match.range
+                if !matchedRanges.contains(where: { NSEqualRanges($0, range) }) {
+                    let headerStyle = NSMutableParagraphStyle()
+                    headerStyle.paragraphSpacingBefore = (range.location == 0 ? 0 : 10.0)
+                    headerStyle.paragraphSpacing = 4.0
+                    headerStyle.lineSpacing = 3.0
+
+                    attrString.addAttributes([
+                        .font: UIFont.systemFont(ofSize: 14.5, weight: .bold),
+                        .foregroundColor: UIColor.systemPurple,
+                        .paragraphStyle: headerStyle
+                    ], range: range)
                 }
             }
         }

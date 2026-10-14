@@ -431,3 +431,46 @@
 "auto_launch_tip" = "💡 Astuce : Les automatisations Bluetooth iOS 17+ prennent en charge l'exécution immédiate sans confirmation. Une fois configuré, brancher vos AirPods ouvrira SpineUp instantanément !";
 "auto_launch_open_shortcuts_btn" = "Ouvrir Raccourcis pour configurer";
 
+
+/* Weekly Report & Localization Enhancements */
+"prescription_guide_title" = "Ordonnance IA · Guide de rééducation";
+"weekly_metric_wear" = "Suivi cumulé";
+"weekly_metric_alleviated" = "Charge soulagée";
+"weekly_metric_fatigue" = "Pic de fatigue";
+"weekly_metric_risk" = "Risque de bosse";
+"weekly_metric_load" = "Pression subie";
+"weekly_metric_coins" = "Énergie gagnée";
+"weekday_mon" = "Lun";
+"weekday_tue" = "Mar";
+"weekday_wed" = "Mer";
+"weekday_thu" = "Jeu";
+"weekday_fri" = "Ven";
+"weekday_sat" = "Sam";
+"weekday_sun" = "Dim";
+"weekly_best_day" = "Mardi";
+"leaderboard_tag_pioneer" = "Pionnier droit";
+"weekly_ai_section_headline" = "Évaluation clé";
+"weekly_ai_section_data" = "Vue d'ensemble des données";
+"weekly_ai_section_hazards" = "Risques potentiels et conséquences";
+"weekly_ai_section_mitigation" = "Actions d'amélioration ciblées";
+"weekly_ai_section_ergonomics" = "Conseils d'ergonomie au bureau";
+"weekly_ai_headline_content" = "Évaluation : Le taux de posture droite de 79,2% est satisfaisant, mais un affaissement marqué survient vers 16h, nécessitant une compensation biomécanique.";
+"weekly_ai_data_content" = "24,5 heures surveillées cette semaine avec un taux de rectitude de 79,2 % ; SpineUp a soulagé 142,5 kg de contrainte cervicale. Mardi fut votre meilleur jour, tandis que 16h marque votre seuil de fatigue neuromusculaire.";
+"weekly_ai_hazards_content" = "Négliger la tête penchée après 16h accélère la dégénérescence des disques C5-C7 et l'inversion de la courbure cervicale. Le coussinet graisseux compense en formant une bosse de bison, tandis que les muscles fléchisseurs affaiblis provoquent un affaissement du visage et des céphalées trapézoïdales chroniques.";
+"weekly_ai_mitigation_content" = "Effectuez des rentrés de menton McKenzie avant 16h : assis droit, reculez le menton de 2 cm pendant 4s pour stimuler les fléchisseurs profonds. Associez des extensions en W : coudes au corps en forme de W, serrez les omoplates 5s × 10 fois pour inverser la tension pectorale.";
+"weekly_ai_ergonomics_content" = "Surélevez le haut de l'écran au niveau des yeux à une distance d'un bras ; ajoutez un soutien lombaire et gardez les coudes à 90 degrés pour éliminer les causes physiques de la tête penchée.";
+"weekly_persona_cat_title" = "Le mot du chat tsundere";
+"weekly_persona_cat_comment" = "« J'ai inspecté tes scores de la semaine, miaou ! 79% de rectitude et un record mardi, c'est tout juste passable pour mon humain ! Mais vers 16h tu t'effondres complètement. Prépare un plumeau sur ton bureau pour te tenir droit, miaou ! »";
+"weekly_persona_coach_title" = "Le mot du coach postural";
+"weekly_persona_coach_comment" = "« Vous avez soulagé 142,5 kg de contrainte sur vos cervicales cette semaine, avec une maîtrise remarquable mardi ! 16h est votre zone de fatigue nerveuse : levez-vous pour deux séries d'extensions en W la semaine prochaine pour une posture droite. »";
+"weekly_persona_worker_title" = "Le mot du collègue sarcastique";
+"weekly_persona_worker_comment" = "« Mon pote, 24,5 heures vissé à ton bureau cette semaine ! Heureusement que SpineUp t'a épargné 142,5 kg d'impact cervical. Mardi était parfait, mais vers 16h c'est l'effondrement. Monte ton écran de 3 cm la semaine prochaine, on veut la prime et une belle mâchoire ! »";
+"leaderboard_peer_1" = "Mia Cou de Cygne";
+"leaderboard_peer_2" = "Kevin le Geek";
+"leaderboard_peer_3" = "Prof de Yoga Lin";
+"leaderboard_peer_4" = "Daming Droit";
+"leaderboard_peer_5" = "Amy Concentrée";
+"leaderboard_peer_6" = "Kai Coureur du Matin";
+"leaderboard_peer_7" = "Ann Rédactrice";
+"leaderboard_peer_8" = "Lucas Fan d'AirPods";
+"leaderboard_peer_9" = "Sisi Épaules Droites";

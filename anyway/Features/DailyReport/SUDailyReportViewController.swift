@@ -425,12 +425,20 @@ final class SUDailyReportViewController: SUBaseViewController {
         let titleText = isDaily
             ? SULocalized("share_report", default: "生成并分享今日战报")
             : SULocalized("share_weekly_report", default: "生成并分享骨气周报")
-        shareButton.setTitle(titleText, for: .normal)
+        var config = shareButton.configuration ?? UIButton.Configuration.filled()
+        config.attributedTitle = AttributedString(titleText, attributes: AttributeContainer([
+            .font: UIFont.systemFont(ofSize: 17, weight: .black)
+        ]))
+        shareButton.configuration = config
 
         metricsGridView.refreshLocalizedStrings()
         diagnosisCardView.refreshLocalizedStrings()
+        weeklyGradeBannerView.refreshLocalizedStrings()
+        weeklyTrendCardView.refreshLocalizedStrings()
+        weeklyMetricsGridView.refreshLocalizedStrings()
+        weeklyAICardView.refreshLocalizedStrings()
 
-        viewModel.refreshReport()
+        viewModel.refreshReport(force: true)
         renderDailyReport(viewModel.currentDailyReport)
         renderWeeklyReport(viewModel.currentWeeklyReport)
     }

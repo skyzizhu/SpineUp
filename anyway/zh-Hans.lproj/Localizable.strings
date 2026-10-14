@@ -471,3 +471,46 @@
 "auto_launch_tip" = "💡 极客小贴士：iOS 17 及以上系统的蓝牙自动化完全支持免确认「立即运行」。设置完成后，只要您戴上耳机触发蓝牙连接，手机将自动秒开 SpineUp！";
 "auto_launch_open_shortcuts_btn" = "立即前往「快捷指令」配置";
 
+
+/* Weekly Report & Localization Enhancements */
+"prescription_guide_title" = "AI 拟人处方 · 康复指引";
+"weekly_metric_wear" = "累计监测";
+"weekly_metric_alleviated" = "协助减负";
+"weekly_metric_fatigue" = "疲劳塌陷期";
+"weekly_metric_risk" = "富贵包风险";
+"weekly_metric_load" = "累计抗压";
+"weekly_metric_coins" = "获得能量";
+"weekday_mon" = "周一";
+"weekday_tue" = "周二";
+"weekday_wed" = "周三";
+"weekday_thu" = "周四";
+"weekday_fri" = "周五";
+"weekday_sat" = "周六";
+"weekday_sun" = "周日";
+"weekly_best_day" = "周二";
+"leaderboard_tag_pioneer" = "挺拔先锋";
+"weekly_ai_section_headline" = "核心定性";
+"weekly_ai_section_data" = "数据全景";
+"weekly_ai_section_hazards" = "潜在健康危害与长期后果";
+"weekly_ai_section_mitigation" = "科学规避与精准改善微操";
+"weekly_ai_section_ergonomics" = "工位人体工学改造建议";
+"weekly_ai_headline_content" = "周报定性：整体挺拔率 79.2% 保持良好，但 16 点疲劳塌陷显著，急需反向力学对冲。";
+"weekly_ai_data_content" = "本周累计监测 24.5 小时，挺拔端正率为 79.2%；SpineUp 协助规避了 142.5 kg 颈椎剪切压力。周二体态表现最佳，但每日 16:00 附近是神经肌耐力断崖期。";
+"weekly_ai_hazards_content" = "若长期放任 16 点后低头前倾，C5-C7 颈椎间盘在持续折屈下易加速退行并引发曲度变直甚至反弓；后颈交界脂肪垫为缓冲剪切力会代偿增厚形成顽固富贵包；深层颈屈肌无力还会牵拉下颌线坍塌，导致双下巴与斜方肌慢性痉挛偏头痛。";
+"weekly_ai_mitigation_content" = "每日 16 点前执行麦肯基收下巴（Chin Tuck）：坐直平视，食指推下巴向后水平回缩 2 厘米保持 4 秒，激活颈深屈肌；配合 W 展肩夹背法：双臂屈肘贴肋展成 W 形，用力夹紧双侧肩胛骨 5 秒×10 次，快速逆转胸大肌紧缩。";
+"weekly_ai_ergonomics_content" = "立即将电脑显示器上缘垫高至与视线平齐，距离眼睛一臂远；椅子加装腰托填满腰椎前凸，手肘呈 90 度平搭桌面，从物理根源消除低头诱因。";
+"weekly_persona_cat_title" = "傲娇猫猫结语";
+"weekly_persona_cat_comment" = "「本喵核查了你这周的战绩喵！挺拔达标率 79%，还在周二拿下了本周最佳，勉强算你是个合格的铲屎官！不过每天 16 点左右你就开始瘫成猫饼，下周记得在工位准备好逗猫棒提醒自己坐直喵！」";
+"weekly_persona_coach_title" = "体态私教结语";
+"weekly_persona_coach_comment" = "「本周你一共协助颈椎卸下了 142.5 kg 的多余剪切压强，周二的体态控制尤为出色！每天 16:00 附近是你的神经疲劳窗口期，下周建议在这个时段主动起立做两组 W 展肩，期待你更挺拔的身姿。」";
+"weekly_persona_worker_title" = "毒舌搭子结语";
+"weekly_persona_worker_comment" = "「兄弟，本周在工位扛了整整 24.5 小时，幸好 SpineUp 帮你分担了 142.5 kg 的颈椎暴击！周二坐得最端正，但每天 16 点左右就开始疲劳塌房。下周把显示器再垫高 3 厘米，全勤奖和下颌线咱们全都要！」";
+"leaderboard_peer_1" = "云端天鹅颈·米娅";
+"leaderboard_peer_2" = "不低头的极客阿飞";
+"leaderboard_peer_3" = "瑜伽课代表林老师";
+"leaderboard_peer_4" = "告别富贵包的大明";
+"leaderboard_peer_5" = "专注备考的糯米";
+"leaderboard_peer_6" = "晨跑挺拔达人小凯";
+"leaderboard_peer_7" = "端坐写报告的安安";
+"leaderboard_peer_8" = "AirPods 守护者浩子";
+"leaderboard_peer_9" = "拒绝圆肩的茜茜";

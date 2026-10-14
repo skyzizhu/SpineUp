@@ -82,6 +82,8 @@ final class SUWeeklyGradeBannerCardView: UIView {
         return label
     }()
 
+    private var currentReport: SUWeeklyReport?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupCard()
@@ -180,9 +182,17 @@ final class SUWeeklyGradeBannerCardView: UIView {
     }
 
     func configure(with report: SUWeeklyReport) {
-        weekRangeLabel.text = report.dateRangeText
-        scoreLabel.text = "\(report.healthScore)"
-        gradeLabel.text = report.gradeText
-        uprightRateLabel.text = String(format: SULocalized("weekly_upright_fmt", default: "%.1f%% 挺拔率"), report.uprightPercentage)
+        self.currentReport = report
+        refreshLocalizedStrings()
+    }
+
+    func refreshLocalizedStrings() {
+        titleLabel.text = SULocalized("weekly_score_title", default: "周度体态健康综合评分")
+        if let report = currentReport {
+            weekRangeLabel.text = report.dateRangeText
+            scoreLabel.text = "\(report.healthScore)"
+            gradeLabel.text = report.gradeText
+            uprightRateLabel.text = String(format: SULocalized("weekly_upright_fmt", default: "%.1f%% 挺拔率"), report.uprightPercentage)
+        }
     }
 }

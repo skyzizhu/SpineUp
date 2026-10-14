@@ -313,6 +313,9 @@ final class SULeaderboardViewController: SUBaseViewController {
             case .streakDays:
                 myScoreSubtitleLabel.text = String(format: SULocalized("leaderboard_my_streak_sub", default: "连续端坐打卡 %d 天 · 坚守体态自律"), myInfo.entry.streakDays)
             }
+        } else {
+            rankBadgeLabel.text = String(format: SULocalized("leaderboard_my_rank_fmt", default: "第 %d 名"), 1)
+            myScoreSubtitleLabel.text = String(format: SULocalized("leaderboard_my_energy_sub", default: "当前累积 %d 骨气币 · 挺拔保持领先"), SUSpineEnergyManager.shared.totalCoins)
         }
 
         tableView.reloadData()
@@ -398,6 +401,7 @@ final class SULeaderboardViewController: SUBaseViewController {
         }
         positiveHintLabel.text = SULocalized("leaderboard_positive_hint", default: "💡 本榜单严格遵循正向激励原则，仅展示挺拔与能量成就，不设立预警负面排行，守护每位打工人的体态自尊心。")
         updateRefreshControlTitle()
+        service.invalidateCache()
         renderCurrentData()
     }
 

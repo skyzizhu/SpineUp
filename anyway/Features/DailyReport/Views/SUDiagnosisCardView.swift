@@ -231,7 +231,7 @@ final class SUDiagnosisCardView: UIView {
         let label = UILabel()
         label.font = .systemFont(ofSize: 11.5, weight: .bold)
         label.textColor = .systemIndigo
-        label.text = SULocalized("doctor_prescription", default: "AI 拟人处方") + " · 康复指引"
+        label.text = SULocalized("prescription_guide_title", default: "AI 拟人处方 · 康复指引")
         return label
     }()
 
@@ -710,7 +710,7 @@ final class SUDiagnosisCardView: UIView {
         headerSubtitleLabel.text = SULocalized("diagnosis_header_subtitle", default: "CLINICAL POSTURE ASSESSMENT")
 
         diagnosisTagLabel.text = SULocalized("clinical_diagnosis_tag", default: "体态综合判定")
-        prescriptionTagLabel.text = SULocalized("doctor_prescription", default: "AI 拟人处方") + " · 康复指引"
+        prescriptionTagLabel.text = SULocalized("prescription_guide_title", default: "AI 拟人处方 · 康复指引")
 
         let rawBtnTitle = SULocalized("diagnosis_btn_relief_guide", default: "查看 30 秒急救减负微操 →")
         reliefButtonTitleLabel.text = rawBtnTitle.replacingOccurrences(of: " →", with: "").replacingOccurrences(of: "→", with: "")

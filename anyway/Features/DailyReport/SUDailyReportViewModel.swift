@@ -150,7 +150,7 @@ final class SUDailyReportViewModel: @unchecked Sendable {
         self.currentDailyReport = daily
 
         var weeklyToNotify: SUWeeklyReport? = nil
-        if selectedPeriod == .weekly {
+        if force || selectedPeriod == .weekly {
             let weekly = SUWeeklyReportGenerator.generateReport(todaySession: session, persona: persona)
             self.currentWeeklyReport = weekly
             self.isWeeklyDirty = false

@@ -431,3 +431,46 @@
 "auto_launch_tip" = "💡 ヒント：iOS 17以降のBluetoothオートメーションは確認なしの「すぐに実行」に対応しています。一度設定すれば、AirPodsを耳に装着するだけで自動でSpineUpが起動します！";
 "auto_launch_open_shortcuts_btn" = "「ショートカット」アプリを開いて設定";
 
+
+/* Weekly Report & Localization Enhancements */
+"prescription_guide_title" = "AI処方箋・リハビリガイド";
+"weekly_metric_wear" = "累計モニタリング";
+"weekly_metric_alleviated" = "軽減負荷";
+"weekly_metric_fatigue" = "疲労ピーク期";
+"weekly_metric_risk" = "水牛肩リスク";
+"weekly_metric_load" = "累計抗圧";
+"weekly_metric_coins" = "獲得エネルギー";
+"weekday_mon" = "月";
+"weekday_tue" = "火";
+"weekday_wed" = "水";
+"weekday_thu" = "木";
+"weekday_fri" = "金";
+"weekday_sat" = "土";
+"weekday_sun" = "日";
+"weekly_best_day" = "火曜日";
+"leaderboard_tag_pioneer" = "美姿勢パイオニア";
+"weekly_ai_section_headline" = "総合診断";
+"weekly_ai_section_data" = "データ全景";
+"weekly_ai_section_hazards" = "潜在的リスクと長期影響";
+"weekly_ai_section_mitigation" = "科学的な改善アクション";
+"weekly_ai_section_ergonomics" = "デスクの人間工学アドバイス";
+"weekly_ai_headline_content" = "総合評価：直立率79.2％と概ね良好ですが、16時頃に顕著な疲労による崩れが見られ、逆方向のバイオメカニクス対策が不可欠です。";
+"weekly_ai_data_content" = "今週は累計24.5時間を計測し、直立率は79.2％。SpineUpが142.5kgの頸椎剪断ストレスを軽減しました。火曜日がベストでしたが、毎日16:00頃が筋持久力の急降下期です。";
+"weekly_ai_hazards_content" = "16時以降の前傾姿勢を放置すると、C5-C7椎間板の屈曲負荷が頸椎ストレート化や逆弯曲を促進。後首部の脂肪組織が代償性に肥厚し水牛肩を形成します。さらに深層頸屈筋の衰えがフェイスラインを崩し、僧帽筋の慢性痙攣や偏頭痛を誘発します。";
+"weekly_ai_mitigation_content" = "毎日16時前にマッケンジー・チンタックを実施：背筋を伸ばし水平に顎を2cm後方に引き4秒キープ。さらにW字ショルダーリトラクションを併用：肘を曲げてW字を作り、肩甲骨を5秒間強く引き寄せる動作を10回行い大胸筋の拘縮をリセットします。";
+"weekly_ai_ergonomics_content" = "モニターの上端を視線の高さまで上げ、目から腕一本分の距離を確保。ランバーサポートで腰椎前弯を支え、肘を90度に保ってデスクに置くことで、うつむきの物理的原因を根本から解消しましょう。";
+"weekly_persona_cat_title" = "ツンデレ猫の結び";
+"weekly_persona_cat_comment" = "「今週の戦績を確認したニャ！直立率79％で火曜日は週間ベスト、まあ合格点の執事ニャ！でも毎日16時頃になると完全に溶けてるニャ。来週はデスクに猫じゃらしを置いて背筋を伸ばすニャ！」";
+"weekly_persona_coach_title" = "姿勢コーチの結び";
+"weekly_persona_coach_comment" = "「今週は頸椎から142.5kgもの余分な剪断ストレスを解放できました。火曜のコントロールは見事でした！毎日16時前後は神経疲労の分岐点。来週はこの時間に立ってW字ストレッチを2セット行い、さらなる美姿勢を目指しましょう。」";
+"weekly_persona_worker_title" = "毒舌同僚の結び";
+"weekly_persona_worker_comment" = "「相棒、今週はデスクで24.5時間も耐え抜いたな！SpineUpが142.5kgの頸椎直撃ダメージを肩代わりしてくれて助かったぞ。火曜日は完璧だったが毎夕16時には崩壊してる。来週は画面を3cm高くして皆勤賞もフェイスラインも両獲りだ！」";
+"leaderboard_peer_1" = "美頸ミア";
+"leaderboard_peer_2" = "姿勢ハックのトオル";
+"leaderboard_peer_3" = "ヨガ講師リン";
+"leaderboard_peer_4" = "美姿勢ダイスケ";
+"leaderboard_peer_5" = "試験勉強ノゾミ";
+"leaderboard_peer_6" = "朝ランカイ";
+"leaderboard_peer_7" = "レポート執筆アン";
+"leaderboard_peer_8" = "AirPods愛用ヒロ";
+"leaderboard_peer_9" = "巻き肩知らずのシシ";

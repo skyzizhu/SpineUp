@@ -471,3 +471,46 @@
 "auto_launch_tip" = "💡 Pro Tip: iOS 17+ Bluetooth automations support seamless 'Run Immediately' without confirmation. Once configured, putting on your AirPods will immediately launch SpineUp!";
 "auto_launch_open_shortcuts_btn" = "Open Shortcuts App to Set Up";
 
+
+/* Weekly Report & Localization Enhancements */
+"prescription_guide_title" = "AI Prescription · Recovery Guide";
+"weekly_metric_wear" = "Total Monitored";
+"weekly_metric_alleviated" = "Load Relieved";
+"weekly_metric_fatigue" = "Fatigue Peak";
+"weekly_metric_risk" = "Hump Risk";
+"weekly_metric_load" = "Pressure Endured";
+"weekly_metric_coins" = "Energy Earned";
+"weekday_mon" = "Mon";
+"weekday_tue" = "Tue";
+"weekday_wed" = "Wed";
+"weekday_thu" = "Thu";
+"weekday_fri" = "Fri";
+"weekday_sat" = "Sat";
+"weekday_sun" = "Sun";
+"weekly_best_day" = "Tuesday";
+"leaderboard_tag_pioneer" = "Upright Pioneer";
+"weekly_ai_section_headline" = "Core Assessment";
+"weekly_ai_section_data" = "Data Overview";
+"weekly_ai_section_hazards" = "Potential Hazards & Consequences";
+"weekly_ai_section_mitigation" = "Actionable Improvements";
+"weekly_ai_section_ergonomics" = "Ergonomic Recommendations";
+"weekly_ai_headline_content" = "Assessment: Overall upright rate of 79.2% is solid, but notable fatigue collapse occurs around 4 PM, requiring biomechanical counteraction.";
+"weekly_ai_data_content" = "Monitored 24.5 hours this week with a 79.2% upright rate; SpineUp helped relieve 142.5 kg of cervical shear stress. Tuesday was your best day, while 4:00 PM represents your daily neuromuscular fatigue threshold.";
+"weekly_ai_hazards_content" = "Unchecked forward head slumping after 4 PM accelerates C5-C7 disc degeneration and cervical straightening/kyphosis. Cervicothoracic fat cushions compensatorily thicken into a stubborn dowager's hump, while weakened deep neck flexors cause jawline sagging and chronic trapezius tension headaches.";
+"weekly_ai_mitigation_content" = "Perform McKenzie Chin Tucks before 4 PM: sit upright looking ahead, push chin back horizontally 2 cm with your index finger for 4s to activate deep flexors. Pair with W-Extensions: form a W with arms bent at sides, squeeze shoulder blades firmly for 5s × 10 reps to reverse pectoral tightness.";
+"weekly_ai_ergonomics_content" = "Elevate top edge of your monitor to eye level at arm's length; add lumbar support to maintain natural lordosis, with elbows resting naturally at 90 degrees to eliminate physical triggers of forward head posture.";
+"weekly_persona_cat_title" = "Tsundere Cat's Wrap-up";
+"weekly_persona_cat_comment" = "“I inspected your weekly record, meow! 79% upright rate and Tuesday was your personal best—barely passable for my human! But around 4 PM every day you melt like a puddle. Keep a feather wand on your desk to poke yourself upright, meow!”";
+"weekly_persona_coach_title" = "Posture Coach's Wrap-up";
+"weekly_persona_coach_comment" = "“You helped relieve 142.5 kg of excess shear stress from your cervical spine this week, with outstanding control on Tuesday! 4:00 PM is your neuro-fatigue window—try doing two sets of W-extensions around that time next week for an even stronger spine.”";
+"weekly_persona_worker_title" = "Sarcastic Pal's Wrap-up";
+"weekly_persona_worker_comment" = "“Buddy, you endured 24.5 hours at your desk this week—thank goodness SpineUp absorbed 142.5 kg of neck punishment! Tuesday was pristine, but around 4 PM you crumble like a house of cards. Raise that monitor 3cm next week; we want both the attendance bonus and sharp jawline!”";
+"leaderboard_peer_1" = "Swan Neck Mia";
+"leaderboard_peer_2" = "Geek Kevin";
+"leaderboard_peer_3" = "Yoga Instructor Lin";
+"leaderboard_peer_4" = "Daming Upright";
+"leaderboard_peer_5" = "Study Focus Amy";
+"leaderboard_peer_6" = "Morning Runner Kai";
+"leaderboard_peer_7" = "Report Writer Ann";
+"leaderboard_peer_8" = "AirPods Pro Lucas";
+"leaderboard_peer_9" = "Shoulder Posture Sisi";

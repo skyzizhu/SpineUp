@@ -46,7 +46,29 @@ final class SUWeeklyTrendCardView: UIView {
         return stack
     }()
 
+    private let uprightLegendLabel: UILabel = {
+        let lbl = UILabel()
+        lbl.font = .systemFont(ofSize: 11, weight: .bold)
+        lbl.textColor = .secondaryLabel
+        return lbl
+    }()
+
+    private let slumpLegendLabel: UILabel = {
+        let lbl = UILabel()
+        lbl.font = .systemFont(ofSize: 11, weight: .bold)
+        lbl.textColor = .secondaryLabel
+        return lbl
+    }()
+
+    private let bestLegendLabel: UILabel = {
+        let lbl = UILabel()
+        lbl.font = .systemFont(ofSize: 11, weight: .bold)
+        lbl.textColor = .secondaryLabel
+        return lbl
+    }()
+
     private var columnViews: [SUWeeklyColumnView] = []
+    private var currentItems: [SUWeeklyDailyBarItem]?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -119,31 +141,27 @@ final class SUWeeklyTrendCardView: UIView {
     }
 
     private func setupLegends() {
-        legendStackView.addArrangedSubview(makeLegendItem(color: .systemGreen, text: SULocalized("legend_upright", default: "挺拔端正")))
-        legendStackView.addArrangedSubview(makeLegendItem(color: .systemOrange, text: SULocalized("legend_slump", default: "低头前倾")))
-        legendStackView.addArrangedSubview(makeLegendItem(color: .systemYellow, text: SULocalized("legend_best", default: "🏆 最佳日")))
+        legendStackView.addArrangedSubview(makeLegendItem(color: .systemGreen, label: uprightLegendLabel))
+        legendStackView.addArrangedSubview(makeLegendItem(color: .systemOrange, label: slumpLegendLabel))
+        legendStackView.addArrangedSubview(makeLegendItem(color: .systemYellow, label: bestLegendLabel))
+        refreshLocalizedStrings()
     }
 
-    private func makeLegendItem(color: UIColor, text: String) -> UIView {
+    private func makeLegendItem(color: UIColor, label: UILabel) -> UIView {
         let container = UIView()
         let dot = UIView()
         dot.backgroundColor = color
         dot.layer.cornerRadius = 4
 
-        let lbl = UILabel()
-        lbl.text = text
-        lbl.font = .systemFont(ofSize: 11, weight: .bold)
-        lbl.textColor = .secondaryLabel
-
         container.addSubview(dot)
-        container.addSubview(lbl)
+        container.addSubview(label)
 
         dot.snp.makeConstraints { make in
             make.leading.centerY.equalToSuperview()
             make.size.equalTo(8)
         }
 
-        lbl.snp.makeConstraints { make in
+        label.snp.makeConstraints { make in
             make.leading.equalTo(dot.snp.trailing).offset(5)
             make.trailing.top.bottom.equalToSuperview()
         }
@@ -151,7 +169,19 @@ final class SUWeeklyTrendCardView: UIView {
         return container
     }
 
+    func refreshLocalizedStrings() {
+        titleLabel.text = SULocalized("weekly_trend_title", default: "7 天体态趋势分布")
+        subtitleLabel.text = SULocalized("weekly_trend_subtitle", default: "柱状高低反映每日佩戴时长，高亮周度最佳日")
+        uprightLegendLabel.text = SULocalized("legend_upright", default: "挺拔端正")
+        slumpLegendLabel.text = SULocalized("legend_slump", default: "低头前倾")
+        bestLegendLabel.text = SULocalized("legend_best", default: "🏆 最佳日")
+        if let currentItems = currentItems {
+            configure(with: currentItems)
+        }
+    }
+
     func configure(with items: [SUWeeklyDailyBarItem]) {
+        self.currentItems = items
         let maxDuration = items.map { $0.totalDurationSec }.max() ?? 18000.0
         let baseMax = max(maxDuration, 1.0)
 

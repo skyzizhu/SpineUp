@@ -120,7 +120,7 @@ struct SUWeeklyReport: Sendable, Equatable {
         let totalWearHours = response.total_wear_sec / 3600.0
         let totalSec = response.upright_sec + response.slump_sec
         let uprightPct = totalSec > 0 ? (response.upright_sec / totalSec) * 100.0 : 79.2
-        let bestDay = response.best_day_date ?? "周二"
+        let bestDay = response.best_day_date ?? SULocalized("weekly_best_day", default: "周二")
 
         self.periodKey = response.period_key
         self.dateRangeText = response.date_range_text
@@ -138,10 +138,10 @@ struct SUWeeklyReport: Sendable, Equatable {
         self.persona = persona
         self.dailyBreakdown = response.daily_breakdown ?? []
         self.shareHash = response.share_hash
-        self.headline = "周报定性：整体挺拔率 \(String(format: "%.1f", uprightPct))% · 累计减负 \(String(format: "%.1f", response.alleviated_load_kg)) kg"
-        self.consequences = "若放任疲劳时段低头前倾，C5-C7椎间盘持续屈曲受压加速退变反弓，同时深层颈屈肌无力拉扯下颌线松弛坍塌，诱发双下巴与斜方肌慢性痉挛偏头痛。"
-        self.mitigationActions = "每日疲劳时段前执行麦肯基收下巴（Chin Tuck）：坐直平视，食指推下巴水平后缩2cm保持4秒；配合W展肩夹背：屈肘呈W向中间用力夹紧肩胛骨5秒×10次，快速逆转胸大肌紧缩。"
-        self.ergonomicAdvice = "电脑显示器上缘垫高至与视线平齐，距离眼睛一臂远；椅子加装腰托填满腰椎前凸，手肘呈90度自然平搭桌面。"
+        self.headline = SULocalized("weekly_ai_headline_content", default: "周报定性：整体挺拔率 \(String(format: "%.1f", uprightPct))% · 累计减负 \(String(format: "%.1f", response.alleviated_load_kg)) kg")
+        self.consequences = SULocalized("weekly_ai_hazards_content", default: "若放任疲劳时段低头前倾，C5-C7椎间盘持续屈曲受压加速退变反弓，同时深层颈屈肌无力拉扯下颌线松弛坍塌，诱发双下巴与斜方肌慢性痉挛偏头痛。")
+        self.mitigationActions = SULocalized("weekly_ai_mitigation_content", default: "每日疲劳时段前执行麦肯基收下巴（Chin Tuck）：坐直平视，食指推下巴水平后缩2cm保持4秒；配合W展肩夹背：屈肘呈W向中间用力夹紧肩胛骨5秒×10次，快速逆转胸大肌紧缩。")
+        self.ergonomicAdvice = SULocalized("weekly_ai_ergonomics_content", default: "电脑显示器上缘垫高至与视线平齐，距离眼睛一臂远；椅子加装腰托填满腰椎前凸，手肘呈90度自然平搭桌面。")
     }
 }
 
@@ -163,7 +163,15 @@ enum SUWeeklyReportGenerator {
         let rangeText = String(format: SULocalized("weekly_range_fmt", default: "第 %d 周 · 本周体态表现"), weekNum)
 
         // 7天柱状图样本聚合
-        let dayLabels = ["周一", "周二", "周三", "周四", "周五", "周六", "周日"]
+        let dayLabels = [
+            SULocalized("weekday_mon", default: "周一"),
+            SULocalized("weekday_tue", default: "周二"),
+            SULocalized("weekday_wed", default: "周三"),
+            SULocalized("weekday_thu", default: "周四"),
+            SULocalized("weekday_fri", default: "周五"),
+            SULocalized("weekday_sat", default: "周六"),
+            SULocalized("weekday_sun", default: "周日")
+        ]
         var breakdown: [SUWeeklyDailyBarItem] = []
         for i in 0..<7 {
             let upright = [14400.0, 16800.0, 12600.0, 15000.0, 11500.0, 7200.0, 8500.0][i]
@@ -187,7 +195,7 @@ enum SUWeeklyReportGenerator {
         let accumulatedKg = 68.2
         let uprightRatio = 79.2
         let dowagerHumpRisk = 15
-        let bestDay = "周二"
+        let bestDay = SULocalized("weekly_best_day", default: "周二")
         let equivalentItem = SULocalized("weekly_metaphor_bikes", default: "约 3 辆金属山地自行车 (约 45kg)")
 
         // 拟人人设个性化周度结语与多维度专业复盘
@@ -195,23 +203,29 @@ enum SUWeeklyReportGenerator {
         let personaTitle: String
         switch persona {
         case .cat:
-            personaTitle = "傲娇猫猫结语"
-            personaComment = "「本喵核查了你这周的战绩喵！挺拔达标率 79%，还在周二拿下了本周最佳，勉强算你是个合格的铲屎官！不过每天 16 点左右你就开始瘫成猫饼，下周记得在工位准备好逗猫棒提醒自己坐直喵！」"
+            personaTitle = SULocalized("weekly_persona_cat_title", default: "傲娇猫猫结语")
+            personaComment = SULocalized("weekly_persona_cat_comment", default: "「本喵核查了你这周的战绩喵！挺拔达标率 79%，还在周二拿下了本周最佳，勉强算你是个合格的铲屎官！不过每天 16 点左右你就开始瘫成猫饼，下周记得在工位准备好逗猫棒提醒自己坐直喵！」")
         case .coach:
-            personaTitle = "体态私教结语"
-            personaComment = "「本周你一共协助颈椎卸下了 142.5 kg 的多余剪切压强，周二的体态控制尤为出色！每天 16:00 附近是你的神经疲劳窗口期，下周建议在这个时段主动起立做两组 W 展肩，期待你更挺拔的身姿。」"
+            personaTitle = SULocalized("weekly_persona_coach_title", default: "体态私教结语")
+            personaComment = SULocalized("weekly_persona_coach_comment", default: "「本周你一共协助颈椎卸下了 142.5 kg 的多余剪切压强，周二的体态控制尤为出色！每天 16:00 附近是你的神经疲劳窗口期，下周建议在这个时段主动起立做两组 W 展肩，期待你更挺拔的身姿。」")
         case .worker:
-            personaTitle = "毒舌搭子结语"
-            personaComment = "「兄弟，本周在工位扛了整整 24.5 小时，幸好 SpineUp 帮你分担了 142.5 kg 的颈椎暴击！周二坐得最端正，但每天 16 点左右就开始疲劳塌房。下周把显示器再垫高 3 厘米，全勤奖和下颌线咱们全都要！」"
+            personaTitle = SULocalized("weekly_persona_worker_title", default: "毒舌搭子结语")
+            personaComment = SULocalized("weekly_persona_worker_comment", default: "「兄弟，本周在工位扛了整整 24.5 小时，幸好 SpineUp 帮你分担了 142.5 kg 的颈椎暴击！周二坐得最端正，但每天 16 点左右就开始疲劳塌房。下周把显示器再垫高 3 厘米，全勤奖和下颌线咱们全都要！」")
         }
 
-        let headline = "周报定性：整体挺拔率 79.2% 保持良好，但 16 点疲劳塌陷显著，急需反向力学对冲。"
-        let dataInsights = "本周累计监测 24.5 小时，挺拔端正率为 79.2%；SpineUp 协助规避了 142.5 kg 颈椎剪切压力。周二体态表现最佳，但每日 16:00 附近是神经肌耐力断崖期。"
-        let consequences = "若长期放任 16 点后低头前倾，C5-C7 颈椎间盘在持续折屈下易加速退行并引发曲度变直甚至反弓；后颈交界脂肪垫为缓冲剪切力会代偿增厚形成顽固富贵包；深层颈屈肌无力还会牵拉下颌线坍塌，导致双下巴与斜方肌慢性痉挛偏头痛。"
-        let mitigations = "每日 16 点前执行麦肯基收下巴（Chin Tuck）：坐直平视，食指推下巴向后水平回缩 2 厘米保持 4 秒，激活颈深屈肌；配合 W 展肩夹背法：双臂屈肘贴肋展成 W 形，用力夹紧双侧肩胛骨 5 秒×10 次，快速逆转胸大肌紧缩。"
-        let ergonomics = "立即将电脑显示器上缘垫高至与视线平齐，距离眼睛一臂远；椅子加装腰托填满腰椎前凸，手肘呈 90 度平搭桌面，从物理根源消除低头诱因。"
+        let headline = SULocalized("weekly_ai_headline_content", default: "周报定性：整体挺拔率 79.2% 保持良好，但 16 点疲劳塌陷显著，急需反向力学对冲。")
+        let dataInsights = SULocalized("weekly_ai_data_content", default: "本周累计监测 24.5 小时，挺拔端正率为 79.2%；SpineUp 协助规避了 142.5 kg 颈椎剪切压力。周二体态表现最佳，但每日 16:00 附近是神经肌耐力断崖期。")
+        let consequences = SULocalized("weekly_ai_hazards_content", default: "若长期放任 16 点后低头前倾，C5-C7 颈椎间盘在持续折屈下易加速退行并引发曲度变直甚至反弓；后颈交界脂肪垫为缓冲剪切力会代偿增厚形成顽固富贵包；深层颈屈肌无力还会牵拉下颌线坍塌，导致双下巴与斜方肌慢性痉挛偏头痛。")
+        let mitigations = SULocalized("weekly_ai_mitigation_content", default: "每日 16 点前执行麦肯基收下巴（Chin Tuck）：坐直平视，食指推下巴向后水平回缩 2 厘米保持 4 秒，激活颈深屈肌；配合 W 展肩夹背法：双臂屈肘贴肋展成 W 形，用力夹紧双侧肩胛骨 5 秒×10 次，快速逆转胸大肌紧缩。")
+        let ergonomics = SULocalized("weekly_ai_ergonomics_content", default: "立即将电脑显示器上缘垫高至与视线平齐，距离眼睛一臂远；椅子加装腰托填满腰椎前凸，手肘呈 90 度平搭桌面，从物理根源消除低头诱因。")
 
-        let summary = "【核心定性】\n\(headline)\n\n【数据全景】\n\(dataInsights)\n\n【潜在健康危害与长期后果】\n\(consequences)\n\n【科学规避与精准改善微操】\n\(mitigations)\n\n【工位人体工学改造建议】\n\(ergonomics)\n\n【\(personaTitle)】\n\(personaComment)"
+        let secHeadline = SULocalized("weekly_ai_section_headline", default: "核心定性")
+        let secData = SULocalized("weekly_ai_section_data", default: "数据全景")
+        let secHazards = SULocalized("weekly_ai_section_hazards", default: "潜在健康危害与长期后果")
+        let secMitigation = SULocalized("weekly_ai_section_mitigation", default: "科学规避与精准改善微操")
+        let secErgonomics = SULocalized("weekly_ai_section_ergonomics", default: "工位人体工学改造建议")
+
+        let summary = "【\(secHeadline)】\n\(headline)\n\n【\(secData)】\n\(dataInsights)\n\n【\(secHazards)】\n\(consequences)\n\n【\(secMitigation)】\n\(mitigations)\n\n【\(secErgonomics)】\n\(ergonomics)\n\n【\(personaTitle)】\n\(personaComment)"
 
         return SUWeeklyReport(
             periodKey: periodKey,

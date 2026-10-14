@@ -431,3 +431,46 @@
 "auto_launch_tip" = "💡 팁: iOS 17 이상의 Bluetooth 자동화는 확인 절차 없는 '즉시 실행'을 완벽하게 지원합니다. 한 번 설정해 두면 AirPods를 착용하는 즉시 SpineUp이 실행됩니다!";
 "auto_launch_open_shortcuts_btn" = "'단축어' 앱으로 이동하여 설정";
 
+
+/* Weekly Report & Localization Enhancements */
+"prescription_guide_title" = "AI 맞춤 처방 · 회복 가이드";
+"weekly_metric_wear" = "누적 모니터링";
+"weekly_metric_alleviated" = "완화된 부담";
+"weekly_metric_fatigue" = "피로 붕괴 구간";
+"weekly_metric_risk" = "버섯목 위험도";
+"weekly_metric_load" = "누적 압력";
+"weekly_metric_coins" = "획득 에너지";
+"weekday_mon" = "월";
+"weekday_tue" = "화";
+"weekday_wed" = "수";
+"weekday_thu" = "목";
+"weekday_fri" = "금";
+"weekday_sat" = "토";
+"weekday_sun" = "일";
+"weekly_best_day" = "화요일";
+"leaderboard_tag_pioneer" = "바른자세 선봉";
+"weekly_ai_section_headline" = "핵심 진단";
+"weekly_ai_section_data" = "데이터 개요";
+"weekly_ai_section_hazards" = "잠재적 위험 및 장기적 영향";
+"weekly_ai_section_mitigation" = "과학적 예방 및 개선 미세조정";
+"weekly_ai_section_ergonomics" = "작업 공간 인체공학적 개선 권장";
+"weekly_ai_headline_content" = "종합 진단: 전체 곧은 자세 유지율 79.2%로 양호하나, 오후 4시경 뚜렷한 피로 붕괴가 관찰되어 역학적 보완이 시급합니다.";
+"weekly_ai_data_content" = "이번 주 총 24.5시간 모니터링, 바른 자세 비율 79.2% 기록. SpineUp이 142.5kg의 경추 전단 스트레스를 줄였습니다. 화요일이 가장 우수했으나 매일 오후 4시경 신경근 지구력이 급감합니다.";
+"weekly_ai_hazards_content" = "오후 4시 이후 고개 숙임 방치 시 C5-C7 디스크 퇴행과 일자목/역C자목이 가속화됩니다. 목 뒤 지방조직이 보상성으로 두꺼워져 버섯목을 형성하며, 심부 경추굴곡근 약화로 턱선 처짐과 승모근 만성 긴장성 두통이 발생합니다.";
+"weekly_ai_mitigation_content" = "매일 오후 4시 전 맥켄지 친턱(턱 당기기) 실시: 바르게 앉아 검지로 턱을 수평으로 2cm 밀어 4초 유지. W-스트레칭 병행: 팔꿈치를 굽혀 W자를 만들고 견갑골을 5초간 조이는 동작 10회 반복으로 대흉근 긴장을 신속히 해소하세요.";
+"weekly_ai_ergonomics_content" = "모니터 상단을 눈높이와 맞추고 한 팔 거리 유지. 의자에 요추 받침대를 추가해 허리 곡선을 지지하고 팔꿈치는 90도로 책상에 올려 고개 숙임의 물리적 원인을 근본 차단하세요.";
+"weekly_persona_cat_title" = "츤데레 고양이의 총평";
+"weekly_persona_cat_comment" = "「이번 주 전적을 확인했다냥! 바른 자세 달성률 79%에 화요일엔 베스트를 찍었으니 집사 자격 턱걸이 합격이다냥! 근데 매일 오후 4시만 되면 퍼져버린다냥. 다음 주엔 깃털 장난감으로 자세 똑바로 하라냥!」";
+"weekly_persona_coach_title" = "자세 코치의 총평";
+"weekly_persona_coach_comment" = "「이번 주 경추에서 142.5kg의 전단 압력을 덜어냈으며 화요일 자세 제어는 탁월했습니다! 매일 16:00 무렵은 신경 피로 취약 구간이니 다음 주엔 이 시간대에 W-스트레칭을 2세트 실행해 보세요. 더 곧은 자세를 기대합니다.」";
+"weekly_persona_worker_title" = "독설 동료의 총평";
+"weekly_persona_worker_comment" = "「이봐, 이번 주 데스크에서 장장 24.5시간 버텼네! SpineUp이 142.5kg 목 충격을 막아줘서 다행이야. 화요일은 완벽했지만 매일 16시만 되면 와르르 무너져. 다음 주엔 모니터 3cm 더 높여서 개근상과 턱선 둘 다 챙기자고!」";
+"leaderboard_peer_1" = "백조목 미아";
+"leaderboard_peer_2" = "숙이지 않는 케빈";
+"leaderboard_peer_3" = "요가 강사 린";
+"leaderboard_peer_4" = "버섯목 탈출 대민";
+"leaderboard_peer_5" = "열공러 에이미";
+"leaderboard_peer_6" = "모닝 러너 카이";
+"leaderboard_peer_7" = "보고서 작성 앤";
+"leaderboard_peer_8" = "에어팟 수호자 루카스";
+"leaderboard_peer_9" = "라운드숄더 탈출 시시";

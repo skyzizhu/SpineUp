@@ -29,6 +29,23 @@ final class SULeaderboardService: @unchecked Sendable {
         self.userDefaultsManager = userDefaultsManager
         self.energyManager = energyManager
         self.personaManager = personaManager
+
+        NotificationCenter.default.addObserver(
+            forName: SULocalizationManager.languageDidChangeNotification,
+            object: nil,
+            queue: nil
+        ) { [weak self] _ in
+            self?.invalidateCache()
+        }
+    }
+
+    /// 语言切换或数据刷新时清理内存缓存，确保多语言标签与文案实时生效
+    func invalidateCache() {
+        lock.withLock {
+            cachedRemoteEntries.removeAll()
+            cachedMyRank.removeAll()
+            cachedTotalUsers.removeAll()
+        }
     }
 
     /// 从云端真实数据库拉取排行榜列表
@@ -141,22 +158,22 @@ final class SULeaderboardService: @unchecked Sendable {
 
         // 模拟同城与社群挺拔伙伴样本 (正向积极打工人画像)
         var peers: [(id: String, name: String, persona: String, coins: Int, quality: Int, streak: Int, tag: String?)] = [
-            ("user_101", "云端天鹅颈·米娅", "cat", 480, 98, 28, "天鹅颈榜首"),
-            ("user_102", "不低头的极客阿飞", "worker", 420, 95, 21, "代码挺拔王"),
-            ("user_103", "瑜伽课代表林老师", "coach", 390, 94, 19, "体态大师"),
-            ("user_104", "告别富贵包的大明", "worker", 350, 92, 14, nil),
-            ("user_105", "专注备考的糯米", "cat", 310, 89, 12, nil),
-            ("user_106", "晨跑挺拔达人小凯", "coach", 280, 88, 10, nil),
-            ("user_107", "端坐写报告的安安", "worker", 240, 85, 7, nil),
-            ("user_108", "AirPods 守护者浩子", "cat", 210, 83, 5, nil),
-            ("user_109", "拒绝圆肩的茜茜", "coach", 180, 80, 4, nil)
+            ("user_101", SULocalized("leaderboard_peer_1", default: "云端天鹅颈·米娅"), "cat", 480, 98, 28, SULocalized("leaderboard_tag_top1", default: "榜首领跑")),
+            ("user_102", SULocalized("leaderboard_peer_2", default: "不低头的极客阿飞"), "worker", 420, 95, 21, SULocalized("leaderboard_tag_pioneer", default: "挺拔先锋")),
+            ("user_103", SULocalized("leaderboard_peer_3", default: "瑜伽课代表林老师"), "coach", 390, 94, 19, SULocalized("leaderboard_tag_master", default: "体态大师")),
+            ("user_104", SULocalized("leaderboard_peer_4", default: "告别富贵包的大明"), "worker", 350, 92, 14, nil),
+            ("user_105", SULocalized("leaderboard_peer_5", default: "专注备考的糯米"), "cat", 310, 89, 12, nil),
+            ("user_106", SULocalized("leaderboard_peer_6", default: "晨跑挺拔达人小凯"), "coach", 280, 88, 10, nil),
+            ("user_107", SULocalized("leaderboard_peer_7", default: "端坐写报告的安安"), "worker", 240, 85, 7, nil),
+            ("user_108", SULocalized("leaderboard_peer_8", default: "AirPods 守护者浩子"), "cat", 210, 83, 5, nil),
+            ("user_109", SULocalized("leaderboard_peer_9", default: "拒绝圆肩的茜茜"), "coach", 180, 80, 4, nil)
         ]
 
         // 用户的个人数据 (根据当前实际数据合成)
         let myCoins = max(currentCoins, 50)
         let myQuality = min(99, max(75, 85 + (myCoins % 13)))
         let myStreak = max(1, currentStreak)
-        let myTag = myCoins >= 300 ? "挺拔先锋" : nil
+        let myTag = myCoins >= 300 ? SULocalized("leaderboard_tag_pioneer", default: "挺拔先锋") : nil
 
         let myTuple = (
             id: "current_user",
@@ -212,6 +229,28 @@ final class SULeaderboardService: @unchecked Sendable {
         if let userIndex = list.firstIndex(where: { $0.isCurrentUser }) {
             return (rank: userIndex + 1, totalUsers: list.count, entry: list[userIndex])
         }
-        return nil
+
+        // 安全兜底：合成当前用户自身信息，确保卡片永远不落空
+        let currentUserName = userDefaultsManager.userName
+        let currentCoins = energyManager.totalCoins
+        let currentPersona = personaManager.currentPersona.rawValue
+        let currentStreak = userDefaultsManager.streakDays
+        let myCoins = max(currentCoins, 50)
+        let myQuality = min(99, max(75, 85 + (myCoins % 13)))
+        let myStreak = max(1, currentStreak)
+        let myTag = myCoins >= 300 ? SULocalized("leaderboard_tag_pioneer", default: "挺拔先锋") : nil
+
+        let fallbackEntry = SULeaderboardEntry(
+            id: "current_user",
+            rank: 1,
+            userName: currentUserName,
+            personaId: currentPersona,
+            energyCoins: myCoins,
+            uprightRatioPercent: myQuality,
+            streakDays: myStreak,
+            isCurrentUser: true,
+            tag: myTag
+        )
+        return (rank: 1, totalUsers: max(list.count, 1), entry: fallbackEntry)
     }
 }

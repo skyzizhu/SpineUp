@@ -471,3 +471,46 @@
 "auto_launch_tip" = "💡 極客小貼士：iOS 17 及以上系統的藍牙自動化完全支援免確認「立即執行」。設定完成後，只要您戴上耳機觸發藍牙連接，手機將自動秒開 SpineUp！";
 "auto_launch_open_shortcuts_btn" = "立即前往「捷徑」設定";
 
+
+/* Weekly Report & Localization Enhancements */
+"prescription_guide_title" = "AI 擬人處方 · 康復指引";
+"weekly_metric_wear" = "累計監測";
+"weekly_metric_alleviated" = "協助減負";
+"weekly_metric_fatigue" = "疲勞塌陷期";
+"weekly_metric_risk" = "富貴包風險";
+"weekly_metric_load" = "累計抗壓";
+"weekly_metric_coins" = "獲得能量";
+"weekday_mon" = "週一";
+"weekday_tue" = "週二";
+"weekday_wed" = "週三";
+"weekday_thu" = "週四";
+"weekday_fri" = "週五";
+"weekday_sat" = "週六";
+"weekday_sun" = "週日";
+"weekly_best_day" = "週二";
+"leaderboard_tag_pioneer" = "挺拔先鋒";
+"weekly_ai_section_headline" = "核心定性";
+"weekly_ai_section_data" = "數據全景";
+"weekly_ai_section_hazards" = "潛在健康危害與長期後果";
+"weekly_ai_section_mitigation" = "科學規避與精準改善微操";
+"weekly_ai_section_ergonomics" = "工位人體工學改造建議";
+"weekly_ai_headline_content" = "週報定性：整體挺拔率 79.2% 保持良好，但 16 點疲勞塌陷顯著，急需反向力學對衝。";
+"weekly_ai_data_content" = "本週累計監測 24.5 小時，挺拔端正率為 79.2%；SpineUp 協助規避了 142.5 kg 頸椎剪切壓力。週二體態表現最佳，但每日 16:00 附近是神經肌耐力斷崖期。";
+"weekly_ai_hazards_content" = "若長期放任 16 點後低頭前傾，C5-C7 頸椎間盤在持續折屈下易加速退行並引發曲度變直甚至反弓；後頸交界脂肪墊為緩衝剪切力會代償增厚形成頑固富貴包；深層頸屈肌無力還會牽拉下頜線坍塌，導致雙下巴與斜方肌慢性痙攣偏頭痛。";
+"weekly_ai_mitigation_content" = "每日 16 點前執行麥肯基收下巴（Chin Tuck）：坐直平視，食指推下巴向後水平回縮 2 釐米保持 4 秒，激活頸深屈肌；配合 W 展肩夾背法：雙臂屈肘貼肋展成 W 形，用力夾緊雙側肩胛骨 5 秒×10 次，快速逆轉胸大肌緊縮。";
+"weekly_ai_ergonomics_content" = "立即將電腦顯示器上緣墊高至與視線平齊，距離眼睛一臂遠；椅子加裝腰托填滿腰椎前凸，手肘呈 90 度平搭桌面，從物理根源消除低頭誘因。";
+"weekly_persona_cat_title" = "傲嬌貓貓結語";
+"weekly_persona_cat_comment" = "「本喵核查了你這週的戰績喵！挺拔達標率 79%，還在週二拿下了本週最佳，勉強算你是個合格的鏟屎官！不過每天 16 點左右你就開始癱成貓餅，下週記得在工位準備好逗貓棒提醒自己坐直喵！」";
+"weekly_persona_coach_title" = "體態私教結語";
+"weekly_persona_coach_comment" = "「本週你一共協助頸椎卸下了 142.5 kg 的多餘剪切壓強，週二的體態控制尤為出色！每天 16:00 附近是你的神經疲勞窗口期，下週建議在這個時段主動起立做兩組 W 展肩，期待你更挺拔的身姿。」";
+"weekly_persona_worker_title" = "毒舌搭子結語";
+"weekly_persona_worker_comment" = "「兄弟，本週在工位扛了整整 24.5 小時，幸好 SpineUp 幫你分擔了 142.5 kg 的頸椎暴擊！週二坐得最端正，但每天 16 點左右就開始疲勞塌房。下週把顯示器再墊高 3 釐米，全勤獎和下頜線咱們全都要！」";
+"leaderboard_peer_1" = "雲端天鵝頸·米婭";
+"leaderboard_peer_2" = "不低頭的極客阿飛";
+"leaderboard_peer_3" = "瑜伽課代表林老師";
+"leaderboard_peer_4" = "告別富貴包的大明";
+"leaderboard_peer_5" = "專注備考的糯米";
+"leaderboard_peer_6" = "晨跑挺拔達人小凱";
+"leaderboard_peer_7" = "端坐寫報告的安安";
+"leaderboard_peer_8" = "AirPods 守護者浩子";
+"leaderboard_peer_9" = "拒絕圓肩的茜茜";

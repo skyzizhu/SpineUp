@@ -67,7 +67,29 @@ final class SUWeeklyMetricsGridView: UIView {
         }
     }
 
+    private var currentReport: SUWeeklyReport?
+
+    func refreshLocalizedStrings() {
+        wearTimeCard.refreshLocalizedStrings()
+        alleviatedCard.refreshLocalizedStrings()
+        fatigueCard.refreshLocalizedStrings()
+        riskCard.refreshLocalizedStrings()
+        loadCard.refreshLocalizedStrings()
+        coinsCard.refreshLocalizedStrings()
+        if let report = currentReport {
+            configure(with: report)
+        }
+    }
+
     func configure(with report: SUWeeklyReport) {
+        self.currentReport = report
+        wearTimeCard.refreshLocalizedStrings()
+        alleviatedCard.refreshLocalizedStrings()
+        fatigueCard.refreshLocalizedStrings()
+        riskCard.refreshLocalizedStrings()
+        loadCard.refreshLocalizedStrings()
+        coinsCard.refreshLocalizedStrings()
+
         wearTimeCard.configure(value: String(format: "%.1f", report.totalWearHours), unit: SULocalized("unit_hours", default: "小时"))
         alleviatedCard.configure(value: String(format: "%.1f", report.alleviatedLoadKg), unit: "kg")
         fatigueCard.configure(value: "\(report.fatigueHotspotHour):00", unit: SULocalized("unit_hotspot", default: "高发期"))
@@ -85,7 +107,12 @@ final class SUWeeklyMetricItemView: UIView {
     private let valueLabel = UILabel()
     private let unitLabel = UILabel()
 
+    private let titleKey: String
+    private let defaultTitle: String
+
     init(iconName: String, iconColor: UIColor, titleKey: String, defaultTitle: String) {
+        self.titleKey = titleKey
+        self.defaultTitle = defaultTitle
         super.init(frame: .zero)
         backgroundColor = .secondarySystemGroupedBackground
         layer.cornerRadius = SULayoutConstants.cornerRadiusMedium
@@ -151,6 +178,10 @@ final class SUWeeklyMetricItemView: UIView {
                 cornerRadius: SULayoutConstants.cornerRadiusMedium
             ).cgPath
         }
+    }
+
+    func refreshLocalizedStrings() {
+        titleLabel.text = SULocalized(titleKey, default: defaultTitle)
     }
 
     func configure(value: String, unit: String) {
