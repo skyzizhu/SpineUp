@@ -38,6 +38,8 @@ final class SUPostureGaugeView: UIView {
         label.text = SULocalized("gauge_card_title", default: "实时颈椎力学")
         label.font = UIFont.systemFont(ofSize: 12, weight: .bold)
         label.textColor = .secondaryLabel
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.8
         return label
     }()
 
@@ -76,20 +78,25 @@ final class SUPostureGaugeView: UIView {
     private let aiHazardBadgeLabel: UILabel = {
         let label = UILabel()
         label.text = SULocalized("ai_perspective_tag", default: "AI透视 ↗")
-        label.font = UIFont.systemFont(ofSize: 10, weight: .bold)
+        label.font = UIFont.systemFont(ofSize: 9.5, weight: .bold)
         label.textColor = .systemBlue
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.8
         return label
     }()
 
     private let loadValueLabel: UILabel = {
         let label = UILabel()
         label.text = "+0.0 kg"
-        if let descriptor = UIFont.systemFont(ofSize: 22, weight: .heavy).fontDescriptor.withDesign(.rounded) {
-            label.font = UIFont(descriptor: descriptor, size: 22)
+        if let descriptor = UIFont.systemFont(ofSize: 20, weight: .heavy).fontDescriptor.withDesign(.rounded) {
+            label.font = UIFont(descriptor: descriptor, size: 20)
         } else {
-            label.font = UIFont.systemFont(ofSize: 22, weight: .heavy)
+            label.font = UIFont.systemFont(ofSize: 20, weight: .heavy)
         }
         label.textColor = .systemGreen
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.8
+        label.lineBreakMode = .byClipping
         return label
     }()
 
@@ -108,7 +115,7 @@ final class SUPostureGaugeView: UIView {
     private let statusHintLabel: UILabel = {
         let label = UILabel()
         label.text = SULocalized("gauge_status_ideal_short", default: "零负担 · 完美体态")
-        label.font = UIFont.systemFont(ofSize: 12, weight: .bold)
+        label.font = UIFont.systemFont(ofSize: 11.5, weight: .bold)
         label.textColor = .systemGreen
         label.textAlignment = .center
         label.numberOfLines = 2
@@ -145,6 +152,8 @@ final class SUPostureGaugeView: UIView {
         label.text = SULocalized("gauge_scale_start", default: "0° 精神挺拔")
         label.font = UIFont.systemFont(ofSize: 10.5, weight: .semibold)
         label.textColor = .tertiaryLabel
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.8
         return label
     }()
 
@@ -154,6 +163,8 @@ final class SUPostureGaugeView: UIView {
         label.font = UIFont.systemFont(ofSize: 10.5, weight: .semibold)
         label.textColor = .tertiaryLabel
         label.textAlignment = .center
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.8
         return label
     }()
 
@@ -163,6 +174,8 @@ final class SUPostureGaugeView: UIView {
         label.font = UIFont.systemFont(ofSize: 10.5, weight: .semibold)
         label.textColor = .tertiaryLabel
         label.textAlignment = .right
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.8
         return label
     }()
 
@@ -254,12 +267,15 @@ final class SUPostureGaugeView: UIView {
             make.height.equalTo(24)
         }
 
-        // 中间行：左侧负荷卡片与右侧评估胶囊
+        reliefGuideButton.setContentCompressionResistancePriority(.required, for: .horizontal)
+        reliefGuideButton.setContentHuggingPriority(.required, for: .horizontal)
+        cardHeaderTitleLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+
+        // 中间行：左侧负荷卡片与右侧评估胶囊 (高度 54pt，空间充裕舒适)
         loadCardContainer.snp.makeConstraints { make in
             make.top.equalTo(cardHeaderContainerView.snp.bottom).offset(10)
             make.leading.equalToSuperview().offset(16)
-            make.height.equalTo(52)
-            make.trailing.lessThanOrEqualTo(statusBadgeContainer.snp.leading).offset(-8)
+            make.height.equalTo(54)
         }
 
         loadTitleLabel.snp.makeConstraints { make in
@@ -280,20 +296,23 @@ final class SUPostureGaugeView: UIView {
         }
 
         loadTitleLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
-        aiHazardBadgeLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
+        loadValueLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
+        loadValueLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        aiHazardBadgeLabel.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
         aiHazardBadgeLabel.setContentHuggingPriority(.required, for: .horizontal)
 
         statusBadgeContainer.snp.makeConstraints { make in
             make.top.bottom.equalTo(loadCardContainer)
             make.trailing.equalToSuperview().offset(-16)
-            make.leading.greaterThanOrEqualTo(loadCardContainer.snp.trailing).offset(8)
+            make.leading.equalTo(loadCardContainer.snp.trailing).offset(8)
+            make.width.equalTo(loadCardContainer.snp.width).multipliedBy(0.70)
         }
 
         statusBadgeContainer.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
-        statusBadgeContainer.setContentHuggingPriority(.required, for: .horizontal)
+        statusBadgeContainer.setContentHuggingPriority(.defaultLow, for: .horizontal)
 
         statusHintLabel.snp.makeConstraints { make in
-            make.edges.equalToSuperview().inset(UIEdgeInsets(top: 4, left: 8, bottom: 4, right: 8))
+            make.edges.equalToSuperview().inset(UIEdgeInsets(top: 4, left: 6, bottom: 4, right: 6))
         }
 
         // 底部进度条与标尺

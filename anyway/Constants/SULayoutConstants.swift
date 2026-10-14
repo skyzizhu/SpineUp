@@ -29,7 +29,7 @@ enum SULayoutConstants {
     static let primaryButtonHeight: CGFloat = 56.0
     static let secondaryButtonHeight: CGFloat = 46.0
     static let petContainerHeight: CGFloat = 280.0
-    static let gaugeViewHeight: CGFloat = 154.0
+    static let gaugeViewHeight: CGFloat = 158.0
     static let minimumTouchTargetSize: CGFloat = 44.0
 
     // MARK: - 动效与过渡
