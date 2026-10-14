@@ -118,6 +118,8 @@ final class SUBreathingPacerView: UIView {
         label.font = .systemFont(ofSize: 13, weight: .bold)
         label.textColor = .label
         label.text = SULocalized("practice_breath_inhale", default: "深吸气 · 挺胸展肩")
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.8
         return label
     }()
 

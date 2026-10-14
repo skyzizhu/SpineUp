@@ -238,6 +238,8 @@ final class SULegalItemRowView: UIView {
         let label = UILabel()
         label.font = .systemFont(ofSize: 15, weight: .semibold)
         label.textColor = .label
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
         return label
     }()
 
@@ -245,7 +247,8 @@ final class SULegalItemRowView: UIView {
         let label = UILabel()
         label.font = .systemFont(ofSize: 12, weight: .regular)
         label.textColor = .secondaryLabel
-        label.numberOfLines = 1
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
         return label
     }()
 
@@ -296,7 +299,7 @@ final class SULegalItemRowView: UIView {
         }
 
         iconContainerView.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
+            make.top.equalToSuperview().offset(12)
             make.leading.equalToSuperview().offset(14)
             make.size.equalTo(30)
         }

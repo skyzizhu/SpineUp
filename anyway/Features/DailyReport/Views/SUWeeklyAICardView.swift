@@ -136,23 +136,19 @@ final class SUWeeklyAICardView: UIView {
         titleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(18)
             make.leading.equalTo(titleIconImageView.snp.trailing).offset(8)
-            make.trailing.lessThanOrEqualTo(personaBadgeLabel.snp.leading).offset(-8)
+            make.trailing.equalToSuperview().offset(-18)
         }
-        titleLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
 
         personaBadgeLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(18)
-            make.trailing.equalToSuperview().offset(-18)
-            make.height.equalTo(22)
-            make.width.greaterThanOrEqualTo(64)
+            make.top.equalTo(titleLabel.snp.bottom).offset(6)
+            make.leading.equalTo(titleLabel.snp.leading)
+            make.trailing.lessThanOrEqualToSuperview().offset(-18)
+            make.height.greaterThanOrEqualTo(22)
         }
-        personaBadgeLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
-        personaBadgeLabel.setContentHuggingPriority(.required, for: .horizontal)
 
         bubbleContainerView.snp.makeConstraints { make in
-            make.top.greaterThanOrEqualTo(titleLabel.snp.bottom).offset(14)
+            make.top.equalTo(personaBadgeLabel.snp.bottom).offset(12)
             make.top.greaterThanOrEqualTo(titleIconImageView.snp.bottom).offset(14)
-            make.top.greaterThanOrEqualTo(personaBadgeLabel.snp.bottom).offset(14)
             make.leading.trailing.equalToSuperview().inset(18)
         }
 

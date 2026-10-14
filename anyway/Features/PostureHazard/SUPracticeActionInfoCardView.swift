@@ -28,6 +28,8 @@ final class SUPracticeActionInfoCardView: UIView {
             label.font = .systemFont(ofSize: 17, weight: .heavy)
         }
         label.textColor = .label
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
         return label
     }()
 
@@ -35,6 +37,8 @@ final class SUPracticeActionInfoCardView: UIView {
         let label = UILabel()
         label.font = .systemFont(ofSize: 11.5, weight: .medium)
         label.textColor = .secondaryLabel
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
         return label
     }()
 
@@ -71,16 +75,17 @@ final class SUPracticeActionInfoCardView: UIView {
         actionTitleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(12)
             make.leading.equalToSuperview().offset(14)
+            make.trailing.equalToSuperview().offset(-14)
         }
 
         actionTagLabel.snp.makeConstraints { make in
-            make.centerY.equalTo(actionTitleLabel.snp.centerY)
-            make.leading.equalTo(actionTitleLabel.snp.trailing).offset(8)
-            make.trailing.lessThanOrEqualToSuperview().offset(-14)
+            make.top.equalTo(actionTitleLabel.snp.bottom).offset(4)
+            make.leading.equalToSuperview().offset(14)
+            make.trailing.equalToSuperview().offset(-14)
         }
 
         instructionsStackView.snp.makeConstraints { make in
-            make.top.equalTo(actionTitleLabel.snp.bottom).offset(10)
+            make.top.equalTo(actionTagLabel.snp.bottom).offset(10)
             make.leading.trailing.equalToSuperview().inset(14)
             make.bottom.equalToSuperview().offset(-12)
         }

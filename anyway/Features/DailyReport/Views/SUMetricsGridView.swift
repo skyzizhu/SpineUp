@@ -53,13 +53,13 @@ final class SUMetricsGridView: UIView {
 
         topRowStack.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview()
-            make.height.equalTo(88)
+            make.height.greaterThanOrEqualTo(92)
         }
 
         bottomRowStack.snp.makeConstraints { make in
             make.top.equalTo(topRowStack.snp.bottom).offset(10)
             make.leading.trailing.bottom.equalToSuperview()
-            make.height.equalTo(88)
+            make.height.greaterThanOrEqualTo(92)
         }
     }
 

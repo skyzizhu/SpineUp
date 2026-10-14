@@ -111,6 +111,8 @@ final class SUSettingsViewController: SUBaseViewController {
         label.text = SULocalized("settings_alerts_footer_title", default: "后台音频与低延迟提醒")
         label.font = .systemFont(ofSize: 13, weight: .semibold)
         label.textColor = .label
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
         return label
     }()
 
@@ -424,19 +426,19 @@ final class SUSettingsViewController: SUBaseViewController {
 
         voiceRowView.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview()
-            make.height.equalTo(58)
+            make.height.greaterThanOrEqualTo(58)
         }
 
         hapticRowView.snp.makeConstraints { make in
             make.top.equalTo(voiceRowView.snp.bottom)
             make.leading.trailing.equalToSuperview()
-            make.height.equalTo(58)
+            make.height.greaterThanOrEqualTo(58)
         }
 
         soundRowView.snp.makeConstraints { make in
             make.top.equalTo(hapticRowView.snp.bottom)
             make.leading.trailing.bottom.equalToSuperview()
-            make.height.equalTo(58)
+            make.height.greaterThanOrEqualTo(58)
         }
 
         alertsFooterCardView.snp.makeConstraints { make in
@@ -451,13 +453,14 @@ final class SUSettingsViewController: SUBaseViewController {
         }
 
         alertsFooterTitleLabel.snp.makeConstraints { make in
-            make.centerY.equalTo(alertsFooterIconView)
+            make.top.equalToSuperview().offset(12)
             make.leading.equalTo(alertsFooterIconView.snp.trailing).offset(8)
             make.trailing.equalToSuperview().offset(-14)
         }
 
         alertsSectionFooterLabel.snp.makeConstraints { make in
-            make.top.equalTo(alertsFooterTitleLabel.snp.bottom).offset(6)
+            make.top.greaterThanOrEqualTo(alertsFooterTitleLabel.snp.bottom).offset(6)
+            make.top.greaterThanOrEqualTo(alertsFooterIconView.snp.bottom).offset(6)
             make.leading.equalToSuperview().offset(14)
             make.trailing.equalToSuperview().offset(-14)
             make.bottom.equalToSuperview().offset(-12)
@@ -743,6 +746,8 @@ final class SUSettingsSwitchRowView: UIView {
         let label = UILabel()
         label.font = .systemFont(ofSize: 15, weight: .semibold)
         label.textColor = .label
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
         return label
     }()
 
@@ -750,6 +755,8 @@ final class SUSettingsSwitchRowView: UIView {
         let label = UILabel()
         label.font = .systemFont(ofSize: 11, weight: .regular)
         label.textColor = .secondaryLabel
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
         return label
     }()
 
@@ -770,7 +777,7 @@ final class SUSettingsSwitchRowView: UIView {
         subtitleLabel.text = subtitle
 
         iconImageView.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
+            make.top.equalToSuperview().offset(14)
             make.leading.equalToSuperview().offset(14)
             make.size.equalTo(24)
         }
@@ -785,6 +792,7 @@ final class SUSettingsSwitchRowView: UIView {
             make.top.equalTo(titleLabel.snp.bottom).offset(2)
             make.leading.equalTo(titleLabel.snp.leading)
             make.trailing.lessThanOrEqualTo(toggleSwitch.snp.leading).offset(-8)
+            make.bottom.lessThanOrEqualToSuperview().offset(-10)
         }
 
         toggleSwitch.snp.makeConstraints { make in

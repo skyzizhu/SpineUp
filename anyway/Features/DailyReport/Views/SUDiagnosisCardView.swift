@@ -502,7 +502,9 @@ final class SUDiagnosisCardView: UIView {
 
         // 撕纸虚线约束
         dashedDividerView.snp.makeConstraints { make in
-            make.top.equalTo(headerIconContainer.snp.bottom).offset(14)
+            make.top.greaterThanOrEqualTo(headerIconContainer.snp.bottom).offset(14)
+            make.top.greaterThanOrEqualTo(titleStackView.snp.bottom).offset(14)
+            make.top.greaterThanOrEqualTo(archiveBadgeView.snp.bottom).offset(14)
             make.leading.trailing.equalToSuperview().inset(18)
             make.height.equalTo(1)
         }

@@ -232,6 +232,7 @@ final class SUPostureGaugeView: UIView {
         cardHeaderContainerView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(12)
             make.leading.equalToSuperview().offset(16)
+            make.trailing.lessThanOrEqualTo(reliefGuideButton.snp.leading).offset(-8)
             make.height.equalTo(24)
         }
 

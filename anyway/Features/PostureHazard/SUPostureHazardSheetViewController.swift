@@ -846,23 +846,19 @@ final class SUPostureHazardSheetViewController: SUBaseViewController {
         appearanceHeaderLabel.snp.makeConstraints { make in
             make.top.equalTo(appearanceIconContainer.snp.top)
             make.leading.equalTo(appearanceIconContainer.snp.trailing).offset(10)
-            make.trailing.lessThanOrEqualTo(appearanceBadgeLabel.snp.leading).offset(-8)
+            make.trailing.equalToSuperview().offset(-14)
         }
-        appearanceHeaderLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
 
         appearanceBadgeLabel.snp.makeConstraints { make in
-            make.top.equalTo(appearanceIconContainer.snp.top)
-            make.trailing.equalToSuperview().offset(-14)
-            make.height.greaterThanOrEqualTo(20)
-            make.width.greaterThanOrEqualTo(58)
+            make.top.equalTo(appearanceHeaderLabel.snp.bottom).offset(6)
+            make.leading.equalTo(appearanceHeaderLabel.snp.leading)
+            make.trailing.lessThanOrEqualToSuperview().offset(-14)
+            make.height.greaterThanOrEqualTo(22)
         }
-        appearanceBadgeLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
-        appearanceBadgeLabel.setContentHuggingPriority(.required, for: .horizontal)
 
         appearanceStackView.snp.makeConstraints { make in
-            make.top.greaterThanOrEqualTo(appearanceHeaderLabel.snp.bottom).offset(12)
+            make.top.equalTo(appearanceBadgeLabel.snp.bottom).offset(12)
             make.top.greaterThanOrEqualTo(appearanceIconContainer.snp.bottom).offset(12)
-            make.top.greaterThanOrEqualTo(appearanceBadgeLabel.snp.bottom).offset(12)
             make.leading.trailing.equalToSuperview().inset(14)
             make.bottom.equalToSuperview().offset(-14)
         }
@@ -886,23 +882,19 @@ final class SUPostureHazardSheetViewController: SUBaseViewController {
         timelineHeaderLabel.snp.makeConstraints { make in
             make.top.equalTo(timelineIconContainer.snp.top)
             make.leading.equalTo(timelineIconContainer.snp.trailing).offset(10)
-            make.trailing.lessThanOrEqualTo(timelineBadgeLabel.snp.leading).offset(-8)
+            make.trailing.equalToSuperview().offset(-14)
         }
-        timelineHeaderLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
 
         timelineBadgeLabel.snp.makeConstraints { make in
-            make.top.equalTo(timelineIconContainer.snp.top)
-            make.trailing.equalToSuperview().offset(-14)
-            make.height.greaterThanOrEqualTo(20)
-            make.width.greaterThanOrEqualTo(68)
+            make.top.equalTo(timelineHeaderLabel.snp.bottom).offset(6)
+            make.leading.equalTo(timelineHeaderLabel.snp.leading)
+            make.trailing.lessThanOrEqualToSuperview().offset(-14)
+            make.height.greaterThanOrEqualTo(22)
         }
-        timelineBadgeLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
-        timelineBadgeLabel.setContentHuggingPriority(.required, for: .horizontal)
 
         timelineStackView.snp.makeConstraints { make in
-            make.top.greaterThanOrEqualTo(timelineHeaderLabel.snp.bottom).offset(14)
-            make.top.greaterThanOrEqualTo(timelineIconContainer.snp.bottom).offset(14)
-            make.top.greaterThanOrEqualTo(timelineBadgeLabel.snp.bottom).offset(14)
+            make.top.equalTo(timelineBadgeLabel.snp.bottom).offset(12)
+            make.top.greaterThanOrEqualTo(timelineIconContainer.snp.bottom).offset(12)
             make.leading.trailing.equalToSuperview().inset(14)
             make.bottom.equalToSuperview().offset(-14)
         }

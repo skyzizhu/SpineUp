@@ -58,6 +58,8 @@ final class SUAutoLaunchGuideViewController: SUBaseViewController {
         label.font = .systemFont(ofSize: 19, weight: .bold)
         label.textColor = .label
         label.textAlignment = .center
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
         return label
     }()
 
@@ -80,6 +82,8 @@ final class SUAutoLaunchGuideViewController: SUBaseViewController {
         label.text = SULocalized("auto_launch_steps_title", default: "4 步极简配置流程 (仅需 1 分钟)")
         label.font = .systemFont(ofSize: 15, weight: .bold)
         label.textColor = .label
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
         return label
     }()
 
@@ -437,6 +441,8 @@ final class SUAutoLaunchStepRowView: UIView {
         let label = UILabel()
         label.font = .systemFont(ofSize: 15, weight: .semibold)
         label.textColor = .label
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
         return label
     }()
 
@@ -472,13 +478,14 @@ final class SUAutoLaunchStepRowView: UIView {
         }
 
         titleLabel.snp.makeConstraints { make in
-            make.centerY.equalTo(badgeLabel)
+            make.top.equalToSuperview().offset(14)
             make.leading.equalTo(badgeLabel.snp.trailing).offset(10)
             make.trailing.equalToSuperview().offset(-14)
         }
 
         detailLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(6)
+            make.top.greaterThanOrEqualTo(titleLabel.snp.bottom).offset(6)
+            make.top.greaterThanOrEqualTo(badgeLabel.snp.bottom).offset(6)
             make.leading.equalTo(titleLabel)
             make.trailing.equalToSuperview().offset(-14)
             make.bottom.equalToSuperview().offset(-14)

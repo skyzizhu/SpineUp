@@ -45,6 +45,8 @@ final class SUPersonaCardView: UIView {
         let label = UILabel()
         label.font = .systemFont(ofSize: 16, weight: .bold)
         label.textColor = .label
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
         return label
     }()
 
@@ -52,6 +54,8 @@ final class SUPersonaCardView: UIView {
         let label = UILabel()
         label.font = .systemFont(ofSize: 12, weight: .semibold)
         label.textColor = .secondaryLabel
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
         return label
     }()
 
@@ -125,7 +129,8 @@ final class SUPersonaCardView: UIView {
         }
 
         descriptionLabel.snp.makeConstraints { make in
-            make.top.equalTo(iconContainer.snp.bottom).offset(10)
+            make.top.greaterThanOrEqualTo(iconContainer.snp.bottom).offset(10)
+            make.top.greaterThanOrEqualTo(subtitleLabel.snp.bottom).offset(8)
             make.leading.equalToSuperview().offset(14)
             make.trailing.equalToSuperview().offset(-14)
             make.bottom.equalToSuperview().offset(-14)
