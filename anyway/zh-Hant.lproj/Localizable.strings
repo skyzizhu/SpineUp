@@ -208,6 +208,7 @@
 "relief_action2_tag" = "打開胸椎 & 擊碎富貴包";
 "relief_action2_steps" = "• 雙臂大臂貼緊肋側，小臂向上屈起呈「W」形。\n• 雙肩自然下沉，緩慢向後展開，將兩塊肩胛骨往中間夾緊。\n• 配合深吸氣停留 5 秒後呼氣放鬆，重複 4~6 次。";
 "relief_action3_title" = "3. 工位人體工學黃金原則";
+"relief_action3_tag" = "物理根源消除低頭誘因";
 "relief_action3_steps" = "• 視線平齊：筆記本用支架墊高，屏幕上 1/3 與視線平行。\n• 手肘 90°：調節工位椅高度，手肘呈直角自然搭放桌面。\n• 腰部支撐：屁股坐滿椅底，腰部懸空處加一個小靠墊。";
 "relief_btn_start" = "開始 30 秒微操 (+5 骨氣能量)";
 "relief_btn_completed" = "🎉 完成！獲得 +5 骨气能量";
@@ -501,3 +502,29 @@
 "vision_pose_matched" = "✅ 姿態達標";
 "vision_pose_adjust" = "調整姿態";
 "live_activity_session_title" = "SpineUp 即時守護";
+
+/* AI Fallback & Health Metaphors */
+"ai_pet_cat_severe" = "「本喵命令你立刻把腦袋抬起來！你後脖子上堆的肉包都要比本喵的貓爬架還高了喵！再低頭本喵就抓你頭髮了喵！」";
+"ai_pet_cat_good" = "「呼嚕嚕~ 這才是本喵欣賞的挺拔鏟屎官，坐姿優雅得像隻高貴的波斯貓，繼續保持喵~」";
+"ai_pet_coach_severe" = "「深呼吸，感受雙肩下沉。想像頭頂有一根金色的絲線輕輕拉住你，別讓脊椎默默替你的疲憊買單，現在就坐正吧。」";
+"ai_pet_coach_good" = "「太棒了！你的頸胸段正在享受最自然的呼吸空間，這種挺拔感會給你帶來更充足的精力與自律自信。」";
+"ai_pet_worker_severe" = "「兄弟，命是自己的，班是公司的！脖子上掛了 +%.1fkg 還死撐著，明天頸椎病請假可扣全勤獎啊，趕緊抬頭！」";
+"ai_pet_worker_good" = "「可以啊，做人就要有骨氣！端正打工不僅效率高，還能保住下頜線，晚上省下去做頸椎推拿的錢了！」";
+"ai_relief_action1_heavy" = "重點動作！平視前方，用食指輕頂下巴向後平推 2 厘米，擠出雙下巴，感受後頸深層韌帶被完全拉開拉伸，維持 4 秒。";
+"ai_relief_action2_heavy" = "雙臂貼緊肋側屈臂呈「W」形，肩胛骨往中間狠狠夾緊，徹底打開緊縮的胸大肌，擊碎富貴包早期代償。";
+"ai_relief_ergo_heavy" = "你的螢幕可能嚴重偏低！立即找兩本書或支架把電腦抬高 5~8 厘米，強制視線平齊螢幕上 1/3。";
+"ai_relief_action1_light" = "輕柔收下巴，保持後頸延伸感，每次維持 3 秒，重複 5 次，喚醒深層頸屈肌。";
+"ai_relief_action2_light" = "配合腹式深呼吸，輕巧做 W 展肩，感受上背部溫暖舒展。";
+"ai_relief_ergo_light" = "保持手肘 90 度自然搭在工位桌面上，臀部坐滿椅子，後腰輕貼支撐靠枕。";
+"ai_relief_pet_cat" = "「活動完脖子別忘了給本喵開個罐頭，本喵可是一直在靈動島盯著你呢喵！」";
+"ai_relief_pet_coach" = "「做得很好。30 秒雖然短暫，但足以重啟大腦血氧與神經傳導，繼續享受優雅挺拔的工作狀態吧。」";
+"ai_relief_pet_worker" = "「搞定！30 秒卸掉剛才扛的幾十斤大包袱，打工人的革命本錢又保住了，繼續衝！」";
+"equiv_name_tea" = "珍珠奶茶";
+"equiv_unit_cup" = "杯";
+"equiv_name_brick" = "建築紅磚";
+"equiv_unit_piece" = "塊";
+"equiv_name_cat" = "成年胖橘貓";
+"equiv_unit_animal" = "隻";
+"equiv_name_dog" = "活潑柴犬";
+"equiv_name_dumbbell" = "重型啞鈴";
+"equiv_unit_item" = "個";

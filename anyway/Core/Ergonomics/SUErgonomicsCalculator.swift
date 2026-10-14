@@ -66,9 +66,9 @@ enum SUErgonomicsCalculator {
             let cups = kg / 0.5
             let descFormat = SULocalized("equiv_tea", default: "相当于脖子上挂了 %.1f 杯全糖大杯珍珠奶茶")
             return SUEquivalentItem(
-                name: "珍珠奶茶",
+                name: SULocalized("equiv_name_tea", default: "珍珠奶茶"),
                 count: cups,
-                unit: "杯",
+                unit: SULocalized("equiv_unit_cup", default: "杯"),
                 iconSystemName: "cup.and.saucer.fill",
                 descriptionText: String(format: descFormat, cups)
             )
@@ -77,9 +77,9 @@ enum SUErgonomicsCalculator {
             let bricks = kg / 2.5
             let descFormat = SULocalized("equiv_brick", default: "相当于颈椎上顶了 %.1f 块实心建筑红砖")
             return SUEquivalentItem(
-                name: "建筑红砖",
+                name: SULocalized("equiv_name_brick", default: "建筑红砖"),
                 count: bricks,
-                unit: "块",
+                unit: SULocalized("equiv_unit_piece", default: "块"),
                 iconSystemName: "square.stack.3d.down.forward.fill",
                 descriptionText: String(format: descFormat, bricks)
             )
@@ -88,9 +88,9 @@ enum SUErgonomicsCalculator {
             let cats = kg / 4.0
             let descFormat = SULocalized("equiv_cat", default: "相当于脖子上趴了 %.1f 只沉甸甸的成年胖猫")
             return SUEquivalentItem(
-                name: "成年胖橘猫",
+                name: SULocalized("equiv_name_cat", default: "成年胖橘猫"),
                 count: cats,
-                unit: "只",
+                unit: SULocalized("equiv_unit_animal", default: "只"),
                 iconSystemName: "cat.fill",
                 descriptionText: String(format: descFormat, cats)
             )
@@ -99,9 +99,9 @@ enum SUErgonomicsCalculator {
             let dogs = kg / 10.0
             let descFormat = SULocalized("equiv_dog", default: "相当于脖子上驮了 %.1f 只健硕的柴犬")
             return SUEquivalentItem(
-                name: "活泼柴犬",
+                name: SULocalized("equiv_name_dog", default: "活泼柴犬"),
                 count: dogs,
-                unit: "只",
+                unit: SULocalized("equiv_unit_animal", default: "只"),
                 iconSystemName: "pawprint.fill",
                 descriptionText: String(format: descFormat, dogs)
             )
@@ -110,9 +110,9 @@ enum SUErgonomicsCalculator {
             let dumbbells = kg / 15.0
             let descFormat = SULocalized("equiv_dumbbell", default: "相当于给颈椎绑了 %.1f 个 15kg 重型纯铁哑铃")
             return SUEquivalentItem(
-                name: "重型哑铃",
+                name: SULocalized("equiv_name_dumbbell", default: "重型哑铃"),
                 count: dumbbells,
-                unit: "个",
+                unit: SULocalized("equiv_unit_item", default: "个"),
                 iconSystemName: "dumbbell.fill",
                 descriptionText: String(format: descFormat, dumbbells)
             )

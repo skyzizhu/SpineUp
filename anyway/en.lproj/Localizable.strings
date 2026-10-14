@@ -204,6 +204,7 @@
 "relief_action2_tag" = "Open Thoracic Spine & Crush Dowager's Hump";
 "relief_action2_steps" = "• Keep upper arms close to ribs with elbows bent in a 'W' shape.\n• Drop shoulders down and pull shoulder blades firmly together.\n• Hold for 5 seconds with a deep breath, repeat 4-6 times.";
 "relief_action3_title" = "3. Office Ergonomics Golden Rules";
+"relief_action3_tag" = "Root-Cause Slump Elimination";
 "relief_action3_steps" = "• Eye-Level Display: Elevate laptop so top third is level with eyes.\n• 90° Elbows: Adjust chair height so arms rest comfortably at 90 degrees.\n• Lumbar Support: Sit deep in chair and use a small lumbar cushion.";
 "relief_btn_start" = "Start 30s Exercise (+5 Energy Coins)";
 "relief_btn_completed" = "🎉 Completed! +5 Energy Coins Earned";
@@ -501,3 +502,29 @@
 "vision_pose_matched" = "✅ Perfect Form";
 "vision_pose_adjust" = "Adjust Posture";
 "live_activity_session_title" = "SpineUp Live Guardian";
+
+/* AI Fallback & Health Metaphors */
+"ai_pet_cat_severe" = "「Meow! Lift your head up right now! The bump on your neck is taller than my scratching post! Slump again and I will scratch your hair!」";
+"ai_pet_cat_good" = "「Purr~ Now that is the upright human I love! Sitting as elegantly as a regal Persian cat, keep it up meow~」";
+"ai_pet_coach_severe" = "「Take a deep breath and let your shoulders drop. Imagine a golden string gently pulling the crown of your head upward. Do not let your spine pay for fatigue—sit upright now.」";
+"ai_pet_coach_good" = "「Fantastic! Your cervical and thoracic spine are enjoying optimal breathing room. This upright posture brings greater energy, clarity, and confidence.」";
+"ai_pet_worker_severe" = "「Buddy, your job belongs to the company, but your spine belongs to you! Hanging +%.1fkg on your neck is not sustainable. Head up right now!」";
+"ai_pet_worker_good" = "「Looking sharp! Working with an upright posture keeps you productive and protects your jawline—saving money on neck massages tonight!」";
+"ai_relief_action1_heavy" = "Key move! Look forward, place index finger on chin and push straight back 2cm (double chin). Feel deep neck ligaments stretch, hold 4s.";
+"ai_relief_action2_heavy" = "Bend arms in a 'W' shape tight to ribs, squeeze shoulder blades firmly together. Open chest muscles to break up early dowager hump compensation.";
+"ai_relief_ergo_heavy" = "Your display may be way too low! Use books or a stand to raise your laptop 5-8cm so the top third is level with your eyes.";
+"ai_relief_action1_light" = "Gentle chin tuck, keep the back of your neck elongated. Hold 3s each, repeat 5 times to activate deep neck flexors.";
+"ai_relief_action2_light" = "Sync with deep abdominal breathing, perform gentle W-stretches to feel your upper back pleasantly relax.";
+"ai_relief_ergo_light" = "Keep elbows comfortably resting on desk at 90°, hips all the way back in chair, lower back supported by a small cushion.";
+"ai_relief_pet_cat" = "「Do not forget to open a can of treats for me after stretching your neck—I am watching you from the Dynamic Island, meow!」";
+"ai_relief_pet_coach" = "「Well done. 30 seconds is short, but enough to reboot blood oxygen and neural signaling. Keep enjoying an upright, elegant flow.」";
+"ai_relief_pet_worker" = "「Done! 30s to shed those heavy loads off your neck. The worker core asset is saved—keep crushing it!」";
+"equiv_name_tea" = "Boba Milk Tea";
+"equiv_unit_cup" = "cups";
+"equiv_name_brick" = "Solid Red Brick";
+"equiv_unit_piece" = "bricks";
+"equiv_name_cat" = "Adult Chubby Cat";
+"equiv_unit_animal" = "";
+"equiv_name_dog" = "Playful Shiba Inu";
+"equiv_name_dumbbell" = "Heavy Dumbbell";
+"equiv_unit_item" = "";

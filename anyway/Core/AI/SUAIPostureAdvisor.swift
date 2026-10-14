@@ -118,21 +118,21 @@ final class SUAIPostureAdvisor: @unchecked Sendable {
         switch persona {
         case .cat:
             if pitchDeg >= 20.0 {
-                comment = "「本喵命令你立刻把脑袋抬起来！你后脖子上堆的肉包都要比本喵的猫爬架还高了喵！再低头本喵就抓你头发了喵！」"
+                comment = SULocalized("ai_pet_cat_severe", default: "「本喵命令你立刻把脑袋抬起来！你后脖子上堆的肉包都要比本喵的猫爬架还高了喵！再低头本喵就抓你头发了喵！」")
             } else {
-                comment = "「呼噜噜~ 这才是本喵欣赏的挺拔铲屎官，坐姿优雅得像只高贵的波斯猫，继续保持喵~」"
+                comment = SULocalized("ai_pet_cat_good", default: "「呼噜噜~ 这才是本喵欣赏的挺拔铲屎官，坐姿优雅得像只高贵的波斯猫，继续保持喵~」")
             }
         case .coach:
             if pitchDeg >= 20.0 {
-                comment = "「深呼吸，感受双肩下沉。想象头顶有一根金色的丝线轻轻拉住你，别让脊椎默默替你的疲惫买单，现在就坐正吧。」"
+                comment = SULocalized("ai_pet_coach_severe", default: "「深呼吸，感受双肩下沉。想象头顶有一根金色的丝线轻轻拉住你，别让脊椎默默替你的疲惫买单，现在就坐正吧。」")
             } else {
-                comment = "「太棒了！你的颈胸段正在享受最自然的呼吸空间，这种挺拔感会给你带来更充足的精力与自律自信。」"
+                comment = SULocalized("ai_pet_coach_good", default: "「太棒了！你的颈胸段正在享受最自然的呼吸空间，这种挺拔感会给你带来更充足的精力与自律自信。」")
             }
         case .worker:
             if pitchDeg >= 20.0 {
-                comment = "「兄弟，命是自己的，班是公司的！脖子上挂了 \(String(format: "%.1f", extraLoadKg))kg 还死撑着，明天颈椎病请假可扣全勤奖啊，赶紧抬头！」"
+                comment = String(format: SULocalized("ai_pet_worker_severe", default: "「兄弟，命是自己的，班是公司的！脖子上挂了 +%.1fkg 还死撑着，明天颈椎病请假可扣全勤奖啊，赶紧抬头！」"), extraLoadKg)
             } else {
-                comment = "「可以啊，做人就要有骨气！端正打工不仅效率高，还能保住下颌线，晚上省下去做颈椎推拿的钱了！」"
+                comment = SULocalized("ai_pet_worker_good", default: "「可以啊，做人就要有骨气！端正打工不仅效率高，还能保住下颌线，晚上省下去做颈椎推拿的钱了！」")
             }
         }
 
@@ -182,24 +182,24 @@ final class SUAIPostureAdvisor: @unchecked Sendable {
 
         if pitchDeg >= 20.0 {
             diagnosis = String(format: SULocalized("ai_relief_diag_heavy", default: "⚡️ AI 判定当前颈椎处于高负荷抗阻紧绷（+%.1f kg）。检测到斜方肌上束充血痉挛，急需做后缩反向对冲！"), extraLoadKg)
-            action1Tip = "重点动作！平视前方，用食指轻顶下巴向后平推 2 厘米，挤出双下巴，感受后颈深层韧带被完全拉开拉伸，维持 4 秒。"
-            action2Tip = "双臂贴紧肋侧屈臂呈「W」形，肩胛骨往中间狠狠夹紧，彻底打开紧缩的胸大肌，击碎富贵包早期代偿。"
-            ergoTip = "你的屏幕可能严重偏低！立即找两本书或支架把电脑抬高 5~8 厘米，强制视线平齐屏幕上 1/3。"
+            action1Tip = SULocalized("ai_relief_action1_heavy", default: "重点动作！平视前方，用食指轻顶下巴向后平推 2 厘米，挤出双下巴，感受后颈深层韧带被完全拉开拉伸，维持 4 秒。")
+            action2Tip = SULocalized("ai_relief_action2_heavy", default: "双臂贴紧肋侧屈臂呈「W」形，肩胛骨往中间狠狠夹紧，彻底打开紧缩的胸大肌，击碎富贵包早期代偿。")
+            ergoTip = SULocalized("ai_relief_ergo_heavy", default: "你的屏幕可能严重偏低！立即找两本书或支架把电脑抬高 5~8 厘米，强制视线平齐屏幕上 1/3。")
         } else {
             diagnosis = SULocalized("ai_relief_diag_light", default: "🌿 当前姿态良好，此 30 秒微操主要用于唤醒深层核心肌肉记忆，预防伏案疲劳积累。")
-            action1Tip = "轻柔收下巴，保持后颈延伸感，每次维持 3 秒，重复 5 次，唤醒深层颈屈肌。"
-            action2Tip = "配合腹式深呼吸，轻巧做 W 展肩，感受上背部温暖舒展。"
-            ergoTip = "保持手肘 90 度自然搭在工位桌面上，臀部坐满椅子，后腰轻贴支撑靠枕。"
+            action1Tip = SULocalized("ai_relief_action1_light", default: "轻柔收下巴，保持后颈延伸感，每次维持 3 秒，重复 5 次，唤醒深层颈屈肌。")
+            action2Tip = SULocalized("ai_relief_action2_light", default: "配合腹式深呼吸，轻巧做 W 展肩，感受上背部温暖舒展。")
+            ergoTip = SULocalized("ai_relief_ergo_light", default: "保持手肘 90 度自然搭在工位桌面上，臀部坐满椅子，后腰轻贴支撑靠枕。")
         }
 
         let encouragement: String
         switch persona {
         case .cat:
-            encouragement = "「活动完脖子别忘了给本喵开个罐头，本喵可是一直在灵动岛盯着你呢喵！」"
+            encouragement = SULocalized("ai_relief_pet_cat", default: "「活动完脖子别忘了给本喵开个罐头，本喵可是一直在灵动岛盯着你呢喵！」")
         case .coach:
-            encouragement = "「做得很好。30 秒虽然短暂，但足以重启大脑血氧与神经传导，继续享受优雅挺拔的工作状态吧。」"
+            encouragement = SULocalized("ai_relief_pet_coach", default: "「做得很好。30 秒虽然短暂，但足以重启大脑血氧与神经传导，继续享受优雅挺拔的工作状态吧。」")
         case .worker:
-            encouragement = "「搞定！30 秒卸掉刚才扛的几十斤大包袱，打工人的革命本钱又保住了，继续冲！」"
+            encouragement = SULocalized("ai_relief_pet_worker", default: "「搞定！30 秒卸掉刚才扛的几十斤大包袱，打工人的革命本钱又保住了，继续冲！」")
         }
 
         return SUAIReliefPlan(
