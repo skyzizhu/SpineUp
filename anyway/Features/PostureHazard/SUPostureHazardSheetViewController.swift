@@ -244,12 +244,14 @@ final class SUPostureHazardSheetViewController: SUBaseViewController {
         label.text = SULocalized("hazard_appearance_title", default: "颜值与体态退行透视")
         label.font = .systemFont(ofSize: 15.5, weight: .bold)
         label.textColor = .label
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.85
         return label
     }()
 
     private let appearanceBadgeLabel: UILabel = {
         let label = UILabel()
-        label.text = SULocalized("hazard_appearance_tag", default: "无形毁容")
+        label.text = "  " + SULocalized("hazard_appearance_tag", default: "无形毁容") + "  "
         label.font = .systemFont(ofSize: 11, weight: .bold)
         label.textColor = .systemOrange
         label.backgroundColor = UIColor.systemOrange.withAlphaComponent(0.12)
@@ -299,12 +301,14 @@ final class SUPostureHazardSheetViewController: SUBaseViewController {
         label.text = SULocalized("hazard_timeline_title", default: "损伤时间轴演变")
         label.font = .systemFont(ofSize: 15.5, weight: .bold)
         label.textColor = .label
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.85
         return label
     }()
 
     private let timelineBadgeLabel: UILabel = {
         let label = UILabel()
-        label.text = SULocalized("hazard_timeline_tag", default: "不可逆退行")
+        label.text = "  " + SULocalized("hazard_timeline_tag", default: "不可逆退行") + "  "
         label.font = .systemFont(ofSize: 11, weight: .bold)
         label.textColor = .systemRed
         label.backgroundColor = UIColor.systemRed.withAlphaComponent(0.12)
@@ -688,22 +692,30 @@ final class SUPostureHazardSheetViewController: SUBaseViewController {
         aiTagBadgeView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(14)
             make.leading.equalToSuperview().offset(14)
+            make.trailing.lessThanOrEqualTo(severityBadgeView.snp.leading).offset(-8)
             make.height.equalTo(22)
         }
 
         aiTagLabel.snp.makeConstraints { make in
             make.edges.equalToSuperview().inset(UIEdgeInsets(top: 2, left: 8, bottom: 2, right: 8))
         }
+        aiTagLabel.adjustsFontSizeToFitWidth = true
+        aiTagLabel.minimumScaleFactor = 0.8
+        aiTagLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
 
         severityBadgeView.snp.makeConstraints { make in
             make.centerY.equalTo(aiTagBadgeView)
             make.trailing.equalToSuperview().offset(-14)
             make.height.equalTo(22)
         }
+        severityBadgeView.setContentCompressionResistancePriority(.required, for: .horizontal)
 
         severityBadgeLabel.snp.makeConstraints { make in
             make.edges.equalToSuperview().inset(UIEdgeInsets(top: 2, left: 8, bottom: 2, right: 8))
         }
+        severityBadgeLabel.adjustsFontSizeToFitWidth = true
+        severityBadgeLabel.minimumScaleFactor = 0.85
+        severityBadgeLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
 
         statsContainerView.snp.makeConstraints { make in
             make.top.equalTo(aiTagBadgeView.snp.bottom).offset(12)
@@ -822,14 +834,18 @@ final class SUPostureHazardSheetViewController: SUBaseViewController {
         appearanceHeaderLabel.snp.makeConstraints { make in
             make.centerY.equalTo(appearanceIconContainer)
             make.leading.equalTo(appearanceIconContainer.snp.trailing).offset(10)
+            make.trailing.lessThanOrEqualTo(appearanceBadgeLabel.snp.leading).offset(-8)
         }
+        appearanceHeaderLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
 
         appearanceBadgeLabel.snp.makeConstraints { make in
             make.centerY.equalTo(appearanceHeaderLabel)
             make.trailing.equalToSuperview().offset(-14)
             make.height.equalTo(20)
-            make.width.equalTo(58)
+            make.width.greaterThanOrEqualTo(58)
         }
+        appearanceBadgeLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
+        appearanceBadgeLabel.setContentHuggingPriority(.required, for: .horizontal)
 
         appearanceStackView.snp.makeConstraints { make in
             make.top.equalTo(appearanceIconContainer.snp.bottom).offset(12)
@@ -856,14 +872,18 @@ final class SUPostureHazardSheetViewController: SUBaseViewController {
         timelineHeaderLabel.snp.makeConstraints { make in
             make.centerY.equalTo(timelineIconContainer)
             make.leading.equalTo(timelineIconContainer.snp.trailing).offset(10)
+            make.trailing.lessThanOrEqualTo(timelineBadgeLabel.snp.leading).offset(-8)
         }
+        timelineHeaderLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
 
         timelineBadgeLabel.snp.makeConstraints { make in
             make.centerY.equalTo(timelineHeaderLabel)
             make.trailing.equalToSuperview().offset(-14)
             make.height.equalTo(20)
-            make.width.equalTo(68)
+            make.width.greaterThanOrEqualTo(68)
         }
+        timelineBadgeLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
+        timelineBadgeLabel.setContentHuggingPriority(.required, for: .horizontal)
 
         timelineStackView.snp.makeConstraints { make in
             make.top.equalTo(timelineIconContainer.snp.bottom).offset(14)

@@ -54,7 +54,7 @@ final class SUPostureMonitorViewController: SUBaseViewController {
         let symbolConfig = UIImage.SymbolConfiguration(pointSize: 10, weight: .bold)
         config.image = UIImage(systemName: "bolt.heart.fill", withConfiguration: symbolConfig)
         config.imagePadding = 4
-        config.title = "0 骨气币"
+        config.title = String(format: SULocalized("energy_coins_badge", default: "%d 骨气币"), 0)
         
         config.baseBackgroundColor = .systemOrange.withAlphaComponent(0.15)
         config.baseForegroundColor = .systemOrange
@@ -79,7 +79,7 @@ final class SUPostureMonitorViewController: SUBaseViewController {
         let symbolConfig = UIImage.SymbolConfiguration(pointSize: 10, weight: .bold)
         config.image = UIImage(systemName: "briefcase.fill", withConfiguration: symbolConfig)
         config.imagePadding = 4
-        config.title = "打工人"
+        config.title = SUPetPersonaManager.shared.currentPersona.displayName
         
         config.baseBackgroundColor = UIColor.label.withAlphaComponent(0.06)
         config.baseForegroundColor = .label
@@ -548,13 +548,17 @@ final class SUPostureMonitorViewController: SUBaseViewController {
 
     private func updateEnergyBadge(totalCoins: Int) {
         let format = SULocalized("energy_coins_badge", default: "%d 骨气币")
-        energyBadgeButton.setTitle(String(format: format, totalCoins), for: .normal)
+        var config = energyBadgeButton.configuration ?? UIButton.Configuration.filled()
+        config.title = String(format: format, totalCoins)
+        energyBadgeButton.configuration = config
     }
 
     private func updatePersonaBadge(persona: SUPetPersona) {
-        let config = UIImage.SymbolConfiguration(pointSize: 12, weight: .semibold)
-        personaBadgeButton.setImage(UIImage(systemName: persona.iconSystemName, withConfiguration: config), for: .normal)
-        personaBadgeButton.setTitle(persona.displayName, for: .normal)
+        var config = personaBadgeButton.configuration ?? UIButton.Configuration.filled()
+        let symbolConfig = UIImage.SymbolConfiguration(pointSize: 10, weight: .bold)
+        config.image = UIImage(systemName: persona.iconSystemName, withConfiguration: symbolConfig)
+        config.title = persona.displayName
+        personaBadgeButton.configuration = config
     }
 
     @objc private func didTapPersonaBadge() {
@@ -600,7 +604,12 @@ final class SUPostureMonitorViewController: SUBaseViewController {
         updateEnergyBadge(totalCoins: viewModel.currentTotalEnergyCoins)
         updatePersonaBadge(persona: viewModel.activePersona)
         updateConnectionBadge(state: viewModel.connectionState)
-        calibrateButton.setTitle(SULocalized("calibrate_button", default: "一键端坐校准"), for: .normal)
+        if var config = calibrateButton.configuration {
+            var titleAttr = AttributedString(SULocalized("calibrate_button", default: "一键端坐校准"))
+            titleAttr.font = UIFont.systemFont(ofSize: 16.5, weight: .bold)
+            config.attributedTitle = titleAttr
+            calibrateButton.configuration = config
+        }
         gaugeView.refreshLocalizedStrings()
         if let reading = viewModel.latestReading {
             gaugeView.configure(with: reading, connectionState: viewModel.connectionState)

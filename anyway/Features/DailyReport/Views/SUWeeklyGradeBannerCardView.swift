@@ -17,6 +17,8 @@ final class SUWeeklyGradeBannerCardView: UIView {
         let label = UILabel()
         label.font = .systemFont(ofSize: 13, weight: .bold)
         label.textColor = .secondaryLabel
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.85
         return label
     }()
 
@@ -25,6 +27,8 @@ final class SUWeeklyGradeBannerCardView: UIView {
         label.text = SULocalized("weekly_score_title", default: "周度体态健康综合评分")
         label.font = .systemFont(ofSize: 15, weight: .semibold)
         label.textColor = .label
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.85
         return label
     }()
 
@@ -133,11 +137,13 @@ final class SUWeeklyGradeBannerCardView: UIView {
         weekRangeLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(20)
             make.leading.equalToSuperview().offset(20)
+            make.trailing.lessThanOrEqualToSuperview().offset(-20)
         }
 
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(weekRangeLabel.snp.bottom).offset(4)
             make.leading.equalToSuperview().offset(20)
+            make.trailing.lessThanOrEqualToSuperview().offset(-20)
         }
 
         scoreLabel.snp.makeConstraints { make in

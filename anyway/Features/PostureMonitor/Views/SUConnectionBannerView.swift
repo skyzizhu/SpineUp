@@ -27,7 +27,7 @@ final class SUConnectionBannerView: UIView {
 
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "AirPods 未连接"
+        label.text = SULocalized("conn_state_disconnected_title", default: "AirPods 未连接")
         label.font = .systemFont(ofSize: 13, weight: .bold)
         label.textColor = .label
         return label
@@ -35,7 +35,7 @@ final class SUConnectionBannerView: UIView {
 
     private let subtitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "戴上支持空间音频的 AirPods，体态感知将自动恢复"
+        label.text = SULocalized("conn_state_disconnected_sub", default: "戴上支持空间音频的 AirPods，体态感知将自动恢复")
         label.font = .systemFont(ofSize: 11, weight: .regular)
         label.textColor = .secondaryLabel
         label.numberOfLines = 0

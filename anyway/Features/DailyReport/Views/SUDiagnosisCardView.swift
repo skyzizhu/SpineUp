@@ -295,7 +295,7 @@ final class SUDiagnosisCardView: UIView {
         label.isUserInteractionEnabled = false
         label.font = .systemFont(ofSize: 10.5, weight: .bold)
         label.textColor = UIColor.systemGreen.withAlphaComponent(0.8)
-        label.text = "即刻舒缓"
+        label.text = SULocalized("relief_guide_badge", default: "即刻舒缓")
         return label
     }()
 
@@ -571,11 +571,15 @@ final class SUDiagnosisCardView: UIView {
             make.leading.equalTo(reliefIconContainer.snp.trailing).offset(10)
             make.trailing.lessThanOrEqualTo(reliefBadgeStackView.snp.leading).offset(-6)
         }
+        reliefButtonTitleLabel.adjustsFontSizeToFitWidth = true
+        reliefButtonTitleLabel.minimumScaleFactor = 0.85
+        reliefButtonTitleLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
 
         reliefBadgeStackView.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.trailing.equalToSuperview().offset(-12)
         }
+        reliefBadgeStackView.setContentCompressionResistancePriority(.required, for: .horizontal)
 
         // 桌宠寄语卡片约束
         petQuoteCardView.snp.makeConstraints { make in

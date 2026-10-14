@@ -218,9 +218,9 @@
 "hazard_compare_severe" = "💥 相当于把一个 7 岁儿童直接挂在你的颈椎上！每持续一秒，椎间盘都在承受极致压迫。";
 "hazard_compare_moderate" = "⚠️ 相当于颈后挂了一整箱 24 瓶装矿泉水，颈背肌肉正处于重度紧绷代偿中。";
 "hazard_compare_mild" = "🌿 目前处于轻微或健康负荷范围，请继续保持下颌内收与视线平视！";
-"hazard_appearance_title" = "⚠️ 颜值与体态杀手（无形毁容）";
+"hazard_appearance_title" = "⚠️ 颜值与体态杀手";
 "hazard_appearance_content" = "• 富贵包形成：颈胸交界代偿性堆积厚重脂肪垫，脖子变粗显短，穿西装或裙装气质全失。\n• 双下巴与下颌线模糊：长期探颈使颈阔肌过度拉伸松弛，即使体重 90 斤也会出现下颌肉下垂。\n• 猥琐乌龟颈：圆肩含胸伴随下巴前伸，无论男女整个人透出疲惫畏缩感。";
-"hazard_timeline_title" = "⏱ 损伤时间轴演变（不可逆退行）";
+"hazard_timeline_title" = "⏱ 损伤时间轴演变";
 "hazard_timeline_content" = "• 持续 30~60 分钟：斜方肌痉挛酸痛、紧张性偏头痛、脑供血轻微受阻导致哈欠连天。\n• 累积 1~3 个月：颈椎正常前凸曲度消失（生理曲度变直）、胸椎代偿性后凸驼背。\n• 累积 1~2 年以上：C5-C7 椎间盘退行性变甚至膨出、骨刺增生、神经根压迫导致手臂手指放射性麻木。";
 "hazard_btn_to_relief" = "查看减负微操方案";
 
@@ -320,12 +320,12 @@
 "ai_analyzing_hint" = "✨ AI 正在计算当前姿态力学冲击与体态退行预测...";
 "ai_prescription_badge" = "✨ AI 专属急救处方 · 毫秒级卸荷";
 "ai_tag_title" = "✨ AI 实时体态力学推演";
-"hazard_appearance_title" = "⚠️ 颜值与体态杀手（无形毁容）";
+"hazard_appearance_title" = "⚠️ 颜值与体态杀手";
 "hazard_btn_to_relief" = "查看减负微操方案";
 "hazard_metric_title" = "实时颈椎力学冲击";
 "hazard_metric_val_fmt" = "低头 %.1f° · 额外受力 +%.1f kg";
 "hazard_sheet_title" = "颈椎承重与危害透视";
-"hazard_timeline_title" = "⏱ 损伤时间轴演变（不可逆退行）";
+"hazard_timeline_title" = "⏱ 损伤时间轴演变";
 "relief_action1_steps" = "• 坐正平视正前方，背部放松微靠。\n• 食指轻触下巴，水平向后平行推送（挤出双下巴感）。\n• 感受后颈温和拉伸，保持 3 秒，重复 5~8 次。";
 "relief_action1_tag" = "告别乌龟颈 & 激活颈深肌";
 "relief_action1_title" = "1. 麦肯基收下巴（Chin Tuck）";
@@ -514,3 +514,13 @@
 "leaderboard_peer_7" = "端坐写报告的安安";
 "leaderboard_peer_8" = "AirPods 守护者浩子";
 "leaderboard_peer_9" = "拒绝圆肩的茜茜";
+
+/* Posture Relief & AI Vision Additional Keys */
+"relief_offset_shear_fmt" = "对冲 +%.1fkg 剪切应力";
+"relief_time_15s" = "15 秒";
+"relief_time_habit" = "日常习惯";
+"relief_ai_custom_tag" = "AI 私教针对定制";
+"relief_pet_companion_fmt" = "%@ · 陪伴指引";
+"vision_pose_matched" = "✅ 姿态达标";
+"vision_pose_adjust" = "调整姿态";
+"live_activity_session_title" = "SpineUp 实时守护";

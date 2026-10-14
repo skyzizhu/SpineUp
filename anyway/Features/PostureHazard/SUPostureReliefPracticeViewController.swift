@@ -480,8 +480,10 @@ final class SUPostureReliefPracticeViewController: SUBaseViewController {
                         breathPhase: self.breathingPacerView.currentPhase,
                         isMatchingPose: isMatched
                     )
+                    let matchedFallback = SULocalized("vision_pose_matched", default: "✅ 姿态达标")
+                    let adjustFallback = SULocalized("vision_pose_adjust", default: "调整姿态")
                     self.stageView.updateCameraStatus(
-                        tip: tip.isEmpty ? (isMatched ? "✅ 姿态达标" : "调整姿态") : tip,
+                        tip: tip.isEmpty ? (isMatched ? matchedFallback : adjustFallback) : tip,
                         isMatched: isMatched
                     )
                     self.stageView.updatePoseMatchHighlight(isMatched)

@@ -77,6 +77,8 @@ final class SUShareCardView: UIView {
         let label = UILabel()
         label.font = .systemFont(ofSize: 18, weight: .bold)
         label.textColor = .label
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.85
         return label
     }()
 
@@ -88,6 +90,8 @@ final class SUShareCardView: UIView {
         label.layer.cornerRadius = 10
         label.layer.masksToBounds = true
         label.textAlignment = .center
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.85
         return label
     }()
 
@@ -238,12 +242,14 @@ final class SUShareCardView: UIView {
         gradeTitleLabel.snp.makeConstraints { make in
             make.leading.equalTo(gradeLetterLabel.snp.trailing).offset(10)
             make.top.equalToSuperview().offset(16)
+            make.trailing.lessThanOrEqualToSuperview().offset(-16)
         }
 
         scorePillLabel.snp.makeConstraints { make in
             make.leading.equalTo(gradeTitleLabel.snp.leading)
             make.top.equalTo(gradeTitleLabel.snp.bottom).offset(4)
-            make.width.equalTo(58)
+            make.width.greaterThanOrEqualTo(58)
+            make.trailing.lessThanOrEqualToSuperview().offset(-16)
             make.height.equalTo(20)
         }
 
@@ -325,7 +331,7 @@ final class SUShareCardView: UIView {
 
         gradeLetterLabel.text = session.grade
         gradeTitleLabel.text = session.gradeTitle
-        scorePillLabel.text = String(format: SULocalized("score_unit", default: "%d分"), session.score)
+        scorePillLabel.text = "  " + String(format: SULocalized("score_unit", default: "%d分"), session.score) + "  "
 
         // 着色适配
         let tintColor: UIColor

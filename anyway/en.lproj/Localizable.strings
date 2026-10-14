@@ -214,9 +214,9 @@
 "hazard_compare_severe" = "💥 Equivalent to hanging a 7-year-old child directly on your neck! Every second compresses your discs.";
 "hazard_compare_moderate" = "⚠️ Equivalent to carrying a whole 24-bottle crate of water on your neck.";
 "hazard_compare_mild" = "🌿 Currently within mild and healthy load. Keep your chin tucked and eyes level!";
-"hazard_appearance_title" = "⚠️ Aesthetic & Posture Threats (Invisible Distortion)";
+"hazard_appearance_title" = "⚠️ Aesthetic & Posture Threats";
 "hazard_appearance_content" = "• Dowager's Hump: Compensatory fat pad accumulation at cervical-thoracic junction, thickening the neck.\n• Double Chin & Jowl Sagging: Platysma muscle overstretched by forward head posture, causing jawline sagging.\n• Turtle Neck: Rounded shoulders and forward head create a timid, exhausted appearance.";
-"hazard_timeline_title" = "⏱ Degeneration Timeline (Irreversible Changes)";
+"hazard_timeline_title" = "⏱ Progression Timeline";
 "hazard_timeline_content" = "• 30~60 Minutes: Trapezius spasm, tension headache, reduced cerebral blood flow.\n• 1~3 Months: Loss of cervical lordosis (straightened spine), compensatory thoracic kyphosis.\n• 1~2+ Years: C5-C7 disc degeneration and herniation, osteophytes (bone spurs), radiating nerve numbness.";
 "hazard_btn_to_relief" = "View Relief Routine";
 
@@ -319,12 +319,12 @@
 "ai_analyzing_hint" = "✨ AI is calculating posture impact and degenerative projection...";
 "ai_prescription_badge" = "✨ AI Custom Prescription · Instant Relief";
 "ai_tag_title" = "✨ AI Real-Time Biomechanics Simulation";
-"hazard_appearance_title" = "⚠️ Aesthetics & Posture Killer (Silent Deformation)";
+"hazard_appearance_title" = "⚠️ Aesthetic & Posture Threats";
 "hazard_btn_to_relief" = "View Relief Routine";
 "hazard_metric_title" = "Real-Time Cervical Stress";
 "hazard_metric_val_fmt" = "Pitch %.1f° · Extra Load +%.1f kg";
 "hazard_sheet_title" = "Cervical Load & Risk Insights";
-"hazard_timeline_title" = "⏱ Progression Timeline (Irreversible Strain)";
+"hazard_timeline_title" = "⏱ Progression Timeline";
 "relief_action1_steps" = "• Sit tall looking forward, back comfortably supported.\n• Touch chin with index finger, push horizontally backward (make a double chin).\n• Feel gentle stretch in back of neck, hold 3s, repeat 5~8 times.";
 "relief_action1_tag" = "Beat Text Neck & Activate Deep Cervical Flexors";
 "relief_action1_title" = "1. McKenzie Chin Tuck";
@@ -514,3 +514,13 @@
 "leaderboard_peer_7" = "Report Writer Ann";
 "leaderboard_peer_8" = "AirPods Pro Lucas";
 "leaderboard_peer_9" = "Shoulder Posture Sisi";
+
+/* Posture Relief & AI Vision Additional Keys */
+"relief_offset_shear_fmt" = "Offset +%.1fkg Shear Load";
+"relief_time_15s" = "15s";
+"relief_time_habit" = "Daily Habit";
+"relief_ai_custom_tag" = "AI Coach Custom Plan";
+"relief_pet_companion_fmt" = "%@ · Companion Guide";
+"vision_pose_matched" = "✅ Perfect Form";
+"vision_pose_adjust" = "Adjust Posture";
+"live_activity_session_title" = "SpineUp Live Guardian";

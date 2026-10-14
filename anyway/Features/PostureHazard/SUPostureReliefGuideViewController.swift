@@ -93,7 +93,7 @@ private final class SUReliefActionCardView: UIView {
     private let aiTipHeaderLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 11, weight: .bold)
-        label.text = "AI 私教针对定制"
+        label.text = SULocalized("relief_ai_custom_tag", default: "AI 私教针对定制")
         return label
     }()
 
@@ -191,17 +191,24 @@ private final class SUReliefActionCardView: UIView {
             make.leading.equalTo(iconBadgeView.snp.trailing).offset(10)
             make.trailing.lessThanOrEqualTo(timeCapsuleLabel.snp.leading).offset(-8)
         }
+        titleLabel.adjustsFontSizeToFitWidth = true
+        titleLabel.minimumScaleFactor = 0.85
+        titleLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
 
         timeCapsuleLabel.snp.makeConstraints { make in
             make.centerY.equalTo(iconBadgeView.snp.centerY)
             make.trailing.equalToSuperview().offset(-16)
         }
+        timeCapsuleLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
 
         tagBadgeLabel.snp.makeConstraints { make in
             make.top.equalTo(iconBadgeView.snp.bottom).offset(10)
             make.leading.equalToSuperview().offset(16)
+            make.trailing.lessThanOrEqualToSuperview().offset(-16)
             make.height.equalTo(20)
         }
+        tagBadgeLabel.adjustsFontSizeToFitWidth = true
+        tagBadgeLabel.minimumScaleFactor = 0.8
 
         mainContentStackView.snp.makeConstraints { make in
             make.top.equalTo(tagBadgeLabel.snp.bottom).offset(10)
@@ -406,7 +413,7 @@ final class SUPostureReliefGuideViewController: SUBaseViewController {
         themeColor: .systemOrange,
         title: SULocalized("relief_action1_title", default: "1. 麦肯基收下巴（Chin Tuck）"),
         tag: SULocalized("relief_action1_tag", default: "告别乌龟颈 & 激活颈深肌"),
-        timeBadge: "15 秒",
+        timeBadge: SULocalized("relief_time_15s", default: "15 秒"),
         steps: SULocalized("relief_action1_steps", default: "• 坐正平视正前方，背部放松微靠。\n• 食指轻触下巴，水平向后平行推送（挤出双下巴感）。\n• 感受后颈温和拉伸，保持 3 秒，重复 5~8 次。")
     )
 
@@ -416,7 +423,7 @@ final class SUPostureReliefGuideViewController: SUBaseViewController {
         themeColor: .systemBlue,
         title: SULocalized("relief_action2_title", default: "2. W 展肩夹背法（W-Stretches）"),
         tag: SULocalized("relief_action2_tag", default: "打开胸椎 & 击碎富贵包"),
-        timeBadge: "15 秒",
+        timeBadge: SULocalized("relief_time_15s", default: "15 秒"),
         steps: SULocalized("relief_action2_steps", default: "• 双臂大臂贴紧肋侧，小臂向上屈起呈「W」形。\n• 双肩自然下沉缓慢展开，将两块肩胛骨往中间夹紧。\n• 配合深吸气停留 5 秒后呼气放松，重复 4~6 次。")
     )
 
@@ -426,7 +433,7 @@ final class SUPostureReliefGuideViewController: SUBaseViewController {
         themeColor: .systemIndigo,
         title: SULocalized("relief_action3_title", default: "3. 工位人体工学黄金原则"),
         tag: SULocalized("relief_action3_tag", default: "物理根源消除低头诱因"),
-        timeBadge: "日常习惯",
+        timeBadge: SULocalized("relief_time_habit", default: "日常习惯"),
         steps: SULocalized("relief_action3_steps", default: "• 视线平齐：笔记本用支架垫高，屏幕上 1/3 与视线平行。\n• 手肘 90°：调节工位椅高度，手肘呈直角自然搭放桌面。\n• 腰部支撑：臀部坐满椅底，腰部悬空处加一个小靠垫。")
     )
 
@@ -519,7 +526,8 @@ final class SUPostureReliefGuideViewController: SUBaseViewController {
 
         if extraLoadKg > 0.0 {
             let state = SUPostureState.state(forPitchDeg: pitchDeg)
-            loadOffsetPillLabel.text = String(format: "  对冲 +%.1fkg 剪切应力  ", extraLoadKg)
+            let shearFormat = SULocalized("relief_offset_shear_fmt", default: "对冲 +%.1fkg 剪切应力")
+            loadOffsetPillLabel.text = String(format: "  \(shearFormat)  ", extraLoadKg)
             loadOffsetPillLabel.textColor = state.themeColor
             loadOffsetPillLabel.backgroundColor = state.badgeBackgroundColor
             loadOffsetPillLabel.isHidden = false
@@ -564,7 +572,8 @@ final class SUPostureReliefGuideViewController: SUBaseViewController {
         petIconImageView.image = UIImage(systemName: persona.iconSystemName, withConfiguration: iconConfig)
         petIconImageView.tintColor = personaColor
 
-        petNameLabel.text = persona.displayName + " · 陪伴指引"
+        let companionFormat = SULocalized("relief_pet_companion_fmt", default: "%@ · 陪伴指引")
+        petNameLabel.text = String(format: companionFormat, persona.displayName)
         petNameLabel.textColor = personaColor
     }
 
@@ -619,18 +628,24 @@ final class SUPostureReliefGuideViewController: SUBaseViewController {
 
         aiPrescriptionBadgeView.snp.makeConstraints { make in
             make.top.leading.equalToSuperview().offset(16)
+            make.trailing.lessThanOrEqualTo(loadOffsetPillLabel.snp.leading).offset(-8)
             make.height.equalTo(22)
         }
 
         aiPrescriptionBadgeLabel.snp.makeConstraints { make in
             make.edges.equalToSuperview().inset(UIEdgeInsets(top: 2, left: 8, bottom: 2, right: 8))
         }
+        aiPrescriptionBadgeLabel.adjustsFontSizeToFitWidth = true
+        aiPrescriptionBadgeLabel.minimumScaleFactor = 0.8
+        aiPrescriptionBadgeLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
 
         loadOffsetPillLabel.snp.makeConstraints { make in
             make.centerY.equalTo(aiPrescriptionBadgeView.snp.centerY)
             make.trailing.equalToSuperview().offset(-16)
             make.height.equalTo(20)
         }
+        loadOffsetPillLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
+        loadOffsetPillLabel.setContentHuggingPriority(.required, for: .horizontal)
 
         headerTitleLabel.snp.makeConstraints { make in
             make.top.equalTo(aiPrescriptionBadgeView.snp.bottom).offset(8)

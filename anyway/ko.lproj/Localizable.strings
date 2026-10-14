@@ -202,9 +202,9 @@
 "hazard_compare_severe" = "💥 7세 어린이를 목에 매달고 있는 것과 같은 충격입니다! 1초마다 디스크가 강하게 압박받고 있습니다.";
 "hazard_compare_moderate" = "⚠️ 24병들이 생수 한 박스를 목 뒤에 얹고 있는 상태입니다.";
 "hazard_compare_mild" = "🌿 현재 부담 없는 건강한 상태입니다. 턱을 당기고 눈높이를 유지하세요!";
-"hazard_appearance_title" = "⚠️ 외모 및 체형에 미치는 악영향";
+"hazard_appearance_title" = "⚠️ 외모 및 체형 영향";
 "hazard_appearance_content" = "• 버섯목 (버팔로 험프): 목 뒤에 지방이 쌓여 목이 두껍고 짧아 보입니다.\n• 이중턱 및 턱선 처짐: 고개를 숙이면 넓은목근이 늘어나 체중과 상관없이 턱선이 무너집니다.\n• 거북목 자세: 굽은 등과 앞으로 튀어나온 턱으로 인해 피로하고 위축된 인상을 줍니다.";
-"hazard_timeline_title" = "⏱ 손상 진행 타임라인 (비가역적 퇴행)";
+"hazard_timeline_title" = "⏱ 손상 진행 타임라인";
 "hazard_timeline_content" = "• 30~60분: 승모근 경련, 긴장성 두통, 혈류 저하로 인한 잦은 하품.\n• 1~3개월: 일자목 진행 (경추 C자 곡선 소실), 흉추 후만증.\n• 1~2년 이상: C5-C7 목 디스크 탈출증, 골극 형성, 신경 압박으로 인한 팔 저림.";
 "hazard_btn_to_relief" = "완화 가이드 보기";
 
@@ -300,12 +300,12 @@
 "ai_analyzing_hint" = "✨ AI가 현재 자세의 생체역학적 부하와 변형 위험을 계산 중입니다...";
 "ai_prescription_badge" = "✨ AI 맞춤 응급 처방 · 즉각 하중 완화";
 "ai_tag_title" = "✨ AI 실시간 자세 역학 시뮬레이션";
-"hazard_appearance_title" = "⚠️ 외모와 체형 킬러 (무의식적 변형)";
+"hazard_appearance_title" = "⚠️ 외모 및 체형 영향";
 "hazard_btn_to_relief" = "스트레칭 루틴 보기";
 "hazard_metric_title" = "실시간 경추 하중 충격";
 "hazard_metric_val_fmt" = "기울기 %.1f° · 추가 부하 +%.1f kg";
 "hazard_sheet_title" = "경추 부담 및 위험 투시";
-"hazard_timeline_title" = "⏱ 손상 타임라인 변화 (비가역적 퇴행)";
+"hazard_timeline_title" = "⏱ 손상 진행 타임라인";
 "relief_action1_steps" = "• 정면을 바라보고 등을 편안히 기댑니다.\n• 검지로 턱을 살짝 대고, 수평으로 뒤로 밉니다 (이중턱을 만드는 느낌).\n• 목 뒤쪽의 편안한 당김을 느끼며 3초 유지, 5~8회 반복합니다.";
 "relief_action1_tag" = "거북목 탈출 & 심부 경추 근육 활성화";
 "relief_action1_title" = "1. 맥켄지 친턱 (턱 당기기)";
@@ -474,3 +474,13 @@
 "leaderboard_peer_7" = "보고서 작성 앤";
 "leaderboard_peer_8" = "에어팟 수호자 루카스";
 "leaderboard_peer_9" = "라운드숄더 탈출 시시";
+
+/* Posture Relief & AI Vision Additional Keys */
+"relief_offset_shear_fmt" = "+%.1fkg 전단 하중 상쇄";
+"relief_time_15s" = "15초";
+"relief_time_habit" = "일상 습관";
+"relief_ai_custom_tag" = "AI 전담 코치 맞춤 처방";
+"relief_pet_companion_fmt" = "%@ · 동반자 가이드";
+"vision_pose_matched" = "✅ 자세 통과";
+"vision_pose_adjust" = "자세 교정";
+"live_activity_session_title" = "SpineUp 실시간 가디언";

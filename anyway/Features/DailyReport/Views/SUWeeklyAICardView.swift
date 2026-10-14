@@ -25,6 +25,8 @@ final class SUWeeklyAICardView: UIView {
         label.text = SULocalized("weekly_ai_title", default: "AI 专属伴侣周度深度复盘")
         label.font = .systemFont(ofSize: 16, weight: .bold)
         label.textColor = .label
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.8
         return label
     }()
 
@@ -132,7 +134,9 @@ final class SUWeeklyAICardView: UIView {
         titleLabel.snp.makeConstraints { make in
             make.centerY.equalTo(titleIconImageView.snp.centerY)
             make.leading.equalTo(titleIconImageView.snp.trailing).offset(8)
+            make.trailing.lessThanOrEqualTo(personaBadgeLabel.snp.leading).offset(-8)
         }
+        titleLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
 
         personaBadgeLabel.snp.makeConstraints { make in
             make.centerY.equalTo(titleLabel.snp.centerY)
@@ -140,6 +144,8 @@ final class SUWeeklyAICardView: UIView {
             make.height.equalTo(22)
             make.width.greaterThanOrEqualTo(64)
         }
+        personaBadgeLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
+        personaBadgeLabel.setContentHuggingPriority(.required, for: .horizontal)
 
         bubbleContainerView.snp.makeConstraints { make in
             make.top.equalTo(titleIconImageView.snp.bottom).offset(14)

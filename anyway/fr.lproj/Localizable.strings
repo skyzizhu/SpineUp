@@ -202,9 +202,9 @@
 "hazard_compare_severe" = "💥 Équivaut à porter un enfant de 7 ans sur votre nuque ! Chaque seconde compresse vos disques.";
 "hazard_compare_moderate" = "⚠️ Équivaut à porter un pack complet de 24 bouteilles d'eau sur votre cou.";
 "hazard_compare_mild" = "🌿 Charge actuellement faible et saine. Gardez le menton rentré et le regard droit !";
-"hazard_appearance_title" = "⚠️ Conséquences esthétiques et posturales";
+"hazard_appearance_title" = "⚠️ Menaces esthétiques & posturales";
 "hazard_appearance_content" = "• Bosse de bison : Accumulation graisseuse compensatoire à la base du cou, épaississant la nuque.\n• Double menton et affaissement : Le muscle peaucier est distendu par la tête penchée en avant.\n• Posture de la tortue : Épaules enroulées et menton projeté donnent un air voûté et fatigué.";
-"hazard_timeline_title" = "⏱ Chronologie de dégénérescence";
+"hazard_timeline_title" = "⏱ Évolution chronologique";
 "hazard_timeline_content" = "• 30~60 min : Spasmes trapéziens, céphalées de tension, baisse de concentration.\n• 1~3 mois : Perte de la lordose cervicale (cou droit), cyphose dorsale compensatoire.\n• 1~2+ ans : Hernie discale C5-C7, ostéophytes (becs de perroquet), engourdissement irradiant des bras.";
 "hazard_btn_to_relief" = "Consulter le guide de soulagement 30s";
 
@@ -305,7 +305,7 @@
 "hazard_metric_title" = "Stress Cervical en Temps Réel";
 "hazard_metric_val_fmt" = "Inclinaison %.1f° · Charge Extra +%.1f kg";
 "hazard_sheet_title" = "Aperçu de la Charge Cervicale & Risques";
-"hazard_timeline_title" = "⏱ Évolution Chronologique (Dégénérescence)";
+"hazard_timeline_title" = "⏱ Évolution chronologique";
 "relief_action1_steps" = "• Asseyez-vous droit en regardant devant, dos soutenu.\n• Poussez le menton horizontalement en arrière avec l\'index (double menton).\n• Sentez l\'étirement doux à l\'arrière du cou, tenez 3s, répétez 5~8 fois.";
 "relief_action1_tag" = "Adieu Cou de Texte & Activation Fléchisseurs";
 "relief_action1_title" = "1. Rentré de Menton McKenzie";
@@ -474,3 +474,13 @@
 "leaderboard_peer_7" = "Ann Rédactrice";
 "leaderboard_peer_8" = "Lucas Fan d'AirPods";
 "leaderboard_peer_9" = "Sisi Épaules Droites";
+
+/* Posture Relief & AI Vision Additional Keys */
+"relief_offset_shear_fmt" = "Compenser +%.1fkg de contrainte";
+"relief_time_15s" = "15 s";
+"relief_time_habit" = "Habitude quotidienne";
+"relief_ai_custom_tag" = "Plan sur mesure du coach IA";
+"relief_pet_companion_fmt" = "%@ · Guide d'accompagnement";
+"vision_pose_matched" = "✅ Posture validée";
+"vision_pose_adjust" = "Ajustez la posture";
+"live_activity_session_title" = "Protection en direct SpineUp";

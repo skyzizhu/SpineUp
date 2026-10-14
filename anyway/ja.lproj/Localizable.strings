@@ -202,9 +202,9 @@
 "hazard_compare_severe" = "💥 まるで7歳の子どもが首にぶら下がっているような衝撃！1秒ごとに椎間板が押し潰されています。";
 "hazard_compare_moderate" = "⚠️ 24本入りミネラルウォーター1ケース分が首にかかっている状態です。";
 "hazard_compare_mild" = "🌿 現在は負担の少ない健康的な範囲です。顎を引いて画面と目線を合わせましょう！";
-"hazard_appearance_title" = "⚠️ 美容と体型への影響（見た目の老化）";
+"hazard_appearance_title" = "⚠️ 美容と姿勢への影響";
 "hazard_appearance_content" = "• 水牛肩・首の後ろの贅肉：首の付け根に脂肪が代償的に蓄積し、首が太く短く見えます。\n• 二重顎とフェイスラインのたるみ：前傾により広頸筋が緩み、体重に関係なく顎下がたるみます。\n• 猫背・亀首：巻き肩と首の前突き出しにより、自信がなく疲れた印象を与えます。";
-"hazard_timeline_title" = "⏱ 進行タイムライン（不可逆な退行性変化）";
+"hazard_timeline_title" = "⏱ 経時的損傷変化";
 "hazard_timeline_content" = "• 30〜60分：僧帽筋の痙攣と張り、緊張型頭痛、血流低下による集中力散漫。\n• 1〜3ヶ月：ストレートネック（頸椎の生理的前弯消失）、代償性猫背の固定化。\n• 1〜2年以上：頸椎椎間板ヘルニア、骨棘（骨のとげ）形成、手や指への神経圧迫によるしびれ。";
 "hazard_btn_to_relief" = "ケアガイドを見る";
 
@@ -300,12 +300,12 @@
 "ai_analyzing_hint" = "✨ AIが姿勢の生体力学的負荷と変性予測を計算中...";
 "ai_prescription_badge" = "✨ AI専用救急処方 · 即効負荷軽減";
 "ai_tag_title" = "✨ AIリアルタイム姿勢生体力学推論";
-"hazard_appearance_title" = "⚠️ 美容と姿勢の大敵（無意識の変形）";
+"hazard_appearance_title" = "⚠️ 美容と姿勢への影響";
 "hazard_btn_to_relief" = "ケア動作を確認";
 "hazard_metric_title" = "リアルタイム頸椎負荷";
 "hazard_metric_val_fmt" = "前傾 %.1f° · 追加負荷 +%.1f kg";
 "hazard_sheet_title" = "頸椎負荷と健康リスク透視";
-"hazard_timeline_title" = "⏱ 経時的損傷変化（不可逆な変性）";
+"hazard_timeline_title" = "⏱ 経時的損傷変化";
 "relief_action1_steps" = "• 正面を向いて背筋を伸ばし、軽く背もたれに添えます。\n• 人差し指で顎を軽く触れ、水平に後ろへ引きます（二重顎を作る感覚）。\n• 首の後ろの心地よい伸びを感じ、3秒キープ。5〜8回繰り返します。";
 "relief_action1_tag" = "ストレートネック解消 & 深層頸部筋の活性化";
 "relief_action1_title" = "1. マッケンジー・チンタック（顎引き）";
@@ -474,3 +474,13 @@
 "leaderboard_peer_7" = "レポート執筆アン";
 "leaderboard_peer_8" = "AirPods愛用ヒロ";
 "leaderboard_peer_9" = "巻き肩知らずのシシ";
+
+/* Posture Relief & AI Vision Additional Keys */
+"relief_offset_shear_fmt" = "+%.1fkg 剪断応力を相殺";
+"relief_time_15s" = "15秒";
+"relief_time_habit" = "日常の習慣";
+"relief_ai_custom_tag" = "AIコーチ特別カスタマイズ";
+"relief_pet_companion_fmt" = "%@ · 寄り添いガイド";
+"vision_pose_matched" = "✅ 姿勢合格";
+"vision_pose_adjust" = "姿勢を調整";
+"live_activity_session_title" = "SpineUp リアルタイム見守り";

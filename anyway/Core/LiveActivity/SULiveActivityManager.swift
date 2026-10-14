@@ -41,7 +41,7 @@ final class SULiveActivityManager: @unchecked Sendable {
         }
         lock.unlock()
 
-        let attributes = SUPostureActivityAttributes(sessionTitle: "SpineUp 实时守护")
+        let attributes = SUPostureActivityAttributes(sessionTitle: SULocalized("live_activity_session_title", default: "SpineUp 实时守护"))
         let initialState = SUPostureActivityAttributes.ContentState(
             postureState: "upright",
             pitchDeg: 0.0,

@@ -16,6 +16,8 @@ final class SUWeeklyTrendCardView: UIView {
         label.text = SULocalized("weekly_trend_title", default: "7 天体态趋势分布")
         label.font = .systemFont(ofSize: 17, weight: .bold)
         label.textColor = .label
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.8
         return label
     }()
 
@@ -24,6 +26,8 @@ final class SUWeeklyTrendCardView: UIView {
         label.text = SULocalized("weekly_trend_subtitle", default: "柱状高低反映每日佩戴时长，高亮周度最佳日")
         label.font = .systemFont(ofSize: 12, weight: .medium)
         label.textColor = .secondaryLabel
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.8
         return label
     }()
 
@@ -120,11 +124,13 @@ final class SUWeeklyTrendCardView: UIView {
         titleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(20)
             make.leading.equalToSuperview().offset(20)
+            make.trailing.lessThanOrEqualToSuperview().offset(-20)
         }
 
         subtitleLabel.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(4)
             make.leading.equalToSuperview().offset(20)
+            make.trailing.lessThanOrEqualToSuperview().offset(-20)
         }
 
         chartStackView.snp.makeConstraints { make in
@@ -230,6 +236,8 @@ final class SUWeeklyColumnView: UIView {
         label.font = .systemFont(ofSize: 11, weight: .medium)
         label.textColor = .secondaryLabel
         label.textAlignment = .center
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.7
         return label
     }()
 
@@ -238,6 +246,8 @@ final class SUWeeklyColumnView: UIView {
         label.font = .systemFont(ofSize: 10, weight: .bold)
         label.textColor = .tertiaryLabel
         label.textAlignment = .center
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.7
         return label
     }()
 

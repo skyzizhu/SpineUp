@@ -130,12 +130,18 @@ final class SUWeeklyMetricItemView: UIView {
         titleLabel.text = SULocalized(titleKey, default: defaultTitle)
         titleLabel.font = .systemFont(ofSize: 12, weight: .semibold)
         titleLabel.textColor = .secondaryLabel
+        titleLabel.adjustsFontSizeToFitWidth = true
+        titleLabel.minimumScaleFactor = 0.75
 
         valueLabel.font = .systemFont(ofSize: 22, weight: .heavy)
         valueLabel.textColor = .label
+        valueLabel.adjustsFontSizeToFitWidth = true
+        valueLabel.minimumScaleFactor = 0.8
 
         unitLabel.font = .systemFont(ofSize: 12, weight: .bold)
         unitLabel.textColor = .tertiaryLabel
+        unitLabel.adjustsFontSizeToFitWidth = true
+        unitLabel.minimumScaleFactor = 0.8
 
         addSubview(iconImageView)
         addSubview(titleLabel)
@@ -163,6 +169,7 @@ final class SUWeeklyMetricItemView: UIView {
         unitLabel.snp.makeConstraints { make in
             make.bottom.equalTo(valueLabel.snp.bottom).offset(-2)
             make.leading.equalTo(valueLabel.snp.trailing).offset(4)
+            make.trailing.lessThanOrEqualToSuperview().offset(-8)
         }
     }
 

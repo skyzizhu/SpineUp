@@ -218,9 +218,9 @@
 "hazard_compare_severe" = "💥 相當於把一個 7 歲兒童直接掛在你的頸椎上！每持續一秒，椎間盤都在承受極致壓迫。";
 "hazard_compare_moderate" = "⚠️ 相當於頸後掛了一整箱 24 瓶裝礦泉水，頸背肌肉正處於重度緊繃代償中。";
 "hazard_compare_mild" = "🌿 目前處於輕微或健康負荷範圍，請繼續保持下頜內收與視線平視！";
-"hazard_appearance_title" = "⚠️ 顏值與體態殺手（無形毀容）";
+"hazard_appearance_title" = "⚠️ 顏值與體態殺手";
 "hazard_appearance_content" = "• 富貴包形成：頸胸交界代償性堆積厚重脂肪墊，脖子變粗顯短，穿西裝或裙裝氣質全失。\n• 雙下巴與下頜線模糊：長期探頸使頸闊肌過度拉伸鬆弛，即使體重 90 斤也會出現下頜肉下垂。\n• 猥瑣烏龜頸：圓肩含胸伴隨下巴前伸，無論男女整個人透出疲憊畏縮感。";
-"hazard_timeline_title" = "⏱ 損傷時間軸演變（不可逆退行）";
+"hazard_timeline_title" = "⏱ 損傷時間軸演變";
 "hazard_timeline_content" = "• 持續 30~60 分鐘：斜方肌痙攣酸痛、緊張性偏頭痛、腦供血輕微受阻導致哈欠連天。\n• 累積 1~3 個月：頸椎正常前凸曲度消失（生理曲度變直）、胸椎代償性後凸駝背。\n• 累積 1~2 年以上：C5-C7 椎間盤退行性變甚至膨出、骨刺增生、神經根壓迫導致手臂手指放射性麻木。";
 "hazard_btn_to_relief" = "查看減負微操方案";
 
@@ -320,12 +320,12 @@
 "ai_analyzing_hint" = "✨ AI 正在計算當前姿態力學衝擊與體態退行預測...";
 "ai_prescription_badge" = "✨ AI 專屬急救處方 · 毫秒級卸荷";
 "ai_tag_title" = "✨ AI 即時體態力學推演";
-"hazard_appearance_title" = "⚠️ 顏值與體態殺手（無形毀容）";
+"hazard_appearance_title" = "⚠️ 顏值與體態殺手";
 "hazard_btn_to_relief" = "查看減負微操方案";
 "hazard_metric_title" = "即時頸椎力學衝擊";
 "hazard_metric_val_fmt" = "低頭 %.1f° · 額外受力 +%.1f kg";
 "hazard_sheet_title" = "頸椎承重與危害透視";
-"hazard_timeline_title" = "⏱ 損傷時間軸演變（不可逆退行）";
+"hazard_timeline_title" = "⏱ 損傷時間軸演變";
 "relief_action1_steps" = "• 坐正平視正前方，背部放鬆微靠。\n• 食指輕觸下巴，水平向後平行推送（擠出雙下巴感）。\n• 感受後頸溫和拉伸，保持 3 秒，重複 5~8 次。";
 "relief_action1_tag" = "告別烏龜頸 & 激活頸深肌";
 "relief_action1_title" = "1. 麥肯基收下巴（Chin Tuck）";
@@ -514,3 +514,13 @@
 "leaderboard_peer_7" = "端坐寫報告的安安";
 "leaderboard_peer_8" = "AirPods 守護者浩子";
 "leaderboard_peer_9" = "拒絕圓肩的茜茜";
+
+/* Posture Relief & AI Vision Additional Keys */
+"relief_offset_shear_fmt" = "對沖 +%.1fkg 剪切應力";
+"relief_time_15s" = "15 秒";
+"relief_time_habit" = "日常習慣";
+"relief_ai_custom_tag" = "AI 私教針對定制";
+"relief_pet_companion_fmt" = "%@ · 陪伴指引";
+"vision_pose_matched" = "✅ 姿態達標";
+"vision_pose_adjust" = "調整姿態";
+"live_activity_session_title" = "SpineUp 即時守護";
