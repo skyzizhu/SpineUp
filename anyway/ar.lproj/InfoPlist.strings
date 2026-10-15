@@ -2,5 +2,8 @@
 "CFBundleDisplayName" = "SpineUp";
 "UILaunchStoryboardName" = "LaunchScreen_ar";
 "NSMotionUsageDescription" = "يحتاج SpineUp إلى الوصول إلى مستشعرات الحركة لمراقبة وضعية رأسك وصحة رقبتك في الوقت الفعلي عبر AirPods.";
+"NSCameraUsageDescription" = "يحتاج SpineUp إلى الكاميرا الأمامية للتعرف على حركاتك وتوجيه تمارين تخفيف إجهاد الرقبة في الوقت الفعلي.";
 "NSHealthShareUsageDescription" = "يرغب SpineUp في قراءة بياناتك الصحية مثل الخطوات لتقديم تحليل مخصص لوضعية الجسم.";
 "NSHealthUpdateUsageDescription" = "يرغب SpineUp في تسجيل فترات الاستقامة والتركيز كجلسات تأمل ووعي في Apple Health.";
+"NSPhotoLibraryAddUsageDescription" = "يحتاج SpineUp إلى إذن لحفظ بطاقات تقرير وضعية الجسم والإنجازات في ألبوم الصور.";
+

@@ -1,6 +1,9 @@
 /* InfoPlist.strings (Simplified Chinese) */
 "CFBundleDisplayName" = "SpineUp";
 "UILaunchStoryboardName" = "LaunchScreen_zh_Hans";
-"NSMotionUsageDescription" = "SpineUp 需要访问运动传感器以通过 AirPods 实时监测您的头部姿态与颈椎健康。";
+"NSMotionUsageDescription" = "SpineUp 需要访问运动传感器，以通过 AirPods 实时监测您的头部姿态与颈椎健康。";
+"NSCameraUsageDescription" = "SpineUp 需要访问前置摄像头，以进行体态微操跟练时的姿态动作智能识别与矫正。";
 "NSHealthShareUsageDescription" = "SpineUp 希望读取您的步数等健康数据，以提供更贴合日常习惯的体态分析。";
 "NSHealthUpdateUsageDescription" = "SpineUp 希望将您的端正专注时长同步写入 Apple Health 的正念时间。";
+"NSPhotoLibraryAddUsageDescription" = "SpineUp 需要保存您的体态成就卡片与每日战报至系统相册。";
+

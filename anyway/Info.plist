@@ -2,8 +2,24 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>CFBundleDisplayName</key>
-	<string>SpineUp</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>com.iashes.anyway</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>spineup</string>
+			</array>
+		</dict>
+	</array>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<false/>
+		<key>NSAllowsLocalNetworking</key>
+		<true/>
+	</dict>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -30,30 +46,14 @@
 	<key>NSSupportsLiveActivities</key>
 	<true/>
 	<key>NSMotionUsageDescription</key>
-	<string>SpineUp 需要访问运动传感器以通过 AirPods 监测您的头部姿态</string>
+	<string>SpineUp requires motion sensor access to monitor your head posture and cervical spine health in real time via AirPods.</string>
 	<key>NSCameraUsageDescription</key>
-	<string>SpineUp 需要使用前置摄像头以进行微操跟练时的姿态动作智能识别与矫正</string>
+	<string>SpineUp requires front camera access to recognize and guide your posture relief exercises in real time.</string>
 	<key>NSHealthShareUsageDescription</key>
-	<string>SpineUp 希望读取您的健康数据以提供更精准的体态分析</string>
+	<string>SpineUp accesses health data such as step count to provide personalized posture and ergonomics analysis.</string>
 	<key>NSHealthUpdateUsageDescription</key>
-	<string>SpineUp 希望将您的挺拔专注时长记录为正念时间</string>
-	<key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSAllowsArbitraryLoads</key>
-		<false/>
-		<key>NSAllowsLocalNetworking</key>
-		<true/>
-	</dict>
-	<key>CFBundleURLTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleURLName</key>
-			<string>com.iashes.anyway</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>spineup</string>
-			</array>
-		</dict>
-	</array>
+	<string>SpineUp synchronizes your upright focus sessions as Mindful Sessions in Apple Health.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>SpineUp needs permission to save posture report cards and achievements to your Photos.</string>
 </dict>
 </plist>

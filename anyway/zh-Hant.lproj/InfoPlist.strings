@@ -2,5 +2,8 @@
 "CFBundleDisplayName" = "SpineUp";
 "UILaunchStoryboardName" = "LaunchScreen_zh_Hant";
 "NSMotionUsageDescription" = "SpineUp 需要存取動作感測器，以透過 AirPods 即時監測您的頭部姿態與頸椎健康。";
+"NSCameraUsageDescription" = "SpineUp 需要使用前置相機，以在體態微操跟練時進行即時動作辨識與矯正。";
 "NSHealthShareUsageDescription" = "SpineUp 希望讀取您的步數等健康資料，以提供更貼合日常習慣的體態分析。";
 "NSHealthUpdateUsageDescription" = "SpineUp 希望將您的端正專注時長同步寫入 Apple Health 的正念時間。";
+"NSPhotoLibraryAddUsageDescription" = "SpineUp 需要儲存您的體態成就卡片與每日戰報至系統相簿。";
+
