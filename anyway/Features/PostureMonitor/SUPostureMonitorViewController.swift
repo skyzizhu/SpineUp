@@ -314,7 +314,7 @@ final class SUPostureMonitorViewController: SUBaseViewController {
         }
 
         pomodoroCardView.snp.makeConstraints { make in
-            make.height.equalTo(180)
+            make.height.equalTo(180).priority(999)
         }
 
         calibrateButton.snp.makeConstraints { make in

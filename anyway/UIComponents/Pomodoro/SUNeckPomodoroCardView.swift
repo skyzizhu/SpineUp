@@ -131,6 +131,9 @@ final class SUNeckPomodoroCardView: UIView {
     }
 
     private func setupUI() {
+        translatesAutoresizingMaskIntoConstraints = false
+        clipsToBounds = true
+
         addSubview(containerView)
         containerView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -152,8 +155,8 @@ final class SUNeckPomodoroCardView: UIView {
 
         iconImageView.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(16)
-            make.top.equalToSuperview().offset(14)
-            make.size.equalTo(20)
+            make.top.equalToSuperview().offset(14).priority(999)
+            make.size.equalTo(20).priority(999)
         }
 
         titleLabel.snp.makeConstraints { make in
@@ -162,32 +165,32 @@ final class SUNeckPomodoroCardView: UIView {
         }
 
         stateBadgeLabel.snp.makeConstraints { make in
-            make.trailing.equalToSuperview().offset(-16)
+            make.trailing.equalToSuperview().offset(-16).priority(999)
             make.centerY.equalTo(iconImageView)
-            make.height.equalTo(20)
-            make.width.greaterThanOrEqualTo(52)
+            make.height.equalTo(20).priority(999)
+            make.width.greaterThanOrEqualTo(52).priority(999)
         }
 
         timerLabel.snp.makeConstraints { make in
-            make.top.equalTo(iconImageView.snp.bottom).offset(8)
+            make.top.equalTo(iconImageView.snp.bottom).offset(8).priority(999)
             make.centerX.equalToSuperview()
         }
 
         descriptionLabel.snp.makeConstraints { make in
-            make.top.equalTo(timerLabel.snp.bottom).offset(4)
-            make.leading.trailing.equalToSuperview().inset(16)
+            make.top.equalTo(timerLabel.snp.bottom).offset(4).priority(999)
+            make.leading.trailing.equalToSuperview().inset(16).priority(999)
         }
 
         cycleLabel.snp.makeConstraints { make in
-            make.top.equalTo(descriptionLabel.snp.bottom).offset(4)
+            make.top.equalTo(descriptionLabel.snp.bottom).offset(4).priority(999)
             make.centerX.equalToSuperview()
         }
 
         buttonStack.snp.makeConstraints { make in
-            make.top.equalTo(cycleLabel.snp.bottom).offset(10)
+            make.top.equalTo(cycleLabel.snp.bottom).offset(10).priority(999)
             make.centerX.equalToSuperview()
-            make.bottom.lessThanOrEqualToSuperview().offset(-12)
-            make.height.equalTo(34)
+            make.bottom.lessThanOrEqualToSuperview().offset(-12).priority(999)
+            make.height.equalTo(34).priority(999)
         }
 
         controlButton.addTarget(self, action: #selector(didTapControl), for: .touchUpInside)

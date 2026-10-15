@@ -170,9 +170,9 @@ final class SULeaderboardViewController: SUBaseViewController {
             withHorizontalFittingPriority: .required,
             verticalFittingPriority: .fittingSizeLevel
         ).height
-        let finalHeaderHeight = max(calculatedHeaderHeight, 158.0)
+        let finalHeaderHeight = ceil(calculatedHeaderHeight)
 
-        if tableHeaderContainerView.frame.size != CGSize(width: currentWidth, height: finalHeaderHeight) {
+        if abs(tableHeaderContainerView.frame.height - finalHeaderHeight) > 0.5 || tableHeaderContainerView.frame.width != currentWidth {
             tableHeaderContainerView.frame = CGRect(x: 0, y: 0, width: currentWidth, height: finalHeaderHeight)
             tableView.tableHeaderView = tableHeaderContainerView
         }
@@ -184,9 +184,9 @@ final class SULeaderboardViewController: SUBaseViewController {
             withHorizontalFittingPriority: .required,
             verticalFittingPriority: .fittingSizeLevel
         ).height
-        let finalFooterHeight = max(calculatedFooterHeight, 60.0)
+        let finalFooterHeight = ceil(calculatedFooterHeight)
 
-        if tableFooterContainerView.frame.size != CGSize(width: currentWidth, height: finalFooterHeight) {
+        if abs(tableFooterContainerView.frame.height - finalFooterHeight) > 0.5 || tableFooterContainerView.frame.width != currentWidth {
             tableFooterContainerView.frame = CGRect(x: 0, y: 0, width: currentWidth, height: finalFooterHeight)
             tableView.tableFooterView = tableFooterContainerView
         }
@@ -211,6 +211,10 @@ final class SULeaderboardViewController: SUBaseViewController {
         // 组装可滚动的 TableFooterView
         tableFooterContainerView.addSubview(positiveHintLabel)
 
+        let initialWidth = max(view.bounds.width, 375.0)
+        tableHeaderContainerView.frame = CGRect(x: 0, y: 0, width: initialWidth, height: 156)
+        tableFooterContainerView.frame = CGRect(x: 0, y: 0, width: initialWidth, height: 50)
+
         tableView.tableHeaderView = tableHeaderContainerView
         tableView.tableFooterView = tableFooterContainerView
     }
@@ -226,14 +230,14 @@ final class SULeaderboardViewController: SUBaseViewController {
         // Header 内部自动约束
         myRankCard.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(12)
-            make.leading.trailing.equalToSuperview().inset(SULayoutConstants.horizontalPadding)
+            make.leading.trailing.equalToSuperview().inset(SULayoutConstants.horizontalPadding).priority(999)
             make.height.equalTo(88)
         }
 
         avatarImageView.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(16)
             make.centerY.equalToSuperview()
-            make.width.height.equalTo(44)
+            make.width.height.equalTo(44).priority(999)
         }
 
         userNameLabel.snp.makeConstraints { make in
@@ -244,40 +248,40 @@ final class SULeaderboardViewController: SUBaseViewController {
         editNameButton.snp.makeConstraints { make in
             make.leading.equalTo(userNameLabel.snp.trailing).offset(6)
             make.centerY.equalTo(userNameLabel)
-            make.width.height.equalTo(24)
-            make.trailing.lessThanOrEqualTo(rankBadgeView.snp.leading).offset(-8)
+            make.width.height.equalTo(24).priority(999)
+            make.trailing.lessThanOrEqualTo(rankBadgeView.snp.leading).offset(-8).priority(999)
         }
 
         rankBadgeView.snp.makeConstraints { make in
-            make.trailing.equalToSuperview().offset(-16)
+            make.trailing.equalToSuperview().offset(-16).priority(999)
             make.centerY.equalTo(userNameLabel)
-            make.height.equalTo(24)
+            make.height.equalTo(24).priority(999)
         }
         rankBadgeView.setContentCompressionResistancePriority(.required, for: .horizontal)
         userNameLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
 
         rankBadgeLabel.snp.makeConstraints { make in
-            make.edges.equalToSuperview().inset(UIEdgeInsets(top: 2, left: 8, bottom: 2, right: 8))
+            make.edges.equalToSuperview().inset(UIEdgeInsets(top: 2, left: 8, bottom: 2, right: 8)).priority(999)
         }
 
         myScoreSubtitleLabel.snp.makeConstraints { make in
             make.top.equalTo(userNameLabel.snp.bottom).offset(6)
             make.leading.equalTo(userNameLabel)
-            make.trailing.equalToSuperview().offset(-16)
+            make.trailing.equalToSuperview().offset(-16).priority(999)
         }
 
         segmentedControl.snp.makeConstraints { make in
             make.top.equalTo(myRankCard.snp.bottom).offset(14)
-            make.leading.trailing.equalToSuperview().inset(SULayoutConstants.horizontalPadding)
+            make.leading.trailing.equalToSuperview().inset(SULayoutConstants.horizontalPadding).priority(999)
             make.height.equalTo(34)
-            make.bottom.equalToSuperview().offset(-8)
+            make.bottom.equalToSuperview().offset(-8).priority(750)
         }
 
         // Footer 内部自动约束
         positiveHintLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(12)
-            make.leading.trailing.equalToSuperview().inset(SULayoutConstants.horizontalPadding * 1.5)
-            make.bottom.equalToSuperview().offset(-16)
+            make.leading.trailing.equalToSuperview().inset(SULayoutConstants.horizontalPadding * 1.5).priority(999)
+            make.bottom.equalToSuperview().offset(-16).priority(750)
         }
     }
 

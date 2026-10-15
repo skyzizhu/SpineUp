@@ -189,6 +189,7 @@ final class SUPostureGaugeView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        translatesAutoresizingMaskIntoConstraints = false
         setupSubviews()
         setupConstraints()
     }
@@ -245,7 +246,7 @@ final class SUPostureGaugeView: UIView {
         cardHeaderContainerView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(12)
             make.leading.equalToSuperview().offset(16)
-            make.trailing.lessThanOrEqualTo(reliefGuideButton.snp.leading).offset(-8)
+            make.trailing.lessThanOrEqualTo(reliefGuideButton.snp.leading).offset(-8).priority(999)
             make.height.equalTo(24)
         }
 
@@ -263,7 +264,7 @@ final class SUPostureGaugeView: UIView {
 
         reliefGuideButton.snp.makeConstraints { make in
             make.centerY.equalTo(cardHeaderContainerView)
-            make.trailing.equalToSuperview().offset(-16)
+            make.trailing.equalToSuperview().offset(-16).priority(999)
             make.height.equalTo(24)
         }
 
@@ -291,8 +292,8 @@ final class SUPostureGaugeView: UIView {
 
         aiHazardBadgeLabel.snp.makeConstraints { make in
             make.centerY.equalTo(loadValueLabel)
-            make.trailing.equalToSuperview().offset(-8)
-            make.leading.greaterThanOrEqualTo(loadValueLabel.snp.trailing).offset(6)
+            make.trailing.equalToSuperview().offset(-8).priority(999)
+            make.leading.greaterThanOrEqualTo(loadValueLabel.snp.trailing).offset(6).priority(999)
         }
 
         loadTitleLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
@@ -303,22 +304,22 @@ final class SUPostureGaugeView: UIView {
 
         statusBadgeContainer.snp.makeConstraints { make in
             make.top.bottom.equalTo(loadCardContainer)
-            make.trailing.equalToSuperview().offset(-16)
+            make.trailing.equalToSuperview().offset(-16).priority(999)
             make.leading.equalTo(loadCardContainer.snp.trailing).offset(8)
-            make.width.equalTo(loadCardContainer.snp.width).multipliedBy(0.70)
+            make.width.equalTo(loadCardContainer.snp.width).multipliedBy(0.70).priority(999)
         }
 
         statusBadgeContainer.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
         statusBadgeContainer.setContentHuggingPriority(.defaultLow, for: .horizontal)
 
         statusHintLabel.snp.makeConstraints { make in
-            make.edges.equalToSuperview().inset(UIEdgeInsets(top: 4, left: 6, bottom: 4, right: 6))
+            make.edges.equalToSuperview().inset(UIEdgeInsets(top: 4, left: 6, bottom: 4, right: 6)).priority(999)
         }
 
         // 底部进度条与标尺
         angleProgressTrack.snp.makeConstraints { make in
             make.top.equalTo(loadCardContainer.snp.bottom).offset(12)
-            make.leading.trailing.equalToSuperview().inset(16)
+            make.leading.trailing.equalToSuperview().inset(16).priority(999)
             make.height.equalTo(10)
         }
 

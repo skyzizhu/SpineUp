@@ -105,6 +105,8 @@ final class SUReliefQuickPillView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        translatesAutoresizingMaskIntoConstraints = false
+        clipsToBounds = true
         setupViews()
         setupConstraints()
         setupInteractions()
@@ -147,30 +149,28 @@ final class SUReliefQuickPillView: UIView {
         iconContainer.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(10)
             make.centerY.equalToSuperview()
-            make.size.equalTo(28)
+            make.size.equalTo(28).priority(999)
         }
 
         iconImageView.snp.makeConstraints { make in
             make.center.equalToSuperview()
-            make.size.equalTo(15)
+            make.size.equalTo(15).priority(999)
         }
 
         titleLabel.snp.makeConstraints { make in
             make.leading.equalTo(iconContainer.snp.trailing).offset(10)
             make.centerY.equalToSuperview()
-            make.top.greaterThanOrEqualToSuperview().offset(4)
-            make.bottom.lessThanOrEqualToSuperview().offset(-4)
-            make.trailing.lessThanOrEqualTo(badgeContainer.snp.leading).offset(-8)
+            make.trailing.lessThanOrEqualTo(badgeContainer.snp.leading).offset(-8).priority(999)
         }
 
         badgeContainer.snp.makeConstraints { make in
-            make.trailing.equalToSuperview().offset(-12)
+            make.trailing.equalToSuperview().offset(-12).priority(999)
             make.centerY.equalToSuperview()
-            make.height.equalTo(24)
+            make.height.equalTo(24).priority(999)
         }
 
         badgeStackView.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(8)
+            make.leading.trailing.equalToSuperview().inset(8).priority(999)
             make.centerY.equalToSuperview()
         }
     }
