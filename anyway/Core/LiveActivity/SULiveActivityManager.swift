@@ -68,6 +68,7 @@ final class SULiveActivityManager: @unchecked Sendable {
     private var lastPitchDeg: Double = 0.0
     private var lastUprightMinutes: Int = -1
     private var lastUpdateTime: TimeInterval = 0
+    private var lastSevereAlertTime: TimeInterval = 0
 
     /// 更新当前实时活动状态
     func updateLiveActivity(
@@ -120,9 +121,13 @@ final class SULiveActivityManager: @unchecked Sendable {
             quote: quote
         )
 
-        let isSevere = (state == "severeSlump")
+        let isSevere = (state == "severeSlump" || state == "severeSlouch")
+        let shouldTriggerAlert = isSevere && (isStateTransition || (now - lastSevereAlertTime >= 45.0))
         let alertConfig: AlertConfiguration?
-        if isSevere {
+        if shouldTriggerAlert {
+            lock.lock()
+            lastSevereAlertTime = now
+            lock.unlock()
             let title = SULocalized("state_severe_slump", default: "严重驼背预警")
             let body = SULocalized("gauge_status_severe", default: "高危超负荷 · 请立刻抬头")
             alertConfig = AlertConfiguration(title: LocalizedStringResource(stringLiteral: title), body: LocalizedStringResource(stringLiteral: body), sound: .default)

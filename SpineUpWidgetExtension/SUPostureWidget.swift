@@ -154,6 +154,12 @@ struct SUPostureWidgetEntryView: View {
                 SmallWidgetView(entry: entry)
             case .systemMedium:
                 MediumWidgetView(entry: entry)
+            case .accessoryCircular:
+                AccessoryCircularView(entry: entry)
+            case .accessoryRectangular:
+                AccessoryRectangularView(entry: entry)
+            case .accessoryInline:
+                AccessoryInlineView(entry: entry)
             default:
                 SmallWidgetView(entry: entry)
             }
@@ -187,9 +193,11 @@ private struct SmallWidgetView: View {
 
                 Spacer()
 
-                Text("\(String(format: "%.0f", entry.pitchDeg))°")
+                Text(entry.postureState == "unknown" ? "--°" : "\(String(format: "%.0f", entry.pitchDeg))°")
                     .font(.system(size: 17, weight: .heavy, design: .rounded))
                     .foregroundColor(themeColor)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.85)
             }
 
             VStack(alignment: .leading, spacing: 2) {
@@ -197,10 +205,12 @@ private struct SmallWidgetView: View {
                     .font(.system(size: 12, weight: .semibold))
                     .foregroundColor(.primary)
                     .lineLimit(1)
+                    .minimumScaleFactor(0.85)
                 Text(SUWidgetLocalization.localizedFormat("label_focus_minutes", default: "专注 %d 分钟", entry.uprightMinutes))
                     .font(.system(size: 10, weight: .medium))
                     .foregroundColor(.secondary)
                     .lineLimit(1)
+                    .minimumScaleFactor(0.85)
             }
 
             Spacer()
@@ -211,6 +221,8 @@ private struct SmallWidgetView: View {
                         .font(.system(size: 10, weight: .bold))
                     Text(SUWidgetLocalization.localizedString("btn_calibrate", default: "校准"))
                         .font(.system(size: 10, weight: .semibold))
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.75)
                 }
                 .foregroundColor(.white)
                 .frame(maxWidth: .infinity)
@@ -251,10 +263,13 @@ private struct MediumWidgetView: View {
                         Text(SUWidgetLocalization.localizedString("label_pet_companion", default: "SpineUp 桌面宠物"))
                             .font(.system(size: 11, weight: .medium))
                             .foregroundColor(.secondary)
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.85)
                         Text(entry.petName)
                             .font(.system(size: 14, weight: .bold))
                             .foregroundColor(.primary)
                             .lineLimit(1)
+                            .minimumScaleFactor(0.85)
                     }
                 }
 
@@ -262,6 +277,7 @@ private struct MediumWidgetView: View {
                     .font(.system(size: 12, weight: .medium))
                     .foregroundColor(.secondary)
                     .lineLimit(2)
+                    .minimumScaleFactor(0.85)
 
                 Spacer()
 
@@ -272,6 +288,8 @@ private struct MediumWidgetView: View {
                     )
                     .font(.system(size: 10, weight: .medium))
                     .foregroundColor(.secondary)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.85)
 
                     if entry.extraLoadKg > 0.5 {
                         Label(
@@ -280,6 +298,8 @@ private struct MediumWidgetView: View {
                         )
                         .font(.system(size: 10, weight: .semibold))
                         .foregroundColor(.orange)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.85)
                     }
                 }
             }
@@ -289,12 +309,16 @@ private struct MediumWidgetView: View {
             // 右侧指标与一键校准
             VStack(spacing: 10) {
                 VStack(spacing: 2) {
-                    Text("\(String(format: "%.1f", entry.pitchDeg))°")
+                    Text(entry.postureState == "unknown" ? "--°" : "\(String(format: "%.1f", entry.pitchDeg))°")
                         .font(.system(size: 26, weight: .heavy, design: .rounded))
                         .foregroundColor(themeColor)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.85)
                     Text(SUWidgetLocalization.localizedString("label_current_angle", default: "当前倾角"))
                         .font(.system(size: 10, weight: .medium))
                         .foregroundColor(.secondary)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.85)
                 }
 
                 Spacer()
@@ -302,21 +326,93 @@ private struct MediumWidgetView: View {
                 Button(intent: SUCalibrationIntent()) {
                     HStack(spacing: 4) {
                         Image(systemName: "scope")
-                            .font(.system(size: 12, weight: .bold))
+                            .font(.system(size: 11, weight: .bold))
                         Text(SUWidgetLocalization.localizedString("btn_one_tap_calibrate", default: "一键校准"))
                             .font(.system(size: 11, weight: .semibold))
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.70)
                     }
                     .foregroundColor(.white)
-                    .padding(.horizontal, 10)
+                    .frame(maxWidth: .infinity)
+                    .padding(.horizontal, 4)
                     .padding(.vertical, 7)
                     .background(themeColor)
                     .clipShape(Capsule())
                 }
                 .buttonStyle(.plain)
             }
-            .frame(width: 92)
+            .frame(width: 96)
         }
         .padding(4)
+    }
+}
+
+// MARK: - Lock Screen Accessory Views
+
+private struct AccessoryCircularView: View {
+    let entry: SUPostureEntry
+
+    var body: some View {
+        ZStack {
+            AccessoryWidgetBackground()
+            VStack(spacing: 1) {
+                Image(systemName: entry.petIcon)
+                    .font(.system(size: 13, weight: .bold))
+                Text(entry.postureState == "unknown" ? "--°" : "\(String(format: "%.0f", entry.pitchDeg))°")
+                    .font(.system(size: 11, weight: .heavy, design: .rounded))
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.8)
+            }
+        }
+    }
+}
+
+private struct AccessoryRectangularView: View {
+    let entry: SUPostureEntry
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 2) {
+            HStack(spacing: 4) {
+                Image(systemName: entry.petIcon)
+                    .font(.system(size: 11, weight: .bold))
+                Text(entry.petName)
+                    .font(.system(size: 12, weight: .bold))
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.85)
+                Spacer()
+                Text(SUWidgetLocalization.stateTitle(for: entry.postureState))
+                    .font(.system(size: 10, weight: .semibold))
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.8)
+            }
+            HStack(spacing: 6) {
+                Text(entry.postureState == "unknown" ? "--°" : "\(String(format: "%.0f", entry.pitchDeg))°")
+                    .font(.system(size: 14, weight: .heavy, design: .rounded))
+                    .lineLimit(1)
+                if entry.extraLoadKg > 0.5 {
+                    Text(SUWidgetLocalization.localizedFormat("label_extra_load", default: "+%.1fkg", entry.extraLoadKg))
+                        .font(.system(size: 11, weight: .medium))
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.85)
+                }
+            }
+            Text(SUWidgetLocalization.localizedFormat("label_focus_minutes", default: "专注 %d 分钟", entry.uprightMinutes))
+                .font(.system(size: 10, weight: .regular))
+                .foregroundColor(.secondary)
+                .lineLimit(1)
+                .minimumScaleFactor(0.85)
+        }
+    }
+}
+
+private struct AccessoryInlineView: View {
+    let entry: SUPostureEntry
+
+    var body: some View {
+        ViewThatFits {
+            Text("\(entry.petName): \(entry.postureState == "unknown" ? "--" : String(format: "%.0f°", entry.pitchDeg)) · \(SUWidgetLocalization.stateTitle(for: entry.postureState))")
+            Text("\(entry.postureState == "unknown" ? "--" : String(format: "%.0f°", entry.pitchDeg)) · \(SUWidgetLocalization.stateTitle(for: entry.postureState))")
+        }
     }
 }
 
@@ -331,6 +427,6 @@ struct SUPostureWidget: Widget {
         }
         .configurationDisplayName(LocalizedStringResource("widget_display_name", defaultValue: "SpineUp 桌面体态宠物"))
         .description(LocalizedStringResource("widget_description", defaultValue: "实时显示坐姿倾角、颈椎负荷与宠物陪伴，支持一键端正校准。"))
-        .supportedFamilies([.systemSmall, .systemMedium])
+        .supportedFamilies([.systemSmall, .systemMedium, .accessoryCircular, .accessoryRectangular, .accessoryInline])
     }
 }

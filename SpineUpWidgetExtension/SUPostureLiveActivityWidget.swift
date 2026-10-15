@@ -8,6 +8,7 @@
 import SwiftUI
 import WidgetKit
 import ActivityKit
+import AppIntents
 
 /// 灵动岛 (Dynamic Island) 与锁屏实时活动 Widget (支持 7 语言与深色模式自适应)
 struct SUPostureLiveActivityWidget: Widget {
@@ -36,34 +37,61 @@ struct SUPostureLiveActivityWidget: Widget {
                         Text(SUWidgetLocalization.stateTitle(for: context.state.postureState))
                             .font(.system(size: 13, weight: .bold))
                             .foregroundColor(tintColor(for: context.state.postureState))
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.8)
                     }
                     .padding(.leading, 4)
                 }
                 DynamicIslandExpandedRegion(.trailing) {
                     HStack(spacing: 2) {
-                        Text("\(String(format: "%.0f", context.state.pitchDeg))°")
+                        Text(context.state.postureState == "unknown" ? "--°" : "\(String(format: "%.0f", context.state.pitchDeg))°")
                             .font(.system(size: 16, weight: .heavy, design: .rounded))
                             .foregroundColor(tintColor(for: context.state.postureState))
+                            .lineLimit(1)
                     }
                     .padding(.trailing, 4)
                 }
                 DynamicIslandExpandedRegion(.bottom) {
-                    VStack(alignment: .leading, spacing: 4) {
+                    VStack(alignment: .leading, spacing: 5) {
                         HStack {
                             Text(SUWidgetLocalization.localizedFormat("label_upright_minutes", default: "挺拔专注 %d 分钟", context.state.uprightMinutes))
                                 .font(.system(size: 11, weight: .medium))
                                 .foregroundColor(.secondary)
+                                .lineLimit(1)
+                                .minimumScaleFactor(0.85)
                             Spacer()
                             if context.state.extraLoadKg > 0.5 {
                                 Text(SUWidgetLocalization.localizedFormat("label_extra_load", default: "+ %.1f kg 负荷", context.state.extraLoadKg))
                                     .font(.system(size: 11, weight: .semibold))
                                     .foregroundColor(.orange)
+                                    .lineLimit(1)
+                                    .minimumScaleFactor(0.85)
                             }
                         }
-                        Text("「\(context.state.quote)」")
-                            .font(.system(size: 12, weight: .medium))
-                            .foregroundColor(.primary)
-                            .lineLimit(2)
+                        HStack(alignment: .center, spacing: 8) {
+                            Text("「\(context.state.quote)」")
+                                .font(.system(size: 12, weight: .medium))
+                                .foregroundColor(.primary)
+                                .lineLimit(2)
+                                .minimumScaleFactor(0.85)
+                            Spacer(minLength: 4)
+                            Button(intent: SUCalibrationIntent()) {
+                                HStack(spacing: 3) {
+                                    Image(systemName: "scope")
+                                        .font(.system(size: 9, weight: .bold))
+                                    Text(SUWidgetLocalization.localizedString("btn_calibrate", default: "校准"))
+                                        .font(.system(size: 10, weight: .semibold))
+                                        .lineLimit(1)
+                                        .minimumScaleFactor(0.8)
+                                }
+                                .foregroundColor(.white)
+                                .padding(.horizontal, 8)
+                                .padding(.vertical, 4)
+                                .background(tintColor(for: context.state.postureState))
+                                .clipShape(Capsule())
+                            }
+                            .buttonStyle(.plain)
+                        }
                     }
                     .padding(.horizontal, 4)
                 }
@@ -79,9 +107,10 @@ struct SUPostureLiveActivityWidget: Widget {
                 }
             } compactTrailing: {
                 // 紧凑右侧：倾斜度与状态色
-                Text("\(String(format: "%.0f", context.state.pitchDeg))°")
+                Text(context.state.postureState == "unknown" ? "--°" : "\(String(format: "%.0f", context.state.pitchDeg))°")
                     .font(.system(size: 12, weight: .bold, design: .rounded))
                     .foregroundColor(tintColor(for: context.state.postureState))
+                    .lineLimit(1)
             } minimal: {
                 // 极简单点态：严重驼背时展示脉冲感叹号
                 if isSevereSlouch(context.state.postureState) {
@@ -133,6 +162,8 @@ struct SUPostureLiveActivityLockScreenView: View {
                 Text(SUWidgetLocalization.localizedString("live_activity_title", default: "SpineUp 实时守护"))
                     .font(.system(size: 14, weight: .bold))
                     .foregroundColor(.primary)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.85)
 
                 Spacer()
 
@@ -143,6 +174,8 @@ struct SUPostureLiveActivityLockScreenView: View {
                     Text(SUWidgetLocalization.localizedFormat("label_focus_minutes", default: "%d 分钟", state.uprightMinutes))
                         .font(.system(size: 12, weight: .semibold))
                         .foregroundColor(.secondary)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.85)
                 }
             }
 
@@ -155,10 +188,13 @@ struct SUPostureLiveActivityLockScreenView: View {
                         .background(tint.opacity(0.18))
                         .foregroundColor(tint)
                         .clipShape(Capsule())
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.85)
 
-                    Text("\(String(format: "%.0f", state.pitchDeg))°")
+                    Text(state.postureState == "unknown" ? "--°" : "\(String(format: "%.0f", state.pitchDeg))°")
                         .font(.system(size: 13, weight: .semibold))
                         .foregroundColor(.primary)
+                        .lineLimit(1)
                 }
 
                 Spacer()
@@ -167,13 +203,33 @@ struct SUPostureLiveActivityLockScreenView: View {
                     Text(SUWidgetLocalization.localizedFormat("label_extra_load", default: "+ %.1f kg 负荷", state.extraLoadKg))
                         .font(.system(size: 11, weight: .medium))
                         .foregroundColor(.orange)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.85)
                 }
+
+                Button(intent: SUCalibrationIntent()) {
+                    HStack(spacing: 3) {
+                        Image(systemName: "scope")
+                            .font(.system(size: 10, weight: .bold))
+                        Text(SUWidgetLocalization.localizedString("btn_calibrate", default: "校准"))
+                            .font(.system(size: 11, weight: .semibold))
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.75)
+                    }
+                    .foregroundColor(.white)
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 4)
+                    .background(tint)
+                    .clipShape(Capsule())
+                }
+                .buttonStyle(.plain)
             }
 
             Text("「\(state.quote)」")
                 .font(.system(size: 12, weight: .medium))
                 .foregroundColor(.secondary)
                 .lineLimit(2)
+                .minimumScaleFactor(0.85)
         }
         .padding(14)
         .background {

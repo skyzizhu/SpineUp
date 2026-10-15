@@ -30,6 +30,10 @@ final class SUConnectionBannerView: UIView {
         label.text = SULocalized("conn_state_disconnected_title", default: "AirPods 未连接")
         label.font = .systemFont(ofSize: 13, weight: .bold)
         label.textColor = .label
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.85
         return label
     }()
 
@@ -39,6 +43,9 @@ final class SUConnectionBannerView: UIView {
         label.font = .systemFont(ofSize: 11, weight: .regular)
         label.textColor = .secondaryLabel
         label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.85
         return label
     }()
 
@@ -47,6 +54,8 @@ final class SUConnectionBannerView: UIView {
         config.cornerStyle = .capsule
         config.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 12, bottom: 5, trailing: 12)
         let btn = UIButton(configuration: config)
+        btn.titleLabel?.adjustsFontSizeToFitWidth = true
+        btn.titleLabel?.minimumScaleFactor = 0.85
         return btn
     }()
 
