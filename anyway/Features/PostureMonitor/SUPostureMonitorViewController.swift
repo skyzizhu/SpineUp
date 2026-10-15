@@ -34,6 +34,10 @@ final class SUPostureMonitorViewController: SUBaseViewController {
     private let reliefQuickPillView = SUReliefQuickPillView()
     private let pomodoroCardView = SUNeckPomodoroCardView()
 
+    #if targetEnvironment(simulator)
+    private let debugSimulatorCard = SUDebugSimulatorCardView()
+    #endif
+
     private let bottomActionStackView: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
@@ -235,6 +239,9 @@ final class SUPostureMonitorViewController: SUBaseViewController {
         contentView.addSubview(bottomActionStackView)
         bottomActionStackView.addArrangedSubview(pomodoroCardView)
         bottomActionStackView.addArrangedSubview(calibrateButton)
+        #if targetEnvironment(simulator)
+        bottomActionStackView.addArrangedSubview(debugSimulatorCard)
+        #endif
 
         setupAccessibility()
 
@@ -305,10 +312,15 @@ final class SUPostureMonitorViewController: SUBaseViewController {
             make.height.equalTo(0)
         }
 
+        #if targetEnvironment(simulator)
+        let bottomOffset: CGFloat = -110
+        #else
+        let bottomOffset: CGFloat = -SULayoutConstants.sectionSpacing
+        #endif
         bottomActionStackView.snp.makeConstraints { make in
             make.top.equalTo(reliefQuickPillView.snp.bottom).offset(14)
             make.leading.trailing.equalToSuperview().inset(SULayoutConstants.horizontalPadding)
-            make.bottom.equalTo(contentView.snp.bottom).offset(-SULayoutConstants.sectionSpacing)
+            make.bottom.equalTo(contentView.snp.bottom).offset(bottomOffset)
         }
 
         pomodoroCardView.snp.makeConstraints { make in
@@ -390,6 +402,16 @@ final class SUPostureMonitorViewController: SUBaseViewController {
             guard let self = self else { return }
             self.setReliefPillExpanded(false, animated: true)
         }
+
+        #if targetEnvironment(simulator)
+        debugSimulatorCard.onAngleChanged = { [weak self] angle in
+            self?.viewModel.injectSimulatedAngles(pitchDeg: angle, rollDeg: 0.0)
+        }
+        debugSimulatorCard.onToggleConnection = { [weak self] isConnected in
+            let state: SUHeadphoneConnectionState = isConnected ? .connected : .disconnected
+            self?.viewModel.injectSimulatedConnectionState(state)
+        }
+        #endif
 
 
         viewModel.onReadingUpdated = { [weak self] reading in
