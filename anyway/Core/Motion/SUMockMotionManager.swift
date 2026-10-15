@@ -70,6 +70,15 @@ final class SUMockMotionManager: SUMotionServiceProtocol, @unchecked Sendable {
         defer { lock.unlock() }
 
         timer?.invalidate()
+
+        if CommandLine.arguments.contains("-simulateDisconnected") {
+            connectionState = .disconnected
+            DispatchQueue.main.async { [weak self] in
+                self?.onConnectionStateChanged?(.disconnected)
+            }
+            return
+        }
+
         connectionState = .connected
         onConnectionStateChanged?(.connected)
 

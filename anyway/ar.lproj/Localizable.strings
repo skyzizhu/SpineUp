@@ -522,3 +522,70 @@
 "unsupported_device_title" = "الجهاز غير مدعوم لتتبع الحركة";
 "unsupported_device_desc" = "يتطلب SpineUp سماعات مزودة بمستشعرات حركة الرأس المكانية:\n• AirPods Pro (الجيل 1 / 2)\n• AirPods (الجيل 3 / 4)\n• AirPods Max\n• Beats Fit Pro\n\nبلوتوث السيارة والسماعات العادية أو AirPods 1/2 لا تحتوي على جيروسكوب لتتبع القوام.";
 "go_to_settings" = "فتح الإعدادات";
+
+/* 2026-10 Feature Optimizations */
+"sensitivity_strict" = "النمط الصارم (12° / 5ث)";
+"sensitivity_standard" = "النمط القياسي (15° / 10ث)";
+"sensitivity_relaxed" = "النمط المرن (20° / 15ث)";
+"sensitivity_strict_desc" = "مناسب للتصحيح الصارم والعمل أمام الشاشات الكبيرة";
+"sensitivity_standard_desc" = "الخيار الافتراضي الموصى به، يوازن بين الدقة والراحة";
+"sensitivity_relaxed_desc" = "مناسب لأجهزة اللابتوب والرسم والكتابة اليدوية";
+"sensitivity_picker_title" = "حساسية التنبيه";
+"sensitivity_picker_msg" = "اضبط زاوية تنبيه الانحناء وفقاً لارتفاع مكتبك وشاشتك";
+"settings_sensitivity_title" = "حساسية التنبيه";
+
+"sound_style_droplet" = "قطرة ماء نقية";
+"sound_style_wooden_fish" = "نقرة خشبية زن";
+"sound_style_wind_chime" = "أجراس هواء لطيفة";
+"sound_style_mechanical" = "نقرة ميكانيكية";
+"sound_style_picker_title" = "نغمة التنبيه";
+"sound_style_picker_msg" = "نغمة هادئة تُعزف عند استمرار انحناء الرأس";
+"settings_sound_style" = "نغمة التنبيه";
+
+"settings_sedentary_title" = "تنبيه الجلوس المطول";
+"settings_sedentary_desc" = "تذكير لطيف بالوقوف والتمدد بعد 45 دقيقة من العمل المتواصل";
+"sedentary_reminder_speech" = "لقد جلست لمدة %d دقيقة متواصلة! قف وتمدد واشرب بعض الماء.";
+"notif_sedentary_title" = "استراحة نشطة: قف وتمدد قليلاً";
+"notif_sedentary_body" = "لقد جلست باستمرار لمدة %d دقيقة. قف ومارس تمرين الرقبة السريع لمدة 30 ثانية!";
+
+"settings_healthkit_title" = "المزامنة مع تطبيق صحتي";
+"settings_healthkit_desc" = "تسجيل دقائق الاستقامة تلقائياً كجلسات يقظة ذهنية";
+"healthkit_auth_fail_title" = "مطلوب إذن الوصول لبيانات الصحة";
+"healthkit_auth_fail_msg" = "يرجى السماح لـ SpineUp بكتابة جلسات اليقظة الذهنية في إعدادات iOS > صحتي.";
+
+"settings_daily_notif_title" = "تذكيرات القوام اليومية";
+"settings_daily_notif_desc" = "تذكير الصباح 09:30 · تقرير المساء 18:30";
+"notif_morning_title" = "صباح الخير! ابدأ يومك بقوام مستقيم";
+"notif_morning_body" = "ارتدِ سماعاتك ودع القوام السليم يرافق يومك الحافل بالإنتاجية.";
+"notif_evening_title" = "تقرير القوام اليومي جاهز";
+"notif_evening_body" = "تحقق من تخفيف الحمل عن فقرات عنقك اليوم. أحسنت صنعاً!";
+"notif_auth_fail_title" = "الإشعارات معطلة";
+"notif_auth_fail_msg" = "يرجى تفعيل الإشعارات من إعدادات iOS > الإشعارات > SpineUp.";
+
+"settings_data_section" = "إدارة البيانات والخصوصية";
+"settings_export_csv_title" = "تصدير سجلات القوام (CSV)";
+"settings_clear_data_title" = "إعادة تعيين كافة البيانات المحلية";
+"clear_data_confirm_title" = "مسح جميع البيانات المحلية؟";
+"clear_data_confirm_msg" = "سيؤدي هذا الإجراء إلى مسح خط الأساس والمعايرة وسجلات التقارير وعملات الطاقة بشكل دائم. لا يمكن التراجع عن هذا الإجراء.";
+"clear_data_confirm_btn" = "تأكيد المسح";
+
+"pomodoro_card_title" = "بومودورو الرقبة (بدون سماعات)";
+"pomodoro_state_idle" = "جاهز";
+"pomodoro_state_working" = "تركيز باستقامة";
+"pomodoro_state_resting" = "تمدد الرقبة";
+"pomodoro_card_desc" = "25 دقيقة تركيز مستقيم · 5 دقائق تمدد الرقبة · انضباط وصحة";
+"pomodoro_cycles_val" = "تم إكمال %d دورات اليوم";
+"pomodoro_btn_start" = "بدء التركيز";
+"pomodoro_btn_pause" = "إيقاف مؤقت";
+"pomodoro_btn_reset" = "إعادة ضبط";
+"pomodoro_start_speech" = "بدأ بومودورو الرقبة! حافظ على استقامة ظهرك، سأنبهك للتمدد بعد 25 دقيقة.";
+
+"acc_gauge_label" = "مؤشر القوام المباشر";
+"acc_gauge_value" = "الانحناء للأمام %.0f درجة، الحمل الإضافي %.1f كغم، الحالة: %@";
+"acc_gauge_hint" = "اضغط مرتين لعرض تحليل دقيق لحمل فقرات الرقبة";
+"acc_calibrate_hint" = "اجلس باستقامة واضغط مرتين لمعايرة نقطة الصفر";
+"acc_pet_label" = "رفيق القوام التفاعلي";
+"acc_pet_hint" = "اضغط مرتين للاستماع لصوت رفيقك";
+"acc_energy_label" = "عملات طاقة العمود الفقري";
+"acc_persona_label" = "شخصية الرفيق الحالية";
+"acc_sensor_label" = "حالة مستشعر AirPods";

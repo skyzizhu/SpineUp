@@ -126,9 +126,60 @@ final class SUPostureSessionManager: @unchecked Sendable {
             try data.write(to: fileURL, options: .atomic)
             SULogger.data.debug("Saved today posture session to disk")
             syncToCloudIfPossible(session: snapshot)
+            syncToHealthKitIfPossible(session: snapshot)
         } catch {
             SULogger.data.warning("Failed to save session: \(error.localizedDescription, privacy: .public)")
         }
+    }
+
+    /// 尝试同步挺拔专注时长至 Apple Health 正念时间
+    private func syncToHealthKitIfPossible(session: SUPostureSession) {
+        guard SUUserDefaultsManager.shared.isHealthKitSyncEnabled, session.uprightDurationSec >= 60.0 else { return }
+        let now = Date()
+        let start = now.addingTimeInterval(-session.uprightDurationSec)
+        Task.detached(priority: .background) {
+            _ = await SUHealthKitManager.shared.saveMindfulSession(startDate: start, endDate: now)
+        }
+    }
+
+    /// 导出历史体态数据为 CSV 文件并返回临时文件 URL
+    func exportCSVURL() -> URL? {
+        lock.lock()
+        let session = todaySession
+        lock.unlock()
+
+        let header = "Date,TotalMinutes,UprightMinutes,SlumpMinutes,UprightRatio,Score,Grade,AccumulatedExtraLoadKg,ViolationsCount\n"
+        let totalMin = String(format: "%.1f", session.totalDurationSec / 60.0)
+        let uprightMin = String(format: "%.1f", session.uprightDurationSec / 60.0)
+        let slumpMin = String(format: "%.1f", session.slumpDurationSec / 60.0)
+        let ratio = String(format: "%.1f%%", session.uprightRatio * 100.0)
+        let loadKg = String(format: "%.2f", session.accumulatedExtraLoadKg)
+        let row = "\(session.dateString),\(totalMin),\(uprightMin),\(slumpMin),\(ratio),\(session.score),\(session.grade),\(loadKg),\(session.violationsCount)\n"
+
+        let csvString = header + row
+        let tempDir = FileManager.default.temporaryDirectory
+        let exportURL = tempDir.appendingPathComponent("SpineUp_Posture_Records.csv")
+        do {
+            try csvString.write(to: exportURL, atomically: true, encoding: .utf8)
+            return exportURL
+        } catch {
+            SULogger.data.warning("Failed to write CSV file: \(error.localizedDescription)")
+            return nil
+        }
+    }
+
+    /// 清空所有本地历史会话记录
+    func clearAllHistory() {
+        lock.lock()
+        let todayStr = Self.todayDateString()
+        todaySession = SUPostureSession(dateString: todayStr)
+        currentUprightRunSec = 0.0
+        try? FileManager.default.removeItem(at: fileURL)
+        let snapshot = todaySession
+        lock.unlock()
+
+        onSessionUpdated?(snapshot)
+        SULogger.data.info("Cleared all local posture history sessions")
     }
 
     /// 尝试后台静默同步当日会话至云端服务器 (离线优先)

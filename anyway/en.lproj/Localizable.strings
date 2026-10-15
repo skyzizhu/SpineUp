@@ -530,3 +530,70 @@
 "equiv_name_dog" = "Playful Shiba Inu";
 "equiv_name_dumbbell" = "Heavy Dumbbell";
 "equiv_unit_item" = "";
+
+/* 2026-10 Feature Optimizations */
+"sensitivity_strict" = "Strict (12° / 5s)";
+"sensitivity_standard" = "Standard (15° / 10s)";
+"sensitivity_relaxed" = "Relaxed (20° / 15s)";
+"sensitivity_strict_desc" = "Ideal for strong correction & desktop setups";
+"sensitivity_standard_desc" = "Recommended default, balanced & comfortable";
+"sensitivity_relaxed_desc" = "Ideal for drawing, notebook typing & writing";
+"sensitivity_picker_title" = "Alert Sensitivity";
+"sensitivity_picker_msg" = "Adjust tilt alert angle and buffer according to your desk setup";
+"settings_sensitivity_title" = "Alert Sensitivity";
+
+"sound_style_droplet" = "Crystal Droplet";
+"sound_style_wooden_fish" = "Zen Temple Block";
+"sound_style_wind_chime" = "Gentle Wind Chime";
+"sound_style_mechanical" = "Mechanical Click";
+"sound_style_picker_title" = "Alert Sound Effect";
+"sound_style_picker_msg" = "Gentle chime played when slumping is detected";
+"settings_sound_style" = "Alert Sound Style";
+
+"settings_sedentary_title" = "Sedentary Break Alert";
+"settings_sedentary_desc" = "Gentle reminder to stand up after 45 mins of work";
+"sedentary_reminder_speech" = "You have been sitting for %d minutes! Stand up, stretch your back, and take a sip of water.";
+"notif_sedentary_title" = "Break Time: Stand & Stretch";
+"notif_sedentary_body" = "You have been sitting continuously for %d mins. Stand up and do a quick 30s neck relief exercise!";
+
+"settings_healthkit_title" = "Sync to Apple Health";
+"settings_healthkit_desc" = "Automatically records mindful minutes & reads steps";
+"healthkit_auth_fail_title" = "Health Access Needed";
+"healthkit_auth_fail_msg" = "Please enable Mindful Session and Step Count in iOS Settings > Health > SpineUp.";
+
+"settings_daily_notif_title" = "Daily Posture Reminders";
+"settings_daily_notif_desc" = "Morning reminder at 09:30 · Evening report at 18:30";
+"notif_morning_title" = "Good morning! Start today upright";
+"notif_morning_body" = "Put on your AirPods and let confident posture accompany your productive day.";
+"notif_evening_title" = "Today's Posture Report is Ready";
+"notif_evening_body" = "Check out your cervical spine load relief today. Kudos to your upright self!";
+"notif_auth_fail_title" = "Notifications Disabled";
+"notif_auth_fail_msg" = "Please enable notifications in iOS Settings > Notifications > SpineUp.";
+
+"settings_data_section" = "Data Management & Privacy";
+"settings_export_csv_title" = "Export Posture Records (CSV)";
+"settings_clear_data_title" = "Reset All Local Data";
+"clear_data_confirm_title" = "Reset All Local Data?";
+"clear_data_confirm_msg" = "This will permanently erase your calibration baseline, history sessions, and energy coins. This action cannot be undone.";
+"clear_data_confirm_btn" = "Reset Data";
+
+"pomodoro_card_title" = "Neck Pomodoro (No AirPods)";
+"pomodoro_state_idle" = "Ready";
+"pomodoro_state_working" = "Upright Focus";
+"pomodoro_state_resting" = "Neck Relief";
+"pomodoro_card_desc" = "25m upright work · 5m neck stretch · Stay disciplined & healthy";
+"pomodoro_cycles_val" = "%d cycles completed today";
+"pomodoro_btn_start" = "Start Focus";
+"pomodoro_btn_pause" = "Pause";
+"pomodoro_btn_reset" = "Reset";
+"pomodoro_start_speech" = "Neck Pomodoro started! Keep your spine straight—I will remind you to stretch in 25 minutes.";
+
+"acc_gauge_label" = "Live Posture Gauge";
+"acc_gauge_value" = "Forward tilt %.0f degrees, extra load %.1f kilograms, state: %@";
+"acc_gauge_hint" = "Double tap to view detailed cervical spine load analysis";
+"acc_calibrate_hint" = "Sit upright and double tap to calibrate baseline zero point";
+"acc_pet_label" = "Spine Pet Companion";
+"acc_pet_hint" = "Double tap to listen to pet voice dialogue";
+"acc_energy_label" = "Spine Energy Coins";
+"acc_persona_label" = "Active Pet Persona";
+"acc_sensor_label" = "AirPods Sensor Status";

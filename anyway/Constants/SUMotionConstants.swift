@@ -34,3 +34,50 @@ enum SUMotionConstants {
     static let loadAt45DegreesKg: Double = 22.0
     static let loadAt60DegreesKg: Double = 27.0
 }
+
+/// 体态预警灵敏度档位
+enum SUPostureSensitivity: Int, CaseIterable, Sendable {
+    case strict = 0    // 严格
+    case standard = 1  // 标准
+    case relaxed = 2   // 宽松
+
+    var title: String {
+        switch self {
+        case .strict: return SULocalized("sensitivity_strict", default: "严格模式 (12° / 5s)")
+        case .standard: return SULocalized("sensitivity_standard", default: "标准模式 (15° / 10s)")
+        case .relaxed: return SULocalized("sensitivity_relaxed", default: "宽松模式 (20° / 15s)")
+        }
+    }
+
+    var subtitle: String {
+        switch self {
+        case .strict: return SULocalized("sensitivity_strict_desc", default: "适合强力矫正、大屏桌面办公")
+        case .standard: return SULocalized("sensitivity_standard_desc", default: "推荐默认，平衡灵敏与日常舒适")
+        case .relaxed: return SULocalized("sensitivity_relaxed_desc", default: "适合手绘笔记、笔记本低头伏案")
+        }
+    }
+
+    var slightSlumpAngle: Double {
+        switch self {
+        case .strict: return 12.0
+        case .standard: return 15.0
+        case .relaxed: return 20.0
+        }
+    }
+
+    var severeSlumpAngle: Double {
+        switch self {
+        case .strict: return 20.0
+        case .standard: return 25.0
+        case .relaxed: return 30.0
+        }
+    }
+
+    var bufferDuration: TimeInterval {
+        switch self {
+        case .strict: return 5.0
+        case .standard: return 10.0
+        case .relaxed: return 15.0
+        }
+    }
+}

@@ -439,6 +439,15 @@ final class SUPostureReliefPracticeViewController: SUBaseViewController {
         SUAudioFeedbackManager.shared.triggerHapticSuccess()
         confettiView.burst()
 
+        // 同步 30 秒舒展正念时间至 Apple Health
+        if SUUserDefaultsManager.shared.isHealthKitSyncEnabled {
+            let now = Date()
+            let start = now.addingTimeInterval(-30)
+            Task {
+                _ = await SUHealthKitManager.shared.saveMindfulSession(startDate: start, endDate: now)
+            }
+        }
+
         // 异步向云端接口上报微操打卡并对齐骨气余额
         let reportedPitch = recordedPitchDeg
         let reportedAction = currentAction == .chinTuck ? "chin_tuck" : "w_stretch"

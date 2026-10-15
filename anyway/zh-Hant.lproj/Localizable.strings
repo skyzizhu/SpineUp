@@ -530,3 +530,70 @@
 "equiv_name_dog" = "活潑柴犬";
 "equiv_name_dumbbell" = "重型啞鈴";
 "equiv_unit_item" = "個";
+
+/* 2026-10 Feature Optimizations */
+"sensitivity_strict" = "嚴格模式 (12° / 5s)";
+"sensitivity_standard" = "標準模式 (15° / 10s)";
+"sensitivity_relaxed" = "寬鬆模式 (20° / 15s)";
+"sensitivity_strict_desc" = "適合強力矯正、大屏桌面辦公";
+"sensitivity_standard_desc" = "推薦默認，平衡靈敏與日常舒適";
+"sensitivity_relaxed_desc" = "適合手繪筆記、筆記型電腦伏案";
+"sensitivity_picker_title" = "預警靈敏度";
+"sensitivity_picker_msg" = "根據辦公桌椅與螢幕高度調整前傾預警閾值";
+"settings_sensitivity_title" = "預警靈敏度";
+
+"sound_style_droplet" = "清脆水滴";
+"sound_style_wooden_fish" = "禪意木魚";
+"sound_style_wind_chime" = "清爽風鈴";
+"sound_style_mechanical" = "機械輕按";
+"sound_style_picker_title" = "選擇提示聲音效";
+"sound_style_picker_msg" = "低頭超時時播放的輕柔提示音";
+"settings_sound_style" = "提示聲音效";
+
+"settings_sedentary_title" = "久坐超時站立提醒";
+"settings_sedentary_desc" = "連續工作45分鐘後輕柔提醒起身伸展";
+"sedentary_reminder_speech" = "主人，您已連續工作了 %d 分鐘啦！站起來伸展一下腰椎，活動一下吧。";
+"notif_sedentary_title" = "久坐提醒：起來活動一下吧";
+"notif_sedentary_body" = "您已連續久坐 %d 分鐘，站起來喝杯水，做做護頸舒展操吧！";
+
+"settings_healthkit_title" = "同步至 Apple 健康";
+"settings_healthkit_desc" = "挺拔專注自動記錄為正念分鐘數";
+"healthkit_auth_fail_title" = "未獲得健康授權";
+"healthkit_auth_fail_msg" = "請在系統「設定 > 健康」中允許 SpineUp 寫入正念數據與讀取步數。";
+
+"settings_daily_notif_title" = "每日定時提醒推送";
+"settings_daily_notif_desc" = "早晨09:30佩戴提醒 · 傍晚18:30戰報出爐";
+"notif_morning_title" = "早安！開啟今天的骨氣守護";
+"notif_morning_body" = "戴上耳機，讓挺拔身姿陪伴高效專注的一天。";
+"notif_evening_title" = "今日骨氣戰報已生成";
+"notif_evening_body" = "快來看看今天的頸椎減負成果，為挺拔的自己點讚！";
+"notif_auth_fail_title" = "未開啟通知權限";
+"notif_auth_fail_msg" = "請在系統「設定 > 通知 > SpineUp」中允許通知推送。";
+
+"settings_data_section" = "數據管理與隱私";
+"settings_export_csv_title" = "導出健康體態記錄 (CSV)";
+"settings_clear_data_title" = "清除所有本地數據";
+"clear_data_confirm_title" = "重置所有本地數據？";
+"clear_data_confirm_msg" = "此操作將清除校準基準、歷史會話戰報與能量幣，且不可撤銷。";
+"clear_data_confirm_btn" = "確認清除";
+
+"pomodoro_card_title" = "護頸番茄鐘 (無耳機模式)";
+"pomodoro_state_idle" = "待開啟";
+"pomodoro_state_working" = "挺拔專注中";
+"pomodoro_state_resting" = "頸椎舒展中";
+"pomodoro_card_desc" = "挺拔工作 25 分鐘 · 頸椎舒展 5 分鐘 · 保持自律與骨氣";
+"pomodoro_cycles_val" = "今日已完成 %d 輪";
+"pomodoro_btn_start" = "開始專注";
+"pomodoro_btn_pause" = "暫停";
+"pomodoro_btn_reset" = "重置";
+"pomodoro_start_speech" = "無耳機護頸番茄鐘已開啟！保持挺拔，25分鐘後本喵提醒你舒展頸椎。";
+
+"acc_gauge_label" = "即時體態儀表盤";
+"acc_gauge_value" = "前傾角度 %.0f 度，額外負荷 %.1f 公斤，狀態：%@";
+"acc_gauge_hint" = "輕點兩下可查看頸椎負荷分析";
+"acc_calibrate_hint" = "保持端正坐姿，輕點兩下校準零點基準";
+"acc_pet_label" = "骨氣寵物互動區";
+"acc_pet_hint" = "輕點兩下聽取寵物當前語音台詞";
+"acc_energy_label" = "骨氣能量幣";
+"acc_persona_label" = "當前桌寵人格";
+"acc_sensor_label" = "感測器追蹤狀態";

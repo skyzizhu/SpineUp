@@ -69,11 +69,16 @@ final class SUPostureStateEngine: @unchecked Sendable {
         let deltaPitchDeg = (basePitchRad - smoothedPitchRad) * (180.0 / .pi)
         let deltaRollDeg = (smoothedRollRad - baseRollRad) * (180.0 / .pi)
 
-        // 3. 状态判定与防抖时间缓冲
+        // 3. 状态判定与防抖时间缓冲 (动态适配用户灵敏度配置)
         let now = Date()
         let oldState = currentState
 
-        if deltaPitchDeg > SUMotionConstants.slightSlumpAngleThreshold {
+        let sensitivity = SUPostureSensitivity(rawValue: SUUserDefaultsManager.shared.postureSensitivityLevel) ?? .standard
+        let slightAngle = sensitivity.slightSlumpAngle
+        let severeAngle = sensitivity.severeSlumpAngle
+        let bufferDuration = sensitivity.bufferDuration
+
+        if deltaPitchDeg > slightAngle {
             // 用户处于低头/前倾姿态
             recoveryStartTime = nil
 
@@ -83,9 +88,9 @@ final class SUPostureStateEngine: @unchecked Sendable {
 
             let slumpDuration = now.timeIntervalSince(slumpStartTime!)
 
-            // 持续低头达到防抖阈值 (10秒)
-            if slumpDuration >= SUMotionConstants.slumpTriggerBufferDuration {
-                if deltaPitchDeg > SUMotionConstants.severeSlumpAngleThreshold {
+            // 持续低头达到防抖阈值
+            if slumpDuration >= bufferDuration {
+                if deltaPitchDeg > severeAngle {
                     currentState = .severeSlump
                 } else {
                     currentState = .slightSlump

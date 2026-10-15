@@ -522,3 +522,70 @@
 "unsupported_device_title" = "기기가 모션 트래킹을 지원하지 않음";
 "unsupported_device_desc" = "SpineUp은 공간 머리 모션 센서가 장착된 이어폰이 필요합니다:\n• AirPods Pro (1/2세대)\n• AirPods (3/4세대)\n• AirPods Max\n• Beats Fit Pro\n\n※차량용 블루투스, 스피커, 기본 AirPods 1/2세대는 자이로스코프 센서가 없어 자세 추적이 불가합니다.";
 "go_to_settings" = "설정 열기";
+
+/* 2026-10 Feature Optimizations */
+"sensitivity_strict" = "엄격 모드 (12° / 5초)";
+"sensitivity_standard" = "표준 모드 (15° / 10초)";
+"sensitivity_relaxed" = "여유 모드 (20° / 15초)";
+"sensitivity_strict_desc" = "강력한 자세 교정 및 대형 모니터 데스크 환경에 적합";
+"sensitivity_standard_desc" = "권장 기본값, 민감도와 일상적인 편안함의 균형";
+"sensitivity_relaxed_desc" = "노트북 작업, 필기 및 독서 환경에 적합";
+"sensitivity_picker_title" = "알림 민감도";
+"sensitivity_picker_msg" = "책상 및 모니터 높이에 맞게 전방 기울기 감지 임계값을 조정합니다";
+"settings_sensitivity_title" = "알림 민감도";
+
+"sound_style_droplet" = "맑은 물방울";
+"sound_style_wooden_fish" = "선(Zen) 목탁";
+"sound_style_wind_chime" = "산뜻한 풍경 소리";
+"sound_style_mechanical" = "기계식 클릭";
+"sound_style_picker_title" = "알림 효과음 선택";
+"sound_style_picker_msg" = "구부정한 자세 감지 시 울리는 부드러운 알림음";
+"settings_sound_style" = "알림 효과음";
+
+"settings_sedentary_title" = "오래 앉음 스탠드 알림";
+"settings_sedentary_desc" = "45분 연속 작업 시 일어나서 스트레칭하도록 안내";
+"sedentary_reminder_speech" = "%d분 동안 계속 앉아 계셨어요! 잠시 일어나서 허리와 목을 펴고 물을 마셔보세요.";
+"notif_sedentary_title" = "오래 앉음 알림: 일어나서 몸을 펴보세요";
+"notif_sedentary_body" = "%d분 동안 연속으로 앉아 있었습니다. 일어나서 30초 목 스트레칭을 해보세요!";
+
+"settings_healthkit_title" = "Apple 건강과 동기화";
+"settings_healthkit_desc" = "바른 자세 집중 시간을 마음 챙김 시간으로 자동 기록";
+"healthkit_auth_fail_title" = "건강 데이터 권한 필요";
+"healthkit_auth_fail_msg" = "iOS 「설정 > 건강」에서 SpineUp의 마음 챙김 쓰기 및 걸음 수 읽기를 허용해주세요.";
+
+"settings_daily_notif_title" = "매일 바른 자세 리마인더";
+"settings_daily_notif_desc" = "아침 09:30 착용 알림 · 저녁 18:30 리포트 발행";
+"notif_morning_title" = "좋은 아침입니다! 당당한 자세로 시작하세요";
+"notif_morning_body" = "이어폰을 착용하고 바르고 당당한 자세로 활기찬 하루를 열어보세요.";
+"notif_evening_title" = "오늘의 자세 리포트가 완성되었습니다";
+"notif_evening_body" = "오늘 경추 하중을 얼마나 줄였는지 확인해보세요. 바른 자세를 칭찬합니다!";
+"notif_auth_fail_title" = "알림 권한이 꺼져 있음";
+"notif_auth_fail_msg" = "iOS 「설정 > 알림 > SpineUp」에서 알림을 허용해주세요.";
+
+"settings_data_section" = "데이터 관리 및 개인정보";
+"settings_export_csv_title" = "자세 기록 데이터 내보내기 (CSV)";
+"settings_clear_data_title" = "모든 로컬 데이터 초기화";
+"clear_data_confirm_title" = "모든 데이터를 삭제하시겠습니까?";
+"clear_data_confirm_msg" = "영점 기준값, 과거 리포트 기록, 에너지 코인이 영구 삭제됩니다. 이 작업은 취소할 수 없습니다.";
+"clear_data_confirm_btn" = "삭제 확인";
+
+"pomodoro_card_title" = "목 건강 뽀모도로 (이어폰 미착용 모드)";
+"pomodoro_state_idle" = "대기 중";
+"pomodoro_state_working" = "바른 자세 집중 중";
+"pomodoro_state_resting" = "목 스트레칭 휴식 중";
+"pomodoro_card_desc" = "25분 바른 자세 집중 · 5분 목 스트레칭 · 과학적인 척추 보호";
+"pomodoro_cycles_val" = "오늘 %d회 완료";
+"pomodoro_btn_start" = "집중 시작";
+"pomodoro_btn_pause" = "일시정지";
+"pomodoro_btn_reset" = "초기화";
+"pomodoro_start_speech" = "목 건강 뽀모도로가 시작되었습니다! 허리를 펴세요. 25분 후 스트레칭을 알려드릴게요.";
+
+"acc_gauge_label" = "실시간 자세 계기판";
+"acc_gauge_value" = "전방 기울기 %.0f도, 경추 추가 하중 %.1f kg, 상태: %@";
+"acc_gauge_hint" = "이중 탭하여 경추 하중 정밀 분석을 확인하세요";
+"acc_calibrate_hint" = "바르게 앉은 후 이중 탭하여 영점 기준을 교정하세요";
+"acc_pet_label" = "자세 파트너 펫";
+"acc_pet_hint" = "이중 탭하여 펫의 음성 대화를 들어보세요";
+"acc_energy_label" = "척추 에너지 코인";
+"acc_persona_label" = "현재 펫 페르소나";
+"acc_sensor_label" = "AirPods 센서 상태";

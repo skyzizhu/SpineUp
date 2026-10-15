@@ -26,6 +26,12 @@ final class SUUserDefaultsManager: @unchecked Sendable {
         static let isSoundAlertEnabled = "su_isSoundAlertEnabled"
         static let isHapticAlertEnabled = "su_isHapticAlertEnabled"
         static let isVoiceAlertEnabled = "su_isVoiceAlertEnabled"
+        static let postureSensitivityLevel = "su_postureSensitivityLevel"
+        static let alertSoundStyle = "su_alertSoundStyle"
+        static let isSedentaryReminderEnabled = "su_isSedentaryReminderEnabled"
+        static let sedentaryIntervalMinutes = "su_sedentaryIntervalMinutes"
+        static let isHealthKitSyncEnabled = "su_isHealthKitSyncEnabled"
+        static let isDailyNotificationEnabled = "su_isDailyNotificationEnabled"
         static let spineEnergyCoins = "su_spineEnergyCoins"
         static let streakDays = "su_streakDays"
         static let lastActiveDateString = "su_lastActiveDateString"
@@ -187,6 +193,99 @@ final class SUUserDefaultsManager: @unchecked Sendable {
         }
     }
 
+    // MARK: - 体态灵敏度 (0: 严格, 1: 标准, 2: 宽松)
+    var postureSensitivityLevel: Int {
+        get {
+            lock.lock()
+            defer { lock.unlock() }
+            if defaults.object(forKey: Keys.postureSensitivityLevel) == nil {
+                return 1 // 默认为标准
+            }
+            return defaults.integer(forKey: Keys.postureSensitivityLevel)
+        }
+        set {
+            lock.lock()
+            defaults.set(newValue, forKey: Keys.postureSensitivityLevel)
+            lock.unlock()
+        }
+    }
+
+    // MARK: - 提醒音效风格 (0: 水滴, 1: 木鱼, 2: 风铃, 3: 机械轻按)
+    var alertSoundStyle: Int {
+        get {
+            lock.lock()
+            defer { lock.unlock() }
+            return defaults.integer(forKey: Keys.alertSoundStyle)
+        }
+        set {
+            lock.lock()
+            defaults.set(newValue, forKey: Keys.alertSoundStyle)
+            lock.unlock()
+        }
+    }
+
+    // MARK: - 久坐站立提醒
+    var isSedentaryReminderEnabled: Bool {
+        get {
+            lock.lock()
+            defer { lock.unlock() }
+            if defaults.object(forKey: Keys.isSedentaryReminderEnabled) == nil {
+                return true // 默认开启
+            }
+            return defaults.bool(forKey: Keys.isSedentaryReminderEnabled)
+        }
+        set {
+            lock.lock()
+            defaults.set(newValue, forKey: Keys.isSedentaryReminderEnabled)
+            lock.unlock()
+        }
+    }
+
+    var sedentaryIntervalMinutes: Int {
+        get {
+            lock.lock()
+            defer { lock.unlock() }
+            let val = defaults.integer(forKey: Keys.sedentaryIntervalMinutes)
+            return val > 0 ? val : 45 // 默认 45 分钟
+        }
+        set {
+            lock.lock()
+            defaults.set(max(15, newValue), forKey: Keys.sedentaryIntervalMinutes)
+            lock.unlock()
+        }
+    }
+
+    // MARK: - Apple Health (HealthKit) 同步
+    var isHealthKitSyncEnabled: Bool {
+        get {
+            lock.lock()
+            defer { lock.unlock() }
+            return defaults.bool(forKey: Keys.isHealthKitSyncEnabled)
+        }
+        set {
+            lock.lock()
+            defaults.set(newValue, forKey: Keys.isHealthKitSyncEnabled)
+            lock.unlock()
+        }
+    }
+
+    // MARK: - 每日定时推送提醒
+    var isDailyNotificationEnabled: Bool {
+        get {
+            lock.lock()
+            defer { lock.unlock() }
+            if defaults.object(forKey: Keys.isDailyNotificationEnabled) == nil {
+                return false
+            }
+            return defaults.bool(forKey: Keys.isDailyNotificationEnabled)
+        }
+        set {
+            lock.lock()
+            defaults.set(newValue, forKey: Keys.isDailyNotificationEnabled)
+            lock.unlock()
+        }
+    }
+
     // MARK: - 骨气能量与打卡系统 (Spine Energy & Streak)
     var spineEnergyCoins: Int {
         get {
@@ -303,5 +402,20 @@ final class SUUserDefaultsManager: @unchecked Sendable {
             }
             lock.unlock()
         }
+    }
+
+    /// 清空所有用户数据（重置健康记录、校准、能量币与偏好设置）
+    func clearAllUserData() {
+        lock.lock()
+        defaults.removeObject(forKey: Keys.isCalibrated)
+        defaults.removeObject(forKey: Keys.calibrationBasePitch)
+        defaults.removeObject(forKey: Keys.calibrationBaseRoll)
+        defaults.removeObject(forKey: Keys.spineEnergyCoins)
+        defaults.removeObject(forKey: Keys.streakDays)
+        defaults.removeObject(forKey: Keys.lastActiveDateString)
+        defaults.removeObject(forKey: Keys.userName)
+        defaults.removeObject(forKey: Keys.authToken)
+        defaults.removeObject(forKey: Keys.customApiBaseURL)
+        lock.unlock()
     }
 }

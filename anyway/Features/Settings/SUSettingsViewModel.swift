@@ -130,4 +130,108 @@ final class SUSettingsViewModel: @unchecked Sendable {
         audioFeedbackManager.triggerHapticSelection()
         onStateChanged?()
     }
+
+    // MARK: - 体态灵敏度
+    var currentSensitivity: SUPostureSensitivity {
+        return SUPostureSensitivity(rawValue: userDefaultsManager.postureSensitivityLevel) ?? .standard
+    }
+
+    func setSensitivity(_ sensitivity: SUPostureSensitivity) {
+        userDefaultsManager.postureSensitivityLevel = sensitivity.rawValue
+        audioFeedbackManager.triggerHapticSelection()
+        onStateChanged?()
+    }
+
+    // MARK: - 提醒音效风格
+    var currentSoundStyle: SUAlertSoundStyle {
+        return SUAlertSoundStyle(rawValue: userDefaultsManager.alertSoundStyle) ?? .droplet
+    }
+
+    func setSoundStyle(_ style: SUAlertSoundStyle) {
+        userDefaultsManager.alertSoundStyle = style.rawValue
+        audioFeedbackManager.previewSound(style: style)
+        onStateChanged?()
+    }
+
+    func previewSoundStyle(_ style: SUAlertSoundStyle) {
+        audioFeedbackManager.previewSound(style: style)
+    }
+
+    // MARK: - 久坐站立提醒
+    var isSedentaryReminderEnabled: Bool {
+        return userDefaultsManager.isSedentaryReminderEnabled
+    }
+
+    var sedentaryIntervalMinutes: Int {
+        return userDefaultsManager.sedentaryIntervalMinutes
+    }
+
+    func setSedentaryReminderEnabled(_ enabled: Bool) {
+        userDefaultsManager.isSedentaryReminderEnabled = enabled
+        audioFeedbackManager.triggerHapticLightTap()
+        onStateChanged?()
+    }
+
+    func setSedentaryIntervalMinutes(_ minutes: Int) {
+        userDefaultsManager.sedentaryIntervalMinutes = minutes
+        audioFeedbackManager.triggerHapticSelection()
+        onStateChanged?()
+    }
+
+    // MARK: - Apple Health (HealthKit) 同步
+    var isHealthKitSyncEnabled: Bool {
+        return userDefaultsManager.isHealthKitSyncEnabled
+    }
+
+    func setHealthKitSyncEnabled(_ enabled: Bool) async -> Bool {
+        if enabled {
+            let granted = await SUHealthKitManager.shared.requestAuthorization()
+            userDefaultsManager.isHealthKitSyncEnabled = granted
+            audioFeedbackManager.triggerHapticLightTap()
+            onStateChanged?()
+            return granted
+        } else {
+            userDefaultsManager.isHealthKitSyncEnabled = false
+            audioFeedbackManager.triggerHapticLightTap()
+            onStateChanged?()
+            return false
+        }
+    }
+
+    // MARK: - 每日定时推送提醒
+    var isDailyNotificationEnabled: Bool {
+        return userDefaultsManager.isDailyNotificationEnabled
+    }
+
+    func setDailyNotificationEnabled(_ enabled: Bool) async -> Bool {
+        if enabled {
+            let granted = await SULocalNotificationManager.shared.requestAuthorization()
+            userDefaultsManager.isDailyNotificationEnabled = granted
+            if granted {
+                SULocalNotificationManager.shared.scheduleDailyReminders()
+            }
+            audioFeedbackManager.triggerHapticLightTap()
+            onStateChanged?()
+            return granted
+        } else {
+            userDefaultsManager.isDailyNotificationEnabled = false
+            SULocalNotificationManager.shared.cancelDailyReminders()
+            audioFeedbackManager.triggerHapticLightTap()
+            onStateChanged?()
+            return false
+        }
+    }
+
+    // MARK: - 数据管理与清除
+    func exportCSVURL() -> URL? {
+        return SUPostureSessionManager.shared.exportCSVURL()
+    }
+
+    func clearAllData() {
+        userDefaultsManager.clearAllUserData()
+        SUPostureSessionManager.shared.clearAllHistory()
+        refreshEnergyData()
+        audioFeedbackManager.triggerHapticSuccess()
+        onStateChanged?()
+    }
 }

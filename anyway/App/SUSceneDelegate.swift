@@ -27,6 +27,12 @@ class SUSceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = window
         window.makeKeyAndVisible()
 
+        if let tabStr = ProcessInfo.processInfo.environment["INITIAL_TAB"], let tabIndex = Int(tabStr) {
+            mainTabBarController.selectedIndex = tabIndex
+        } else if let url = connectionOptions.urlContexts.first?.url, url.scheme?.lowercased() == "spineup", url.host?.lowercased() == "settings" {
+            mainTabBarController.selectedIndex = 3
+        }
+
         // 如果在单元测试环境下运行，则跳过 UI 模态弹出，防止干扰 XCTest 注入与视图层级装载
         let isRunningTests = NSClassFromString("XCTestCase") != nil
         if !isRunningTests && !SUUserDefaultsManager.shared.hasCompletedOnboarding {
@@ -73,7 +79,16 @@ class SUSceneDelegate: UIResponder, UIWindowSceneDelegate {
         SULogger.lifecycle.info("Opened with URL: \(url.absoluteString)")
         if url.scheme?.lowercased() == "spineup" {
             if let tabController = window?.rootViewController as? UITabBarController {
-                tabController.selectedIndex = 0
+                switch url.host?.lowercased() {
+                case "settings":
+                    tabController.selectedIndex = 3
+                case "report", "daily-report":
+                    tabController.selectedIndex = 1
+                case "leaderboard":
+                    tabController.selectedIndex = 2
+                default:
+                    tabController.selectedIndex = 0
+                }
             }
         }
     }

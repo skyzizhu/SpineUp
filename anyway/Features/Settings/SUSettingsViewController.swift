@@ -92,6 +92,45 @@ final class SUSettingsViewController: SUBaseViewController {
         iconTint: .systemOrange
     )
 
+    private let soundSeparatorView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .separator
+        return view
+    }()
+
+    private let soundStyleRowView = SUSettingsNavigationRowView(
+        title: SULocalized("settings_sound_style", default: "提示声音效"),
+        value: "",
+        iconSystemName: "music.note",
+        iconBackground: .systemPink
+    )
+
+    private let sensitivitySeparatorView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .separator
+        return view
+    }()
+
+    private let sensitivityRowView = SUSettingsNavigationRowView(
+        title: SULocalized("settings_sensitivity_title", default: "预警灵敏度"),
+        value: "",
+        iconSystemName: "slider.horizontal.3",
+        iconBackground: .systemTeal
+    )
+
+    private let sedentarySeparatorView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .separator
+        return view
+    }()
+
+    private let sedentaryRowView = SUSettingsSwitchRowView(
+        title: SULocalized("settings_sedentary_title", default: "久坐超时站立提醒"),
+        subtitle: SULocalized("settings_sedentary_desc", default: "连续工作45分钟后轻柔提醒起身伸展"),
+        iconSystemName: "figure.walk",
+        iconTint: .systemGreen
+    )
+
     // MARK: - 提醒偏好说明卡片
     private let alertsFooterCardView: UIView = {
         let view = UIView()
@@ -234,6 +273,32 @@ final class SUSettingsViewController: SUBaseViewController {
         iconBackground: .systemIndigo
     )
 
+    private let healthKitSeparatorView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .separator
+        return view
+    }()
+
+    private let healthKitRowView = SUSettingsSwitchRowView(
+        title: SULocalized("settings_healthkit_title", default: "同步至 Apple 健康"),
+        subtitle: SULocalized("settings_healthkit_desc", default: "挺拔专注自动记录为正念分钟数"),
+        iconSystemName: "heart.fill",
+        iconTint: .systemRed
+    )
+
+    private let notifSeparatorView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .separator
+        return view
+    }()
+
+    private let dailyNotifRowView = SUSettingsSwitchRowView(
+        title: SULocalized("settings_daily_notif_title", default: "每日定时提醒推送"),
+        subtitle: SULocalized("settings_daily_notif_desc", default: "早晨09:30佩戴提醒 · 傍晚18:30战报出炉"),
+        iconSystemName: "bell.badge.fill",
+        iconTint: .systemIndigo
+    )
+
     // MARK: - Section 5: 高级玩法
     private let advancedSectionTitleLabel: UILabel = {
         let label = UILabel()
@@ -264,6 +329,51 @@ final class SUSettingsViewController: SUBaseViewController {
         value: SULocalized("settings_auto_launch_value", default: "快捷指令指引"),
         iconSystemName: "bolt.badge.automatic",
         iconBackground: .systemPurple
+    )
+
+    // MARK: - Section 6: 数据管理与隐私
+    private let dataSectionTitleLabel: UILabel = {
+        let label = UILabel()
+        label.text = SULocalized("settings_data_section", default: "数据管理与隐私")
+        label.font = .systemFont(ofSize: 16, weight: .bold)
+        label.textColor = .label
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.85
+        return label
+    }()
+
+    private let dataCardView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .secondarySystemGroupedBackground
+        view.layer.cornerRadius = SULayoutConstants.cornerRadiusLarge
+        view.layer.cornerCurve = .continuous
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOpacity = 0.03
+        view.layer.shadowOffset = CGSize(width: 0, height: 6)
+        view.layer.shadowRadius = 16
+        return view
+    }()
+
+    private let exportCSVRowView = SUSettingsNavigationRowView(
+        title: SULocalized("settings_export_csv_title", default: "导出健康体态记录 (CSV)"),
+        value: "",
+        iconSystemName: "square.and.arrow.up",
+        iconBackground: .systemTeal
+    )
+
+    private let dataSeparatorView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .separator
+        return view
+    }()
+
+    private let clearDataRowView = SUSettingsNavigationRowView(
+        title: SULocalized("settings_clear_data_title", default: "重置所有本地数据"),
+        value: "",
+        iconSystemName: "trash.fill",
+        iconBackground: .systemRed
     )
 
     // MARK: - Section 6: 合规与法律条款
@@ -380,6 +490,12 @@ final class SUSettingsViewController: SUBaseViewController {
         alertsCardView.addSubview(voiceRowView)
         alertsCardView.addSubview(hapticRowView)
         alertsCardView.addSubview(soundRowView)
+        alertsCardView.addSubview(soundSeparatorView)
+        alertsCardView.addSubview(soundStyleRowView)
+        alertsCardView.addSubview(sensitivitySeparatorView)
+        alertsCardView.addSubview(sensitivityRowView)
+        alertsCardView.addSubview(sedentarySeparatorView)
+        alertsCardView.addSubview(sedentaryRowView)
         contentView.addSubview(alertsFooterCardView)
         alertsFooterCardView.addSubview(alertsFooterIconView)
         alertsFooterCardView.addSubview(alertsFooterTitleLabel)
@@ -399,11 +515,22 @@ final class SUSettingsViewController: SUBaseViewController {
         generalCardView.addSubview(themeRowView)
         generalCardView.addSubview(generalSeparatorView)
         generalCardView.addSubview(languageRowView)
+        generalCardView.addSubview(healthKitSeparatorView)
+        generalCardView.addSubview(healthKitRowView)
+        generalCardView.addSubview(notifSeparatorView)
+        generalCardView.addSubview(dailyNotifRowView)
 
         // 组装高级玩法入口
         contentView.addSubview(advancedSectionTitleLabel)
         contentView.addSubview(advancedCardView)
         advancedCardView.addSubview(autoLaunchRowView)
+
+        // 组装数据管理与隐私入口
+        contentView.addSubview(dataSectionTitleLabel)
+        contentView.addSubview(dataCardView)
+        dataCardView.addSubview(exportCSVRowView)
+        dataCardView.addSubview(dataSeparatorView)
+        dataCardView.addSubview(clearDataRowView)
 
         // 组装法律与合规入口
         contentView.addSubview(legalSectionTitleLabel)
@@ -461,6 +588,45 @@ final class SUSettingsViewController: SUBaseViewController {
 
         soundRowView.snp.makeConstraints { make in
             make.top.equalTo(hapticRowView.snp.bottom)
+            make.leading.trailing.equalToSuperview()
+            make.height.greaterThanOrEqualTo(58)
+        }
+
+        soundSeparatorView.snp.makeConstraints { make in
+            make.top.equalTo(soundRowView.snp.bottom)
+            make.leading.equalToSuperview().offset(54)
+            make.trailing.equalToSuperview()
+            make.height.equalTo(0.5)
+        }
+
+        soundStyleRowView.snp.makeConstraints { make in
+            make.top.equalTo(soundSeparatorView.snp.bottom)
+            make.leading.trailing.equalToSuperview()
+            make.height.greaterThanOrEqualTo(52)
+        }
+
+        sensitivitySeparatorView.snp.makeConstraints { make in
+            make.top.equalTo(soundStyleRowView.snp.bottom)
+            make.leading.equalToSuperview().offset(54)
+            make.trailing.equalToSuperview()
+            make.height.equalTo(0.5)
+        }
+
+        sensitivityRowView.snp.makeConstraints { make in
+            make.top.equalTo(sensitivitySeparatorView.snp.bottom)
+            make.leading.trailing.equalToSuperview()
+            make.height.greaterThanOrEqualTo(52)
+        }
+
+        sedentarySeparatorView.snp.makeConstraints { make in
+            make.top.equalTo(sensitivityRowView.snp.bottom)
+            make.leading.equalToSuperview().offset(54)
+            make.trailing.equalToSuperview()
+            make.height.equalTo(0.5)
+        }
+
+        sedentaryRowView.snp.makeConstraints { make in
+            make.top.equalTo(sedentarySeparatorView.snp.bottom)
             make.leading.trailing.bottom.equalToSuperview()
             make.height.greaterThanOrEqualTo(58)
         }
@@ -548,8 +714,34 @@ final class SUSettingsViewController: SUBaseViewController {
 
         languageRowView.snp.makeConstraints { make in
             make.top.equalTo(generalSeparatorView.snp.bottom)
-            make.leading.trailing.bottom.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
             make.height.greaterThanOrEqualTo(52)
+        }
+
+        healthKitSeparatorView.snp.makeConstraints { make in
+            make.top.equalTo(languageRowView.snp.bottom)
+            make.leading.equalToSuperview().offset(54)
+            make.trailing.equalToSuperview()
+            make.height.equalTo(0.5)
+        }
+
+        healthKitRowView.snp.makeConstraints { make in
+            make.top.equalTo(healthKitSeparatorView.snp.bottom)
+            make.leading.trailing.equalToSuperview()
+            make.height.greaterThanOrEqualTo(58)
+        }
+
+        notifSeparatorView.snp.makeConstraints { make in
+            make.top.equalTo(healthKitRowView.snp.bottom)
+            make.leading.equalToSuperview().offset(54)
+            make.trailing.equalToSuperview()
+            make.height.equalTo(0.5)
+        }
+
+        dailyNotifRowView.snp.makeConstraints { make in
+            make.top.equalTo(notifSeparatorView.snp.bottom)
+            make.leading.trailing.bottom.equalToSuperview()
+            make.height.greaterThanOrEqualTo(58)
         }
 
         advancedSectionTitleLabel.snp.makeConstraints { make in
@@ -567,8 +759,36 @@ final class SUSettingsViewController: SUBaseViewController {
             make.height.greaterThanOrEqualTo(52)
         }
 
-        legalSectionTitleLabel.snp.makeConstraints { make in
+        dataSectionTitleLabel.snp.makeConstraints { make in
             make.top.equalTo(advancedCardView.snp.bottom).offset(SULayoutConstants.sectionSpacing)
+            make.leading.trailing.equalToSuperview().inset(SULayoutConstants.horizontalPadding)
+        }
+
+        dataCardView.snp.makeConstraints { make in
+            make.top.equalTo(dataSectionTitleLabel.snp.bottom).offset(8)
+            make.leading.trailing.equalToSuperview().inset(SULayoutConstants.horizontalPadding)
+        }
+
+        exportCSVRowView.snp.makeConstraints { make in
+            make.top.leading.trailing.equalToSuperview()
+            make.height.greaterThanOrEqualTo(52)
+        }
+
+        dataSeparatorView.snp.makeConstraints { make in
+            make.top.equalTo(exportCSVRowView.snp.bottom)
+            make.leading.equalToSuperview().offset(54)
+            make.trailing.equalToSuperview()
+            make.height.equalTo(0.5)
+        }
+
+        clearDataRowView.snp.makeConstraints { make in
+            make.top.equalTo(dataSeparatorView.snp.bottom)
+            make.leading.trailing.bottom.equalToSuperview()
+            make.height.greaterThanOrEqualTo(52)
+        }
+
+        legalSectionTitleLabel.snp.makeConstraints { make in
+            make.top.equalTo(dataCardView.snp.bottom).offset(SULayoutConstants.sectionSpacing)
             make.leading.trailing.equalToSuperview().inset(SULayoutConstants.horizontalPadding)
         }
 
@@ -607,6 +827,124 @@ final class SUSettingsViewController: SUBaseViewController {
 
         soundRowView.onSwitchChanged = { [weak self] isOn in
             self?.viewModel.setSoundAlertEnabled(isOn)
+        }
+
+        soundStyleRowView.onTap = { [weak self] in
+            guard let self = self else { return }
+            let alert = UIAlertController(
+                title: SULocalized("sound_style_picker_title", default: "选择提示声音效"),
+                message: SULocalized("sound_style_picker_msg", default: "低头超时时播放的轻柔提示音"),
+                preferredStyle: .actionSheet
+            )
+            for style in SUAlertSoundStyle.allCases {
+                let action = UIAlertAction(title: style.displayName, style: .default) { [weak self] _ in
+                    self?.viewModel.setSoundStyle(style)
+                    self?.soundStyleRowView.setValue(style.displayName)
+                }
+                alert.addAction(action)
+            }
+            alert.addAction(UIAlertAction(title: SULocalized("common_cancel", default: "取消"), style: .cancel))
+            if let popover = alert.popoverPresentationController {
+                popover.sourceView = self.soundStyleRowView
+                popover.sourceRect = self.soundStyleRowView.bounds
+            }
+            self.present(alert, animated: true)
+        }
+
+        sensitivityRowView.onTap = { [weak self] in
+            guard let self = self else { return }
+            let alert = UIAlertController(
+                title: SULocalized("sensitivity_picker_title", default: "预警灵敏度"),
+                message: SULocalized("sensitivity_picker_msg", default: "根据办公桌椅与显示器高度调整前倾预警阈值"),
+                preferredStyle: .actionSheet
+            )
+            for item in SUPostureSensitivity.allCases {
+                let title = "\(item.title) - \(item.subtitle)"
+                let action = UIAlertAction(title: title, style: .default) { [weak self] _ in
+                    self?.viewModel.setSensitivity(item)
+                    self?.sensitivityRowView.setValue(item.title)
+                }
+                alert.addAction(action)
+            }
+            alert.addAction(UIAlertAction(title: SULocalized("common_cancel", default: "取消"), style: .cancel))
+            if let popover = alert.popoverPresentationController {
+                popover.sourceView = self.sensitivityRowView
+                popover.sourceRect = self.sensitivityRowView.bounds
+            }
+            self.present(alert, animated: true)
+        }
+
+        sedentaryRowView.onSwitchChanged = { [weak self] isOn in
+            self?.viewModel.setSedentaryReminderEnabled(isOn)
+        }
+
+        healthKitRowView.onSwitchChanged = { [weak self] isOn in
+            guard let self = self else { return }
+            Task {
+                let granted = await self.viewModel.setHealthKitSyncEnabled(isOn)
+                if !granted && isOn {
+                    DispatchQueue.main.async {
+                        self.healthKitRowView.setSwitchOn(false)
+                        let alert = UIAlertController(
+                            title: SULocalized("healthkit_auth_fail_title", default: "未获得健康授权"),
+                            message: SULocalized("healthkit_auth_fail_msg", default: "请在系统“设置 > 健康”中允许 SpineUp 写入正念数据与读取步数。"),
+                            preferredStyle: .alert
+                        )
+                        alert.addAction(UIAlertAction(title: SULocalized("common_confirm", default: "好"), style: .default))
+                        self.present(alert, animated: true)
+                    }
+                }
+            }
+        }
+
+        dailyNotifRowView.onSwitchChanged = { [weak self] isOn in
+            guard let self = self else { return }
+            Task {
+                let granted = await self.viewModel.setDailyNotificationEnabled(isOn)
+                if !granted && isOn {
+                    DispatchQueue.main.async {
+                        self.dailyNotifRowView.setSwitchOn(false)
+                        let alert = UIAlertController(
+                            title: SULocalized("notif_auth_fail_title", default: "未开启通知权限"),
+                            message: SULocalized("notif_auth_fail_msg", default: "请在系统“设置 > 通知 > SpineUp”中允许通知推送。"),
+                            preferredStyle: .alert
+                        )
+                        alert.addAction(UIAlertAction(title: SULocalized("common_confirm", default: "好"), style: .default))
+                        self.present(alert, animated: true)
+                    }
+                }
+            }
+        }
+
+        exportCSVRowView.onTap = { [weak self] in
+            guard let self = self else { return }
+            if let url = self.viewModel.exportCSVURL() {
+                let activityVC = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+                if let popover = activityVC.popoverPresentationController {
+                    popover.sourceView = self.exportCSVRowView
+                    popover.sourceRect = self.exportCSVRowView.bounds
+                }
+                self.present(activityVC, animated: true)
+            }
+        }
+
+        clearDataRowView.onTap = { [weak self] in
+            guard let self = self else { return }
+            let alert = UIAlertController(
+                title: SULocalized("clear_data_confirm_title", default: "重置所有本地数据？"),
+                message: SULocalized("clear_data_confirm_msg", default: "此操作将清除校准基准、历史会话战报与能量币，且不可撤销。"),
+                preferredStyle: .actionSheet
+            )
+            let confirmAction = UIAlertAction(title: SULocalized("clear_data_confirm_btn", default: "确认清除"), style: .destructive) { [weak self] _ in
+                self?.viewModel.clearAllData()
+            }
+            alert.addAction(confirmAction)
+            alert.addAction(UIAlertAction(title: SULocalized("common_cancel", default: "取消"), style: .cancel))
+            if let popover = alert.popoverPresentationController {
+                popover.sourceView = self.clearDataRowView
+                popover.sourceRect = self.clearDataRowView.bounds
+            }
+            self.present(alert, animated: true)
         }
 
         userNameRowView.onTap = { [weak self] in
@@ -681,6 +1019,12 @@ final class SUSettingsViewController: SUBaseViewController {
         hapticRowView.setSwitchOn(viewModel.isHapticAlertEnabled)
         soundRowView.setSwitchOn(viewModel.isSoundAlertEnabled)
 
+        soundStyleRowView.setValue(viewModel.currentSoundStyle.displayName)
+        sensitivityRowView.setValue(viewModel.currentSensitivity.title)
+        sedentaryRowView.setSwitchOn(viewModel.isSedentaryReminderEnabled)
+        healthKitRowView.setSwitchOn(viewModel.isHealthKitSyncEnabled)
+        dailyNotifRowView.setSwitchOn(viewModel.isDailyNotificationEnabled)
+
         let streakFormat = SULocalized("streak_days_val", default: "%d 天")
         streakItemView.updateValue(String(format: streakFormat, viewModel.streakDays))
         totalCoinsItemView.updateValue("\(viewModel.totalCoins)")
@@ -718,6 +1062,16 @@ final class SUSettingsViewController: SUBaseViewController {
 
         soundRowView.setTitle(SULocalized("settings_sound_alert", default: "轻快系统提示铃"))
         soundRowView.setSubtitle(SULocalized("settings_sound_alert_desc", default: "低头时清脆水滴声"))
+
+        soundStyleRowView.setTitle(SULocalized("settings_sound_style", default: "提示声音效"))
+        soundStyleRowView.setValue(viewModel.currentSoundStyle.displayName)
+
+        sensitivityRowView.setTitle(SULocalized("settings_sensitivity_title", default: "预警灵敏度"))
+        sensitivityRowView.setValue(viewModel.currentSensitivity.title)
+
+        sedentaryRowView.setTitle(SULocalized("settings_sedentary_title", default: "久坐超时站立提醒"))
+        sedentaryRowView.setSubtitle(SULocalized("settings_sedentary_desc", default: "连续工作45分钟后轻柔提醒起身伸展"))
+
         alertsFooterTitleLabel.text = SULocalized("settings_alerts_footer_title", default: "后台音频与低延迟提醒")
         alertsSectionFooterLabel.text = SULocalized(
             "settings_alerts_footer_desc",
@@ -742,12 +1096,23 @@ final class SUSettingsViewController: SUBaseViewController {
         let langVal = SULocalizationManager.shared.isFollowSystem ? SULocalized("follow_system", default: "跟随系统") : SULocalizationManager.shared.currentLanguage.displayName
         languageRowView.setValue(langVal)
 
+        healthKitRowView.setTitle(SULocalized("settings_healthkit_title", default: "同步至 Apple 健康"))
+        healthKitRowView.setSubtitle(SULocalized("settings_healthkit_desc", default: "挺拔专注自动记录为正念分钟数"))
+
+        dailyNotifRowView.setTitle(SULocalized("settings_daily_notif_title", default: "每日定时提醒推送"))
+        dailyNotifRowView.setSubtitle(SULocalized("settings_daily_notif_desc", default: "早晨09:30佩戴提醒 · 傍晚18:30战报出炉"))
+
         // Section 5: 高级玩法
         advancedSectionTitleLabel.text = SULocalized("settings_advanced_section", default: "高级玩法")
         autoLaunchRowView.setTitle(SULocalized("settings_auto_launch_title", default: "戴上耳机自动启动"))
         autoLaunchRowView.setValue(SULocalized("settings_auto_launch_value", default: "快捷指令指引"))
 
-        // Section 6: 合规与法律条款
+        // Section 6: 数据管理与隐私
+        dataSectionTitleLabel.text = SULocalized("settings_data_section", default: "数据管理与隐私")
+        exportCSVRowView.setTitle(SULocalized("settings_export_csv_title", default: "导出健康体态记录 (CSV)"))
+        clearDataRowView.setTitle(SULocalized("settings_clear_data_title", default: "清除所有本地数据"))
+
+        // Section 7: 合规与法律条款
         legalSectionTitleLabel.text = SULocalized("settings_legal_section", default: "法律与免责声明")
         legalRowView.setTitle(SULocalized("settings_legal_documents_title", default: "协议与声明"))
 

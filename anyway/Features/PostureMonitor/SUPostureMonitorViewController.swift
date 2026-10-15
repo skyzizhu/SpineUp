@@ -32,6 +32,16 @@ final class SUPostureMonitorViewController: SUBaseViewController {
     private let speechBubbleView = SUPetSpeechBubbleView()
     private let gaugeView = SUPostureGaugeView()
     private let reliefQuickPillView = SUReliefQuickPillView()
+    private let pomodoroCardView = SUNeckPomodoroCardView()
+
+    private let bottomActionStackView: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .vertical
+        stack.spacing = 14
+        stack.alignment = .fill
+        stack.distribution = .fill
+        return stack
+    }()
 
     // MARK: - 顶部自适应通知流（横幅 / 台词气泡，隐藏时自动折叠高度为0，彻底消除空白冗余）
     private let topNoticeStackView: UIStackView = {
@@ -180,6 +190,16 @@ final class SUPostureMonitorViewController: SUBaseViewController {
         }
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if CommandLine.arguments.contains("-scrollMonitorToBottom") {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                let bottomOffset = CGPoint(x: 0, y: max(0, self.scrollView.contentSize.height - self.scrollView.bounds.height + self.scrollView.adjustedContentInset.bottom))
+                self.scrollView.setContentOffset(bottomOffset, animated: false)
+            }
+        }
+    }
+
     override func setupSubviews() {
         super.setupSubviews()
         navigationItem.title = SULocalized("monitor_title", default: "实时姿态守护")
@@ -212,8 +232,11 @@ final class SUPostureMonitorViewController: SUBaseViewController {
 
         contentView.addSubview(gaugeView)
         contentView.addSubview(reliefQuickPillView)
-        contentView.addSubview(calibrateButton)
+        contentView.addSubview(bottomActionStackView)
+        bottomActionStackView.addArrangedSubview(pomodoroCardView)
+        bottomActionStackView.addArrangedSubview(calibrateButton)
 
+        setupAccessibility()
 
         updateEnergyBadge(totalCoins: viewModel.currentTotalEnergyCoins)
         updatePersonaBadge(persona: viewModel.activePersona)
@@ -282,11 +305,18 @@ final class SUPostureMonitorViewController: SUBaseViewController {
             make.height.equalTo(0)
         }
 
-        calibrateButton.snp.makeConstraints { make in
+        bottomActionStackView.snp.makeConstraints { make in
             make.top.equalTo(reliefQuickPillView.snp.bottom).offset(14)
-            make.leading.trailing.equalToSuperview().inset(SULayoutConstants.horizontalPadding * 2)
-            make.height.equalTo(SULayoutConstants.primaryButtonHeight)
+            make.leading.trailing.equalToSuperview().inset(SULayoutConstants.horizontalPadding)
             make.bottom.equalTo(contentView.snp.bottom).offset(-SULayoutConstants.sectionSpacing)
+        }
+
+        pomodoroCardView.snp.makeConstraints { make in
+            make.height.equalTo(180)
+        }
+
+        calibrateButton.snp.makeConstraints { make in
+            make.height.equalTo(SULayoutConstants.primaryButtonHeight)
         }
     }
 
@@ -366,6 +396,12 @@ final class SUPostureMonitorViewController: SUBaseViewController {
             DispatchQueue.main.async {
                 guard let self = self else { return }
                 self.gaugeView.configure(with: reading, connectionState: self.viewModel.connectionState)
+                self.gaugeView.accessibilityValue = String(
+                    format: SULocalized("acc_gauge_value", default: "前倾角度 %.0f 度，额外负荷 %.1f 千克，状态：%@"),
+                    reading.relativePitchDeg,
+                    reading.extraLoadKg,
+                    reading.state.displayName
+                )
                 self.petContainerView.configure(with: reading.state, pitchDeg: reading.relativePitchDeg)
                 self.updateReliefPillState(with: reading)
             }
@@ -436,6 +472,25 @@ final class SUPostureMonitorViewController: SUBaseViewController {
         viewModel.startMonitoring()
     }
 
+    private func setupAccessibility() {
+        gaugeView.isAccessibilityElement = true
+        gaugeView.accessibilityTraits = .updatesFrequently
+        gaugeView.accessibilityLabel = SULocalized("acc_gauge_label", default: "实时体态仪表盘")
+        gaugeView.accessibilityHint = SULocalized("acc_gauge_hint", default: "轻点两下可查看颈椎负荷分析")
+
+        calibrateButton.accessibilityLabel = SULocalized("calibrate_button", default: "一键端坐校准")
+        calibrateButton.accessibilityHint = SULocalized("acc_calibrate_hint", default: "保持端正坐姿，轻点两下校准零点基准")
+
+        petContainerView.isAccessibilityElement = true
+        petContainerView.accessibilityTraits = .button
+        petContainerView.accessibilityLabel = SULocalized("acc_pet_label", default: "骨气宠物互动区")
+        petContainerView.accessibilityHint = SULocalized("acc_pet_hint", default: "轻点两下听取宠物当前语音台词")
+
+        energyBadgeButton.accessibilityLabel = SULocalized("acc_energy_label", default: "骨气能量币")
+        personaBadgeButton.accessibilityLabel = SULocalized("acc_persona_label", default: "当前桌宠人格")
+        connectionCapsuleButton.accessibilityLabel = SULocalized("acc_sensor_label", default: "传感器追踪状态")
+    }
+
     private func updateConnectionBadge(state: SUHeadphoneConnectionState) {
         var config = connectionCapsuleButton.configuration ?? UIButton.Configuration.filled()
         let symbolConfig = UIImage.SymbolConfiguration(pointSize: 9, weight: .bold)
@@ -453,6 +508,14 @@ final class SUPostureMonitorViewController: SUBaseViewController {
         }
         config.titleTextAttributesTransformer = transformer
         connectionCapsuleButton.configuration = config
+
+        // 切换无耳机护颈番茄钟与一键校准按钮
+        let isWorking = state.isWorking
+        UIView.animate(withDuration: 0.25) {
+            self.pomodoroCardView.isHidden = isWorking
+            self.calibrateButton.isHidden = !isWorking
+            self.contentView.layoutIfNeeded()
+        }
     }
 
     @objc private func didTapConnectionCapsule() {
@@ -634,6 +697,7 @@ final class SUPostureMonitorViewController: SUBaseViewController {
         let practiceVC = SUPostureReliefPracticeViewController(persona: viewModel.activePersona)
         practiceVC.onPracticeCompleted = { [weak self] in
             guard let self = self else { return }
+            self.viewModel.resetConsecutiveSitting()
             // 1. 物理卸负回血对冲 2.0 kg
             SUPostureSessionManager.shared.applyReliefRecovery(alleviatedKg: 2.0)
             // 2. 奖励 10 骨气币
@@ -808,10 +872,9 @@ final class SUPostureMonitorViewController: SUBaseViewController {
                 make.leading.trailing.equalTo(gaugeView)
                 make.height.equalTo(dualPillHeight)
             }
-            calibrateButton.snp.remakeConstraints { make in
+            bottomActionStackView.snp.remakeConstraints { make in
                 make.top.equalTo(reliefQuickPillView.snp.bottom).offset(12)
                 make.leading.trailing.equalTo(gaugeView)
-                make.height.equalTo(SULayoutConstants.primaryButtonHeight)
                 make.bottom.equalTo(contentView.snp.bottom).offset(-SULayoutConstants.sectionSpacing)
             }
 
@@ -851,10 +914,9 @@ final class SUPostureMonitorViewController: SUBaseViewController {
                 make.leading.trailing.equalToSuperview().inset(SULayoutConstants.horizontalPadding)
                 make.height.equalTo(tablePillHeight)
             }
-            calibrateButton.snp.remakeConstraints { make in
+            bottomActionStackView.snp.remakeConstraints { make in
                 make.top.equalTo(reliefQuickPillView.snp.bottom).offset(12)
                 make.leading.trailing.equalToSuperview().inset(SULayoutConstants.horizontalPadding * 2)
-                make.height.equalTo(SULayoutConstants.primaryButtonHeight)
                 make.bottom.equalTo(contentView.snp.bottom).offset(-SULayoutConstants.sectionSpacing)
             }
 
@@ -893,10 +955,9 @@ final class SUPostureMonitorViewController: SUBaseViewController {
                 make.leading.trailing.equalToSuperview().inset(SULayoutConstants.horizontalPadding)
                 make.height.equalTo(compactPillHeight)
             }
-            calibrateButton.snp.remakeConstraints { make in
+            bottomActionStackView.snp.remakeConstraints { make in
                 make.top.equalTo(reliefQuickPillView.snp.bottom).offset(14)
-                make.leading.trailing.equalToSuperview().inset(SULayoutConstants.horizontalPadding * 2)
-                make.height.equalTo(SULayoutConstants.primaryButtonHeight)
+                make.leading.trailing.equalToSuperview().inset(SULayoutConstants.horizontalPadding)
                 make.bottom.equalTo(contentView.snp.bottom).offset(-SULayoutConstants.sectionSpacing)
             }
         }

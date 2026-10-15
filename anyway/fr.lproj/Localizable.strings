@@ -522,3 +522,70 @@
 "unsupported_device_title" = "Appareil incompatible avec le mouvement";
 "unsupported_device_desc" = "SpineUp nécessite des écouteurs équipés de capteurs de mouvement spatial :\n• AirPods Pro (1re / 2e gén)\n• AirPods (3e / 4e gén)\n• AirPods Max\n• Beats Fit Pro\n\nLes haut-parleurs, Bluetooth auto et AirPods classiques (1re/2e gén) ne possèdent pas de capteurs gyroscopiques.";
 "go_to_settings" = "Ouvrir les réglages";
+
+/* 2026-10 Feature Optimizations */
+"sensitivity_strict" = "Strict (12° / 5s)";
+"sensitivity_standard" = "Standard (15° / 10s)";
+"sensitivity_relaxed" = "Modéré (20° / 15s)";
+"sensitivity_strict_desc" = "Idéal pour correction forte & grands écrans";
+"sensitivity_standard_desc" = "Recommandé par défaut, confort & précision";
+"sensitivity_relaxed_desc" = "Idéal pour ordinateurs portables & écriture";
+"sensitivity_picker_title" = "Sensibilité d'alerte";
+"sensitivity_picker_msg" = "Ajustez le seuil d'inclinaison selon la hauteur de votre bureau";
+"settings_sensitivity_title" = "Sensibilité d'alerte";
+
+"sound_style_droplet" = "Goutte cristalline";
+"sound_style_wooden_fish" = "Bloc de temple zen";
+"sound_style_wind_chime" = "Carillon doux";
+"sound_style_mechanical" = "Clic mécanique";
+"sound_style_picker_title" = "Son d'alerte";
+"sound_style_picker_msg" = "Tonalité discrète jouée en cas de mauvaise posture prolongée";
+"settings_sound_style" = "Son d'alerte";
+
+"settings_sedentary_title" = "Rappel de pause sédentaire";
+"settings_sedentary_desc" = "Rappel bienveillant de se lever après 45 min de travail";
+"sedentary_reminder_speech" = "Vous êtes assis depuis %d minutes ! Levez-vous, étirez votre dos et buvez un verre d'eau.";
+"notif_sedentary_title" = "Pause active : Levez-vous et étirez-vous";
+"notif_sedentary_body" = "Vous êtes assis depuis %d min. Levez-vous pour un étirement cervical de 30 secondes !";
+
+"settings_healthkit_title" = "Synchroniser avec Apple Santé";
+"settings_healthkit_desc" = "Enregistre automatiquement les minutes de pleine conscience";
+"healthkit_auth_fail_title" = "Accès Santé requis";
+"healthkit_auth_fail_msg" = "Veuillez autoriser l'écriture des séances de pleine conscience dans Réglages > Santé > SpineUp.";
+
+"settings_daily_notif_title" = "Rappels quotidiens de posture";
+"settings_daily_notif_desc" = "Rappel du matin à 09:30 · Bilan du soir à 18:30";
+"notif_morning_title" = "Bonjour ! Démarrez debout et droit";
+"notif_morning_body" = "Mettez vos AirPods et laissez une posture fière accompagner votre journée productive.";
+"notif_evening_title" = "Votre bilan de posture du jour est prêt";
+"notif_evening_body" = "Découvrez le soulagement apporté à vos cervicales aujourd'hui. Bravo pour vos efforts !";
+"notif_auth_fail_title" = "Notifications désactivées";
+"notif_auth_fail_msg" = "Veuillez activer les notifications dans Réglages > Notifications > SpineUp.";
+
+"settings_data_section" = "Gestion des données & Confidentialité";
+"settings_export_csv_title" = "Exporter les données de posture (CSV)";
+"settings_clear_data_title" = "Réinitialiser les données locales";
+"clear_data_confirm_title" = "Effacer toutes les données locales ?";
+"clear_data_confirm_msg" = "Cette action supprimera définitivement votre étalonnage, vos bilans historiques et vos pièces. Opération irréversible.";
+"clear_data_confirm_btn" = "Effacer les données";
+
+"pomodoro_card_title" = "Pomodoro cervical (Sans AirPods)";
+"pomodoro_state_idle" = "Prêt";
+"pomodoro_state_working" = "Concentration droite";
+"pomodoro_state_resting" = "Étirement cervical";
+"pomodoro_card_desc" = "25 min travail droit · 5 min étirement · Discipline & santé";
+"pomodoro_cycles_val" = "%d cycles complétés aujourd'hui";
+"pomodoro_btn_start" = "Démarrer";
+"pomodoro_btn_pause" = "Pause";
+"pomodoro_btn_reset" = "Réinitialiser";
+"pomodoro_start_speech" = "Pomodoro cervical démarré ! Tenez-vous droit, je vous préviendrai dans 25 minutes pour vous étirer.";
+
+"acc_gauge_label" = "Jauge de posture en temps réel";
+"acc_gauge_value" = "Inclinaison %.0f degrés, charge supplémentaire %.1f kg, état : %@";
+"acc_gauge_hint" = "Touchez deux fois pour voir l'analyse détaillée de la charge cervicale";
+"acc_calibrate_hint" = "Asseyez-vous droit et touchez deux fois pour étalonner la ligne de base";
+"acc_pet_label" = "Compagnon posture";
+"acc_pet_hint" = "Touchez deux fois pour écouter le message vocal du compagnon";
+"acc_energy_label" = "Pièces d'énergie Spine";
+"acc_persona_label" = "Personnalité active du compagnon";
+"acc_sensor_label" = "État du capteur AirPods";

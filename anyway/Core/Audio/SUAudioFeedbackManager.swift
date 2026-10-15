@@ -9,6 +9,32 @@ import UIKit
 import AudioToolbox
 import os
 
+/// 提醒提示声音效风格
+enum SUAlertSoundStyle: Int, CaseIterable, Sendable {
+    case droplet = 0    // 清脆水滴 (1103)
+    case woodenFish = 1 // 禅意木鱼 (1057)
+    case windChime = 2  // 清爽风铃 (1013)
+    case mechanical = 3 // 机械轻按 (1104)
+
+    var displayName: String {
+        switch self {
+        case .droplet: return SULocalized("sound_style_droplet", default: "清脆水滴")
+        case .woodenFish: return SULocalized("sound_style_wooden_fish", default: "禅意木鱼")
+        case .windChime: return SULocalized("sound_style_wind_chime", default: "清爽风铃")
+        case .mechanical: return SULocalized("sound_style_mechanical", default: "机械轻按")
+        }
+    }
+
+    var systemSoundId: SystemSoundID {
+        switch self {
+        case .droplet: return 1103
+        case .woodenFish: return 1057
+        case .windChime: return 1013
+        case .mechanical: return 1104
+        }
+    }
+}
+
 /// 音效与触觉反馈管理器 —— 负责在体态异常、校准成功及恢复挺拔时提供触感与声音提醒
 final class SUAudioFeedbackManager: @unchecked Sendable {
 
@@ -70,10 +96,15 @@ final class SUAudioFeedbackManager: @unchecked Sendable {
         lastAlertTimestamp = now
         lock.unlock()
 
-        // 播放系统清脆的水滴/敲击声 (1103: Tink / 1057: Pop)
-        AudioServicesPlaySystemSound(1103)
+        let style = SUAlertSoundStyle(rawValue: userDefaultsManager.alertSoundStyle) ?? .droplet
+        AudioServicesPlaySystemSound(style.systemSoundId)
         triggerHapticWarning()
-        SULogger.lifecycle.info("Played posture slump audio/haptic alert")
+        SULogger.lifecycle.info("Played posture slump alert with style: \(style.displayName)")
+    }
+
+    func previewSound(style: SUAlertSoundStyle) {
+        AudioServicesPlaySystemSound(style.systemSoundId)
+        triggerHapticLightTap()
     }
 
     func playRecoveryChime() {

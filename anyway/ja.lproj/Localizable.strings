@@ -522,3 +522,70 @@
 "unsupported_device_title" = "デバイスがモーショントラッキングに非対応";
 "unsupported_device_desc" = "SpineUpには空間ヘッドモーショントラッキングセンサー搭載のヘッドフォンが必要です：\n• AirPods Pro (第1/2世代)\n• AirPods (第3/4世代)\n• AirPods Max\n• Beats Fit Pro\n\n※車載Bluetooth、スピーカー、標準AirPods(第1/2世代)にはジャイロセンサーが搭載されていないため非対応です。";
 "go_to_settings" = "設定を開く";
+
+/* 2026-10 Feature Optimizations */
+"sensitivity_strict" = "厳格モード (12° / 5秒)";
+"sensitivity_standard" = "標準モード (15° / 10秒)";
+"sensitivity_relaxed" = "ゆったりモード (20° / 15秒)";
+"sensitivity_strict_desc" = "強力な姿勢改善・大型ディスプレイ作業向け";
+"sensitivity_standard_desc" = "おすすめ既定値・感度と日常の快適さを両立";
+"sensitivity_relaxed_desc" = "ノートPC作業・イラスト手描き・読書向け";
+"sensitivity_picker_title" = "アラート感度";
+"sensitivity_picker_msg" = "デスクやモニターの高さに合わせて前傾検知の感度を調整します";
+"settings_sensitivity_title" = "アラート感度";
+
+"sound_style_droplet" = "しずく音";
+"sound_style_wooden_fish" = "木魚の響き";
+"sound_style_wind_chime" = "風鈴の音";
+"sound_style_mechanical" = "メカニカルクリック";
+"sound_style_picker_title" = "通知サウンドを選択";
+"sound_style_picker_msg" = "うつむき姿勢が続いた時に鳴る優しい効果音";
+"settings_sound_style" = "通知サウンド";
+
+"settings_sedentary_title" = "座りすぎスタンド通知";
+"settings_sedentary_desc" = "45分間連続作業時に立ち上がりストレッチを促します";
+"sedentary_reminder_speech" = "%d分間連続で座っています！立ち上がって腰や首を伸ばし、水分補給をしましょう。";
+"notif_sedentary_title" = "座りすぎ通知：立ち上がってリフレッシュ";
+"notif_sedentary_body" = "連続で%d分間作業しています。立ち上がって30秒の首ストレッチをしましょう！";
+
+"settings_healthkit_title" = "Apple ヘルスケアと同期";
+"settings_healthkit_desc" = "正しい姿勢の集中時間をマインドフル時間として記録";
+"healthkit_auth_fail_title" = "ヘルスケア権限が必要です";
+"healthkit_auth_fail_msg" = "iOS「設定 > ヘルスケア」でSpineUpのマインドフル時間書き込みと歩数読み取りを許可してください。";
+
+"settings_daily_notif_title" = "毎日の姿勢リマインダー";
+"settings_daily_notif_desc" = "朝 09:30 装着通知 · 夕方 18:30 レポート通知";
+"notif_morning_title" = "おはようございます！今日も美姿勢で";
+"notif_morning_body" = "イヤホンを装着して、背筋を伸ばし集中力のある一日を始めましょう。";
+"notif_evening_title" = "本日の姿勢レポートが完成しました";
+"notif_evening_body" = "今日の首の負荷軽減成果を確認しましょう。美しい姿勢を讃えましょう！";
+"notif_auth_fail_title" = "通知が無効です";
+"notif_auth_fail_msg" = "iOS「設定 > 通知 > SpineUp」で通知を有効にしてください。";
+
+"settings_data_section" = "データ管理とプライバシー";
+"settings_export_csv_title" = "姿勢履歴データを書き出す (CSV)";
+"settings_clear_data_title" = "ローカルデータを全消去";
+"clear_data_confirm_title" = "すべてのデータを消去しますか？";
+"clear_data_confirm_msg" = "キャリブレーション基準、履歴レポート、エネルギーコインが完全に消去されます。この操作は取り消せません。";
+"clear_data_confirm_btn" = "消去する";
+
+"pomodoro_card_title" = "首ケアポモドーロ (イヤホンなし)";
+"pomodoro_state_idle" = "待機中";
+"pomodoro_state_working" = "姿勢集中中";
+"pomodoro_state_resting" = "首ストレッチ中";
+"pomodoro_card_desc" = "25分集中作業 · 5分首のストレッチ · 科学的に姿勢を守る";
+"pomodoro_cycles_val" = "本日完了: %d サイクル";
+"pomodoro_btn_start" = "集中開始";
+"pomodoro_btn_pause" = "一時停止";
+"pomodoro_btn_reset" = "リセット";
+"pomodoro_start_speech" = "首ケアポモドーロを開始しました！背筋を伸ばしてください。25分後にストレッチをお知らせします。";
+
+"acc_gauge_label" = "リアルタイム姿勢ゲージ";
+"acc_gauge_value" = "前傾角度 %.0f 度、頸椎負荷 %.1f kg、状態: %@";
+"acc_gauge_hint" = "ダブルタップで頸椎負荷の詳細分析を表示";
+"acc_calibrate_hint" = "背筋を伸ばしてダブルタップでゼロ点基準を校正";
+"acc_pet_label" = "姿勢ペットパートナー";
+"acc_pet_hint" = "ダブルタップでペットのセリフを聴く";
+"acc_energy_label" = "骨気エネルギーコイン";
+"acc_persona_label" = "現在のペット性格";
+"acc_sensor_label" = "AirPodsセンサー状態";

@@ -29,6 +29,10 @@ final class SUPostureMonitorViewModel: @unchecked Sendable {
     private(set) var latestQuote: String?
     private(set) var todayViolationsCount: Int = 0
 
+    // MARK: - 久坐超时追踪
+    private var consecutiveSittingSeconds: TimeInterval = 0.0
+    private var lastSedentaryAlertTime: Date?
+
     // MARK: - 回调绑定
     var onReadingUpdated: (@Sendable (SUPostureReading) -> Void)?
     var onConnectionStateChanged: (@Sendable (SUHeadphoneConnectionState) -> Void)?
@@ -121,6 +125,12 @@ final class SUPostureMonitorViewModel: @unchecked Sendable {
             // 端坐状态下每帧累加挺拔能量
             if reading.state == .upright {
                 self.energyManager.trackUprightFrame(deltaSeconds: 1.0 / 15.0)
+            }
+
+            // 持续坐姿累计与久坐站立超时判定
+            if reading.state == .upright || reading.state == .slightSlump || reading.state == .severeSlump {
+                self.consecutiveSittingSeconds += (1.0 / 15.0)
+                self.checkSedentaryReminder(seconds: self.consecutiveSittingSeconds)
             }
 
             // 实时记录到每日会话持久化引擎中
@@ -407,5 +417,29 @@ final class SUPostureMonitorViewModel: @unchecked Sendable {
 
     var currentStreakDays: Int {
         return energyManager.streakDays
+    }
+
+    // MARK: - 久坐超时判定与提示
+    private func checkSedentaryReminder(seconds: TimeInterval) {
+        guard userDefaultsManager.isSedentaryReminderEnabled else { return }
+        let thresholdSeconds = Double(userDefaultsManager.sedentaryIntervalMinutes * 60)
+        guard seconds >= thresholdSeconds else { return }
+
+        let now = Date()
+        if let last = lastSedentaryAlertTime, now.timeIntervalSince(last) < 1800.0 {
+            return
+        }
+        lastSedentaryAlertTime = now
+
+        let minutes = userDefaultsManager.sedentaryIntervalMinutes
+        let reminderText = String(format: SULocalized("sedentary_reminder_speech", default: "主人，您已连续工作了 %d 分钟啦！站起来伸展一下腰椎，活动一下吧。"), minutes)
+        speechManager.speak(text: reminderText, persona: activePersona, force: true)
+        audioFeedbackManager.triggerHapticWarning()
+        SULocalNotificationManager.shared.sendSedentaryNotification(minutes: minutes)
+    }
+
+    /// 重置连续久坐计时（站立、做完微操舒展操时调用）
+    func resetConsecutiveSitting() {
+        consecutiveSittingSeconds = 0.0
     }
 }
