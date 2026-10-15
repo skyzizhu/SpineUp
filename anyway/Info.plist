@@ -55,5 +55,7 @@
 	<string>SpineUp synchronizes your upright focus sessions as Mindful Sessions in Apple Health.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>SpineUp needs permission to save posture report cards and achievements to your Photos.</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 </dict>
 </plist>
