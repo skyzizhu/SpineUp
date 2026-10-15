@@ -1166,27 +1166,33 @@ final class SUSettingsSwitchRowView: UIView {
         subtitleLabel.text = subtitle
 
         iconImageView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(14)
+            make.centerY.equalToSuperview()
             make.leading.equalToSuperview().offset(14)
             make.size.equalTo(24)
         }
 
-        titleLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(10)
-            make.leading.equalTo(iconImageView.snp.trailing).offset(12)
-            make.trailing.lessThanOrEqualTo(toggleSwitch.snp.leading).offset(-8)
-        }
-
-        subtitleLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(2)
-            make.leading.equalTo(titleLabel.snp.leading)
-            make.trailing.lessThanOrEqualTo(toggleSwitch.snp.leading).offset(-8)
-            make.bottom.lessThanOrEqualToSuperview().offset(-10)
-        }
+        toggleSwitch.setContentHuggingPriority(.required, for: .horizontal)
+        toggleSwitch.setContentCompressionResistancePriority(.required, for: .horizontal)
 
         toggleSwitch.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.trailing.equalToSuperview().offset(-14)
+        }
+
+        titleLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+        titleLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(10)
+            make.leading.equalTo(iconImageView.snp.trailing).offset(12)
+            make.trailing.lessThanOrEqualTo(toggleSwitch.snp.leading).offset(-12)
+        }
+
+        subtitleLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+        subtitleLabel.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom).offset(2)
+            make.leading.equalTo(titleLabel.snp.leading)
+            make.trailing.equalTo(toggleSwitch.snp.leading).offset(-12)
+            make.bottom.equalToSuperview().offset(-10).priority(.medium)
+            make.bottom.lessThanOrEqualToSuperview().offset(-10)
         }
 
         toggleSwitch.addTarget(self, action: #selector(handleSwitch(_:)), for: .valueChanged)
