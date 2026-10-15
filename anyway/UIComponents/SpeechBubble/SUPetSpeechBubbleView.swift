@@ -30,8 +30,6 @@ final class SUPetSpeechBubbleView: UIView {
         label.numberOfLines = 0
         label.textAlignment = .natural
         label.lineBreakMode = .byWordWrapping
-        label.adjustsFontSizeToFitWidth = true
-        label.minimumScaleFactor = 0.85
         return label
     }()
 
@@ -67,25 +65,32 @@ final class SUPetSpeechBubbleView: UIView {
         layer.shadowRadius = 12
 
         addSubview(blurContainerView)
-        blurContainerView.contentView.addSubview(speakerIconImageView)
-        blurContainerView.contentView.addSubview(textLabel)
+        addSubview(speakerIconImageView)
+        addSubview(textLabel)
 
+        blurContainerView.isUserInteractionEnabled = false
         blurContainerView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
-            make.height.greaterThanOrEqualTo(36).priority(.high)
         }
 
         speakerIconImageView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(10).priority(.high)
+            make.top.equalToSuperview().offset(10)
             make.leading.equalToSuperview().offset(12)
-            make.size.equalTo(18).priority(.high)
+            make.size.equalTo(18)
         }
 
+        textLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+        textLabel.setContentHuggingPriority(.defaultLow, for: .horizontal)
+
         textLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(8).priority(.high)
-            make.bottom.equalToSuperview().offset(-8).priority(.high)
+            make.top.equalToSuperview().offset(9)
             make.leading.equalTo(speakerIconImageView.snp.trailing).offset(8)
-            make.trailing.equalToSuperview().offset(-12).priority(.high)
+            make.trailing.equalToSuperview().offset(-14)
+            make.bottom.equalToSuperview().offset(-9)
+        }
+
+        snp.makeConstraints { make in
+            make.height.greaterThanOrEqualTo(38)
         }
 
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
