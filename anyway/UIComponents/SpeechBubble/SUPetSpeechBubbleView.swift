@@ -30,6 +30,8 @@ final class SUPetSpeechBubbleView: UIView {
         label.numberOfLines = 0
         label.textAlignment = .natural
         label.lineBreakMode = .byWordWrapping
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.85
         return label
     }()
 

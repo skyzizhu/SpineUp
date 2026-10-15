@@ -196,6 +196,8 @@ final class SULanguageFollowSystemRowView: UIView {
         let label = UILabel()
         label.font = .systemFont(ofSize: 16, weight: .regular)
         label.textColor = .label
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.85
         return label
     }()
 
@@ -203,6 +205,8 @@ final class SULanguageFollowSystemRowView: UIView {
         let label = UILabel()
         label.font = .systemFont(ofSize: 12, weight: .regular)
         label.textColor = .secondaryLabel
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.85
         return label
     }()
 
@@ -345,6 +349,8 @@ final class SULanguageItemRowView: UIView {
         let label = UILabel()
         label.font = .systemFont(ofSize: 16, weight: .regular)
         label.textColor = .label
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.85
         return label
     }()
 
@@ -352,6 +358,8 @@ final class SULanguageItemRowView: UIView {
         let label = UILabel()
         label.font = .systemFont(ofSize: 12, weight: .regular)
         label.textColor = .secondaryLabel
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.85
         return label
     }()
 

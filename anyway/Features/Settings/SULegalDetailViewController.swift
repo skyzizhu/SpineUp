@@ -50,6 +50,8 @@ final class SULegalDetailViewController: SUBaseViewController {
         label.textColor = .label
         label.textAlignment = .center
         label.numberOfLines = 0
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.85
         return label
     }()
 

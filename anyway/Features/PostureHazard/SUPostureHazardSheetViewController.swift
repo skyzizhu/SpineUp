@@ -85,6 +85,8 @@ final class SUPostureHazardSheetViewController: SUBaseViewController {
         label.font = .systemFont(ofSize: 12, weight: .medium)
         label.textColor = .secondaryLabel
         label.textAlignment = .center
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.85
         return label
     }()
 
@@ -96,6 +98,8 @@ final class SUPostureHazardSheetViewController: SUBaseViewController {
             label.font = .systemFont(ofSize: 26, weight: .heavy)
         }
         label.textAlignment = .center
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.85
         return label
     }()
 
@@ -111,6 +115,8 @@ final class SUPostureHazardSheetViewController: SUBaseViewController {
         label.font = .systemFont(ofSize: 12, weight: .medium)
         label.textColor = .secondaryLabel
         label.textAlignment = .center
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.85
         return label
     }()
 
@@ -122,6 +128,8 @@ final class SUPostureHazardSheetViewController: SUBaseViewController {
             label.font = .systemFont(ofSize: 26, weight: .heavy)
         }
         label.textAlignment = .center
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.85
         return label
     }()
 
@@ -355,6 +363,8 @@ final class SUPostureHazardSheetViewController: SUBaseViewController {
         config.imagePadding = 8
 
         let btn = UIButton(configuration: config)
+        btn.titleLabel?.adjustsFontSizeToFitWidth = true
+        btn.titleLabel?.minimumScaleFactor = 0.85
         btn.layer.cornerRadius = 16
         btn.layer.cornerCurve = .continuous
         btn.layer.shadowColor = UIColor.systemGreen.cgColor

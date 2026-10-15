@@ -35,6 +35,8 @@ final class SUPracticeBottomControlBarView: UIView {
         } else {
             btn.titleLabel?.font = .systemFont(ofSize: 16, weight: .bold)
         }
+        btn.titleLabel?.adjustsFontSizeToFitWidth = true
+        btn.titleLabel?.minimumScaleFactor = 0.8
         btn.backgroundColor = UIColor.systemGreen.withAlphaComponent(0.15)
         btn.setTitleColor(.systemGreen, for: .normal)
         btn.layer.cornerRadius = 24

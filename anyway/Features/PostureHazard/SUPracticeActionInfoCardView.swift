@@ -30,6 +30,8 @@ final class SUPracticeActionInfoCardView: UIView {
         label.textColor = .label
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.85
         return label
     }()
 
@@ -39,6 +41,8 @@ final class SUPracticeActionInfoCardView: UIView {
         label.textColor = .secondaryLabel
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.85
         return label
     }()
 

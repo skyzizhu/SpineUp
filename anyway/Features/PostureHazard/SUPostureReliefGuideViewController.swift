@@ -371,6 +371,8 @@ final class SUPostureReliefGuideViewController: SUBaseViewController {
         label.textColor = .systemGreen
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.85
         return label
     }()
 
@@ -382,6 +384,8 @@ final class SUPostureReliefGuideViewController: SUBaseViewController {
         label.layer.cornerRadius = 6
         label.layer.masksToBounds = true
         label.textAlignment = .center
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.85
         return label
     }()
 
@@ -396,6 +400,8 @@ final class SUPostureReliefGuideViewController: SUBaseViewController {
         label.textColor = .label
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.85
         return label
     }()
 

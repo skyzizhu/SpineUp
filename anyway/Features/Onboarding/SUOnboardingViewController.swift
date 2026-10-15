@@ -76,6 +76,8 @@ final class SUOnboardingViewController: SUBaseViewController {
         label.textColor = .label
         label.textAlignment = .center
         label.numberOfLines = 0
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.85
         return label
     }()
 
@@ -97,6 +99,8 @@ final class SUOnboardingViewController: SUBaseViewController {
         config.contentInsets = NSDirectionalEdgeInsets(top: 14, leading: 24, bottom: 14, trailing: 24)
         let button = UIButton(configuration: config)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16.5, weight: .semibold)
+        button.titleLabel?.adjustsFontSizeToFitWidth = true
+        button.titleLabel?.minimumScaleFactor = 0.85
         button.layer.shadowColor = UIColor.systemBlue.cgColor
         button.layer.shadowOpacity = 0.28
         button.layer.shadowOffset = CGSize(width: 0, height: 4)

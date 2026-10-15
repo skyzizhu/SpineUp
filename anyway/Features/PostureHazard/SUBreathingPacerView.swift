@@ -86,6 +86,8 @@ final class SUBreathingPacerView: UIView {
         label.textColor = .secondaryLabel
         label.textAlignment = .center
         label.text = SULocalized("practice_seconds_left", default: "秒剩余")
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.8
         return label
     }()
 

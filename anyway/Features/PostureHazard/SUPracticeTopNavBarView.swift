@@ -40,6 +40,8 @@ final class SUPracticeTopNavBarView: UIView {
         label.font = .systemFont(ofSize: 12, weight: .bold)
         label.textColor = .systemOrange
         label.textAlignment = .center
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.8
         return label
     }()
 
@@ -64,6 +66,8 @@ final class SUPracticeTopNavBarView: UIView {
         label.font = .systemFont(ofSize: 11.5, weight: .semibold)
         label.textColor = .label
         label.text = SULocalized("practice_mode_headphone", default: "🎧 耳机体态感知")
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.8
         return label
     }()
 

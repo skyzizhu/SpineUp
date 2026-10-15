@@ -60,6 +60,8 @@ final class SUAutoLaunchGuideViewController: SUBaseViewController {
         label.textAlignment = .center
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.85
         return label
     }()
 
@@ -84,6 +86,8 @@ final class SUAutoLaunchGuideViewController: SUBaseViewController {
         label.textColor = .label
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.85
         return label
     }()
 
@@ -443,6 +447,8 @@ final class SUAutoLaunchStepRowView: UIView {
         label.textColor = .label
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.85
         return label
     }()
 
