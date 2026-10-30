@@ -49,10 +49,10 @@
 "metrics_longest_streak" = "Record de Posture Droite";
 "metrics_violations" = "Alertes de Voûtement";
 "metrics_extra_load" = "Charge Cervicale Supplémentaire";
-"doctor_prescription" = "Prescription IA";
+"doctor_prescription" = "Conseil Postural IA";
 "metaphor_title" = "Équivalence Concrète de Pression";
-"diagnosis_card_title" = "《Carnet Médical Postural du Jour》";
-"clinical_diagnosis" = "Diagnostic : %@";
+"diagnosis_card_title" = "《Bilan Postural du Jour》";
+"clinical_diagnosis" = "Évaluation posturale : %@";
 "pet_quote_format" = "%@ vous dit : « %@ »";
 "score_unit" = "%d Pts";
 "times_unit" = "%d Fois";
@@ -69,11 +69,11 @@
 "grade_d_title" = "Humain Pliable";
 
 /* Prescriptions */
-"prescription_s" = "Prescription : Posture exemplaire ! Offrez-vous une boisson bien méritée.";
-"prescription_a" = "Prescription : Regardez au loin 2 fois par jour, faites 3 étirements du buste.";
-"prescription_b" = "Prescription : 3 respirations profondes ! Surélevez l'écran de 5 cm pour rentrer le menton.";
-"prescription_c" = "Prescription : Levez-vous 2 minutes toutes les 45 minutes et étirez votre cou.";
-"prescription_d" = "Prescription : Kinésithérapeute vivement conseillé ! Écoutez votre animal virtuel !";
+"prescription_s" = "Conseil : Posture exemplaire ! Offrez-vous une boisson bien méritée.";
+"prescription_a" = "Conseil : Regardez au loin 2 fois par jour, faites 3 étirements du buste.";
+"prescription_b" = "Conseil : 3 respirations profondes ! Surélevez l'écran de 5 cm pour rentrer le menton.";
+"prescription_c" = "Conseil : Levez-vous 2 minutes toutes les 45 minutes et étirez votre cou.";
+"prescription_d" = "Conseil : Repos bien mérité conseillé ! Écoutez les rappels de votre animal virtuel !";
 
 /* Diagnoses */
 "diagnosis_s" = "Discipline Posturale d'Élite";
@@ -367,9 +367,9 @@
 /* Additional Screen Elements */
 "settings_streak_days" = "Jours consécutifs";
 "settings_total_coins" = "Total Pièces";
-"clinical_diagnosis_tag" = "Évaluation posturale clinique";
+"clinical_diagnosis_tag" = "Évaluation posturale ergonomique";
 "report_archive_stamp" = "Note %@ · Certifié";
-"diagnosis_header_subtitle" = "ÉVALUATION POSTURALE CLINIQUE";
+"diagnosis_header_subtitle" = "ERGONOMIC POSTURE ASSESSMENT";
 "relief_guide_badge" = "Soulagement immédiat";
 "hazard_angle_title" = "Angle d'inclinaison";
 "hazard_load_title" = "Charge cervicale supplémentaire";
@@ -413,7 +413,7 @@
 
 
 /* Weekly Report & Localization Enhancements */
-"prescription_guide_title" = "Ordonnance IA · Guide de rééducation";
+"prescription_guide_title" = "Conseil Postural IA · Guide de détente";
 "weekly_metric_wear" = "Suivi cumulé";
 "weekly_metric_alleviated" = "Charge soulagée";
 "weekly_metric_fatigue" = "Pic de fatigue";

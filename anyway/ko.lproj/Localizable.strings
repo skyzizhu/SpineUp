@@ -49,10 +49,10 @@
 "metrics_longest_streak" = "최장 연속 바른 자세";
 "metrics_violations" = "거북목 경고 횟수";
 "metrics_extra_load" = "경추 추가 하중";
-"doctor_prescription" = "AI 의사 처방전";
+"doctor_prescription" = "AI 바른 자세 조언";
 "metaphor_title" = "경추 하중 일상 비유 환산";
-"diagnosis_card_title" = "《오늘의 척추 진료 차트》";
-"clinical_diagnosis" = "임상 진단: %@";
+"diagnosis_card_title" = "《오늘의 자세 리포트》";
+"clinical_diagnosis" = "자세 평가: %@";
 "pet_quote_format" = "%@의 메시지: \"%@\"";
 "score_unit" = "%d 점";
 "times_unit" = "%d 회";
@@ -69,11 +69,11 @@
 "grade_d_title" = "폴더블 인간";
 
 /* Prescriptions */
-"prescription_s" = "처방: 훌륭합니다! 꼿꼿한 척추를 위해 달콤한 음료 한 잔으로 보상하세요.";
-"prescription_a" = "처방: 하루 2회 먼 곳을 바라보고, 가슴 활짝 펴기 스트레칭을 3회 하세요.";
-"prescription_b" = "처방: 즉시 심호흡 3회 실시! 모니터 높이를 5cm 높여 턱을 당기세요.";
-"prescription_c" = "처방: 45분마다 2분간 일어서서 천장을 바라보며 목 압력을 푸세요.";
-"prescription_d" = "처방: 도수치료 긴급 권고! 펫의 경고를 무시하면 코인이 차감됩니다!";
+"prescription_s" = "조언: 훌륭합니다! 꼿꼿한 척추를 위해 달콤한 음료 한 잔으로 보상하세요.";
+"prescription_a" = "조언: 하루 2회 먼 곳을 바라보고, 가슴 활짝 펴기 스트레칭을 3회 하세요.";
+"prescription_b" = "조언: 즉시 심호흡 3회 실시! 모니터 높이를 5cm 높여 턱을 당기세요.";
+"prescription_c" = "조언: 45분마다 2분간 일어서서 천장을 바라보며 목 압력을 푸세요.";
+"prescription_d" = "조언: 충분한 휴식이 필요합니다! 펫의 알림에 맞춰 몸을 스트레칭하세요!";
 
 /* Diagnoses */
 "diagnosis_s" = "모범 척추 자율 규율 표창자";
@@ -369,7 +369,7 @@
 "settings_total_coins" = "누적 코인";
 "clinical_diagnosis_tag" = "자세 종합 평가";
 "report_archive_stamp" = "등급 %@ · 인증";
-"diagnosis_header_subtitle" = "CLINICAL POSTURE ASSESSMENT";
+"diagnosis_header_subtitle" = "ERGONOMIC POSTURE ASSESSMENT";
 "relief_guide_badge" = "즉시 완화";
 "hazard_angle_title" = "현재 기울기 각도";
 "hazard_load_title" = "경추 추가 하중";
@@ -413,7 +413,7 @@
 
 
 /* Weekly Report & Localization Enhancements */
-"prescription_guide_title" = "AI 맞춤 처방 · 회복 가이드";
+"prescription_guide_title" = "AI 바른 자세 가이드 · 스트레칭 안내";
 "weekly_metric_wear" = "누적 모니터링";
 "weekly_metric_alleviated" = "완화된 부담";
 "weekly_metric_fatigue" = "피로 붕괴 구간";

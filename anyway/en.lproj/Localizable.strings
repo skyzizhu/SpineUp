@@ -61,10 +61,10 @@
 "metrics_longest_streak" = "Longest Streak";
 "metrics_violations" = "Slump Alerts";
 "metrics_extra_load" = "Extra Cervical Load";
-"doctor_prescription" = "AI Prescription";
+"doctor_prescription" = "AI Posture Advice";
 "metaphor_title" = "Life Force Equivalent";
-"diagnosis_card_title" = "Daily Spine Medical Record";
-"clinical_diagnosis" = "Diagnosis: %@";
+"diagnosis_card_title" = "Daily Ergonomic Posture Report";
+"clinical_diagnosis" = "Posture Assessment: %@";
 "pet_quote_format" = "%@ says: \"%@\"";
 "score_unit" = "%d Pts";
 "times_unit" = "%d Times";
@@ -81,11 +81,11 @@
 "grade_d_title" = "Foldable Human";
 
 /* Prescriptions */
-"prescription_s" = "Prescription: Outstanding posture! Reward yourself with a favorite beverage.";
-"prescription_a" = "Prescription: Look into the distance twice daily, perform 3 chest opener stretches.";
-"prescription_b" = "Prescription: Take 3 deep breaths immediately; elevate your monitor by 5 cm.";
-"prescription_c" = "Prescription: Stand up for 2 minutes every 45 minutes; stretch toward the ceiling.";
-"prescription_d" = "Prescription: Urgent physical therapy advised! Follow pet alerts strictly!";
+"prescription_s" = "Tip: Outstanding posture! Reward yourself with a favorite beverage.";
+"prescription_a" = "Tip: Look into the distance twice daily, perform 3 chest opener stretches.";
+"prescription_b" = "Tip: Take 3 deep breaths immediately; elevate your monitor by 5 cm.";
+"prescription_c" = "Tip: Stand up for 2 minutes every 45 minutes; stretch toward the ceiling.";
+"prescription_d" = "Tip: High fatigue detected! Rest well and follow pet posture alerts strictly!";
 
 /* Diagnoses */
 "diagnosis_s" = "Exemplary Spine Discipline";
@@ -228,8 +228,8 @@
 "ai_perspective_tag" = "AI Insights ↗";
 "ai_tag_title" = "✨ AI Real-Time Biomechanics";
 "ai_analyzing_hint" = "✨ AI is calculating mechanical cervical impact & degeneration projections...";
-"ai_prescription_badge" = "✨ AI Custom Relief Prescription";
-"ai_hazard_headline_fmt" = "[AI Diagnosis] Slump %.1f° · Extra Load +%.1f kg";
+"ai_prescription_badge" = "✨ AI Custom Relief Plan";
+"ai_hazard_headline_fmt" = "[AI Posture Assessment] Slump %.1f° · Extra Load +%.1f kg";
 "ai_metaphor_extreme" = "💥 Equivalent to hanging a 24-inch metal monitor from your neck! Every 10 seconds pushes your C5-C6 discs to critical limit.";
 "ai_metaphor_heavy" = "⚠️ Equivalent to a heavy crate of 24 water bottles (~15kg) pressing on your neck and trapezius.";
 "ai_metaphor_moderate" = "🌿 Equivalent to carrying an adult fat ginger cat (~9kg) on your neck. Micro-damage is quietly accumulating.";
@@ -237,7 +237,7 @@
 "ai_appearance_severe" = "• Dowager's Hump Warning: Compensatory fat accumulation at cervical-thoracic junction; neck looks shorter and thicker.\n• Collapsing Jawline: Forward head stretches and weakens the platysma muscle, causing double chin regardless of body fat.\n• Turtle Neck Locked: %d min of forward head today; sternocleidomastoid chronically shortened, forcing an awkward forward poke.";
 "ai_appearance_moderate" = "• Mild Forward Slump: Upper trapezius ischemic and tight; causes sloped shoulders in fitted clothes.\n• Jawline Muscle Fatigue: Deep neck flexors inhibited, pulling jawline downward.\n• Recommendation: %d slumps recorded today; activate rhomboids immediately.";
 "ai_appearance_good" = "• Sharp Jawline: Neck angle in ideal physiological zone; jawline tight and firm.\n• Swan Neck Maintained: Collarbones and shoulders relaxed, posture upright and poised.";
-"ai_timeline_severe" = "• 30 Minutes: Trapezius blood flow reduced by 60%%; lactic acid buildup and tension headaches.\n• 1~3 Months: Straightened cervical spine (loss of lordosis); compensatory thoracic kyphosis.\n• 1~2+ Years: C5-C7 disc degeneration and herniation; radiating numbness down arms.";
+"ai_timeline_severe" = "• 30 Minutes: Trapezius blood flow reduced by 60%%; muscle stiffness and fatigue.\n• 1~3 Months: Straightened neck alignment; compensatory rounded shoulders.\n• 1~2+ Years: Chronic neck muscle strain and persistent shoulder tightness.";
 "ai_timeline_mild" = "• Sustained Upright: Intervertebral discs rehydrate; healthy cerebral blood flow.\n• 1~3 Months: Muscle memory formed; effortless poise throughout long workdays.";
 "ai_relief_diag_heavy" = "⚡️ AI detected heavy resistance load on cervical spine (+%.1f kg). Upper trapezius spasm detected, needs retraction countermove!";
 "ai_relief_diag_light" = "🌿 Current posture is healthy. This 30-second drill awakens deep core muscle memory and prevents fatigue.";
@@ -378,9 +378,9 @@
 /* Additional Screen Elements */
 "settings_streak_days" = "Streak Days";
 "settings_total_coins" = "Total Spine Coins";
-"clinical_diagnosis_tag" = "Clinical Posture Assessment";
+"clinical_diagnosis_tag" = "Ergonomic Posture Assessment";
 "report_archive_stamp" = "Grade %@ · Certified";
-"diagnosis_header_subtitle" = "CLINICAL POSTURE ASSESSMENT";
+"diagnosis_header_subtitle" = "ERGONOMIC POSTURE ASSESSMENT";
 "relief_guide_badge" = "Instant Relief";
 "hazard_angle_title" = "Forward Tilt Angle";
 "hazard_load_title" = "Extra Cervical Load";
@@ -453,7 +453,7 @@
 
 
 /* Weekly Report & Localization Enhancements */
-"prescription_guide_title" = "AI Prescription · Recovery Guide";
+"prescription_guide_title" = "AI Posture Advice · Relief Guide";
 "weekly_metric_wear" = "Total Monitored";
 "weekly_metric_alleviated" = "Load Relieved";
 "weekly_metric_fatigue" = "Fatigue Peak";

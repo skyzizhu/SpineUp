@@ -358,7 +358,7 @@ final class SUShareCardView: UIView {
         metaphorIconImageView.image = UIImage(systemName: report.equivalentItem.iconSystemName, withConfiguration: config)
         metaphorTextLabel.text = report.equivalentItem.descriptionText
 
-        let diagFormat = SULocalized("clinical_diagnosis", default: "诊断：%@")
+        let diagFormat = SULocalized("clinical_diagnosis", default: "体态评估：%@")
         diagnosisTitleLabel.text = String(format: diagFormat, report.diagnosisTitle)
         personaCommentLabel.text = "「\(report.personaComment)」"
     }

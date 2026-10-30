@@ -366,7 +366,7 @@ final class SUPostureReliefGuideViewController: SUBaseViewController {
 
     private let aiPrescriptionBadgeLabel: UILabel = {
         let label = UILabel()
-        label.text = SULocalized("ai_prescription_badge", default: "✨ AI 专属急救处方 · 毫秒级卸荷")
+        label.text = SULocalized("ai_prescription_badge", default: "✨ AI 专属舒缓方案 · 毫秒级卸荷")
         label.font = .systemFont(ofSize: 11, weight: .bold)
         label.textColor = .systemGreen
         label.numberOfLines = 0

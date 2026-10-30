@@ -49,10 +49,10 @@
 "metrics_longest_streak" = "أطول فترة استقامة";
 "metrics_violations" = "تنبيهات الانحناء";
 "metrics_extra_load" = "الحمل الزائد على الرقبة";
-"doctor_prescription" = "وصفة الذكاء الاصطناعي";
+"doctor_prescription" = "نصيحة الذكاء الاصطناعي للقوام";
 "metaphor_title" = "مكافئ الحمل الحياتي";
-"diagnosis_card_title" = "《السجل الطبي اليومي للقوام》";
-"clinical_diagnosis" = "التشخيص السريري: %@";
+"diagnosis_card_title" = "《تقرير القامة اليومي》";
+"clinical_diagnosis" = "تقييم القامة: %@";
 "pet_quote_format" = "رسالة من %@: «%@»";
 "score_unit" = "%d نقطة";
 "times_unit" = "%d مرات";
@@ -69,11 +69,11 @@
 "grade_d_title" = "إنسان قابل للطي";
 
 /* Prescriptions */
-"prescription_s" = "الوصفة: قوام ممتاز! كافئ نفسك بمشروبك المفضل اليوم.";
-"prescription_a" = "الوصفة: انظر للأفق مرتين يومياً، ومارس تمارين فتح الصدر 3 مرات.";
-"prescription_b" = "الوصفة: خذ 3 أنفاس عميقة فوراً؛ وارفع شاشتك 5 سم لتعديل الذقن.";
-"prescription_c" = "الوصفة: قف لمدة دقيقتين كل 45 دقيقة وانظر للسقف لتخفيف الضغط.";
-"prescription_d" = "الوصفة: استشر أخصائي علاج طبيعي فوراً! اتبع تنبيهات الحيوان الأليف!";
+"prescription_s" = "النصيحة: قوام ممتاز! كافئ نفسك بمشروبك المفضل اليوم.";
+"prescription_a" = "النصيحة: انظر للأفق مرتين يومياً، ومارس تمارين فتح الصدر 3 مرات.";
+"prescription_b" = "النصيحة: خذ 3 أنفاس عميقة فوراً؛ وارفع شاشتك 5 سم لتعديل الذقن.";
+"prescription_c" = "النصيحة: قف لمدة دقيقتين كل 45 دقيقة وانظر للسقف لتخفيف الضغط.";
+"prescription_d" = "النصيحة: ينصح بأخذ قسط كافٍ من الراحة! اتبع تنبيهات حيوانك الأليف!";
 
 /* Diagnoses */
 "diagnosis_s" = "نموذج مثالي للانضباط الفقري";
@@ -367,9 +367,9 @@
 /* Additional Screen Elements */
 "settings_streak_days" = "أيام متتالية";
 "settings_total_coins" = "إجمالي العملات";
-"clinical_diagnosis_tag" = "تقييم القامة السريري";
+"clinical_diagnosis_tag" = "تقييم القامة المريح";
 "report_archive_stamp" = "الدرجة %@ · معتمد";
-"diagnosis_header_subtitle" = "التقييم السريري لوضعية الجسم";
+"diagnosis_header_subtitle" = "ERGONOMIC POSTURE ASSESSMENT";
 "relief_guide_badge" = "راحة فورية";
 "hazard_angle_title" = "زاوية الميل للأمام";
 "hazard_load_title" = "حمل العنق الإضافي";
@@ -413,7 +413,7 @@
 
 
 /* Weekly Report & Localization Enhancements */
-"prescription_guide_title" = "وصفة الذكاء الاصطناعي · دليل التعافي";
+"prescription_guide_title" = "نصيحة الذكاء الاصطناعي · دليل التخفيف";
 "weekly_metric_wear" = "المراقبة التراكمية";
 "weekly_metric_alleviated" = "تخفيف العبء";
 "weekly_metric_fatigue" = "ذروة الإجهاد";

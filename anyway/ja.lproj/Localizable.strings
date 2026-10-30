@@ -49,10 +49,10 @@
 "metrics_longest_streak" = "最長連続美姿勢";
 "metrics_violations" = "前傾警告回数";
 "metrics_extra_load" = "頸椎への追加負荷";
-"doctor_prescription" = "AI ドクター処方箋";
+"doctor_prescription" = "AI 姿勢アドバイス";
 "metaphor_title" = "首への負荷・生活換算";
-"diagnosis_card_title" = "《本日の姿勢カルテ》";
-"clinical_diagnosis" = "臨床診断：%@";
+"diagnosis_card_title" = "《本日の姿勢レポート》";
+"clinical_diagnosis" = "姿勢判定：%@";
 "pet_quote_format" = "%@からのメッセージ：「%@」";
 "score_unit" = "%d 点";
 "times_unit" = "%d 回";
@@ -69,11 +69,11 @@
 "grade_d_title" = "折りたたみスマホ人間";
 
 /* Prescriptions */
-"prescription_s" = "処方箋：素晴らしい姿勢です！ご褒美に美味しいドリンクを楽しみましょう。";
-"prescription_a" = "処方箋：1日2回遠くを眺め、胸を開くストレッチを3セット行いましょう。";
-"prescription_b" = "処方箋：今すぐ深呼吸を3回。画面の高さを5cm上げて顎を引きましょう。";
-"prescription_c" = "処方箋：45分ごとに2分立ち上がり、天井を見上げて首の圧力を解放しましょう。";
-"prescription_d" = "処方箋：整体師の受診を推奨！ペットの警告に従わないとコイン減点です！";
+"prescription_s" = "アドバイス：素晴らしい姿勢です！ご褒美に美味しいドリンクを楽しみましょう。";
+"prescription_a" = "アドバイス：1日2回遠くを眺め、胸を開くストレッチを3セット行いましょう。";
+"prescription_b" = "アドバイス：今すぐ深呼吸を3回。画面の高さを5cm上げて顎を引きましょう。";
+"prescription_c" = "アドバイス：45分ごとに2分立ち上がり、天井を見上げて首の圧力を解放しましょう。";
+"prescription_d" = "アドバイス：十分な休憩が必要です！ペットのアドバイスに従ってリフレッシュしましょう！";
 
 /* Diagnoses */
 "diagnosis_s" = "模範的姿勢マスター";
@@ -367,9 +367,9 @@
 /* Additional Screen Elements */
 "settings_streak_days" = "連続記録";
 "settings_total_coins" = "累計コイン";
-"clinical_diagnosis_tag" = "姿勢総合判定";
+"clinical_diagnosis_tag" = "姿勢総合評価";
 "report_archive_stamp" = "評価 %@ · 認定";
-"diagnosis_header_subtitle" = "CLINICAL POSTURE ASSESSMENT";
+"diagnosis_header_subtitle" = "ERGONOMIC POSTURE ASSESSMENT";
 "relief_guide_badge" = "即時緩和";
 "hazard_angle_title" = "現在の前傾角度";
 "hazard_load_title" = "頸椎への追加負荷";
@@ -413,7 +413,7 @@
 
 
 /* Weekly Report & Localization Enhancements */
-"prescription_guide_title" = "AI処方箋・リハビリガイド";
+"prescription_guide_title" = "AI 姿勢アドバイス · リフレッシュ指針";
 "weekly_metric_wear" = "累計モニタリング";
 "weekly_metric_alleviated" = "軽減負荷";
 "weekly_metric_fatigue" = "疲労ピーク期";

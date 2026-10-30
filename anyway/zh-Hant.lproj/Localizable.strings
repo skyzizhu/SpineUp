@@ -61,10 +61,10 @@
 "metrics_longest_streak" = "最長連續挺拔";
 "metrics_violations" = "低頭預警次數";
 "metrics_extra_load" = "額外頸椎負荷";
-"doctor_prescription" = "AI 擬人處方";
+"doctor_prescription" = "AI 挺拔建議";
 "metaphor_title" = "頸椎受力生活化換算";
-"diagnosis_card_title" = "《今日骨氣病歷單》";
-"clinical_diagnosis" = "臨床診斷：%@";
+"diagnosis_card_title" = "《今日挺拔表現單》";
+"clinical_diagnosis" = "體態評估：%@";
 "pet_quote_format" = "%@寄語：「%@」";
 "score_unit" = "%d 分";
 "times_unit" = "%d 次";
@@ -81,11 +81,11 @@
 "grade_d_title" = "折疊屏人類";
 
 /* Prescriptions */
-"prescription_s" = "處方：繼續保持！骨氣傲然，建議每週犒賞自己一杯奶茶以示表揚。";
-"prescription_a" = "處方：每日遠眺 2 次，工作間隙做 3 組抗阻力擴胸伸展動作。";
-"prescription_b" = "處方：立即執行深呼吸 3 次，將電腦螢幕墊高 5 公分，避免下巴前凸。";
-"prescription_c" = "處方：建議每工作 45 分鐘起立活動 2 分鐘，仰望天花板 20 秒釋放頸椎壓力。";
-"prescription_d" = "處方：緊急呼叫物理治療師！嚴格遵從寵物提醒，違規一次罰沒小魚乾/扣骨氣幣！";
+"prescription_s" = "建議：繼續保持！骨氣傲然，建議每週犒賞自己一杯奶茶以示表揚。";
+"prescription_a" = "建議：每日遠眺 2 次，工作間隙做 3 組抗阻力擴胸伸展動作。";
+"prescription_b" = "建議：立即執行深呼吸 3 次，將電腦螢幕墊高 5 公分，避免下巴前凸。";
+"prescription_c" = "建議：建議每工作 45 分鐘起立活動 2 分鐘，仰望天花板 20 秒釋放頸部壓力。";
+"prescription_d" = "建議：提示身體需充分休息！嚴格遵從寵物提醒，違規一次罰沒小魚乾/扣骨氣幣！";
 
 /* Diagnoses */
 "diagnosis_s" = "優秀脊椎自律模範標兵";
@@ -378,9 +378,9 @@
 /* Additional Screen Elements */
 "settings_streak_days" = "連續打卡";
 "settings_total_coins" = "累計能量幣";
-"clinical_diagnosis_tag" = "體態綜合判定";
+"clinical_diagnosis_tag" = "體態綜合評估";
 "report_archive_stamp" = "評級 %@ · 認證";
-"diagnosis_header_subtitle" = "CLINICAL POSTURE ASSESSMENT";
+"diagnosis_header_subtitle" = "ERGONOMIC POSTURE ASSESSMENT";
 "relief_guide_badge" = "即刻舒緩";
 "hazard_angle_title" = "當前前傾角度";
 "hazard_load_title" = "頸椎額外承重";
@@ -453,7 +453,7 @@
 
 
 /* Weekly Report & Localization Enhancements */
-"prescription_guide_title" = "AI 擬人處方 · 康復指引";
+"prescription_guide_title" = "AI 挺拔建議 · 舒緩指引";
 "weekly_metric_wear" = "累計監測";
 "weekly_metric_alleviated" = "協助減負";
 "weekly_metric_fatigue" = "疲勞塌陷期";

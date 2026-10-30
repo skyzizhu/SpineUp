@@ -105,7 +105,7 @@ final class SUDiagnosisCardView: UIView {
         let label = UILabel()
         label.font = .systemFont(ofSize: 9.0, weight: .semibold)
         label.textColor = .tertiaryLabel
-        label.text = "CLINICAL POSTURE ASSESSMENT"
+        label.text = "ERGONOMIC POSTURE ASSESSMENT"
         label.adjustsFontSizeToFitWidth = true
         label.minimumScaleFactor = 0.75
         label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
@@ -235,7 +235,7 @@ final class SUDiagnosisCardView: UIView {
         let label = UILabel()
         label.font = .systemFont(ofSize: 11.5, weight: .bold)
         label.textColor = .systemIndigo
-        label.text = SULocalized("prescription_guide_title", default: "AI 拟人处方 · 康复指引")
+        label.text = SULocalized("prescription_guide_title", default: "AI 挺拔建议 · 舒缓指引")
         return label
     }()
 
@@ -648,7 +648,7 @@ final class SUDiagnosisCardView: UIView {
         self.currentReport = report
 
         // 1. Header 标题处理 (去除非现代感的书名号《》)
-        let rawHeader = SULocalized("diagnosis_card_title", default: "今日骨气病历单")
+        let rawHeader = SULocalized("diagnosis_card_title", default: "今日挺拔表现单")
         cardHeaderLabel.text = cleanBookQuotes(rawHeader)
 
         // 2. 评级主题色与右侧印章
@@ -721,12 +721,12 @@ final class SUDiagnosisCardView: UIView {
 
     /// 动态刷新多语言文案
     func refreshLocalizedStrings() {
-        let rawHeader = SULocalized("diagnosis_card_title", default: "今日骨气病历单")
+        let rawHeader = SULocalized("diagnosis_card_title", default: "今日挺拔表现单")
         cardHeaderLabel.text = cleanBookQuotes(rawHeader)
-        headerSubtitleLabel.text = SULocalized("diagnosis_header_subtitle", default: "CLINICAL POSTURE ASSESSMENT")
+        headerSubtitleLabel.text = SULocalized("diagnosis_header_subtitle", default: "ERGONOMIC POSTURE ASSESSMENT")
 
-        diagnosisTagLabel.text = SULocalized("clinical_diagnosis_tag", default: "体态综合判定")
-        prescriptionTagLabel.text = SULocalized("prescription_guide_title", default: "AI 拟人处方 · 康复指引")
+        diagnosisTagLabel.text = SULocalized("clinical_diagnosis_tag", default: "体态综合评估")
+        prescriptionTagLabel.text = SULocalized("prescription_guide_title", default: "AI 挺拔建议 · 舒缓指引")
 
         let rawBtnTitle = SULocalized("diagnosis_btn_relief_guide", default: "查看 30 秒急救减负微操 →")
         reliefButtonTitleLabel.text = rawBtnTitle.replacingOccurrences(of: " →", with: "").replacingOccurrences(of: "→", with: "")

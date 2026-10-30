@@ -61,10 +61,10 @@
 "metrics_longest_streak" = "最长连续挺拔";
 "metrics_violations" = "低头预警次数";
 "metrics_extra_load" = "额外颈椎负荷";
-"doctor_prescription" = "AI 拟人处方";
+"doctor_prescription" = "AI 挺拔建议";
 "metaphor_title" = "颈椎受力生活化换算";
-"diagnosis_card_title" = "《今日骨气病历单》";
-"clinical_diagnosis" = "临床诊断：%@";
+"diagnosis_card_title" = "《今日挺拔表现单》";
+"clinical_diagnosis" = "体态评估：%@";
 "pet_quote_format" = "%@寄语：「%@」";
 "score_unit" = "%d 分";
 "times_unit" = "%d 次";
@@ -81,11 +81,11 @@
 "grade_d_title" = "折叠屏人类";
 
 /* Prescriptions */
-"prescription_s" = "处方：继续保持！骨气傲然，建议每周犒赏自己一杯奶茶以示表彰。";
-"prescription_a" = "处方：每日远眺 2 次，工作间隙做 3 组抗阻力扩胸拉伸动作。";
-"prescription_b" = "处方：立即执行深呼吸 3 次，将电脑屏幕垫高 5 厘米，避免下巴前凸。";
-"prescription_c" = "处方：建议每工作 45 分钟起立活动 2 分钟，仰望天花板 20 秒释放颈椎压力。";
-"prescription_d" = "处方：紧急呼叫理疗师！严格遵从宠物提醒，违规一次罚收小鱼干/扣骨气币！";
+"prescription_s" = "建议：继续保持！骨气傲然，建议每周犒赏自己一杯奶茶以示表彰。";
+"prescription_a" = "建议：每日远眺 2 次，工作间隙做 3 组抗阻力扩胸拉伸动作。";
+"prescription_b" = "建议：立即执行深呼吸 3 次，将电脑屏幕垫高 5 厘米，避免下巴前凸。";
+"prescription_c" = "建议：建议每工作 45 分钟起立活动 2 分钟，仰望天花板 20 秒释放颈部压力。";
+"prescription_d" = "建议：提示身体需充分休息！严格遵从宠物提醒，违规一次罚收小鱼干/扣骨气币！";
 
 /* Diagnoses */
 "diagnosis_s" = "优秀脊椎自律模范标兵";
@@ -232,8 +232,8 @@
 "ai_perspective_tag" = "AI透视 ↗";
 "ai_tag_title" = "✨ AI 实时体态力学推演";
 "ai_analyzing_hint" = "✨ AI 正在计算当前姿态力学冲击与体态退行预测...";
-"ai_prescription_badge" = "✨ AI 专属急救处方";
-"ai_hazard_headline_fmt" = "【AI 诊断】当前低头 %.1f° · 额外负荷 +%.1f kg";
+"ai_prescription_badge" = "✨ AI 专属舒缓方案";
+"ai_hazard_headline_fmt" = "【AI 体态分析】当前低头 %.1f° · 额外负荷 +%.1f kg";
 "ai_metaphor_extreme" = "💥 当前颈椎犹如倒挂了一台 24 英寸金属显示器！每维持 10 秒，C5-C6 椎间盘纤维环承受压强即逼近极限阈值。";
 "ai_metaphor_heavy" = "⚠️ 相当于肩颈部位被强行压上了一整箱 24 瓶装矿泉水（约 15kg），斜方肌被迫持续做强抗阻代偿。";
 "ai_metaphor_moderate" = "🌿 相当于颈后挂了一只成年的大胖橘猫（约 9kg），虽暂无剧烈锐痛，但隐性肌纤维微损伤正在悄然累积。";
@@ -241,7 +241,7 @@
 "ai_appearance_severe" = "• 富贵包高危警告：颈胸椎交界长期处于受剪切力状态，脂肪垫为保护神经已开始代偿性堆积，后颈视觉变短变厚。\n• 下颌线模糊坍塌：下巴长期前伸导致深层颈阔肌过度伸展松弛，即使体脂率极低也会诱发不可逆双下巴。\n• 乌龟颈体态定型：今日累计前倾 %d 分钟，胸锁乳突肌呈持续短缩状态，站立时本能猥琐探头。";
 "ai_appearance_moderate" = "• 轻度前探代偿：斜方肌上束呈持续缺血紧绷状态，穿正装或修身衣物时易出现明显溜肩。\n• 下颌肌群代偿疲劳：颈深屈肌力量被抑制，下颌线条正受到向下拉扯牵引。\n• 建议：今日已有 %d 次低头记录，需立即激活背部菱形肌。";
 "ai_appearance_good" = "• 黄金下颌线条：颈部前屈角度在理想生理范围内，下颌线条平整紧致，颈部无代偿性增生。\n• 气质天鹅颈保持中：锁骨与双肩自然下沉打开，整个人身姿挺拔干练。";
-"ai_timeline_severe" = "• 持续 30 分钟：斜方肌血流受阻 60%%，产生乳酸堆积与顽固性酸胀、偏头痛。\n• 累积 1~3 个月：颈椎前凸曲度变直甚至反弓，胸椎代偿后凸，形成固定性驼背。\n• 持续 1~2 年以上：C5-C7 椎间盘退行性变甚至突出，压迫神经根，引发手臂放射性麻木。";
+"ai_timeline_severe" = "• 持续 30 分钟：斜方肌血流受阻 60%%，产生乳酸堆积与顽固性酸胀、疲劳。\n• 累积 1~3 个月：颈椎前凸曲度减小，胸椎代偿后凸，形成固定性驼背。\n• 持续 1~2 年以上：长期低头严重加剧颈部肌肉劳损，引发顽固肩颈僵硬酸痛。";
 "ai_timeline_mild" = "• 持续保持：颈椎间盘获得良好水分回流与弹性休养，肩颈经络通畅，脑供血充足充沛。\n• 1~3 个月后：形成肌肉记忆，即使高强度伏案工作也能自发维持优雅直立。";
 "ai_relief_diag_heavy" = "⚡️ AI 判定当前颈椎处于高负荷抗阻紧绷（+%.1f kg）。检测到斜方肌上束充血痉挛，急需做后缩反向对冲！";
 "ai_relief_diag_light" = "🌿 当前姿态良好，此 30 秒微操主要用于唤醒深层核心肌肉记忆，预防伏案疲劳积累。";
@@ -296,7 +296,7 @@
 "onboarding_sub_2" = "【为什么需要运动传感器权限】\n• 空间姿态核心驱动：SpineUp 需要访问 iOS「运动与健身」权限，调用耳机内置陀螺仪与加速度计，以 60Hz 采样率感知头部细微前倾与偏转。\n\n【连接后能做什么】\n• 毫秒级防低头预警：当头部前倾超出设定阈值时，通过轻柔触感、提示音或宠物语音轻声唤醒，在专注工作中无感重置健康坐姿。\n• 100% 设备端本地运算：所有传感器运动轨迹均在 iPhone 本地即时计算，绝不上传私密运动数据，完全保障隐私安全。";
 "onboarding_btn_2" = "开启耳机运动权限并继续";
 "onboarding_title_3" = "戴上耳机一键校准\n开启趣味减负之旅";
-"onboarding_sub_3" = "【如何使用与零点校准】\n• 戴好耳机端坐舒展：双耳戴上 AirPods，调整到您感觉自然、舒适挺拔的坐姿或站姿。\n• 一键锁定专属零点：轻点「一键校准」即可锁定基准，随时自适应不同办公椅与工位环境。\n\n【连接后还可以做什么】\n• 30 秒微操减负回血：疲劳时跟随宠物做一次「收下巴」或「W展肩」微操，即刻卸下颈椎额外负荷并赚取能量币。\n• 每日体态病历诊断：下班生成当日挺拔优秀率、疲劳时段与生活化承重比喻，见证脊椎每一天的蜕变！";
+"onboarding_sub_3" = "【如何使用与零点校准】\n• 戴好耳机端坐舒展：双耳戴上 AirPods，调整到您感觉自然、舒适挺拔的坐姿或站姿。\n• 一键锁定专属零点：轻点「一键校准」即可锁定基准，随时自适应不同办公椅与工位环境。\n\n【连接后还可以做什么】\n• 30 秒微操减负回血：疲劳时跟随宠物做一次「收下巴」或「W展肩」微操，即刻卸下颈椎额外负荷并赚取能量币。\n• 每日体态分析报告：下班生成当日挺拔优秀率、疲劳时段与生活化承重比喻，见证脊椎每一天的蜕变！";
 "onboarding_btn_3" = "开启我的脊椎守护";
 "onboarding_badge_features" = "核心功能";
 "onboarding_badge_devices" = "兼容设备";
@@ -378,9 +378,9 @@
 /* Additional Screen Elements */
 "settings_streak_days" = "连续打卡";
 "settings_total_coins" = "累计能量币";
-"clinical_diagnosis_tag" = "体态综合判定";
+"clinical_diagnosis_tag" = "体态综合评估";
 "report_archive_stamp" = "评级 %@ · 认证";
-"diagnosis_header_subtitle" = "CLINICAL POSTURE ASSESSMENT";
+"diagnosis_header_subtitle" = "ERGONOMIC POSTURE ASSESSMENT";
 "relief_guide_badge" = "即刻舒缓";
 "hazard_angle_title" = "当前前倾角度";
 "hazard_load_title" = "颈椎额外承重";
@@ -453,7 +453,7 @@
 
 
 /* Weekly Report & Localization Enhancements */
-"prescription_guide_title" = "AI 拟人处方 · 康复指引";
+"prescription_guide_title" = "AI 挺拔建议 · 舒缓指引";
 "weekly_metric_wear" = "累计监测";
 "weekly_metric_alleviated" = "协助减负";
 "weekly_metric_fatigue" = "疲劳塌陷期";

@@ -81,15 +81,15 @@ enum SUDailyReportGenerator {
     private static func selectPrescription(grade: String) -> String {
         switch grade {
         case "S":
-            return SULocalized("prescription_s", default: "处方：继续保持！骨气傲然，建议每周犒赏自己一杯奶茶以示表彰。")
+            return SULocalized("prescription_s", default: "建议：继续保持！骨气傲然，建议每周犒赏自己一杯奶茶以示表彰。")
         case "A":
-            return SULocalized("prescription_a", default: "处方：每日远眺 2 次，工作间隙做 3 组抗阻力扩胸拉伸动作。")
+            return SULocalized("prescription_a", default: "建议：每日远眺 2 次，工作间隙做 3 组抗阻力扩胸拉伸动作。")
         case "B":
-            return SULocalized("prescription_b", default: "处方：立即执行深呼吸 3 次，将电脑屏幕垫高 5 厘米，避免下巴前凸。")
+            return SULocalized("prescription_b", default: "建议：立即执行深呼吸 3 次，将电脑屏幕垫高 5 厘米，避免下巴前凸。")
         case "C":
-            return SULocalized("prescription_c", default: "处方：建议每工作 45 分钟起立活动 2 分钟，仰望天花板 20 秒释放颈椎压力。")
+            return SULocalized("prescription_c", default: "建议：建议每工作 45 分钟起立活动 2 分钟，仰望天花板 20 秒释放颈部压力。")
         default:
-            return SULocalized("prescription_d", default: "处方：紧急呼叫理疗师！严格遵从宠物提醒，违规一次罚收小鱼干/扣骨气币！")
+            return SULocalized("prescription_d", default: "建议：提示身体需充分休息！严格遵从宠物提醒，违规一次罚收小鱼干/扣骨气币！")
         }
     }
 

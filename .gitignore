@@ -22,6 +22,9 @@ Pods/
 *.xcconfig
 backend/.env
 
+# Promo Tools
+xtools-promo/
+
 # Backend Storage & Cache
 backend/storage/*.sqlite*
 backend/storage/cache/*

@@ -1,8 +1,8 @@
 /* InfoPlist.strings (English - Base) */
 "CFBundleDisplayName" = "SpineUp";
 "UILaunchStoryboardName" = "LaunchScreen";
-"NSMotionUsageDescription" = "SpineUp requires motion sensor access to monitor your head posture and cervical spine health in real time via AirPods.";
-"NSCameraUsageDescription" = "SpineUp requires front camera access to recognize and guide your posture relief exercises in real time.";
+"NSMotionUsageDescription" = "SpineUp uses headphone motion sensors to monitor your head posture and ergonomic alignment in real time.";
+"NSCameraUsageDescription" = "SpineUp uses the front camera to detect motion and guide posture relief exercises in real time.";
 "NSHealthShareUsageDescription" = "SpineUp accesses health data such as step count to provide tailored ergonomics analysis.";
 "NSHealthUpdateUsageDescription" = "SpineUp records your upright focus minutes as Mindful Sessions in Apple Health.";
 "NSPhotoLibraryAddUsageDescription" = "SpineUp needs permission to save posture report cards and achievements to your Photos.";

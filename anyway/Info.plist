@@ -46,9 +46,9 @@
 	<key>NSSupportsLiveActivities</key>
 	<true/>
 	<key>NSMotionUsageDescription</key>
-	<string>SpineUp requires motion sensor access to monitor your head posture and cervical spine health in real time via AirPods.</string>
+	<string>SpineUp uses headphone motion sensors to monitor your head posture and ergonomic alignment in real time.</string>
 	<key>NSCameraUsageDescription</key>
-	<string>SpineUp requires front camera access to recognize and guide your posture relief exercises in real time.</string>
+	<string>SpineUp uses the front camera to detect motion and guide posture relief exercises in real time.</string>
 	<key>NSHealthShareUsageDescription</key>
 	<string>SpineUp accesses health data such as step count to provide personalized posture and ergonomics analysis.</string>
 	<key>NSHealthUpdateUsageDescription</key>

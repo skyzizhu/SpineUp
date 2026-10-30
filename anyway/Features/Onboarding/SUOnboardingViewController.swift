@@ -39,7 +39,7 @@ final class SUOnboardingViewController: SUBaseViewController {
             ),
             PageData(
                 title: SULocalized("onboarding_title_3", default: "戴上耳机一键校准\n开启趣味减负之旅"),
-                subtitle: SULocalized("onboarding_sub_3", default: "【如何使用与零点校准】\n• 戴好耳机端坐舒展：双耳戴上 AirPods，调整到您感觉自然、舒适挺拔的坐姿或站姿。\n• 一键锁定专属零点：轻点「一键校准」即可锁定基准，随时自适应不同办公椅与工位环境。\n\n【连接后还可以做什么】\n• 30 秒微操减负回血：疲劳时跟随宠物做一次「收下巴」或「W展肩」微操，即刻卸下颈椎额外负荷并赚取能量币。\n• 每日体态病历诊断：下班生成当日挺拔优秀率、疲劳时段与生活化承重比喻，见证脊椎每一天的蜕变！"),
+                subtitle: SULocalized("onboarding_sub_3", default: "【如何使用与零点校准】\n• 戴好耳机端坐舒展：双耳戴上耳机，调整到您感觉自然、舒适挺拔的坐姿或站姿。\n• 一键锁定专属零点：轻点「一键校准」即可锁定基准，随时自适应不同办公椅与工位环境。\n\n【连接后还可以做什么】\n• 30 秒微操减负回血：疲劳时跟随宠物做一次「收下巴」或「W展肩」微操，即刻卸下颈椎额外负荷并赚取能量币。\n• 每日体态分析战报：下班生成当日挺拔优秀率、疲劳时段与生活化承重比喻，见证脊椎每一天的蜕变！"),
                 iconName: "figure.stand",
                 buttonTitle: SULocalized("onboarding_btn_3", default: "开启我的脊椎守护")
             )
